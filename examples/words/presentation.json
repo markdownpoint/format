@@ -1,0 +1,31 @@
+{
+  "markdownpoint": 1,
+  "kind": "presentation",
+  "document": "9d98709f-0aac-407e-b6d3-56da6b8494aa",
+  "design": "c17f2a67-54b1-492b-8ab3-838711173ab2",
+  "slides": {
+    "fields": {
+      "layout": "content-with-header",
+      "scheme": "mint"
+    },
+    "lists": {
+      "layout": "content-with-header",
+      "scheme": "butter"
+    },
+    "marks": {
+      "layout": "content-with-header",
+      "scheme": "sky"
+    },
+    "quote": {
+      "layout": "content-with-header",
+      "scheme": "lilac"
+    },
+    "table": {
+      "layout": "content-with-header",
+      "scheme": "apricot",
+      "objects": [
+        {"id":"prices","type":"table","frame":{"x":120,"y":380,"width":1680,"height":420},"inset":24,"text-style":"body","columns":[840,420,420],"alternating-rows":true}
+      ]
+    }
+  }
+}

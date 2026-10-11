@@ -1,0 +1,38 @@
+{
+  "markdownpoint": 1,
+  "kind": "presentation",
+  "document": "64ea077f-d2ca-4f8c-9015-61feb4de5cb8",
+  "design": "c17f2a67-54b1-492b-8ab3-838711173ab2",
+  "slides": {
+    "shapes": {
+      "layout": "blank",
+      "scheme": "butter",
+      "objects": [
+        {"id":"heading","type":"text","frame":{"x":120,"y":110,"width":1680,"height":150},"text-style":"title"},
+
+        {"id":"card","type":"shape","shape":"rectangle","frame":{"x":120,"y":360,"width":720,"height":420},"corner-radius":32},
+
+        {"id":"dot","type":"shape","shape":"ellipse","frame":{"x":1320,"y":420,"width":300,"height":300},"fill":"text"},
+
+        {"id":"arrow","type":"line","start":{"x":900,"y":570},"end":{"x":1260,"y":570},"cap-end":"arrow","stroke-weight":8},
+
+        {"id":"caption","type":"text","frame":{"x":120,"y":860,"width":1680,"height":80},"text-style":"body"}
+      ],
+      "initial": {
+        "card.opacity": 0
+      },
+      "steps": [
+        {
+          "id": "fade-in",
+          "name": "Fade in the card",
+          "duration": 0.6,
+          "curves": {
+            "card.opacity": [
+              {"id":"card-shows","time":0.6,"value":1,"easing":"ease-in"}
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

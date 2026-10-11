@@ -1,0 +1,18 @@
+{
+  "markdownpoint": 1,
+  "kind": "presentation",
+  "document": "318494ee-4e44-456f-818a-ec761b41fec2",
+  "design": "c17f2a67-54b1-492b-8ab3-838711173ab2",
+  "slides": {
+    "close": {
+      "layout": "one-liner"
+    },
+    "points": {
+      "layout": "content-with-header",
+      "scheme": "sky"
+    },
+    "title": {
+      "layout": "title"
+    }
+  }
+}
