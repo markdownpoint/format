@@ -211,13 +211,13 @@ Its position, columns and style are in presentation.json:
 
 Images, HTML tags and footnotes are kept in the file as written. The slide shows them as plain text. To put a picture on a slide, add an image object in [presentation.json](presentation-json.md).
 
-An HTML comment is a note to yourself. It's kept in the file and never shown. That includes a comment between a slide's `---` and the next slide.
+An HTML comment inside a text or notes block is a note to yourself. It's kept in the file and never shown. A comment between a slide's `---` and the next slide belongs to the slide's last block.
 
 ## Editing by hand
 
 MarkdownPoint can't read the file if it has:
 
-- text outside a text or notes block
+- text or a comment outside a text or notes block
 - a marker written wrong, such as `<!-- Slide: intro -->`, or the same marker twice
 - a slide marker without its entry in presentation.json, or an entry without its marker
 - a code block that doesn't close
