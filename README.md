@@ -4,7 +4,7 @@
 
 MarkdownPoint saves a presentation as a folder of plain text files. This repository describes those files. It is for people who edit them by hand and for programs that read or write them.
 
-The slide above is these lines of presentation.md:
+These lines in presentation.md make the slide above:
 
 ```markdown
 <!-- slide: title -->
@@ -28,7 +28,7 @@ Its layout, colors and type come from presentation.json and the design. The whol
 
 ```
 my-talk/
-  presentation.md      the words: text, tables, speaker notes, slide order and sections
+  presentation.md      the text: slides, tables, speaker notes, slide order and sections
   presentation.json    everything else: objects, their places and styles, steps and transitions
   media/               pictures, movies and sounds
   designs/<id>/        the design: master.json and a JSON file per layout
@@ -36,15 +36,15 @@ my-talk/
 
 ## Guides
 
-- **[Introduction to presentation.md](presentation-md.md)**: start here. Frontmatter, sections, slides, words and speaker notes, and what to know before editing by hand.
+- **[Introduction to presentation.md](presentation-md.md)**: start here. Frontmatter, sections, slides, text and speaker notes, and what to know before editing by hand.
 - **[presentation.json](presentation-json.md)**: slides, objects, colors and steps.
 - **[Designs](designs.md)**: masters, layouts, color schemes and text styles.
-- **[Reference, version 1](reference/v1.md)**: every key the files take, with what it does.
+- **[Reference, version 1](reference/v1.md)**: every key in the files and what it does.
 
 ## Versions
 
-Both files name their format version: `markdownpoint: 1`. Each version's reference stays in [reference](reference). The format is not final yet. Until MarkdownPoint's first release, version 1 still changes in place.
+Both files state their format version: `markdownpoint: 1`. Earlier versions' references stay in [reference](reference). The format is not final yet. Until MarkdownPoint's first release, version 1 still changes in place.
 
 ## License
 
-MIT. See [LICENSE](LICENSE). MarkdownPoint's source generates this repository. The next publication replaces any change made here.
+MIT. See [LICENSE](LICENSE). This repository is generated from MarkdownPoint's source, so changes made here are overwritten.

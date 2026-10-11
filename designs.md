@@ -1,6 +1,6 @@
 # Designs
 
-A design is a folder in the presentation's `designs` folder, named by its id. presentation.json picks it with `"design": "<id>"`. The examples here use Basic, the design MarkdownPoint starts a presentation with.
+A design is a folder in the presentation's `designs` folder, named by its id. presentation.json selects it with `"design": "<id>"`. The examples here use Basic, MarkdownPoint's default design.
 
 ```
 designs/c17f2a67-54b1-492b-8ab3-838711173ab2/
@@ -13,7 +13,7 @@ designs/c17f2a67-54b1-492b-8ab3-838711173ab2/
 
 ## Master
 
-master.json holds the design's settings. Every slide shows its `objects` behind its own. Basic's master has a footer and a slide number. Their words are fields:
+master.json has the design's settings. Its `objects` appear behind every slide's own. Basic's master has a footer and a slide number. Their text is fields:
 
 ```json
 {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
@@ -21,7 +21,7 @@ master.json holds the design's settings. Every slide shows its `objects` behind 
 
 ## Color schemes
 
-A scheme gives a color to each role. A slide's objects name roles, such as `accent`, so they change color with the slide's scheme. This is Basic's butter scheme:
+A scheme sets a color for each role. Objects use roles, such as `accent`, so they change color with the slide's scheme. This is Basic's butter scheme:
 
 ```json
 {
@@ -34,11 +34,11 @@ A scheme gives a color to each role. A slide's objects name roles, such as `acce
 }
 ```
 
-`{brand.ember}` is one of the brand's own colors, which `brand` names.
+`{brand.ember}` is one of the brand colors defined in `brand`.
 
 ## Text styles
 
-A text object takes its type from a style, such as `title` or `body`:
+A text object gets its type settings from a text style, such as `title` or `body`:
 
 ```json
 {
@@ -51,11 +51,11 @@ A text object takes its type from a style, such as `title` or `body`:
 }
 ```
 
-`font-family` names a font role, which `fonts` gives a family.
+`font-family` is a font role. `fonts` sets the font family for each role.
 
 ## Layouts
 
-A layout places the objects a slide starts with. This is Basic's Title layout:
+A layout sets the objects a slide starts with. This is Basic's Title layout:
 
 ```json
 {
@@ -100,14 +100,14 @@ A layout places the objects a slide starts with. This is Basic's Title layout:
 }
 ```
 
-`"placeholder": true` marks an object a slide fills with its own words. A slide on this layout writes them under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. `text` holds a placeholder's sample words. `overrides` changes the master's objects on this layout, and `null` takes one off.
+`"placeholder": true` marks an object that each slide fills with its own text. A slide on this layout writes it under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. `text` has each placeholder's sample text. `overrides` changes the master's objects on this layout, and `null` removes one.
 
 ![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
 
 ## Changing a design by hand
 
-A design is shared by every slide that uses it. A change to master.json reaches every slide. A change to a layout reaches every slide on it.
+Every slide that uses a design shares it. A change to master.json affects every slide. A change to a layout affects every slide that uses it.
 
-MarkdownPoint picks up a design changed outside it while the presentation is open, unless the presentation is shared. A layout that doesn't read leaves its slides empty, and the Format inspector names the problem. A master that doesn't read leaves every slide empty.
+MarkdownPoint picks up design changes made outside the app while the presentation is open, unless it's shared. If a layout can't be read, its slides show empty and the Format inspector shows the problem. If the master can't be read, every slide shows empty.
 
 The reference lists every key of [master.json](reference/v1.md#master) and [a layout](reference/v1.md#layout).

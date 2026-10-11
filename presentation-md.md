@@ -1,6 +1,6 @@
 # Introduction to presentation.md
 
-presentation.md holds a presentation's words, slide by slide, in Markdown. Edit it in any text editor. MarkdownPoint watches the folder, so a saved change shows on the open presentation at once.
+presentation.md has a presentation's text, slide by slide, in Markdown. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
 
 This is the whole file of a presentation with three slides:
 
@@ -55,19 +55,19 @@ The words are Markdown==.==
 
 ## Frontmatter
 
-The file opens with frontmatter between two `---` lines. `markdownpoint` is the format version. `document` is the presentation's id, the same as presentation.json's. `footer` holds the footer's words. Write each of these on one line, as `key: value`.
+The file opens with frontmatter between two `---` lines. `markdownpoint` is the format version. `document` is the presentation's id, the same as in presentation.json. `footer` is the footer text. Write each of these on one line, as `key: value`.
 
-Any other key is yours. MarkdownPoint keeps it as you wrote it and never reads it.
+You can add your own keys. MarkdownPoint keeps them as written and ignores them.
 
 ## Sections
 
-`<!-- section: id -->` opens a section. The `# Name` line after it names the section. A presentation can have no sections. Once it has one, every slide stands in a section.
+`<!-- section: id -->` starts a section. The `# Name` line below it is the section's name. Sections are optional. Once there is one, every slide must be in a section.
 
 ## Slides
 
-`<!-- slide: id -->` opens a slide. The slides show in the order presentation.md lists them. Move a slide's lines to move the slide.
+`<!-- slide: id -->` starts a slide. Slides appear in the order they're listed. To move a slide, move its lines.
 
-Each slide also has an entry in [presentation.json](presentation-json.md) under the same id. presentation.json lists them by id, so their order there doesn't matter. `layout` names the design's layout the slide is built on.
+Each slide also has an entry in [presentation.json](presentation-json.md) under the same id. The order of entries there doesn't matter. `layout` is the design layout the slide uses.
 
 ```json
 {
@@ -77,27 +77,27 @@ Each slide also has an entry in [presentation.json](presentation-json.md) under 
 }
 ```
 
-A new slide needs both its marker and its entry. Deleting or renaming a slide changes both files.
+A new slide needs both its marker and its entry. To delete or rename a slide, change both files.
 
 An id is lowercase letters, digits and single hyphens, and starts with a letter: `intro`, `q3-numbers`.
 
 ## Text
 
-`<!-- text: id -->` holds an object's words, up to the next marker. Here `eyebrow`, `title` and `body` are placeholders of the slide's layout. For one of the slide's own objects, the id is the object's id in presentation.json.
+`<!-- text: id -->` starts an object's text. It runs to the next marker. Here `eyebrow`, `title` and `body` are placeholders from the slide's layout. For any other object, the id is its id in presentation.json.
 
 ## Speaker notes
 
-`<!-- notes -->` holds the slide's speaker notes. Only the presenter sees them. They take the same Markdown as a slide's words.
+`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. They use the same Markdown as slide text.
 
 ## Separators
 
-A line of `---` ends a slide. It's optional, since the next slide or section marker ends a slide too. Write a horizontal rule in a slide's words as `***`, so it never reads as a separator.
+A line of `---` ends a slide. It's optional, since the next slide or section marker also ends one. Write a horizontal rule as `***`, so it isn't read as a separator.
 
-A line inside a block that would read as a marker or a separator starts with a backslash: `\<!-- slide: example -->`. The backslash keeps it as words.
+To use a line that looks like a marker or a separator as plain text, start it with a backslash: `\<!-- slide: example -->`.
 
-## Words
+## Markdown
 
-A slide's words are Markdown. Text objects, tables and speaker notes all take it. The [reference](reference/v1.md#words) lists every form.
+Text objects, tables and speaker notes use Markdown. The [reference](reference/v1.md#markdown) lists everything that's supported.
 
 ### Marks, links and colors
 
@@ -115,7 +115,7 @@ Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
 
 ![The marks slide, as MarkdownPoint draws it](images/words-marks.png)
 
-`==highlighted==` words and `[colored]{color=accent}` words are MarkdownPoint's own. A color is a role of the slide's color scheme, such as `accent`, or a hex color: `[words]{color="#2F7D4F"}`.
+`==highlighted==` and `[colored]{color=accent}` text are MarkdownPoint additions. A color is either a role from the slide's color scheme, such as `accent`, or a hex color: `[text]{color="#2F7D4F"}`.
 
 ### Lists
 
@@ -136,7 +136,7 @@ Lists==.==
 
 ![The lists slide, as MarkdownPoint draws it](images/words-lists.png)
 
-Indent an item under the one before it for a deeper level. A numbered list can start at any number.
+Indent an item to nest it under the one above. A numbered list can start at any number.
 
 ### Fields
 
@@ -152,7 +152,7 @@ This is slide {{slide-number}} of {{slide-count}}, in section {{section-number}}
 
 ![The fields slide, as MarkdownPoint draws it](images/words-fields.png)
 
-A field shows a value MarkdownPoint fills in, such as the slide's number. The [reference](reference/v1.md#words) names every field. The `footer` field shows the footer the frontmatter sets.
+A field shows a value MarkdownPoint fills in, such as the slide number. The [reference](reference/v1.md#markdown) lists every field. The `footer` field shows the footer set in the frontmatter.
 
 ### Quotes and code
 
@@ -174,7 +174,7 @@ const deck = "presentation.md"
 
 ### Tables
 
-A table is an object of its own. Its words are a Markdown table.
+A table is its own object, written as a Markdown table.
 
 ```markdown
 <!-- slide: table -->
@@ -189,7 +189,7 @@ Tables==.==
 | Team | 10 | $8 |
 ```
 
-Its place, columns and look are in presentation.json:
+Its position, columns and style are in presentation.json:
 
 ```json
 [
@@ -207,22 +207,22 @@ Its place, columns and look are in presentation.json:
 
 ![The table slide, as MarkdownPoint draws it](images/words-table.png)
 
-### Markdown a slide doesn't read
+### Unsupported Markdown
 
-A picture, an HTML tag or a footnote stays in the file as you wrote it. The slide shows its characters. Put a picture on a slide as an image object in [presentation.json](presentation-json.md).
+Images, HTML tags and footnotes are kept in the file as written. The slide shows them as plain text. To put a picture on a slide, add an image object in [presentation.json](presentation-json.md).
 
-An HTML comment is a note to yourself. It stays in the file and shows on no slide. So does a comment between a slide's `---` and the next slide.
+An HTML comment is a note to yourself. It's kept in the file and never shown. That includes a comment between a slide's `---` and the next slide.
 
 ## Editing by hand
 
-These keep MarkdownPoint from reading the file:
+MarkdownPoint can't read the file if it has:
 
-- words outside a text or notes block
+- text outside a text or notes block
 - a marker written wrong, such as `<!-- Slide: intro -->`, or the same marker twice
 - a slide marker without its entry in presentation.json, or an entry without its marker
 - a code block that doesn't close
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line
 
-MarkdownPoint then names the file, the line and what is wrong. It doesn't open the presentation. If the presentation is open, MarkdownPoint waits for the fix and never writes over your file. To check a folder without the app, run `mdpoint validate --files` in it.
+MarkdownPoint then shows the file, the line and the problem. It won't open the presentation. If it's already open, MarkdownPoint waits for the fix and never overwrites your file. To check a folder without the app, run `mdpoint validate --files` in it.
 
-A save keeps your spelling. Slides you didn't edit in the app stay as you wrote them. A block you edited in the app is written in MarkdownPoint's spelling.
+Saving keeps your formatting. Slides you didn't edit in the app stay as you wrote them. Text you edit in the app is saved in MarkdownPoint's standard Markdown.
