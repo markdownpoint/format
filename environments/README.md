@@ -1,6 +1,6 @@
 # The studio environment
 
-`studio.hdr` is the light a World with no color gives a slide's 3D objects. The World's `strength` multiplies it.
+`studio.hdr` is the light a World with no color gives a slide's 3D objects. The World's `strength` multiplies it. A World's `strength` is 0 unless it is set, so a World with neither a color nor a strength lights nothing.
 
 The file is an equirectangular HDR picture in the Radiance format. It holds linear light from every direction around the slide. Its top is up. Its middle column faces the slide's right (+x). The column a quarter of the way from the left edge faces into the slide.
 

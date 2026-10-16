@@ -1,5 +1,5 @@
 ---
-markdownpoint: "1.0"
+markdownpoint: 1
 document: 9d98709f-0aac-407e-b6d3-56da6b8494aa
 ---
 

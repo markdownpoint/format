@@ -1,5 +1,5 @@
 ---
-markdownpoint: "1.0"
+markdownpoint: 1
 document: 318494ee-4e44-456f-818a-ec761b41fec2
 footer: "Plain text decks"
 ---

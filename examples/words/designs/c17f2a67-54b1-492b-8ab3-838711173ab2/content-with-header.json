@@ -1,5 +1,5 @@
 {
-  "markdownpoint": "1.0",
+  "markdownpoint": 1,
   "kind": "layout",
   "objects": [
     {"id":"title","type":"text","placeholder":true,"frame":{"x":120,"y":112,"width":1680,"height":176},"text-style":"title"},

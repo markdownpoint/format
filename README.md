@@ -29,10 +29,13 @@ Its layout, colors and type come from presentation.json and the design. The whol
 ```
 my-talk/
   presentation.md      the text: slides, tables, speaker notes, slide order and sections
-  presentation.json    everything else: objects, their places and styles, steps and transitions
-  media/               pictures, movies and sounds
-  designs/<id>/        the design: master.json and a JSON file per layout
+  presentation.json    everything else: objects, their positions and styles, steps and transitions
+  media/               images, videos, sounds and models
+  generated/           images made with AI, each with the prompt and settings that made it
+  designs/<id>/        the design: master.json, a JSON file per layout, and its own images and fonts
 ```
+
+To start a presentation by hand, copy an example's whole folder. Its `designs` folder holds Basic. With MarkdownPoint running, `mdpoint create <folder>` makes a new presentation with Basic and opens it.
 
 ## Guides
 
@@ -43,8 +46,8 @@ my-talk/
 
 ## Versions
 
-Every file states its format version as a string of a major and a minor: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in presentation.md's frontmatter. A reader opens every minor of its major and refuses another major. A 1.x app opens a later 1.x file read-only where it holds what the app doesn't know, so the app never writes it away. Earlier versions' references stay in [reference](reference). The format is not final yet. Until MarkdownPoint's first release, version 1.0 still changes in place.
+Every file states its format version as the whole number 1: `"markdownpoint": 1` in JSON and `markdownpoint: 1` in presentation.md's frontmatter. A newer MarkdownPoint writes a higher number. MarkdownPoint refuses a file with a number higher than its own. The format isn't final yet. Until it is, version 1 can still change.
 
 ## License
 
-MIT. See [LICENSE](LICENSE). This repository is generated from MarkdownPoint's source, so changes made here are overwritten.
+MIT. See [LICENSE](LICENSE). MarkdownPoint's source generates this repository. Each update replaces what is here.
