@@ -23,7 +23,7 @@ Everything else is in presentation.json:
 
 ```json
 {
-  "markdownpoint": 1,
+  "markdownpoint": "1.0",
   "kind": "presentation",
   "document": "64ea077f-d2ca-4f8c-9015-61feb4de5cb8",
   "design": "c17f2a67-54b1-492b-8ab3-838711173ab2",
@@ -74,7 +74,7 @@ Everything else is in presentation.json:
           "name": "Fade in the card",
           "duration": 0.6,
           "curves": {
-            "card.opacity": [{"id": "card-shows", "time": 0.6, "value": 1, "easing": "ease-in"}]
+            "card.opacity": [{"id": "card-shows", "time": 0.6, "value": 1, "easing": "ease-out"}]
           }
         }
       ]

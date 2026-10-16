@@ -59,7 +59,7 @@ A layout sets the objects a slide starts with. This is Basic's Title layout:
 
 ```json
 {
-  "markdownpoint": 1,
+  "markdownpoint": "1.0",
   "kind": "layout",
   "scheme": "apricot",
   "overrides": {"footer": null, "slide-number": null},

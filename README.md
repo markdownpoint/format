@@ -43,7 +43,7 @@ my-talk/
 
 ## Versions
 
-Both files state their format version: `markdownpoint: 1`. Earlier versions' references stay in [reference](reference). The format is not final yet. Until MarkdownPoint's first release, version 1 still changes in place.
+Every file states its format version as a string of a major and a minor: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in presentation.md's frontmatter. A reader opens every minor of its major and refuses another major. A 1.x app opens a later 1.x file read-only where it holds what the app doesn't know, so the app never writes it away. Earlier versions' references stay in [reference](reference). The format is not final yet. Until MarkdownPoint's first release, version 1.0 still changes in place.
 
 ## License
 

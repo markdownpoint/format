@@ -6,7 +6,7 @@ This is the whole file of a presentation with three slides:
 
 ```markdown
 ---
-markdownpoint: 1
+markdownpoint: "1.0"
 document: 318494ee-4e44-456f-818a-ec761b41fec2
 footer: "Plain text decks"
 ---
@@ -93,7 +93,7 @@ An id is lowercase letters, digits and single hyphens, and starts with a letter:
 
 A line of `---` ends a slide. It's optional, since the next slide or section marker also ends one. Write a horizontal rule as `***`, so it isn't read as a separator.
 
-To use a line that looks like a marker or a separator as plain text, start it with a backslash: `\<!-- slide: example -->`.
+To keep a line that looks like a marker as plain text, write a backslash after its `<!--`: `<!--\ slide: example -->`. To keep a line of `---` as plain text, add a fourth dash: `----`. The reader takes the backslash or the dash off again.
 
 ## Markdown
 
@@ -206,6 +206,16 @@ Its position, columns and style are in presentation.json:
 ```
 
 ![The table slide, as MarkdownPoint draws it](images/words-table.png)
+
+### Where it differs from CommonMark
+
+Bold and italic follow CommonMark, with one difference. CommonMark lets a run of `*` between punctuation and a letter open toward the letter but never close. MarkdownPoint lets such a run both open and close. So `**C++**17` reads as bold “C++” before “17”. `**Note:**This` reads as bold “Note:” before “This”. CommonMark shows the stars in both as written.
+
+The same rule covers Chinese and Japanese, which run without spaces. `これは**「重要」**です` reads as bold “「重要」”. This matches the [CJK-friendly amendment](https://github.com/tats-u/markdown-cjk-friendly) to CommonMark.
+
+The rule changes one rare spelling. `*(*foo*)*` reads as italic parentheses around a plain “foo”, where CommonMark nests one italic inside the other. A run of `_` keeps CommonMark's reading.
+
+A word can change style once: `**Mark**down` reads back as a bold “Mark” before “down”. A word that changes style twice or more in a row, such as from bold to bold italic to italic, can save as stars that read back as written characters.
 
 ### Unsupported Markdown
 
