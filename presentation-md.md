@@ -83,6 +83,8 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 `<!-- text: id -->` starts an object's text. It runs to the next marker. Here `eyebrow`, `title` and `body` are placeholders from the slide's layout. For any other object, the id is its id in presentation.json. A shape, a table or a chart takes its text the same way.
 
+One blank line separates two paragraphs. Each further blank line is an empty paragraph, and keeps its line on the slide. A blank line right under the marker is one too. Before the next marker, one blank line only separates.
+
 ## Speaker notes
 
 `<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. They use the same Markdown as slide text.
