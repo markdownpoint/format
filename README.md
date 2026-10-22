@@ -31,7 +31,7 @@ my-talk/
   my-talk.md           the text: slides, tables, speaker notes, slide order and sections
   my-talk.mdpoint      everything else: objects, their positions and styles, steps and transitions
   media/               images, videos, sounds and models
-  generated/           images made with AI. A record beside each says how it was made.
+  generated/           what MarkdownPoint makes: images made with AI, and 3D text models. A record beside each image says how it was made.
   designs/<id>/        the design: master.json, a JSON file per layout, and its own images and fonts
 ```
 
