@@ -21,19 +21,15 @@ Your slides are Markdown files you own.
 <!-- notes -->
 Speaker notes go here. Only the presenter sees them.
 
----
-
 <!-- slide: points -->
 
 <!-- text: title -->
 Two files, one deck==.==
 
 <!-- text: body -->
-- **presentation.md** holds the words
-- **presentation.json** holds the layout, styles and steps
-- The design is a folder beside them
-
----
+- **first-deck.md** holds the words
+- **first-deck.mdpoint** holds the layout, styles and steps
+- The design is a folder in **designs**
 
 <!-- section: finish -->
 # Finish

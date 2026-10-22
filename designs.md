@@ -1,6 +1,6 @@
 # Designs
 
-A design is a folder in the presentation's `designs` folder, named by its id. presentation.json selects it with `"design": "<id>"`. The examples here use Basic, MarkdownPoint's default design.
+A design is a folder in the presentation's `designs` folder, named by its id. The .mdpoint file selects it with `"design": "<id>"`. The examples here use Basic, MarkdownPoint's default design.
 
 ```
 designs/c17f2a67-54b1-492b-8ab3-838711173ab2/
@@ -51,7 +51,7 @@ A text object gets its type settings from one of the design's text styles. A des
 }
 ```
 
-`font-family` is a font role. `fonts` sets the family for each role. The reference lists the families MarkdownPoint bundles, under [fonts](reference/v1.md#fonts). A family it doesn't bundle comes with the design. `font-files` lists its `.eot` files, one per face. The app keeps them in the design's `fonts` folder.
+`font-family` is a font role. `fonts` sets the family for each role. The reference lists the families MarkdownPoint bundles, under [fonts](reference/v1.md#fonts). A generic family, such as `serif` or `system-ui`, needs no file. Any other family it doesn't bundle comes with the design. `font-files` lists its `.eot` files, one per face. The app keeps them in the design's `fonts` folder.
 
 ## Layouts
 

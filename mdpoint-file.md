@@ -1,10 +1,10 @@
-# presentation.json
+# The .mdpoint file
 
-presentation.json has everything except the text: the design, each slide's layout, the objects on it, their positions and styles, and the steps that animate them.
+The .mdpoint file has everything except the text: the design, each slide's layout, the objects on it, their positions and styles, and the steps that animate them. It's named after its folder: `my-talk/my-talk.mdpoint`.
 
 ![The shapes slide, as MarkdownPoint draws it](images/objects-shapes.png)
 
-This slide's text is in presentation.md:
+This slide's text is in the .md file:
 
 ```markdown
 <!-- slide: shapes -->
@@ -19,7 +19,7 @@ The card fades in on the first click.
 Two texts, two shapes and a line with an arrow, drawn on the Blank layout. One step fades the card in.
 ```
 
-Everything else is in presentation.json:
+Everything else is in the .mdpoint file:
 
 ```json
 {
@@ -74,7 +74,9 @@ Everything else is in presentation.json:
           "name": "Fade in the card",
           "duration": 0.6,
           "curves": {
-            "card.opacity": [{"id": "card-shows", "time": 0.6, "value": 1, "easing": "ease-out"}]
+            "card.opacity": [
+              {"id": "card-shows", "time": 0.6, "value": 1, "interpolation": "ease-out"}
+            ]
           }
         }
       ]
@@ -85,15 +87,17 @@ Everything else is in presentation.json:
 
 MarkdownPoint writes each object on one line. It's expanded here for readability.
 
+A save writes the .mdpoint file in MarkdownPoint's own spelling whenever its values change. Keys stand in a set order, a value equal to its default is left out, and numbers are rounded to six decimals. A save that changes only words leaves the .mdpoint file as it was.
+
 ## Slides
 
-`slides` lists each slide by the id of its marker in presentation.md. Their order comes from presentation.md. `layout` is one of the design's layouts. `scheme` names one of the design's color schemes. Without it, the slide uses its layout's.
+`slides` lists each slide by the id of its marker in the .md file. Their order comes from the .md file. `layout` is one of the design's layouts. `scheme` names one of the design's color schemes. Without it, the slide uses its layout's.
 
 ## Objects
 
 `objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The design sets that size: 1920 by 1080 here.
 
-A text object's text is in presentation.md, under `<!-- text: id -->` with the object's id. A shape's text goes there the same way.
+A text object's text is in the .md file, under `<!-- text: id -->` with the object's id. A shape's text goes there the same way.
 
 The dot's fill, `text`, is a role in the slide's color scheme, so the dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
@@ -103,7 +107,7 @@ A key you leave out uses its default. The card has no fill, so it uses a shape's
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.
 
-`steps` are the slide's builds, in order. A step starts on a click. Its `start` can say `with` the previous step or `after` it instead. On the first step, `after` starts it once the slide's transition ends.
+`steps` are the slide's builds, in order. A step starts on a click. Its `start` can say `with` the previous step or `after` it instead. On the first step, `after` starts it once the slide's transition ends. A scroll is different: it plays the next slide's first step as it moves, however that step starts.
 
 `curves` lists each animated property as `object.property`. Each has keyframes, called keys in the file: the value the property reaches and its `time`, in seconds of the step. A step has no delay of its own. A key's `start` delays its move. This step fades the card in over 0.6 seconds.
 
@@ -113,4 +117,4 @@ Motion ends unless it repeats. Four kinds can repeat for as long as the slide sh
 
 A key MarkdownPoint doesn't read is an error. A save could not keep it, so the app refuses the file rather than lose the key.
 
-To keep your own data with a presentation, write it in presentation.md's frontmatter. MarkdownPoint keeps keys there that it doesn't read.
+To keep your own data with a presentation, write it in the .md file's frontmatter. MarkdownPoint keeps keys there that it doesn't read.

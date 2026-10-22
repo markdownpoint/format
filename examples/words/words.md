@@ -16,8 +16,6 @@ Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
 
 [A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} take the accent color.
 
----
-
 <!-- slide: lists -->
 
 <!-- text: title -->
@@ -31,8 +29,6 @@ Lists==.==
 1. First
 2. Second
 
----
-
 <!-- slide: fields -->
 
 <!-- text: title -->
@@ -40,8 +36,6 @@ Fields==.==
 
 <!-- text: body -->
 This is slide {{slide-number}} of {{slide-count}}, in section {{section-number}}, {{section-name}}.
-
----
 
 <!-- slide: quote -->
 
@@ -54,8 +48,6 @@ Quotes and code==.==
 ```js
 const deck = "presentation.md"
 ```
-
----
 
 <!-- slide: table -->
 
