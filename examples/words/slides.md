@@ -46,7 +46,7 @@ Quotes and code==.==
 > Plain text in, a point made beautifully out.
 
 ```js
-const deck = "presentation.md"
+const deck = "slides.md"
 ```
 
 <!-- slide: table -->

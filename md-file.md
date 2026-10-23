@@ -1,6 +1,6 @@
 # The .md file
 
-The .md file has a presentation's text, slide by slide, in Markdown. It's named after the presentation's folder, as the .mdpoint file is. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
+The .md file has a presentation's text, slide by slide, in Markdown. It's always named `slides.md`. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
 
 This is the whole file of a presentation with three slides:
 
@@ -168,7 +168,7 @@ Quotes and code==.==
 > Plain text in, a point made beautifully out.
 
 ```js
-const deck = "presentation.md"
+const deck = "slides.md"
 ```
 ````
 
