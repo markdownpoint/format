@@ -44,7 +44,7 @@ A text object gets its type settings from one of the design's text styles. A des
 {
   "font-family": "display",
   "font-size": 80,
-  "font-weight": 760,
+  "font-weight": 700,
   "line-height": 1.05,
   "tracking": -0.025,
   "color": "text"
