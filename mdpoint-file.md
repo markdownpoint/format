@@ -1,6 +1,6 @@
 # The .mdpoint file
 
-The .mdpoint file has everything except the text: the theme, each slide's layout, the objects on it, their positions and styles, and the steps that animate them. Its name is the presentation's: `my-talk/My talk.mdpoint`. Rename it to rename the presentation.
+The .mdpoint file has everything except the text: the theme, each slide's layout, the objects on it, their positions and styles, and the steps that animate them. It's always named `presentation.mdpoint`. The presentation's name is its folder's. Rename the folder to rename the presentation.
 
 ![The shapes slide, as MarkdownPoint draws it](images/objects-shapes.png)
 

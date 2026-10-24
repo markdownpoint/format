@@ -27,15 +27,16 @@ Its layout, colors and type come from the .mdpoint file and the theme. The whole
 ## A presentation is a folder
 
 ```
-my-talk/
-  slides.md            the text: slides, tables, speaker notes, slide order and sections
-  My talk.mdpoint      everything else: objects, their positions and styles, steps and transitions.
-                       Its name is the presentation's.
-  media/               images, videos, sounds and models
-  generated/           what MarkdownPoint makes: images made with AI, and 3D text models. A record beside each image says how it was made.
-  themes/<key>/        a theme: master.json, a JSON file per layout, and its own images and fonts.
-                       The .mdpoint file names the one in use. Changing the theme keeps the earlier ones.
+My talk/
+  slides.md              the text: slides, tables, speaker notes, slide order and sections
+  presentation.mdpoint   everything else: objects, their positions and styles, steps and transitions
+  media/                 images, videos, sounds and models
+  generated/             what MarkdownPoint makes: images made with AI, and 3D text models. A record beside each image says how it was made.
+  themes/<key>/          a theme: master.json, a JSON file per layout, and its own images and fonts.
+                         The .mdpoint file names the one in use. Changing the theme keeps the earlier ones.
 ```
+
+The folder's name is the presentation's. Rename the folder to rename the presentation. The two files are always named `slides.md` and `presentation.mdpoint`. Capital letters don't matter. A second copy of either, such as `slides 2.md` or a sync service's conflicted copy, stops the presentation from opening. MarkdownPoint tells you which files they are. Keep one of each, named as above, and the presentation opens. Anything else in the folder is yours. MarkdownPoint never copies it. A file reached through a symbolic link or an alias is never one of the presentation's files. Copy the file itself into the folder.
 
 To start a presentation by hand, copy an example's whole folder. Its `themes` folder holds Basic. With MarkdownPoint running, `mdpoint create <folder>` makes a new presentation with Basic and opens it.
 
