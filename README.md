@@ -22,7 +22,7 @@ Your slides are Markdown files you own.
 Speaker notes go here. Only the presenter sees them.
 ```
 
-Its layout, colors and type come from the .mdpoint file and the design. The whole presentation is in [examples/first-deck](examples/first-deck).
+Its layout, colors and type come from the .mdpoint file and the theme. The whole presentation is in [examples/first-deck](examples/first-deck).
 
 ## A presentation is a folder
 
@@ -33,16 +33,16 @@ my-talk/
                        Its name is the presentation's.
   media/               images, videos, sounds and models
   generated/           what MarkdownPoint makes: images made with AI, and 3D text models. A record beside each image says how it was made.
-  designs/<id>/        the design: master.json, a JSON file per layout, and its own images and fonts
+  themes/<id>/         the theme: master.json, a JSON file per layout, and its own images and fonts
 ```
 
-To start a presentation by hand, copy an example's whole folder. Its `designs` folder holds Basic. With MarkdownPoint running, `mdpoint create <folder>` makes a new presentation with Basic and opens it.
+To start a presentation by hand, copy an example's whole folder. Its `themes` folder holds Basic. With MarkdownPoint running, `mdpoint create <folder>` makes a new presentation with Basic and opens it.
 
 ## Guides
 
 - **[The .md file](md-file.md)**: start here. Frontmatter, sections, slides, text and speaker notes, and what to know before editing by hand.
 - **[The .mdpoint file](mdpoint-file.md)**: slides, objects, colors and steps.
-- **[Designs](designs.md)**: masters, layouts, color schemes and text styles.
+- **[Themes](themes.md)**: masters, layouts, color schemes and text styles.
 - **[Reference, version 1](reference/v1.md)**: every key in the files and what it does.
 
 ## Versions

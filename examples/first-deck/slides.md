@@ -29,7 +29,7 @@ Two files, one deck==.==
 <!-- text: body -->
 - **first-deck.md** holds the words
 - **first-deck.mdpoint** holds the layout, styles and steps
-- The design is a folder in **designs**
+- The theme is a folder in **themes**
 
 <!-- section: finish -->
 # Finish

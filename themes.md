@@ -1,19 +1,19 @@
-# Designs
+# Themes
 
-A design is a folder in the presentation's `designs` folder, named by its id. The .mdpoint file selects it with `"design": "<id>"`. The examples here use Basic, MarkdownPoint's default design.
+A theme is a folder in the presentation's `themes` folder, named by its id. The .mdpoint file selects it with `"theme": "<id>"`. The examples here use Basic, MarkdownPoint's default theme.
 
 ```
-designs/c17f2a67-54b1-492b-8ab3-838711173ab2/
+themes/c17f2a67-54b1-492b-8ab3-838711173ab2/
   master.json             size, fonts, color schemes, text styles and what every slide shows
   title.json              one file per layout, named by the layout's key
   content-with-header.json
   ...
-  media/                  the design's own images
+  media/                  the theme's own images
 ```
 
 ## Master
 
-master.json has the design's settings. Its `objects` appear behind every slide's own. Basic's master has a footer and a hidden slide number. Both show fields:
+master.json has the theme's settings. Its `objects` appear behind every slide's own. Basic's master has a footer and a hidden slide number. Both show fields:
 
 ```json
 {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
@@ -21,7 +21,7 @@ master.json has the design's settings. Its `objects` appear behind every slide's
 
 ## Color schemes
 
-A scheme sets a color for each role. Objects use roles, such as `accent`, so they change color with the slide's scheme. Every design has a `light` and a `dark` scheme. Another scheme, such as Basic's butter, states its `appearance`, light or dark:
+A scheme sets a color for each role. Objects use roles, such as `accent`, so they change color with the slide's scheme. Every theme has a `light` and a `dark` scheme. Another scheme, such as Basic's butter, states its `appearance`, light or dark:
 
 ```json
 {
@@ -38,7 +38,7 @@ A scheme sets a color for each role. Objects use roles, such as `accent`, so the
 
 ## Text styles
 
-A text object gets its type settings from one of the design's text styles. A design defines every style its layouts and slides name, since no name is built in. This is Basic's `title`:
+A text object gets its type settings from one of the theme's text styles. A theme defines every style its layouts and slides name, since no name is built in. This is Basic's `title`:
 
 ```json
 {
@@ -51,7 +51,7 @@ A text object gets its type settings from one of the design's text styles. A des
 }
 ```
 
-`font-family` is a font role. `fonts` sets the family for each role. The reference lists the families MarkdownPoint bundles, under [fonts](reference/v1.md#fonts). A generic family, such as `serif` or `system-ui`, needs no file. Any other family it doesn't bundle comes with the design. `font-files` lists its `.eot` files, one per face. The app keeps them in the design's `fonts` folder.
+`font-family` is a font role. `fonts` sets the family for each role. The reference lists the families MarkdownPoint bundles, under [fonts](reference/v1.md#fonts). A generic family, such as `serif` or `system-ui`, needs no file. Any other family it doesn't bundle comes with the theme. `font-files` lists its `.eot` files, one per face. The app keeps them in the theme's `fonts` folder.
 
 ## Layouts
 
@@ -100,14 +100,14 @@ A layout sets the objects a slide starts with. This is Basic's Title layout:
 }
 ```
 
-`"placeholder": true` marks an object that each slide fills with its own text. A slide on this layout gives each its text under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. `text` has each placeholder's sample text. It shows only while choosing a layout or editing the design. A placeholder a slide leaves without text shows nothing when presenting. `overrides` changes master objects on this layout. `null` removes one.
+`"placeholder": true` marks an object that each slide fills with its own text. A slide on this layout gives each its text under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. `text` has each placeholder's sample text. It shows only while choosing a layout or editing the theme. A placeholder a slide leaves without text shows nothing when presenting. `overrides` changes master objects on this layout. `null` removes one.
 
 ![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
 
-## Changing a design by hand
+## Changing a theme by hand
 
 A change to master.json affects every slide. A change to a layout affects every slide that uses it.
 
-MarkdownPoint picks up design changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide on it shows “The slides can’t be shown”. The problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows it.
+MarkdownPoint picks up theme changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide on it shows “The slides can’t be shown”. The problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows it.
 
 The reference lists every key of [master.json](reference/v1.md#master) and [a layout](reference/v1.md#layout).

@@ -1,6 +1,6 @@
 # The .mdpoint file
 
-The .mdpoint file has everything except the text: the design, each slide's layout, the objects on it, their positions and styles, and the steps that animate them. Its name is the presentation's: `my-talk/My talk.mdpoint`. Rename it to rename the presentation.
+The .mdpoint file has everything except the text: the theme, each slide's layout, the objects on it, their positions and styles, and the steps that animate them. Its name is the presentation's: `my-talk/My talk.mdpoint`. Rename it to rename the presentation.
 
 ![The shapes slide, as MarkdownPoint draws it](images/objects-shapes.png)
 
@@ -26,7 +26,7 @@ Everything else is in the .mdpoint file:
   "markdownpoint": 1,
   "kind": "presentation",
   "document": "64ea077f-d2ca-4f8c-9015-61feb4de5cb8",
-  "design": "c17f2a67-54b1-492b-8ab3-838711173ab2",
+  "theme": "c17f2a67-54b1-492b-8ab3-838711173ab2",
   "slides": {
     "shapes": {
       "layout": "blank",
@@ -91,11 +91,11 @@ A save writes the .mdpoint file in MarkdownPoint's own spelling whenever its val
 
 ## Slides
 
-`slides` lists each slide by the id of its marker in the .md file. Their order comes from the .md file. `layout` is one of the design's layouts. `scheme` names one of the design's color schemes. Without it, the slide uses its layout's.
+`slides` lists each slide by the id of its marker in the .md file. Their order comes from the .md file. `layout` is one of the theme's layouts. `scheme` names one of the theme's color schemes. Without it, the slide uses its layout's.
 
 ## Objects
 
-`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The design sets that size: 1920 by 1080 here.
+`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size: 1920 by 1080 here.
 
 A text object's text is in the .md file, under `<!-- text: id -->` with the object's id. A shape's text goes there the same way.
 

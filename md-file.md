@@ -36,7 +36,7 @@ Two files, one deck==.==
 <!-- text: body -->
 - **first-deck.md** holds the words
 - **first-deck.mdpoint** holds the layout, styles and steps
-- The design is a folder in **designs**
+- The theme is a folder in **themes**
 
 <!-- section: finish -->
 # Finish
@@ -63,7 +63,7 @@ You can add your own keys. MarkdownPoint keeps them as written and ignores them.
 
 `<!-- slide: id -->` starts a slide. Only a marker starts one. A slide runs to the next slide, section or composition marker, or to the end of the file. Slides appear in the order they're listed. To move a slide, move its lines.
 
-Each slide also has an entry in [the .mdpoint file](mdpoint-file.md) under the same id. The order of entries there doesn't matter. `layout` is the design layout the slide uses.
+Each slide also has an entry in [the .mdpoint file](mdpoint-file.md) under the same id. The order of entries there doesn't matter. `layout` is the theme layout the slide uses.
 
 ```json
 {
