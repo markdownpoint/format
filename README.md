@@ -33,7 +33,8 @@ my-talk/
                        Its name is the presentation's.
   media/               images, videos, sounds and models
   generated/           what MarkdownPoint makes: images made with AI, and 3D text models. A record beside each image says how it was made.
-  themes/<id>/         the theme: master.json, a JSON file per layout, and its own images and fonts
+  themes/<key>/        a theme: master.json, a JSON file per layout, and its own images and fonts.
+                       The .mdpoint file names the one in use. Changing the theme keeps the earlier ones.
 ```
 
 To start a presentation by hand, copy an example's whole folder. Its `themes` folder holds Basic. With MarkdownPoint running, `mdpoint create <folder>` makes a new presentation with Basic and opens it.

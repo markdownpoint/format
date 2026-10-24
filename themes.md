@@ -1,6 +1,6 @@
 # Themes
 
-A theme is a folder in the presentation's `themes` folder, named by its key, such as `basic`. The .mdpoint file selects it with `"theme": "<key>"`. The `id` in its master.json, a UUID, keeps it the same theme under any key. The examples here use Basic, MarkdownPoint's default theme.
+A theme is a folder in the presentation's `themes` folder, named by its key, such as `basic`. The .mdpoint file selects it with `"theme": "<key>"`. The `themes` folder can hold other themes. Changing the theme selects another and copies into it each layout the slides use that it lacks. The earlier themes stay in the folder. The `id` in its master.json, a UUID, keeps it the same theme under any key. The examples here use Basic, MarkdownPoint's default theme.
 
 ```
 themes/basic/
@@ -8,6 +8,7 @@ themes/basic/
   title.json              one file per layout, named by the layout's key
   content-with-header.json
   ...
+  fonts/                  the theme's own fonts, one .eot file per face
   media/                  the theme's own images
 ```
 
