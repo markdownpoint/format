@@ -191,17 +191,18 @@ Tables==.==
 | Team | 10 | $8 |
 ```
 
-Its position, columns and style are in the .mdpoint file:
+Its position, columns, row heights and style are in the .mdpoint file. A row is taller when its words need it. The table is as tall as its rows:
 
 ```json
 [
   {
     "id": "prices",
     "type": "table",
-    "frame": {"x": 120, "y": 380, "width": 1680, "height": 420},
+    "frame": {"x": 120, "y": 380, "width": 1680},
     "inset": 24,
     "text-style": "body",
     "columns": [840, 420, 420],
+    "rows": [140, 140, 140],
     "alternating-fills": true
   }
 ]
@@ -245,6 +246,8 @@ MarkdownPoint can't read the file if it has one of these, among others:
 A comment line is a marker written wrong when it holds a marker's word and at most one more word. Capitals don't matter. A closing slash and words after `-->` don't change it.
 
 MarkdownPoint then shows the file, the line and the problem. It won't open the presentation. If it's already open, MarkdownPoint waits for the fix and never overwrites your file.
+
+A table's column widths and row heights in the .mdpoint file follow the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same place. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
 `mdpoint`, MarkdownPoint's command-line tool, checks a folder without the app. It reports each problem MarkdownPoint finds in the files. That includes a missing image, model or font. To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Then run `mdpoint validate --files` in the folder, or `mdpoint --deck <folder> --json validate --files` for JSON. Each issue has a `severity`, `error` or `warning`, a `code` and a `message`. Most also give the `path` of the key. Its `disposition` says what MarkdownPoint does: `fallback`, `skip-object`, `refuse-slide` or `refuse-document`. `mdpoint` exits with 1 when an issue is an error.
 
