@@ -113,6 +113,62 @@ A key you leave out uses its default. The card has no fill, so it uses a shape's
 
 Motion ends unless it repeats. Four kinds can repeat for as long as the slide shows: a keyframe's `loop`, a wave from `oscillate`, a step's `wait-loop` and an Action strip's `loop`. The camera's [drift](reference/v1.md#drift) doesn't repeat, so it must state its `duration`.
 
+## Motion
+
+The presentation in [examples/motion](examples/motion) animates more: the curves a keyframe can move on, a loop, waves, an even zoom and a move cut short, words that enter and leave in pieces, copies of one shape, and transitions. Each slide's speaker notes name the keys it shows.
+
+<img src="images/motion-curves.png" alt="The curves slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-settings.png" alt="The settings slide, as MarkdownPoint draws it" width="49%">
+
+<img src="images/motion-keyframes.png" alt="The keyframes slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-words.png" alt="The words slide, as MarkdownPoint draws it" width="49%">
+
+<img src="images/motion-copies.png" alt="The copies slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide, as MarkdownPoint draws it" width="49%">
+
+A keyframe's `interpolation` names its curve. A curve with settings is a record that names it in `curve`:
+
+```json
+[
+  {
+    "id": "race",
+    "name": "Race the curves",
+    "duration": 3,
+    "curves": {
+      "dot-bounce.translation.x": [
+        {
+          "id": "bounce-arrives",
+          "time": 2,
+          "value": 540,
+          "interpolation": {"curve": "bounce", "bounciness": 0.8}
+        }
+      ],
+      "dot-elastic.translation.x": [
+        {
+          "id": "elastic-arrives",
+          "time": 2,
+          "value": 540,
+          "interpolation": {"curve": "elastic", "amplitude": 1.5, "period": 0.5}
+        }
+      ],
+      "dot-overshoot.translation.x": [
+        {
+          "id": "overshoot-arrives",
+          "time": 2,
+          "value": 540,
+          "interpolation": {"curve": "overshoot", "back": 3}
+        }
+      ],
+      "dot-spring.translation.x": [
+        {
+          "id": "spring-arrives",
+          "time": 2,
+          "value": 540,
+          "interpolation": {"curve": "spring", "amount": 0.4, "response": 0.6}
+        }
+      ]
+    }
+  }
+]
+```
+
 ## Keys MarkdownPoint doesn't read
 
 A key MarkdownPoint doesn't read is an error, most likely a typo. A save could not keep it, so the app refuses the file rather than lose the key. A file a newer MarkdownPoint wrote, of a later minor such as version 1.3, is different. Its new keys are kept as written, through every save.
