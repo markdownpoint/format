@@ -109,6 +109,6 @@ A layout sets the objects a slide starts with. This is Basic's Title layout:
 
 A change to master.json affects every slide. A change to a layout affects every slide that uses it.
 
-MarkdownPoint picks up theme changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide on it shows “The slides can’t be shown”. The problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows it.
+MarkdownPoint picks up theme changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide on it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows it.
 
 The reference lists every key of [master.json](reference/v1.md#master) and [a layout](reference/v1.md#layout).
