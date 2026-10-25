@@ -111,7 +111,7 @@ A key you leave out uses its default. The card has no fill, so it uses a shape's
 
 `curves` lists each animated property as `object.property`. Each has keyframes: the value the property reaches and its `time`, in seconds of the step. A step has no delay of its own. A keyframe's `start` delays its move. This step fades the card in over 0.6 seconds.
 
-Motion ends unless it repeats. Four kinds can repeat for as long as the slide shows: a keyframe's `loop`, a wave from `oscillate`, a step's `wait-loop` and an Action strip's `loop`. The camera's [drift](reference/v1.md#drift) doesn't repeat, so it must state its `duration`.
+Motion ends unless it repeats. Four kinds can repeat for as long as the slide shows: a keyframe's `loop`, a wave from `oscillate`, a step's `wait-loop` and an Action clip's `loop`. The camera's [drift](reference/v1.md#drift) doesn't repeat, so it must state its `duration`.
 
 ## Motion
 
