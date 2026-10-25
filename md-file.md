@@ -140,6 +140,8 @@ Lists==.==
 
 Indent an item to nest it under the one above, as far as the text after that item's marker: two spaces under `- `, three under `1. `. A numbered list can start at any number of up to nine digits.
 
+A new marker starts a new list. So when MarkdownPoint writes two lists that follow each other, it writes the second with `*` instead of `-`, or `1)` instead of `1.`.
+
 ### Fields
 
 ```markdown
@@ -213,6 +215,12 @@ Its position, columns, row heights and style are in the .mdpoint file. A row is 
 ### Code blocks
 
 A code block sits between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. The language after the opening fence colors the code. Its name can be in any case. `js` works as well as `javascript`. The [reference](reference/v1.md#markdown) lists every name. `{lines:true}` after the language numbers the lines.
+
+### Characters
+
+A character reference reads as the character it names. `&amp;` is `&`, and `&copy;` and `&#169;` are both `©`. Code shows it as written. Anywhere else, a backslash before the `&` keeps it as written: `\&amp;`. MarkdownPoint writes that backslash when you type a reference in the app.
+
+A list item reads a tab as spaces, so MarkdownPoint writes a tab there as `&#9;`. A tab or four spaces at the start of a paragraph would start a code block, and spaces after a list item's marker would belong to the marker. There MarkdownPoint writes the first of them as `&#9;` or `&#32;`.
 
 ### Where it differs from CommonMark
 
