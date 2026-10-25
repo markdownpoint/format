@@ -23,9 +23,9 @@ Everything else is in the .mdpoint file:
 
 ```json
 {
-  "markdownpoint": 1,
+  "markdownpoint": "1.0",
   "kind": "presentation",
-  "document": "64ea077f-d2ca-4f8c-9015-61feb4de5cb8",
+  "id": "64ea077f-d2ca-4f8c-9015-61feb4de5cb8",
   "theme": "basic",
   "slides": {
     "shapes": {
@@ -85,7 +85,7 @@ Everything else is in the .mdpoint file:
 }
 ```
 
-MarkdownPoint writes each object on one line. It's expanded here for readability.
+MarkdownPoint writes each key of an object on a line of its own. Here a short object stands on one line to save room. Objects, and a slide's overrides of its layout's objects, have a blank line between them. So git merges two people's edits to different objects without a conflict. Two edits to one key conflict, as do edits to keys on neighboring lines.
 
 A save writes the .mdpoint file in MarkdownPoint's own spelling whenever its values change. Keys stand in a set order, a value equal to its default is left out, and numbers are rounded to six decimals. A save that changes only words leaves the .mdpoint file as it was.
 
@@ -109,12 +109,12 @@ A key you leave out uses its default. The card has no fill, so it uses a shape's
 
 `steps` are the slide's builds, in order. A step starts on a click. Its `start` can say `with` the previous step or `after` it instead. On the first step, `after` starts it once the slide's transition ends. A scroll is different: it plays the next slide's first step as it moves, however that step starts.
 
-`curves` lists each animated property as `object.property`. Each has keyframes, called keys in the file: the value the property reaches and its `time`, in seconds of the step. A step has no delay of its own. A key's `start` delays its move. This step fades the card in over 0.6 seconds.
+`curves` lists each animated property as `object.property`. Each has keyframes: the value the property reaches and its `time`, in seconds of the step. A step has no delay of its own. A keyframe's `start` delays its move. This step fades the card in over 0.6 seconds.
 
-Motion ends unless it repeats. Four kinds can repeat for as long as the slide shows: a key's `loop`, a wave from `oscillate`, a step's `wait-loop` and an Action strip's `loop`. The camera's [drift](reference/v1.md#drift) doesn't repeat, so it must state its `duration`.
+Motion ends unless it repeats. Four kinds can repeat for as long as the slide shows: a keyframe's `loop`, a wave from `oscillate`, a step's `wait-loop` and an Action strip's `loop`. The camera's [drift](reference/v1.md#drift) doesn't repeat, so it must state its `duration`.
 
 ## Keys MarkdownPoint doesn't read
 
-A key MarkdownPoint doesn't read is an error. A save could not keep it, so the app refuses the file rather than lose the key.
+A key MarkdownPoint doesn't read is an error, most likely a typo. A save could not keep it, so the app refuses the file rather than lose the key. A file a newer MarkdownPoint wrote, of a later minor such as version 1.3, is different. Its new keys are kept as written, through every save.
 
 To keep your own data with a presentation, write it in the .md file's frontmatter. MarkdownPoint keeps keys there that it doesn't read.

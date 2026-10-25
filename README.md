@@ -2,6 +2,8 @@
 
 # MarkdownPoint file format
 
+MarkdownPoint is a presentation app for Mac and Windows: [markdownpoint.com](https://markdownpoint.com).
+
 MarkdownPoint saves a presentation as a folder of plain text files. This repository describes those files. It is for people who edit them by hand and for programs that read or write them.
 
 These lines in the .md file make the slide above:
@@ -49,8 +51,10 @@ To start a presentation by hand, copy an example's whole folder. Its `themes` fo
 
 ## Versions
 
-Every file states its format version as the whole number 1: `"markdownpoint": 1` in JSON and `markdownpoint: 1` in the .md file's frontmatter. A newer MarkdownPoint writes a higher number. MarkdownPoint refuses a file with a number higher than its own. The format isn't final yet. Until it is, version 1 can still change.
+Every file states its format version as a major and a minor in quotes: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes matter, since 1.10 and 1.1 are the same number.
+
+MarkdownPoint 1.x opens any version 1.x file. A later minor only adds what an earlier MarkdownPoint can pass over. That one keeps what it doesn't know as the file has it, through every save, and tells you once that the presentation holds it. A save never lowers a file's version. A version 2.0 file needs MarkdownPoint 2. The format isn't final yet. Until it is, version 1.0 can still change.
 
 ## License
 
-MIT. See [LICENSE](LICENSE). MarkdownPoint's source generates this repository. Each update replaces what is here.
+MIT. See [LICENSE](LICENSE). MarkdownPoint's source generates this repository. Each update replaces what is here. To report a mistake, open an issue in this repository.

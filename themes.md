@@ -31,7 +31,8 @@ A scheme sets a color for each role. Objects use roles, such as `accent`, so the
   "text": "#17120F",
   "muted": "#524843",
   "accent": "{brand.ember}",
-  "stroke": "#17120F1F"
+  "stroke": "#17120F1F",
+  "link": "#17120F"
 }
 ```
 
@@ -60,7 +61,7 @@ A layout sets the objects a slide starts with. This is Basic's Title layout:
 
 ```json
 {
-  "markdownpoint": 1,
+  "markdownpoint": "1.0",
   "kind": "layout",
   "scheme": "apricot",
   "overrides": {"footer": null, "slide-number": null},

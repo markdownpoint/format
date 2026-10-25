@@ -1,16 +1,33 @@
 {
-  "markdownpoint": 1,
+  "markdownpoint": "1.0",
   "kind": "layout",
   "name": "Text & image",
   "overrides": {
-    "footer": {"frame":{"x":120,"y":1004.4,"width":600,"height":43.2}},
+    "footer": {
+      "frame": {"x":120,"y":1004.4,"width":600,"height":43.2}
+    },
 
-    "slide-number": {"frame":{"x":744,"y":1004.4,"width":96,"height":43.2}}
+    "slide-number": {
+      "frame": {"x":744,"y":1004.4,"width":96,"height":43.2}
+    }
   },
   "objects": [
-    {"id":"body","type":"text","placeholder":true,"frame":{"x":120,"y":0,"width":840,"height":1080},"text-style":"body","vertical-align":"center"},
+    {
+      "id": "body",
+      "type": "text",
+      "placeholder": true,
+      "frame": {"x":120,"y":0,"width":840,"height":1080},
+      "text-style": "body",
+      "vertical-align": "center"
+    },
 
-    {"id":"image","type":"image","asset":"media/layout-preview.jpg","placeholder":true,"frame":{"x":1080,"y":0,"width":840,"height":1080}}
+    {
+      "id": "image",
+      "type": "image",
+      "file": "media/layout-preview.jpg",
+      "placeholder": true,
+      "frame": {"x":1080,"y":0,"width":840,"height":1080}
+    }
   ],
   "text": {
     "body": "Make room for a new idea.\n\nPut a picture beside it."

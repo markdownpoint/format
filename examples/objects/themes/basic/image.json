@@ -1,5 +1,5 @@
 {
-  "markdownpoint": 1,
+  "markdownpoint": "1.0",
   "kind": "layout",
   "scheme": "dark",
   "overrides": {
@@ -8,6 +8,12 @@
     "slide-number": null
   },
   "objects": [
-    {"id":"image","type":"image","asset":"media/layout-preview.jpg","placeholder":true,"frame":{"x":0,"y":0,"width":1920,"height":1080}}
+    {
+      "id": "image",
+      "type": "image",
+      "file": "media/layout-preview.jpg",
+      "placeholder": true,
+      "frame": {"x":0,"y":0,"width":1920,"height":1080}
+    }
   ]
 }

@@ -6,8 +6,8 @@ This is the whole file of a presentation with three slides:
 
 ```markdown
 ---
-markdownpoint: 1
-document: 318494ee-4e44-456f-818a-ec761b41fec2
+markdownpoint: "1.0"
+id: 318494ee-4e44-456f-818a-ec761b41fec2
 footer: "Plain text decks"
 ---
 
@@ -51,7 +51,7 @@ The words are Markdown==.==
 
 ## Frontmatter
 
-The file opens with frontmatter between two `---` lines. `markdownpoint` is the format version, the whole number 1, without quotes: `markdownpoint: 1`. `document` is the presentation's id, a UUID in lowercase, the same as in the .mdpoint file. `footer` is the footer text. Put it in double quotes if it holds a space followed by `#`, which otherwise starts a comment. MarkdownPoint writes it in double quotes. Write each of these on one line, as `key: value`. The app writes `save` itself when people take turns editing a shared folder. Leave it as it is.
+The file opens with frontmatter between two `---` lines. `markdownpoint` is the format version, in quotes: `markdownpoint: "1.0"`. `id` is the presentation's id, a UUID in lowercase, the same as in the .mdpoint file. `footer` is the footer text. Put it in double quotes if it holds a space followed by `#`, which otherwise starts a comment. MarkdownPoint writes it in double quotes. Write each of these on one line, as `key: value`. The app writes `save` itself when people take turns editing a shared folder. Leave it as it is.
 
 You can add your own keys. MarkdownPoint keeps them as written and ignores them.
 
@@ -84,6 +84,24 @@ One blank line separates two paragraphs. Each further blank line is an empty par
 ## Speaker notes
 
 `<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. They use the same Markdown as slide text.
+
+## Compositions
+
+A composition is a scene that slides show as instances, such as a card that counts up. `<!-- composition: id -->` starts its block, with the id of its entry under `compositions` in the .mdpoint file. A composition is in no section and never shows as a slide. MarkdownPoint writes the compositions after the slides.
+
+Under the marker, `<!-- text: id -->` holds the words of one of the composition's own objects, as on a slide. `<!-- control: name -->` holds a text control's default words, which an instance shows when it sets none. An instance sets its own on the slide that holds it, under `<!-- text: instance.control -->`, with the instance's id and the control's name:
+
+```markdown
+<!-- slide: metrics -->
+
+<!-- text: north.label -->
+North
+
+<!-- composition: metric -->
+
+<!-- control: label -->
+Label
+```
 
 ## Rules
 
@@ -246,14 +264,19 @@ MarkdownPoint can't read the file if it has one of these, among others:
 - a comment after a table, or after a chart's table
 - a marker written wrong, such as `<!-- Slide: intro -->`, or the same marker twice
 - a section without its one `# Name` line
-- `markdownpoint` in quotes, or a version other than 1
+- `markdownpoint` without quotes, or a version of another major than 1
 - a slide marker without its entry in the .mdpoint file, or an entry without its marker
 - a code block that takes in a marker and never closes
+- a merge conflict that git left outside a code block, from its `<<<<<<<` line to its `>>>>>>>` line
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line
 
 A comment line is a marker written wrong when it holds a marker's word and at most one more word. Capitals don't matter. A closing slash and words after `-->` don't change it.
 
 MarkdownPoint then shows the file, the line and the problem. It won't open the presentation. If it's already open, MarkdownPoint waits for the fix and never overwrites your file.
+
+Inside a code block, a merge conflict is the code's words, so a slide can show one. A real conflict there shows on the slide until you resolve it.
+
+A theme can rename a layout's placeholder, such as `body` to `summary`. MarkdownPoint then renames the text blocks and overrides of every slide on that layout. If you merge that rename with someone's edit made under the old name, keep the new name. Move the words from the old name's block into the new one, and the old name's override in the .mdpoint file into the new name's. MarkdownPoint warns about a block whose name no object has, and doesn't show it.
 
 A table's column widths and row heights in the .mdpoint file follow the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same place. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
