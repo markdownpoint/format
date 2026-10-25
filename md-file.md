@@ -137,6 +137,8 @@ Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
 
 `==highlighted==` and `[colored]{color=accent}` text are MarkdownPoint additions. A color is either a role from the slide's color scheme, such as `accent`, or a hex color: `[text]{color="#2F7D4F"}`.
 
+Words can also have a weight of their own: `[text]{font-weight=600}`, one of 300, 400, 500, 600, 700 or 900. With a color it's one span, `[text]{color=accent font-weight=600}`. The two come in either order, each value bare or quoted. MarkdownPoint writes color first. A span with another key, a key twice, or a value its key doesn't take stays as written, and none of it applies, not even its color. `**Bold**` draws over a word's own weight, and a word's own weight draws over the weight a text style gives italic or highlighted words. Code takes no weight of its own.
+
 ### Lists
 
 ```markdown
