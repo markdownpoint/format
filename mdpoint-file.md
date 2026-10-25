@@ -91,7 +91,7 @@ A save writes the .mdpoint file in MarkdownPoint's own spelling whenever its val
 
 ## Slides
 
-`slides` lists each slide by the id of its marker in the .md file. Their order comes from the .md file. `layout` is one of the theme's layouts. `scheme` names one of the theme's color schemes. Without it, the slide uses its layout's.
+`slides` lists each slide by the id of its marker in the .md file. Their order comes from the .md file. `layout` is one of the theme's layouts. `scheme` names one of the theme's color schemes. Without it, the slide uses its layout's. MarkdownPoint leaves out a scheme or an override value equal to what the slide inherits, so a later change to the theme reaches the slide.
 
 ## Objects
 
