@@ -275,7 +275,7 @@ The same rule covers Chinese and Japanese, which run without spaces. `これは*
 
 The rule changes one rare spelling. `*(*foo*)*` reads as italic parentheses around a plain “foo”, where CommonMark nests one italic inside the other. A run of `_` keeps CommonMark's reading.
 
-A word can change style once: `**Mark**down` reads back as a bold “Mark” before “down”. A word that changes style twice or more in a row, such as from bold to bold italic to italic, may save as asterisks that read back as plain asterisks.
+A word can change style anywhere. `**Mark**down` reads back as a bold “Mark” before “down”. Where asterisks inside one word can't spell the changes, MarkdownPoint writes each run that changes in a group: a span with no attributes. Bold, then bold italic, then italic inside one word is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A group's words take nothing of their own.
 
 ### Unsupported Markdown
 
