@@ -111,7 +111,7 @@ Omitted keys use their defaults. The card has no fill specified and uses `accent
 
 `steps` lists the slide's builds in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `after` starts playback when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
-`curves` lists animated properties as `object.property`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds.
+`curves` lists animated properties as `object.property`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `duration` lasts as long as its keyframes, its cues and the paragraphs they bring in.
 
 Four settings can repeat motion while a slide is visible: a keyframe's `loop`, an `oscillate` wave, a step's `wait-loop` and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
 
