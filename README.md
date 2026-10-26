@@ -1,12 +1,35 @@
-![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
-
 # MarkdownPoint file format
 
 MarkdownPoint is a presentation app for Mac and Windows: [markdownpoint.com](https://markdownpoint.com).
 
-MarkdownPoint saves a presentation as a folder of plain text files. This repository describes those files. It is for people who edit them by hand and for programs that read or write them.
+Each presentation is a folder with two main files:
 
-These lines in the .md file make the slide above:
+- `slides.md` contains the text, speaker notes, sections and slide order.
+- `presentation.mdpoint` contains the layout, objects and animation as JSON.
+
+Themes and media are stored in subfolders. You can edit the presentation in MarkdownPoint, in a text editor or with an AI agent.
+
+## Write in Obsidian
+
+Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). You can edit all the slides in one document. Use the outline to add or move slides.
+
+Open the same presentation in MarkdownPoint to work on layout, images, 3D and animation. Both apps save to the same files. You can switch between them without importing or exporting.
+
+Keep the presentation's whole folder in your vault and open `slides.md` in Obsidian's Live Preview. The [Markdown guide](md-file.md#writing-in-obsidian) explains the workflow.
+
+## Slides and objects
+
+Each slide has an ID. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same ID. Text blocks use the IDs of their objects. To move a slide, move its whole block in `slides.md`. Its ID stays the same.
+
+Objects use the selected theme's fonts, color schemes, text styles and layouts. A slide can add objects and override properties inherited from its layout.
+
+Text and image objects use a 2D frame for position and size. A 3D model has a position, rotation and scale. Keyframes animate object properties over time. The [reference](reference/v1.md#objects) lists each property's units, defaults and allowed values.
+
+## A small presentation
+
+![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
+
+The slide's Markdown is:
 
 ```markdown
 <!-- slide: title -->
@@ -24,44 +47,55 @@ Your slides are Markdown files you own.
 Speaker notes go here. Only the presenter sees them.
 ```
 
-Its layout, colors and type come from the .mdpoint file and the theme. The whole presentation is in [examples/first-deck](examples/first-deck).
+The [complete presentation](examples/first-deck) includes the theme and JSON file.
 
-## A presentation is a folder
+## Guides
+
+- **[The .md file](md-file.md)**: write the words, arrange slides and add speaker notes. Start here when editing a presentation by hand.
+- **[The .mdpoint file](mdpoint-file.md)**: place objects, set their properties and animate them.
+- **[Themes](themes.md)**: share fonts, colors, text styles and layouts across slides.
+- **[Reference, version 1](reference/v1.md)**: look up a key's exact meaning, values, units and defaults.
+
+## Files and folders
 
 ```
 My talk/
-  slides.md              the text: slides, tables, speaker notes, slide order and sections
-  presentation.mdpoint   everything else: objects, their positions and styles, steps and transitions
-  media/                 images, videos, sounds and models
-  generated/             what MarkdownPoint makes: images made with AI, and 3D text models. A record beside each image says how it was made.
-  themes/<key>/          a theme: master.json, a JSON file per layout, and its own images and fonts.
-                         The .mdpoint file names the one in use. Changing the theme keeps the earlier ones.
-  versions/              saved versions: a numbered folder for each, and versions.json, which lists them
+  slides.md              text, notes, sections and slide order
+  presentation.mdpoint   objects, layout, styles and animation
+  media/                 imported images, videos, sounds and models
+  generated/             generated images, 3D text models and image generation records
+  themes/<key>/          master.json, layout files, fonts and images
+  versions/              saved versions and versions.json
 ```
 
-The folder's name is the presentation's. Rename the folder to rename the presentation. The two files are always named `slides.md` and `presentation.mdpoint`. Capital letters don't matter. A second copy of either, such as `slides 2.md` or a sync service's conflicted copy, stops the presentation from opening. MarkdownPoint tells you which files they are. Keep one of each, named as above, and the presentation opens. Anything else in the folder is yours. MarkdownPoint never copies it. A file reached through a symbolic link or an alias is never one of the presentation's files. Copy the file itself into the folder.
+Media and theme resources use relative paths. Move the whole folder when moving a presentation. Rename the folder to rename the presentation.
+
+Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. File names are case-insensitive. MarkdownPoint won't open a folder containing duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
+
+Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder.
 
 To start a presentation by hand, copy an example's whole folder. Its `themes` folder holds Basic. With MarkdownPoint running, `mdpoint create <folder>` makes a new presentation with Basic and opens it.
 
 ## Saved versions
 
-File › Save Version… keeps the presentation as it is now. Each version is a folder in `versions/`, named by its number: `versions/12/` holds copies of `slides.md` and of `presentation.mdpoint` as they were saved. The copy of the .mdpoint file is named `presentation.json`, so a version's folder is never a presentation of its own. `versions/versions.json` lists each version's number, when it was saved and its name, if it was given one. A version keeps the slides, their text and their objects. It uses the presentation's media and shows its theme as the theme is now. Delete Theme refuses a theme that a saved version uses, and Delete Unused Media keeps a file that one uses. A file deleted from the Media list goes all the same, and older versions show it missing. While a version has only partly arrived, as a sync service brings it, no theme can be deleted and Delete Unused Media deletes nothing.
+“File › Save Version…” saves a copy of the slides, text, objects and settings. The version uses the presentation's media and the theme named in its saved file. Changes to those resources also affect the saved version.
 
-In git, commit `versions/` when the history should travel with the presentation. Leave it out when it shouldn't.
+Versions are stored in numbered folders. For example, `versions/12/` contains `slides.md` and a copy of `presentation.mdpoint` named `presentation.json`. `versions/versions.json` lists each version's number, save time and optional name.
 
-## Guides
+“Delete Theme” won't remove a theme used by a saved version. “Delete Unused Media” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
 
-- **[The .md file](md-file.md)**: start here. Frontmatter, sections, slides, text and speaker notes, and what to know before editing by hand.
-- **[The .mdpoint file](mdpoint-file.md)**: slides, objects, colors and steps.
-- **[Themes](themes.md)**: masters, layouts, color schemes and text styles.
-- **[Reference, version 1](reference/v1.md)**: every key in the files and what it does.
+While a version is still arriving through a sync service, theme deletion and unused-media cleanup are disabled.
+
+Include `versions/` in git if you want to keep the saved versions with the presentation.
 
 ## Format versions
 
 Every file states its format version as a major and a minor in quotes: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes matter, since 1.10 and 1.1 are the same number.
 
-MarkdownPoint 1.x opens any version 1.x file. A later minor only adds what an earlier MarkdownPoint can pass over. That one keeps what it doesn't know as the file has it, through every save, and tells you once that the presentation holds it. A save never lowers a file's version. A version 2.0 file needs MarkdownPoint 2. The format isn't final yet. Until it is, version 1.0 can still change.
+MarkdownPoint 1.x opens any version 1.x file. Later minor versions can add data that an earlier reader skips. When opening such a file, MarkdownPoint shows a notice and preserves the unknown data when saving. Saving does not lower the file's version number. A version 2.0 file requires MarkdownPoint 2.
+
+The format is not final. Version 1.0 may still change before release.
 
 ## License
 
-MIT. See [LICENSE](LICENSE). MarkdownPoint's source generates this repository. Each update replaces what is here. To report a mistake, open an issue in this repository.
+[MIT](LICENSE).

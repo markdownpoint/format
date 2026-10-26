@@ -1,6 +1,8 @@
 # The .mdpoint file
 
-The .mdpoint file has everything except the text: the theme, each slide's layout, the objects on it, their positions and styles, and the steps that animate them. It's always named `presentation.mdpoint`. The presentation's name is its folder's. Rename the folder to rename the presentation.
+`presentation.mdpoint` is JSON. It selects the theme and records each slide's layout, objects, properties and motion. The presentation's text and slide order are in [slides.md](md-file.md).
+
+The presentation's name is its folder's. Rename the folder to rename the presentation.
 
 ![The shapes slide, as MarkdownPoint draws it](images/objects-shapes.png)
 
@@ -19,7 +21,7 @@ The card fades in on the first click.
 Two texts, two shapes and a line with an arrow, drawn on the Blank layout. One step fades the card in.
 ```
 
-Everything else is in the .mdpoint file:
+The slide's objects and motion are in the .mdpoint file:
 
 ```json
 {
@@ -85,37 +87,37 @@ Everything else is in the .mdpoint file:
 }
 ```
 
-MarkdownPoint writes each key of an object on a line of its own. Here a short object stands on one line to save room. Objects, and a slide's overrides of its layout's objects, have a blank line between them. So git merges two people's edits to different objects without a conflict. Two edits to one key conflict, as do edits to keys on neighboring lines.
+Saved JSON uses one line per object property, with blank lines between objects and overrides. The examples on this page use a more compact layout.
 
-A save writes the .mdpoint file in MarkdownPoint's own spelling whenever its values change. Keys stand in a set order, a value equal to its default is left out, and numbers are rounded to six decimals. A save that changes only words leaves the .mdpoint file as it was.
+Saves preserve formatting in unchanged parts of the file. Edited parts use MarkdownPoint's standard format: a fixed key order, omitted defaults and most numbers rounded to six decimal places. Text-only saves leave the .mdpoint file unchanged. Run `mdpoint format` to reformat both files.
 
 ## Slides
 
-`slides` lists each slide by the id of its marker in the .md file. Their order comes from the .md file. `layout` is one of the theme's layouts. `scheme` names one of the theme's color schemes. Without it, the slide uses its layout's. MarkdownPoint leaves out a scheme or an override value equal to what the slide inherits, so a later change to the theme reaches the slide.
+The keys in `slides` match the slide IDs in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. MarkdownPoint omits a scheme or override value that equals the inherited value. The slide then follows changes to that value in the theme.
 
 ## Objects
 
 `objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size: 1920 by 1080 here.
 
-A text object's text is in the .md file, under `<!-- text: id -->` with the object's id. A shape's text goes there the same way.
+Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's ID in the marker.
 
 The dot's fill, `text`, is a role in the slide's color scheme, so the dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
-A key you leave out uses its default. The card has no fill, so it uses a shape's default, `accent`. The [object table](reference/v1.md#object) lists every object key with the objects that use it, whether they must have it, its values and its default.
+Omitted keys use their defaults. The card has no fill specified and uses `accent`, the default for shapes. The [object reference](reference/v1.md#object) lists the required keys, allowed values and defaults for each object type.
 
 ## Steps
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.
 
-`steps` are the slide's builds, in order. A step starts on a click. Its `start` can say `with` the previous step or `after` it instead. On the first step, `after` starts it once the slide's transition ends. A scroll is different: it plays the next slide's first step as it moves, however that step starts.
+`steps` lists the slide's builds in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `after` starts playback when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
-`curves` lists each animated property as `object.property`. Each has keyframes: the value the property reaches and its `time`, in seconds of the step. A step has no delay of its own. A keyframe's `start` delays its move. This step fades the card in over 0.6 seconds.
+`curves` lists animated properties as `object.property`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds.
 
-Motion ends unless it repeats. Four kinds can repeat for as long as the slide shows: a keyframe's `loop`, a wave from `oscillate`, a step's `wait-loop` and an Action clip's `loop`. The camera's [drift](reference/v1.md#drift) doesn't repeat, so it must state its `duration`.
+Four settings can repeat motion while a slide is visible: a keyframe's `loop`, an `oscillate` wave, a step's `wait-loop` and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
 
 ## Motion
 
-The presentation in [examples/motion](examples/motion) animates more: the curves a keyframe can move on, a loop, waves, an even zoom and a move cut short, words that enter and leave in pieces, copies of one shape, and transitions. Each slide's speaker notes name the keys it shows.
+The [motion example](examples/motion) includes paths, loops, waves, text animations and transitions. Each slide's speaker notes identify the relevant properties.
 
 <img src="images/motion-curves.png" alt="The curves slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-settings.png" alt="The settings slide, as MarkdownPoint draws it" width="49%">
 
@@ -123,7 +125,7 @@ The presentation in [examples/motion](examples/motion) animates more: the curves
 
 <img src="images/motion-copies.png" alt="The copies slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide, as MarkdownPoint draws it" width="49%">
 
-A keyframe's `interpolation` names its curve. A curve with settings is a record that names it in `curve`:
+Set a keyframe's `interpolation` to a curve name. To supply settings, use a record with the name in `curve`:
 
 ```json
 [
@@ -171,6 +173,6 @@ A keyframe's `interpolation` names its curve. A curve with settings is a record 
 
 ## Keys MarkdownPoint doesn't read
 
-A key MarkdownPoint doesn't read is an error, most likely a typo. A save could not keep it, so the app refuses the file rather than lose the key. A file a newer MarkdownPoint wrote, of a later minor such as version 1.3, is different. Its new keys are kept as written, through every save.
+An unknown JSON key is an error in a file using the current format version. In a file from a later minor version, such as 1.3, MarkdownPoint preserves the new keys when saving.
 
-To keep your own data with a presentation, write it in the .md file's frontmatter. MarkdownPoint keeps keys there that it doesn't read.
+To keep your own data with a presentation, write it in the .md file's [frontmatter](md-file.md#frontmatter). MarkdownPoint keeps keys there that it doesn't read.

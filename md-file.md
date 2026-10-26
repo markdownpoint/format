@@ -1,6 +1,8 @@
 # The .md file
 
-The .md file has a presentation's text, slide by slide, in Markdown. It's always named `slides.md`. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
+`slides.md` holds the words, speaker notes, sections and slide order. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
+
+The objects' positions, styles and motion are in [the .mdpoint file](mdpoint-file.md). A text block's ID matches the ID of its object.
 
 This is the whole file of a presentation with three slides:
 
@@ -49,11 +51,34 @@ The words are Markdown==.==
 
 <img src="images/first-deck-title.png" alt="The title slide, as MarkdownPoint draws it" width="32%"> <img src="images/first-deck-points.png" alt="The points slide, as MarkdownPoint draws it" width="32%"> <img src="images/first-deck-close.png" alt="The close slide, as MarkdownPoint draws it" width="32%">
 
+## Writing in Obsidian
+
+Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Use the outline to add or move slides.
+
+Put the whole presentation folder in your vault. Keep `presentation.mdpoint`, the themes and the media beside `slides.md`. Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use Source mode to edit the Markdown and its markers directly.
+
+Use the plugin's “Open in MarkdownPoint” command to save the presentation and open it in the desktop app. Work on the layout, images, 3D and animation there. Return to Obsidian for another writing pass. The two apps use the same files throughout.
+
+When you add or delete a slide, the plugin updates both presentation files. When editing the source directly, follow the rules below for changes that affect both files. Use the supported Markdown for slide content. Obsidian wikilinks and note embeds do not become slide content.
+
+## Slide and text markers
+
+Comment markers separate slides and text blocks. Each marker gives the ID of its slide or object. A heading or horizontal rule does not start a slide.
+
+The IDs in the markers connect the two files. Keep a slide's ID when changing its title or moving it. If you change the ID, update it in both files.
+
 ## Frontmatter
 
-The file opens with frontmatter between two `---` lines. `markdownpoint` is the format version, in quotes: `markdownpoint: "1.0"`. `id` is the presentation's id, a UUID in lowercase, the same as in the .mdpoint file. `footer` is the footer text. Put it in double quotes if it holds a space followed by `#`, which otherwise starts a comment. MarkdownPoint writes it in double quotes. Write each of these on one line, as `key: value`. The app writes `save` itself when people take turns editing a shared folder. Leave it as it is.
+Start the file with frontmatter between two `---` lines. MarkdownPoint uses the following keys. Write them on single lines as `key: value`:
 
-You can add your own keys. MarkdownPoint keeps them as written and ignores them.
+- `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
+- `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
+- `footer`: the footer text.
+- `save`: written by MarkdownPoint during shared-folder editing. Leave this value unchanged.
+
+Put `footer` in double quotes if it contains a space followed by `#`; otherwise, the `#` starts a comment. MarkdownPoint always writes the footer in double quotes.
+
+You can add your own keys for information used by your tools or workflow. MarkdownPoint keeps them as written and ignores them.
 
 ## Sections
 
@@ -79,15 +104,15 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 `<!-- text: id -->` starts an object's text. It runs to the next marker. Here `eyebrow`, `title` and `body` are placeholders from the slide's layout. For any other object, the id is its id in the .mdpoint file. A shape, a table or a chart takes its text the same way.
 
-One blank line separates two paragraphs. Each further blank line is an empty paragraph, and keeps its line on the slide. A blank line right under the marker is one too. Before the next marker, one blank line only separates.
+One blank line separates paragraphs. Additional blank lines create empty paragraphs on the slide. A blank line immediately after the text marker also creates an empty paragraph. One blank line before the next marker is only a separator.
 
 ## Speaker notes
 
-`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. They use the same Markdown as slide text. Like a text block, they can stand anywhere among the slide's blocks.
+`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks.
 
 ## Compositions
 
-A composition is a scene that slides show as instances, such as a card that counts up. `<!-- composition: id -->` starts its block, with the id of its entry under `compositions` in the .mdpoint file. A composition is in no section and never shows as a slide. MarkdownPoint writes a new composition after the last one, or after the slides when it's the first. One you move stays where you put it.
+A composition is a reusable scene, such as a card with an animated counter. `<!-- composition: id -->` starts its block. Use the ID of its entry under `compositions` in the .mdpoint file. Compositions do not belong to sections or appear as slides. MarkdownPoint adds new compositions after the existing ones, or after the slides if there are none. You can move a composition block elsewhere in the file.
 
 Under the marker, `<!-- text: id -->` holds the words of one of the composition's own objects, as on a slide. `<!-- control: name -->` holds a text control's default words, which an instance shows when it sets none. An instance sets its own on the slide that holds it, under `<!-- text: instance.control -->`, with the instance's id and the control's name:
 
@@ -103,7 +128,7 @@ North
 Label
 ```
 
-## Rules
+## Horizontal rules
 
 A line of `---` is a horizontal rule. On a slide, it runs across its text box. It can stand anywhere in a text or notes block: first, between paragraphs or last. A `---` at the end of a slide belongs to the slide's last block.
 
@@ -160,7 +185,7 @@ Lists==.==
 
 Indent an item to nest it under the one above, as far as the text after that item's marker: two spaces under `- `, three under `1. `. A numbered list can start at any number of up to nine digits.
 
-A new marker starts a new list. So when MarkdownPoint writes two lists that follow each other, it writes the second with `*` instead of `-`, or `1)` instead of `1.`.
+To start another list immediately after one, change the list marker. MarkdownPoint uses `*` after `-`, or `1)` after `1.`.
 
 ### Fields
 
@@ -282,6 +307,14 @@ A theme can rename a layout's placeholder, such as `body` to `summary`. Markdown
 
 A table's column widths and row heights in the .mdpoint file follow the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same place. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
-`mdpoint`, MarkdownPoint's command-line tool, checks a folder without the app. It reports each problem MarkdownPoint finds in the files. That includes a missing image, model or font. To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Then run `mdpoint validate --files` in the folder, or `mdpoint --presentation <folder> --json validate --files` for JSON. Each issue has a `severity`, `error` or `warning`, a `code` and a `message`. Most also give the `path` of the key. Its `disposition` says what MarkdownPoint does: `fallback`, `skip-object`, `refuse-slide` or `refuse-document`. `mdpoint` exits with 1 when an issue is an error.
+## Checking the files
 
-Saving keeps your formatting. The frontmatter, each slide and each block stay as you wrote them until you edit them in the app. An edited one is saved in MarkdownPoint's standard Markdown, in its place. `mdpoint format` writes both files in MarkdownPoint's spelling on purpose.
+`mdpoint` checks a presentation folder without running the app. It reports file errors, including missing images, models and fonts.
+
+To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Run `mdpoint validate --files` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate --files`.
+
+Each issue includes a `severity` of `error` or `warning`, a `code` and a `message`. Most include the affected key's `path`. The `disposition` describes how MarkdownPoint handles the problem: `fallback`, `skip-object`, `refuse-slide` or `refuse-document`. The command exits with status 1 if any issue is an error.
+
+## Saving and formatting
+
+Saves preserve the formatting of unchanged frontmatter, slides and text blocks. Edited parts use MarkdownPoint's standard Markdown. Run `mdpoint format` to reformat both presentation files.
