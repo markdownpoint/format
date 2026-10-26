@@ -83,11 +83,11 @@ One blank line separates two paragraphs. Each further blank line is an empty par
 
 ## Speaker notes
 
-`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. They use the same Markdown as slide text.
+`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. They use the same Markdown as slide text. Like a text block, they can stand anywhere among the slide's blocks.
 
 ## Compositions
 
-A composition is a scene that slides show as instances, such as a card that counts up. `<!-- composition: id -->` starts its block, with the id of its entry under `compositions` in the .mdpoint file. A composition is in no section and never shows as a slide. MarkdownPoint writes the compositions after the slides.
+A composition is a scene that slides show as instances, such as a card that counts up. `<!-- composition: id -->` starts its block, with the id of its entry under `compositions` in the .mdpoint file. A composition is in no section and never shows as a slide. MarkdownPoint writes a new composition after the last one, or after the slides when it's the first. One you move stays where you put it.
 
 Under the marker, `<!-- text: id -->` holds the words of one of the composition's own objects, as on a slide. `<!-- control: name -->` holds a text control's default words, which an instance shows when it sets none. An instance sets its own on the slide that holds it, under `<!-- text: instance.control -->`, with the instance's id and the control's name:
 
@@ -284,4 +284,4 @@ A table's column widths and row heights in the .mdpoint file follow the table's 
 
 `mdpoint`, MarkdownPoint's command-line tool, checks a folder without the app. It reports each problem MarkdownPoint finds in the files. That includes a missing image, model or font. To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Then run `mdpoint validate --files` in the folder, or `mdpoint --presentation <folder> --json validate --files` for JSON. Each issue has a `severity`, `error` or `warning`, a `code` and a `message`. Most also give the `path` of the key. Its `disposition` says what MarkdownPoint does: `fallback`, `skip-object`, `refuse-slide` or `refuse-document`. `mdpoint` exits with 1 when an issue is an error.
 
-Saving keeps your formatting. The frontmatter, each slide and each block stay as you wrote them until you edit them in the app. An edited one is saved in MarkdownPoint's standard Markdown. `mdpoint format` writes both files in MarkdownPoint's spelling on purpose.
+Saving keeps your formatting. The frontmatter, each slide and each block stay as you wrote them until you edit them in the app. An edited one is saved in MarkdownPoint's standard Markdown, in its place. `mdpoint format` writes both files in MarkdownPoint's spelling on purpose.
