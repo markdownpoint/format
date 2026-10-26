@@ -53,11 +53,11 @@ The words are Markdown==.==
 
 ## Writing in Obsidian
 
-Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Use the outline to add or move slides.
+Create the presentation in MarkdownPoint, in your Obsidian vault's folder or a folder inside it. Then choose “Open in Obsidian” in the File menu. Obsidian opens the presentation's `slides.md` in that vault. The command is dimmed for a presentation outside a vault, and when Obsidian isn't installed.
 
-Put the whole presentation folder in your vault. Keep `presentation.mdpoint`, the themes and the media beside `slides.md`. Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use Source mode to edit the Markdown and its markers directly.
+Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use the outline to add or move slides. Use Source mode to edit the Markdown and its markers directly. Keep `presentation.mdpoint`, the themes and the media beside `slides.md`.
 
-Use the plugin's “Open in MarkdownPoint” command to save the presentation and open it in the desktop app. Work on the layout, images, 3D and animation there. Return to Obsidian for another writing pass. The two apps use the same files throughout.
+Use the plugin's “Open in MarkdownPoint” command to save the presentation and return to the desktop app. Work on the layout, images, 3D and animation there. The two apps use the same files throughout.
 
 When you add or delete a slide, the plugin updates both presentation files. When editing the source directly, follow the rules below for changes that affect both files. Use the supported Markdown for slide content. Obsidian wikilinks and note embeds do not become slide content.
 
