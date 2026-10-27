@@ -303,7 +303,7 @@ MarkdownPoint then shows the file, the line and the problem. It won't open the p
 
 Inside a code block, a merge conflict is the code's words, so a slide can show one. A real conflict there shows on the slide until you resolve it.
 
-A theme can rename a layout's placeholder, such as `body` to `summary`. MarkdownPoint then renames the text blocks and overrides of every slide on that layout. If you merge that rename with someone's edit made under the old name, keep the new name. Move the words from the old name's block into the new one, and the old name's override in the .mdpoint file into the new name's. MarkdownPoint warns about a block whose name no object has, and doesn't show it.
+A layout's placeholder keeps its id. Giving it a name in MarkdownPoint changes only its label, so no slide's text blocks or overrides change. If you change a placeholder's id by hand in the layout file, change the text blocks and overrides of every slide on that layout to the new id too. MarkdownPoint warns about a block whose name no object has, and doesn't show it.
 
 A table's column widths and row heights in the .mdpoint file follow the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same place. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
