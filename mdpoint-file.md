@@ -93,7 +93,7 @@ Saves preserve formatting in unchanged parts of the file. Edited parts use Markd
 
 ## Slides
 
-The keys in `slides` match the slide IDs in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. MarkdownPoint omits a scheme or override value that equals the inherited value. The slide then follows changes to that value in the theme.
+The keys in `slides` match the slide IDs in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. A scheme or override value the slide states stays, even one that equals the inherited value, so a later theme change leaves it as it is. Only a reset removes it. The slide then follows changes to that value in the theme.
 
 ## Objects
 
