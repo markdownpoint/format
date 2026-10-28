@@ -92,7 +92,7 @@ Include `versions/` in git if you want to keep the saved versions with the prese
 
 Every file states its format version as a major and a minor in quotes: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes matter, since 1.10 and 1.1 are the same number.
 
-MarkdownPoint 1.x opens any version 1.x file. Later minor versions can add data that an earlier reader skips. When opening such a file, MarkdownPoint shows a notice and preserves the unknown data when saving. Saving does not lower the file's version number. A version 2.0 file requires MarkdownPoint 2.
+MarkdownPoint 1.x opens any version 1.x file. Later minor versions can add data that an earlier reader skips. When opening such a file, MarkdownPoint shows a notice and keeps the unknown data through saves: a key, a word or an object it doesn't know stays as long as the record or the entry around it does, except in a list of values, which a save that changes it writes whole; in the .md file an unknown word form stays as written until its block is edited or the file is formatted, when it is written as words; and a slide two people duplicate before their copies sync keeps it in one copy. The reference states the rule in full. Saving does not lower the file's version number. A version 2.0 file requires MarkdownPoint 2.
 
 The format is not final. Version 1.0 may still change before release.
 
