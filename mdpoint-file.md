@@ -140,6 +140,120 @@ A text box can grow to fit its words, give every digit one width and outline its
 
 `auto-size` names the sides that grow, here the height. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its width in canvas units.
 
+A chart draws the Markdown table in its text block:
+
+```markdown
+<!-- slide: data -->
+
+<!-- text: title -->
+Tables and charts==.==
+
+<!-- text: specs -->
+| Size | 1920 × 1080 |
+| --- | --- |
+| Frame rate | 60 fps |
+| Film | MP4 |
+
+<!-- text: sales -->
+| Quarter | North | South |
+| --- | --- | --- |
+| Q1 | 40 | 24 |
+| Q2 | 65 | 48 |
+| Q3 | 52 | 71 |
+| Q4 | 90 | 60 |
+
+<!-- text: visitors -->
+| Visitors | Count |
+| --- | --- |
+| Total | 1280 |
+
+<!-- notes -->
+The table's first column is its header, and its first row is a row like the others. The chart's colors give its two series the text and accent colors. The counter rolls its digits. Its progress of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity.
+```
+
+```json
+[
+  {
+    "id": "specs",
+    "type": "table",
+    "frame": {"x": 120, "y": 340, "width": 760},
+    "text-style": "body",
+    "columns": [380, 380],
+    "header-row": false,
+    "header-column": true
+  },
+  {
+    "id": "sales",
+    "type": "chart",
+    "frame": {"x": 1000, "y": 340, "width": 800, "height": 420},
+    "colors": ["text", "accent"]
+  },
+  {
+    "id": "visitors",
+    "type": "chart",
+    "chart-type": "counter",
+    "frame": {"x": 120, "y": 760, "width": 760, "height": 200},
+    "progress": 0.5,
+    "roll": true,
+    "leading-zero-opacity": 0.4
+  }
+]
+```
+
+![The data slide, as MarkdownPoint draws it](images/words-data.png)
+
+Here the table's first column is its header, in place of its first row. `colors` sets the color of each of the chart's series. A counter with `roll` turns its digits into place. Stopped short of 1, its `progress` shows the unused leading zeros at `leading-zero-opacity`.
+
+A group with `auto-layout` places its members one after another, down or across. Their own positions are ignored:
+
+```json
+[
+  {
+    "id": "heading",
+    "type": "text",
+    "frame": {"x": 120, "y": 110, "width": 1680, "height": 150},
+    "text-style": "title"
+  },
+  {
+    "id": "row",
+    "type": "group",
+    "auto-layout": {
+      "direction": "horizontal",
+      "gap": 40,
+      "alignment": "center",
+      "position": {"x": 320, "y": 400}
+    }
+  },
+  {
+    "id": "left",
+    "type": "shape",
+    "shape": "ellipse",
+    "parent": "row",
+    "frame": {"x": 0, "y": 0, "width": 360, "height": 360},
+    "fill": "text"
+  },
+  {
+    "id": "middle",
+    "type": "shape",
+    "shape": "rectangle",
+    "parent": "row",
+    "frame": {"x": 0, "y": 0, "width": 480, "height": 240},
+    "constrain-proportions": false,
+    "corner-radius": 32
+  },
+  {
+    "id": "right",
+    "type": "shape",
+    "shape": "rectangle",
+    "parent": "row",
+    "frame": {"x": 0, "y": 0, "width": 360, "height": 360},
+    "fill": "text"
+  }
+]
+```
+
+![The row slide, as MarkdownPoint draws it](images/groups-row.png)
+
 ## Steps
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.

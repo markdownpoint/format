@@ -1,0 +1,54 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "presentation",
+  "id": "cdbb4736-3284-4eda-b841-4ae905a99313",
+  "theme": "basic",
+  "slides": {
+    "row": {
+      "layout": "blank",
+      "scheme": "apricot",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "text-style": "title"
+        },
+
+        {
+          "id": "row",
+          "type": "group",
+          "auto-layout": {"direction":"horizontal","gap":40,"alignment":"center","position":{"x":320,"y":400}}
+        },
+
+        {
+          "id": "left",
+          "type": "shape",
+          "shape": "ellipse",
+          "parent": "row",
+          "frame": {"x":0,"y":0,"width":360,"height":360},
+          "fill": "text"
+        },
+
+        {
+          "id": "middle",
+          "type": "shape",
+          "shape": "rectangle",
+          "parent": "row",
+          "frame": {"x":0,"y":0,"width":480,"height":240},
+          "constrain-proportions": false,
+          "corner-radius": 32
+        },
+
+        {
+          "id": "right",
+          "type": "shape",
+          "shape": "rectangle",
+          "parent": "row",
+          "frame": {"x":0,"y":0,"width":360,"height":360},
+          "fill": "text"
+        }
+      ]
+    }
+  }
+}

@@ -4,6 +4,38 @@
   "id": "9d98709f-0aac-407e-b6d3-56da6b8494aa",
   "theme": "basic",
   "slides": {
+    "data": {
+      "layout": "content-with-header",
+      "scheme": "sky",
+      "objects": [
+        {
+          "id": "specs",
+          "type": "table",
+          "frame": {"x":120,"y":340,"width":760},
+          "text-style": "body",
+          "columns": [380,380],
+          "header-row": false,
+          "header-column": true
+        },
+
+        {
+          "id": "sales",
+          "type": "chart",
+          "frame": {"x":1000,"y":340,"width":800,"height":420},
+          "colors": ["text","accent"]
+        },
+
+        {
+          "id": "visitors",
+          "type": "chart",
+          "chart-type": "counter",
+          "frame": {"x":120,"y":760,"width":760,"height":200},
+          "progress": 0.5,
+          "roll": true,
+          "leading-zero-opacity": 0.4
+        }
+      ]
+    },
     "fields": {
       "layout": "content-with-header",
       "scheme": "mint"

@@ -60,6 +60,33 @@ Tables==.==
 | Solo | 1 | Free |
 | Team | 10 | $8 |
 
+<!-- slide: data -->
+
+<!-- text: title -->
+Tables and charts==.==
+
+<!-- text: specs -->
+| Size | 1920 × 1080 |
+| --- | --- |
+| Frame rate | 60 fps |
+| Film | MP4 |
+
+<!-- text: sales -->
+| Quarter | North | South |
+| --- | --- | --- |
+| Q1 | 40 | 24 |
+| Q2 | 65 | 48 |
+| Q3 | 52 | 71 |
+| Q4 | 90 | 60 |
+
+<!-- text: visitors -->
+| Visitors | Count |
+| --- | --- |
+| Total | 1280 |
+
+<!-- notes -->
+The table's first column is its header, and its first row is a row like the others. The chart's colors give its two series the text and accent colors. The counter rolls its digits. Its progress of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity.
+
 <!-- slide: rules -->
 
 <!-- text: title -->
