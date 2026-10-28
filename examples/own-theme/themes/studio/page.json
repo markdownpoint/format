@@ -1,0 +1,27 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "layout",
+  "save": "b599ed7b-170d-4765-90be-628f06440704",
+  "objects": [
+    {
+      "id": "title",
+      "type": "text",
+      "placeholder": true,
+      "frame": {"x":120,"y":240,"width":1680,"height":260},
+      "text-style": "title",
+      "vertical-align": "bottom"
+    },
+
+    {
+      "id": "body",
+      "type": "text",
+      "placeholder": true,
+      "frame": {"x":120,"y":540,"width":1200,"height":360},
+      "text-style": "body"
+    }
+  ],
+  "text": {
+    "title": "A title",
+    "body": "The words under it."
+  }
+}

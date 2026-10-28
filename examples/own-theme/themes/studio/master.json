@@ -1,0 +1,69 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "master",
+  "save": "5334abfb-f44b-48df-aefb-92184b34b2d8",
+  "id": "9c450607-1382-4282-944a-544dc2c8048a",
+  "size": {"width":1920,"height":1080},
+  "unit-scale": 0.01,
+  "fonts": {
+    "display": "Instrument Serif",
+    "body": "Archivo",
+    "mono": "Source Code Pro"
+  },
+  "font-files": {
+    "Instrument Serif": ["fonts/InstrumentSerif-Regular-863059cec8fb37e2.eot","fonts/InstrumentSerif-Italic-2d7eee1439e3c874.eot"]
+  },
+  "schemes": {
+    "light": {
+      "background": "#F4EDE4",
+      "text": "#1B2A3A",
+      "muted": "#6B7480",
+      "accent": "#E4572E",
+      "stroke": "#D9CFC2",
+      "link": "#1B2A3A"
+    },
+    "dark": {
+      "background": "#1B2A3A",
+      "text": "#F4EDE4",
+      "muted": "#A7B0BA",
+      "accent": "#E4572E",
+      "stroke": "#2F4256",
+      "link": "#F4EDE4"
+    }
+  },
+  "text-styles": {
+    "title": {
+      "font-family": "display",
+      "font-size": 112,
+      "font-weight": 400,
+      "line-height": 1.05,
+      "color": "text"
+    },
+    "body": {
+      "font-family": "body",
+      "font-size": 40,
+      "font-weight": 400,
+      "line-height": 1.4,
+      "color": "text",
+      "inset-bottom": 24,
+      "marks": {"bold":{"case":"upper","tracking":0.06},"strikethrough":{"color":"muted"}}
+    }
+  },
+  "guides": [
+    {"id":"center","x":"50%","name":"Center","locked":true},
+    {"id":"footer-line","y":960,"name":"Footer line"}
+  ],
+  "grid": {
+    "columns": {"count":12,"gutter":24,"margin":120},
+    "baseline": {"start":120,"increment":24}
+  },
+  "objects": [
+    {
+      "id": "mark",
+      "type": "image",
+      "file": {"light":"media/mark-on-light.svg","dark":"media/mark-on-dark.svg"},
+      "frame": {"x":1712,"y":72,"width":88,"height":88},
+      "alt": "Studio's mark"
+    }
+  ]
+}

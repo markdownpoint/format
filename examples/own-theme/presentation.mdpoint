@@ -1,0 +1,15 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "presentation",
+  "id": "c2d8480c-9392-4d78-af36-ffae10db6518",
+  "theme": "studio",
+  "slides": {
+    "dark": {
+      "layout": "page",
+      "scheme": "dark"
+    },
+    "light": {
+      "layout": "page"
+    }
+  }
+}

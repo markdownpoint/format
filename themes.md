@@ -2,7 +2,7 @@
 
 A theme contains the fonts, colors, text styles and layouts used by its slides. The slide text is in `slides.md`.
 
-A theme is stored under `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. The examples use Basic, MarkdownPoint's default theme.
+A theme is stored under `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. Most examples use Basic, MarkdownPoint's default theme.
 
 ```
 themes/basic/
@@ -119,6 +119,64 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing during a presentation. Use `overrides` to change a master object's properties on this layout. Set its override entry to `null` to remove the object.
 
 ![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
+
+## A theme of its own
+
+The [own-theme example](examples/own-theme) carries Studio, a theme of its own, under `themes/studio/`. Its titles use Instrument Serif, a font under the SIL Open Font License. The theme holds one `.eot` file per face in its `fonts` folder, with the license beside them:
+
+```json
+{
+  "Instrument Serif": [
+    "fonts/InstrumentSerif-Regular-863059cec8fb37e2.eot",
+    "fonts/InstrumentSerif-Italic-2d7eee1439e3c874.eot"
+  ]
+}
+```
+
+A text style's `marks` set how bold, italic, highlighted, struck-through and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `inset-bottom` keeps space under the last line:
+
+```json
+{
+  "font-family": "body",
+  "font-size": 40,
+  "font-weight": 400,
+  "line-height": 1.4,
+  "color": "text",
+  "inset-bottom": 24,
+  "marks": {"bold": {"case": "upper", "tracking": 0.06}, "strikethrough": {"color": "muted"}}
+}
+```
+
+The master's mark has a file for each scheme, so a dark slide shows the dark scheme's file:
+
+```json
+[
+  {
+    "id": "mark",
+    "type": "image",
+    "file": {"light": "media/mark-on-light.svg", "dark": "media/mark-on-dark.svg"},
+    "frame": {"x": 1712, "y": 72, "width": 88, "height": 88},
+    "alt": "Studio's mark"
+  }
+]
+```
+
+<img src="images/own-theme-light.png" alt="The light slide, as MarkdownPoint draws it" width="49%"> <img src="images/own-theme-dark.png" alt="The dark slide, as MarkdownPoint draws it" width="49%">
+
+The master also sets a column grid, a baseline grid and two guides. MarkdownPoint shows them while you edit, never on a slide:
+
+```json
+{"columns": {"count": 12, "gutter": 24, "margin": 120}, "baseline": {"start": 120, "increment": 24}}
+```
+
+```json
+[
+  {"id": "center", "x": "50%", "name": "Center", "locked": true},
+  {"id": "footer-line", "y": 960, "name": "Footer line"}
+]
+```
+
+`unit-scale` is how many meters one canvas unit stands for in 3D. Studio's 0.01 makes a canvas unit a centimeter. `save` in `master.json` and in a layout is a save stamp. MarkdownPoint writes it while editing passes between people. Leave it as it is.
 
 ## Changing a theme by hand
 
