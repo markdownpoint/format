@@ -67,9 +67,11 @@
           "name": "Turn the square",
           "duration": 1.6,
           "curves": {
-            "square.rotation": [
-              {"id":"square-turns","time":1,"value":90,"interpolation":"ease-in-out"}
-            ]
+            "square.rotation": {
+              "keys": [
+                {"id":"square-turns","time":1,"value":90,"interpolation":"ease-in-out"}
+              ]
+            }
           }
         }
       ]
@@ -197,27 +199,41 @@
           "name": "Race the curves",
           "duration": 2.4,
           "curves": {
-            "dot-anticipate-overshoot.translation.x": [
-              {"id":"anticipate-overshoot-arrives","time":2,"value":800,"interpolation":"anticipate-overshoot"}
-            ],
-            "dot-anticipate.translation.x": [
-              {"id":"anticipate-arrives","time":2,"value":800,"interpolation":"anticipate"}
-            ],
-            "dot-bounce.translation.x": [
-              {"id":"bounce-arrives","time":2,"value":800,"interpolation":"bounce"}
-            ],
-            "dot-ease-in-out.translation.x": [
-              {"id":"ease-in-out-arrives","time":2,"value":800,"interpolation":"ease-in-out"}
-            ],
-            "dot-elastic.translation.x": [
-              {"id":"elastic-arrives","time":2,"value":800,"interpolation":"elastic"}
-            ],
-            "dot-linear.translation.x": [
-              {"id":"linear-arrives","time":2,"value":800}
-            ],
-            "dot-smooth.translation.x": [
-              {"id":"smooth-arrives","time":2,"value":800,"interpolation":"smooth"}
-            ]
+            "dot-anticipate-overshoot.translation.x": {
+              "keys": [
+                {"id":"anticipate-overshoot-arrives","time":2,"value":800,"interpolation":"anticipate-overshoot"}
+              ]
+            },
+            "dot-anticipate.translation.x": {
+              "keys": [
+                {"id":"anticipate-arrives","time":2,"value":800,"interpolation":"anticipate"}
+              ]
+            },
+            "dot-bounce.translation.x": {
+              "keys": [
+                {"id":"bounce-arrives","time":2,"value":800,"interpolation":"bounce"}
+              ]
+            },
+            "dot-ease-in-out.translation.x": {
+              "keys": [
+                {"id":"ease-in-out-arrives","time":2,"value":800,"interpolation":"ease-in-out"}
+              ]
+            },
+            "dot-elastic.translation.x": {
+              "keys": [
+                {"id":"elastic-arrives","time":2,"value":800,"interpolation":"elastic"}
+              ]
+            },
+            "dot-linear.translation.x": {
+              "keys": [
+                {"id":"linear-arrives","time":2,"value":800}
+              ]
+            },
+            "dot-smooth.translation.x": {
+              "keys": [
+                {"id":"smooth-arrives","time":2,"value":800,"interpolation":"smooth"}
+              ]
+            }
           }
         }
       ]
@@ -312,28 +328,41 @@
           "name": "Move the shapes",
           "duration": 3,
           "curves": {
-            "card.translation.x": [
-              {"id":"card-slides-in","time":0.5,"value":300,"interpolation":"ease-out"},
-              {"id":"card-settles","time":0.8,"value":240,"interpolation":"smooth","loop-from":true},
-              {"id":"card-swings-right","time":1.6,"value":800,"interpolation":"smooth"},
-              {"id":"card-swings-back","time":2.4,"value":240,"interpolation":"smooth","loop":"repeat"}
-            ],
-            "noise.translation.y": [
-              {"id":"noise-wanders","time":0,"value":0,"oscillate":{"amplitude":30,"frequency":2,"wave-shape":"noise","seed":7}}
-            ],
-            "turn.translation.x": [
-              {"id":"turn-cut","time":1.2,"value":520,"interpolation":"ease-in-out","incoming":{"value":1040,"end-time":2.4}},
-              {"id":"turn-back","time":2.2,"value":0,"interpolation":"ease-out"}
-            ],
-            "wave.translation.y": [
-              {"id":"wave-bobs","time":0,"value":0,"oscillate":{"amplitude":30,"frequency":1,"phase":90,"wave-shape":"triangle"}}
-            ],
-            "zoom.scale.x": [
-              {"id":"zoom-grows-x","time":2,"value":2,"interpolation":"ease-in-out","exponential-scale":true}
-            ],
-            "zoom.scale.y": [
-              {"id":"zoom-grows-y","time":2,"value":1,"interpolation":"ease-in-out","exponential-scale":true}
-            ]
+            "card.translation.x": {
+              "keys": [
+                {"id":"card-slides-in","time":0.5,"value":300,"interpolation":"ease-out"},
+                {"id":"card-settles","time":0.8,"value":240,"interpolation":"smooth"},
+                {"id":"card-swings-right","time":1.6,"value":800,"interpolation":"smooth"},
+                {"id":"card-swings-back","time":2.4,"value":240,"interpolation":"smooth"}
+              ],
+              "loop": {"mode":"repeat","from":"card-settles"}
+            },
+            "noise.translation.y": {
+              "keys": [
+                {"id":"noise-wanders","time":0,"value":0,"oscillate":{"amplitude":30,"frequency":2,"wave-shape":"noise","seed":7}}
+              ]
+            },
+            "turn.translation.x": {
+              "keys": [
+                {"id":"turn-cut","time":1.2,"value":520,"interpolation":"ease-in-out","incoming":{"value":1040,"end-time":2.4}},
+                {"id":"turn-back","time":2.2,"value":0,"interpolation":"ease-out"}
+              ]
+            },
+            "wave.translation.y": {
+              "keys": [
+                {"id":"wave-bobs","time":0,"value":0,"oscillate":{"amplitude":30,"frequency":1,"phase":90,"wave-shape":"triangle"}}
+              ]
+            },
+            "zoom.scale.x": {
+              "keys": [
+                {"id":"zoom-grows-x","time":2,"value":2,"interpolation":"ease-in-out","exponential-scale":true}
+              ]
+            },
+            "zoom.scale.y": {
+              "keys": [
+                {"id":"zoom-grows-y","time":2,"value":1,"interpolation":"ease-in-out","exponential-scale":true}
+              ]
+            }
           }
         }
       ]
@@ -418,18 +447,26 @@
           "name": "Race the curves",
           "duration": 3,
           "curves": {
-            "dot-bounce.translation.x": [
-              {"id":"bounce-arrives","time":2,"value":540,"interpolation":{"curve":"bounce","bounciness":0.8}}
-            ],
-            "dot-elastic.translation.x": [
-              {"id":"elastic-arrives","time":2,"value":540,"interpolation":{"curve":"elastic","amplitude":1.5,"period":0.5}}
-            ],
-            "dot-overshoot.translation.x": [
-              {"id":"overshoot-arrives","time":2,"value":540,"interpolation":{"curve":"overshoot","back":3}}
-            ],
-            "dot-spring.translation.x": [
-              {"id":"spring-arrives","time":2,"value":540,"interpolation":{"curve":"spring","amount":0.4,"response":0.6}}
-            ]
+            "dot-bounce.translation.x": {
+              "keys": [
+                {"id":"bounce-arrives","time":2,"value":540,"interpolation":{"curve":"bounce","bounciness":0.8}}
+              ]
+            },
+            "dot-elastic.translation.x": {
+              "keys": [
+                {"id":"elastic-arrives","time":2,"value":540,"interpolation":{"curve":"elastic","amplitude":1.5,"period":0.5}}
+              ]
+            },
+            "dot-overshoot.translation.x": {
+              "keys": [
+                {"id":"overshoot-arrives","time":2,"value":540,"interpolation":{"curve":"overshoot","back":3}}
+              ]
+            },
+            "dot-spring.translation.x": {
+              "keys": [
+                {"id":"spring-arrives","time":2,"value":540,"interpolation":{"curve":"spring","amount":0.4,"response":0.6}}
+              ]
+            }
           }
         }
       ]
@@ -475,12 +512,16 @@
           "name": "Enter the words",
           "duration": 2.5,
           "curves": {
-            "bar.wipe.progress": [
-              {"id":"bar-shows","time":0.8,"value":1,"interpolation":"ease-out"}
-            ],
-            "body.enter.progress": [
-              {"id":"body-enters","time":2.5,"value":1}
-            ]
+            "bar.wipe.progress": {
+              "keys": [
+                {"id":"bar-shows","time":0.8,"value":1,"interpolation":"ease-out"}
+              ]
+            },
+            "body.enter.progress": {
+              "keys": [
+                {"id":"body-enters","time":2.5,"value":1}
+              ]
+            }
           }
         },
         {
@@ -488,9 +529,11 @@
           "name": "Bring the caption back",
           "duration": 2,
           "curves": {
-            "caption.exit.progress": [
-              {"id":"caption-returns","time":2,"value":0}
-            ]
+            "caption.exit.progress": {
+              "keys": [
+                {"id":"caption-returns","time":2,"value":0}
+              ]
+            }
           }
         }
       ]

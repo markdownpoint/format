@@ -79,7 +79,7 @@ A turn back
 The card loops, the dots bob, the oval zooms evenly and the last dot turns back halfway.
 
 <!-- notes -->
-The card slides in past its place, settles, and then swings right and back for as long as the slide shows: `loop` repeats its last keyframes, from the one marked `loop-from`, so the slide-in plays once. The two dots bob on waves from `oscillate`, a triangle wave that starts a quarter of the way into its cycle and a noise wave from seed 7. The oval starts at `scale` 0.5 by 0.25 and grows fourfold, `exponential-scale` keeping the zoom even. The last dot heads for the far side, but its keyframe's `incoming` cuts that longer move off halfway, and it turns back. The slide leaves through the accent color, its transition's `color`.
+The card slides in past its place, settles, and then swings right and back for as long as the slide shows. Its curve's `loop` repeats the keyframes `from` the second one on, so the slide-in plays once. The two dots bob on waves from `oscillate`, a triangle wave that starts a quarter of the way into its cycle and a noise wave from seed 7. The oval starts at `scale` 0.5 by 0.25 and grows fourfold, `exponential-scale` keeping the zoom even. The last dot heads for the far side, but its keyframe's `incoming` cuts that longer move off halfway, and it turns back. The slide leaves through the accent color, its transition's `color`.
 
 <!-- slide: words -->
 
