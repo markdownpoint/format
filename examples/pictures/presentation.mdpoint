@@ -1,0 +1,110 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "presentation",
+  "id": "9405e817-7b2f-42e1-80e2-95869ec16aba",
+  "theme": "basic",
+  "slides": {
+    "adjust": {
+      "layout": "blank",
+      "scheme": "light",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "text-style": "title"
+        },
+
+        {
+          "id": "plain",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {"x":120,"y":400,"width":390,"height":219},
+          "alt": "Green hills under a low sun"
+        },
+
+        {
+          "id": "bright",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {"x":550,"y":400,"width":390,"height":219},
+          "exposure": 0.5,
+          "alt": "The hills, brighter"
+        },
+
+        {
+          "id": "vivid",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {"x":980,"y":400,"width":390,"height":219},
+          "contrast": 0.4,
+          "saturation": 0.6,
+          "alt": "The hills, with more contrast and color"
+        },
+
+        {
+          "id": "gray",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {"x":1410,"y":400,"width":390,"height":219},
+          "grayscale": 1,
+          "alt": "The hills, in gray"
+        },
+
+        {
+          "id": "plain-label",
+          "type": "text",
+          "frame": {"x":120,"y":650,"width":390,"height":80},
+          "text-style": "meta"
+        },
+
+        {
+          "id": "bright-label",
+          "type": "text",
+          "frame": {"x":550,"y":650,"width":390,"height":80},
+          "text-style": "meta"
+        },
+
+        {
+          "id": "vivid-label",
+          "type": "text",
+          "frame": {"x":980,"y":650,"width":390,"height":80},
+          "text-style": "meta"
+        },
+
+        {
+          "id": "gray-label",
+          "type": "text",
+          "frame": {"x":1410,"y":650,"width":390,"height":80},
+          "text-style": "meta"
+        }
+      ]
+    },
+    "cutout": {
+      "layout": "blank",
+      "scheme": "sky",
+      "background": {"image":"media/sun.png","drop-shadow":{"blur":40,"offset":{"x":0,"y":16},"color":"#000000","opacity":0.3}},
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":465,"width":640,"height":150},
+          "text-style": "title"
+        }
+      ]
+    },
+    "faded": {
+      "layout": "blank",
+      "scheme": "light",
+      "background": {"image":"media/hills.png","crop":{"scale":1.6,"focal-point":{"x":0.7,"y":0.42}},"opacity":0.3,"grayscale":1},
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":465,"width":1680,"height":150},
+          "text-style": "title"
+        }
+      ]
+    }
+  }
+}

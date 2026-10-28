@@ -278,6 +278,46 @@ A group with `auto-layout` places its members one after another, down or across.
 
 ![The row slide, as MarkdownPoint draws it](images/groups-row.png)
 
+## Pictures
+
+An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast` and `saturation` run from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture shows as shot:
+
+```json
+{
+  "id": "vivid",
+  "type": "image",
+  "file": "media/hills.png",
+  "frame": {"x": 980, "y": 400, "width": 390, "height": 219},
+  "contrast": 0.4,
+  "saturation": 0.6,
+  "alt": "The hills, with more contrast and color"
+}
+```
+
+![The adjust slide, as MarkdownPoint draws it](images/pictures-adjust.png)
+
+A slide's `background` can be a picture too. It covers the slide. `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
+
+```json
+{
+  "image": "media/hills.png",
+  "crop": {"scale": 1.6, "focal-point": {"x": 0.7, "y": 0.42}},
+  "opacity": 0.3,
+  "grayscale": 1
+}
+```
+
+A picture with transparency casts its `drop-shadow` from its shape:
+
+```json
+{
+  "image": "media/sun.png",
+  "drop-shadow": {"blur": 40, "offset": {"x": 0, "y": 16}, "color": "#000000", "opacity": 0.3}
+}
+```
+
+<img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
+
 ## Steps
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.
