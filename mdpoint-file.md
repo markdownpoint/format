@@ -472,6 +472,20 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
 ]
 ```
 
+A composition is a reusable animated scene, kept under `compositions`. Each instance on a slide shows one moment of it, given by its `time-remap` in seconds. Left out, the instance shows the last moment:
+
+```json
+{
+  "id": "early",
+  "type": "composition",
+  "composition": "sweep",
+  "frame": {"x": 120, "y": 320, "width": 800, "height": 240},
+  "time-remap": 0.5
+}
+```
+
+![The moments slide, as MarkdownPoint draws it](images/motion-moments.png)
+
 ## Keys MarkdownPoint doesn't read
 
 An unknown JSON key is an error in a file using the current format version. In a file from a later minor version, such as 1.3, MarkdownPoint preserves the new keys when saving.

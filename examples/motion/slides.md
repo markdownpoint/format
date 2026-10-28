@@ -120,3 +120,25 @@ The words both headings share carry over from the slide before.
 
 <!-- notes -->
 The previous slide's carry-over matches the two headings word by word: "of one shape" moves to its place in this heading, "Copies" fades out and "Eight copies" fades in. The square has the same id on both slides and stands where the click left it, turned 90 degrees, so its copies stay still while the words move.
+
+<!-- slide: moments -->
+
+<!-- text: heading -->
+One composition at four moments==.==
+
+<!-- text: early-label -->
+0.5 seconds
+
+<!-- text: middle-label -->
+1 second
+
+<!-- text: late-label -->
+1.5 seconds
+
+<!-- text: end-label -->
+The last moment
+
+<!-- notes -->
+The sweep composition moves its dot along the track in 2 seconds. Each instance's `time-remap` holds it at one moment of that move. The fourth leaves `time-remap` out, so it shows the last moment. A step can key `time-remap` to play the composition at any speed.
+
+<!-- composition: sweep -->
