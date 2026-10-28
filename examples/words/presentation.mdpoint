@@ -20,6 +20,10 @@
       "layout": "content-with-header",
       "scheme": "lilac"
     },
+    "rules": {
+      "layout": "content-with-header",
+      "scheme": "mint"
+    },
     "table": {
       "layout": "content-with-header",
       "scheme": "apricot",
@@ -33,6 +37,38 @@
           "columns": [840,420,420],
           "rows": [140,140,140],
           "alternating-fills": true
+        }
+      ]
+    },
+    "type": {
+      "layout": "content-with-header",
+      "scheme": "dark",
+      "objects": [
+        {
+          "id": "grows",
+          "type": "text",
+          "frame": {"x":120,"y":340,"width":760,"height":60},
+          "text-style": "body",
+          "auto-size": "height"
+        },
+
+        {
+          "id": "figures",
+          "type": "text",
+          "frame": {"x":1100,"y":340,"width":700,"height":400},
+          "text-style": "body",
+          "align": "right",
+          "tabular": true
+        },
+
+        {
+          "id": "outline",
+          "type": "text",
+          "frame": {"x":120,"y":760,"width":1680,"height":180},
+          "text-style": "display",
+          "color": "background",
+          "text-stroke": "accent",
+          "text-stroke-weight": 3
         }
       ]
     }

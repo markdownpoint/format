@@ -140,6 +140,28 @@ A `---` has to stand in a block. Right under a slide's marker, before its first 
 
 A line that looks like a marker needs a change to stay in its block. Write a backslash after `<!--`, as `<!--\ slide: example -->`. MarkdownPoint removes the backslash when it reads the file. The line then shows as the comment you meant.
 
+This slide has a rule, a comment and an escaped marker. Neither comment shows:
+
+```markdown
+<!-- slide: rules -->
+
+<!-- text: title -->
+Rules and comments==.==
+
+<!-- text: body -->
+A rule runs across its text box.
+
+---
+
+<!-- Check these numbers before the talk. -->
+
+<!--\ slide: draft -->
+
+Neither comment above shows on the slide.
+```
+
+![The rules slide, as MarkdownPoint draws it](images/words-rules.png)
+
 ## Markdown
 
 Text objects, tables and speaker notes use Markdown. The [reference](reference/v1.md#markdown) lists everything that's supported.

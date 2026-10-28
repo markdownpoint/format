@@ -105,6 +105,41 @@ The dot's fill, `text`, is a role in the slide's color scheme, so the dot change
 
 Omitted keys use their defaults. The card has no fill specified and uses `accent`, the default for shapes. The [object reference](reference/v1.md#object) lists the required keys, allowed values and defaults for each object type.
 
+A text box can grow to fit its words, give every digit one width and outline its letters:
+
+```json
+[
+  {
+    "id": "grows",
+    "type": "text",
+    "frame": {"x": 120, "y": 340, "width": 760, "height": 60},
+    "text-style": "body",
+    "auto-size": "height"
+  },
+  {
+    "id": "figures",
+    "type": "text",
+    "frame": {"x": 1100, "y": 340, "width": 700, "height": 400},
+    "text-style": "body",
+    "align": "right",
+    "tabular": true
+  },
+  {
+    "id": "outline",
+    "type": "text",
+    "frame": {"x": 120, "y": 760, "width": 1680, "height": 180},
+    "text-style": "display",
+    "color": "background",
+    "text-stroke": "accent",
+    "text-stroke-weight": 3
+  }
+]
+```
+
+![The type slide, as MarkdownPoint draws it](images/words-type.png)
+
+`auto-size` names the sides that grow, here the height. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its width in canvas units.
+
 ## Steps
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.
