@@ -1,0 +1,48 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "presentation",
+  "id": "af844d36-9fc5-492e-a487-5ad3a9c01761",
+  "theme": "basic",
+  "soundtrack": {"file":"media/chord.m4a","fade-in":2,"fade-out":3},
+  "slides": {
+    "play": {
+      "layout": "blank",
+      "scheme": "lilac",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "text-style": "title"
+        },
+
+        {
+          "id": "clip",
+          "type": "video",
+          "file": "media/hills.mp4",
+          "frame": {"x":120,"y":330,"width":960,"height":540},
+          "alt": "A slow zoom on green hills under a low sun",
+          "media-trim": {"start":1,"end":5}
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {"x":1160,"y":330,"width":640,"height":300},
+          "text-style": "body"
+        },
+
+        {
+          "id": "chime",
+          "type": "audio",
+          "file": "media/chord.m4a",
+          "name": "Chord",
+          "position": {"x":1160,"y":700},
+          "start-on-click": false,
+          "fade-in": 0.5,
+          "fade-out": 1.5
+        }
+      ]
+    }
+  }
+}

@@ -318,6 +318,44 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
+## Sound and video
+
+A video or a sound waits for a click to play. With `start-on-click` set to false, it starts when its slide appears. `media-trim` plays part of its file, from `start` to `end` in seconds:
+
+```json
+{
+  "id": "clip",
+  "type": "video",
+  "file": "media/hills.mp4",
+  "frame": {"x": 120, "y": 330, "width": 960, "height": 540},
+  "alt": "A slow zoom on green hills under a low sun",
+  "media-trim": {"start": 1, "end": 5}
+}
+```
+
+A sound's `fade-in` and `fade-out` are in seconds:
+
+```json
+{
+  "id": "chime",
+  "type": "audio",
+  "file": "media/chord.m4a",
+  "name": "Chord",
+  "position": {"x": 1160, "y": 700},
+  "start-on-click": false,
+  "fade-in": 0.5,
+  "fade-out": 1.5
+}
+```
+
+![The play slide, as MarkdownPoint draws it](images/sound-and-video-play.png)
+
+`soundtrack` plays one sound under the whole presentation, with fades of its own:
+
+```json
+{"file": "media/chord.m4a", "fade-in": 2, "fade-out": 3}
+```
+
 ## Steps
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.
