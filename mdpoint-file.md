@@ -95,6 +95,30 @@ Saves preserve formatting in unchanged parts of the file. Edited parts use Markd
 
 The keys in `slides` match the slide IDs in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. A scheme or override value the slide states stays, even one that equals the inherited value, so a later theme change leaves it as it is. Only a reset removes it. The slide then follows changes to that value in the theme.
 
+## Presentation settings
+
+Settings for the whole presentation stand beside `slides`:
+
+```json
+{
+  "markdownpoint": "1.0",
+  "kind": "presentation",
+  "id": "318494ee-4e44-456f-818a-ec761b41fec2",
+  "theme": "basic",
+  "countdown": 600,
+  "default-text-style": {"text-style": "body", "color": "accent"},
+  "image-style": "Flat illustration",
+  "swatches": ["#2F7D4F", "#FA7B26"],
+  "slides": {
+    "close": {"layout": "one-liner"},
+    "points": {"layout": "content-with-header", "scheme": "sky"},
+    "title": {"layout": "title"}
+  }
+}
+```
+
+`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box takes `default-text-style`. `swatches` are the colors saved for this presentation. A generated image that names no style of its own is made in `image-style`.
+
 ## Objects
 
 `objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size: 1920 by 1080 here.
