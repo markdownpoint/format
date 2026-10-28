@@ -1,0 +1,103 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "presentation",
+  "id": "b3f8ddb9-7a67-467a-95be-9bd78347d8fa",
+  "theme": "basic",
+  "slides": {
+    "constraints": {
+      "layout": "blank",
+      "scheme": "dark",
+      "overrides": {
+        "camera": {
+          "constraints": [{"id":"follow","type":"position","target":"mug","axes":["x"],"offset":false,"strength":0.25}],
+          "motion-blur": {"frame-position":"start"}
+        }
+      },
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "text-style": "title"
+        },
+
+        {
+          "id": "floor",
+          "type": "floor",
+          "position": {"y":160}
+        },
+
+        {
+          "id": "lamp",
+          "type": "model",
+          "file": "media/house-bedside-lamp-42da7f4e.glb",
+          "name": "Lamp",
+          "position": {"x":640,"y":160,"z":0},
+          "constraints": [{"id":"look","type":"aim","owner-joint":"shade","target":"mug","axis":"-y","strength":0.5}],
+          "alt": "A bedside lamp whose shade turns toward a mug"
+        },
+
+        {
+          "id": "mug",
+          "type": "model",
+          "file": "media/coffee-cup-baf4d2ac.glb",
+          "name": "Mug",
+          "position": {"x":1260,"y":160,"z":0},
+          "rotation-mode": "quaternion",
+          "rotation": {"w":0.965926,"x":0,"y":-0.258819,"z":0},
+          "scale": {"x":3,"y":3,"z":3},
+          "constraints": [{"id":"stretch","type":"squash-and-stretch","mode":"single-axis","free-axis":"x","volume":0.9,"strength":0.9}],
+          "alt": "A coffee mug"
+        },
+
+        {
+          "id": "bulb",
+          "type": "light",
+          "light-type": "point",
+          "name": "Bulb",
+          "parent": "lamp",
+          "position": {"x":0,"y":430,"z":0},
+          "color": "#FFD9A8",
+          "intensity": 40
+        },
+
+        {
+          "id": "key",
+          "type": "light",
+          "light-type": "area",
+          "name": "Key",
+          "position": {"x":300,"y":1400,"z":1600},
+          "target": {"x":960,"y":300,"z":0},
+          "color": "#FFF1E0",
+          "intensity": 30,
+          "cast-shadow": true,
+          "size-x": 1200,
+          "size-y": 1200
+        }
+      ],
+      "initial": {
+        "mug.position.x": 1720
+      },
+      "steps": [
+        {
+          "id": "arrive",
+          "start": "after",
+          "duration": 0.5,
+          "curves": {
+            "mug.position.x": {
+              "keys": [
+                {"id":"stops","time":0.4,"value":1260,"interpolation":"ease-out"}
+              ]
+            },
+            "mug.scale.x": {
+              "keys": [
+                {"id":"stretched","time":0.15,"value":3.6},
+                {"id":"settled","time":0.45,"value":3,"interpolation":"ease-out"}
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

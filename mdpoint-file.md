@@ -398,6 +398,69 @@ A sound's `fade-in` and `fade-out` are in seconds:
 {"file": "media/chord.m4a", "fade-in": 2, "fade-out": 3}
 ```
 
+## 3D
+
+Models, lights and the camera stand in a 3D space. A constraint ties one of them to another. `aim` turns a model, or the node of it that `owner-joint` names, toward a target. `squash-and-stretch` keeps a model's volume while a step scales it:
+
+```json
+[
+  {
+    "id": "look",
+    "type": "aim",
+    "owner-joint": "shade",
+    "target": "mug",
+    "axis": "-y",
+    "strength": 0.5
+  }
+]
+```
+
+```json
+{
+  "id": "mug",
+  "type": "model",
+  "file": "media/coffee-cup-baf4d2ac.glb",
+  "name": "Mug",
+  "position": {"x": 1260, "y": 160, "z": 0},
+  "rotation-mode": "quaternion",
+  "rotation": {"w": 0.965926, "x": 0, "y": -0.258819, "z": 0},
+  "scale": {"x": 3, "y": 3, "z": 3},
+  "constraints": [
+    {
+      "id": "stretch",
+      "type": "squash-and-stretch",
+      "mode": "single-axis",
+      "free-axis": "x",
+      "volume": 0.9,
+      "strength": 0.9
+    }
+  ],
+  "alt": "A coffee mug"
+}
+```
+
+The camera stands on the master. A slide changes it in `overrides`. Its `position` constraint follows an object, and its `motion-blur` blurs the 3D layer in films:
+
+```json
+{
+  "constraints": [
+    {
+      "id": "follow",
+      "type": "position",
+      "target": "mug",
+      "axes": ["x"],
+      "offset": false,
+      "strength": 0.25
+    }
+  ],
+  "motion-blur": {"frame-position": "start"}
+}
+```
+
+![The constraints slide, as MarkdownPoint draws it](images/space-constraints.png)
+
+A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to `quaternion`, it's written as w, x, y and z.
+
 ## Steps
 
 `initial` sets a property's value at the start of the slide, as `object.property`. Here the card starts hidden.
