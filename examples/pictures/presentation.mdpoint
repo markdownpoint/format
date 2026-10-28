@@ -105,6 +105,55 @@
           "text-style": "title"
         }
       ]
+    },
+    "generate": {
+      "layout": "blank",
+      "scheme": "butter",
+      "background": {"prompt":"Paper leaves cut out along the slide's lower edge","image-style":"Paper cutout","transparent":true},
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "text-style": "title"
+        },
+
+        {
+          "id": "boat",
+          "type": "image",
+          "frame": {"x":120,"y":340,"width":760,"height":428},
+          "stroke": "muted",
+          "stroke-weight": 4,
+          "stroke-style": "dashed",
+          "alt": "A red paper boat",
+          "transparent": true,
+          "prompt": "A red paper boat on calm water",
+          "image-style": "Flat illustration"
+        },
+
+        {
+          "id": "chalk",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {"x":1040,"y":340,"width":760,"height":428},
+          "alt": "Green hills under a low sun",
+          "restyle": {"name":"Chalk","reference-prompt":"A harbor at dawn","prompt":"Redraw it in white chalk on a blackboard"}
+        },
+
+        {
+          "id": "boat-label",
+          "type": "text",
+          "frame": {"x":120,"y":800,"width":760,"height":60},
+          "text-style": "meta"
+        },
+
+        {
+          "id": "chalk-label",
+          "type": "text",
+          "frame": {"x":1040,"y":800,"width":760,"height":60},
+          "text-style": "meta"
+        }
+      ]
     }
   }
 }

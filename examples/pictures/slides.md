@@ -35,3 +35,17 @@ A background with a shadow==.==
 
 <!-- notes -->
 The sun is a PNG with transparency. Its drop shadow follows the shape.
+
+<!-- slide: generate -->
+
+<!-- text: heading -->
+Pictures to generate==.==
+
+<!-- text: boat-label -->
+prompt
+
+<!-- text: chalk-label -->
+restyle Chalk
+
+<!-- notes -->
+Nothing here has been generated yet. The background and the boat hold a prompt, a style and whether the picture is transparent. The hills carry a restyle. MarkdownPoint makes each picture when the author generates it.

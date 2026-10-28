@@ -318,6 +318,48 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
+A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/:
+
+```json
+{
+  "id": "boat",
+  "type": "image",
+  "frame": {"x": 120, "y": 340, "width": 760, "height": 428},
+  "stroke": "muted",
+  "stroke-weight": 4,
+  "stroke-style": "dashed",
+  "alt": "A red paper boat",
+  "transparent": true,
+  "prompt": "A red paper boat on calm water",
+  "image-style": "Flat illustration"
+}
+```
+
+```json
+{
+  "id": "chalk",
+  "type": "image",
+  "file": "media/hills.png",
+  "frame": {"x": 1040, "y": 340, "width": 760, "height": 428},
+  "alt": "Green hills under a low sun",
+  "restyle": {
+    "name": "Chalk",
+    "reference-prompt": "A harbor at dawn",
+    "prompt": "Redraw it in white chalk on a blackboard"
+  }
+}
+```
+
+```json
+{
+  "prompt": "Paper leaves cut out along the slide's lower edge",
+  "image-style": "Paper cutout",
+  "transparent": true
+}
+```
+
+![The generate slide, as MarkdownPoint draws it](images/pictures-generate.png)
+
 ## Sound and video
 
 A video or a sound waits for a click to play. With `start-on-click` set to false, it starts when its slide appears. `media-trim` plays part of its file, from `start` to `end` in seconds:
