@@ -1,7 +1,6 @@
 ---
 markdownpoint: "1.0"
 id: 9d98709f-0aac-407e-b6d3-56da6b8494aa
-save: 4e74ff61-4981-482b-bf67-6bc16dc09b79
 ---
 
 <!-- section: words -->
