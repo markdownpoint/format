@@ -574,7 +574,7 @@
           "type": "text",
           "frame": {"x":120,"y":680,"width":1680,"height":200},
           "text-style": "body",
-          "exit": {"based-on":"character","to":{"opacity":0,"rotation":90,"blur":0.4},"spaces":true,"order":"random","seed":3,"spread":6,"pause":8,"progress":1}
+          "exit": {"based-on":"character","to":{"opacity":0,"rotation":90,"blur":0.8},"spaces":true,"order":"random","seed":3,"spread":6,"pause":8,"progress":1}
         }
       ],
       "steps": [
