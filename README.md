@@ -82,9 +82,9 @@ To start a presentation by hand, copy an example's whole folder. Its `themes` fo
 
 Versions are stored in numbered folders. For example, `versions/12/` contains `slides.md` and a copy of `presentation.mdpoint` named `presentation.json`. `versions/versions.json` lists each version's number, save time and optional name.
 
-“Delete Theme” won't remove a theme used by a saved version. “Delete Unused Media” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
+“Delete Theme” won't remove a theme used by a saved version. “File › Clean Up…” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
 
-While a version is still arriving through a sync service, theme deletion and unused-media cleanup are disabled.
+While a version is still arriving through a sync service, no theme can be deleted and Clean Up deletes nothing.
 
 Include `versions/` in git if you want to keep the saved versions with the presentation.
 
