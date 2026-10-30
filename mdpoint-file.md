@@ -89,7 +89,7 @@ The slide's objects and motion are in the .mdpoint file:
 }
 ```
 
-Saved JSON uses one line per object property, with blank lines between objects and overrides. The examples on this page use a more compact layout.
+Saved JSON gives a line of its own to each object property and to each key inside a `frame` or a `transition`. A blank line separates one object or override from the next. A line-based merge such as Git's then keeps most separate edits apart. Edits to the same or touching lines still conflict. A move and a resize of the same object change touching lines. The examples on this page use a more compact layout.
 
 Saves preserve formatting in unchanged parts of the file. Edited parts use MarkdownPoint's standard format: a fixed key order, omitted defaults and most numbers rounded to six decimal places. Text-only saves leave the .mdpoint file unchanged. Run `mdpoint format` to reformat both files.
 

@@ -11,7 +11,11 @@
         {
           "id": "specs",
           "type": "table",
-          "frame": {"x":120,"y":340,"width":760},
+          "frame": {
+            "x": 120,
+            "y": 340,
+            "width": 760
+          },
           "text-style": "body",
           "columns": [380,380],
           "header-row": false,
@@ -21,7 +25,12 @@
         {
           "id": "sales",
           "type": "chart",
-          "frame": {"x":1000,"y":340,"width":800,"height":420},
+          "frame": {
+            "x": 1000,
+            "y": 340,
+            "width": 800,
+            "height": 420
+          },
           "colors": ["text","accent"]
         },
 
@@ -29,7 +38,12 @@
           "id": "visitors",
           "type": "chart",
           "chart-type": "counter",
-          "frame": {"x":120,"y":760,"width":760,"height":200},
+          "frame": {
+            "x": 120,
+            "y": 760,
+            "width": 760,
+            "height": 200
+          },
           "progress": 0.5,
           "roll": true,
           "leading-zero-opacity": 0.4
@@ -63,7 +77,11 @@
         {
           "id": "prices",
           "type": "table",
-          "frame": {"x":120,"y":380,"width":1680},
+          "frame": {
+            "x": 120,
+            "y": 380,
+            "width": 1680
+          },
           "inset": 24,
           "text-style": "body",
           "columns": [840,420,420],
@@ -79,7 +97,11 @@
         {
           "id": "grows",
           "type": "text",
-          "frame": {"x":120,"y":340,"width":760},
+          "frame": {
+            "x": 120,
+            "y": 340,
+            "width": 760
+          },
           "text-style": "body",
           "auto-size": "height"
         },
@@ -87,7 +109,12 @@
         {
           "id": "figures",
           "type": "text",
-          "frame": {"x":1100,"y":340,"width":700,"height":400},
+          "frame": {
+            "x": 1100,
+            "y": 340,
+            "width": 700,
+            "height": 400
+          },
           "text-style": "body",
           "align": "right",
           "tabular": true
@@ -96,7 +123,12 @@
         {
           "id": "outline",
           "type": "text",
-          "frame": {"x":120,"y":760,"width":1680,"height":180},
+          "frame": {
+            "x": 120,
+            "y": 760,
+            "width": 1680,
+            "height": 180
+          },
           "text-style": "display",
           "color": "background",
           "text-stroke": "accent",

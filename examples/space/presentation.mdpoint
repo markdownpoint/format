@@ -17,7 +17,12 @@
         {
           "id": "heading",
           "type": "text",
-          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "frame": {
+            "x": 120,
+            "y": 110,
+            "width": 1680,
+            "height": 150
+          },
           "text-style": "title"
         },
 

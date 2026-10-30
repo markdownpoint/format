@@ -62,7 +62,12 @@
       "id": "mark",
       "type": "image",
       "file": {"light":"media/mark-on-light.svg","dark":"media/mark-on-dark.svg"},
-      "frame": {"x":1712,"y":72,"width":88,"height":88},
+      "frame": {
+        "x": 1712,
+        "y": 72,
+        "width": 88,
+        "height": 88
+      },
       "alt": "Studio's mark"
     }
   ]

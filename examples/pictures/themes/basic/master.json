@@ -148,7 +148,12 @@
       "id": "footer",
       "type": "text",
       "locked": true,
-      "frame": {"x":120,"y":1004.4,"width":1200,"height":43.2},
+      "frame": {
+        "x": 120,
+        "y": 1004.4,
+        "width": 1200,
+        "height": 43.2
+      },
       "text-style": "meta",
       "font-size": 24,
       "vertical-align": "center",
@@ -160,7 +165,12 @@
       "type": "text",
       "locked": true,
       "hidden": true,
-      "frame": {"x":1704,"y":1004.4,"width":96,"height":43.2},
+      "frame": {
+        "x": 1704,
+        "y": 1004.4,
+        "width": 96,
+        "height": 43.2
+      },
       "text-style": "meta",
       "font-size": 24,
       "align": "right",

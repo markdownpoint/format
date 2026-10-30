@@ -11,7 +11,12 @@
         {
           "id": "heading",
           "type": "text",
-          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "frame": {
+            "x": 120,
+            "y": 110,
+            "width": 1680,
+            "height": 150
+          },
           "text-style": "title"
         },
 
@@ -19,7 +24,12 @@
           "id": "card",
           "type": "shape",
           "shape": "rectangle",
-          "frame": {"x":120,"y":360,"width":720,"height":420},
+          "frame": {
+            "x": 120,
+            "y": 360,
+            "width": 720,
+            "height": 420
+          },
           "corner-radius": 32
         },
 
@@ -27,7 +37,12 @@
           "id": "dot",
           "type": "shape",
           "shape": "ellipse",
-          "frame": {"x":1320,"y":420,"width":300,"height":300},
+          "frame": {
+            "x": 1320,
+            "y": 420,
+            "width": 300,
+            "height": 300
+          },
           "fill": "text"
         },
 
@@ -43,7 +58,12 @@
         {
           "id": "caption",
           "type": "text",
-          "frame": {"x":120,"y":860,"width":1680,"height":80},
+          "frame": {
+            "x": 120,
+            "y": 860,
+            "width": 1680,
+            "height": 80
+          },
           "text-style": "body"
         }
       ],

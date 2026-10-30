@@ -7,7 +7,12 @@
       "id": "title",
       "type": "text",
       "placeholder": true,
-      "frame": {"x":120,"y":240,"width":1680,"height":260},
+      "frame": {
+        "x": 120,
+        "y": 240,
+        "width": 1680,
+        "height": 260
+      },
       "text-style": "title",
       "vertical-align": "bottom"
     },
@@ -16,7 +21,12 @@
       "id": "body",
       "type": "text",
       "placeholder": true,
-      "frame": {"x":120,"y":540,"width":1200,"height":360},
+      "frame": {
+        "x": 120,
+        "y": 540,
+        "width": 1200,
+        "height": 360
+      },
       "text-style": "body"
     }
   ],

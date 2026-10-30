@@ -11,7 +11,12 @@
         {
           "id": "heading",
           "type": "text",
-          "frame": {"x":120,"y":110,"width":1680,"height":150},
+          "frame": {
+            "x": 120,
+            "y": 110,
+            "width": 1680,
+            "height": 150
+          },
           "text-style": "title"
         },
 
@@ -26,7 +31,12 @@
           "type": "shape",
           "shape": "ellipse",
           "parent": "row",
-          "frame": {"x":0,"y":0,"width":360,"height":360},
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 360
+          },
           "fill": "text"
         },
 
@@ -35,7 +45,12 @@
           "type": "shape",
           "shape": "rectangle",
           "parent": "row",
-          "frame": {"x":0,"y":0,"width":480,"height":240},
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 480,
+            "height": 240
+          },
           "constrain-proportions": false,
           "corner-radius": 32
         },
@@ -45,7 +60,12 @@
           "type": "shape",
           "shape": "rectangle",
           "parent": "row",
-          "frame": {"x":0,"y":0,"width":360,"height":360},
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 360
+          },
           "fill": "text"
         }
       ]
