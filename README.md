@@ -75,6 +75,8 @@ Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. Those 
 
 Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder.
 
+Files and folders whose names start with `.markdownpoint` are MarkdownPoint's own, in the presentation's folder or beside it. They are never part of the presentation. Each example's `.gitignore` keeps them out of git with the line `.markdownpoint*`.
+
 To start a presentation by hand, copy an example's whole folder. Its `themes` folder holds Basic. With MarkdownPoint running, `mdpoint presentation create <folder>` makes a new presentation with Basic and opens it.
 
 ## Saved versions
