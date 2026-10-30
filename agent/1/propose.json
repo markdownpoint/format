@@ -2433,8 +2433,8 @@
         "type": {
           "const": "audio"
         },
-        "position": {
-          "$ref": "#/definitions/Prop_position"
+        "icon-position": {
+          "$ref": "#/definitions/Prop_icon-position"
         },
         "start-on-click": {
           "$ref": "#/definitions/Prop_locked"
@@ -2469,7 +2469,7 @@
       },
       "required": [
         "type",
-        "position",
+        "icon-position",
         "file"
       ],
       "additionalProperties": false
@@ -2747,7 +2747,7 @@
           "$ref": "#/definitions/Prop_stroke-weight"
         },
         "icon": {
-          "$ref": "#/definitions/Prop_icon"
+          "$ref": "#/definitions/Prop_icon1"
         }
       },
       "required": [
@@ -2997,8 +2997,8 @@
         "source": {
           "type": "string"
         },
-        "controls": {
-          "$ref": "#/definitions/Prop_controls"
+        "inputs": {
+          "$ref": "#/definitions/Prop_inputs"
         },
         "time-remap": {
           "$ref": "#/definitions/Prop_fade-in"
@@ -3160,7 +3160,7 @@
           "const": "model"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -3249,7 +3249,7 @@
           "$ref": "#/definitions/Prop_light-type"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -3261,7 +3261,7 @@
           "$ref": "#/definitions/Prop_scale2"
         },
         "target": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "color": {
           "$ref": "#/definitions/Prop_text-stroke"
@@ -3348,7 +3348,7 @@
           "const": "shadow-catcher"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -3433,7 +3433,7 @@
           "$ref": "#/definitions/Prop_locked"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position2"
+          "$ref": "#/definitions/Prop_position1"
         }
       },
       "required": [
@@ -5192,7 +5192,7 @@
               "const": "icon"
             },
             "value": {
-              "$ref": "#/definitions/Prop_icon"
+              "$ref": "#/definitions/Prop_icon1"
             }
           },
           "required": [
@@ -5510,7 +5510,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_position1"
+                  "$ref": "#/definitions/Prop_position"
                 },
                 {
                   "type": "null"
@@ -6120,12 +6120,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "controls"
+              "const": "inputs"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_controls"
+                  "$ref": "#/definitions/Prop_inputs"
                 },
                 {
                   "type": "null"
@@ -6886,7 +6886,7 @@
         "use-as-mask",
         "repeater",
         "source",
-        "controls",
+        "inputs",
         "time-remap",
         "chart-type",
         "progress",
@@ -6919,22 +6919,6 @@
     },
     "AgentObjectTransformSource": {
       "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "type": "string"
-            },
-            "position": {
-              "$ref": "#/definitions/PresentationPoint"
-            }
-          },
-          "required": [
-            "objectId",
-            "position"
-          ],
-          "additionalProperties": false
-        },
         {
           "type": "object",
           "properties": {
@@ -7002,6 +6986,22 @@
             "objectId": {
               "type": "string"
             },
+            "icon-position": {
+              "$ref": "#/definitions/AgentPoint"
+            }
+          },
+          "required": [
+            "objectId",
+            "icon-position"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "objectId": {
+              "type": "string"
+            },
             "start": {
               "$ref": "#/definitions/AgentConnectorEndpoint"
             },
@@ -7015,7 +7015,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names a line's ends."
+      "description": "A transform as the file names an audio icon's place and a line's ends."
     },
     "AgentSpaceTransform": {
       "type": "object",
@@ -7799,8 +7799,8 @@
         "type": {
           "const": "audio"
         },
-        "position": {
-          "$ref": "#/definitions/Prop_position"
+        "icon-position": {
+          "$ref": "#/definitions/Prop_icon-position"
         },
         "start-on-click": {
           "$ref": "#/definitions/Prop_locked"
@@ -7835,7 +7835,7 @@
       },
       "required": [
         "type",
-        "position",
+        "icon-position",
         "file"
       ],
       "additionalProperties": false
@@ -8217,7 +8217,7 @@
           "$ref": "#/definitions/Prop_stroke-weight"
         },
         "icon": {
-          "$ref": "#/definitions/Prop_icon"
+          "$ref": "#/definitions/Prop_icon1"
         }
       },
       "required": [
@@ -8449,8 +8449,8 @@
         "source": {
           "type": "string"
         },
-        "controls": {
-          "$ref": "#/definitions/Prop_controls"
+        "inputs": {
+          "$ref": "#/definitions/Prop_inputs"
         },
         "time-remap": {
           "$ref": "#/definitions/Prop_fade-in"
@@ -8618,7 +8618,7 @@
           "const": "model"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -8699,7 +8699,7 @@
           "$ref": "#/definitions/Prop_light-type"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -8711,7 +8711,7 @@
           "$ref": "#/definitions/Prop_scale2"
         },
         "target": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "color": {
           "$ref": "#/definitions/Prop_text-stroke"
@@ -8801,7 +8801,7 @@
           "const": "shadow-catcher"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position1"
+          "$ref": "#/definitions/Prop_position"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -8889,7 +8889,7 @@
           "$ref": "#/definitions/Prop_locked"
         },
         "position": {
-          "$ref": "#/definitions/Prop_position2"
+          "$ref": "#/definitions/Prop_position1"
         }
       },
       "required": [
@@ -11769,7 +11769,7 @@
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
       "description": "a normalized relative file path"
     },
-    "Prop_position": {
+    "Prop_icon-position": {
       "$ref": "#/definitions/Same14"
     },
     "Prop_url": {
@@ -11835,7 +11835,7 @@
       ],
       "additionalProperties": false
     },
-    "Prop_icon": {
+    "Prop_icon1": {
       "type": "string",
       "description": "a bundled Lucide icon’s name"
     },
@@ -11925,7 +11925,7 @@
       "additionalProperties": false,
       "description": "An auto layout as the file spells it, its reference point `reference-point`, left out at start."
     },
-    "Prop_controls": {
+    "Prop_inputs": {
       "$ref": "#/definitions/Same48"
     },
     "Prop_align1": {
@@ -11970,7 +11970,7 @@
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
       "description": "a normalized relative file path"
     },
-    "Prop_position1": {
+    "Prop_position": {
       "$ref": "#/definitions/Same54"
     },
     "Prop_rotation-mode": {
@@ -12142,7 +12142,7 @@
       ],
       "description": "The axis a shadow catcher's face looks along at no turn: y lying flat, z standing as a wall."
     },
-    "Prop_position2": {
+    "Prop_position1": {
       "$ref": "#/definitions/Same63"
     },
     "Prop_fill-rule": {

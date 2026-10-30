@@ -1581,7 +1581,7 @@
                   }
                 ]
               },
-              "controls": {
+              "inputs": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -1756,7 +1756,7 @@
                   }
                 ]
               },
-              "position": {
+              "icon-position": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -1781,6 +1781,23 @@
                   },
                   {
                     "$ref": "#/definitions/start"
+                  }
+                ]
+              },
+              "url": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/definitions/url"
+                  }
+                ]
+              },
+              "position": {
+                "anyOf": [
+                  {
+                    "type": "null"
                   },
                   {
                     "type": "object",
@@ -1823,16 +1840,6 @@
                   },
                   {
                     "$ref": "#/definitions/floor-position"
-                  }
-                ]
-              },
-              "url": {
-                "anyOf": [
-                  {
-                    "type": "null"
-                  },
-                  {
-                    "$ref": "#/definitions/url"
                   }
                 ]
               },
@@ -4418,7 +4425,7 @@
                       }
                     ]
                   },
-                  "position": {
+                  "icon-position": {
                     "$ref": "#/definitions/start"
                   },
                   "locked": {
@@ -4461,7 +4468,7 @@
                 "required": [
                   "id",
                   "type",
-                  "position"
+                  "icon-position"
                 ],
                 "additionalProperties": false
               },

@@ -385,7 +385,7 @@ A sound's `fade-in` and `fade-out` are in seconds:
   "type": "audio",
   "file": "media/chord.m4a",
   "name": "Chord",
-  "position": {"x": 1160, "y": 700},
+  "icon-position": {"x": 1160, "y": 700},
   "start-on-click": false,
   "fade-in": 0.5,
   "fade-out": 1.5

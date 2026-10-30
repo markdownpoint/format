@@ -1788,7 +1788,7 @@
                         }
                       ]
                     },
-                    "controls": {
+                    "inputs": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -1946,7 +1946,7 @@
                         }
                       ]
                     },
-                    "position": {
+                    "icon-position": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -1971,6 +1971,23 @@
                         },
                         {
                           "$ref": "#/definitions/start"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/definitions/url"
+                        }
+                      ]
+                    },
+                    "position": {
+                      "anyOf": [
+                        {
+                          "type": "null"
                         },
                         {
                           "type": "object",
@@ -2013,16 +2030,6 @@
                         },
                         {
                           "$ref": "#/definitions/floor-position"
-                        }
-                      ]
-                    },
-                    "url": {
-                      "anyOf": [
-                        {
-                          "type": "null"
-                        },
-                        {
-                          "$ref": "#/definitions/url"
                         }
                       ]
                     },
@@ -4221,7 +4228,7 @@
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
           "description": "a normalized relative file path"
         },
-        "position": {
+        "icon-position": {
           "$ref": "#/definitions/start"
         },
         "locked": {
@@ -4261,7 +4268,7 @@
       "required": [
         "id",
         "type",
-        "position"
+        "icon-position"
       ],
       "additionalProperties": false
     },
@@ -4502,7 +4509,7 @@
           "type": "string",
           "description": "a composition slide id"
         },
-        "controls": {
+        "inputs": {
           "$ref": "#/definitions/control-name"
         },
         "time-remap": {

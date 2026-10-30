@@ -2819,7 +2819,7 @@
                   }
                 ]
               },
-              "position": {
+              "icon-position": {
                 "$ref": "#/definitions/start"
               },
               "locked": {
@@ -2862,7 +2862,7 @@
             "required": [
               "id",
               "type",
-              "position"
+              "icon-position"
             ],
             "additionalProperties": false
           },

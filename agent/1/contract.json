@@ -8881,7 +8881,7 @@
           "type": "string",
           "const": "audio"
         },
-        "position": {
+        "icon-position": {
           "$ref": "#/definitions/PresentationPoint"
         },
         "start-on-click": {
@@ -8933,7 +8933,7 @@
       },
       "required": [
         "type",
-        "position"
+        "icon-position"
       ],
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
@@ -9604,7 +9604,7 @@
         "source": {
           "type": "string"
         },
-        "controls": {
+        "inputs": {
           "$ref": "#/definitions/CompositionInputValues"
         },
         "time-remap": {
@@ -10683,7 +10683,7 @@
         "use-as-mask",
         "repeater",
         "source",
-        "controls",
+        "inputs",
         "time-remap",
         "chart-type",
         "progress",
@@ -10716,22 +10716,6 @@
     },
     "AgentObjectTransformSource": {
       "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "type": "string"
-            },
-            "position": {
-              "$ref": "#/definitions/AgentPoint"
-            }
-          },
-          "required": [
-            "objectId",
-            "position"
-          ],
-          "additionalProperties": false
-        },
         {
           "type": "object",
           "properties": {
@@ -10799,6 +10783,22 @@
             "objectId": {
               "type": "string"
             },
+            "icon-position": {
+              "$ref": "#/definitions/AgentPoint"
+            }
+          },
+          "required": [
+            "objectId",
+            "icon-position"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "objectId": {
+              "type": "string"
+            },
             "start": {
               "$ref": "#/definitions/AgentConnectorEndpoint"
             },
@@ -10812,7 +10812,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names a line's ends."
+      "description": "A transform as the file names an audio icon's place and a line's ends."
     },
     "AgentSpaceTransform": {
       "type": "object",
@@ -11702,7 +11702,7 @@
           "type": "string",
           "const": "audio"
         },
-        "position": {
+        "icon-position": {
           "$ref": "#/definitions/PresentationPoint"
         },
         "start-on-click": {
@@ -11763,7 +11763,7 @@
       },
       "required": [
         "type",
-        "position"
+        "icon-position"
       ],
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
@@ -12443,7 +12443,7 @@
         "source": {
           "type": "string"
         },
-        "controls": {
+        "inputs": {
           "$ref": "#/definitions/CompositionInputValues"
         },
         "time-remap": {
