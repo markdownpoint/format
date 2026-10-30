@@ -30,8 +30,7 @@
           "type": "object",
           "properties": {
             "type": {
-              "const": "presentation-background",
-              "description": "The presentation's background, a slide's background, or an image object."
+              "const": "presentation-background"
             }
           },
           "required": [
@@ -43,8 +42,7 @@
           "type": "object",
           "properties": {
             "type": {
-              "const": "slide-background",
-              "description": "The presentation's background, a slide's background, or an image object."
+              "const": "slide-background"
             },
             "slide-id": {
               "allOf": [
@@ -65,8 +63,7 @@
           "type": "object",
           "properties": {
             "type": {
-              "const": "image-object",
-              "description": "The presentation's background, a slide's background, or an image object."
+              "const": "image-object"
             },
             "slide-id": {
               "allOf": [
@@ -77,11 +74,8 @@
               "description": "The slide's id."
             },
             "object-id": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/slide-id"
-                }
-              ],
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
               "description": "The image object's id."
             }
           },
@@ -131,7 +125,7 @@
         "model": {
           "allOf": [
             {
-              "$ref": "#/definitions/model"
+              "$ref": "#/definitions/one-line"
             }
           ],
           "description": "The image model's name, on one line."
@@ -155,7 +149,7 @@
             "size": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/model"
+                  "$ref": "#/definitions/one-line"
                 }
               ],
               "description": "The size asked for, in the model's own words, on one line."
@@ -163,7 +157,7 @@
             "quality": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/model"
+                  "$ref": "#/definitions/one-line"
                 },
                 {
                   "type": "null"
@@ -198,18 +192,25 @@
               "description": "The SHA-256 digest of its bytes, as 64 lowercase hexadecimal digits."
             },
             "generated": {
+              "description": "What it was generated from, where it was generated.",
               "type": "object",
               "properties": {
                 "prompt": {
                   "type": "string",
                   "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                  "description": "text that isn’t blank"
+                  "description": "The prompt it was made from, as text that isn't blank."
                 },
                 "aspect-ratio": {
-                  "$ref": "#/definitions/aspect-ratio"
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/aspect-ratio"
+                    }
+                  ],
+                  "description": "The proportions it was made in, as width:height in whole numbers from 1 with no leading zero, such as 16:9."
                 },
                 "transparent": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Whether it was made with a transparent background."
                 }
               },
               "required": [
@@ -217,8 +218,7 @@
                 "aspect-ratio",
                 "transparent"
               ],
-              "additionalProperties": false,
-              "description": "What it was generated from, where it was generated."
+              "additionalProperties": false
             }
           },
           "required": [
@@ -299,7 +299,7 @@
       "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
       "description": "width:height in whole numbers, such as 16:9"
     },
-    "model": {
+    "one-line": {
       "type": "string",
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
       "description": "one line"

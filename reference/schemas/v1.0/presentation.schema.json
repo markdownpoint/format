@@ -51,66 +51,68 @@
       "description": "The transition from every slide to the next, unless the slide sets its own. Left out, slides cross-dissolve over 0.5 seconds."
     },
     "soundtrack": {
+      "description": "Music that plays under the whole presentation.",
       "type": "object",
       "properties": {
         "file": {
           "type": "string",
           "pattern": "\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-          "description": "an audio file in the presentation’s media or generated folder"
+          "description": "The sound, as a presentation's file path."
         },
         "loop": {
-          "const": "repeat"
+          "const": "repeat",
+          "description": "`repeat` plays it again from the start when it ends. Left out, it plays once."
         },
         "volume": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "fraction"
+          "description": "How loud it plays."
         },
         "fade-in": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "seconds"
+          "description": "How long it takes to rise from silence."
         },
         "fade-out": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "seconds"
+          "description": "How long it takes to fall to silence at the end."
         }
       },
       "required": [
         "file"
       ],
-      "additionalProperties": false,
-      "description": "Music that plays under the whole presentation."
+      "additionalProperties": false
     },
     "self-playing": {
+      "description": "Settings for playing the presentation on its own, as at a kiosk.",
       "type": "object",
       "properties": {
         "slide-delay": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "seconds"
+          "description": "How long each slide stays after its last step before the next one."
         },
         "step-delay": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "seconds"
+          "description": "How long the presentation waits before each step that would wait for a click."
         },
         "loop": {
-          "const": "repeat"
+          "const": "repeat",
+          "description": "`repeat` starts it over after the last slide. Left out, it stops there."
         }
       },
       "required": [
         "slide-delay",
         "step-delay"
       ],
-      "additionalProperties": false,
-      "description": "Settings for playing the presentation on its own, as at a kiosk."
+      "additionalProperties": false
     },
     "countdown": {
       "type": "integer",
@@ -124,15 +126,21 @@
           "const": "none"
         },
         {
+          "description": "What a new text box starts with. Without this key, or with an empty record, a new text box takes the body style. `\"none\"` gives it none.",
           "type": "object",
           "properties": {
             "text-style": {
               "type": "string",
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-              "description": "a text style name"
+              "description": "The text style."
             },
             "color": {
-              "$ref": "#/definitions/fill-2"
+              "allOf": [
+                {
+                  "$ref": "#/definitions/color"
+                }
+              ],
+              "description": "The color: a color role or a hex color."
             }
           },
           "additionalProperties": false
@@ -180,7 +188,7 @@
           "scheme": {
             "allOf": [
               {
-                "$ref": "#/definitions/scheme"
+                "$ref": "#/definitions/scheme-name"
               }
             ],
             "description": "The slide's color scheme. Left out, it uses its layout's. One the theme lacks stays as written, and the slide shows its layout's, or light, until the theme has it again."
@@ -225,7 +233,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/name"
+                          "$ref": "#/definitions/one-line"
                         }
                       ]
                     },
@@ -235,7 +243,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/parent"
+                          "$ref": "#/definitions/object-id"
                         }
                       ]
                     },
@@ -280,7 +288,34 @@
                               "$ref": "#/definitions/frame"
                             },
                             {
-                              "$ref": "#/definitions/frame-2"
+                              "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+                              "type": "object",
+                              "properties": {
+                                "x": {
+                                  "type": "number",
+                                  "minimum": -65536,
+                                  "maximum": 65536,
+                                  "description": "Where the left edge is, across."
+                                },
+                                "y": {
+                                  "type": "number",
+                                  "minimum": -65536,
+                                  "maximum": 65536,
+                                  "description": "Where the top edge is, down."
+                                },
+                                "width": {
+                                  "type": "number",
+                                  "minimum": 0.000001,
+                                  "maximum": 65536,
+                                  "description": "The width."
+                                }
+                              },
+                              "required": [
+                                "x",
+                                "y",
+                                "width"
+                              ],
+                              "additionalProperties": false
                             }
                           ]
                         },
@@ -309,7 +344,34 @@
                           "additionalProperties": false
                         },
                         {
-                          "$ref": "#/definitions/frame-2"
+                          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "type": "number",
+                              "minimum": -65536,
+                              "maximum": 65536,
+                              "description": "Where the left edge is, across."
+                            },
+                            "y": {
+                              "type": "number",
+                              "minimum": -65536,
+                              "maximum": 65536,
+                              "description": "Where the top edge is, down."
+                            },
+                            "width": {
+                              "type": "number",
+                              "minimum": 0.000001,
+                              "maximum": 65536,
+                              "description": "The width."
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y",
+                            "width"
+                          ],
+                          "additionalProperties": false
                         },
                         {
                           "$ref": "#/definitions/frame"
@@ -354,10 +416,44 @@
                         {
                           "anyOf": [
                             {
-                              "$ref": "#/definitions/rotation"
+                              "$ref": "#/definitions/space-rotation"
                             },
                             {
-                              "$ref": "#/definitions/rotation-2"
+                              "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+                              "type": "object",
+                              "properties": {
+                                "w": {
+                                  "type": "number",
+                                  "minimum": -8589934592,
+                                  "maximum": 8589934592,
+                                  "description": "A quaternion's w, in quaternion mode only."
+                                },
+                                "x": {
+                                  "type": "number",
+                                  "minimum": -8589934592,
+                                  "maximum": 8589934592,
+                                  "description": "Degrees about x, or a quaternion's x."
+                                },
+                                "y": {
+                                  "type": "number",
+                                  "minimum": -8589934592,
+                                  "maximum": 8589934592,
+                                  "description": "Degrees about y, or a quaternion's y."
+                                },
+                                "z": {
+                                  "type": "number",
+                                  "minimum": -8589934592,
+                                  "maximum": 8589934592,
+                                  "description": "Degrees about z, or a quaternion's z."
+                                }
+                              },
+                              "required": [
+                                "w",
+                                "x",
+                                "y",
+                                "z"
+                              ],
+                              "additionalProperties": false
                             }
                           ]
                         },
@@ -413,7 +509,7 @@
                           "additionalProperties": false
                         },
                         {
-                          "$ref": "#/definitions/scale"
+                          "$ref": "#/definitions/flat-scale"
                         },
                         {
                           "type": "object",
@@ -440,7 +536,7 @@
                           "additionalProperties": false
                         },
                         {
-                          "$ref": "#/definitions/scale-2"
+                          "$ref": "#/definitions/space-scale"
                         }
                       ]
                     },
@@ -556,7 +652,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/text-style"
+                          "$ref": "#/definitions/text-style-name"
                         }
                       ]
                     },
@@ -644,10 +740,17 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/color"
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/color"
+                            },
+                            {
+                              "$ref": "#/definitions/gradient"
+                            }
+                          ]
                         },
                         {
-                          "$ref": "#/definitions/fill-2"
+                          "$ref": "#/definitions/color"
                         }
                       ]
                     },
@@ -915,7 +1018,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/fill-2"
+                          "$ref": "#/definitions/color"
                         }
                       ]
                     },
@@ -978,7 +1081,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/bind"
+                          "$ref": "#/definitions/property-name"
                         }
                       ]
                     },
@@ -1008,10 +1111,17 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/fill-2"
+                          "$ref": "#/definitions/color"
                         },
                         {
-                          "$ref": "#/definitions/color"
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/color"
+                            },
+                            {
+                              "$ref": "#/definitions/gradient"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -1306,10 +1416,12 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/alt"
+                          "type": "string",
+                          "pattern": "^[^\\r\\n]*(?![\\s\\S])",
+                          "description": "one line"
                         },
                         {
-                          "$ref": "#/definitions/alt-2"
+                          "$ref": "#/definitions/nonblank-line"
                         }
                       ]
                     },
@@ -1600,7 +1712,7 @@
                               "$ref": "#/definitions/start"
                             },
                             {
-                              "$ref": "#/definitions/start-2"
+                              "$ref": "#/definitions/line-end"
                             }
                           ]
                         }
@@ -1617,7 +1729,7 @@
                               "$ref": "#/definitions/start"
                             },
                             {
-                              "$ref": "#/definitions/start-2"
+                              "$ref": "#/definitions/line-end"
                             }
                           ]
                         }
@@ -1682,7 +1794,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/controls"
+                          "$ref": "#/definitions/control-name"
                         }
                       ]
                     },
@@ -1885,7 +1997,7 @@
                           "additionalProperties": false
                         },
                         {
-                          "$ref": "#/definitions/position"
+                          "$ref": "#/definitions/space-position"
                         },
                         {
                           "type": "object",
@@ -1900,7 +2012,7 @@
                           "additionalProperties": false
                         },
                         {
-                          "$ref": "#/definitions/position-2"
+                          "$ref": "#/definitions/floor-position"
                         }
                       ]
                     },
@@ -1930,7 +2042,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/parent-joint"
+                          "$ref": "#/definitions/joint-name"
                         }
                       ]
                     },
@@ -1963,25 +2075,28 @@
                           "type": "null"
                         },
                         {
+                          "description": "The camera's motion blur. Only the 3D layer blurs, and only in exported films and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
                           "type": "object",
                           "properties": {
                             "shutter": {
                               "type": "number",
                               "minimum": 0,
                               "maximum": 4294967296,
-                              "description": "frames"
+                              "description": "How long the shutter stays open, in frames of the film. 0 draws no blur. Left out, it's 0.5. A step can animate it."
                             },
                             "frame-position": {
                               "enum": [
                                 "start",
                                 "center",
                                 "end"
-                              ]
+                              ],
+                              "description": "Where the frame's moment falls in the shutter's opening. Left out, it's center."
                             },
                             "samples": {
                               "type": "integer",
                               "minimum": 1,
-                              "maximum": 256
+                              "maximum": 256,
+                              "description": "How many moments the 3D layer is drawn at while the shutter is open, then averaged, as Cinema 4D's Sub-Frame Motion Blur Samples. More give smoother streaks but take longer. Left out, it's 32."
                             }
                           },
                           "additionalProperties": false
@@ -1994,18 +2109,21 @@
                           "type": "null"
                         },
                         {
+                          "description": "The camera's render effects, as Cinema 4D's Render Settings add Global Illumination and Ambient Occlusion: a fast estimate of light bouncing between surfaces and of the World's light closed off where they meet. It shows wherever the 3D layer does: in the editor, presentations, exports, and films. Only surfaces in view bounce light, and a shadow catcher bounces none. An override replaces the whole record. Each key may be left out.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {
-                              "type": "boolean"
+                              "type": "boolean",
+                              "description": "Whether lit surfaces bounce their light onto what stands near them. Left out, it's false."
                             },
                             "ambient-occlusion": {
-                              "type": "boolean"
+                              "type": "boolean",
+                              "description": "Whether the World's light darkens where surfaces close in on each other, and a shadow catcher darkens where an object stands on it. Left out, it's false."
                             },
                             "distance": {
                               "type": "number",
                               "minimum": 0.000001,
-                              "description": "canvas units"
+                              "description": "How far bounced light and shading reach from a surface. Left out, it's 400."
                             }
                           },
                           "additionalProperties": false
@@ -2018,6 +2136,7 @@
                           "type": "null"
                         },
                         {
+                          "description": "The camera's drift: a slow move that comes to rest on the camera's set position. It runs on the slide's own clock. It starts when the slide's transition in begins and runs through the slide's steps, waits, and transition out. A blank screen pauses it. The camera and its target move together from `from` toward the set position. At t seconds they stand `from` × (1 − t ÷ `duration`)² away from it. So they start at full speed, slow steadily, and come to rest when `duration` ends. The editor, PDFs, and still exports show the set position. A slide that a scroll transition enters or leaves shows no drift, with a warning, since two drifting cameras would meet at the seam.",
                           "type": "object",
                           "properties": {
                             "from": {
@@ -2036,12 +2155,13 @@
                                   "description": "canvas units"
                                 }
                               },
-                              "additionalProperties": false
+                              "additionalProperties": false,
+                              "description": "Where the camera starts, as an {x, y, z} offset from its set position. An axis left out doesn't move."
                             },
                             "duration": {
                               "type": "number",
                               "minimum": 0.000001,
-                              "description": "seconds"
+                              "description": "How many seconds after the slide begins to appear the camera comes to rest. A drift plays once, so it must end."
                             }
                           },
                           "required": [
@@ -2096,10 +2216,16 @@
                           "items": {
                             "anyOf": [
                               {
+                                "description": "A constraint that moves the slide's camera with an object, as Cinema 4D's Position constraint does. Only the camera takes it. With a spring, the camera follows the way a key's spring moves: it trails a sudden move, catches up, and settles as the object stops. Keys other than id, type, and target may be left out.",
                                 "type": "object",
                                 "properties": {
                                   "id": {
-                                    "$ref": "#/definitions/id-2"
+                                    "allOf": [
+                                      {
+                                        "$ref": "#/definitions/constraint-id"
+                                      }
+                                    ],
+                                    "description": "The constraint's id, such as follow, unique among the camera's constraints."
                                   },
                                   "type": {
                                     "const": "position"
@@ -2107,12 +2233,12 @@
                                   "target": {
                                     "type": "string",
                                     "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                                    "description": "the id of an object on the slide"
+                                    "description": "The id of the object the camera follows."
                                   },
                                   "target-joint": {
                                     "type": "string",
                                     "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                                    "description": "the name of one of the model’s joints"
+                                    "description": "The name of a joint or node in the target's model, such as ball. The camera follows it where the model's Action moves it. Left out, the camera follows the target's origin."
                                   },
                                   "axes": {
                                     "type": "array",
@@ -2124,29 +2250,33 @@
                                       ]
                                     },
                                     "minItems": 1,
-                                    "maxItems": 3
+                                    "maxItems": 3,
+                                    "description": "The slide's axes the camera follows on, of x, y, and z. Left out, all three."
                                   },
                                   "offset": {
-                                    "type": "boolean"
+                                    "type": "boolean",
+                                    "description": "Whether the camera adds its own position from the slide's center at z 0 to the target's point, as Blender's Copy Location Offset does. Left out, it's true. False puts it at the target's point."
                                   },
                                   "strength": {
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1,
-                                    "description": "fraction"
+                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. Left out, it's 1."
                                   },
                                   "spring": {
+                                    "description": "The spring the camera follows on, in a key's spring's words. Left out, the camera follows exactly.",
                                     "type": "object",
                                     "properties": {
                                       "amount": {
                                         "type": "number",
                                         "minimum": 0,
-                                        "maximum": 1
+                                        "maximum": 1,
+                                        "description": "How far the camera swings past where the target stops, from 0, not at all, to 1."
                                       },
                                       "response": {
                                         "type": "number",
                                         "minimum": 0.000001,
-                                        "description": "seconds"
+                                        "description": "The seconds the spring rings at, above 0. A shorter response catches up sooner."
                                       }
                                     },
                                     "required": [
@@ -2286,7 +2416,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/fill-2"
+                          "$ref": "#/definitions/color"
                         }
                       ]
                     },
@@ -2341,7 +2471,7 @@
             "items": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/parent"
+                  "$ref": "#/definitions/object-id"
                 },
                 {
                   "anyOf": [
@@ -2403,11 +2533,14 @@
             "description": "The slide's objects, back to front. Its own objects are written out, and a layout object appears as its id."
           },
           "initial": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/initial"
-              }
-            ],
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
+              "description": "a property name"
+            },
+            "additionalProperties": {
+              "$ref": "#/definitions/initial"
+            },
             "description": "The values of animated properties before the slide's first step, as \"object.property\" keys such as \"card.opacity\"."
           },
           "steps": {
@@ -2442,32 +2575,32 @@
             "description": "The composition's name, on one line."
           },
           "size": {
+            "description": "Its size, in canvas units.",
             "type": "object",
             "properties": {
               "width": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 8192,
-                "description": "canvas units"
+                "description": "The width."
               },
               "height": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 8192,
-                "description": "canvas units"
+                "description": "The height."
               }
             },
             "required": [
               "width",
               "height"
             ],
-            "additionalProperties": false,
-            "description": "Its size, in canvas units."
+            "additionalProperties": false
           },
           "scheme": {
             "allOf": [
               {
-                "$ref": "#/definitions/scheme"
+                "$ref": "#/definitions/scheme-name"
               }
             ],
             "description": "The color scheme it is drawn in. Left out, it uses the light scheme."
@@ -2485,8 +2618,7 @@
                   "type": "object",
                   "properties": {
                     "type": {
-                      "const": "text",
-                      "description": "The kind of value the control sets."
+                      "const": "text"
                     }
                   },
                   "required": [
@@ -2498,8 +2630,7 @@
                   "type": "object",
                   "properties": {
                     "type": {
-                      "const": "number",
-                      "description": "The kind of value the control sets."
+                      "const": "number"
                     },
                     "default": {
                       "type": "number",
@@ -2532,13 +2663,12 @@
                   "type": "object",
                   "properties": {
                     "type": {
-                      "const": "color",
-                      "description": "The kind of value the control sets."
+                      "const": "color"
                     },
                     "default": {
                       "allOf": [
                         {
-                          "$ref": "#/definitions/fill-2"
+                          "$ref": "#/definitions/color"
                         }
                       ],
                       "description": "The value used when an instance sets none. A number control's default lies from its min to its max. A text control's default text is in the .md file."
@@ -2554,8 +2684,7 @@
                   "type": "object",
                   "properties": {
                     "type": {
-                      "const": "boolean",
-                      "description": "The kind of value the control sets."
+                      "const": "boolean"
                     },
                     "default": {
                       "type": "boolean",
@@ -2572,8 +2701,7 @@
                   "type": "object",
                   "properties": {
                     "type": {
-                      "const": "choice",
-                      "description": "The kind of value the control sets."
+                      "const": "choice"
                     },
                     "default": {
                       "type": "string",
@@ -2601,8 +2729,7 @@
                   "type": "object",
                   "properties": {
                     "type": {
-                      "const": "media",
-                      "description": "The kind of value the control sets."
+                      "const": "media"
                     },
                     "default": {
                       "type": "string",
@@ -2679,11 +2806,14 @@
             "description": "Its objects, back to front."
           },
           "initial": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/initial"
-              }
-            ],
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
+              "description": "a property name"
+            },
+            "additionalProperties": {
+              "$ref": "#/definitions/initial"
+            },
             "description": "The values of animated properties before its first step, as \"object.property\" keys."
           },
           "steps": {
@@ -2728,7 +2858,7 @@
           "created": {
             "allOf": [
               {
-                "$ref": "#/definitions/created"
+                "$ref": "#/definitions/utc-time"
               }
             ],
             "description": "When it was written, as a UTC timestamp to the millisecond, such as 2026-10-16T09:30:00.000Z."
@@ -2789,7 +2919,7 @@
                 "created": {
                   "allOf": [
                     {
-                      "$ref": "#/definitions/created"
+                      "$ref": "#/definitions/utc-time"
                     }
                   ],
                   "description": "When it was written, as a UTC timestamp to the millisecond, such as 2026-10-16T09:30:00.000Z."
@@ -2834,58 +2964,53 @@
   ],
   "additionalProperties": false,
   "definitions": {
-    "alt": {
-      "type": "string",
-      "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-      "description": "one line"
-    },
-    "alt-2": {
-      "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn’t blank"
-    },
     "anchor-point": {
+      "description": "The point an object turns and scales about when it is animated or given an initial value, and the point a group tilts about.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
-          "description": "frame fraction"
+          "description": "How far across the frame, as a fraction of its width."
         },
         "y": {
           "type": "number",
-          "description": "frame fraction"
+          "description": "How far down the frame, as a fraction of its height."
         }
       },
       "additionalProperties": false
     },
     "auto-layout": {
+      "description": "How a group places its members one after another. Keys left out default to direction vertical, gap 0, alignment start, and reference point start. Members are placed in the order the group lists them. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
       "type": "object",
       "properties": {
         "direction": {
           "enum": [
             "vertical",
             "horizontal"
-          ]
+          ],
+          "description": "Whether the members run down or across."
         },
         "gap": {
           "type": "number",
           "minimum": 0,
           "maximum": 65536,
-          "description": "canvas units"
+          "description": "The space between one member and the next."
         },
         "alignment": {
           "enum": [
             "start",
             "center",
             "end"
-          ]
+          ],
+          "description": "How the members line up across the layout's direction."
         },
         "reference-point": {
           "enum": [
             "start",
             "center",
             "end"
-          ]
+          ],
+          "description": "Which point of the members' box along the layout's direction stays at the position as they grow or shrink: its start, its middle, or its end."
         },
         "position": {
           "type": "object",
@@ -2907,7 +3032,8 @@
             "x",
             "y"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "description": "The slide point, as {x, y}, where the members' box stands: its top-left corner in the group's turn, or its middle or end along the layout's direction by the reference point."
         }
       },
       "required": [
@@ -2916,10 +3042,16 @@
       "additionalProperties": false
     },
     "background": {
+      "description": "A slide background: a fill, an image, or an image on a fill.",
       "type": "object",
       "properties": {
         "fill": {
-          "$ref": "#/definitions/fill"
+          "allOf": [
+            {
+              "$ref": "#/definitions/fill"
+            }
+          ],
+          "description": "The color or gradient behind everything."
         },
         "image": {
           "anyOf": [
@@ -2930,98 +3062,103 @@
               "type": "string",
               "description": "a normalized relative path"
             }
-          ]
+          ],
+          "description": "An image over the fill, as a presentation's file path, or `none` to show no image where the layout has one."
         },
         "crop": {
-          "$ref": "#/definitions/crop"
+          "allOf": [
+            {
+              "$ref": "#/definitions/crop"
+            }
+          ],
+          "description": "How far the image is zoomed, and the point it keeps in view."
         },
         "opacity": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "fraction"
+          "description": "How opaque the image is."
         },
         "prompt": {
           "type": "string",
-          "description": "text without NUL characters"
+          "description": "The prompt for a generated background image."
         },
         "image-style": {
           "type": "string",
-          "description": "nonempty text without NUL characters, or none"
+          "description": "The style of a generated background image, as text, or `none` for no style. Left out, a slide takes the presentation's style, then MarkdownPoint's own."
         },
         "transparent": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether a generated background image is made with a transparent background."
         },
         "restyle": {
-          "$ref": "#/definitions/restyle"
+          "allOf": [
+            {
+              "$ref": "#/definitions/restyle"
+            }
+          ],
+          "description": "A library style applied over the image, which goes with it: a slide showing the presentation's image shows its restyle."
         },
         "image-result": {
-          "$ref": "#/definitions/image-result"
+          "allOf": [
+            {
+              "$ref": "#/definitions/image-result"
+            }
+          ],
+          "description": "A record of how the background image was generated or restyled, which goes with the image as its restyle does."
         },
         "drop-shadow": {
-          "$ref": "#/definitions/drop-shadow"
+          "allOf": [
+            {
+              "$ref": "#/definitions/drop-shadow"
+            }
+          ],
+          "description": "A drop shadow behind the image."
         },
         "exposure": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "signed fraction"
+          "description": "How much lighter or darker the image is, from −1 to 1. 0 leaves it unchanged."
         },
         "contrast": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "signed fraction"
+          "description": "How much more or less contrast the image has, from −1 to 1. 0 leaves it unchanged."
         },
         "saturation": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "signed fraction"
+          "description": "How much more or less saturated the image's colors are, from −1 to 1. 0 leaves them unchanged."
         },
         "temperature": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "signed fraction"
+          "description": "How much warmer or cooler the image's colors are, from −1 to 1. 0 leaves them unchanged."
         },
         "grayscale": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "fraction"
+          "description": "How far the image's colors fade to gray. 0 leaves them unchanged."
         }
       },
       "additionalProperties": false
     },
-    "bind": {
-      "type": "object",
-      "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "a property name"
-      },
-      "additionalProperties": {
-        "type": "string",
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
-      }
-    },
     "color": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/fill-2"
-        },
-        {
-          "$ref": "#/definitions/fill-3"
-        }
-      ]
+      "type": "string",
+      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+      "description": "a color role or a hex color"
     },
     "colors": {
       "type": "array",
       "items": {
         "anyOf": [
           {
-            "$ref": "#/definitions/fill-2"
+            "$ref": "#/definitions/color"
           },
           {
             "type": "null"
@@ -3034,19 +3171,13 @@
       "type": "object",
       "properties": {
         "id": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/id-4"
-            }
-          ],
+          "type": "string",
+          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
           "description": "The author's account id, as text that isn't blank, without control characters."
         },
         "name": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/id-4"
-            }
-          ],
+          "type": "string",
+          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
           "description": "The author's name, as the thread shows it, as text that isn't blank, without control characters. Left out when the author has none; the thread then calls them a collaborator in its reader's language."
         }
       },
@@ -3055,15 +3186,26 @@
       ],
       "additionalProperties": false
     },
+    "constraint-id": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "a stable id, such as \"look\""
+    },
     "constraints": {
       "type": "array",
       "items": {
         "anyOf": [
           {
+            "description": "A constraint that turns a model, or one of its joints, toward a target, as Cinema 4D's Aim constraint does. Keys other than id, type, and target may be left out.",
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/definitions/id-2"
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/constraint-id"
+                  }
+                ],
+                "description": "The constraint's id, such as look, unique among the model's constraints. A step animates its strength as constraints.look.strength."
               },
               "type": {
                 "const": "aim"
@@ -3071,12 +3213,12 @@
               "owner-joint": {
                 "type": "string",
                 "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                "description": "the name of one of the model’s joints"
+                "description": "The name of the model's joint that turns, such as Head. Left out, the whole model turns."
               },
               "target": {
                 "type": "string",
                 "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                "description": "the id of an object on the slide"
+                "description": "The id of the model or light whose origin it turns toward, or `camera` to turn toward the camera."
               },
               "axis": {
                 "enum": [
@@ -3086,13 +3228,14 @@
                   "-x",
                   "-y",
                   "-z"
-                ]
+                ],
+                "description": "The axis of the model or joint that points at the target, in its GLB's axes: y is up, and a model faces along +z. Left out, it's y."
               },
               "strength": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "fraction"
+                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It acts on the result of the constraints before it. Left out, it's 1. A step can animate it."
               }
             },
             "required": [
@@ -3103,10 +3246,16 @@
             "additionalProperties": false
           },
           {
+            "description": "A constraint that keeps a model's volume as it scales, in the model's Local space. Volume is measured at the model's scale before animation. Keys other than id and type may be left out.",
             "type": "object",
             "properties": {
               "id": {
-                "$ref": "#/definitions/id-2"
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/constraint-id"
+                  }
+                ],
+                "description": "The constraint's id, such as squash, unique among the model's constraints. A step animates its strength as constraints.squash.strength."
               },
               "type": {
                 "const": "squash-and-stretch"
@@ -3116,25 +3265,27 @@
                   "strict",
                   "uniform",
                   "single-axis"
-                ]
+                ],
+                "description": "When the volume is kept. `strict` keeps it under any scale. `uniform` keeps it while the model scales evenly. `single-axis` keeps it while the free axis alone scales. Left out, it's strict."
               },
               "free-axis": {
                 "enum": [
                   "x",
                   "y",
                   "z"
-                ]
+                ],
+                "description": "The axis whose scale is animated. The other two follow to keep the volume. Left out, it's y."
               },
               "volume": {
                 "type": "number",
                 "minimum": 0.000001,
-                "description": "ratio"
+                "description": "The volume to keep, as a multiple of the model's volume before animation. Left out, it's 1."
               },
               "strength": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "fraction"
+                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. Left out, it's 1. A step can animate it."
               }
             },
             "required": [
@@ -3146,7 +3297,7 @@
         ]
       }
     },
-    "controls": {
+    "control-name": {
       "type": "object",
       "propertyNames": {
         "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
@@ -3166,19 +3317,15 @@
         ]
       }
     },
-    "created": {
-      "type": "string",
-      "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
-      "description": "a UTC timestamp to the millisecond, such as 2026-10-17T19:30:00.000Z"
-    },
     "crop": {
+      "description": "An image's or a video's zoom and focus inside its frame.",
       "type": "object",
       "properties": {
         "scale": {
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "zoom ratio"
+          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets. Above 1 it zooms in. Below 1 it zooms out."
         },
         "focal-point": {
           "type": "object",
@@ -3196,7 +3343,8 @@
               "description": "image fraction"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "description": "The point it keeps in view, {x, y}, each a fraction of the image across and down. A step animates crop.focal-point.x and .y."
         }
       },
       "additionalProperties": false
@@ -3207,13 +3355,14 @@
           "const": "none"
         },
         {
+          "description": "A drop shadow.",
           "type": "object",
           "properties": {
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 637.155556,
-              "description": "canvas units"
+              "description": "How soft it is, its radius in canvas units: up to 84 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 168 at 3840 × 2160."
             },
             "offset": {
               "type": "object",
@@ -3235,16 +3384,22 @@
                 "x",
                 "y"
               ],
-              "additionalProperties": false
+              "additionalProperties": false,
+              "description": "How far it falls from the object, as {x, y} across and down."
             },
             "color": {
-              "$ref": "#/definitions/fill-2"
+              "allOf": [
+                {
+                  "$ref": "#/definitions/color"
+                }
+              ],
+              "description": "Its color: a color role or a hex color."
             },
             "opacity": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "fraction"
+              "description": "How opaque it is."
             }
           },
           "required": [
@@ -3258,6 +3413,7 @@
       ]
     },
     "enter": {
+      "description": "Text that enters piece by piece. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1. Delivered by paragraph, a paragraph no cue names stands from the start. A text with a `text-path` stands on one line, with no paragraph to deliver apart: a reader warns of delivery by paragraph there, and the text enters all at once.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -3265,28 +3421,89 @@
             "paragraph",
             "word",
             "character"
-          ]
+          ],
+          "description": "What counts as one piece."
         },
         "delivery": {
-          "const": "by-paragraph"
+          "const": "by-paragraph",
+          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It takes based-on `paragraph`, and no order, seed, spread, pause, or progress."
         },
         "duration": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 4294967296,
-          "description": "seconds"
+          "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph shows as its cue is reached. A step that holds only paragraphs' cues lasts as long as they take."
         },
         "from": {
-          "$ref": "#/definitions/from"
+          "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
+          "type": "object",
+          "properties": {
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Its opacity."
+            },
+            "x": {
+              "type": "number",
+              "minimum": -33554431,
+              "maximum": 33554431,
+              "description": "How far across it starts, in ems."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -33554431,
+              "maximum": 33554431,
+              "description": "How far down it starts, in ems."
+            },
+            "scale": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 511,
+              "description": "Its scale, where 1 is its own size."
+            },
+            "rotation": {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "How far it is turned, in degrees clockwise."
+            },
+            "blur": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 67108862,
+              "description": "How blurred it is, its radius in ems. On the slide, it blurs no wider than the slide's widest blur, as `blur` says."
+            }
+          },
+          "additionalProperties": false
         },
         "interpolation": {
-          "$ref": "#/definitions/interpolation"
+          "allOf": [
+            {
+              "$ref": "#/definitions/interpolation"
+            }
+          ],
+          "description": "How each piece moves into place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
-          "$ref": "#/definitions/fade"
+          "description": "The fade of each piece, as `{ length }`, a share of its travel. It follows the piece's interpolation.",
+          "type": "object",
+          "properties": {
+            "length": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 1,
+              "description": "How much of the piece's entrance the fade lasts, as a fraction. The fade starts with the move."
+            }
+          },
+          "required": [
+            "length"
+          ],
+          "additionalProperties": false
         },
         "spaces": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether each space counts as a piece and takes a turn. Only based-on `character` takes it."
         },
         "order": {
           "enum": [
@@ -3295,29 +3512,30 @@
             "center-to-ends",
             "ends-to-center",
             "random"
-          ]
+          ],
+          "description": "The order the pieces enter in."
         },
         "seed": {
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "shuffle"
+          "description": "The seed for a random order. The same seed always gives the same order."
         },
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "text units"
+          "description": "How many pieces are in motion at once."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "text units"
+          "description": "A pause between paragraphs, as long as this many pieces take to enter."
         },
         "progress": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "ratio"
+          "description": "How far the text has entered. Steps animate it."
         }
       },
       "required": [
@@ -3334,6 +3552,7 @@
       "additionalProperties": false
     },
     "exit": {
+      "description": "Text that exits piece by piece. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -3341,19 +3560,79 @@
             "paragraph",
             "word",
             "character"
-          ]
+          ],
+          "description": "What counts as one piece."
         },
         "to": {
-          "$ref": "#/definitions/from"
+          "description": "How each piece looks as it finishes exiting: opacity, offset, scale, rotation, and blur.",
+          "type": "object",
+          "properties": {
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Its opacity."
+            },
+            "x": {
+              "type": "number",
+              "minimum": -33554431,
+              "maximum": 33554431,
+              "description": "How far across it ends, in ems."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -33554431,
+              "maximum": 33554431,
+              "description": "How far down it ends, in ems."
+            },
+            "scale": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 511,
+              "description": "Its scale, where 1 is its own size."
+            },
+            "rotation": {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "How far it is turned, in degrees clockwise."
+            },
+            "blur": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 67108862,
+              "description": "How blurred it is, its radius in ems. On the slide, it blurs no wider than the slide's widest blur, as `blur` says."
+            }
+          },
+          "additionalProperties": false
         },
         "interpolation": {
-          "$ref": "#/definitions/interpolation"
+          "allOf": [
+            {
+              "$ref": "#/definitions/interpolation"
+            }
+          ],
+          "description": "How each piece moves out of place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
-          "$ref": "#/definitions/fade"
+          "description": "The fade of each piece, as `{ length }`, a share of its travel. It follows the piece's interpolation.",
+          "type": "object",
+          "properties": {
+            "length": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 1,
+              "description": "How much of the piece's exit the fade lasts, as a fraction. The fade ends with the move."
+            }
+          },
+          "required": [
+            "length"
+          ],
+          "additionalProperties": false
         },
         "spaces": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether each space counts as a piece and takes a turn. Only based-on `character` takes it."
         },
         "order": {
           "enum": [
@@ -3362,48 +3641,34 @@
             "center-to-ends",
             "ends-to-center",
             "random"
-          ]
+          ],
+          "description": "The order the pieces exit in."
         },
         "seed": {
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "shuffle"
+          "description": "The seed for a random order. The same seed always gives the same order."
         },
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "text units"
+          "description": "How many pieces are in motion at once."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "text units"
+          "description": "A pause between paragraphs, as long as this many pieces take to exit."
         },
         "progress": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "ratio"
+          "description": "How far the text has exited. Steps animate it."
         }
       },
       "required": [
         "based-on"
-      ],
-      "additionalProperties": false
-    },
-    "fade": {
-      "type": "object",
-      "properties": {
-        "length": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1,
-          "description": "ratio"
-        }
-      },
-      "required": [
-        "length"
       ],
       "additionalProperties": false
     },
@@ -3413,19 +3678,91 @@
           "const": "none"
         },
         {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         {
-          "$ref": "#/definitions/fill-3"
+          "$ref": "#/definitions/gradient"
         }
       ]
     },
-    "fill-2": {
-      "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-      "description": "a color role or a hex color"
+    "flat-scale": {
+      "description": "A flat object's scale along its own axes, about its frame's center. Text breaks into lines first, then stretches with the scale.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 511,
+          "description": "Along its x."
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 511,
+          "description": "Along its y."
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false
     },
-    "fill-3": {
+    "floor-position": {
+      "description": "A floor's height in the 3D space. It takes y alone: a floor lies level and stretches without end, as Cinema 4D's Floor does, so it moves only up and down. Left out, the floor lies on the slide's bottom edge.",
+      "type": "object",
+      "properties": {
+        "y": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "How far up from the slide's bottom edge, in canvas units."
+        }
+      },
+      "required": [
+        "y"
+      ],
+      "additionalProperties": false
+    },
+    "frame": {
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the left edge is, across."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the top edge is, down."
+        },
+        "width": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The width."
+        },
+        "height": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The height."
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "gradient": {
+      "description": "A linear or radial gradient.",
       "anyOf": [
         {
           "type": "object",
@@ -3435,28 +3772,29 @@
             },
             "angle": {
               "type": "number",
-              "description": "degrees"
+              "description": "A linear gradient's direction, in degrees clockwise from up."
             },
             "line": {
+              "description": "A linear gradient's line, when it differs from the angle.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "frame fraction"
+                  "description": "Its middle's x, as a fraction of the box's width."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "frame fraction"
+                  "description": "Its middle's y, as a fraction of the box's height."
                 },
                 "length": {
                   "type": "number",
                   "minimum": 0.000001,
                   "maximum": 362,
-                  "description": "frame diagonals"
+                  "description": "Its length, as a fraction of the box's diagonal."
                 }
               },
               "required": [
@@ -3467,7 +3805,12 @@
               "additionalProperties": false
             },
             "stops": {
-              "$ref": "#/definitions/stops"
+              "allOf": [
+                {
+                  "$ref": "#/definitions/stops"
+                }
+              ],
+              "description": "The gradient's colors, two or more, each with its position."
             }
           },
           "required": [
@@ -3484,19 +3827,20 @@
               "const": "radial"
             },
             "center": {
+              "description": "Where a radial gradient centers, as {x, y}.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "frame fraction"
+                  "description": "Its x, as a fraction of the box's width: 0 is the left edge, 1 the right."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "frame fraction"
+                  "description": "Its y, as a fraction of the box's height: 0 is the top edge, 1 the bottom."
                 }
               },
               "required": [
@@ -3506,10 +3850,16 @@
               "additionalProperties": false
             },
             "shape": {
-              "const": "circle"
+              "const": "circle",
+              "description": "`circle` keeps a radial gradient round in any box. Left out, the gradient reaches the box's corners."
             },
             "stops": {
-              "$ref": "#/definitions/stops"
+              "allOf": [
+                {
+                  "$ref": "#/definitions/stops"
+                }
+              ],
+              "description": "The gradient's colors, two or more, each with its position."
             }
           },
           "required": [
@@ -3521,128 +3871,27 @@
         }
       ]
     },
-    "frame": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "width",
-        "height"
-      ],
-      "additionalProperties": false
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
     },
-    "frame-2": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "width"
-      ],
-      "additionalProperties": false
-    },
-    "from": {
-      "type": "object",
-      "properties": {
-        "opacity": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
-        },
-        "x": {
-          "type": "number",
-          "minimum": -33554431,
-          "maximum": 33554431,
-          "description": "em"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -33554431,
-          "maximum": 33554431,
-          "description": "em"
-        },
-        "scale": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
-        },
-        "rotation": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "degrees"
-        },
-        "blur": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 67108862,
-          "description": "em"
-        }
-      },
-      "additionalProperties": false
-    },
-    "generated": {
+    "image-generation": {
+      "description": "What a generated image was made from.",
       "type": "object",
       "properties": {
         "prompt": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "text that isn’t blank"
+          "description": "The prompt it was made from, as text that isn't blank."
         },
         "aspect-ratio": {
           "type": "string",
           "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
-          "description": "width:height in whole numbers, such as 16:9"
+          "description": "The proportions it was made in, as width:height in whole numbers from 1 with no leading zero, such as 16:9."
         },
         "transparent": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether it was made with a transparent background."
         }
       },
       "required": [
@@ -3652,38 +3901,30 @@
       ],
       "additionalProperties": false
     },
-    "id": {
-      "type": "string",
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
-    },
-    "id-2": {
-      "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "a stable id, such as \"look\""
-    },
-    "id-3": {
-      "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "an object’s id"
-    },
-    "id-4": {
-      "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
-      "description": "one line that isn’t blank"
-    },
     "image-result": {
+      "description": "How a generated image was made.",
       "type": "object",
       "properties": {
         "original": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "the path of an image"
+          "description": "The file path of the image as first generated, before any restyle."
         },
         "generated": {
-          "$ref": "#/definitions/generated"
+          "allOf": [
+            {
+              "$ref": "#/definitions/image-generation"
+            }
+          ],
+          "description": "What the image was generated from."
         },
         "styled": {
-          "$ref": "#/definitions/generated"
+          "allOf": [
+            {
+              "$ref": "#/definitions/image-generation"
+            }
+          ],
+          "description": "The prompt and settings the restyle was applied with."
         }
       },
       "required": [
@@ -3692,16 +3933,6 @@
       "additionalProperties": false
     },
     "initial": {
-      "type": "object",
-      "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
-        "description": "a property name"
-      },
-      "additionalProperties": {
-        "$ref": "#/definitions/initial-2"
-      }
-    },
-    "initial-2": {
       "anyOf": [
         {
           "type": "null"
@@ -3843,38 +4074,73 @@
       ],
       "additionalProperties": false
     },
-    "interpolation-anticipate-2": {
+    "joint-name": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
+      "description": "a joint’s name"
+    },
+    "line-end": {
+      "description": "A line end attached to an object.",
       "type": "object",
       "properties": {
-        "curve": {
-          "enum": [
-            "anticipate",
-            "overshoot",
-            "anticipate-overshoot"
-          ]
+        "object": {
+          "type": "string",
+          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "description": "The id of the object it attaches to."
         },
-        "back": {
-          "type": "number",
-          "minimum": 0
+        "side": {
+          "enum": [
+            "auto",
+            "top",
+            "right",
+            "bottom",
+            "left"
+          ],
+          "description": "Which side of the object it attaches to, or the nearest."
+        },
+        "at": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -33554431.984375,
+              "maximum": 33554431.984375,
+              "description": "canvas units"
+            },
+            "y": {
+              "type": "number",
+              "minimum": -33554431.984375,
+              "maximum": 33554431.984375,
+              "description": "canvas units"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "additionalProperties": false,
+          "description": "Where the end was when last drawn, as {x, y}. It's used when the object it attaches to isn't on the slide."
         }
       },
       "required": [
-        "curve"
+        "object",
+        "side"
       ],
       "additionalProperties": false
     },
     "media-trim": {
+      "description": "The part of a video or sound file that plays.",
       "type": "object",
       "properties": {
         "start": {
           "type": "number",
           "minimum": 0,
-          "description": "seconds"
+          "description": "Where it starts, in seconds into the file. Left out, it's 0."
         },
         "end": {
           "type": "number",
           "minimum": 0,
-          "description": "seconds"
+          "description": "Where it ends, in seconds into the file. It must come after start. Left out, it plays to the end."
         }
       },
       "additionalProperties": false
@@ -3928,22 +4194,27 @@
         }
       ]
     },
-    "name": {
+    "nonblank-line": {
       "type": "string",
-      "pattern": "^(?:[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*|[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?)(?![\\s\\S])",
-      "description": "one line"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
+      "description": "one line that isn’t blank"
+    },
+    "object-id": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "an object’s id"
     },
     "objects-audio": {
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "audio"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "file": {
           "type": "string",
@@ -3998,16 +4269,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "chart"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -4073,7 +4344,14 @@
           "description": "font weight"
         },
         "color": {
-          "$ref": "#/definitions/color"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/color"
+            },
+            {
+              "$ref": "#/definitions/gradient"
+            }
+          ]
         },
         "align": {
           "enum": [
@@ -4089,7 +4367,7 @@
           "description": "em"
         },
         "text-stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "text-stroke-weight": {
           "type": "number",
@@ -4150,7 +4428,7 @@
           "description": "fraction"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         }
       },
       "required": [
@@ -4164,16 +4442,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "composition"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -4225,7 +4503,7 @@
           "description": "a composition slide id"
         },
         "controls": {
-          "$ref": "#/definitions/controls"
+          "$ref": "#/definitions/control-name"
         },
         "time-remap": {
           "type": "number",
@@ -4234,7 +4512,7 @@
           "description": "seconds"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         }
       },
       "required": [
@@ -4249,16 +4527,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "floor"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "position": {
-          "$ref": "#/definitions/position-2"
+          "$ref": "#/definitions/floor-position"
         },
         "locked": {
           "type": "boolean"
@@ -4273,7 +4551,7 @@
           "description": "fraction"
         },
         "shadow-color": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         }
       },
       "required": [
@@ -4286,16 +4564,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "group"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "rotation": {
           "type": "number",
@@ -4378,7 +4656,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         }
       },
       "required": [
@@ -4391,16 +4669,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "icon"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -4412,7 +4690,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -4465,7 +4743,7 @@
           "$ref": "#/definitions/wipe"
         },
         "color": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "drop-shadow": {
           "$ref": "#/definitions/drop-shadow"
@@ -4494,7 +4772,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "stroke-weight": {
           "type": "number",
@@ -4514,16 +4792,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "image"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -4535,7 +4813,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -4593,7 +4871,7 @@
           "$ref": "#/definitions/wipe"
         },
         "color": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "drop-shadow": {
           "$ref": "#/definitions/drop-shadow"
@@ -4655,7 +4933,9 @@
           "description": "SVG path data in frame units"
         },
         "alt": {
-          "$ref": "#/definitions/alt"
+          "type": "string",
+          "pattern": "^[^\\r\\n]*(?![\\s\\S])",
+          "description": "one line"
         },
         "decorative": {
           "type": "boolean"
@@ -4690,10 +4970,10 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -4720,27 +5000,61 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "light"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "position": {
-          "$ref": "#/definitions/position"
+          "$ref": "#/definitions/space-position"
         },
         "rotation": {
           "anyOf": [
             {
-              "$ref": "#/definitions/rotation"
+              "$ref": "#/definitions/space-rotation"
             },
             {
-              "$ref": "#/definitions/rotation-2"
+              "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+              "type": "object",
+              "properties": {
+                "w": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "A quaternion's w, in quaternion mode only."
+                },
+                "x": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about x, or a quaternion's x."
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about y, or a quaternion's y."
+                },
+                "z": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about z, or a quaternion's z."
+                }
+              },
+              "required": [
+                "w",
+                "x",
+                "y",
+                "z"
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -4748,7 +5062,7 @@
           "const": "quaternion"
         },
         "scale": {
-          "$ref": "#/definitions/scale-2"
+          "$ref": "#/definitions/space-scale"
         },
         "locked": {
           "type": "boolean"
@@ -4757,10 +5071,10 @@
           "type": "boolean"
         },
         "color": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "parent-joint": {
-          "$ref": "#/definitions/parent-joint"
+          "$ref": "#/definitions/joint-name"
         },
         "parent-inverse": {
           "$ref": "#/definitions/parent-inverse"
@@ -4842,16 +5156,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "line"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "opacity": {
           "type": "number",
@@ -4871,7 +5185,7 @@
               "$ref": "#/definitions/start"
             },
             {
-              "$ref": "#/definitions/start-2"
+              "$ref": "#/definitions/line-end"
             }
           ]
         },
@@ -4881,7 +5195,7 @@
               "$ref": "#/definitions/start"
             },
             {
-              "$ref": "#/definitions/start-2"
+              "$ref": "#/definitions/line-end"
             }
           ]
         },
@@ -4924,13 +5238,13 @@
           "type": "boolean"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "trim": {
           "$ref": "#/definitions/trim"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -4983,16 +5297,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "model"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "file": {
           "type": "string",
@@ -5000,15 +5314,49 @@
           "description": "a normalized relative file path"
         },
         "position": {
-          "$ref": "#/definitions/position"
+          "$ref": "#/definitions/space-position"
         },
         "rotation": {
           "anyOf": [
             {
-              "$ref": "#/definitions/rotation"
+              "$ref": "#/definitions/space-rotation"
             },
             {
-              "$ref": "#/definitions/rotation-2"
+              "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+              "type": "object",
+              "properties": {
+                "w": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "A quaternion's w, in quaternion mode only."
+                },
+                "x": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about x, or a quaternion's x."
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about y, or a quaternion's y."
+                },
+                "z": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about z, or a quaternion's z."
+                }
+              },
+              "required": [
+                "w",
+                "x",
+                "y",
+                "z"
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -5016,7 +5364,7 @@
           "const": "quaternion"
         },
         "scale": {
-          "$ref": "#/definitions/scale-2"
+          "$ref": "#/definitions/space-scale"
         },
         "locked": {
           "type": "boolean"
@@ -5031,10 +5379,12 @@
           "description": "fraction"
         },
         "alt": {
-          "$ref": "#/definitions/alt"
+          "type": "string",
+          "pattern": "^[^\\r\\n]*(?![\\s\\S])",
+          "description": "one line"
         },
         "parent-joint": {
-          "$ref": "#/definitions/parent-joint"
+          "$ref": "#/definitions/joint-name"
         },
         "parent-inverse": {
           "$ref": "#/definitions/parent-inverse"
@@ -5069,16 +5419,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "path"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -5090,7 +5440,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -5171,7 +5521,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "trim": {
           "$ref": "#/definitions/trim"
@@ -5180,7 +5530,14 @@
           "$ref": "#/definitions/fill"
         },
         "stroke": {
-          "$ref": "#/definitions/color"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/color"
+            },
+            {
+              "$ref": "#/definitions/gradient"
+            }
+          ]
         },
         "stroke-weight": {
           "type": "number",
@@ -5208,27 +5565,61 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "shadow-catcher"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "position": {
-          "$ref": "#/definitions/position"
+          "$ref": "#/definitions/space-position"
         },
         "rotation": {
           "anyOf": [
             {
-              "$ref": "#/definitions/rotation"
+              "$ref": "#/definitions/space-rotation"
             },
             {
-              "$ref": "#/definitions/rotation-2"
+              "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+              "type": "object",
+              "properties": {
+                "w": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "A quaternion's w, in quaternion mode only."
+                },
+                "x": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about x, or a quaternion's x."
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about y, or a quaternion's y."
+                },
+                "z": {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "Degrees about z, or a quaternion's z."
+                }
+              },
+              "required": [
+                "w",
+                "x",
+                "y",
+                "z"
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -5248,13 +5639,13 @@
           "description": "fraction"
         },
         "parent-joint": {
-          "$ref": "#/definitions/parent-joint"
+          "$ref": "#/definitions/joint-name"
         },
         "parent-inverse": {
           "$ref": "#/definitions/parent-inverse"
         },
         "shadow-color": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "width": {
           "type": "number",
@@ -5296,16 +5687,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "shape"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -5317,7 +5708,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -5370,7 +5761,7 @@
           "$ref": "#/definitions/wipe"
         },
         "text-style": {
-          "$ref": "#/definitions/text-style"
+          "$ref": "#/definitions/text-style-name"
         },
         "font-family": {
           "enum": [
@@ -5409,7 +5800,14 @@
           "description": "font weight"
         },
         "color": {
-          "$ref": "#/definitions/color"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/color"
+            },
+            {
+              "$ref": "#/definitions/gradient"
+            }
+          ]
         },
         "align": {
           "enum": [
@@ -5494,7 +5892,7 @@
           "$ref": "#/definitions/drop-shadow"
         },
         "text-stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "text-stroke-weight": {
           "type": "number",
@@ -5568,7 +5966,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "enter": {
           "$ref": "#/definitions/enter"
@@ -5580,7 +5978,7 @@
           "$ref": "#/definitions/fill"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -5607,19 +6005,46 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "table"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame-2"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -5628,7 +6053,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -5681,7 +6106,7 @@
           "$ref": "#/definitions/wipe"
         },
         "text-style": {
-          "$ref": "#/definitions/text-style"
+          "$ref": "#/definitions/text-style-name"
         },
         "font-family": {
           "enum": [
@@ -5708,7 +6133,7 @@
           "description": "font weight"
         },
         "color": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "vertical-align": {
           "enum": [
@@ -5733,13 +6158,13 @@
           "$ref": "#/definitions/anchor-point"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "fill": {
           "$ref": "#/definitions/fill"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -5800,16 +6225,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "text"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "anyOf": [
@@ -5817,7 +6242,34 @@
               "$ref": "#/definitions/frame"
             },
             {
-              "$ref": "#/definitions/frame-2"
+              "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "minimum": -65536,
+                  "maximum": 65536,
+                  "description": "Where the left edge is, across."
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -65536,
+                  "maximum": 65536,
+                  "description": "Where the top edge is, down."
+                },
+                "width": {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 65536,
+                  "description": "The width."
+                }
+              },
+              "required": [
+                "x",
+                "y",
+                "width"
+              ],
+              "additionalProperties": false
             }
           ]
         },
@@ -5828,7 +6280,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -5881,7 +6333,7 @@
           "$ref": "#/definitions/wipe"
         },
         "text-style": {
-          "$ref": "#/definitions/text-style"
+          "$ref": "#/definitions/text-style-name"
         },
         "font-family": {
           "enum": [
@@ -5920,7 +6372,14 @@
           "description": "font weight"
         },
         "color": {
-          "$ref": "#/definitions/color"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/color"
+            },
+            {
+              "$ref": "#/definitions/gradient"
+            }
+          ]
         },
         "align": {
           "enum": [
@@ -6041,7 +6500,7 @@
           "$ref": "#/definitions/drop-shadow"
         },
         "text-stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "text-stroke-weight": {
           "type": "number",
@@ -6062,7 +6521,7 @@
           "$ref": "#/definitions/model"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "enter": {
           "$ref": "#/definitions/enter"
@@ -6071,7 +6530,7 @@
           "$ref": "#/definitions/exit"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -6098,16 +6557,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "video"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "parent": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -6119,7 +6578,7 @@
           "description": "degrees"
         },
         "scale": {
-          "$ref": "#/definitions/scale"
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -6235,7 +6694,9 @@
           "description": "canvas units"
         },
         "alt": {
-          "$ref": "#/definitions/alt"
+          "type": "string",
+          "pattern": "^[^\\r\\n]*(?![\\s\\S])",
+          "description": "one line"
         },
         "decorative": {
           "type": "boolean"
@@ -6253,10 +6714,10 @@
           "$ref": "#/definitions/anchor-point"
         },
         "bind": {
-          "$ref": "#/definitions/bind"
+          "$ref": "#/definitions/property-name"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -6283,13 +6744,13 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/parent"
+          "$ref": "#/definitions/object-id"
         },
         "type": {
           "const": "web-video"
         },
         "name": {
-          "$ref": "#/definitions/name"
+          "$ref": "#/definitions/one-line"
         },
         "url": {
           "$ref": "#/definitions/url"
@@ -6300,7 +6761,7 @@
           "description": "a normalized relative file path"
         },
         "alt": {
-          "$ref": "#/definitions/alt-2"
+          "$ref": "#/definitions/nonblank-line"
         },
         "frame": {
           "$ref": "#/definitions/frame"
@@ -6318,7 +6779,7 @@
           "type": "boolean"
         },
         "stroke": {
-          "$ref": "#/definitions/fill-2"
+          "$ref": "#/definitions/color"
         },
         "stroke-weight": {
           "type": "number",
@@ -6342,10 +6803,10 @@
       ],
       "additionalProperties": false
     },
-    "parent": {
+    "one-line": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "an object’s id"
+      "pattern": "^(?:[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*|[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?)(?![\\s\\S])",
+      "description": "one line"
     },
     "parent-inverse": {
       "type": "array",
@@ -6354,55 +6815,6 @@
       },
       "minItems": 16,
       "maxItems": 16
-    },
-    "parent-joint": {
-      "type": "string",
-      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-      "description": "a joint’s name"
-    },
-    "position": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "additionalProperties": false
-    },
-    "position-2": {
-      "type": "object",
-      "properties": {
-        "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "y"
-      ],
-      "additionalProperties": false
     },
     "poster-frame": {
       "anyOf": [
@@ -6418,68 +6830,81 @@
         }
       ]
     },
+    "property-name": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "a property name"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
+        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+      }
+    },
     "repeater": {
+      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line attached inside the group.",
       "type": "object",
       "properties": {
         "copies": {
           "type": "integer",
           "minimum": 2,
           "maximum": 513,
-          "description": "copies"
+          "description": "How many there are, the original included."
         },
         "rotation": {
           "type": "number",
           "minimum": -16777216,
           "maximum": 16777216,
-          "description": "degrees"
+          "description": "How far each copy turns from the one before, clockwise."
         },
         "scale": {
           "type": "number",
           "minimum": 0.01,
           "maximum": 33554431,
-          "description": "ratio"
+          "description": "How much each copy scales from the one before, where 1 keeps its size."
         },
         "stagger": {
           "type": "number",
           "minimum": 0,
           "maximum": 4194304,
-          "description": "seconds"
+          "description": "How much later each copy plays the object's animation than the one before."
         },
         "end-opacity": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "fraction"
+          "description": "The last copy's opacity, as a fraction of the object's own. The copies between fade toward it."
         },
         "position-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 65536,
-          "description": "canvas units"
+          "description": "The farthest each copy moves in a random direction."
         },
         "rotation-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 8589934592,
-          "description": "degrees"
+          "description": "The farthest each copy turns either way at random."
         },
         "scale-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "fraction"
+          "description": "The most each copy grows or shrinks at random, as a fraction of its size."
         },
         "stagger-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 4194304,
-          "description": "seconds"
+          "description": "The most extra time each copy waits at random."
         },
         "seed": {
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "shuffle"
+          "description": "The random seed. The same seed always gives the same variation."
         },
         "position": {
           "type": "object",
@@ -6497,7 +6922,8 @@
               "description": "canvas units"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "description": "How far each copy moves from the one before, as {x, y} across and down. A step animates them as repeater.position.x and repeater.position.y."
         },
         "anchor-point": {
           "type": "object",
@@ -6511,7 +6937,8 @@
               "description": "frame fraction"
             }
           },
-          "additionalProperties": false
+          "additionalProperties": false,
+          "description": "The point the copies turn and scale about, {x, y}, each a fraction of the frame across and down."
         }
       },
       "required": [
@@ -6520,25 +6947,27 @@
       "additionalProperties": false
     },
     "restyle": {
+      "description": "A library style, applied over an image or a background's image.",
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
-          "description": "one line that isn’t blank"
+          "description": "The style's name, on one line."
         },
         "reference-prompt": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "text that isn’t blank"
+          "description": "The prompt for the style's example image, as text that isn't blank."
         },
         "prompt": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "text that isn’t blank"
+          "description": "How the style changes an image, as an edit prompt that isn't blank."
         },
         "transparent": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether images in the style have transparent backgrounds."
         }
       },
       "required": [
@@ -6548,122 +6977,100 @@
       ],
       "additionalProperties": false
     },
-    "rotation": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "degrees"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "degrees"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "degrees"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "additionalProperties": false
-    },
-    "rotation-2": {
-      "type": "object",
-      "properties": {
-        "w": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592
-        },
-        "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592
-        },
-        "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592
-        },
-        "z": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592
-        }
-      },
-      "required": [
-        "w",
-        "x",
-        "y",
-        "z"
-      ],
-      "additionalProperties": false
-    },
-    "scale": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
-        },
-        "y": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
-        }
-      },
-      "required": [
-        "x",
-        "y"
-      ],
-      "additionalProperties": false
-    },
-    "scale-2": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "additionalProperties": false
-    },
-    "scheme": {
+    "scheme-name": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "a scheme name"
+    },
+    "space-position": {
+      "description": "A point in the 3D space, in canvas units. x runs right from the slide's left edge, y up from its bottom edge, and z toward the viewer, and the slide lies at z 0. The space is right-handed, as glTF and three.js define it. A parented model's, light's, shadow catcher's or camera's position and target are in its parent's space, through its parent-inverse where it has one, and a parented shadow catcher's width and height too. A parented object's world is its parent's or joint's world, times its parent-inverse, times its own position, rotation, and scale, each matrix acting on a column of x, y, z, and 1 to its right: `world = parent × parent-inverse × local`, as Blender's Parent Inverse composes them. Its own constraints apply after. A parented camera turns with its parent, never scales with it, and a target camera banks with it. The camera's position may leave out any part. Left out, its x and y center it on the slide, and its z puts it where the slide shows at full size. A target gives all three parts, the camera's too.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "How far across."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "How far up."
+        },
+        "z": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "How far toward the viewer."
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
+    },
+    "space-rotation": {
+      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "Degrees about x, or a quaternion's x."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "Degrees about y, or a quaternion's y."
+        },
+        "z": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "Degrees about z, or a quaternion's z."
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
+    },
+    "space-scale": {
+      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors it along that axis. A light's scale also scales the objects parented to it, and an area light's surface.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "Along its x."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "Along its y."
+        },
+        "z": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "Along its z."
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
     },
     "start": {
       "type": "object",
@@ -6687,87 +7094,49 @@
       ],
       "additionalProperties": false
     },
-    "start-2": {
-      "type": "object",
-      "properties": {
-        "object": {
-          "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-          "description": "an object’s id"
-        },
-        "side": {
-          "enum": [
-            "auto",
-            "top",
-            "right",
-            "bottom",
-            "left"
-          ]
-        },
-        "at": {
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -33554431.984375,
-              "maximum": 33554431.984375,
-              "description": "canvas units"
-            },
-            "y": {
-              "type": "number",
-              "minimum": -33554431.984375,
-              "maximum": 33554431.984375,
-              "description": "canvas units"
-            }
-          },
-          "required": [
-            "x",
-            "y"
-          ],
-          "additionalProperties": false
-        }
-      },
-      "required": [
-        "object",
-        "side"
-      ],
-      "additionalProperties": false
-    },
     "steps": {
       "type": "array",
       "items": {
+        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Every time in a step, and in its keyframes and cues, is in seconds, rounded to six decimals. Sums of times and the times shown are rounded the same way. A step has no delay of its own: a keyframe's start delays its move. A first step that starts by itself plays after the slide's transition, except under a scroll. A step that repeats plays alone on its click, and a file that breaks that reads with a warning, without the repeat. A step after one that loops while waiting starts when that step's first pass ends, and the loop plays on under it.",
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/definitions/id-3"
+            "allOf": [
+              {
+                "$ref": "#/definitions/object-id"
+              }
+            ],
+            "description": "The step's id, unique on its slide."
           },
           "name": {
             "type": "string",
             "pattern": "^(?:(?![\\r\\n\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\r\\n\\u0000][^\\r\\n\\u0000]*(?![\\s\\S])",
-            "description": "one line that isn’t blank"
+            "description": "The step's name in the Animate list, on one line."
           },
           "start": {
             "enum": [
               "with",
               "after"
-            ]
+            ],
+            "description": "When the step starts: with the previous step, or after it ends. Left out, it waits for a click. A scroll plays the next slide's first step with it, whatever its start."
           },
           "duration": {
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "seconds"
+            "description": "How long the step lasts. A later keyframe, cue, or entering paragraph extends it, and left out or 0, the step lasts as long as what it holds."
           },
           "repeat": {
             "type": "integer",
             "minimum": 2,
-            "maximum": 64
+            "maximum": 64,
+            "description": "How many times the step plays before it completes. Left out, it plays once."
           },
           "loop-from": {
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "seconds"
+            "description": "The time, in seconds into the step, that it loops back to while the presentation waits for the next click. It comes before the step's end."
           },
           "curves": {
             "type": "object",
@@ -6776,30 +7145,42 @@
               "description": "a property name"
             },
             "additionalProperties": {
+              "description": "One property's animation in a step: its keyframes and what happens after the last one.",
               "type": "object",
               "properties": {
                 "keyframes": {
                   "type": "array",
                   "items": {
+                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A color moves in sRGB, a role as the slide's scheme colors it. Its opacity moves straight, and its red, green, and blue each weigh by the opacity at either end, as premultiplied alpha blends them, so a color fading out to a transparent one keeps its own color as it fades. Each frame's color is rounded to 8 bits per channel.",
                     "type": "object",
                     "properties": {
                       "id": {
-                        "$ref": "#/definitions/id-3"
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/object-id"
+                          }
+                        ],
+                        "description": "The keyframe's id, unique in its step among its keyframes and cues."
                       },
                       "start": {
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "seconds"
+                        "description": "When the move into the keyframe begins, in seconds into the step. It must come before time. Left out, it begins at the previous keyframe."
                       },
                       "time": {
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "seconds"
+                        "description": "When the property reaches the value, in seconds into the step."
                       },
                       "value": {
-                        "$ref": "#/definitions/initial-2"
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/initial"
+                          }
+                        ],
+                        "description": "The value, written as the property is. `null` clears a property an object may leave out, so its text style or default shows."
                       },
                       "interpolation": {
                         "anyOf": [
@@ -6844,7 +7225,7 @@
                           {
                             "anyOf": [
                               {
-                                "$ref": "#/definitions/interpolation-anticipate-2"
+                                "$ref": "#/definitions/interpolation-anticipate"
                               },
                               {
                                 "type": "object",
@@ -6909,19 +7290,26 @@
                               }
                             ]
                           }
-                        ]
+                        ],
+                        "description": "How the value reaches the keyframe: gradually on a curve, or at once with hold. It's a named curve, a named curve with its settings, a cubic Bézier, or a spring. Left out, linear."
                       },
                       "incoming": {
+                        "description": "The longer move this keyframe interrupts. Up to this keyframe, the motion follows that move's curve.",
                         "type": "object",
                         "properties": {
                           "value": {
-                            "$ref": "#/definitions/initial-2"
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/initial"
+                              }
+                            ],
+                            "description": "Where the move was going."
                           },
                           "end": {
                             "type": "number",
                             "minimum": 0,
                             "maximum": 4294967296,
-                            "description": "seconds"
+                            "description": "When it would have ended, in seconds into the step, at or after the keyframe's time."
                           }
                         },
                         "required": [
@@ -6931,14 +7319,16 @@
                         "additionalProperties": false
                       },
                       "path": {
+                        "description": "A curved motion path for the move into the keyframe. It goes on the x keyframe and also drives the matching y keyframe.",
                         "type": "object",
                         "properties": {
                           "geometry": {
                             "type": "string",
-                            "description": "SVG path data in frame units"
+                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8192 points, in at most 1048576 characters."
                           },
                           "orient": {
-                            "type": "boolean"
+                            "type": "boolean",
+                            "description": "Whether the object turns to face along the path."
                           }
                         },
                         "required": [
@@ -6947,23 +7337,27 @@
                         "additionalProperties": false
                       },
                       "exponential-scale": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether a scale move changes by a steady ratio over time, so a zoom looks even. Only a scale channel takes it."
                       },
                       "oscillate": {
+                        "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",
                         "type": "object",
                         "properties": {
                           "amplitude": {
-                            "type": "number"
+                            "type": "number",
+                            "description": "How far the value swings either way, in the property's own unit."
                           },
                           "frequency": {
                             "type": "number",
-                            "minimum": 0.000001
+                            "minimum": 0.000001,
+                            "description": "How many full cycles each second."
                           },
                           "phase": {
                             "type": "number",
                             "minimum": -8589934592,
                             "maximum": 8589934592,
-                            "description": "degrees"
+                            "description": "Where in its cycle the wave starts. Left out, it's 0."
                           },
                           "wave-shape": {
                             "enum": [
@@ -6972,12 +7366,14 @@
                               "square",
                               "sawtooth",
                               "noise"
-                            ]
+                            ],
+                            "description": "The wave's shape. Left out, it's sine."
                           },
                           "seed": {
                             "type": "integer",
                             "minimum": 0,
-                            "maximum": 4294967294
+                            "maximum": 4294967294,
+                            "description": "The noise seed. The same seed always gives the same noise. Left out, it's 0."
                           }
                         },
                         "required": [
@@ -6994,49 +7390,69 @@
                     ],
                     "additionalProperties": false
                   },
-                  "minItems": 1
+                  "minItems": 1,
+                  "description": "The keyframes, one or more."
                 },
                 "loop": {
                   "enum": [
                     "repeat",
                     "ping-pong"
-                  ]
+                  ],
+                  "description": "How it loops after its last keyframe until the step ends: `repeat` replays from `loop-from` to the last, and `ping-pong` plays that back and forth. Left out, it plays once."
                 },
                 "loop-from": {
-                  "$ref": "#/definitions/id-3"
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/object-id"
+                    }
+                  ],
+                  "description": "The id of the keyframe the loop starts at, where its move begins if it has a `start`. Left out, or naming no keyframe of the curve, it is the first. It needs `loop`."
                 }
               },
               "required": [
                 "keyframes"
               ],
               "additionalProperties": false
-            }
+            },
+            "description": "The step's animation, by object and property, such as card.opacity."
           },
           "cues": {
             "type": "array",
             "items": {
+              "description": "An event at a set time in a step. A clip names the model's Action as every reader names the file's animations, in file order: a name the file gives, not empty, is kept and matched exactly, and every such name is reserved first, wherever it stands in the file; an animation with no name, or an empty one, is Animation and its place in the file, from 1, as Animation 1; an animation whose name an earlier one has, or whose generated name is reserved or already given, takes the first of name 2, name 3 and on not yet taken, a space before the number. So Walk, Walk, Walk 2 read as Walk, Walk 3, Walk 2, and an unnamed first animation beside a given Animation 1 reads as Animation 1 2.",
               "anyOf": [
                 {
                   "type": "object",
                   "properties": {
                     "id": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The cue's id, unique in its step among its keyframes and cues."
                     },
                     "time": {
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "seconds"
+                      "description": "When it happens, in seconds into the step."
                     },
                     "type": {
                       "const": "text"
                     },
                     "object": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The id of the object it acts on."
                     },
                     "paragraph": {
                       "type": "string",
-                      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+                      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                      "description": "The id of the paragraph that appears, as `<!-- id: … -->` ends its last line; a reader warns of an id no paragraph of the text carries."
                     }
                   },
                   "required": [
@@ -7052,19 +7468,29 @@
                   "type": "object",
                   "properties": {
                     "id": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The cue's id, unique in its step among its keyframes and cues."
                     },
                     "time": {
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "seconds"
+                      "description": "When it happens, in seconds into the step."
                     },
                     "type": {
                       "const": "audio"
                     },
                     "object": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The id of the object it acts on."
                     }
                   },
                   "required": [
@@ -7079,19 +7505,29 @@
                   "type": "object",
                   "properties": {
                     "id": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The cue's id, unique in its step among its keyframes and cues."
                     },
                     "time": {
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "seconds"
+                      "description": "When it happens, in seconds into the step."
                     },
                     "type": {
                       "const": "video"
                     },
                     "object": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The id of the object it acts on."
                     }
                   },
                   "required": [
@@ -7106,19 +7542,29 @@
                   "type": "object",
                   "properties": {
                     "id": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The cue's id, unique in its step among its keyframes and cues."
                     },
                     "time": {
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "seconds"
+                      "description": "When it happens, in seconds into the step."
                     },
                     "type": {
                       "const": "web-video"
                     },
                     "object": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The id of the object it acts on."
                     }
                   },
                   "required": [
@@ -7133,43 +7579,61 @@
                   "type": "object",
                   "properties": {
                     "id": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The cue's id, unique in its step among its keyframes and cues."
                     },
                     "time": {
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "seconds"
+                      "description": "When it happens, in seconds into the step."
                     },
                     "type": {
                       "const": "clip"
                     },
                     "object": {
-                      "$ref": "#/definitions/id-3"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/object-id"
+                        }
+                      ],
+                      "description": "The id of the object it acts on."
                     },
                     "action": {
                       "type": "string",
-                      "pattern": "^[\\s\\S]+(?![\\s\\S])"
+                      "pattern": "^[\\s\\S]+(?![\\s\\S])",
+                      "description": "The name of the model's Action that a clip plays. An unnamed Action is Animation and its place in the file, Animation 1; a name the file repeats or gives another Action takes 2, 3 in file order."
                     },
                     "loop": {
-                      "const": "repeat"
+                      "const": "repeat",
+                      "description": "`repeat` plays the Action again from its start each time it ends. Left out, it plays once."
                     },
                     "media-trim": {
-                      "$ref": "#/definitions/media-trim"
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/media-trim"
+                        }
+                      ],
+                      "description": "The part of the Action that plays, as a start and an end in seconds into the Action."
                     },
                     "stride": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "meters"
+                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel, so planted feet don't slide."
                     },
                     "blend-in": {
                       "type": "number",
                       "minimum": 0,
-                      "description": "seconds"
+                      "description": "How long the clip takes to blend in fully over the model's current motion. Left out, it starts at full strength."
                     },
                     "clip-scale": {
                       "type": "number",
-                      "minimum": 0.000001
+                      "minimum": 0.000001,
+                      "description": "How much longer a clip's Action plays than its file says, as Maya's Clip Scale: 2 is half speed, 0.5 double. Left out, it's 1. A clip with a stride ignores it."
                     }
                   },
                   "required": [
@@ -7182,7 +7646,8 @@
                   "additionalProperties": false
                 }
               ]
-            }
+            },
+            "description": "Events at set times in the step: a paragraph appearing, a sound, a video, or an online video starting, or a clip playing a model's Action."
           }
         },
         "required": [
@@ -7194,16 +7659,22 @@
     "stops": {
       "type": "array",
       "items": {
+        "description": "One color of a gradient.",
         "type": "object",
         "properties": {
           "color": {
-            "$ref": "#/definitions/fill-2"
+            "allOf": [
+              {
+                "$ref": "#/definitions/color"
+              }
+            ],
+            "description": "The color: a color role or a hex color."
           },
           "position": {
             "type": "number",
             "minimum": 0,
             "maximum": 1,
-            "description": "fraction"
+            "description": "Where the color sits along the gradient, 0 to 1. Left out, the ends sit at 0 and 1, and the stops between spread evenly. A stop never stands before the one ahead of it."
           }
         },
         "required": [
@@ -7214,19 +7685,20 @@
       "minItems": 2
     },
     "tail": {
+      "description": "A speech bubble's pointer tip.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -510,
           "maximum": 510,
-          "description": "shape fraction"
+          "description": "How far across the frame, as a fraction of its width."
         },
         "y": {
           "type": "number",
           "minimum": -510,
           "maximum": 510,
-          "description": "shape fraction"
+          "description": "How far down the frame, as a fraction of its height."
         }
       },
       "required": [
@@ -7268,7 +7740,7 @@
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f][^\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f]*(?![\\s\\S])"
     },
-    "text-style": {
+    "text-style-name": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "a text style name"
@@ -7280,8 +7752,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "none",
-              "description": "Which transition plays, or none."
+              "const": "none"
             },
             "start": {
               "const": "automatically",
@@ -7308,8 +7779,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "cross-dissolve",
-              "description": "Which transition plays, or none."
+              "const": "cross-dissolve"
             },
             "duration": {
               "type": "number",
@@ -7343,8 +7813,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "carry-over",
-              "description": "Which transition plays, or none."
+              "const": "carry-over"
             },
             "duration": {
               "type": "number",
@@ -7395,8 +7864,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "push",
-              "description": "Which transition plays, or none."
+              "const": "push"
             },
             "duration": {
               "type": "number",
@@ -7439,8 +7907,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "scroll",
-              "description": "Which transition plays, or none."
+              "const": "scroll"
             },
             "duration": {
               "type": "number",
@@ -7492,8 +7959,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "move-in",
-              "description": "Which transition plays, or none."
+              "const": "move-in"
             },
             "duration": {
               "type": "number",
@@ -7536,8 +8002,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "reveal",
-              "description": "Which transition plays, or none."
+              "const": "reveal"
             },
             "duration": {
               "type": "number",
@@ -7580,8 +8045,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "wipe",
-              "description": "Which transition plays, or none."
+              "const": "wipe"
             },
             "duration": {
               "type": "number",
@@ -7624,8 +8088,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "zoom",
-              "description": "Which transition plays, or none."
+              "const": "zoom"
             },
             "duration": {
               "type": "number",
@@ -7659,8 +8122,7 @@
           "type": "object",
           "properties": {
             "effect": {
-              "const": "fade-through-color",
-              "description": "Which transition plays, or none."
+              "const": "fade-through-color"
             },
             "duration": {
               "type": "number",
@@ -7697,19 +8159,20 @@
       ]
     },
     "trim": {
+      "description": "The drawn part of a path's or a line's stroke.",
       "type": "object",
       "properties": {
         "start": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "path fraction"
+          "description": "Where the drawn part starts along the stroke."
         },
         "end": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "path fraction"
+          "description": "Where the drawn part ends along the stroke."
         }
       },
       "required": [
@@ -7722,26 +8185,32 @@
       "type": "string",
       "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[hH][tT][tT][pP][sS]:[/\\\\]*(?::?@)?(?:[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[mM]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU]\\.[bB][eE]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU]\\.[bB][eE]|[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[wW][wW][wW]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[pP][lL][aA][yY][eE][rR]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM])(?::0*443)?(?:[/\\\\?#][\\s\\S]*|[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*)(?![\\s\\S])"
     },
+    "utc-time": {
+      "type": "string",
+      "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
+      "description": "a UTC timestamp to the millisecond, such as 2026-10-17T19:30:00.000Z"
+    },
     "wipe": {
+      "description": "A reveal behind a moving straight edge.",
       "type": "object",
       "properties": {
         "progress": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "ratio"
+          "description": "How much of the object shows: 0 none, 1 all."
         },
         "angle": {
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "degrees"
+          "description": "Which way the edge travels, in degrees clockwise from up. The angle turns with the object."
         },
         "feather": {
           "type": "number",
           "minimum": 0,
           "maximum": 33554431.984375,
-          "description": "canvas units"
+          "description": "How soft the edge is."
         }
       },
       "additionalProperties": false
