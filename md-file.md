@@ -305,7 +305,15 @@ Images, HTML tags and footnotes are kept in the file as written. The slide shows
 
 An HTML comment inside a text or notes block is a note to yourself. It's kept in the file and never shown. A comment at the end of a slide belongs to the slide's last block. A table's or a chart's block holds only its table. A comment can't follow it.
 
-One comment is not a note: `<!-- id: k3x9a2 -->` after a space at the end of a heading's, a paragraph's or a list item's last line is that block's id. A step in [the .mdpoint file](mdpoint-file.md) names a paragraph by its id to bring it in on a click. MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is new. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. Keep each id at the end of its paragraph, and give a new paragraph none: MarkdownPoint gives it one.
+One comment is not a note: a paragraph id, which the next section describes.
+
+### Paragraph ids
+
+A step in [the .mdpoint file](mdpoint-file.md) names a paragraph by its id to bring it in on a click. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. A heading and a list item take one the same way. An id is lowercase letters, digits and single hyphens, and starts with a letter, as a section's is. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes it after one space, as shown.
+
+MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is new. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. Keep each id at the end of its paragraph, and give a new paragraph none: MarkdownPoint gives it one.
+
+Each id belongs to one paragraph of its text. A copied line or a merge can leave two paragraphs with one id. The first keeps it, and the later one reads as a new paragraph. MarkdownPoint warns of it and names the line. It also warns of a comment that looks like a misspelled id. `<!-- ID: k3x9a2 -->`, `<!-- id k3x9a2 -->` and an id alone on its line are three. Each reads as a note.
 
 ## Editing by hand
 

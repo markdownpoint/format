@@ -7046,7 +7046,7 @@
                     },
                     "paragraph": {
                       "type": "string",
-                      "pattern": "^[A-Za-z0-9-]+(?![\\s\\S])"
+                      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
                     }
                   },
                   "required": [
