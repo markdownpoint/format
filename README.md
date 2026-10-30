@@ -66,7 +66,7 @@ My talk/
   media/                 imported images, videos, sounds and models
   generated/             generated images, 3D text models and image generation records
   themes/<key>/          master.json, layout files, fonts and images
-  versions/              saved versions and versions.json
+  versions/              saved versions, one folder each
 ```
 
 Media and theme resources use relative paths. Move the whole folder when moving a presentation. Rename the folder to rename the presentation.
@@ -81,7 +81,7 @@ To start a presentation by hand, copy an example's whole folder. Its `themes` fo
 
 “File › Save Version…” saves a copy of the slides, text, objects and settings. The version uses the presentation's media and the theme named in its saved file. Changes to those resources also affect the saved version.
 
-Versions are stored in numbered folders. For example, `versions/12/` contains `slides.md` and a copy of `presentation.mdpoint` named `presentation.json`. `versions/versions.json` lists each version's number, save time and optional name.
+Each version has a folder named by the time it was saved, in UTC, such as `versions/2026-10-30T16.20.05Z/`. It holds copies of `presentation.mdpoint` and `slides.md`, and a `version.json` with the version's number, save time and optional name. Two computers that save versions while apart keep both, even if they give them the same number. MarkdownPoint never opens a version's folder as a presentation of its own: open the presentation and choose the version in its Version history.
 
 “Delete Theme” won't remove a theme used by a saved version. “File › Clean Up…” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
 

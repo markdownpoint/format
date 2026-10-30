@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/version.schema.json",
+  "description": "One saved version of the presentation. Its folder, `versions/<time>/`, is named by when it was saved, in UTC to the second with dots for colons, as `versions/2026-10-30T16.20.05Z/`, followed by a dash and four lowercase letters or digits where that name is already taken. The folder holds copies of the presentation's two files as they were saved, `presentation.mdpoint` and `slides.md`, and this file. The folder's name tells versions apart: two computers saving offline can give two versions the same number, and both are kept. MarkdownPoint opens a version from its presentation's Version history, never its folder as a presentation of its own. A version names its theme by key and shows the theme as it is now. It uses the presentation's own media. Delete Theme refuses a theme a version uses, and Clean Up keeps a file one uses. While a version's folder lacks one of its three files or this file can't be read, as while a sync service brings it, no theme can be deleted and Clean Up deletes nothing.",
+  "type": "object",
+  "properties": {
+    "markdownpoint": {
+      "type": "string",
+      "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
+      "description": "The format version, its major and minor in quotes: \"1.0\". MarkdownPoint 1.x opens any version 1.x file. A newer major needs a newer MarkdownPoint."
+    },
+    "kind": {
+      "const": "version",
+      "description": "What the file is."
+    },
+    "number": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991,
+      "description": "The number MarkdownPoint shows: one past the highest version's when it was saved, so a version saved after the newest is deleted takes its number again."
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
+      "description": "When it was saved, in UTC, as YYYY-MM-DDTHH:mm:ss.sssZ."
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+(?![\\s\\S])",
+      "description": "The name the author gave it, on one line, not empty, with no tab or other control character, or none when left out."
+    }
+  },
+  "required": [
+    "markdownpoint",
+    "kind",
+    "number",
+    "created"
+  ],
+  "additionalProperties": false
+}
