@@ -3278,8 +3278,8 @@
         "cast-shadow": {
           "$ref": "#/definitions/Prop_locked"
         },
-        "radius": {
-          "$ref": "#/definitions/Prop_radius"
+        "light-radius": {
+          "$ref": "#/definitions/Prop_light-radius"
         },
         "shape": {
           "$ref": "#/definitions/Prop_shape1"
@@ -5746,12 +5746,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "radius"
+              "const": "light-radius"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_radius"
+                  "$ref": "#/definitions/Prop_light-radius"
                 },
                 {
                   "type": "null"
@@ -6871,7 +6871,7 @@
         "intensity",
         "cone-angle",
         "falloff-angle",
-        "radius",
+        "light-radius",
         "size-x",
         "size-y",
         "shadow-color",
@@ -8728,8 +8728,8 @@
         "cast-shadow": {
           "$ref": "#/definitions/Prop_locked"
         },
-        "radius": {
-          "$ref": "#/definitions/Prop_radius"
+        "light-radius": {
+          "$ref": "#/definitions/Prop_light-radius"
         },
         "shape": {
           "$ref": "#/definitions/Prop_shape1"
@@ -9744,7 +9744,7 @@
             "intensity",
             "cone-angle",
             "falloff-angle",
-            "radius",
+            "light-radius",
             "size-x",
             "size-y",
             "shadow-color",
@@ -12084,13 +12084,6 @@
       },
       "description": "The model's constraints, in the order they run; each id is unique on the model."
     },
-    "Prop_shape1": {
-      "enum": [
-        "rectangle",
-        "disk"
-      ],
-      "description": "An area light's shape, as Redshift's Area Shape names its two: a rectangle, or a disk, round or oval."
-    },
     "Prop_light-type": {
       "enum": [
         "directional",
@@ -12117,11 +12110,18 @@
       "maximum": 90,
       "description": "degrees"
     },
-    "Prop_radius": {
+    "Prop_light-radius": {
       "type": "number",
       "minimum": 0,
       "maximum": 1000000000000000000,
       "description": "canvas units"
+    },
+    "Prop_shape1": {
+      "enum": [
+        "rectangle",
+        "disk"
+      ],
+      "description": "An area light's shape, as Redshift's Area Shape names its two: a rectangle, or a disk, round or oval."
     },
     "Prop_size-x": {
       "type": "number",
@@ -12825,7 +12825,7 @@
             },
             {
               "required": [
-                "radius"
+                "light-radius"
               ]
             },
             {
@@ -12958,7 +12958,7 @@
             },
             {
               "required": [
-                "radius"
+                "light-radius"
               ]
             }
           ]

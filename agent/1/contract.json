@@ -3414,7 +3414,7 @@
         },
         {
           "type": "string",
-          "const": "radius"
+          "const": "light-radius"
         },
         {
           "type": "string",
@@ -10110,7 +10110,7 @@
         "cast-shadow": {
           "type": "boolean"
         },
-        "radius": {
+        "light-radius": {
           "type": "number"
         },
         "shape": {
@@ -10668,7 +10668,7 @@
         "intensity",
         "cone-angle",
         "falloff-angle",
-        "radius",
+        "light-radius",
         "size-x",
         "size-y",
         "shadow-color",
@@ -12776,7 +12776,7 @@
         "cast-shadow": {
           "type": "boolean"
         },
-        "radius": {
+        "light-radius": {
           "type": "number"
         },
         "shape": {

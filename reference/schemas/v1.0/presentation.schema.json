@@ -2371,7 +2371,7 @@
                         }
                       ]
                     },
-                    "radius": {
+                    "light-radius": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -4997,160 +4997,346 @@
       "additionalProperties": false
     },
     "objects-light": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "light"
-        },
-        "name": {
-          "$ref": "#/definitions/one-line"
-        },
-        "parent": {
-          "$ref": "#/definitions/object-id"
-        },
-        "position": {
-          "$ref": "#/definitions/space-position"
-        },
-        "rotation": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/space-rotation"
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/object-id"
             },
-            {
-              "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
-              "type": "object",
-              "properties": {
-                "w": {
-                  "type": "number",
-                  "minimum": -8589934592,
-                  "maximum": 8589934592,
-                  "description": "A quaternion's w, in quaternion mode only."
-                },
-                "x": {
-                  "type": "number",
-                  "minimum": -8589934592,
-                  "maximum": 8589934592,
-                  "description": "Degrees about x, or a quaternion's x."
-                },
-                "y": {
-                  "type": "number",
-                  "minimum": -8589934592,
-                  "maximum": 8589934592,
-                  "description": "Degrees about y, or a quaternion's y."
-                },
-                "z": {
-                  "type": "number",
-                  "minimum": -8589934592,
-                  "maximum": 8589934592,
-                  "description": "Degrees about z, or a quaternion's z."
-                }
-              },
-              "required": [
-                "w",
-                "x",
-                "y",
-                "z"
-              ],
-              "additionalProperties": false
+            "type": {
+              "const": "light"
+            },
+            "name": {
+              "$ref": "#/definitions/one-line"
+            },
+            "parent": {
+              "$ref": "#/definitions/object-id"
+            },
+            "position": {
+              "$ref": "#/definitions/space-position"
+            },
+            "rotation": {
+              "$ref": "#/definitions/rotation"
+            },
+            "rotation-mode": {
+              "const": "quaternion"
+            },
+            "scale": {
+              "$ref": "#/definitions/space-scale"
+            },
+            "locked": {
+              "type": "boolean"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "color": {
+              "$ref": "#/definitions/color"
+            },
+            "parent-joint": {
+              "$ref": "#/definitions/joint-name"
+            },
+            "parent-inverse": {
+              "$ref": "#/definitions/parent-inverse"
+            },
+            "target": {
+              "$ref": "#/definitions/target"
+            },
+            "cast-shadow": {
+              "type": "boolean"
+            },
+            "light-type": {
+              "const": "directional"
+            },
+            "intensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1.7976931348623157e+308,
+              "description": "watts"
             }
-          ]
+          },
+          "required": [
+            "id",
+            "type",
+            "position",
+            "light-type"
+          ],
+          "dependencies": {
+            "parent-joint": [
+              "parent"
+            ],
+            "parent-inverse": [
+              "parent"
+            ]
+          },
+          "additionalProperties": false
         },
-        "rotation-mode": {
-          "const": "quaternion"
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/object-id"
+            },
+            "type": {
+              "const": "light"
+            },
+            "name": {
+              "$ref": "#/definitions/one-line"
+            },
+            "parent": {
+              "$ref": "#/definitions/object-id"
+            },
+            "position": {
+              "$ref": "#/definitions/space-position"
+            },
+            "rotation": {
+              "$ref": "#/definitions/rotation"
+            },
+            "rotation-mode": {
+              "const": "quaternion"
+            },
+            "scale": {
+              "$ref": "#/definitions/space-scale"
+            },
+            "locked": {
+              "type": "boolean"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "color": {
+              "$ref": "#/definitions/color"
+            },
+            "parent-joint": {
+              "$ref": "#/definitions/joint-name"
+            },
+            "parent-inverse": {
+              "$ref": "#/definitions/parent-inverse"
+            },
+            "target": {
+              "$ref": "#/definitions/target"
+            },
+            "cast-shadow": {
+              "type": "boolean"
+            },
+            "light-type": {
+              "const": "spot"
+            },
+            "intensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1.7976931348623157e+308,
+              "description": "watts"
+            },
+            "cone-angle": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 179.999999,
+              "description": "degrees"
+            },
+            "falloff-angle": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 90,
+              "description": "degrees"
+            },
+            "light-radius": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "position",
+            "light-type",
+            "intensity"
+          ],
+          "dependencies": {
+            "parent-joint": [
+              "parent"
+            ],
+            "parent-inverse": [
+              "parent"
+            ]
+          },
+          "additionalProperties": false
         },
-        "scale": {
-          "$ref": "#/definitions/space-scale"
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/object-id"
+            },
+            "type": {
+              "const": "light"
+            },
+            "name": {
+              "$ref": "#/definitions/one-line"
+            },
+            "parent": {
+              "$ref": "#/definitions/object-id"
+            },
+            "position": {
+              "$ref": "#/definitions/space-position"
+            },
+            "rotation": {
+              "$ref": "#/definitions/rotation"
+            },
+            "rotation-mode": {
+              "const": "quaternion"
+            },
+            "scale": {
+              "$ref": "#/definitions/space-scale"
+            },
+            "locked": {
+              "type": "boolean"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "color": {
+              "$ref": "#/definitions/color"
+            },
+            "parent-joint": {
+              "$ref": "#/definitions/joint-name"
+            },
+            "parent-inverse": {
+              "$ref": "#/definitions/parent-inverse"
+            },
+            "cast-shadow": {
+              "type": "boolean"
+            },
+            "light-type": {
+              "const": "point"
+            },
+            "intensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1.7976931348623157e+308,
+              "description": "watts"
+            },
+            "light-radius": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "position",
+            "light-type",
+            "intensity"
+          ],
+          "dependencies": {
+            "parent-joint": [
+              "parent"
+            ],
+            "parent-inverse": [
+              "parent"
+            ]
+          },
+          "additionalProperties": false
         },
-        "locked": {
-          "type": "boolean"
-        },
-        "hidden": {
-          "type": "boolean"
-        },
-        "color": {
-          "$ref": "#/definitions/color"
-        },
-        "parent-joint": {
-          "$ref": "#/definitions/joint-name"
-        },
-        "parent-inverse": {
-          "$ref": "#/definitions/parent-inverse"
-        },
-        "shape": {
-          "enum": [
-            "rectangle",
-            "disk"
-          ]
-        },
-        "target": {
-          "$ref": "#/definitions/target"
-        },
-        "cast-shadow": {
-          "type": "boolean"
-        },
-        "light-type": {
-          "enum": [
-            "directional",
-            "spot",
-            "point",
-            "area"
-          ]
-        },
-        "intensity": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1.7976931348623157e+308,
-          "description": "watts"
-        },
-        "cone-angle": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 179.999999,
-          "description": "degrees"
-        },
-        "falloff-angle": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 90,
-          "description": "degrees"
-        },
-        "radius": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "size-x": {
-          "type": "number",
-          "minimum": 1,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "size-y": {
-          "type": "number",
-          "minimum": 1,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/object-id"
+            },
+            "type": {
+              "const": "light"
+            },
+            "name": {
+              "$ref": "#/definitions/one-line"
+            },
+            "parent": {
+              "$ref": "#/definitions/object-id"
+            },
+            "position": {
+              "$ref": "#/definitions/space-position"
+            },
+            "rotation": {
+              "$ref": "#/definitions/rotation"
+            },
+            "rotation-mode": {
+              "const": "quaternion"
+            },
+            "scale": {
+              "$ref": "#/definitions/space-scale"
+            },
+            "locked": {
+              "type": "boolean"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "color": {
+              "$ref": "#/definitions/color"
+            },
+            "parent-joint": {
+              "$ref": "#/definitions/joint-name"
+            },
+            "parent-inverse": {
+              "$ref": "#/definitions/parent-inverse"
+            },
+            "shape": {
+              "enum": [
+                "rectangle",
+                "disk"
+              ]
+            },
+            "target": {
+              "$ref": "#/definitions/target"
+            },
+            "cast-shadow": {
+              "type": "boolean"
+            },
+            "light-type": {
+              "const": "area"
+            },
+            "intensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1.7976931348623157e+308,
+              "description": "watts"
+            },
+            "size-x": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            },
+            "size-y": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "position",
+            "light-type",
+            "intensity"
+          ],
+          "dependencies": {
+            "parent-joint": [
+              "parent"
+            ],
+            "parent-inverse": [
+              "parent"
+            ]
+          },
+          "additionalProperties": false
         }
-      },
-      "required": [
-        "id",
-        "type",
-        "position",
-        "light-type"
-      ],
-      "dependencies": {
-        "parent-joint": [
-          "parent"
-        ],
-        "parent-inverse": [
-          "parent"
-        ]
-      },
-      "additionalProperties": false
+      ]
     },
     "objects-line": {
       "type": "object",
@@ -6976,6 +7162,50 @@
         "prompt"
       ],
       "additionalProperties": false
+    },
+    "rotation": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/space-rotation"
+        },
+        {
+          "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "A quaternion's w, in quaternion mode only."
+            },
+            "x": {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "Degrees about x, or a quaternion's x."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "Degrees about y, or a quaternion's y."
+            },
+            "z": {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "Degrees about z, or a quaternion's z."
+            }
+          },
+          "required": [
+            "w",
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false
+        }
+      ]
     },
     "scheme-name": {
       "type": "string",
