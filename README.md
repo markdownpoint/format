@@ -73,7 +73,7 @@ Media and theme resources use relative paths. Move the whole folder when moving 
 
 Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. Those two names are fixed in any letter case. Every other file is named in the presentation as its folder lists it. MarkdownPoint won't open a folder containing duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
 
-Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder.
+Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name can't contain `#`, `?`, `/`, `\`, `:`, `*`, `"`, `<`, `>` or `|`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint lists a file named so, but can't use it until you rename it.
 
 Files and folders whose names start with `.markdownpoint` are MarkdownPoint's own, in the presentation's folder or beside it. They are never part of the presentation. Each example's `.gitignore` keeps them out of git with the line `.markdownpoint*`.
 
