@@ -305,6 +305,8 @@ Images, HTML tags and footnotes are kept in the file as written. The slide shows
 
 An HTML comment inside a text or notes block is a note to yourself. It's kept in the file and never shown. A comment at the end of a slide belongs to the slide's last block. A table's or a chart's block holds only its table. A comment can't follow it.
 
+One comment is not a note: `<!-- id: k3x9a2 -->` after a space at the end of a heading's, a paragraph's or a list item's last line is that block's id. A step in [the .mdpoint file](mdpoint-file.md) names a paragraph by its id to bring it in on a click. MarkdownPoint writes the ids. When you edit the words, keep each id at the end of its paragraph, and give a new paragraph none: MarkdownPoint gives it one.
+
 ## Editing by hand
 
 MarkdownPoint can't read the file if it has one of these, among others:
