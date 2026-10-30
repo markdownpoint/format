@@ -79,7 +79,7 @@
         {
           "id": "grows",
           "type": "text",
-          "frame": {"x":120,"y":340,"width":760,"height":60},
+          "frame": {"x":120,"y":340,"width":760},
           "text-style": "body",
           "auto-size": "height"
         },

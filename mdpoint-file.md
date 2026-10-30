@@ -136,7 +136,7 @@ A text box can grow to fit its words, give every digit one width and outline its
   {
     "id": "grows",
     "type": "text",
-    "frame": {"x": 120, "y": 340, "width": 760, "height": 60},
+    "frame": {"x": 120, "y": 340, "width": 760},
     "text-style": "body",
     "auto-size": "height"
   },
@@ -162,7 +162,7 @@ A text box can grow to fit its words, give every digit one width and outline its
 
 ![The type slide, as MarkdownPoint draws it](images/words-type.png)
 
-`auto-size` names the sides that grow, here the height. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its width in canvas units.
+`auto-size` names the sides that grow, here the height, so the frame holds no height: the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its width in canvas units.
 
 A chart draws the Markdown table in its text block:
 
