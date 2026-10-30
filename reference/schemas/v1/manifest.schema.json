@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "manifest.schema.json",
+  "description": "The list of a theme package's files, for checking that it's complete. A shared theme is a .mptheme file. It's a ZIP archive of one folder, named after the theme's key, that holds manifest.json and the theme's files. It holds no symbolic links.",
+  "type": "object",
+  "properties": {
+    "markdownpoint": {
+      "type": "string",
+      "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
+      "description": "The format version, its major and minor in quotes: \"1.0\". MarkdownPoint 1.x opens any version 1.x file. A newer major needs a newer MarkdownPoint."
+    },
+    "kind": {
+      "const": "theme-package",
+      "description": "What the file is."
+    },
+    "theme": {
+      "type": "string",
+      "pattern": "^(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "The key of the theme in the package, the name of its folder."
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "description": "One file of a theme package.",
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S])",
+            "description": "Its path inside the package, as a theme's file path."
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+            "description": "Its SHA-256 digest, as 64 lowercase hexadecimal digits."
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "Its size."
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "contains": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "const": "master.json"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "description": "Each file of the theme, once, master.json included, with its size and digest."
+    }
+  },
+  "required": [
+    "markdownpoint",
+    "kind",
+    "theme",
+    "files"
+  ],
+  "additionalProperties": false
+}

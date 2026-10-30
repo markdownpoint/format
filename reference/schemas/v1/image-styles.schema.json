@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "image-styles.schema.json",
+  "description": "Styles from the style library, to take to another computer.",
+  "type": "object",
+  "properties": {
+    "markdownpoint": {
+      "type": "string",
+      "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
+      "description": "The format version, its major and minor in quotes: \"1.0\". MarkdownPoint 1.x opens any version 1.x file. A newer major needs a newer MarkdownPoint."
+    },
+    "kind": {
+      "const": "image-styles",
+      "description": "What the file is."
+    },
+    "styles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
+            "description": "one line that isn’t blank"
+          },
+          "reference-prompt": {
+            "type": "string",
+            "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+            "description": "text that isn’t blank"
+          },
+          "prompt": {
+            "type": "string",
+            "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+            "description": "text that isn’t blank"
+          },
+          "transparent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "reference-prompt",
+          "prompt"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "description": "The styles, at least one, each a restyle record."
+    }
+  },
+  "required": [
+    "markdownpoint",
+    "kind",
+    "styles"
+  ],
+  "additionalProperties": false
+}

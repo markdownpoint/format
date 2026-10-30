@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "generation-record.schema.json",
+  "description": "How a generated image was made: what was asked, what for, and the image that came back.",
+  "type": "object",
+  "properties": {
+    "markdownpoint": {
+      "type": "string",
+      "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
+      "description": "The format version, its major and minor in quotes: \"1.0\". MarkdownPoint 1.x opens any version 1.x file. A newer major needs a newer MarkdownPoint."
+    },
+    "kind": {
+      "const": "image-generation",
+      "description": "What the file is."
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
+      "description": "When the image was made, in UTC, as YYYY-MM-DDTHH:mm:ss.sssZ."
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+      "description": "The layer name an image object takes from it when it has none, on one line. Left out, one is made from the prompt."
+    },
+    "target": {
+      "description": "What the image was made for.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "presentation-background",
+              "description": "The presentation's background, a slide's background, or an image object."
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "slide-background",
+              "description": "The presentation's background, a slide's background, or an image object."
+            },
+            "slide-id": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/slide-id"
+                }
+              ],
+              "description": "The slide's id."
+            }
+          },
+          "required": [
+            "type",
+            "slide-id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "image-object",
+              "description": "The presentation's background, a slide's background, or an image object."
+            },
+            "slide-id": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/slide-id"
+                }
+              ],
+              "description": "The slide's id."
+            },
+            "object-id": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/slide-id"
+                }
+              ],
+              "description": "The image object's id."
+            }
+          },
+          "required": [
+            "type",
+            "slide-id",
+            "object-id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "request": {
+      "description": "What was asked of the image model.",
+      "type": "object",
+      "properties": {
+        "compiler": {
+          "const": "markdownpoint/image-prompt/1",
+          "description": "The version of the instructions MarkdownPoint wraps the prompt in."
+        },
+        "prompt": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/prompt"
+            }
+          ],
+          "description": "The words asked for, in Unicode NFC, each run of white space one space, none at either end. It isn't empty or `none`."
+        },
+        "resolved-style": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/prompt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The image style's words added to the prompt, written the same way, or null for none."
+        },
+        "provider": {
+          "enum": [
+            "google",
+            "openai"
+          ],
+          "description": "Who makes the image model."
+        },
+        "model": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/model"
+            }
+          ],
+          "description": "The image model's name, on one line."
+        },
+        "parameters": {
+          "description": "The settings the model was asked with.",
+          "type": "object",
+          "properties": {
+            "aspect-ratio": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/aspect-ratio"
+                }
+              ],
+              "description": "The proportions asked for, as width:height in whole numbers from 1 with no leading zero, such as 16:9."
+            },
+            "transparent": {
+              "type": "boolean",
+              "description": "Whether a transparent background was asked for."
+            },
+            "size": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/model"
+                }
+              ],
+              "description": "The size asked for, in the model's own words, on one line."
+            },
+            "quality": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/model"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The quality asked for, in the model's own words, on one line, or null where none was."
+            }
+          },
+          "required": [
+            "aspect-ratio",
+            "transparent",
+            "size",
+            "quality"
+          ],
+          "additionalProperties": false
+        },
+        "original": {
+          "description": "The image a restyle was applied to. Left out, the image was made from the prompt alone.",
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string",
+              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+              "description": "Its file path, as a presentation's file path, ending in an image's extension."
+            },
+            "sha256": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/sha256"
+                }
+              ],
+              "description": "The SHA-256 digest of its bytes, as 64 lowercase hexadecimal digits."
+            },
+            "generated": {
+              "type": "object",
+              "properties": {
+                "prompt": {
+                  "type": "string",
+                  "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+                  "description": "text that isn’t blank"
+                },
+                "aspect-ratio": {
+                  "$ref": "#/definitions/aspect-ratio"
+                },
+                "transparent": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "prompt",
+                "aspect-ratio",
+                "transparent"
+              ],
+              "additionalProperties": false,
+              "description": "What it was generated from, where it was generated."
+            }
+          },
+          "required": [
+            "file",
+            "sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "compiler",
+        "prompt",
+        "resolved-style",
+        "provider",
+        "model",
+        "parameters"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "description": "The image that came back.",
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string",
+          "pattern": "^generated\\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.png(?![\\s\\S])",
+          "description": "The file it was first written to: generated/, a lowercase UUID, then .png. Its UUID can differ from the record's."
+        },
+        "sha256": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/sha256"
+            }
+          ],
+          "description": "The SHA-256 digest of its bytes, as 64 lowercase hexadecimal digits."
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "description": "Its size."
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Its width."
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Its height."
+        }
+      },
+      "required": [
+        "file",
+        "sha256",
+        "bytes",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "markdownpoint",
+    "kind",
+    "created",
+    "target",
+    "request",
+    "output"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "aspect-ratio": {
+      "type": "string",
+      "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
+      "description": "width:height in whole numbers, such as 16:9"
+    },
+    "model": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
+      "description": "one line"
+    },
+    "prompt": {
+      "type": "string",
+      "pattern": "^(?!none(?![\\s\\S]))[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+      "description": "64 lowercase hexadecimal digits"
+    },
+    "slide-id": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+    }
+  }
+}
