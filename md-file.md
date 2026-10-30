@@ -86,7 +86,7 @@ You can add your own keys for information used by your tools or workflow. Markdo
 
 ## Slides
 
-`<!-- slide: id -->` starts a slide. Only a marker starts one. A slide runs to the next slide, section or composition marker, or to the end of the file. Slides appear in the order they're listed. To move a slide, move its lines.
+`<!-- slide: id -->` starts a slide. Only a marker starts one. A slide runs to the next slide, section or composition marker, or to the end of the file. Slides appear in the order they're listed. To move a slide, move its lines. In git, a moved slide shows as its lines deleted in one place and added in another. The .mdpoint file doesn't change. Merging the move with an edit to that slide's words conflicts on the whole slide.
 
 Each slide also has an entry in [the .mdpoint file](mdpoint-file.md) under the same id. The order of entries there doesn't matter. `layout` is the theme layout the slide uses.
 
