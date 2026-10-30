@@ -19,7 +19,7 @@
           "$ref": "#/definitions/id"
         }
       ],
-      "description": "The presentation's id. The .md file repeats it, so the two files can be matched."
+      "description": "The presentation's id, which the .md file repeats; a copy made outside MarkdownPoint keeps it, and with it its view link, until MarkdownPoint gives the copy one of its own."
     },
     "save": {
       "allOf": [
