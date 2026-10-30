@@ -2692,7 +2692,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "Its steps, played back to back. They take no cues and no `wait-loop`. Every pass counted, they last at most 4294967296 seconds."
+            "description": "Its steps, played back to back. They take no cues and no `loop-from`. Every pass counted, they last at most 4294967296 seconds."
           }
         },
         "required": [
@@ -6763,7 +6763,7 @@
             "minimum": 2,
             "maximum": 64
           },
-          "wait-loop": {
+          "loop-from": {
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
@@ -6778,7 +6778,7 @@
             "additionalProperties": {
               "type": "object",
               "properties": {
-                "keys": {
+                "keyframes": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -6917,7 +6917,7 @@
                           "value": {
                             "$ref": "#/definitions/initial-2"
                           },
-                          "end-time": {
+                          "end": {
                             "type": "number",
                             "minimum": 0,
                             "maximum": 4294967296,
@@ -6926,7 +6926,7 @@
                         },
                         "required": [
                           "value",
-                          "end-time"
+                          "end"
                         ],
                         "additionalProperties": false
                       },
@@ -6997,27 +6997,17 @@
                   "minItems": 1
                 },
                 "loop": {
-                  "type": "object",
-                  "properties": {
-                    "mode": {
-                      "enum": [
-                        "repeat",
-                        "ping-pong"
-                      ]
-                    },
-                    "from": {
-                      "$ref": "#/definitions/id-3"
-                    }
-                  },
-                  "required": [
-                    "mode",
-                    "from"
-                  ],
-                  "additionalProperties": false
+                  "enum": [
+                    "repeat",
+                    "ping-pong"
+                  ]
+                },
+                "loop-from": {
+                  "$ref": "#/definitions/id-3"
                 }
               },
               "required": [
-                "keys"
+                "keyframes"
               ],
               "additionalProperties": false
             }

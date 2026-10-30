@@ -57,7 +57,7 @@
           "duration": 0.6,
           "curves": {
             "card.opacity": {
-              "keys": [
+              "keyframes": [
                 {"id":"card-shows","time":0.6,"value":1,"interpolation":"ease-out"}
               ]
             }

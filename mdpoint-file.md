@@ -77,7 +77,9 @@ The slide's objects and motion are in the .mdpoint file:
           "duration": 0.6,
           "curves": {
             "card.opacity": {
-              "keys": [{"id": "card-shows", "time": 0.6, "value": 1, "interpolation": "ease-out"}]
+              "keyframes": [
+                {"id": "card-shows", "time": 0.6, "value": 1, "interpolation": "ease-out"}
+              ]
             }
           }
         }
@@ -467,9 +469,9 @@ A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to
 
 `steps` lists the slide's builds in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `after` starts playback when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
-`curves` lists animated properties as `object.property`. A property's curve holds its keyframes in `keys`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `duration` lasts as long as its keyframes, its cues and the paragraphs they bring in.
+`curves` lists animated properties as `object.property`. A property's curve holds its keyframes in `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `duration` lasts as long as its keyframes, its cues and the paragraphs they bring in.
 
-Four settings can repeat motion while a slide is visible: a curve's `loop`, an `oscillate` wave, a step's `wait-loop` and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
+Four settings can repeat motion while a slide is visible: a curve's `loop`, an `oscillate` wave, a step's `loop-from` and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
 
 ## Motion
 
@@ -491,7 +493,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
     "duration": 3,
     "curves": {
       "dot-bounce.translation.x": {
-        "keys": [
+        "keyframes": [
           {
             "id": "bounce-arrives",
             "time": 2,
@@ -501,7 +503,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
         ]
       },
       "dot-elastic.translation.x": {
-        "keys": [
+        "keyframes": [
           {
             "id": "elastic-arrives",
             "time": 2,
@@ -511,7 +513,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
         ]
       },
       "dot-overshoot.translation.x": {
-        "keys": [
+        "keyframes": [
           {
             "id": "overshoot-arrives",
             "time": 2,
@@ -521,7 +523,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
         ]
       },
       "dot-spring.translation.x": {
-        "keys": [
+        "keyframes": [
           {
             "id": "spring-arrives",
             "time": 2,
