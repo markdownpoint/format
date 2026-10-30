@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "presentation.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/presentation.schema.json",
   "description": "The presentation: its theme, slides, and settings. Its `locale` writes the date field and reads its own charts' cells; a theme's charts read theirs as en-US. Changing `locale` in MarkdownPoint respells the deck's chart cells, and an edit of the file alone doesn't. It also says where words break into pieces as they animate, and which forms Chinese, Japanese, and Korean characters take.",
   "type": "object",
   "properties": {
@@ -155,7 +155,7 @@
     },
     "date": {
       "type": "string",
-      "pattern": "^(?!0000)[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])(?![\\s\\S])",
+      "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)(?![\\s\\S])",
       "description": "The date the date field shows, as YYYY-MM-DD. It must be a real calendar date, from year 0001 on."
     },
     "locale": {
@@ -3168,7 +3168,7 @@
     },
     "created": {
       "type": "string",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z(?![\\s\\S])",
+      "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
       "description": "a UTC timestamp to the millisecond, such as 2026-10-17T19:30:00.000Z"
     },
     "crop": {

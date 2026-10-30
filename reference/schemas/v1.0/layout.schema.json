@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "layout.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/layout.schema.json",
   "description": "One slide layout of a theme. Its key is its file name.",
   "type": "object",
   "properties": {

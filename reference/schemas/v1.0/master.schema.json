@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "master.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/master.schema.json",
   "description": "A theme's master: its settings and the artwork every slide shows.",
   "type": "object",
   "properties": {

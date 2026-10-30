@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "manifest.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/theme-package.schema.json",
   "description": "The list of a theme package's files, for checking that it's complete. A shared theme is a .mptheme file. It's a ZIP archive of one folder, named after the theme's key, that holds manifest.json and the theme's files. It holds no symbolic links.",
   "type": "object",
   "properties": {

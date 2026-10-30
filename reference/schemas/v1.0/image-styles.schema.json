@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "image-styles.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/image-styles.schema.json",
   "description": "Styles from the style library, to take to another computer.",
   "type": "object",
   "properties": {
