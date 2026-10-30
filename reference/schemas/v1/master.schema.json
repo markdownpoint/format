@@ -2277,7 +2277,7 @@
                   "bent"
                 ]
               },
-              "curve": {
+              "bend": {
                 "type": "number",
                 "minimum": -181,
                 "maximum": 181,

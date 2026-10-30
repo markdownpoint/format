@@ -1637,7 +1637,7 @@
                         }
                       ]
                     },
-                    "curve": {
+                    "bend": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -4952,7 +4952,7 @@
             "bent"
           ]
         },
-        "curve": {
+        "bend": {
           "type": "number",
           "minimum": -181,
           "maximum": 181,
