@@ -1,0 +1,2293 @@
+{
+  "tools": [
+    {
+      "name": "windows_list",
+      "title": "List windows",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "List the document windows open in MarkdownPoint as { windows }: each one’s root path, null for a window with no presentation, and which is focused. A tool that acts on a presentation takes one of these roots as \"root\". Omit it to use the focused one, or the only one open when none is focused. presentations_open, presentations_create, capabilities and schema need no open presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "windows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/AgentWindow"
+            }
+          }
+        },
+        "required": [
+          "windows"
+        ],
+        "additionalProperties": false,
+        "definitions": {
+          "AgentWindow": {
+            "type": "object",
+            "properties": {
+              "root": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "focused": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "root",
+              "focused"
+            ],
+            "additionalProperties": false,
+            "description": "A document window, as `windows.list` gives it: the presentation it shows, or null, and whether it is focused."
+          }
+        }
+      }
+    },
+    {
+      "name": "presentations_open",
+      "title": "Open a presentation",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Show an existing presentation folder in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the canonical root to pass as \"root\" to the other tools.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Absolute folder of an existing presentation."
+          }
+        },
+        "required": [
+          "root"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "The canonical root the app now shows."
+          },
+          "opened": {
+            "type": "boolean",
+            "description": "False when a window already showed it and was focused instead."
+          }
+        },
+        "required": [
+          "root",
+          "opened"
+        ],
+        "additionalProperties": false,
+        "definitions": {}
+      }
+    },
+    {
+      "name": "presentations_create",
+      "title": "Create a presentation",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Create a presentation folder from a bundled theme (Basic when omitted) and show it in a document window. Needs no open presentation. Each bundled theme starts the presentation with one slide. Returns the canonical root to pass as \"root\" to the other tools.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Absolute folder to create; its parent must exist and the folder must not."
+          },
+          "theme": {
+            "type": "string",
+            "description": "A bundled theme's name or key; the default theme when omitted."
+          }
+        },
+        "required": [
+          "root"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string"
+          },
+          "theme": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "name"
+            ],
+            "additionalProperties": false,
+            "description": "The bundled theme it started from, by its key and name."
+          }
+        },
+        "required": [
+          "root",
+          "theme"
+        ],
+        "additionalProperties": false,
+        "definitions": {}
+      }
+    },
+    {
+      "name": "presentations_close",
+      "title": "Close a presentation",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Save and close the document windows that show a presentation folder, as its close button does. Refused when no window shows it or it cannot save.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Absolute folder of a presentation a window shows."
+          }
+        },
+        "required": [
+          "root"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "The root whose windows closed, once each had saved."
+          }
+        },
+        "required": [
+          "root"
+        ],
+        "additionalProperties": false,
+        "definitions": {}
+      }
+    },
+    {
+      "name": "capabilities",
+      "title": "Read the contract",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Contract version, served methods, accepted operation names and limits: the app's, whichever presentation is open, or none. Read exact request fields with schema.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "schema",
+      "title": "Read a request’s schema",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Read the request schema for one operation, exports.run or themes.edit, with only its referenced definitions. Use it before proposals_create for each operation you send, and themes.edit before themes_edit. Omit selector for the complete proposal schema. With detail: \"fields\", it lists the request’s fields in place of its schema: each one’s type, whether every request needs it, its values when the schema names them, and its description. Without a selector, it lists the proposal request’s own fields, then each operation’s name and the fields it always needs. This only reads the contract; it never proposes or edits. It needs no open presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "selector": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "addCommentThread",
+                  "addCommentReply",
+                  "setCommentText",
+                  "moveCommentThread",
+                  "setCommentResolved",
+                  "deleteCommentThread",
+                  "deleteCommentReply",
+                  "insertSection",
+                  "renameSection",
+                  "reorderSections",
+                  "deleteSection",
+                  "deleteAllSections",
+                  "moveSlides",
+                  "replaceText",
+                  "setContent",
+                  "setNotes",
+                  "setObjectFlags",
+                  "setObjectName",
+                  "insertTableRow",
+                  "insertTableColumn",
+                  "deleteTableRow",
+                  "deleteTableColumn",
+                  "deleteObjects",
+                  "groupObjects",
+                  "ungroupObjects",
+                  "reparentObjects",
+                  "replicateObjects",
+                  "updateReplica",
+                  "duplicateObjects",
+                  "reorderObjects",
+                  "deleteSteps",
+                  "reorderSteps",
+                  "applyEffect",
+                  "travel",
+                  "pasteAnimation",
+                  "insertRevealStep",
+                  "insertPlayStep",
+                  "showFromStart",
+                  "applyBackgroundToAllSlides",
+                  "resetSlides",
+                  "duplicateSlides",
+                  "deleteSlides",
+                  "reorderSlides",
+                  "insertObject",
+                  "updateObjectProperties",
+                  "transformObjects",
+                  "pasteObjects",
+                  "revertObjects",
+                  "replaceWebVideo",
+                  "replaceMedia",
+                  "insertSlide",
+                  "setSlideLayout",
+                  "updatePresentationProperties",
+                  "updateSlideProperties",
+                  "insertSteps",
+                  "updateStep",
+                  "updateInitial",
+                  "tween",
+                  "oscillate",
+                  "insertKeyframes",
+                  "deleteKeyframes",
+                  "setValues",
+                  "editStep",
+                  "typewriter"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "exports.run"
+                ]
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "themes.edit"
+                ]
+              }
+            ],
+            "description": "One operation's name, exports.run or themes.edit; omitted, the complete proposal request."
+          },
+          "detail": {
+            "type": "string",
+            "enum": [
+              "fields"
+            ],
+            "description": "`fields` answers with an index of the request's fields in place of its schema."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "presentations_get",
+      "title": "Read the presentation",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-document. Warnings with code text-overflow name each object whose words run past its frame on a slide as its builds leave it, where they still show (slides_render’s fits give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "slides_get",
+      "title": "Read a slide",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Read one slide at authored Base or an exact animation position: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setContent takes), which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "at": {
+            "type": "object",
+            "properties": {
+              "stepId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The step to sample; null selects Start."
+              },
+              "time": {
+                "type": "number",
+                "description": "Seconds within the step, at least 0.",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "stepId",
+              "time"
+            ],
+            "additionalProperties": false,
+            "description": "Omitted is authored Base."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "slides_render",
+      "title": "Render a slide",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Render one slide through the app renderer at authored Base or an exact animation position. Base is the authored composition; Start applies initial values. Returns a PNG image plus revision, canonical position, pixel dimensions, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write with transformObjects at the same position, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "at": {
+            "type": "object",
+            "properties": {
+              "stepId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "The step to sample; null selects Start."
+              },
+              "time": {
+                "type": "number",
+                "description": "Seconds within the step, at least 0.",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "stepId",
+              "time"
+            ],
+            "additionalProperties": false,
+            "description": "Omitted is authored Base."
+          },
+          "longestEdge": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3840,
+            "description": "Maximum PNG edge in pixels, preserving the slide's aspect ratio. Defaults to 1024."
+          },
+          "view": {
+            "type": "string",
+            "enum": [
+              "slide",
+              "top",
+              "left"
+            ],
+            "description": "slide (the default) as the audience sees it; top or left for the slide's 3D content from above, the audience at the bottom, or from the slide's left, the audience on the right, with the slide's plane and its shadow catchers' planes drawn in and lines from the slide's corners toward its camera, to judge depth a front view hides. A slide with no 3D content has no top or side view."
+          },
+          "destination": {
+            "type": "string",
+            "description": "Absolute path of a new .png file outside any presentation folder, which the app writes instead of returning the image inline; the result then names it in files and carries no image."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "slideId"
+        ]
+      }
+    },
+    {
+      "name": "slides_frames",
+      "title": "Render animation frames",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Render one animation step over a range of its time, or with transition: true the slide’s transition into the next shown slide (Carry over included) over its duration, sampled at a rate, through the app renderer: returns a contact sheet of every frame, each labeled with its time, plus the times and frame size. With destination, the app also writes frame-0001.png onward and sheet.png into that absolute directory. At most 120 frames; lower fps or narrow from/to for longer steps. It never starts media or changes the presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "from": {
+            "minimum": 0,
+            "maximum": 4294967296,
+            "type": "number",
+            "description": "Seconds within the step where the range starts. Defaults to 0."
+          },
+          "to": {
+            "minimum": 0,
+            "maximum": 4294967296,
+            "type": "number",
+            "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+          },
+          "fps": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 60,
+            "description": "Samples per second. Defaults to 30."
+          },
+          "stepId": {
+            "type": "string",
+            "description": "The step whose time the frames sample, from slides.get; omitted with `transition`."
+          },
+          "transition": {
+            "type": "boolean",
+            "enum": [
+              true
+            ],
+            "description": "Render the slide's transition into the next shown slide instead of a step, from 0 to its duration in seconds; omit stepId."
+          },
+          "longestEdge": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3840,
+            "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
+          },
+          "destination": {
+            "type": "string",
+            "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
+          },
+          "view": {
+            "type": "string",
+            "enum": [
+              "slide",
+              "top",
+              "left"
+            ],
+            "description": "slide (the default) as the audience sees it; top or left for the slide's 3D content from above, the audience at the bottom, or from the slide's left, the audience on the right, with the slide's plane and its shadow catchers' planes drawn in and lines from the slide's corners toward its camera, to judge depth a front view hides. A slide with no 3D content has no top or side view."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "slideId"
+        ]
+      }
+    },
+    {
+      "name": "slides_trace",
+      "title": "Trace a step’s values",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Sample every parameter one animation step keys over a range of its time, at a rate, with the presenter’s sampler: returns the times and one value list per parameter target, in authored parameter space before ancestor group poses. At most 1200 samples. Nothing renders or changes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "stepId": {
+            "type": "string",
+            "description": "The step whose time is sampled, from slides.get."
+          },
+          "from": {
+            "minimum": 0,
+            "maximum": 4294967296,
+            "type": "number",
+            "description": "Seconds within the step where the range starts. Defaults to 0."
+          },
+          "to": {
+            "minimum": 0,
+            "maximum": 4294967296,
+            "type": "number",
+            "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+          },
+          "fps": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 60,
+            "description": "Samples per second. Defaults to 30."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId",
+          "stepId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "slides_measure",
+      "title": "Measure a slide’s 3D content",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Measure a step’s 3D content over a range of its time, or with rests: true the slide at every rest its show makes, from the geometry the page poses. For each model and 3D text at each time: its bounds on the slide and its shadows’, how much of each text’s box its silhouette and its shadow cover, and how far its lowest point stands above the slide’s floor, its highest floor object. A model covers flat words where its silhouette falls on their box through the camera, whichever of them draws in front, and 3D words only where it draws in front of their letters. A shadow covers a text where it falls on its box. A shadow here is the sharp outline its parts cast on each catcher. A render shows what is seen. Over the range: for a model with an in-place walk, how fast its planted feet slide against its body’s travel, and the speed each walk travels at its size, at which its feet hold; and for each text, the most it is covered and shadowed, and when. Numbers decide what a picture misjudges: a model landing beside words, feet sliding, a shadow over a headline. With rests: true in place of stepId and a range: the slide at every rest its show makes, where it holds until the next click. That is as it has appeared when its first click waits, after each click once that click’s steps, their with and after members, its Actions and the camera’s drift have ended, and after the last. A rest whose steps loop is measured over one period, fps times a second, 30 when omitted; a live rest, whose actions share no cycle, once as its last motion that ends does. Each sample adds how much of each object draws, 0 to 1, its opacity and its groups’, 0 while hidden; and for each text, the most a drawn model covers it while it draws, and at which rest. It proves words stay clear of a model in every resting frame. At most 120 samples. Nothing changes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "stepId": {
+            "type": "string",
+            "description": "The step whose time is sampled, from slides.get."
+          },
+          "from": {
+            "minimum": 0,
+            "maximum": 4294967296,
+            "type": "number",
+            "description": "Seconds within the step where the range starts. Defaults to 0."
+          },
+          "to": {
+            "minimum": 0,
+            "maximum": 4294967296,
+            "type": "number",
+            "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+          },
+          "fps": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 60,
+            "description": "Samples per second over a step. Defaults to 10. Samples per second over a rest that loops. Defaults to 30."
+          },
+          "rests": {
+            "type": "boolean",
+            "enum": [
+              true
+            ],
+            "description": "Measure the slide at every rest its show makes instead of a step; omit stepId, from and to."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "slides_letters",
+      "title": "Measure a text’s letters",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Each letter of one text object where its slide draws it at rest, in canvas units: the graphemes it draws, its pen on the baseline, and the box of its ink, the font’s own outline. A text’s box and its lines’ boxes stand above and below the letters; the ink is where a model sits on the words, lands on a letter or points at the period. A ligature is one letter, and spaces are left out. Nothing renders or changes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "A text object on that slide."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId",
+          "objectId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "exports_run",
+      "title": "Export the presentation",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute destination: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When text overflows, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmOverflow: true only when clipping is acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and root.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "description": "Fresh request identity. Movie cancellation matches this ID in the current window/session."
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "pdf",
+              "png",
+              "pptx",
+              "movie"
+            ]
+          },
+          "destination": {
+            "type": "string",
+            "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
+          },
+          "confirmOverflow": {
+            "type": "boolean",
+            "description": "Accept known overflowing text in this export."
+          },
+          "movie": {
+            "type": "object",
+            "properties": {
+              "resolution": {
+                "type": "number",
+                "enum": [
+                  720,
+                  1080,
+                  2160
+                ],
+                "description": "Lines on the movie's shorter side: a landscape movie's height, a portrait movie's width; 2160 is 4K."
+              },
+              "secondsPerSlide": {
+                "type": "number",
+                "description": "Hold each slide for this many seconds.",
+                "minimum": 0,
+                "maximum": 3600
+              },
+              "secondsPerStep": {
+                "type": "number",
+                "description": "Hold each completed build for this many seconds.",
+                "minimum": 0,
+                "maximum": 3600
+              },
+              "slides": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "type": "number"
+                  },
+                  "to": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "from",
+                  "to"
+                ],
+                "additionalProperties": false,
+                "description": "Slides by the numbers the author knows them by, hidden slides skipped; every shown slide when omitted."
+              },
+              "codec": {
+                "type": "string",
+                "enum": [
+                  "h264",
+                  "prores-4444"
+                ],
+                "description": "H.264 in an MP4, or Apple ProRes 4444 in a QuickTime movie; H.264 when omitted. The container follows from it."
+              },
+              "transparent": {
+                "type": "boolean",
+                "description": "Leave slide backgrounds transparent; ProRes 4444 only."
+              }
+            },
+            "required": [
+              "resolution",
+              "secondsPerSlide",
+              "secondsPerStep"
+            ],
+            "additionalProperties": false,
+            "description": "Movie format only; omit to use the app’s default export settings."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "id",
+          "format",
+          "destination"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "exports_cancel",
+      "title": "Cancel a movie export",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Cancel the active movie export identified by its caller UUID in the selected presentation. A true canceled result means cancellation was requested; the pending exports_run call reports whether it ultimately exported or canceled. Returns false if this request is no longer active. It does not cancel another presentation’s or another request’s export.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "description": "The id of the movie export to cancel, as its exports.run request gave it."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "canceled": {
+            "type": "boolean",
+            "description": "True means cancellation was requested for the matching active movie; its original awaited response reports the outcome."
+          }
+        },
+        "required": [
+          "id",
+          "canceled"
+        ],
+        "additionalProperties": false,
+        "definitions": {}
+      }
+    },
+    {
+      "name": "images_editor_get",
+      "title": "Read the chosen image editor",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Read this machine’s external image editor, which the author chooses in the app; null when none is chosen. Needs no open presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "editor": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/AgentImageEditor"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "editor"
+        ],
+        "additionalProperties": false,
+        "definitions": {
+          "AgentImageEditor": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "name"
+            ],
+            "additionalProperties": false,
+            "description": "The external image editor, which only the app's own chooser sets."
+          }
+        }
+      }
+    },
+    {
+      "name": "images_editor_open",
+      "title": "Edit a picture in the image editor",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Open a local picture object in the external image editor the author chose in the app. Generated pictures are copied into media/ and bound only after launch; stale edits refuse that binding. Uses the same admission and Undo behavior as the Media tab. Shared presentations and theme artwork refuse external editing. Returns the resulting file and whether it was copied.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "A picture object on that slide."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId",
+          "objectId"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "editor": {
+            "$ref": "#/definitions/AgentImageEditor"
+          },
+          "file": {
+            "type": "string"
+          },
+          "copied": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "editor",
+          "file",
+          "copied"
+        ],
+        "additionalProperties": false,
+        "definitions": {
+          "AgentImageEditor": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "name"
+            ],
+            "additionalProperties": false,
+            "description": "The external image editor, which only the app's own chooser sets."
+          }
+        }
+      }
+    },
+    {
+      "name": "media_import",
+      "title": "Import media",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Copy a picture, video, sound or 3D model into the presentation’s folder, as the app’s media picker does, and return the file’s path in the presentation, which insertObject and replaceMedia take. Give path for a file on this machine, or name (with the media’s extension) and data (its bytes in base64) when the file is not reachable. A movie takes its first frame as its poster; when that frame cannot be read it is still imported and warnings says so. A model (.glb, or a .gltf by path with its files beside it) becomes one self-contained GLB: compressed geometry and KTX2 textures decoded, its own cameras and lights removed, its Actions named apart; changes says what changed and report what the model does, as models_inspect gives it. Shared presentations publish the file before it is returned.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Absolute path of the media file on this machine; or name and data in its place."
+          },
+          "name": {
+            "type": "string",
+            "description": "File name with the media's extension, such as photo.png, with data in place of path."
+          },
+          "data": {
+            "type": "string",
+            "description": "The file's bytes in base64, with name."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_build",
+      "title": "Build a 3D model",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. source is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh, { type: \"loose-parts\" }), which makes each piece no edge joins an object of its own beside it, its origin at its bounds center, for an Action to turn or move. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The source runs only while it builds. No file keeps it. To change a model you built, build it again from new source. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To make a text object’s words 3D, give for: { slideId, objectId }: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column. Without source, the app’s letter builder makes them at data’s depth and bevel, in ems (0.2 and 0.02 when left out). The model’s file keeps those and for, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The model's file name without extension, such as bird."
+          },
+          "source": {
+            "type": "string",
+            "description": "The build: an ES module with a default export build(kit, data). No file keeps it. Left out with for, the app's letter builder makes the words: kit.text(data.words, { depth, bevel })."
+          },
+          "data": {
+            "description": "Any JSON the build reads, such as sizes or colors. With for and no source: { depth?, bevel? } in ems. The model's file keeps them."
+          },
+          "models": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
+          },
+          "for": {
+            "type": "object",
+            "properties": {
+              "slideId": {
+                "type": "string",
+                "description": "A slide's stable id, as presentations.get and slides.get list it."
+              },
+              "objectId": {
+                "type": "string",
+                "description": "An object's id on its slide, as `slides.get` lists it."
+              }
+            },
+            "required": [
+              "slideId",
+              "objectId"
+            ],
+            "additionalProperties": false,
+            "description": "A text object whose words the build makes 3D: data.words holds its letters, as its page lays them out at rest."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_actions",
+      "title": "List Meshy’s actions",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "description": "List the actions of Meshy’s library that a model Meshy rigged can play, by the id models_animate takes: walks, runs, idles, gestures and more. filter keeps those whose name or category holds every word. A motion whose name ends in inplace plays where the model stands, as a slide’s keys move it; each is named as its Action will be. Free; uses the Meshy key in Settings > AI.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "type": "string",
+            "description": "Words the action's name or category must hold, such as walk inplace."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_picture",
+      "title": "Generate an image for a 3D model with Meshy",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Have Meshy draw a picture from words, the first step of a 3D model: look at it before paying for the model. character stands one figure alone in a T-pose, as models_rig needs. About 9 credits; uses the Meshy key in Settings > AI, and credits says what it cost. The app adds a plain light background and even studio light, so nothing behind the subject becomes part of the model. The picture isn’t saved in the presentation: picture names it to models_generate until expires.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "What the picture shows, worded as the \"Make models with Meshy\" section of the MarkdownPoint skill says. Settings > Coding agents installs the skill."
+          },
+          "character": {
+            "type": "boolean",
+            "description": "A person or creature to rig: one figure in a T-pose."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "prompt"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_generate",
+      "title": "Generate a 3D model with Meshy",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Have Meshy make a 3D model from a picture: picture from models_picture, or file, a PNG, JPEG or WebP picture of the presentation. Remeshed to 30,000 quads with 2K physically based textures, and stood on y = 0; character keeps the T-pose for models_rig. About 30 credits; uses the Meshy key in Settings > AI, and credits says what it cost. Imported as a file is, saved as media/<name>-<hash>.glb and drawn on a sheet.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The model's file name without extension, such as rocket."
+          },
+          "picture": {
+            "type": "string",
+            "description": "The picture models_picture returned."
+          },
+          "file": {
+            "type": "string",
+            "description": "A picture of the presentation instead, such as media/rocket-1a2b3c4d.png."
+          },
+          "character": {
+            "type": "boolean",
+            "description": "A figure to rig, in a T-pose."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_rig",
+      "title": "Rig a model with Meshy",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Have Meshy rig a model of the presentation: a humanoid facing +Z in an A- or T-pose, height meters tall. About 5 credits; uses the Meshy key in Settings > AI, and credits says what it cost. The rigged model is cleaned (a centimeter skeleton baked, its rest stood on y = 0), gets Meshy’s free walk and run as the looping Actions Walk and Run, is imported as a file is, saved as media/<name>-<hash>.glb and drawn on a sheet. It keeps the skeleton Meshy made for models_animate; Meshy deletes it after three days.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "The model to rig, such as media/figure-1a2b3c4d.glb."
+          },
+          "height": {
+            "type": "number",
+            "description": "Its height in meters."
+          },
+          "name": {
+            "type": "string",
+            "description": "The rigged model's file name; the model's with -rigged when left out."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "file",
+          "height"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_animate",
+      "title": "Animate a model with Meshy",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Have Meshy play one to ten actions from models_actions on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. loop names the Actions to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "A model models_rig made, or one models_animate made from it."
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
+            },
+            "description": "Action ids from models_actions, in the order the Actions should come."
+          },
+          "loop": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Names of the Actions to loop, as models_actions names them."
+          },
+          "name": {
+            "type": "string",
+            "description": "The animated model's file name; the model's when left out."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "file",
+          "actions"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "models_inspect",
+      "title": "Inspect a 3D model",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in glTF meters and whether it stands on y = 0; each Action’s length, reach, lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale; nodes that cast no shadow; its color slots; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "The model's path, such as media/bird-1a2b3c4d.glb."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "themes_list",
+      "title": "List themes",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "List the themes the presentation can change to, as the app’s theme chooser does, each with its key, its master’s id, its name and slide size, and the key of the one it uses now. Read-only.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "themes_use",
+      "title": "Change the theme",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Change the presentation’s theme, as the app’s Change theme does. Slides keep their layouts by name and their own content: a layout the theme lacks comes with them, copied into it. One Undo step takes the change back and removes what it copied in. A theme with another slide size needs rescale: fit keeps everything on the slide, fill covers it. Returns the new revision.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "theme": {
+            "type": "string",
+            "description": "A theme's key or name from `themes.list`."
+          },
+          "rescale": {
+            "type": "string",
+            "enum": [
+              "fit",
+              "fill"
+            ],
+            "description": "Required when the theme's slide size differs: fit keeps everything on the slide, fill covers it."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "theme"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "themes_get",
+      "title": "Read the theme",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Read the presentation’s theme as Edit theme edits it: the master (size, fonts, brand colors, schemes, text styles, grid, guides, step duration, its pictures) and each layout (name, scheme, placeholders, objects, its pictures), authored values only, with the themeRevision that themes_edit and a theme Undo need. Read-only. A slide in slides_get shows the master’s and its layout’s objects under the ids themes_edit names them by.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "themes_edit",
+      "title": "Edit the theme",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setContent; setPlaceholder makes a layout’s text or picture a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "themeRevision": {
+            "type": "string",
+            "description": "`themeRevision` from a fresh `themes.get` or `themes.edit`; a theme edited since refuses the change."
+          },
+          "layout": {
+            "type": "string",
+            "description": "The layout the operations edit, by its key from themes.get; the master when omitted. createLayout and deleteLayouts take no layout."
+          },
+          "operations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "objects",
+                    "setLayoutOrder",
+                    "setFontFamily",
+                    "setSchemeColor",
+                    "setBrandColor",
+                    "setTextStyleProperty",
+                    "setGrid",
+                    "setGuides",
+                    "setStepDuration",
+                    "setName",
+                    "setScheme",
+                    "setPlaceholder",
+                    "setArtwork",
+                    "createLayout",
+                    "deleteLayouts"
+                  ]
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            "description": "Applied in order to one file as one Undo step. Read each operation's exact fields with schema selector themes.edit."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "themeRevision",
+          "operations"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/definitions/AgentMutationStatus"
+          },
+          "themeRevision": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "themeRevision"
+        ],
+        "additionalProperties": false,
+        "definitions": {
+          "AgentMutationStatus": {
+            "type": "string",
+            "enum": [
+              "applied",
+              "noChange"
+            ],
+            "description": "A mutation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+          }
+        }
+      }
+    },
+    {
+      "name": "themes_promote",
+      "title": "Move an object or its changes into the theme",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Move a slide object into the theme, as its context menu does: addArtwork or addPlaceholder adds it to the slide’s layout, applyLayout or applyMaster writes its changes to an inherited object into the layout or master. One Undo step across slide and theme.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string",
+            "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
+          },
+          "slideId": {
+            "type": "string",
+            "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "An object's id on its slide, as `slides.get` lists it."
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "applyLayout",
+              "applyMaster",
+              "addArtwork",
+              "addPlaceholder"
+            ]
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "revision",
+          "slideId",
+          "objectId",
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "themes_manage",
+      "title": "Manage themes",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mptheme file at destination; install adds a .mptheme file’s theme; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "create",
+              "rename",
+              "delete",
+              "duplicateLayout",
+              "moveLayout",
+              "export",
+              "install",
+              "saveSlide"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "The theme's name for create and rename; the layout's name for saveSlide. Required by create, rename and saveSlide."
+          },
+          "theme": {
+            "type": "string",
+            "description": "A theme's key or name from themes.list. Required by rename, delete and export."
+          },
+          "from": {
+            "type": "string",
+            "description": "The theme key or name the layout is in. Required by duplicateLayout and moveLayout."
+          },
+          "layout": {
+            "type": "string",
+            "description": "The layout's key in from, as themes.list gives it. Required by duplicateLayout and moveLayout."
+          },
+          "to": {
+            "type": "string",
+            "description": "The theme key or name it goes to. Required by duplicateLayout and moveLayout."
+          },
+          "destination": {
+            "type": "string",
+            "description": "Absolute path of a new .mptheme file outside any presentation folder; the result names it in files. Required by export."
+          },
+          "path": {
+            "type": "string",
+            "description": "Absolute path of a .mptheme file. Required by install."
+          },
+          "slideId": {
+            "type": "string",
+            "description": "The slide to save. Required by saveSlide."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "slides_resize",
+      "title": "Change the slide size",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Change the slide size, as the Presentation panel does: the theme and the slides scale together, in one Undo step. A change of shape needs rescale: fit keeps everything on the slide, fill covers it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8192,
+            "description": "A slide's width or height in canvas units, as the .mdpoint file holds it.; canvas units"
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8192,
+            "description": "A slide's width or height in canvas units, as the .mdpoint file holds it.; canvas units"
+          },
+          "rescale": {
+            "type": "string",
+            "enum": [
+              "fit",
+              "fill"
+            ]
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "width",
+          "height"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "history_undo",
+      "title": "Undo",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Edit > Undo over the presentation’s one history of slide and theme steps, only while the presentation is still at the revision given, so undoing your own change never undoes someone’s later edit. A theme step also needs themeRevision. Returns the new revisions, or status noChange with nothing to undo.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string",
+            "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
+          },
+          "themeRevision": {
+            "type": "string",
+            "description": "Needed when the step is a theme edit: `themeRevision` from `themes.get` or `themes.edit`."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "revision"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "history_redo",
+      "title": "Redo",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Edit > Redo, held to the same revisions as history_undo.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string",
+            "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
+          },
+          "themeRevision": {
+            "type": "string",
+            "description": "Needed when the step is a theme edit: `themeRevision` from `themes.get` or `themes.edit`."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "revision"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "images_prepare",
+      "title": "Prepare an image",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "description": "Show what generating an image would do, as the app’s confirmation does, without spending: the provider and model, the aspect ratio, whether it pays a provider (requiresProvider) or reuses an image already made for the same settings, the variants already made, and a token images_generate spends. Name a picture by slideId and objectId, or a slide’s background by slideId alone. The prompt, transparent and image-style, the style it is generated in, are the picture’s or background’s own properties, set with updateObjectProperties or updateSlideProperties first; a picture without an image-style takes the presentation’s image-style. Unavailable says why, such as no prompt or no provider key.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "The slide the picture or background is on."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "A picture object on that slide; omit for the slide's background."
+          },
+          "restyle": {
+            "type": "boolean",
+            "description": "true for the restyle of the picture or the slide's background, made from its image as first made, rather than its prompt."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "images_generate",
+      "title": "Generate an image",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "description": "Generate the image an images_prepare token describes, spending on the provider it named, and wait until the image is in place. The app shows it generating. Returns the new revision, the generationId and the outcome: selected, reused, or generatedUnselected when the target changed meanwhile and the image was kept among its variants.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "The token images.prepare returned; it is spent once and expires."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "token"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "images_select",
+      "title": "Choose an earlier image",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Use an earlier generated variant of a picture or background, as the app’s variant strip does; one Undo step. Returns the revision and whether anything changed.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "The slide the picture or background is on."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "A picture object on that slide; omit for the slide's background."
+          },
+          "restyle": {
+            "type": "boolean",
+            "description": "true for the restyle of the picture or the slide's background, made from its image as first made, rather than its prompt."
+          },
+          "generationId": {
+            "type": "string",
+            "description": "A variant's generationId from images.prepare."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "generationId",
+          "slideId"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/definitions/AgentMutationStatus",
+            "description": "noChange when the image already shows the variant."
+          },
+          "revision": {
+            "$ref": "#/definitions/AgentRevision"
+          }
+        },
+        "required": [
+          "status",
+          "revision"
+        ],
+        "additionalProperties": false,
+        "definitions": {
+          "AgentMutationStatus": {
+            "type": "string",
+            "enum": [
+              "applied",
+              "noChange"
+            ],
+            "description": "A mutation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+          },
+          "AgentRevision": {
+            "type": "string",
+            "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
+          }
+        }
+      }
+    },
+    {
+      "name": "images_suggest_prompt",
+      "title": "Suggest an image prompt",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "description": "Draft an image prompt from a slide’s words with the prompt model, as the prompt editor’s Suggest does. Changes nothing; set it as a prompt to use it.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "The slide whose words the prompt is drawn from."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "slideId"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "prompt"
+        ],
+        "additionalProperties": false,
+        "definitions": {}
+      }
+    },
+    {
+      "name": "images_styles_list",
+      "title": "List image styles",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "List this machine’s style library, as a picture’s Restyle popup does, each style with its definition; set a definition as a picture’s restyle with updateObjectProperties, or a slide background’s with updateSlideProperties, then images_prepare with restyle to generate it. To take the restyle off a slide that shows the presentation’s restyled background, set the slide’s image and image-result to the ones it shows and leave out restyle: the slide shows the original. Read-only; needs no open presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "images_styles_edit",
+      "title": "Edit image styles",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Change this machine’s style library, as the Choose style… dialog does: save a definition (a new style, or over id), duplicate, delete, generate a style’s preview pair (spends on OpenAI, as Generate preview does), import a styles file from path, or export one style (id) or all to destination. Returns the styles and the one acted on. Needs no open presentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "save",
+              "duplicate",
+              "delete",
+              "preview",
+              "import",
+              "export"
+            ]
+          },
+          "definition": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
+                "description": "one line that isn’t blank"
+              },
+              "reference-prompt": {
+                "type": "string",
+                "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+                "description": "text that isn’t blank"
+              },
+              "prompt": {
+                "type": "string",
+                "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+                "description": "text that isn’t blank"
+              },
+              "transparent": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "name",
+              "reference-prompt",
+              "prompt"
+            ],
+            "additionalProperties": false,
+            "description": "A style definition as images.styles.list lists them. Required by save."
+          },
+          "id": {
+            "type": "string",
+            "description": "A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone. Required by duplicate, delete and preview."
+          },
+          "path": {
+            "type": "string",
+            "description": "Absolute path of a styles file. Required by import."
+          },
+          "destination": {
+            "type": "string",
+            "description": "Absolute path of a new .json file outside any presentation folder. Required by export."
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "present_start",
+      "title": "Start the show",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "description": "Start Present for the open presentation at the slide slideId names, or at its first slide that isn’t skipped. The show plays the presentation as it stood when it started, by that presentation’s slide ids, whatever is edited meanwhile. If this window is already presenting, its show comes to the front where it stands. Pass root on later calls, since Present brings its audience window to the front. A web video’s limits are refused with their notice; start again with confirmWebVideoNotice only once that notice is accepted. No dialog opens.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "slideId": {
+            "type": "string",
+            "description": "The id of a slide that isn't skipped to start at, as presentations.get lists it; omit for the first such slide."
+          },
+          "confirmWebVideoNotice": {
+            "type": "boolean",
+            "description": "Set true only when repeating a start that was refused with a web-video notice, after accepting its limitations; the agent path never opens its native warning dialog."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "present_get",
+      "title": "Read the show’s state",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Read whether this document owner is presenting, its captured slide/step IDs, finite local step time, blackout/notes state and display IDs. Time uses the same presentation clock and freezes during blackout. Refuses control of a previous document still presenting in a reused editor window.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "present_control",
+      "title": "Control the show",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "description": "Control the selected owner’s existing Present session through its normal navigation. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; slide enters the slide slideId names at Start, a captured stable slide ID. During blackout a navigation action first resumes the same position. Commands do not edit the document.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "nextStep",
+              "nextStepInstant",
+              "previousStep",
+              "nextSlide",
+              "previousSlide",
+              "toggleBlackout",
+              "toggleNotes",
+              "slide"
+            ]
+          },
+          "slideId": {
+            "type": "string",
+            "description": "The slide to enter at Start, by its id as the show captured it. Required by slide."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "present_stop",
+      "title": "Stop the show",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Close the selected owner’s Present session and release its windows and staged files. Does not stop another owner’s presentation. Returns inactive when already stopped.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "proposals_create",
+      "title": "Propose a change",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "description": "If operation fields appear as unknown, call schema with the operation name. Propose a change against a fresh revision from presentations_get or slides_get. The app tries the operations, each with exactly the keys the schema gives it, without writing them; nothing is written until proposals_accept. Use stable slide/object/step ids from slides_get; it also discovers parameter targets, current values and interpolation. Initial values, timed keys and cues use the shared agent contract. New key/cue ids must be fresh within a step; reusing an id replaces its whole record. A null key value clears an optional property to its type-style/default, while a null updateStep entry deletes that key or cue. insertSlide takes an optional slideId of your choosing and objects to seed the new slide. insertObject takes an optional objectId. It can’t name a slide inserted by the same proposal. A proposal its validation refuses is not held: the call fails with validation-failed, and the error's validation holds its errors and warnings; an error with code no-change means everything is already so. Otherwise read the proposal's warnings and summaries, then accept it by its id as one undo step.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string",
+            "description": "From presentations.get or slides.get; stale when a slide it changes has changed, or anything, for a deck-wide change."
+          },
+          "intent": {
+            "type": "string",
+            "description": "What the change does, in a few words the author reads in the app, such as \"Bars rise one by one\"."
+          },
+          "operations": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 256,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "setContent",
+                    "insertTableRow",
+                    "insertTableColumn",
+                    "deleteTableRow",
+                    "deleteTableColumn",
+                    "setNotes",
+                    "transformObjects",
+                    "updateSlideProperties",
+                    "updatePresentationProperties",
+                    "applyBackgroundToAllSlides",
+                    "setObjectFlags",
+                    "setObjectName",
+                    "updateObjectProperties",
+                    "updateReplica",
+                    "revertObjects",
+                    "replaceMedia",
+                    "replaceWebVideo",
+                    "updateStep",
+                    "updateInitial",
+                    "insertSteps",
+                    "deleteSteps",
+                    "applyEffect",
+                    "tween",
+                    "travel",
+                    "typewriter",
+                    "oscillate",
+                    "insertKeyframes",
+                    "deleteKeyframes",
+                    "editStep",
+                    "pasteAnimation",
+                    "insertRevealStep",
+                    "insertPlayStep",
+                    "showFromStart",
+                    "setValues",
+                    "insertObject",
+                    "pasteObjects",
+                    "deleteObjects",
+                    "insertSlide",
+                    "reorderSlides",
+                    "addCommentThread",
+                    "addCommentReply",
+                    "setCommentText",
+                    "moveCommentThread",
+                    "setCommentResolved",
+                    "deleteCommentThread",
+                    "deleteCommentReply",
+                    "duplicateObjects",
+                    "reorderObjects",
+                    "groupObjects",
+                    "ungroupObjects",
+                    "reparentObjects",
+                    "replicateObjects",
+                    "reorderSteps",
+                    "setSlideLayout",
+                    "resetSlides",
+                    "duplicateSlides",
+                    "deleteSlides",
+                    "insertSection",
+                    "renameSection",
+                    "reorderSections",
+                    "deleteSection",
+                    "deleteAllSections",
+                    "moveSlides",
+                    "replaceText"
+                  ]
+                }
+              },
+              "required": [
+                "type"
+              ]
+            },
+            "description": "Batch compatible edits as one Undo step, or send one standalone operation. Every number keeps the millionth. Batch the batchable types (setContent, insertTableRow, insertTableColumn, deleteTableRow, deleteTableColumn, setNotes, transformObjects, updateSlideProperties, updatePresentationProperties, applyBackgroundToAllSlides, setObjectFlags, setObjectName, updateObjectProperties, updateReplica, revertObjects, replaceMedia, replaceWebVideo, updateStep, updateInitial, insertSteps, deleteSteps, applyEffect, tween, travel, typewriter, oscillate, insertKeyframes, deleteKeyframes, editStep, pasteAnimation, insertRevealStep, insertPlayStep, showFromStart, setValues, insertObject, pasteObjects, deleteObjects, insertSlide, reorderSlides) as one Undo step; every other type goes alone. Read each type's exact fields with schema."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "revision",
+          "intent",
+          "operations"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "proposals_accept",
+      "title": "Accept a proposal",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Accept a pending proposal: all operations land as one undo step, exactly like a hand edit or the app’s Accept. Fails with stale-revision if the presentation changed since the proposal, and with validation-failed, its validation attached, if the change can’t be made now. Returns { id, revision, ids, skipped }. revision is the new revision. ids holds the ids of the sections, comments, slides, objects and steps it created or deleted, and skipped the locked objects it left as they were. The change is live at once. The app saves the files about two seconds later. presentations_close saves them at once.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The proposal's id from proposals.create."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "proposals_reject",
+      "title": "Reject a proposal",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Discard a pending or stale proposal without applying it and free its held slot; capabilities reports how many proposals may be held. Stale proposals, and ones an accept found invalid, give way on their own when the slots are full, so reject a pending proposal you will not accept. Refuses a proposal that is being accepted or is already accepted or rejected. A rejected proposal stays readable through proposals_get among the recent retired records.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The proposal's id from proposals.create."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "state": {
+            "const": "rejected"
+          }
+        },
+        "required": [
+          "id",
+          "state"
+        ],
+        "additionalProperties": false,
+        "definitions": {}
+      }
+    },
+    {
+      "name": "proposals_list",
+      "title": "List proposals",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "List the presentation’s proposals in the order they were made, as { proposals }: every held proposal (pending or stale) and the most recent accepted or rejected ones, each with its state, validation and summaries. A pending proposal turns stale when a slide it targets changes, or the presentation for document-wide operations; accept then refuses it, so propose again from a fresh revision.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "proposals_get",
+      "title": "Read a proposal",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "description": "Read one proposal by id: its state, validation errors and warnings, per-operation summaries and affected slides. Finds held proposals and recently accepted or rejected ones; an unknown or long-retired id fails with unknown-target. A pending proposal whose slides changed reads as stale.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The proposal's id from proposals.create."
+          },
+          "root": {
+            "type": "string",
+            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

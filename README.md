@@ -55,6 +55,7 @@ The [complete presentation](examples/first-deck) includes the theme and JSON fil
 - **[The .mdpoint file](mdpoint-file.md)**: place objects, set their properties and animate them.
 - **[Themes](themes.md)**: share fonts, colors, text styles and layouts across slides.
 - **[Reference, version 1](reference/v1.md)**: look up a key's exact meaning, values, units and defaults.
+- **[Agent contract, version 1](agent/1/README.md)**: the methods, requests and errors coding agents use with the running app.
 
 ## Files and folders
 

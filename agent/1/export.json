@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/definitions/AgentRequestId",
+      "description": "Fresh request identity. Movie cancellation matches this ID in the current window/session."
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "png",
+        "pptx",
+        "movie"
+      ]
+    },
+    "destination": {
+      "type": "string",
+      "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
+    },
+    "confirmOverflow": {
+      "type": "boolean",
+      "description": "Accept known overflowing text in this export."
+    },
+    "movie": {
+      "$ref": "#/definitions/AgentMovieExportOptions",
+      "description": "Movie format only; omit to use the app’s default export settings."
+    }
+  },
+  "required": [
+    "id",
+    "format",
+    "destination"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "AgentRequestId": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "A UUID the caller makes for its request, in either case."
+    },
+    "AgentMovieExportOptions": {
+      "type": "object",
+      "properties": {
+        "resolution": {
+          "type": "number",
+          "enum": [
+            720,
+            1080,
+            2160
+          ],
+          "description": "Lines on the movie's shorter side: a landscape movie's height, a portrait movie's width; 2160 is 4K."
+        },
+        "secondsPerSlide": {
+          "type": "number",
+          "description": "Hold each slide for this many seconds.",
+          "minimum": 0,
+          "maximum": 3600
+        },
+        "secondsPerStep": {
+          "type": "number",
+          "description": "Hold each completed build for this many seconds.",
+          "minimum": 0,
+          "maximum": 3600
+        },
+        "slides": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "number"
+            },
+            "to": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "from",
+            "to"
+          ],
+          "additionalProperties": false,
+          "description": "Slides by the numbers the author knows them by, hidden slides skipped; every shown slide when omitted."
+        },
+        "codec": {
+          "type": "string",
+          "enum": [
+            "h264",
+            "prores-4444"
+          ],
+          "description": "H.264 in an MP4, or Apple ProRes 4444 in a QuickTime movie; H.264 when omitted. The container follows from it."
+        },
+        "transparent": {
+          "type": "boolean",
+          "description": "Leave slide backgrounds transparent; ProRes 4444 only."
+        }
+      },
+      "required": [
+        "resolution",
+        "secondsPerSlide",
+        "secondsPerStep"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
