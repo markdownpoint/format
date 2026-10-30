@@ -132,7 +132,7 @@ Label
 
 A line of `---` is a horizontal rule. On a slide, it runs across its text box. It can stand anywhere in a text or notes block: first, between paragraphs or last. A `---` at the end of a slide belongs to the slide's last block.
 
-Leave a blank line above a rule. Right under a line of text, `---` makes that line a heading instead.
+Leave a blank line above a rule. Right under a line of text, `---` is no rule: it makes that line a heading.
 
 A `---` has to stand in a block. Right under a slide's marker, before its first text or notes marker, it's an error.
 
