@@ -715,6 +715,19 @@
                         }
                       ]
                     },
+                    "min-height": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 65536,
+                          "description": "canvas units"
+                        }
+                      ]
+                    },
                     "column-count": {
                       "anyOf": [
                         {
@@ -2861,6 +2874,13 @@
           "description": "canvas units"
         },
         "alignment": {
+          "enum": [
+            "start",
+            "center",
+            "end"
+          ]
+        },
+        "reference-point": {
           "enum": [
             "start",
             "center",
@@ -5930,6 +5950,12 @@
             "height",
             "none"
           ]
+        },
+        "min-height": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 65536,
+          "description": "canvas units"
         },
         "column-count": {
           "type": "integer",

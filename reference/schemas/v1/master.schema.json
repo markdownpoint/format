@@ -722,6 +722,12 @@
                   "none"
                 ]
               },
+              "min-height": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 65536,
+                "description": "canvas units"
+              },
               "column-count": {
                 "type": "integer",
                 "minimum": 1,
@@ -2585,6 +2591,13 @@
                     "description": "canvas units"
                   },
                   "alignment": {
+                    "enum": [
+                      "start",
+                      "center",
+                      "end"
+                    ]
+                  },
+                  "reference-point": {
                     "enum": [
                       "start",
                       "center",
