@@ -35,7 +35,7 @@
           "$ref": "#/definitions/name"
         }
       ],
-      "description": "The group the theme is listed under in the theme chooser, on one line. The chooser and the “Themes” window recognize only basic, business, education, community, and personal."
+      "description": "The category the theme is listed under: basic, business, education, community, or personal. A category draws nothing, so another word only warns, and the theme is listed as uncategorized."
     },
     "size": {
       "type": "object",
