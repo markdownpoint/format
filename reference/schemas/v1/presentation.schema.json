@@ -27,7 +27,7 @@
           "$ref": "#/definitions/id"
         }
       ],
-      "description": "A save stamp, written to both files by the last save before editing passes to another person. It tells these files apart from an older copy."
+      "description": "A save stamp: the id of a save. MarkdownPoint writes it to both files while the presentation is shared for editing, to tell them apart from an older copy with the same content. Other tools ignore it."
     },
     "theme": {
       "type": "string",
