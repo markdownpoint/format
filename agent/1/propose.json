@@ -11901,7 +11901,7 @@
         "gap": {
           "$ref": "#/definitions/Same91"
         },
-        "alignment": {
+        "align": {
           "enum": [
             "start",
             "center",

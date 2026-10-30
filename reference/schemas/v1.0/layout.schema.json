@@ -5283,7 +5283,7 @@
       "additionalProperties": false
     },
     "auto-layout": {
-      "description": "How a group places its members one after another. Keys left out default to direction vertical, gap 0, alignment start, and reference point start. Members are placed in the order the group lists them. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
+      "description": "How a group places its members one after another. Keys left out default to direction vertical, gap 0, align start, and reference point start. Members are placed in the order the group lists them. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
       "type": "object",
       "properties": {
         "direction": {
@@ -5299,7 +5299,7 @@
           "maximum": 65536,
           "description": "The space between one member and the next."
         },
-        "alignment": {
+        "align": {
           "enum": [
             "start",
             "center",

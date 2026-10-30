@@ -23,7 +23,7 @@
         {
           "id": "row",
           "type": "group",
-          "auto-layout": {"direction":"horizontal","gap":40,"alignment":"center","position":{"x":320,"y":400}}
+          "auto-layout": {"direction":"horizontal","gap":40,"align":"center","position":{"x":320,"y":400}}
         },
 
         {

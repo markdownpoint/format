@@ -9565,7 +9565,7 @@
         "gap": {
           "type": "number"
         },
-        "alignment": {
+        "align": {
           "type": "string",
           "enum": [
             "start",
@@ -9578,7 +9578,7 @@
         }
       },
       "required": [
-        "alignment",
+        "align",
         "direction",
         "gap",
         "position"

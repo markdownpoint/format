@@ -246,7 +246,7 @@ A group with `auto-layout` places its members one after another, down or across.
     "auto-layout": {
       "direction": "horizontal",
       "gap": 40,
-      "alignment": "center",
+      "align": "center",
       "position": {"x": 320, "y": 400}
     }
   },
