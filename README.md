@@ -70,7 +70,7 @@ My talk/
 
 Media and theme resources use relative paths. Move the whole folder when moving a presentation. Rename the folder to rename the presentation.
 
-Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. File names are case-insensitive. MarkdownPoint won't open a folder containing duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
+Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. Those two names are fixed in any letter case. Every other file is named in the presentation as its folder lists it. MarkdownPoint won't open a folder containing duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
 
 Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder.
 
