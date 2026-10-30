@@ -94,7 +94,7 @@
       "type": "object",
       "properties": {},
       "propertyNames": {
-        "pattern": "^(?!(?:[sS][eE][rR][iI][fF]|[sS][aA][nN][sS]-[sS][eE][rR][iI][fF]|[mM][oO][nN][oO][sS][pP][aA][cC][eE]|[cC][uU][rR][sS][iI][vV][eE]|[fF][aA][nN][tT][aA][sS][yY]|[sS][yY][sS][tT][eE][mM]-[uU][iI]|[uU][iI]-[sS][eE][rR][iI][fF]|[uU][iI]-[sS][aA][nN][sS]-[sS][eE][rR][iI][fF]|[uU][iI]-[mM][oO][nN][oO][sS][pP][aA][cC][eE]|[uU][iI]-[rR][oO][uU][nN][dD][eE][dD]|[eE][mM][oO][jJ][iI]|[mM][aA][tT][hH]|[fF][aA][nN][gG][sS][oO][nN][gG]|Inter|Archivo|Source Sans 3|Source Serif 4|Schibsted Grotesk|Fraunces|Atkinson Hyperlegible Next|Source Code Pro|Noto Emoji|Noto Sans JP|Noto Sans KR|Noto Sans SC|Noto Sans TC|Noto Sans Arabic|Noto Sans Devanagari|Noto Sans Thai|Noto Sans Hebrew|Adobe NotDef)(?![\\s\\S]))[\\s\\S]+(?![\\s\\S])"
+        "pattern": "^(?!(?:[sS][eE][rR][iI][fF]|[sS][aA][nN][sS]-[sS][eE][rR][iI][fF]|[mM][oO][nN][oO][sS][pP][aA][cC][eE]|[cC][uU][rR][sS][iI][vV][eE]|[fF][aA][nN][tT][aA][sS][yY]|[sS][yY][sS][tT][eE][mM]-[uU][iI]|[uU][iI]-[sS][eE][rR][iI][fF]|[uU][iI]-[sS][aA][nN][sS]-[sS][eE][rR][iI][fF]|[uU][iI]-[mM][oO][nN][oO][sS][pP][aA][cC][eE]|[uU][iI]-[rR][oO][uU][nN][dD][eE][dD]|[eE][mM][oO][jJ][iI]|[mM][aA][tT][hH]|[fF][aA][nN][gG][sS][oO][nN][gG])(?![\\s\\S]))[\\s\\S]+(?![\\s\\S])"
       },
       "additionalProperties": {
         "type": "array",
@@ -104,7 +104,7 @@
         },
         "minItems": 1
       },
-      "description": "The theme's embedded fonts, by family name: a list of .eot files, one per face, for each family a font role uses. A bundled or generic family has none."
+      "description": "The theme's embedded fonts, by family name: a list of .eot files, one per face, for each family a font role uses. A generic family has none."
     },
     "brand": {
       "description": "The brand's named colors, for use in schemes.",
