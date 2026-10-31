@@ -13319,7 +13319,7 @@
       "properties": {
         "status": {
           "$ref": "#/definitions/AgentMutationStatus",
-          "description": "noChange when there was no step to take."
+          "description": "noChange when there was no step to take, or the step on top changed nothing and left the history."
         },
         "revision": {
           "$ref": "#/definitions/AgentRevision"

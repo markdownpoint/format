@@ -1611,10 +1611,10 @@
       "annotations": {
         "readOnlyHint": false,
         "destructiveHint": true,
-        "idempotentHint": true,
+        "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "Edit > Undo over the presentation’s one history of slide and theme steps, only while the presentation is still at the revision given, so undoing your own change never undoes someone’s later edit. A theme step also needs themeRevision. Returns the new revisions, or status noChange with nothing to undo.",
+      "description": "Edit > Undo over the presentation’s one history of slide and theme steps, only while the presentation is still at the revision given, so undoing your own change never undoes someone’s later edit. A theme step also needs themeRevision. Returns the new revisions, or status noChange when there was nothing to undo or the step on top changed nothing, which then leaves the history.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -1643,7 +1643,7 @@
       "annotations": {
         "readOnlyHint": false,
         "destructiveHint": true,
-        "idempotentHint": true,
+        "idempotentHint": false,
         "openWorldHint": false
       },
       "description": "Edit > Redo, held to the same revisions as history_undo.",
