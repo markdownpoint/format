@@ -854,8 +854,11 @@
                             "description": "How far it falls from the object, as {x, y} across and down."
                           },
                           "color": {
-                            "type": "string",
-                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/opaque-color"
+                              }
+                            ],
                             "description": "Its color: a color role or a hex color."
                           },
                           "opacity": {
@@ -3082,8 +3085,11 @@
                             "description": "How far it falls from the object, as {x, y} across and down."
                           },
                           "color": {
-                            "type": "string",
-                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/opaque-color"
+                              }
+                            ],
                             "description": "Its color: a color role or a hex color."
                           },
                           "opacity": {
@@ -3415,8 +3421,11 @@
                             "description": "How far it falls from the object, as {x, y} across and down."
                           },
                           "color": {
-                            "type": "string",
-                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/opaque-color"
+                              }
+                            ],
                             "description": "Its color: a color role or a hex color."
                           },
                           "opacity": {
@@ -3764,8 +3773,11 @@
                             "description": "How far it falls from the object, as {x, y} across and down."
                           },
                           "color": {
-                            "type": "string",
-                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/opaque-color"
+                              }
+                            ],
                             "description": "Its color: a color role or a hex color."
                           },
                           "opacity": {
@@ -4018,8 +4030,11 @@
                             "description": "How far it falls from the object, as {x, y} across and down."
                           },
                           "color": {
-                            "type": "string",
-                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/opaque-color"
+                              }
+                            ],
                             "description": "Its color: a color role or a hex color."
                           },
                           "opacity": {
@@ -4222,8 +4237,11 @@
                             "description": "How far it falls from the object, as {x, y} across and down."
                           },
                           "color": {
-                            "type": "string",
-                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+                            "allOf": [
+                              {
+                                "$ref": "#/definitions/opaque-color"
+                              }
+                            ],
                             "description": "Its color: a color role or a hex color."
                           },
                           "opacity": {
@@ -5904,8 +5922,11 @@
               "description": "How far it falls from the letters, as {x, y} across and down."
             },
             "color": {
-              "type": "string",
-              "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/opaque-color"
+                }
+              ],
               "description": "Its color: a color role or a hex color."
             },
             "opacity": {
@@ -6591,6 +6612,11 @@
       "type": "string",
       "pattern": "^(?:[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*|[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?)(?![\\s\\S])",
       "description": "one line"
+    },
+    "opaque-color": {
+      "type": "string",
+      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
+      "description": "a color role or a hex color without opacity, such as #000000"
     },
     "parent-inverse": {
       "type": "array",

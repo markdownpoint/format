@@ -2793,7 +2793,7 @@
         },
         "color": {
           "type": "string",
-          "description": "A color role or CSS hex."
+          "description": "A color role or an opaque CSS hex: a role's own opacity doesn't reach the shadow, whose opacity is its only one."
         },
         "opacity": {
           "type": "number",
