@@ -2004,7 +2004,7 @@
           "$ref": "#/definitions/Same33"
         }
       ],
-      "description": "A drop shadow, as Keynote's Style › Shadow sets one: how soft, how far each way and in what color it falls."
+      "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
     },
     "InsertTable": {
       "type": "object",
@@ -2185,7 +2185,7 @@
           "$ref": "#/definitions/Prop_locked"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -2333,7 +2333,7 @@
           "$ref": "#/definitions/Prop_locked"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -2502,7 +2502,7 @@
           "$ref": "#/definitions/Prop_exit"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -2687,7 +2687,7 @@
           "$ref": "#/definitions/Prop_text-stroke"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
@@ -3460,7 +3460,7 @@
           "$ref": "#/definitions/Prop_trim"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "use-as-mask": {
           "$ref": "#/definitions/Prop_locked"
@@ -3554,7 +3554,7 @@
           "$ref": "#/definitions/Prop_trim"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "use-as-mask": {
           "$ref": "#/definitions/Prop_locked"
@@ -4571,6 +4571,9 @@
               "anyOf": [
                 {
                   "$ref": "#/definitions/Prop_drop-shadow"
+                },
+                {
+                  "$ref": "#/definitions/Prop_drop-shadow1"
                 },
                 {
                   "type": "null"
@@ -7548,7 +7551,7 @@
           "$ref": "#/definitions/Prop_locked"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -7699,7 +7702,7 @@
           "$ref": "#/definitions/Prop_locked"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -7874,7 +7877,7 @@
           "$ref": "#/definitions/Prop_exit"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -8071,7 +8074,7 @@
           "$ref": "#/definitions/Prop_trim"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "use-as-mask": {
           "$ref": "#/definitions/Prop_locked"
@@ -8160,7 +8163,7 @@
           "$ref": "#/definitions/Prop_text-stroke"
         },
         "drop-shadow": {
-          "$ref": "#/definitions/Prop_drop-shadow"
+          "$ref": "#/definitions/Prop_drop-shadow1"
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
@@ -11389,7 +11392,47 @@
           "const": "none"
         },
         {
-          "$ref": "#/definitions/Same33"
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 33554431,
+              "description": "em"
+            },
+            "spread": {
+              "$ref": "#/definitions/Same36"
+            },
+            "offset": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "$ref": "#/definitions/Same92"
+                },
+                "y": {
+                  "$ref": "#/definitions/Same92"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ],
+              "additionalProperties": false
+            },
+            "color": {
+              "$ref": "#/definitions/Same35"
+            },
+            "opacity": {
+              "$ref": "#/definitions/Same36"
+            }
+          },
+          "required": [
+            "size",
+            "offset",
+            "color",
+            "opacity"
+          ],
+          "additionalProperties": false
         }
       ],
       "description": "An object's shadow: a drop shadow, or none. An object without the property casts none; \"none\" is written only to take back a shadow it would otherwise inherit from its layout or its presentation."
@@ -11623,6 +11666,17 @@
           "type": "null"
         }
       ]
+    },
+    "Prop_drop-shadow1": {
+      "anyOf": [
+        {
+          "const": "none"
+        },
+        {
+          "$ref": "#/definitions/Same33"
+        }
+      ],
+      "description": "An object's shadow: a drop shadow, or none. An object without the property casts none; \"none\" is written only to take back a shadow it would otherwise inherit from its layout or its presentation."
     },
     "Prop_scale-mode": {
       "enum": [
@@ -12403,10 +12457,10 @@
     "Same33": {
       "type": "object",
       "properties": {
-        "blur": {
+        "size": {
           "type": "number",
           "minimum": 0,
-          "maximum": 637.155556,
+          "maximum": 780.352997,
           "description": "canvas units"
         },
         "offset": {
@@ -12433,7 +12487,7 @@
         }
       },
       "required": [
-        "blur",
+        "size",
         "offset",
         "color",
         "opacity"

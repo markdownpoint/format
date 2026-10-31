@@ -1008,6 +1008,75 @@
                           "type": "null"
                         },
                         {
+                          "anyOf": [
+                            {
+                              "const": "none"
+                            },
+                            {
+                              "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size.",
+                              "type": "object",
+                              "properties": {
+                                "size": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 33554431,
+                                  "description": "How far past the letters the shadow reaches, as Photoshop's Size."
+                                },
+                                "spread": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1,
+                                  "description": "The share of the size by which the letters grow solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
+                                },
+                                "offset": {
+                                  "type": "object",
+                                  "properties": {
+                                    "x": {
+                                      "type": "number",
+                                      "minimum": -33554431,
+                                      "maximum": 33554431,
+                                      "description": "em"
+                                    },
+                                    "y": {
+                                      "type": "number",
+                                      "minimum": -33554431,
+                                      "maximum": 33554431,
+                                      "description": "em"
+                                    }
+                                  },
+                                  "required": [
+                                    "x",
+                                    "y"
+                                  ],
+                                  "additionalProperties": false,
+                                  "description": "How far it falls from the letters, as {x, y} across and down."
+                                },
+                                "color": {
+                                  "allOf": [
+                                    {
+                                      "$ref": "#/definitions/color"
+                                    }
+                                  ],
+                                  "description": "Its color: a color role or a hex color."
+                                },
+                                "opacity": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1,
+                                  "description": "How opaque it is."
+                                }
+                              },
+                              "required": [
+                                "size",
+                                "offset",
+                                "color",
+                                "opacity"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        {
                           "$ref": "#/definitions/drop-shadow"
                         }
                       ]
@@ -3362,14 +3431,14 @@
           "const": "none"
         },
         {
-          "description": "A drop shadow.",
+          "description": "A drop shadow, as Photoshop's Drop Shadow sets one.",
           "type": "object",
           "properties": {
-            "blur": {
+            "size": {
               "type": "number",
               "minimum": 0,
-              "maximum": 637.155556,
-              "description": "How soft it is, its radius in canvas units: up to 84 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 168 at 3840 × 2160."
+              "maximum": 780.352997,
+              "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
             },
             "offset": {
               "type": "object",
@@ -3410,7 +3479,7 @@
             }
           },
           "required": [
-            "blur",
+            "size",
             "offset",
             "color",
             "opacity"
@@ -6690,7 +6759,73 @@
           ]
         },
         "drop-shadow": {
-          "$ref": "#/definitions/drop-shadow"
+          "anyOf": [
+            {
+              "const": "none"
+            },
+            {
+              "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size.",
+              "type": "object",
+              "properties": {
+                "size": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 33554431,
+                  "description": "How far past the letters the shadow reaches, as Photoshop's Size."
+                },
+                "spread": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "The share of the size by which the letters grow solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
+                },
+                "offset": {
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "type": "number",
+                      "minimum": -33554431,
+                      "maximum": 33554431,
+                      "description": "em"
+                    },
+                    "y": {
+                      "type": "number",
+                      "minimum": -33554431,
+                      "maximum": 33554431,
+                      "description": "em"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ],
+                  "additionalProperties": false,
+                  "description": "How far it falls from the letters, as {x, y} across and down."
+                },
+                "color": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/color"
+                    }
+                  ],
+                  "description": "Its color: a color role or a hex color."
+                },
+                "opacity": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1,
+                  "description": "How opaque it is."
+                }
+              },
+              "required": [
+                "size",
+                "offset",
+                "color",
+                "opacity"
+              ],
+              "additionalProperties": false
+            }
+          ]
         },
         "text-stroke": {
           "$ref": "#/definitions/color"

@@ -2766,9 +2766,13 @@
     "PresentationDropShadow": {
       "type": "object",
       "properties": {
-        "blur": {
+        "size": {
           "type": "number",
-          "description": "A radius in canvas units, as every blur is."
+          "description": "How far past what casts it the shadow reaches, as Photoshop's Size."
+        },
+        "spread": {
+          "type": "number",
+          "description": "The share of the size, 0–1, by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread: at 1 the shadow stands solid all the way out. A text's alone; none where left out."
         },
         "offset": {
           "type": "object",
@@ -2785,7 +2789,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Canvas units across and down from the object, in the object's own turn."
+          "description": "Across and down from the object, in the object's own turn."
         },
         "color": {
           "type": "string",
@@ -2797,13 +2801,13 @@
         }
       },
       "required": [
-        "blur",
+        "size",
         "offset",
         "color",
         "opacity"
       ],
       "additionalProperties": false,
-      "description": "A drop shadow, as Keynote's Style › Shadow sets one: how soft, how far each way and in what color it falls."
+      "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
     },
     "PresentationObjectType": {
       "type": "string",

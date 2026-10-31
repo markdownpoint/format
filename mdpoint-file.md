@@ -314,7 +314,7 @@ A picture with transparency casts its `drop-shadow` from its shape:
 ```json
 {
   "image": "media/sun.png",
-  "drop-shadow": {"blur": 40, "offset": {"x": 0, "y": 16}, "color": "#000000", "opacity": 0.3}
+  "drop-shadow": {"size": 48, "offset": {"x": 0, "y": 16}, "color": "#000000", "opacity": 0.3}
 }
 ```
 
