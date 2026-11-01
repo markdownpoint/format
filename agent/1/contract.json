@@ -13180,7 +13180,7 @@
             },
             "destination": {
               "type": "string",
-              "description": "Absolute path of a new .mptheme file outside any presentation folder; the result names it in files."
+              "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files."
             }
           },
           "required": [
@@ -13199,7 +13199,7 @@
             },
             "path": {
               "type": "string",
-              "description": "Absolute path of a .mptheme file."
+              "description": "Absolute path of a .mdptheme file."
             }
           },
           "required": [
@@ -13231,7 +13231,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "The theme chooser's own commands, and Save slide as layout. A new theme starts as a copy of the one in use; a layout is copied or moved into another theme by its key from `themes.list`; export writes a .mptheme file and install adds one, from paths where the app would ask with a dialog."
+      "description": "The theme chooser's own commands, and Save slide as layout. A new theme starts as a copy of the one in use; a layout is copied or moved into another theme by its key from `themes.list`; export writes a .mdptheme file and install adds one, from paths where the app would ask with a dialog."
     },
     "AgentThemeManageResult": {
       "type": "object",

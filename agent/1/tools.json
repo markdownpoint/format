@@ -1501,7 +1501,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mptheme file at destination; install adds a .mptheme file’s theme; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
+      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mdptheme file at destination; install adds a .mdptheme file’s theme; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -1540,11 +1540,11 @@
           },
           "destination": {
             "type": "string",
-            "description": "Absolute path of a new .mptheme file outside any presentation folder; the result names it in files. Required by export."
+            "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files. Required by export."
           },
           "path": {
             "type": "string",
-            "description": "Absolute path of a .mptheme file. Required by install."
+            "description": "Absolute path of a .mdptheme file. Required by install."
           },
           "slideId": {
             "type": "string",
