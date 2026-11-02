@@ -4102,6 +4102,23 @@
           "type": "boolean",
           "const": true,
           "description": "A clock that runs on past its click's end, as a show waits: what loops in the click plays on. Without it, a location at or past its click's end shows the click as it completed, every step at its own end and no loop playing: what a still picture of the click's end shows and the next click starts from. Before its end a click plays either way."
+        },
+        "rest": {
+          "type": "object",
+          "properties": {
+            "seconds": {
+              "type": "number"
+            },
+            "period": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "seconds",
+            "period"
+          ],
+          "additionalProperties": false,
+          "description": "In a show's rest that loops, past its click's motion: how far into the rest, in seconds, and the period it repeats over. Each Action that repeats plays a whole number of times over the period from the rest's start, as the rest's clip renders it (`restRepeats`)."
         }
       },
       "required": [
@@ -4409,6 +4426,22 @@
             "elapsed": {
               "type": "number"
             },
+            "rest": {
+              "type": "object",
+              "properties": {
+                "seconds": {
+                  "type": "number"
+                },
+                "period": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "seconds",
+                "period"
+              ],
+              "additionalProperties": false
+            },
             "action": {
               "type": "string"
             },
@@ -4459,7 +4492,7 @@
           ]
         }
       ],
-      "description": "A model's pose: the Action its latest clip plays, with its trim and `loop` when the clip repeats, and how far it has played, as the Action's seconds since the cue, its Clip Scale applied, or, with a stride, as the cycles its travel covers. `modelActionTime` turns it into the Action's seconds with the facts of the Action a renderer loaded. It stands over the pose `under` it, the clip before it, or over the rest pose without one, whole or, while it blends in, at its `influence`; a channel its Action doesn't key stays as it is under it."
+      "description": "A model's pose: the Action its latest clip plays, with its trim and `loop` when the clip repeats, and how far it has played, as the Action's seconds since the cue, its Clip Scale applied, or, with a stride, as the cycles its travel covers. `modelActionTime` turns it into the Action's seconds with the facts of the Action a renderer loaded. It stands over the pose `under` it, the clip before it, or over the rest pose without one, whole or, while it blends in, at its `influence`; a channel its Action doesn't key stays as it is under it. A clip that repeats in a show's rest that loops carries `rest`: how far into the rest it stands and the rest's period, in the Action's seconds."
     },
     "PresentationTextFit": {
       "type": "string",
