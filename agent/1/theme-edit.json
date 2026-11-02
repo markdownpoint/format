@@ -8018,7 +8018,7 @@
         "id": {
           "type": "string",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-          "description": "a stable id, such as guide-a1b2"
+          "description": "a stable id, such as \"guide-a1b2\""
         },
         "x": {
           "$ref": "#/definitions/Same67"
@@ -8673,7 +8673,7 @@
     },
     "Prop_image-style": {
       "type": "string",
-      "description": "nonempty text without NUL characters, or none"
+      "description": "nonempty text without NUL characters, or \"none\""
     },
     "Prop_restyle": {
       "type": "object",
@@ -9145,7 +9145,6 @@
     "Prop_intensity": {
       "type": "number",
       "minimum": 0,
-      "maximum": 1.7976931348623157e+308,
       "description": "watts"
     },
     "Prop_cone-angle": {
@@ -9368,7 +9367,7 @@
     "Same24": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
-      "description": "a color role or a hex color without opacity, such as #000000"
+      "description": "a color role or a hex color without opacity, such as \"#000000\""
     },
     "Same25": {
       "type": "number",
@@ -9564,7 +9563,7 @@
         "aspect-ratio": {
           "type": "string",
           "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
-          "description": "width:height in whole numbers, such as 16:9"
+          "description": "width:height in whole numbers, such as \"16:9\""
         },
         "transparent": {
           "type": "boolean"

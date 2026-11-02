@@ -1318,7 +1318,7 @@
                   },
                   {
                     "type": "string",
-                    "description": "nonempty text without NUL characters, or none"
+                    "description": "nonempty text without NUL characters, or \"none\""
                   }
                 ]
               },
@@ -2214,7 +2214,6 @@
                   {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1.7976931348623157e+308,
                     "description": "watts"
                   },
                   {
@@ -3188,7 +3187,7 @@
                   },
                   "image-style": {
                     "type": "string",
-                    "description": "nonempty text without NUL characters, or none"
+                    "description": "nonempty text without NUL characters, or \"none\""
                   },
                   "restyle": {
                     "$ref": "#/definitions/restyle"
@@ -5128,7 +5127,6 @@
                       "intensity": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1.7976931348623157e+308,
                         "description": "watts"
                       },
                       "placeholder": {
@@ -5207,7 +5205,6 @@
                       "intensity": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1.7976931348623157e+308,
                         "description": "watts"
                       },
                       "cone-angle": {
@@ -5302,7 +5299,6 @@
                       "intensity": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1.7976931348623157e+308,
                         "description": "watts"
                       },
                       "light-radius": {
@@ -5394,7 +5390,6 @@
                       "intensity": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1.7976931348623157e+308,
                         "description": "watts"
                       },
                       "size-x": {
@@ -6616,7 +6611,7 @@
     "opaque-color": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
-      "description": "a color role or a hex color without opacity, such as #000000"
+      "description": "a color role or a hex color without opacity, such as \"#000000\""
     },
     "parent-inverse": {
       "type": "array",
