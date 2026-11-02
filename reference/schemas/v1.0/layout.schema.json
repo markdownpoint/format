@@ -1426,14 +1426,14 @@
                       {
                         "type": "string",
                         "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                        "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                        "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       }
                     ]
                   },
                   {
                     "type": "string",
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                    "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                    "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   }
                 ]
               },
@@ -2957,7 +2957,7 @@
                       {
                         "type": "string",
                         "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP]|[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                        "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                        "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
                         "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
@@ -3275,7 +3275,7 @@
                       {
                         "type": "string",
                         "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                        "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                        "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
                         "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
@@ -3312,7 +3312,7 @@
                         "additionalProperties": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                          "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                          "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                         }
                       }
                     ]
@@ -3497,7 +3497,7 @@
                       {
                         "type": "string",
                         "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                        "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                        "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       }
                     ]
                   },
@@ -4746,7 +4746,7 @@
                       {
                         "type": "string",
                         "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                        "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                        "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
                         "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
@@ -4783,7 +4783,7 @@
                         "additionalProperties": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                          "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                          "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                         }
                       }
                     ]
@@ -4853,7 +4853,7 @@
                   "poster-frame": {
                     "type": "string",
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                    "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                    "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   "alt": {
                     "$ref": "#/definitions/nonblank-line"
@@ -4923,7 +4923,7 @@
                       {
                         "type": "string",
                         "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                        "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                        "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
                         "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
@@ -4960,7 +4960,7 @@
                         "additionalProperties": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                          "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+                          "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                         }
                       }
                     ]
@@ -7014,7 +7014,7 @@
     "theme-file-path": {
       "type": "string",
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-      "description": "a normalized path inside the theme’s folder, not hidden and not manifest.json, previews, or example"
+      "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
     },
     "trim": {
       "description": "The drawn part of a path's or a line's stroke.",
