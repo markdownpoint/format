@@ -71,6 +71,8 @@ My talk/
 
 Media and theme resources use relative paths. Move the whole folder when moving a presentation. Rename the folder to rename the presentation.
 
+When you place a PNG, JPEG or WebP picture longer than 4096 pixels on a side, MarkdownPoint saves it in `media/` at 4096 pixels on that side, in the same type. An animated PNG or WebP is saved whole. So is one of more than 268,435,456 pixels, or a file over 402 MB. Other types, and a file you copy into `media/` yourself, stay as they are.
+
 Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. Those two names are fixed in any letter case. Every other file is named in the presentation as its folder lists it. MarkdownPoint won't open a folder containing duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
 
 Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name can't contain `#`, `?`, `/`, `\`, `:`, `*`, `"`, `<`, `>` or `|`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint lists a file named so, but can't use it until you rename it.
