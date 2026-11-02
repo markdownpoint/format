@@ -2722,38 +2722,30 @@
     "ImageResultSource": {
       "type": "object",
       "properties": {
-        "source": {
+        "record": {
           "type": "string"
         },
-        "generated": {
-          "$ref": "#/definitions/ImageResultInputsSource"
-        },
-        "styled": {
-          "$ref": "#/definitions/ImageResultInputsSource"
+        "original": {
+          "$ref": "#/definitions/ImageResultOriginalSource"
         }
       },
       "required": [
-        "source"
+        "record"
       ],
       "additionalProperties": false
     },
-    "ImageResultInputsSource": {
+    "ImageResultOriginalSource": {
       "type": "object",
       "properties": {
-        "prompt": {
+        "file": {
           "type": "string"
         },
-        "aspect-ratio": {
+        "record": {
           "type": "string"
-        },
-        "transparent": {
-          "type": "boolean"
         }
       },
       "required": [
-        "prompt",
-        "aspect-ratio",
-        "transparent"
+        "file"
       ],
       "additionalProperties": false
     },

@@ -2295,17 +2295,17 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Same39"
+          "$ref": "#/definitions/Same38"
         }
       ]
     },
     "PresentationRotation3d": {
       "anyOf": [
         {
-          "$ref": "#/definitions/Same42"
+          "$ref": "#/definitions/Same41"
         },
         {
-          "$ref": "#/definitions/Same40"
+          "$ref": "#/definitions/Same39"
         }
       ],
       "description": "How a 3D object turns, in degrees about the 3D space's axes (x right, y up, z toward the viewer), in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, three.js's YXZ Euler. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer and a positive y brings its left side forward. With the rotation mode \"quaternion\" it is a quaternion instead, `w` and `x`, `y`, `z` in the same axes, which a key interpolates part by part and the turn reads normalized. A model's Blender quaternion (w, x, y, z), exported to glTF with +Y up, is (w, x, z, −y) here."
@@ -2388,6 +2388,9 @@
       "additionalProperties": false,
       "allOf": [
         {
+          "$ref": "#/definitions/Same48"
+        },
+        {
           "$ref": "#/definitions/Same49"
         },
         {
@@ -2397,10 +2400,7 @@
           "$ref": "#/definitions/Same51"
         },
         {
-          "$ref": "#/definitions/Same52"
-        },
-        {
-          "$ref": "#/definitions/Same39"
+          "$ref": "#/definitions/Same38"
         }
       ],
       "dependencies": {
@@ -2478,7 +2478,7 @@
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Same39"
+          "$ref": "#/definitions/Same38"
         }
       ]
     },
@@ -2736,7 +2736,7 @@
               "const": "start-on-click"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -2781,7 +2781,7 @@
               "const": "volume"
             },
             "value": {
-              "$ref": "#/definitions/Same55"
+              "$ref": "#/definitions/Same54"
             },
             "clear": {
               "const": true
@@ -2800,7 +2800,7 @@
               "const": "fade-in"
             },
             "value": {
-              "$ref": "#/definitions/Same56"
+              "$ref": "#/definitions/Same55"
             },
             "clear": {
               "const": true
@@ -2819,7 +2819,7 @@
               "const": "fade-out"
             },
             "value": {
-              "$ref": "#/definitions/Same56"
+              "$ref": "#/definitions/Same55"
             },
             "clear": {
               "const": true
@@ -2890,7 +2890,7 @@
               "const": "opacity"
             },
             "value": {
-              "$ref": "#/definitions/Same55"
+              "$ref": "#/definitions/Same54"
             },
             "clear": {
               "const": true
@@ -3065,7 +3065,7 @@
               "const": "italic"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -3084,7 +3084,7 @@
               "const": "tabular"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -3369,7 +3369,7 @@
               "const": "column-gutter"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3414,7 +3414,7 @@
               "const": "path-offset"
             },
             "value": {
-              "$ref": "#/definitions/Same58"
+              "$ref": "#/definitions/Same57"
             },
             "clear": {
               "const": true
@@ -3433,7 +3433,7 @@
               "const": "paragraph-spacing"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3452,7 +3452,7 @@
               "const": "inset-top"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3471,7 +3471,7 @@
               "const": "inset-bottom"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3490,7 +3490,7 @@
               "const": "list-indent"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3694,7 +3694,7 @@
               "const": "text-stroke-weight"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3713,7 +3713,7 @@
               "const": "inset"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -3813,7 +3813,7 @@
               "const": "grayscale"
             },
             "value": {
-              "$ref": "#/definitions/Same55"
+              "$ref": "#/definitions/Same54"
             },
             "clear": {
               "const": true
@@ -3832,7 +3832,7 @@
               "const": "exposure"
             },
             "value": {
-              "$ref": "#/definitions/Same58"
+              "$ref": "#/definitions/Same57"
             },
             "clear": {
               "const": true
@@ -3851,7 +3851,7 @@
               "const": "contrast"
             },
             "value": {
-              "$ref": "#/definitions/Same58"
+              "$ref": "#/definitions/Same57"
             },
             "clear": {
               "const": true
@@ -3870,7 +3870,7 @@
               "const": "saturation"
             },
             "value": {
-              "$ref": "#/definitions/Same58"
+              "$ref": "#/definitions/Same57"
             },
             "clear": {
               "const": true
@@ -3889,7 +3889,7 @@
               "const": "temperature"
             },
             "value": {
-              "$ref": "#/definitions/Same58"
+              "$ref": "#/definitions/Same57"
             },
             "clear": {
               "const": true
@@ -3908,7 +3908,7 @@
               "const": "corner-radius"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -4031,7 +4031,7 @@
               "const": "decorative"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -4050,7 +4050,7 @@
               "const": "ignore-auto-layout"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -4069,7 +4069,7 @@
               "const": "constrain-proportions"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -4088,7 +4088,7 @@
               "const": "transparent"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -4525,7 +4525,7 @@
                       "type": "boolean"
                     },
                     "distance": {
-                      "$ref": "#/definitions/Same59"
+                      "$ref": "#/definitions/Same58"
                     }
                   },
                   "additionalProperties": false
@@ -4560,13 +4560,13 @@
                       "type": "object",
                       "properties": {
                         "x": {
-                          "$ref": "#/definitions/Same60"
+                          "$ref": "#/definitions/Same59"
                         },
                         "y": {
-                          "$ref": "#/definitions/Same60"
+                          "$ref": "#/definitions/Same59"
                         },
                         "z": {
-                          "$ref": "#/definitions/Same60"
+                          "$ref": "#/definitions/Same59"
                         }
                       },
                       "additionalProperties": false
@@ -4629,7 +4629,7 @@
               "const": "cast-shadow"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -4668,10 +4668,10 @@
                             "const": "position"
                           },
                           "target": {
-                            "$ref": "#/definitions/Same61"
+                            "$ref": "#/definitions/Same60"
                           },
                           "target-joint": {
-                            "$ref": "#/definitions/Same62"
+                            "$ref": "#/definitions/Same61"
                           },
                           "axes": {
                             "type": "array",
@@ -5147,7 +5147,7 @@
               "const": "use-as-mask"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -5244,7 +5244,7 @@
               "const": "time-remap"
             },
             "value": {
-              "$ref": "#/definitions/Same56"
+              "$ref": "#/definitions/Same55"
             },
             "clear": {
               "const": true
@@ -5341,7 +5341,7 @@
               "const": "roll"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -5360,7 +5360,7 @@
               "const": "value-labels"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -5379,7 +5379,7 @@
               "const": "legend"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -5424,7 +5424,7 @@
               "const": "leading-zero-opacity"
             },
             "value": {
-              "$ref": "#/definitions/Same55"
+              "$ref": "#/definitions/Same54"
             },
             "clear": {
               "const": true
@@ -5602,7 +5602,7 @@
               "const": "stroke-weight"
             },
             "value": {
-              "$ref": "#/definitions/Same57"
+              "$ref": "#/definitions/Same56"
             },
             "clear": {
               "const": true
@@ -5699,7 +5699,7 @@
               "const": "header-row"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -5718,7 +5718,7 @@
               "const": "header-column"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -5737,7 +5737,7 @@
               "const": "alternating-fills"
             },
             "value": {
-              "$ref": "#/definitions/Same54"
+              "$ref": "#/definitions/Same53"
             },
             "clear": {
               "const": true
@@ -6066,7 +6066,7 @@
               "$ref": "#/definitions/AgentTransformFrame"
             },
             "rotation": {
-              "$ref": "#/definitions/Same63"
+              "$ref": "#/definitions/Same62"
             }
           },
           "required": [
@@ -6120,13 +6120,13 @@
           "type": "object",
           "properties": {
             "x": {
-              "$ref": "#/definitions/Same45"
+              "$ref": "#/definitions/Same44"
             },
             "y": {
-              "$ref": "#/definitions/Same45"
+              "$ref": "#/definitions/Same44"
             },
             "z": {
-              "$ref": "#/definitions/Same45"
+              "$ref": "#/definitions/Same44"
             }
           },
           "additionalProperties": false
@@ -6134,10 +6134,10 @@
         "rotation": {
           "anyOf": [
             {
-              "$ref": "#/definitions/Same42"
+              "$ref": "#/definitions/Same41"
             },
             {
-              "$ref": "#/definitions/Same40"
+              "$ref": "#/definitions/Same39"
             }
           ]
         },
@@ -6145,13 +6145,13 @@
           "type": "object",
           "properties": {
             "x": {
-              "$ref": "#/definitions/Same48"
+              "$ref": "#/definitions/Same47"
             },
             "y": {
-              "$ref": "#/definitions/Same48"
+              "$ref": "#/definitions/Same47"
             },
             "z": {
-              "$ref": "#/definitions/Same48"
+              "$ref": "#/definitions/Same47"
             }
           },
           "additionalProperties": false
@@ -6177,7 +6177,7 @@
           "$ref": "#/definitions/Same17"
         },
         "height": {
-          "$ref": "#/definitions/Same59"
+          "$ref": "#/definitions/Same58"
         }
       },
       "required": [
@@ -6225,7 +6225,7 @@
               "type": "number"
             },
             "trackTargets": {
-              "$ref": "#/definitions/Same64"
+              "$ref": "#/definitions/Same63"
             },
             "type": {
               "const": "web-video"
@@ -6310,7 +6310,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "text"
@@ -6485,7 +6485,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "table"
@@ -6606,7 +6606,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "image"
@@ -6745,7 +6745,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "video"
@@ -6891,7 +6891,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "audio"
@@ -6944,7 +6944,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "shape"
@@ -7147,7 +7147,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "path"
@@ -7245,7 +7245,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "icon"
@@ -7349,7 +7349,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "line"
@@ -7460,7 +7460,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "group"
@@ -7529,7 +7529,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "composition"
@@ -7597,7 +7597,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "chart"
@@ -7709,7 +7709,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "model"
@@ -7768,15 +7768,15 @@
       "additionalProperties": false,
       "dependencies": {
         "parent-joint": {
-          "$ref": "#/definitions/Same65"
+          "$ref": "#/definitions/Same64"
         },
         "parent-inverse": {
-          "$ref": "#/definitions/Same65"
+          "$ref": "#/definitions/Same64"
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Same39"
+          "$ref": "#/definitions/Same38"
         }
       ]
     },
@@ -7787,7 +7787,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "light"
@@ -7861,6 +7861,9 @@
       "additionalProperties": false,
       "allOf": [
         {
+          "$ref": "#/definitions/Same48"
+        },
+        {
           "$ref": "#/definitions/Same49"
         },
         {
@@ -7870,18 +7873,15 @@
           "$ref": "#/definitions/Same51"
         },
         {
-          "$ref": "#/definitions/Same52"
-        },
-        {
-          "$ref": "#/definitions/Same39"
+          "$ref": "#/definitions/Same38"
         }
       ],
       "dependencies": {
         "parent-joint": {
-          "$ref": "#/definitions/Same65"
+          "$ref": "#/definitions/Same64"
         },
         "parent-inverse": {
-          "$ref": "#/definitions/Same65"
+          "$ref": "#/definitions/Same64"
         }
       }
     },
@@ -7892,7 +7892,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "shadow-catcher"
@@ -7946,15 +7946,15 @@
       "additionalProperties": false,
       "dependencies": {
         "parent-joint": {
-          "$ref": "#/definitions/Same65"
+          "$ref": "#/definitions/Same64"
         },
         "parent-inverse": {
-          "$ref": "#/definitions/Same65"
+          "$ref": "#/definitions/Same64"
         }
       },
       "allOf": [
         {
-          "$ref": "#/definitions/Same39"
+          "$ref": "#/definitions/Same38"
         }
       ]
     },
@@ -7965,7 +7965,7 @@
           "type": "number"
         },
         "trackTargets": {
-          "$ref": "#/definitions/Same64"
+          "$ref": "#/definitions/Same63"
         },
         "type": {
           "const": "floor"
@@ -8014,10 +8014,10 @@
               "maximum": 48
             },
             "gutter": {
-              "$ref": "#/definitions/Same66"
+              "$ref": "#/definitions/Same65"
             },
             "margin": {
-              "$ref": "#/definitions/Same66"
+              "$ref": "#/definitions/Same65"
             }
           },
           "required": [
@@ -8029,10 +8029,10 @@
           "type": "object",
           "properties": {
             "start": {
-              "$ref": "#/definitions/Same66"
+              "$ref": "#/definitions/Same65"
             },
             "increment": {
-              "$ref": "#/definitions/Same59"
+              "$ref": "#/definitions/Same58"
             }
           },
           "required": [
@@ -8054,10 +8054,10 @@
           "description": "a stable id, such as \"guide-a1b2\""
         },
         "x": {
-          "$ref": "#/definitions/Same67"
+          "$ref": "#/definitions/Same66"
         },
         "y": {
-          "$ref": "#/definitions/Same67"
+          "$ref": "#/definitions/Same66"
         },
         "name": {
           "type": "string",
@@ -8226,13 +8226,13 @@
       "type": "object",
       "properties": {
         "progress": {
-          "$ref": "#/definitions/Same68"
+          "$ref": "#/definitions/Same67"
         },
         "angle": {
-          "$ref": "#/definitions/Same43"
+          "$ref": "#/definitions/Same42"
         },
         "feather": {
-          "$ref": "#/definitions/Same69"
+          "$ref": "#/definitions/Same68"
         }
       },
       "additionalProperties": false,
@@ -8315,7 +8315,7 @@
       "description": "How a text frame follows its words: it grows to them on both sides, on one, or keeps the size it was given."
     },
     "Prop_min-height": {
-      "$ref": "#/definitions/Same70"
+      "$ref": "#/definitions/Same69"
     },
     "Prop_column-count": {
       "type": "integer",
@@ -8324,7 +8324,7 @@
       "description": "columns"
     },
     "Prop_column-gutter": {
-      "$ref": "#/definitions/Same69"
+      "$ref": "#/definitions/Same68"
     },
     "Prop_text-path": {
       "type": "string",
@@ -8350,7 +8350,7 @@
       "description": "line-height ratio"
     },
     "Prop_tracking": {
-      "$ref": "#/definitions/Same71"
+      "$ref": "#/definitions/Same70"
     },
     "Prop_case": {
       "enum": [
@@ -8381,10 +8381,10 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "$ref": "#/definitions/Same71"
+                  "$ref": "#/definitions/Same70"
                 },
                 "y": {
-                  "$ref": "#/definitions/Same71"
+                  "$ref": "#/definitions/Same70"
                 }
               },
               "required": [
@@ -8418,10 +8418,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same72"
+          "$ref": "#/definitions/Same71"
         },
         "y": {
-          "$ref": "#/definitions/Same72"
+          "$ref": "#/definitions/Same71"
         }
       },
       "additionalProperties": false,
@@ -8497,13 +8497,13 @@
           "$ref": "#/definitions/Same2"
         },
         "from": {
-          "$ref": "#/definitions/Same73"
+          "$ref": "#/definitions/Same72"
         },
         "interpolation": {
-          "$ref": "#/definitions/Same74"
+          "$ref": "#/definitions/Same73"
         },
         "fade": {
-          "$ref": "#/definitions/Same75"
+          "$ref": "#/definitions/Same74"
         },
         "spaces": {
           "type": "boolean"
@@ -8518,7 +8518,7 @@
           ]
         },
         "seed": {
-          "$ref": "#/definitions/Same76"
+          "$ref": "#/definitions/Same75"
         },
         "spread": {
           "type": "number",
@@ -8531,7 +8531,7 @@
           "description": "text units"
         },
         "progress": {
-          "$ref": "#/definitions/Same68"
+          "$ref": "#/definitions/Same67"
         }
       },
       "required": [
@@ -8559,13 +8559,13 @@
           ]
         },
         "to": {
-          "$ref": "#/definitions/Same73"
+          "$ref": "#/definitions/Same72"
         },
         "interpolation": {
-          "$ref": "#/definitions/Same74"
+          "$ref": "#/definitions/Same73"
         },
         "fade": {
-          "$ref": "#/definitions/Same75"
+          "$ref": "#/definitions/Same74"
         },
         "spaces": {
           "type": "boolean"
@@ -8580,7 +8580,7 @@
           ]
         },
         "seed": {
-          "$ref": "#/definitions/Same76"
+          "$ref": "#/definitions/Same75"
         },
         "spread": {
           "type": "number",
@@ -8593,7 +8593,7 @@
           "description": "text units"
         },
         "progress": {
-          "$ref": "#/definitions/Same68"
+          "$ref": "#/definitions/Same67"
         }
       },
       "required": [
@@ -8621,7 +8621,7 @@
     "Prop_rows": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Same69"
+        "$ref": "#/definitions/Same68"
       }
     },
     "Prop_gridlines": {
@@ -8634,7 +8634,7 @@
     "Prop_file": {
       "anyOf": [
         {
-          "$ref": "#/definitions/Same77"
+          "$ref": "#/definitions/Same76"
         },
         {
           "type": "null"
@@ -8717,10 +8717,10 @@
           "description": "one line that isn’t blank"
         },
         "reference-prompt": {
-          "$ref": "#/definitions/Same34"
+          "$ref": "#/definitions/Same77"
         },
         "prompt": {
-          "$ref": "#/definitions/Same34"
+          "$ref": "#/definitions/Same77"
         },
         "transparent": {
           "type": "boolean"
@@ -8767,7 +8767,7 @@
           "$ref": "#/definitions/Same25"
         },
         "position-randomness": {
-          "$ref": "#/definitions/Same70"
+          "$ref": "#/definitions/Same69"
         },
         "rotation-randomness": {
           "type": "number",
@@ -8785,7 +8785,7 @@
           "description": "seconds"
         },
         "seed": {
-          "$ref": "#/definitions/Same76"
+          "$ref": "#/definitions/Same75"
         },
         "position": {
           "type": "object",
@@ -8803,10 +8803,10 @@
           "type": "object",
           "properties": {
             "x": {
-              "$ref": "#/definitions/Same72"
+              "$ref": "#/definitions/Same71"
             },
             "y": {
-              "$ref": "#/definitions/Same72"
+              "$ref": "#/definitions/Same71"
             }
           },
           "additionalProperties": false
@@ -8832,7 +8832,7 @@
       "description": "seconds"
     },
     "Prop_media-trim": {
-      "$ref": "#/definitions/Same35"
+      "$ref": "#/definitions/Same34"
     },
     "Prop_poster": {
       "type": "string",
@@ -8840,7 +8840,7 @@
       "description": "a supported image"
     },
     "Prop_poster-frame": {
-      "$ref": "#/definitions/Same36"
+      "$ref": "#/definitions/Same35"
     },
     "Prop_file2": {
       "type": "string",
@@ -8855,7 +8855,7 @@
       "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[hH][tT][tT][pP][sS]:[/\\\\]*(?::?@)?(?:[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[mM]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU]\\.[bB][eE]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU]\\.[bB][eE]|[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[wW][wW][wW]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[pP][lL][aA][yY][eE][rR]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM])(?::0*443)?(?:[/\\\\?#][\\s\\S]*|[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*)(?![\\s\\S])"
     },
     "Prop_poster2": {
-      "$ref": "#/definitions/Same77"
+      "$ref": "#/definitions/Same76"
     },
     "Prop_alt1": {
       "type": "string",
@@ -8966,7 +8966,7 @@
       ]
     },
     "Prop_rotation-x": {
-      "$ref": "#/definitions/Same43"
+      "$ref": "#/definitions/Same42"
     },
     "Prop_auto-layout": {
       "type": "object",
@@ -8978,7 +8978,7 @@
           ]
         },
         "gap": {
-          "$ref": "#/definitions/Same70"
+          "$ref": "#/definitions/Same69"
         },
         "align": {
           "enum": [
@@ -9005,7 +9005,7 @@
       "description": "An auto layout as the file spells it, its reference point `reference-point`, left out at start."
     },
     "Prop_inputs": {
-      "$ref": "#/definitions/Same38"
+      "$ref": "#/definitions/Same37"
     },
     "Prop_align1": {
       "enum": [
@@ -9029,7 +9029,7 @@
       "description": "What a chart draws from its table: columns standing up from or bars lying along its categories, side by side or stacked, a line or a stacked area per series, a pie or a donut of its first series, or a counter that counts to its first value in that cell's spelling."
     },
     "Prop_progress": {
-      "$ref": "#/definitions/Same68"
+      "$ref": "#/definitions/Same67"
     },
     "Prop_colors": {
       "type": "array",
@@ -9050,13 +9050,13 @@
       "description": "a normalized relative file path"
     },
     "Prop_position": {
-      "$ref": "#/definitions/Same44"
+      "$ref": "#/definitions/Same43"
     },
     "Prop_rotation-mode": {
-      "$ref": "#/definitions/Same46"
+      "$ref": "#/definitions/Same45"
     },
     "Prop_scale2": {
-      "$ref": "#/definitions/Same47"
+      "$ref": "#/definitions/Same46"
     },
     "Prop_parent-joint": {
       "type": "string",
@@ -9090,10 +9090,10 @@
                 "const": "aim"
               },
               "owner-joint": {
-                "$ref": "#/definitions/Same62"
+                "$ref": "#/definitions/Same61"
               },
               "target": {
-                "$ref": "#/definitions/Same61"
+                "$ref": "#/definitions/Same60"
               },
               "axis": {
                 "enum": [
@@ -9221,7 +9221,7 @@
       "description": "The axis a shadow catcher's face looks along at no turn: y lying flat, z standing as a wall."
     },
     "Prop_position1": {
-      "$ref": "#/definitions/Same53"
+      "$ref": "#/definitions/Same52"
     },
     "Prop_fill-rule": {
       "enum": [
@@ -9230,7 +9230,7 @@
       ]
     },
     "Prop_rotation2": {
-      "$ref": "#/definitions/Same63"
+      "$ref": "#/definitions/Same62"
     },
     "Same1": {
       "type": "array",
@@ -9578,72 +9578,58 @@
       ],
       "description": "A fill as the file spells it: `none`, one color, or a gradient whose stops name their colors."
     },
-    "Same34": {
-      "type": "string",
-      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-      "description": "text that isn’t blank"
-    },
     "Same33": {
-      "type": "object",
-      "properties": {
-        "prompt": {
-          "$ref": "#/definitions/Same34"
-        },
-        "aspect-ratio": {
-          "type": "string",
-          "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
-          "description": "width:height in whole numbers, such as \"16:9\""
-        },
-        "transparent": {
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "prompt",
-        "aspect-ratio",
-        "transparent"
-      ],
-      "additionalProperties": false
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
     },
     "Same32": {
       "type": "object",
       "properties": {
+        "record": {
+          "$ref": "#/definitions/Same33"
+        },
         "original": {
-          "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "the path of an image"
-        },
-        "generated": {
-          "$ref": "#/definitions/Same33"
-        },
-        "styled": {
-          "$ref": "#/definitions/Same33"
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string",
+              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+              "description": "the path of an image"
+            },
+            "record": {
+              "$ref": "#/definitions/Same33"
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
-        "original"
+        "record"
       ],
       "additionalProperties": false
     },
-    "Same36": {
+    "Same35": {
       "type": "number",
       "minimum": 0,
       "description": "seconds"
     },
-    "Same35": {
+    "Same34": {
       "type": "object",
       "properties": {
         "start": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         },
         "end": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         }
       },
       "additionalProperties": false,
       "description": "The span of its file a movie or sound plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
-    "Same38": {
+    "Same37": {
       "type": "object",
       "propertyNames": {
         "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
@@ -9663,25 +9649,25 @@
         ]
       }
     },
-    "Same41": {
+    "Same40": {
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592
     },
-    "Same40": {
+    "Same39": {
       "type": "object",
       "properties": {
         "w": {
-          "$ref": "#/definitions/Same41"
+          "$ref": "#/definitions/Same40"
         },
         "x": {
-          "$ref": "#/definitions/Same41"
+          "$ref": "#/definitions/Same40"
         },
         "y": {
-          "$ref": "#/definitions/Same41"
+          "$ref": "#/definitions/Same40"
         },
         "z": {
-          "$ref": "#/definitions/Same41"
+          "$ref": "#/definitions/Same40"
         }
       },
       "required": [
@@ -9692,23 +9678,23 @@
       ],
       "additionalProperties": false
     },
-    "Same43": {
+    "Same42": {
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
       "description": "degrees"
     },
-    "Same42": {
+    "Same41": {
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same43"
+          "$ref": "#/definitions/Same42"
         },
         "y": {
-          "$ref": "#/definitions/Same43"
+          "$ref": "#/definitions/Same42"
         },
         "z": {
-          "$ref": "#/definitions/Same43"
+          "$ref": "#/definitions/Same42"
         }
       },
       "required": [
@@ -9718,7 +9704,7 @@
       ],
       "additionalProperties": false
     },
-    "Same39": {
+    "Same38": {
       "if": {
         "required": [
           "rotation-mode"
@@ -9732,7 +9718,7 @@
                 "const": "quaternion"
               },
               "rotation": {
-                "$ref": "#/definitions/Same40"
+                "$ref": "#/definitions/Same39"
               }
             }
           }
@@ -9741,28 +9727,28 @@
       "else": {
         "properties": {
           "rotation": {
-            "$ref": "#/definitions/Same42"
+            "$ref": "#/definitions/Same41"
           }
         }
       }
     },
-    "Same45": {
+    "Same44": {
       "type": "number",
       "minimum": -1000000000000000000,
       "maximum": 1000000000000000000,
       "description": "canvas units"
     },
-    "Same44": {
+    "Same43": {
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same45"
+          "$ref": "#/definitions/Same44"
         },
         "y": {
-          "$ref": "#/definitions/Same45"
+          "$ref": "#/definitions/Same44"
         },
         "z": {
-          "$ref": "#/definitions/Same45"
+          "$ref": "#/definitions/Same44"
         }
       },
       "required": [
@@ -9773,27 +9759,27 @@
       "additionalProperties": false,
       "description": "A point in the 3D space, in canvas units: x right from the slide's left edge, y up from its bottom edge, z toward the viewer."
     },
-    "Same46": {
+    "Same45": {
       "const": "quaternion",
       "description": "The rotation mode, of the two of Blender's the format takes: absent, Euler degrees; `quaternion`, a quaternion (WXYZ)."
     },
-    "Same48": {
+    "Same47": {
       "type": "number",
       "minimum": -1000000000000000000,
       "maximum": 1000000000000000000,
       "description": "ratio"
     },
-    "Same47": {
+    "Same46": {
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same48"
+          "$ref": "#/definitions/Same47"
         },
         "y": {
-          "$ref": "#/definitions/Same48"
+          "$ref": "#/definitions/Same47"
         },
         "z": {
-          "$ref": "#/definitions/Same48"
+          "$ref": "#/definitions/Same47"
         }
       },
       "required": [
@@ -9804,7 +9790,7 @@
       "additionalProperties": false,
       "description": "A 3D object's scale along its own x, y and z axes."
     },
-    "Same49": {
+    "Same48": {
       "if": {
         "properties": {
           "light-type": {
@@ -9853,7 +9839,7 @@
         }
       }
     },
-    "Same50": {
+    "Same49": {
       "if": {
         "properties": {
           "light-type": {
@@ -9889,7 +9875,7 @@
         }
       }
     },
-    "Same51": {
+    "Same50": {
       "if": {
         "properties": {
           "light-type": {
@@ -9940,7 +9926,7 @@
         }
       }
     },
-    "Same52": {
+    "Same51": {
       "if": {
         "properties": {
           "light-type": {
@@ -9976,11 +9962,11 @@
         }
       }
     },
-    "Same53": {
+    "Same52": {
       "type": "object",
       "properties": {
         "y": {
-          "$ref": "#/definitions/Same45"
+          "$ref": "#/definitions/Same44"
         }
       },
       "required": [
@@ -9989,7 +9975,7 @@
       "additionalProperties": false,
       "description": "Where a floor stands: its height above the slide's bottom edge, in canvas units."
     },
-    "Same54": {
+    "Same53": {
       "anyOf": [
         {
           "$ref": "#/definitions/Prop_locked"
@@ -9999,7 +9985,7 @@
         }
       ]
     },
-    "Same55": {
+    "Same54": {
       "anyOf": [
         {
           "$ref": "#/definitions/Prop_opacity"
@@ -10009,7 +9995,7 @@
         }
       ]
     },
-    "Same56": {
+    "Same55": {
       "anyOf": [
         {
           "$ref": "#/definitions/Prop_fade-in"
@@ -10019,7 +10005,7 @@
         }
       ]
     },
-    "Same57": {
+    "Same56": {
       "anyOf": [
         {
           "$ref": "#/definitions/Prop_column-gutter"
@@ -10029,7 +10015,7 @@
         }
       ]
     },
-    "Same58": {
+    "Same57": {
       "anyOf": [
         {
           "$ref": "#/definitions/Prop_path-offset"
@@ -10039,38 +10025,38 @@
         }
       ]
     },
-    "Same59": {
+    "Same58": {
       "type": "number",
       "minimum": 0.000001,
       "description": "canvas units"
     },
-    "Same60": {
+    "Same59": {
       "type": "number",
       "description": "canvas units"
     },
-    "Same61": {
+    "Same60": {
       "type": "string",
       "pattern": "^[\\s\\S]+(?![\\s\\S])",
       "description": "the id of an object on the slide"
     },
-    "Same62": {
+    "Same61": {
       "type": "string",
       "pattern": "^[\\s\\S]+(?![\\s\\S])",
       "description": "the name of one of the model’s joints"
     },
-    "Same63": {
+    "Same62": {
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
       "description": "Authored degrees. Animation keys allow explicit turns."
     },
-    "Same64": {
+    "Same63": {
       "type": "object",
       "additionalProperties": {
         "type": "number"
       }
     },
-    "Same65": {
+    "Same64": {
       "anyOf": [
         {
           "required": [
@@ -10084,15 +10070,15 @@
         }
       ]
     },
-    "Same66": {
+    "Same65": {
       "type": "number",
       "minimum": 0,
       "description": "canvas units"
     },
-    "Same67": {
+    "Same66": {
       "anyOf": [
         {
-          "$ref": "#/definitions/Same60"
+          "$ref": "#/definitions/Same59"
         },
         {
           "type": "string",
@@ -10101,51 +10087,51 @@
         }
       ]
     },
-    "Same68": {
+    "Same67": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
       "description": "ratio"
     },
-    "Same69": {
+    "Same68": {
       "type": "number",
       "minimum": 0,
       "maximum": 33554431.984375,
       "description": "canvas units"
     },
-    "Same70": {
+    "Same69": {
       "type": "number",
       "minimum": 0,
       "maximum": 65536,
       "description": "canvas units"
     },
-    "Same71": {
+    "Same70": {
       "type": "number",
       "minimum": -33554431,
       "maximum": 33554431,
       "description": "em"
     },
-    "Same72": {
+    "Same71": {
       "type": "number",
       "description": "frame fraction"
     },
-    "Same73": {
+    "Same72": {
       "type": "object",
       "properties": {
         "opacity": {
           "$ref": "#/definitions/Same25"
         },
         "x": {
-          "$ref": "#/definitions/Same71"
+          "$ref": "#/definitions/Same70"
         },
         "y": {
-          "$ref": "#/definitions/Same71"
+          "$ref": "#/definitions/Same70"
         },
         "scale": {
           "$ref": "#/definitions/Same19"
         },
         "rotation": {
-          "$ref": "#/definitions/Same43"
+          "$ref": "#/definitions/Same42"
         },
         "blur": {
           "type": "number",
@@ -10156,7 +10142,7 @@
       },
       "additionalProperties": false
     },
-    "Same74": {
+    "Same73": {
       "anyOf": [
         {
           "$ref": "#/definitions/Same11"
@@ -10208,7 +10194,7 @@
         }
       ]
     },
-    "Same75": {
+    "Same74": {
       "type": "object",
       "properties": {
         "length": {
@@ -10223,16 +10209,21 @@
       ],
       "additionalProperties": false
     },
-    "Same76": {
+    "Same75": {
       "type": "integer",
       "minimum": 0,
       "maximum": 4294967294,
       "description": "shuffle"
     },
-    "Same77": {
+    "Same76": {
       "type": "string",
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
       "description": "a normalized relative file path"
+    },
+    "Same77": {
+      "type": "string",
+      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+      "description": "text that isn’t blank"
     },
     "Same78": {
       "type": "number",

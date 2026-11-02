@@ -14,9 +14,19 @@
       "description": "What the file is."
     },
     "created": {
-      "type": "string",
-      "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
-      "description": "When the image was made, in UTC, as YYYY-MM-DDTHH:mm:ss.sssZ."
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
+          "description": "a UTC timestamp to the millisecond, such as \"2026-10-17T19:30:00.000Z\""
+        },
+        {
+          "type": "string",
+          "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)(?![\\s\\S])",
+          "description": "a valid calendar date in YYYY-MM-DD form, such as \"2026-03-14\""
+        }
+      ],
+      "description": "When the image was made, in UTC, as YYYY-MM-DDTHH:mm:ss.sssZ, or its day alone as YYYY-MM-DD where its time isn't known."
     },
     "name": {
       "type": "string",
@@ -93,8 +103,11 @@
       "type": "object",
       "properties": {
         "compiler": {
-          "const": "markdownpoint/image-prompt/1",
-          "description": "The version of the instructions MarkdownPoint wraps the prompt in."
+          "enum": [
+            "markdownpoint/image-prompt/1",
+            "none"
+          ],
+          "description": "The version of the instructions MarkdownPoint wraps the prompt in, or `none` where the prompt was asked as written, as by another tool."
         },
         "prompt": {
           "allOf": [
@@ -135,11 +148,8 @@
           "type": "object",
           "properties": {
             "aspect-ratio": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/aspect-ratio"
-                }
-              ],
+              "type": "string",
+              "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
               "description": "The proportions asked for, as width:height in whole numbers from 1 with no leading zero, such as 16:9."
             },
             "transparent": {
@@ -190,35 +200,6 @@
                 }
               ],
               "description": "The SHA-256 digest of its bytes, as 64 lowercase hexadecimal digits."
-            },
-            "generated": {
-              "description": "What it was generated from, where it was generated.",
-              "type": "object",
-              "properties": {
-                "prompt": {
-                  "type": "string",
-                  "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                  "description": "The prompt it was made from, as text that isn't blank."
-                },
-                "aspect-ratio": {
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/aspect-ratio"
-                    }
-                  ],
-                  "description": "The proportions it was made in, as width:height in whole numbers from 1 with no leading zero, such as 16:9."
-                },
-                "transparent": {
-                  "type": "boolean",
-                  "description": "Whether it was made with a transparent background."
-                }
-              },
-              "required": [
-                "prompt",
-                "aspect-ratio",
-                "transparent"
-              ],
-              "additionalProperties": false
             }
           },
           "required": [
@@ -244,8 +225,8 @@
       "properties": {
         "file": {
           "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:generated\\/[^/]*|media\\/(?:[^/]*\\/)*[^/]*)\\.[pP][nN][gG](?![\\s\\S])",
-          "description": "Where it is: a .png directly under generated/, where it was first written, or anywhere under media/, where MarkdownPoint renamed or moved it since."
+          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:generated\\/[^/]*|media\\/(?:[^/]*\\/)*[^/]*)\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG])(?![\\s\\S])",
+          "description": "Where it is, ending in .png, .jpg or .jpeg: directly under generated/, where it was first written, or anywhere under media/, where it was renamed or moved since."
         },
         "sha256": {
           "allOf": [
@@ -294,11 +275,6 @@
   ],
   "additionalProperties": false,
   "definitions": {
-    "aspect-ratio": {
-      "type": "string",
-      "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
-      "description": "width:height in whole numbers, such as \"16:9\""
-    },
     "one-line": {
       "type": "string",
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
