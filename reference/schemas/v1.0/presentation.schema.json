@@ -283,41 +283,7 @@
                           "additionalProperties": false
                         },
                         {
-                          "anyOf": [
-                            {
-                              "$ref": "#/definitions/frame"
-                            },
-                            {
-                              "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
-                              "type": "object",
-                              "properties": {
-                                "x": {
-                                  "type": "number",
-                                  "minimum": -65536,
-                                  "maximum": 65536,
-                                  "description": "Where the left edge is, across."
-                                },
-                                "y": {
-                                  "type": "number",
-                                  "minimum": -65536,
-                                  "maximum": 65536,
-                                  "description": "Where the top edge is, down."
-                                },
-                                "width": {
-                                  "type": "number",
-                                  "minimum": 0.000001,
-                                  "maximum": 65536,
-                                  "description": "The width."
-                                }
-                              },
-                              "required": [
-                                "x",
-                                "y",
-                                "width"
-                              ],
-                              "additionalProperties": false
-                            }
-                          ]
+                          "$ref": "#/definitions/frame"
                         },
                         {
                           "type": "object",
@@ -344,7 +310,7 @@
                           "additionalProperties": false
                         },
                         {
-                          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+                          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
                           "type": "object",
                           "properties": {
                             "x": {
@@ -374,7 +340,41 @@
                           "additionalProperties": false
                         },
                         {
-                          "$ref": "#/definitions/frame"
+                          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+                          "type": "object",
+                          "properties": {
+                            "x": {
+                              "type": "number",
+                              "minimum": -65536,
+                              "maximum": 65536,
+                              "description": "Where the left edge is, across."
+                            },
+                            "y": {
+                              "type": "number",
+                              "minimum": -65536,
+                              "maximum": 65536,
+                              "description": "Where the top edge is, down."
+                            },
+                            "width": {
+                              "type": "number",
+                              "minimum": 0.000001,
+                              "maximum": 65536,
+                              "description": "The width."
+                            },
+                            "height": {
+                              "type": "number",
+                              "minimum": 0.000001,
+                              "maximum": 65536,
+                              "description": "The height."
+                            }
+                          },
+                          "required": [
+                            "x",
+                            "y",
+                            "width",
+                            "height"
+                          ],
+                          "additionalProperties": false
                         }
                       ]
                     },
@@ -3812,41 +3812,128 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "Where the left edge is, across."
+      "anyOf": [
+        {
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
-        "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "Where the top edge is, down."
+        {
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width"
+          ],
+          "additionalProperties": false
         },
-        "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
-          "description": "The width."
+        {
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "height"
+          ],
+          "additionalProperties": false
         },
-        "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
-          "description": "The height."
+        {
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "additionalProperties": false
         }
-      },
-      "required": [
-        "x",
-        "y",
-        "width",
-        "height"
-      ],
-      "additionalProperties": false
+      ]
     },
     "gradient": {
       "description": "A linear or radial gradient.",
@@ -4368,7 +4455,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -4541,7 +4662,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -4768,7 +4923,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -4891,7 +5080,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -5700,7 +5923,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -5968,7 +6225,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -6286,7 +6577,7 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
           "type": "object",
           "properties": {
             "x": {
@@ -6506,41 +6797,7 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/frame"
-            },
-            {
-              "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. Neither does the frame of a text box whose height grows to fit its text, unless the text follows a path: the box is as tall as its text.",
-              "type": "object",
-              "properties": {
-                "x": {
-                  "type": "number",
-                  "minimum": -65536,
-                  "maximum": 65536,
-                  "description": "Where the left edge is, across."
-                },
-                "y": {
-                  "type": "number",
-                  "minimum": -65536,
-                  "maximum": 65536,
-                  "description": "Where the top edge is, down."
-                },
-                "width": {
-                  "type": "number",
-                  "minimum": 0.000001,
-                  "maximum": 65536,
-                  "description": "The width."
-                }
-              },
-              "required": [
-                "x",
-                "y",
-                "width"
-              ],
-              "additionalProperties": false
-            }
-          ]
+          "$ref": "#/definitions/frame"
         },
         "rotation": {
           "type": "number",
@@ -6904,7 +7161,41 @@
           "$ref": "#/definitions/object-id"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "rotation": {
           "type": "number",
@@ -7104,7 +7395,41 @@
           "$ref": "#/definitions/nonblank-line"
         },
         "frame": {
-          "$ref": "#/definitions/frame"
+          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow.",
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the left edge is, across."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "Where the top edge is, down."
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The width."
+            },
+            "height": {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "The height."
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
         },
         "locked": {
           "type": "boolean"

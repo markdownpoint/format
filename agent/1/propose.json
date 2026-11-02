@@ -7099,7 +7099,7 @@
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
-      "description": "The frame a transform gives an object: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there."
+      "description": "The frame a transform gives an object, where it is drawn: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
     },
     "PresentationTransformFrame": {
       "type": "object",
