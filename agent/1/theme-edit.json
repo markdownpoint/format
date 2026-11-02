@@ -802,8 +802,8 @@
             "url": {
               "$ref": "#/definitions/Prop_url"
             },
-            "poster-frame": {
-              "$ref": "#/definitions/Prop_poster-frame1"
+            "poster": {
+              "$ref": "#/definitions/Prop_poster2"
             },
             "alt": {
               "$ref": "#/definitions/Prop_alt1"
@@ -1360,6 +1360,9 @@
       "properties": {
         "type": {
           "const": "video"
+        },
+        "poster": {
+          "$ref": "#/definitions/Prop_poster"
         },
         "poster-frame": {
           "$ref": "#/definitions/Prop_poster-frame"
@@ -4205,6 +4208,32 @@
           "type": "object",
           "properties": {
             "property": {
+              "const": "poster"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Prop_poster"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "clear": {
+              "const": true
+            }
+          },
+          "required": [
+            "property",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "property": {
               "const": "poster-frame"
             },
             "value": {
@@ -5918,6 +5947,7 @@
         "image-style",
         "restyle",
         "image-result",
+        "poster",
         "poster-frame",
         "shape",
         "icon",
@@ -6185,8 +6215,8 @@
             "url": {
               "$ref": "#/definitions/Prop_url"
             },
-            "poster-frame": {
-              "$ref": "#/definitions/Prop_poster-frame1"
+            "poster": {
+              "$ref": "#/definitions/Prop_poster2"
             },
             "alt": {
               "$ref": "#/definitions/Prop_alt1"
@@ -6719,6 +6749,9 @@
         },
         "type": {
           "const": "video"
+        },
+        "poster": {
+          "$ref": "#/definitions/Prop_poster"
         },
         "poster-frame": {
           "$ref": "#/definitions/Prop_poster-frame"
@@ -8801,17 +8834,13 @@
     "Prop_media-trim": {
       "$ref": "#/definitions/Same35"
     },
+    "Prop_poster": {
+      "type": "string",
+      "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+      "description": "a supported image"
+    },
     "Prop_poster-frame": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/Same36"
-        },
-        {
-          "type": "string",
-          "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "a supported image"
-        }
-      ]
+      "$ref": "#/definitions/Same36"
     },
     "Prop_file2": {
       "type": "string",
@@ -8825,7 +8854,7 @@
       "type": "string",
       "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[hH][tT][tT][pP][sS]:[/\\\\]*(?::?@)?(?:[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[mM]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU]\\.[bB][eE]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU]\\.[bB][eE]|[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[wW][wW][wW]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[pP][lL][aA][yY][eE][rR]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM])(?::0*443)?(?:[/\\\\?#][\\s\\S]*|[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*)(?![\\s\\S])"
     },
-    "Prop_poster-frame1": {
+    "Prop_poster2": {
       "$ref": "#/definitions/Same77"
     },
     "Prop_alt1": {

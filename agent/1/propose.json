@@ -717,7 +717,7 @@
             "url": {
               "$ref": "#/definitions/Same6"
             },
-            "poster-frame": {
+            "poster": {
               "type": "string",
               "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])"
             },
@@ -1717,8 +1717,8 @@
             "url": {
               "$ref": "#/definitions/Prop_url"
             },
-            "poster-frame": {
-              "$ref": "#/definitions/Prop_poster-frame1"
+            "poster": {
+              "$ref": "#/definitions/Prop_poster2"
             },
             "alt": {
               "$ref": "#/definitions/Prop_alt1"
@@ -2289,6 +2289,9 @@
       "properties": {
         "type": {
           "const": "video"
+        },
+        "poster": {
+          "$ref": "#/definitions/Prop_poster"
         },
         "poster-frame": {
           "$ref": "#/definitions/Prop_poster-frame"
@@ -5137,6 +5140,32 @@
           "type": "object",
           "properties": {
             "property": {
+              "const": "poster"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Prop_poster"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "clear": {
+              "const": true
+            }
+          },
+          "required": [
+            "property",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "property": {
               "const": "poster-frame"
             },
             "value": {
@@ -6855,6 +6884,7 @@
         "image-style",
         "restyle",
         "image-result",
+        "poster",
         "poster-frame",
         "shape",
         "icon",
@@ -7124,8 +7154,8 @@
             "url": {
               "$ref": "#/definitions/Prop_url"
             },
-            "poster-frame": {
-              "$ref": "#/definitions/Prop_poster-frame1"
+            "poster": {
+              "$ref": "#/definitions/Prop_poster2"
             },
             "alt": {
               "$ref": "#/definitions/Prop_alt1"
@@ -7658,6 +7688,9 @@
         },
         "type": {
           "const": "video"
+        },
+        "poster": {
+          "$ref": "#/definitions/Prop_poster"
         },
         "poster-frame": {
           "$ref": "#/definitions/Prop_poster-frame"
@@ -11806,17 +11839,13 @@
     "Prop_media-trim": {
       "$ref": "#/definitions/Same46"
     },
+    "Prop_poster": {
+      "type": "string",
+      "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+      "description": "a supported image"
+    },
     "Prop_poster-frame": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/Same47"
-        },
-        {
-          "type": "string",
-          "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "a supported image"
-        }
-      ]
+      "$ref": "#/definitions/Same47"
     },
     "Prop_file2": {
       "type": "string",
@@ -11829,7 +11858,7 @@
     "Prop_url": {
       "$ref": "#/definitions/Same6"
     },
-    "Prop_poster-frame1": {
+    "Prop_poster2": {
       "$ref": "#/definitions/Same99"
     },
     "Prop_alt1": {

@@ -1666,19 +1666,15 @@
               "constrain-proportions": {
                 "type": "boolean"
               },
+              "poster": {
+                "type": "string",
+                "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+              },
               "poster-frame": {
-                "anyOf": [
-                  {
-                    "type": "number",
-                    "minimum": 0,
-                    "description": "seconds"
-                  },
-                  {
-                    "type": "string",
-                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                    "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
-                  }
-                ]
+                "type": "number",
+                "minimum": 0,
+                "description": "seconds"
               },
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
@@ -2948,7 +2944,7 @@
                 "type": "string",
                 "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[hH][tT][tT][pP][sS]:[/\\\\]*(?::?@)?(?:[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[mM]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU]\\.[bB][eE]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU]\\.[bB][eE]|[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[wW][wW][wW]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[pP][lL][aA][yY][eE][rR]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM])(?::0*443)?(?:[/\\\\?#][\\s\\S]*|[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*)(?![\\s\\S])"
               },
-              "poster-frame": {
+              "poster": {
                 "type": "string",
                 "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                 "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
