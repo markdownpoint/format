@@ -1969,7 +1969,8 @@
                 "missing-parent-joint",
                 "shared-parent-joint",
                 "parent-cycle",
-                "link-glyphs-away"
+                "link-glyphs-away",
+                "missing-action"
               ]
             },
             "message": {
@@ -2105,7 +2106,12 @@
         "unknown-scheme",
         "unknown-type-style",
         "discovery-io-error",
+        "missing-action",
         "render-failed",
+        "rest-camera",
+        "rest-followed",
+        "rest-loops",
+        "rest-walk",
         "unattached-markdown",
         "unbound-text",
         "unclosed-code-block",
@@ -5748,13 +5754,16 @@
           "type": "string",
           "enum": [
             "still",
-            "loop",
-            "live"
+            "loop"
           ],
-          "description": "`still` holds; `loop` repeats every `period` seconds; `live` moves on in no cycle a show repeats, measured as its last motion that ends does."
+          "description": "`still` holds; `loop` repeats every `period` seconds."
         },
         "period": {
           "type": "number"
+        },
+        "hold": {
+          "$ref": "#/definitions/AgentRestHold",
+          "description": "Why the slide's 3D holds still at the rest while something in it would move on, as the slide's warning says, whatever its 2D does."
         },
         "samples": {
           "type": "array",
@@ -5795,7 +5804,98 @@
         "samples"
       ],
       "additionalProperties": false,
-      "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops."
+      "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops: the period of the 3D's loop, or of the 2D's while the 3D stands still, held or at rest. Where both loop at lengths of their own, the period is the 3D's, the 2D measured on its own clock."
+    },
+    "AgentRestHold": {
+      "$ref": "#/definitions/PresentationRestHold",
+      "description": "What moves on at a rest in a way no clip of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
+    },
+    "PresentationRestHold": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "loops"
+            },
+            "waits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "followed": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cause",
+            "waits",
+            "followed"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "walk"
+            },
+            "object": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cause",
+            "object"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "camera"
+            },
+            "object": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cause",
+            "object"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "action"
+            },
+            "object": {
+              "type": "string"
+            },
+            "action": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cause",
+            "object",
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "description": "What moves on at a rest in a way no clip repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the clip may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
     },
     "AgentRestTextSummary": {
       "type": "object",
