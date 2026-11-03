@@ -7321,7 +7321,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Every time in a step, and in its keyframes and cues, is in seconds, rounded to six decimals. Sums of times and the times shown are rounded the same way. A step has no delay of its own: a keyframe's start delays its move. A first step that starts by itself plays after the slide's transition, except under a scroll. A step that repeats plays alone on its click, and a file that breaks that reads with a warning, without the repeat. A step after one that loops while waiting starts when that step's first pass ends, and the loop plays on under it.",
+        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Every time in a step, and in its keyframes and cues, is in seconds, rounded to six decimal places. Sums of times and the times shown are rounded the same way. A step has no delay of its own: a keyframe's start delays its move. A first step that starts by itself plays after the slide's transition, except under a scroll. A step that repeats plays alone on its click, and a file that breaks that reads with a warning, without the repeat. A step after one that loops while waiting starts when that step's first pass ends, and the loop plays on under it.",
         "type": "object",
         "properties": {
           "id": {
