@@ -1832,9 +1832,6 @@
         "exit": {
           "$ref": "#/definitions/Prop_exit"
         },
-        "frame": {
-          "$ref": "#/definitions/PresentationFrame"
-        },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation2"
         },
@@ -1961,6 +1958,9 @@
         "text-stroke-weight": {
           "$ref": "#/definitions/Prop_column-gutter"
         },
+        "frame": {
+          "$ref": "#/definitions/PresentationDrawnTextFrame"
+        },
         "text": {
           "type": "string"
         }
@@ -1970,6 +1970,21 @@
         "frame"
       ],
       "additionalProperties": false
+    },
+    "PresentationDropShadow": {
+      "anyOf": [
+        {
+          "const": "none"
+        },
+        {
+          "$ref": "#/definitions/Same32"
+        }
+      ],
+      "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
+    },
+    "PresentationDrawnTextFrame": {
+      "$ref": "#/definitions/PresentationFrame",
+      "description": "A text box's frame where it is drawn, as an insert or a paste gives it. One that grows to its words (auto-size height or both, on no path) is as tall as they are: a height given sizes nothing. One whose words give it its width (auto-size width or both, on no path, in one column) is as wide as they are: the width given sizes nothing, and the box grows from the point its alignment holds on the frame given."
     },
     "PresentationFrame": {
       "type": "object",
@@ -1981,10 +1996,10 @@
           "$ref": "#/definitions/Same15"
         },
         "width": {
-          "$ref": "#/definitions/Same28"
+          "$ref": "#/definitions/Same36"
         },
         "height": {
-          "$ref": "#/definitions/Same28"
+          "$ref": "#/definitions/Same36"
         }
       },
       "required": [
@@ -1994,17 +2009,6 @@
         "height"
       ],
       "additionalProperties": false
-    },
-    "PresentationDropShadow": {
-      "anyOf": [
-        {
-          "const": "none"
-        },
-        {
-          "$ref": "#/definitions/Same33"
-        }
-      ],
-      "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
     },
     "InsertTable": {
       "type": "object",
@@ -2137,7 +2141,7 @@
           "$ref": "#/definitions/Same15"
         },
         "width": {
-          "$ref": "#/definitions/Same28"
+          "$ref": "#/definitions/Same36"
         }
       },
       "required": [
@@ -2886,10 +2890,10 @@
           "type": "object",
           "properties": {
             "x": {
-              "$ref": "#/definitions/Same34"
+              "$ref": "#/definitions/Same33"
             },
             "y": {
-              "$ref": "#/definitions/Same34"
+              "$ref": "#/definitions/Same33"
             }
           },
           "required": [
@@ -5626,7 +5630,7 @@
                             "type": "boolean"
                           },
                           "strength": {
-                            "$ref": "#/definitions/Same36"
+                            "$ref": "#/definitions/Same35"
                           },
                           "spring": {
                             "type": "object",
@@ -6978,10 +6982,10 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "$ref": "#/definitions/Same30"
+                  "$ref": "#/definitions/Same29"
                 },
                 "y": {
-                  "$ref": "#/definitions/Same30"
+                  "$ref": "#/definitions/Same29"
                 }
               },
               "additionalProperties": false
@@ -7111,7 +7115,7 @@
           "$ref": "#/definitions/Same15"
         },
         "width": {
-          "$ref": "#/definitions/Same28"
+          "$ref": "#/definitions/Same36"
         },
         "height": {
           "type": "number",
@@ -7281,9 +7285,6 @@
         "exit": {
           "$ref": "#/definitions/Prop_exit"
         },
-        "frame": {
-          "$ref": "#/definitions/PresentationFrame"
-        },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation2"
         },
@@ -7406,6 +7407,9 @@
         },
         "text-stroke-weight": {
           "$ref": "#/definitions/Prop_column-gutter"
+        },
+        "frame": {
+          "$ref": "#/definitions/PresentationDrawnTextFrame"
         },
         "text": {
           "type": "string"
@@ -9209,7 +9213,7 @@
                       "const": "repeat"
                     },
                     "volume": {
-                      "$ref": "#/definitions/Same36"
+                      "$ref": "#/definitions/Same35"
                     },
                     "fade-in": {
                       "$ref": "#/definitions/Same76"
@@ -11004,10 +11008,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         },
         "y": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         }
       },
       "required": [
@@ -11251,10 +11255,10 @@
       "description": "one line"
     },
     "Prop_scale": {
-      "$ref": "#/definitions/Same29"
+      "$ref": "#/definitions/Same28"
     },
     "Prop_opacity": {
-      "$ref": "#/definitions/Same36"
+      "$ref": "#/definitions/Same35"
     },
     "Prop_locked": {
       "type": "boolean"
@@ -11269,7 +11273,7 @@
       "description": "canvas units"
     },
     "Prop_z": {
-      "$ref": "#/definitions/Same34"
+      "$ref": "#/definitions/Same33"
     },
     "Prop_blend-mode": {
       "enum": [
@@ -11439,7 +11443,7 @@
               "description": "em"
             },
             "spread": {
-              "$ref": "#/definitions/Same36"
+              "$ref": "#/definitions/Same35"
             },
             "offset": {
               "type": "object",
@@ -11458,10 +11462,10 @@
               "additionalProperties": false
             },
             "color": {
-              "$ref": "#/definitions/Same35"
+              "$ref": "#/definitions/Same34"
             },
             "opacity": {
-              "$ref": "#/definitions/Same36"
+              "$ref": "#/definitions/Same35"
             }
           },
           "required": [
@@ -11542,7 +11546,7 @@
       "description": "A text's 3D model as the file spells it."
     },
     "Prop_bind": {
-      "$ref": "#/definitions/Same31"
+      "$ref": "#/definitions/Same30"
     },
     "Prop_enter": {
       "type": "object",
@@ -11679,7 +11683,7 @@
     "Prop_columns": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Same28"
+        "$ref": "#/definitions/Same36"
       }
     },
     "Prop_rows": {
@@ -11711,7 +11715,7 @@
           "const": "none"
         },
         {
-          "$ref": "#/definitions/Same33"
+          "$ref": "#/definitions/Same32"
         }
       ],
       "description": "An object's shadow: a drop shadow, or none. An object without the property casts none; \"none\" is written only to take back a shadow it would otherwise inherit from its layout or its presentation."
@@ -11777,7 +11781,7 @@
           "description": "seconds"
         },
         "end-opacity": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         },
         "position-randomness": {
           "$ref": "#/definitions/Same91"
@@ -11789,7 +11793,7 @@
           "description": "degrees"
         },
         "scale-randomness": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         },
         "stagger-randomness": {
           "type": "number",
@@ -12428,26 +12432,20 @@
       ],
       "additionalProperties": false
     },
-    "Same28": {
-      "type": "number",
-      "minimum": 0.000001,
-      "maximum": 65536,
-      "description": "canvas units"
-    },
-    "Same30": {
+    "Same29": {
       "type": "number",
       "minimum": 0,
       "maximum": 511,
       "description": "ratio"
     },
-    "Same29": {
+    "Same28": {
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same30"
+          "$ref": "#/definitions/Same29"
         },
         "y": {
-          "$ref": "#/definitions/Same30"
+          "$ref": "#/definitions/Same29"
         }
       },
       "required": [
@@ -12457,7 +12455,7 @@
       "additionalProperties": false,
       "description": "A single object's scale along its own x and y axes."
     },
-    "Same31": {
+    "Same30": {
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -12470,24 +12468,24 @@
       },
       "description": "Property name to input name; `text` and `file` name the object's content."
     },
-    "Same34": {
+    "Same33": {
       "type": "number",
       "minimum": -33554431.984375,
       "maximum": 33554431.984375,
       "description": "canvas units"
     },
-    "Same35": {
+    "Same34": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
       "description": "a color role or a hex color without opacity, such as \"#000000\""
     },
-    "Same36": {
+    "Same35": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
       "description": "fraction"
     },
-    "Same33": {
+    "Same32": {
       "type": "object",
       "properties": {
         "size": {
@@ -12500,10 +12498,10 @@
           "type": "object",
           "properties": {
             "x": {
-              "$ref": "#/definitions/Same34"
+              "$ref": "#/definitions/Same33"
             },
             "y": {
-              "$ref": "#/definitions/Same34"
+              "$ref": "#/definitions/Same33"
             }
           },
           "required": [
@@ -12513,10 +12511,10 @@
           "additionalProperties": false
         },
         "color": {
-          "$ref": "#/definitions/Same35"
+          "$ref": "#/definitions/Same34"
         },
         "opacity": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         }
       },
       "required": [
@@ -12526,6 +12524,12 @@
         "opacity"
       ],
       "additionalProperties": false
+    },
+    "Same36": {
+      "type": "number",
+      "minimum": 0.000001,
+      "maximum": 65536,
+      "description": "canvas units"
     },
     "Same38": {
       "type": "string",
@@ -12547,7 +12551,7 @@
             "$ref": "#/definitions/Same38"
           },
           "position": {
-            "$ref": "#/definitions/Same36"
+            "$ref": "#/definitions/Same35"
           }
         },
         "required": [
@@ -13604,7 +13608,7 @@
           "$ref": "#/definitions/Same82"
         },
         "opacity": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         },
         "prompt": {
           "$ref": "#/definitions/Same84"
@@ -13627,7 +13631,7 @@
               "const": "none"
             },
             {
-              "$ref": "#/definitions/Same33"
+              "$ref": "#/definitions/Same32"
             }
           ]
         },
@@ -13644,7 +13648,7 @@
           "$ref": "#/definitions/Same87"
         },
         "grayscale": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         }
       },
       "additionalProperties": false,
@@ -13687,7 +13691,7 @@
       "type": "object",
       "properties": {
         "opacity": {
-          "$ref": "#/definitions/Same36"
+          "$ref": "#/definitions/Same35"
         },
         "x": {
           "$ref": "#/definitions/Same92"
@@ -13696,7 +13700,7 @@
           "$ref": "#/definitions/Same92"
         },
         "scale": {
-          "$ref": "#/definitions/Same30"
+          "$ref": "#/definitions/Same29"
         },
         "rotation": {
           "$ref": "#/definitions/Same53"

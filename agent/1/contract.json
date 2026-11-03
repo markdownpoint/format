@@ -8360,9 +8360,6 @@
         "exit": {
           "$ref": "#/definitions/TextExitSource"
         },
-        "frame": {
-          "$ref": "#/definitions/PresentationFrame"
-        },
         "rotation": {
           "type": "number"
         },
@@ -8529,6 +8526,9 @@
         "text-stroke-weight": {
           "type": "number"
         },
+        "frame": {
+          "$ref": "#/definitions/PresentationDrawnTextFrame"
+        },
         "text": {
           "type": "string"
         }
@@ -8539,6 +8539,10 @@
       ],
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
+    },
+    "PresentationDrawnTextFrame": {
+      "$ref": "#/definitions/PresentationFrame",
+      "description": "A text box's frame where it is drawn, as an insert or a paste gives it. One that grows to its words (auto-size height or both, on no path) is as tall as they are: a height given sizes nothing. One whose words give it its width (auto-size width or both, on no path, in one column) is as wide as they are: the width given sizes nothing, and the box grows from the point its alignment holds on the frame given."
     },
     "InsertTable": {
       "type": "object",
@@ -11252,9 +11256,6 @@
         "exit": {
           "$ref": "#/definitions/TextExitSource"
         },
-        "frame": {
-          "$ref": "#/definitions/PresentationFrame"
-        },
         "rotation": {
           "type": "number"
         },
@@ -11417,6 +11418,9 @@
         },
         "text-stroke-weight": {
           "type": "number"
+        },
+        "frame": {
+          "$ref": "#/definitions/PresentationDrawnTextFrame"
         },
         "text": {
           "type": "string"
