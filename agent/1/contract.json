@@ -2124,6 +2124,7 @@
         "unresolved-connector-anchor",
         "unresolved-field",
         "unresolved-theme",
+        "unsupported-locale",
         "clashing-keys",
         "id-mismatch",
         "marker-outside-slide",

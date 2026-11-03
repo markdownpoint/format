@@ -9151,7 +9151,8 @@
               "anyOf": [
                 {
                   "type": "string",
-                  "description": "a supported language tag, such as \"sv\" or \"sv-SE\""
+                  "pattern": "^(?![\\s\\S]*-[Pp][Oo][Ss][Ii][Xx](?![^-]))(?:[A-Za-z]{2,3}|[A-Za-z]{5,8})(?:-[A-Za-z]{4})?(?:-(?:[A-Za-z]{2}|[0-9]{3}))?(?:-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(?![\\s\\S])",
+                  "description": "a language tag, such as \"sv\" or \"sv-SE\""
                 },
                 {
                   "type": "null"
