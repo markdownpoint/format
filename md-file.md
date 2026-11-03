@@ -76,7 +76,7 @@ Start the file with frontmatter between two `---` lines. MarkdownPoint uses the 
 - `footer`: the footer text.
 - `save`: a save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing, and it tells the files apart from an older copy with the same content. Other tools ignore it. Leave this value unchanged.
 
-Put `footer` in double quotes if it contains a space followed by `#`; otherwise, the `#` starts a comment. MarkdownPoint always writes the footer in double quotes.
+Put `footer` in double quotes if it contains a space followed by `#`; otherwise, the `#` starts a comment. Quote it, too, if it contains a colon followed by a space or starts with punctuation, such as `[`, `*` or `- `. YAML reads some such values as something other than text, and MarkdownPoint refuses those unquoted. MarkdownPoint always writes the footer in double quotes.
 
 You can add your own keys for information used by your tools or workflow. MarkdownPoint keeps them as written and ignores them.
 
@@ -108,7 +108,7 @@ Blank lines separate paragraphs, however many there are. An empty paragraph is a
 
 ## Speaker notes
 
-`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks.
+`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks. A paragraph id in notes reads as it does in slide text, but no step can name it, and MarkdownPoint gives notes paragraphs none.
 
 ## Compositions
 
