@@ -3165,17 +3165,17 @@
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
-          "description": "The author's account id, as text that isn't blank, without control characters."
+          "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
+          "description": "Who wrote it, if known: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id."
         },
         "name": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
-          "description": "The author's name, as the thread shows it, as text that isn't blank, without control characters. Left out when the author has none; the thread then calls them a collaborator in its reader's language."
+          "description": "The author's name, as the thread shows it, as text that isn't blank, without control characters."
         }
       },
       "required": [
-        "id"
+        "name"
       ],
       "additionalProperties": false
     },

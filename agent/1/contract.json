@@ -3055,15 +3055,16 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Who they are, by one of `COMMENT_AUTHOR_ID`'s schemes; absent when the writer knows none."
         },
         "name": {
           "type": "string",
-          "description": "The name they wrote it under; absent when they had none, and the reader's app names them in its own language."
+          "description": "The name they wrote it under."
         }
       },
       "required": [
-        "id"
+        "name"
       ],
       "additionalProperties": false
     },

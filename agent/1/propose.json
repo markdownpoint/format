@@ -11021,14 +11021,18 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/definitions/Same89"
+          "type": "string",
+          "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
+          "description": "\"local:\" and a lowercase UUID, \"shared:\" and 64 lowercase hexadecimal digits, or \"dropbox:\" and a Dropbox account id"
         },
         "name": {
-          "$ref": "#/definitions/Same89"
+          "type": "string",
+          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
+          "description": "one line that isn’t blank"
         }
       },
       "required": [
-        "id"
+        "name"
       ],
       "additionalProperties": false
     },
@@ -11291,13 +11295,13 @@
       "type": "object",
       "properties": {
         "progress": {
-          "$ref": "#/definitions/Same90"
+          "$ref": "#/definitions/Same89"
         },
         "angle": {
           "$ref": "#/definitions/Same53"
         },
         "feather": {
-          "$ref": "#/definitions/Same91"
+          "$ref": "#/definitions/Same90"
         }
       },
       "additionalProperties": false,
@@ -11378,7 +11382,7 @@
       "description": "How a text frame follows its words: it grows to them on both sides, on one, or keeps the size it was given."
     },
     "Prop_min-height": {
-      "$ref": "#/definitions/Same92"
+      "$ref": "#/definitions/Same91"
     },
     "Prop_column-count": {
       "type": "integer",
@@ -11387,7 +11391,7 @@
       "description": "columns"
     },
     "Prop_column-gutter": {
-      "$ref": "#/definitions/Same91"
+      "$ref": "#/definitions/Same90"
     },
     "Prop_text-path": {
       "type": "string",
@@ -11410,7 +11414,7 @@
       "description": "line-height ratio"
     },
     "Prop_tracking": {
-      "$ref": "#/definitions/Same93"
+      "$ref": "#/definitions/Same92"
     },
     "Prop_case": {
       "enum": [
@@ -11441,10 +11445,10 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "$ref": "#/definitions/Same93"
+                  "$ref": "#/definitions/Same92"
                 },
                 "y": {
-                  "$ref": "#/definitions/Same93"
+                  "$ref": "#/definitions/Same92"
                 }
               },
               "required": [
@@ -11478,10 +11482,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same94"
+          "$ref": "#/definitions/Same93"
         },
         "y": {
-          "$ref": "#/definitions/Same94"
+          "$ref": "#/definitions/Same93"
         }
       },
       "additionalProperties": false,
@@ -11557,13 +11561,13 @@
           "$ref": "#/definitions/Same77"
         },
         "from": {
-          "$ref": "#/definitions/Same95"
+          "$ref": "#/definitions/Same94"
         },
         "interpolation": {
-          "$ref": "#/definitions/Same96"
+          "$ref": "#/definitions/Same95"
         },
         "fade": {
-          "$ref": "#/definitions/Same97"
+          "$ref": "#/definitions/Same96"
         },
         "spaces": {
           "type": "boolean"
@@ -11578,7 +11582,7 @@
           ]
         },
         "seed": {
-          "$ref": "#/definitions/Same98"
+          "$ref": "#/definitions/Same97"
         },
         "spread": {
           "type": "number",
@@ -11591,7 +11595,7 @@
           "description": "text units"
         },
         "progress": {
-          "$ref": "#/definitions/Same90"
+          "$ref": "#/definitions/Same89"
         }
       },
       "required": [
@@ -11619,13 +11623,13 @@
           ]
         },
         "to": {
-          "$ref": "#/definitions/Same95"
+          "$ref": "#/definitions/Same94"
         },
         "interpolation": {
-          "$ref": "#/definitions/Same96"
+          "$ref": "#/definitions/Same95"
         },
         "fade": {
-          "$ref": "#/definitions/Same97"
+          "$ref": "#/definitions/Same96"
         },
         "spaces": {
           "type": "boolean"
@@ -11640,7 +11644,7 @@
           ]
         },
         "seed": {
-          "$ref": "#/definitions/Same98"
+          "$ref": "#/definitions/Same97"
         },
         "spread": {
           "type": "number",
@@ -11653,7 +11657,7 @@
           "description": "text units"
         },
         "progress": {
-          "$ref": "#/definitions/Same90"
+          "$ref": "#/definitions/Same89"
         }
       },
       "required": [
@@ -11681,7 +11685,7 @@
     "Prop_rows": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Same91"
+        "$ref": "#/definitions/Same90"
       }
     },
     "Prop_gridlines": {
@@ -11694,7 +11698,7 @@
     "Prop_file": {
       "anyOf": [
         {
-          "$ref": "#/definitions/Same99"
+          "$ref": "#/definitions/Same98"
         },
         {
           "type": "null"
@@ -11776,7 +11780,7 @@
           "$ref": "#/definitions/Same36"
         },
         "position-randomness": {
-          "$ref": "#/definitions/Same92"
+          "$ref": "#/definitions/Same91"
         },
         "rotation-randomness": {
           "type": "number",
@@ -11794,7 +11798,7 @@
           "description": "seconds"
         },
         "seed": {
-          "$ref": "#/definitions/Same98"
+          "$ref": "#/definitions/Same97"
         },
         "position": {
           "type": "object",
@@ -11812,10 +11816,10 @@
           "type": "object",
           "properties": {
             "x": {
-              "$ref": "#/definitions/Same94"
+              "$ref": "#/definitions/Same93"
             },
             "y": {
-              "$ref": "#/definitions/Same94"
+              "$ref": "#/definitions/Same93"
             }
           },
           "additionalProperties": false
@@ -11860,7 +11864,7 @@
       "$ref": "#/definitions/Same6"
     },
     "Prop_poster2": {
-      "$ref": "#/definitions/Same99"
+      "$ref": "#/definitions/Same98"
     },
     "Prop_alt1": {
       "type": "string",
@@ -11907,10 +11911,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "$ref": "#/definitions/Same100"
+          "$ref": "#/definitions/Same99"
         },
         "y": {
-          "$ref": "#/definitions/Same100"
+          "$ref": "#/definitions/Same99"
         }
       },
       "required": [
@@ -11983,7 +11987,7 @@
           ]
         },
         "gap": {
-          "$ref": "#/definitions/Same92"
+          "$ref": "#/definitions/Same91"
         },
         "align": {
           "enum": [
@@ -12034,7 +12038,7 @@
       "description": "What a chart draws from its table: columns standing up from or bars lying along its categories, side by side or stacked, a line or a stacked area per series, a pie or a donut of its first series, or a counter that counts to its first value in that cell's spelling."
     },
     "Prop_progress": {
-      "$ref": "#/definitions/Same90"
+      "$ref": "#/definitions/Same89"
     },
     "Prop_colors": {
       "type": "array",
@@ -12111,7 +12115,7 @@
                 ]
               },
               "strength": {
-                "$ref": "#/definitions/Same101"
+                "$ref": "#/definitions/Same100"
               }
             },
             "required": [
@@ -12155,7 +12159,7 @@
                 "description": "A multiple of the model's own volume at the scale it holds: 1, the default, keeps it as it is, and 0.4 squeezes it to 40% of that. Not the model's size, which is its scale."
               },
               "strength": {
-                "$ref": "#/definitions/Same101"
+                "$ref": "#/definitions/Same100"
               }
             },
             "required": [
@@ -13652,49 +13656,44 @@
       "description": "a UTC timestamp to the millisecond, such as \"2026-10-17T19:30:00.000Z\""
     },
     "Same89": {
-      "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
-      "description": "one line that isn’t blank"
-    },
-    "Same90": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
       "description": "ratio"
     },
-    "Same91": {
+    "Same90": {
       "type": "number",
       "minimum": 0,
       "maximum": 33554431.984375,
       "description": "canvas units"
     },
-    "Same92": {
+    "Same91": {
       "type": "number",
       "minimum": 0,
       "maximum": 65536,
       "description": "canvas units"
     },
-    "Same93": {
+    "Same92": {
       "type": "number",
       "minimum": -33554431,
       "maximum": 33554431,
       "description": "em"
     },
-    "Same94": {
+    "Same93": {
       "type": "number",
       "description": "frame fraction"
     },
-    "Same95": {
+    "Same94": {
       "type": "object",
       "properties": {
         "opacity": {
           "$ref": "#/definitions/Same36"
         },
         "x": {
-          "$ref": "#/definitions/Same93"
+          "$ref": "#/definitions/Same92"
         },
         "y": {
-          "$ref": "#/definitions/Same93"
+          "$ref": "#/definitions/Same92"
         },
         "scale": {
           "$ref": "#/definitions/Same30"
@@ -13711,7 +13710,7 @@
       },
       "additionalProperties": false
     },
-    "Same96": {
+    "Same95": {
       "anyOf": [
         {
           "$ref": "#/definitions/Same16"
@@ -13763,7 +13762,7 @@
         }
       ]
     },
-    "Same97": {
+    "Same96": {
       "type": "object",
       "properties": {
         "length": {
@@ -13778,24 +13777,24 @@
       ],
       "additionalProperties": false
     },
-    "Same98": {
+    "Same97": {
       "type": "integer",
       "minimum": 0,
       "maximum": 4294967294,
       "description": "shuffle"
     },
-    "Same99": {
+    "Same98": {
       "type": "string",
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
       "description": "a normalized relative file path"
     },
-    "Same100": {
+    "Same99": {
       "type": "number",
       "minimum": -510,
       "maximum": 510,
       "description": "shape fraction"
     },
-    "Same101": {
+    "Same100": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
