@@ -93,98 +93,37 @@
                     "additionalProperties": false
                   },
                   {
+                    "$ref": "#/definitions/text-frame"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": -65536,
+                        "maximum": 65536,
+                        "description": "canvas units"
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": -65536,
+                        "maximum": 65536,
+                        "description": "canvas units"
+                      },
+                      "width": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 65536,
+                        "description": "canvas units"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "$ref": "#/definitions/table-frame"
+                  },
+                  {
                     "$ref": "#/definitions/frame"
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "canvas units"
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "canvas units"
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "canvas units"
-                      }
-                    },
-                    "additionalProperties": false
-                  },
-                  {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
                   }
                 ]
               },
@@ -226,44 +165,10 @@
                   {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/space-rotation"
+                        "$ref": "#/definitions/space-euler"
                       },
                       {
-                        "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
-                        "type": "object",
-                        "properties": {
-                          "w": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "A quaternion's w, in quaternion mode only."
-                          },
-                          "x": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about x, or a quaternion's x."
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about y, or a quaternion's y."
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about z, or a quaternion's z."
-                          }
-                        },
-                        "required": [
-                          "w",
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-quaternion"
                       }
                     ]
                   },
@@ -2370,7 +2275,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "$ref": "#/definitions/frame"
+                    "$ref": "#/definitions/text-frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -2647,7 +2552,92 @@
                   "type",
                   "frame"
                 ],
-                "additionalProperties": false
+                "additionalProperties": false,
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "auto-size": {
+                          "enum": [
+                            "both",
+                            "width"
+                          ]
+                        },
+                        "column-count": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 1
+                        },
+                        "text-path": false
+                      },
+                      "required": [
+                        "auto-size"
+                      ]
+                    },
+                    "then": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "width": false
+                          }
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "width": true
+                          },
+                          "required": [
+                            "width"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "auto-size": {
+                          "enum": [
+                            "both",
+                            "height"
+                          ]
+                        },
+                        "text-path": false
+                      },
+                      "required": [
+                        "auto-size"
+                      ]
+                    },
+                    "then": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "height": false
+                          }
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "height": true
+                          },
+                          "required": [
+                            "height"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               {
                 "type": "object",
@@ -2665,34 +2655,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/table-frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -2892,41 +2855,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -3244,41 +3173,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -3579,41 +3474,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -3991,41 +3852,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -4227,41 +4054,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -4595,41 +4388,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "rotation": {
                     "type": "number",
@@ -5022,41 +4781,7 @@
                     "$ref": "#/definitions/nonblank-line"
                   },
                   "frame": {
-                    "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the left edge is, across."
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
-                        "description": "Where the top edge is, down."
-                      },
-                      "width": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The width."
-                      },
-                      "height": {
-                        "type": "number",
-                        "minimum": 0.000001,
-                        "maximum": 65536,
-                        "description": "The height."
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "width",
-                      "height"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/frame"
                   },
                   "locked": {
                     "type": "boolean"
@@ -5168,44 +4893,10 @@
                   "rotation": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/space-rotation"
+                        "$ref": "#/definitions/space-euler"
                       },
                       {
-                        "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
-                        "type": "object",
-                        "properties": {
-                          "w": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "A quaternion's w, in quaternion mode only."
-                          },
-                          "x": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about x, or a quaternion's x."
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about y, or a quaternion's y."
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about z, or a quaternion's z."
-                          }
-                        },
-                        "required": [
-                          "w",
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-quaternion"
                       }
                     ]
                   },
@@ -5646,44 +5337,10 @@
                   "rotation": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/space-rotation"
+                        "$ref": "#/definitions/space-euler"
                       },
                       {
-                        "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
-                        "type": "object",
-                        "properties": {
-                          "w": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "A quaternion's w, in quaternion mode only."
-                          },
-                          "x": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about x, or a quaternion's x."
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about y, or a quaternion's y."
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
-                            "description": "Degrees about z, or a quaternion's z."
-                          }
-                        },
-                        "required": [
-                          "w",
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-quaternion"
                       }
                     ]
                   },
@@ -6454,128 +6111,41 @@
       "additionalProperties": false
     },
     "frame": {
-      "anyOf": [
-        {
-          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the left edge is, across."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the top edge is, down."
-            },
-            "width": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 65536,
-              "description": "The width."
-            },
-            "height": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 65536,
-              "description": "The height."
-            }
-          },
-          "required": [
-            "x",
-            "y",
-            "width",
-            "height"
-          ],
-          "additionalProperties": false
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the left edge is, across."
         },
-        {
-          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the left edge is, across."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the top edge is, down."
-            },
-            "width": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 65536,
-              "description": "The width."
-            }
-          },
-          "required": [
-            "x",
-            "y",
-            "width"
-          ],
-          "additionalProperties": false
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the top edge is, down."
         },
-        {
-          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the left edge is, across."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the top edge is, down."
-            },
-            "height": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 65536,
-              "description": "The height."
-            }
-          },
-          "required": [
-            "x",
-            "y",
-            "height"
-          ],
-          "additionalProperties": false
+        "width": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The width."
         },
-        {
-          "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the left edge is, across."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "Where the top edge is, down."
-            }
-          },
-          "required": [
-            "x",
-            "y"
-          ],
-          "additionalProperties": false
+        "height": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The height."
         }
-      ]
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
     },
     "gradient": {
       "description": "A linear or radial gradient.",
@@ -7056,46 +6626,42 @@
     "rotation": {
       "anyOf": [
         {
-          "$ref": "#/definitions/space-rotation"
+          "$ref": "#/definitions/space-euler"
         },
         {
-          "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
-          "type": "object",
-          "properties": {
-            "w": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
-              "description": "A quaternion's w, in quaternion mode only."
-            },
-            "x": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
-              "description": "Degrees about x, or a quaternion's x."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
-              "description": "Degrees about y, or a quaternion's y."
-            },
-            "z": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
-              "description": "Degrees about z, or a quaternion's z."
-            }
-          },
-          "required": [
-            "w",
-            "x",
-            "y",
-            "z"
-          ],
-          "additionalProperties": false
+          "$ref": "#/definitions/space-quaternion"
         }
       ]
+    },
+    "space-euler": {
+      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "Degrees about x, or a quaternion's x."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "Degrees about y, or a quaternion's y."
+        },
+        "z": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "Degrees about z, or a quaternion's z."
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
     },
     "space-position": {
       "description": "A point in the 3D space, in canvas units. x runs right from the slide's left edge, y up from its bottom edge, and z toward the viewer, and the slide lies at z 0. The space is right-handed, as glTF and three.js define it. A parented model's, light's, shadow catcher's or camera's position and target are in its parent's space, through its parent-inverse where it has one, and a parented shadow catcher's width and height too. A parented object's world is its parent's or joint's world, times its parent-inverse, times its own position, rotation, and scale, each matrix acting on a column of x, y, z, and 1 to its right: `world = parent × parent-inverse × local`, as Blender's Parent Inverse composes them. Its own constraints apply after. A parented camera turns with its parent, never scales with it, and a target camera banks with it. The camera's position may leave out any part. Left out, its x and y center it on the slide, and its z puts it where the slide shows at full size. A target gives all three parts, the camera's too.",
@@ -7127,10 +6693,16 @@
       ],
       "additionalProperties": false
     },
-    "space-rotation": {
+    "space-quaternion": {
       "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keys then turn it whole: each key of `<object>.rotation` is such an orientation, and the turn between two keys goes the shorter way round at its easing's pace. In degrees, rotation.x, rotation.y, and rotation.z key each turn on its own, so a key can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
       "type": "object",
       "properties": {
+        "w": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "A quaternion's w, in quaternion mode only."
+        },
         "x": {
           "type": "number",
           "minimum": -8589934592,
@@ -7151,6 +6723,7 @@
         }
       },
       "required": [
+        "w",
         "x",
         "y",
         "z"
@@ -7234,6 +6807,36 @@
       },
       "minItems": 2
     },
+    "table-frame": {
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the left edge is, across."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the top edge is, down."
+        },
+        "width": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The width."
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width"
+      ],
+      "additionalProperties": false
+    },
     "tail": {
       "description": "A speech bubble's pointer tip.",
       "type": "object",
@@ -7283,6 +6886,41 @@
         "x",
         "y",
         "z"
+      ],
+      "additionalProperties": false
+    },
+    "text-frame": {
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the left edge is, across."
+        },
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "Where the top edge is, down."
+        },
+        "width": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The width."
+        },
+        "height": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "The height."
+        }
+      },
+      "required": [
+        "x",
+        "y"
       ],
       "additionalProperties": false
     },
