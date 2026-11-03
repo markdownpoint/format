@@ -65,6 +65,8 @@ When you add or delete a slide, the plugin updates both presentation files. When
 
 Comment markers separate slides and text blocks. Each marker gives the ID of its slide or object. A heading or horizontal rule does not start a slide.
 
+Each marker stands on a line of its own. Spaces or tabs before or after it, any number, don't change it. Between code fences, a line that looks like a marker is code.
+
 The IDs in the markers connect the two files. Keep a slide's ID when changing its title or moving it. If you change the ID, update it in both files.
 
 ## Frontmatter
