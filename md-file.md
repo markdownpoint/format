@@ -82,7 +82,7 @@ You can add your own keys for information used by your tools or workflow. Markdo
 
 ## Sections
 
-`<!-- section: id -->` starts a section. An id is lowercase letters, digits and single hyphens, and starts with a letter: `intro`, `q3-numbers`. Under the marker goes one line, `# Name`: a level-1 heading with the section's name. MarkdownPoint drops any formatting in it. Nothing else goes in a section's block. Sections are optional. Once there is one, every slide must be in a section.
+`<!-- section: id -->` starts a section. An id is lowercase letters, digits and single hyphens, and starts with a letter: `intro`, `q3-numbers`. Under the marker goes one line, `# Name`: a level-1 heading with the section's name. MarkdownPoint drops any formatting in it. The line takes no comment, not even a paragraph id. Nothing else goes in a section's block. Sections are optional. Once there is one, every slide must be in a section.
 
 ## Slides
 
