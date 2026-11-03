@@ -1,0 +1,31 @@
+{
+  "markdownpoint": "1.0",
+  "kind": "image-generation",
+  "created": "2026-11-03T17:59:43.070Z",
+  "name": "Red Paper Boat",
+  "target": {
+    "type": "image-object",
+    "slide-id": "generate",
+    "object-id": "boat"
+  },
+  "request": {
+    "compiler": "markdownpoint/image-prompt/1",
+    "prompt": "A red paper boat on calm water",
+    "resolved-style": "Flat illustration",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "parameters": {
+      "aspect-ratio": "190:107",
+      "transparent": true,
+      "size": "2048",
+      "quality": "medium"
+    }
+  },
+  "output": {
+    "file": "generated/b0bebb75-dc72-4d54-965e-64824ba62d02.png",
+    "sha256": "eef207da6283bb997d08942b62db521060af1f513c4ac93da5551601716f98bb",
+    "bytes": 2277188,
+    "width": 2045,
+    "height": 1152
+  }
+}

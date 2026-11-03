@@ -181,6 +181,8 @@
         {
           "id": "boat",
           "type": "image",
+          "file": "generated/b0bebb75-dc72-4d54-965e-64824ba62d02.png",
+          "name": "Red Paper Boat",
           "frame": {
             "x": 120,
             "y": 340,
@@ -193,7 +195,8 @@
           "alt": "A red paper boat",
           "transparent": true,
           "prompt": "A red paper boat on calm water",
-          "image-style": "Flat illustration"
+          "image-style": "Flat illustration",
+          "image-result": {"record":"b0bebb75-dc72-4d54-965e-64824ba62d02"}
         },
 
         {

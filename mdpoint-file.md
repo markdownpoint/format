@@ -322,12 +322,14 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
-A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/:
+A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `image-result` names its record:
 
 ```json
 {
   "id": "boat",
   "type": "image",
+  "file": "generated/b0bebb75-dc72-4d54-965e-64824ba62d02.png",
+  "name": "Red Paper Boat",
   "frame": {"x": 120, "y": 340, "width": 760, "height": 428},
   "stroke": "muted",
   "stroke-weight": 4,
@@ -335,9 +337,44 @@ A generated picture starts as a request. An image object or a slide's `backgroun
   "alt": "A red paper boat",
   "transparent": true,
   "prompt": "A red paper boat on calm water",
-  "image-style": "Flat illustration"
+  "image-style": "Flat illustration",
+  "image-result": {"record": "b0bebb75-dc72-4d54-965e-64824ba62d02"}
 }
 ```
+
+The record, generated/<id>.json, holds what was asked and the picture that came of it:
+
+```json
+{
+  "markdownpoint": "1.0",
+  "kind": "image-generation",
+  "created": "2026-11-03T17:59:43.070Z",
+  "name": "Red Paper Boat",
+  "target": {"type": "image-object", "slide-id": "generate", "object-id": "boat"},
+  "request": {
+    "compiler": "markdownpoint/image-prompt/1",
+    "prompt": "A red paper boat on calm water",
+    "resolved-style": "Flat illustration",
+    "provider": "openai",
+    "model": "gpt-image-2.5-sunburst",
+    "parameters": {
+      "aspect-ratio": "190:107",
+      "transparent": true,
+      "size": "2048",
+      "quality": "medium"
+    }
+  },
+  "output": {
+    "file": "generated/b0bebb75-dc72-4d54-965e-64824ba62d02.png",
+    "sha256": "eef207da6283bb997d08942b62db521060af1f513c4ac93da5551601716f98bb",
+    "bytes": 2277188,
+    "width": 2045,
+    "height": 1152
+  }
+}
+```
+
+The hills carry a restyle, and the background is still a request:
 
 ```json
 {
