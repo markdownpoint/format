@@ -5471,7 +5471,7 @@
     "save": {
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
-      "description": "A save stamp, written by the last save before editing passes to another person. It tells this file apart from an older copy."
+      "description": "A save stamp: the id of a save. MarkdownPoint writes it while the presentation is shared for editing, to tell this file apart from an older copy with the same content. Other tools keep it as it is."
     }
   },
   "required": [
