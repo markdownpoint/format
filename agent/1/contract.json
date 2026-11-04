@@ -6315,11 +6315,10 @@
               "maximum": 1,
               "description": "ratio"
             },
-            "stagger": {
+            "spread": {
               "type": "number",
-              "minimum": 0,
-              "maximum": 1,
-              "description": "ratio"
+              "minimum": 1,
+              "description": "pieces"
             },
             "roll": {
               "type": "boolean"
@@ -13293,7 +13292,7 @@
         "progress": {
           "type": "number"
         },
-        "stagger": {
+        "spread": {
           "type": "number"
         },
         "roll": {
@@ -14288,7 +14287,7 @@
         "time-remap",
         "chart-type",
         "progress",
-        "stagger",
+        "spread",
         "roll",
         "value-labels",
         "legend",
@@ -16150,7 +16149,7 @@
         "progress": {
           "type": "number"
         },
-        "stagger": {
+        "spread": {
           "type": "number"
         },
         "roll": {
@@ -21014,12 +21013,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "text units"
+          "description": "pieces"
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "text units"
+          "description": "pieces"
         },
         "progress": {
           "type": "number",
@@ -21132,12 +21131,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "text units"
+          "description": "pieces"
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "text units"
+          "description": "pieces"
         },
         "progress": {
           "type": "number",

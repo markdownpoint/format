@@ -1831,16 +1831,15 @@
                         }
                       ]
                     },
-                    "stagger": {
+                    "spread": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
                           "type": "number",
-                          "minimum": 0,
-                          "maximum": 1,
-                          "description": "ratio"
+                          "minimum": 1,
+                          "description": "pieces"
                         }
                       ]
                     },
@@ -4380,11 +4379,10 @@
           "maximum": 1,
           "description": "ratio"
         },
-        "stagger": {
+        "spread": {
           "type": "number",
-          "minimum": 0,
-          "maximum": 1,
-          "description": "ratio"
+          "minimum": 1,
+          "description": "pieces"
         },
         "roll": {
           "type": "boolean"

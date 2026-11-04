@@ -5745,11 +5745,10 @@
                     "maximum": 1,
                     "description": "ratio"
                   },
-                  "stagger": {
+                  "spread": {
                     "type": "number",
-                    "minimum": 0,
-                    "maximum": 1,
-                    "description": "ratio"
+                    "minimum": 1,
+                    "description": "pieces"
                   },
                   "roll": {
                     "type": "boolean"
@@ -7716,12 +7715,12 @@
               "spread": {
                 "type": "number",
                 "minimum": 1,
-                "description": "text units"
+                "description": "pieces"
               },
               "pause": {
                 "type": "number",
                 "minimum": 0,
-                "description": "text units"
+                "description": "pieces"
               },
               "progress": {
                 "type": "number",
@@ -7834,12 +7833,12 @@
               "spread": {
                 "type": "number",
                 "minimum": 1,
-                "description": "text units"
+                "description": "pieces"
               },
               "pause": {
                 "type": "number",
                 "minimum": 0,
-                "description": "text units"
+                "description": "pieces"
               },
               "progress": {
                 "type": "number",

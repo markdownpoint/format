@@ -3478,8 +3478,8 @@
         "progress": {
           "$ref": "#/definitions/Prop_progress"
         },
-        "stagger": {
-          "$ref": "#/definitions/Prop_progress"
+        "spread": {
+          "$ref": "#/definitions/Prop_spread"
         },
         "roll": {
           "$ref": "#/definitions/Prop_locked"
@@ -7329,12 +7329,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "stagger"
+              "const": "spread"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_progress"
+                  "$ref": "#/definitions/Prop_spread"
                 },
                 {
                   "type": "null"
@@ -8059,7 +8059,7 @@
         "time-remap",
         "chart-type",
         "progress",
-        "stagger",
+        "spread",
         "roll",
         "value-labels",
         "legend",
@@ -9822,8 +9822,8 @@
         "progress": {
           "$ref": "#/definitions/Prop_progress"
         },
-        "stagger": {
-          "$ref": "#/definitions/Prop_progress"
+        "spread": {
+          "$ref": "#/definitions/Prop_spread"
         },
         "roll": {
           "$ref": "#/definitions/Prop_locked"
@@ -15349,12 +15349,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "text units"
+          "description": "pieces"
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "text units"
+          "description": "pieces"
         },
         "progress": {
           "type": "number",
@@ -15582,12 +15582,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "text units"
+          "description": "pieces"
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "text units"
+          "description": "pieces"
         },
         "progress": {
           "type": "number",
@@ -16378,6 +16378,11 @@
       "minimum": 0,
       "maximum": 1,
       "description": "ratio"
+    },
+    "Prop_spread": {
+      "type": "number",
+      "minimum": 1,
+      "description": "pieces"
     },
     "Prop_colors": {
       "type": "array",
