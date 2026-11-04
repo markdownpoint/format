@@ -2503,7 +2503,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A default text style as presentation.json spells it: `none`, for a new text box with no style, or its style under `text-style`, as an object's, and its color."
+      "description": "A default text style as the .mdpoint file spells it: `none`, for a new text box with no style, or its style under `text-style`, as an object's, and its color."
     },
     "PresentationBackgroundSource": {
       "type": "object",
