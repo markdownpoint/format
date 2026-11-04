@@ -1493,7 +1493,7 @@
                 "type": "string"
               },
               "definition": {
-                "$ref": "#/definitions/ImageFilterSource"
+                "$ref": "#/definitions/RestyleSource"
               }
             },
             "required": [
@@ -1511,7 +1511,7 @@
       "additionalProperties": false,
       "description": "The style library, as the Restyle popup lists it; set one's `definition` as a picture's `restyle`."
     },
-    "ImageFilterSource": {
+    "RestyleSource": {
       "type": "object",
       "properties": {
         "name": {
@@ -1550,7 +1550,7 @@
               "const": "save"
             },
             "definition": {
-              "$ref": "#/definitions/ImageFilterSource",
+              "$ref": "#/definitions/RestyleSource",
               "description": "A style definition as images.styles.list lists them."
             },
             "id": {
@@ -1642,7 +1642,7 @@
                 "type": "string"
               },
               "definition": {
-                "$ref": "#/definitions/ImageFilterSource"
+                "$ref": "#/definitions/RestyleSource"
               }
             },
             "required": [
@@ -2519,7 +2519,7 @@
           "type": "string"
         },
         "restyle": {
-          "$ref": "#/definitions/ImageFilterSource"
+          "$ref": "#/definitions/RestyleSource"
         },
         "image-result": {
           "$ref": "#/definitions/ImageResultSource"
@@ -12237,7 +12237,7 @@
           "type": "boolean"
         },
         "restyle": {
-          "$ref": "#/definitions/ImageFilterSource"
+          "$ref": "#/definitions/RestyleSource"
         },
         "image-result": {
           "$ref": "#/definitions/ImageResultSource"
@@ -15141,7 +15141,7 @@
           "type": "boolean"
         },
         "restyle": {
-          "$ref": "#/definitions/ImageFilterSource"
+          "$ref": "#/definitions/RestyleSource"
         },
         "image-result": {
           "$ref": "#/definitions/ImageResultSource"

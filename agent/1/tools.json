@@ -728,7 +728,7 @@
         ],
         "additionalProperties": false,
         "definitions": {
-          "ImageFilterSource": {
+          "RestyleSource": {
             "type": "object",
             "properties": {
               "name": {
@@ -1418,7 +1418,7 @@
                 "type": "string"
               },
               "restyle": {
-                "$ref": "#/definitions/ImageFilterSource"
+                "$ref": "#/definitions/RestyleSource"
               },
               "image-result": {
                 "$ref": "#/definitions/ImageResultSource"
@@ -13363,7 +13363,7 @@
                   "type": "string"
                 },
                 "definition": {
-                  "$ref": "#/definitions/ImageFilterSource"
+                  "$ref": "#/definitions/RestyleSource"
                 }
               },
               "required": [
@@ -13381,7 +13381,7 @@
         "additionalProperties": false,
         "description": "The style library, as the Restyle popup lists it; set one's `definition` as a picture's `restyle`.",
         "definitions": {
-          "ImageFilterSource": {
+          "RestyleSource": {
             "type": "object",
             "properties": {
               "name": {
@@ -13577,7 +13577,7 @@
                   "type": "string"
                 },
                 "definition": {
-                  "$ref": "#/definitions/ImageFilterSource"
+                  "$ref": "#/definitions/RestyleSource"
                 }
               },
               "required": [
@@ -13604,7 +13604,7 @@
         ],
         "description": "The styles after the change; `selectedId` is the one saved, duplicated, imported or previewed, and `files` the export's file.",
         "definitions": {
-          "ImageFilterSource": {
+          "RestyleSource": {
             "type": "object",
             "properties": {
               "name": {
