@@ -11424,7 +11424,7 @@
           "$ref": "#/definitions/TextModelFileSource"
         },
         "auto-size": {
-          "$ref": "#/definitions/PresentationTextFit"
+          "$ref": "#/definitions/PresentationAutoSize"
         },
         "min-height": {
           "type": "number"
@@ -11644,7 +11644,7 @@
       "additionalProperties": false,
       "description": "A text's 3D model as the file spells it."
     },
-    "PresentationTextFit": {
+    "PresentationAutoSize": {
       "type": "string",
       "enum": [
         "both",
@@ -14674,7 +14674,7 @@
           "$ref": "#/definitions/TextModelFileSource"
         },
         "auto-size": {
-          "$ref": "#/definitions/PresentationTextFit"
+          "$ref": "#/definitions/PresentationAutoSize"
         },
         "min-height": {
           "type": "number"
