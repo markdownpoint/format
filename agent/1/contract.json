@@ -3915,7 +3915,6 @@
       "anyOf": [
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "type": "string",
@@ -3929,14 +3928,14 @@
             }
           },
           "required": [
+            "type",
             "object",
-            "paragraph",
-            "type"
-          ]
+            "paragraph"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "type": "string",
@@ -3947,13 +3946,13 @@
             }
           },
           "required": [
-            "object",
-            "type"
-          ]
+            "type",
+            "object"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "type": "string",
@@ -3964,13 +3963,13 @@
             }
           },
           "required": [
-            "object",
-            "type"
-          ]
+            "type",
+            "object"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "type": "string",
@@ -3981,18 +3980,15 @@
             }
           },
           "required": [
-            "object",
-            "type"
-          ]
+            "type",
+            "object"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "type": {
-              "type": "string",
-              "const": "clip"
-            },
             "media-trim": {
               "$ref": "#/definitions/MediaTrim"
             },
@@ -4001,6 +3997,10 @@
             },
             "clip-scale": {
               "type": "number"
+            },
+            "type": {
+              "type": "string",
+              "const": "clip"
             },
             "object": {
               "type": "string"

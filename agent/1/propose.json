@@ -13343,7 +13343,6 @@
       "anyOf": [
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "const": "text"
@@ -13357,14 +13356,14 @@
             }
           },
           "required": [
+            "type",
             "object",
-            "paragraph",
-            "type"
-          ]
+            "paragraph"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "const": "audio"
@@ -13374,13 +13373,13 @@
             }
           },
           "required": [
-            "object",
-            "type"
-          ]
+            "type",
+            "object"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "const": "video"
@@ -13390,13 +13389,13 @@
             }
           },
           "required": [
-            "object",
-            "type"
-          ]
+            "type",
+            "object"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "type": {
               "const": "web-video"
@@ -13406,9 +13405,10 @@
             }
           },
           "required": [
-            "object",
-            "type"
-          ]
+            "type",
+            "object"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
