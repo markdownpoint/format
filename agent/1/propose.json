@@ -998,7 +998,7 @@
               "minimum": 0,
               "maximum": 4294967296
             },
-            "keys": {
+            "keyframes": {
               "type": "object",
               "additionalProperties": {
                 "anyOf": [
@@ -1049,7 +1049,7 @@
                   }
                 ]
               },
-              "description": "Shared key/cue ID namespace. An existing ID replaces the whole event; outer null deletes it.",
+              "description": "Shared keyframe/cue ID namespace. An existing ID replaces the whole event; outer null deletes it.",
               "propertyNames": {
                 "$ref": "#/definitions/Same11"
               }
@@ -10295,7 +10295,7 @@
                 "type": {
                   "const": "moveKeyframes"
                 },
-                "keys": {
+                "keyframes": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -10317,7 +10317,7 @@
               },
               "required": [
                 "type",
-                "keys"
+                "keyframes"
               ],
               "additionalProperties": false
             },

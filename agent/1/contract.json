@@ -14397,7 +14397,7 @@
                   "type": "string",
                   "const": "moveKeyframes"
                 },
-                "keys": {
+                "keyframes": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -14419,7 +14419,7 @@
               },
               "required": [
                 "type",
-                "keys"
+                "keyframes"
               ],
               "additionalProperties": false
             },
@@ -16472,7 +16472,7 @@
               ],
               "description": "Step seconds where the loop while waiting begins; null removes the loop."
             },
-            "keys": {
+            "keyframes": {
               "type": "object",
               "additionalProperties": {
                 "anyOf": [
@@ -16542,7 +16542,7 @@
                   }
                 ]
               },
-              "description": "Shared key/cue ID namespace. An existing ID replaces the whole event; outer null deletes it."
+              "description": "Shared keyframe/cue ID namespace. An existing ID replaces the whole event; outer null deletes it."
             },
             "cues": {
               "type": "object",
