@@ -4374,7 +4374,7 @@
         "id",
         "type"
       ],
-      "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setContent takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph: words written without it keep each paragraph's id where its words start, a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
+      "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setContent takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
     },
     "PresentationTransformFrame": {
       "type": "object",
