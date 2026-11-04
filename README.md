@@ -87,7 +87,7 @@ To start a presentation by hand, copy an example's whole folder. Its `themes` fo
 
 “File › Save Version…” saves a copy of the slides, text, objects and settings. The version uses the presentation's media and the theme named in its saved file. Changes to those resources also affect the saved version.
 
-Each version has a folder named by the time it was saved, in UTC, such as `versions/2026-10-30T16.20.05Z/`. That name is the version's time, and Version history lists the newest first. The folder holds copies of `presentation.mdpoint` and `slides.md`, and a `version.json` with the version's number and optional name. Two computers that save versions while apart keep both, even if they give them the same number. MarkdownPoint never opens a version's folder as a presentation of its own: open the presentation and choose the version in its Version history.
+Each version has a folder named by the time it was saved, in UTC, and a random tail, such as `versions/2026-10-30T16.20.05Z-k3pz/`. That name holds the version's time, and Version history lists the newest first. The folder holds copies of `presentation.mdpoint` and `slides.md`, and a `version.json` with the version's number and optional name. Two computers that save versions while apart keep both, even in the same second or with the same number. MarkdownPoint never opens a version's folder as a presentation of its own: open the presentation and choose the version in its Version history.
 
 “Delete Theme” won't remove a theme used by a saved version. “File › Clean Up…” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
 
