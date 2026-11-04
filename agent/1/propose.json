@@ -3407,8 +3407,8 @@
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
         },
-        "source": {
-          "type": "string"
+        "composition": {
+          "$ref": "#/definitions/Prop_composition"
         },
         "inputs": {
           "$ref": "#/definitions/Prop_inputs"
@@ -3453,7 +3453,7 @@
       "required": [
         "type",
         "frame",
-        "source"
+        "composition"
       ],
       "additionalProperties": false
     },
@@ -7199,12 +7199,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "source"
+              "const": "composition"
             },
             "value": {
               "anyOf": [
                 {
-                  "type": "string"
+                  "$ref": "#/definitions/Prop_composition"
                 },
                 {
                   "type": "null"
@@ -8054,7 +8054,7 @@
         "fill-rule",
         "use-as-mask",
         "repeater",
-        "source",
+        "composition",
         "inputs",
         "time-remap",
         "chart-type",
@@ -9745,8 +9745,8 @@
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
         },
-        "source": {
-          "type": "string"
+        "composition": {
+          "$ref": "#/definitions/Prop_composition"
         },
         "inputs": {
           "$ref": "#/definitions/Prop_inputs"
@@ -9788,7 +9788,7 @@
       "required": [
         "type",
         "frame",
-        "source"
+        "composition"
       ],
       "additionalProperties": false
     },
@@ -16327,6 +16327,10 @@
       ],
       "additionalProperties": false,
       "description": "An auto layout as the file spells it, its reference point `reference-point`, left out at start."
+    },
+    "Prop_composition": {
+      "type": "string",
+      "description": "a composition slide id"
     },
     "Prop_inputs": {
       "type": "object",

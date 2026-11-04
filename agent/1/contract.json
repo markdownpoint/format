@@ -6139,7 +6139,7 @@
             "repeater": {
               "$ref": "#/definitions/repeater"
             },
-            "source": {
+            "composition": {
               "type": "string",
               "description": "a composition slide id"
             },
@@ -6177,7 +6177,7 @@
             "id",
             "type",
             "frame",
-            "source"
+            "composition"
           ],
           "additionalProperties": false
         },
@@ -13200,7 +13200,7 @@
         "anchor-point": {
           "$ref": "#/definitions/PresentationAnchor"
         },
-        "source": {
+        "composition": {
           "type": "string"
         },
         "inputs": {
@@ -13252,7 +13252,7 @@
       "required": [
         "type",
         "frame",
-        "source"
+        "composition"
       ],
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
@@ -14282,7 +14282,7 @@
         "fill-rule",
         "use-as-mask",
         "repeater",
-        "source",
+        "composition",
         "inputs",
         "time-remap",
         "chart-type",
@@ -16064,7 +16064,7 @@
         "anchor-point": {
           "$ref": "#/definitions/PresentationAnchor"
         },
-        "source": {
+        "composition": {
           "type": "string"
         },
         "inputs": {
@@ -16113,7 +16113,7 @@
       "required": [
         "type",
         "frame",
-        "source"
+        "composition"
       ],
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."

@@ -5568,7 +5568,7 @@
                   "repeater": {
                     "$ref": "#/definitions/repeater"
                   },
-                  "source": {
+                  "composition": {
                     "type": "string",
                     "description": "a composition slide id"
                   },
@@ -5606,7 +5606,7 @@
                   "id",
                   "type",
                   "frame",
-                  "source"
+                  "composition"
                 ],
                 "additionalProperties": false
               },
