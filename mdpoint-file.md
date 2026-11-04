@@ -592,6 +592,6 @@ A composition is a reusable animated scene, kept under `compositions`. Each inst
 
 ## Keys MarkdownPoint doesn't read
 
-An unknown JSON key is an error in a file using the current format version. In a file from a later minor version, such as 1.3, MarkdownPoint preserves the new keys when saving.
+An unknown JSON key or value is an error in a file using the current format version. In a file from a later minor version, such as 1.3, MarkdownPoint preserves the new keys and values when saving.
 
 To keep your own data with a presentation, write it in the .md file's [frontmatter](md-file.md#frontmatter). MarkdownPoint keeps keys there that it doesn't read.
