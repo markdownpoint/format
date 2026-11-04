@@ -2918,13 +2918,13 @@
         "at": {
           "anyOf": [
             {
-              "$ref": "#/definitions/PresentationAnimationLocation"
+              "$ref": "#/definitions/PresentationAnimationMoment"
             },
             {
               "type": "null"
             }
           ],
-          "description": "Null is Base. A sampled location reports the actual clamped time; Start has null stepId and time zero."
+          "description": "Null is Base. A sampled moment reports the actual clamped time; Start has null stepId and time zero."
         },
         "objects": {
           "type": "array",
@@ -4079,7 +4079,7 @@
       "additionalProperties": false,
       "description": "The one in-slide motion setting: how long a step's fade or move takes, set on the master."
     },
-    "PresentationAnimationLocation": {
+    "PresentationAnimationMoment": {
       "type": "object",
       "properties": {
         "stepId": {
@@ -4102,7 +4102,7 @@
         "running": {
           "type": "boolean",
           "const": true,
-          "description": "A clock that runs on past its click's end, as a show waits: what loops in the click plays on. Without it, a location at or past its click's end shows the click as it completed, every step at its own end and no loop playing: what a still picture of the click's end shows and the next click starts from. Before its end a click plays either way."
+          "description": "A clock that runs on past its click's end, as a show waits: what loops in the click plays on. Without it, a moment at or past its click's end shows the click as it completed, every step at its own end and no loop playing: what a still picture of the click's end shows and the next click starts from. Before its end a click plays either way."
         },
         "rest": {
           "type": "object",
@@ -8064,7 +8064,7 @@
             "at": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/PresentationAnimationLocation"
+                  "$ref": "#/definitions/PresentationAnimationMoment"
                 },
                 {
                   "type": "null"
@@ -8139,7 +8139,7 @@
             "at": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/PresentationAnimationLocation"
+                  "$ref": "#/definitions/PresentationAnimationMoment"
                 },
                 {
                   "type": "null"
