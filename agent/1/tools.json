@@ -10946,8 +10946,8 @@
               {
                 "type": "object",
                 "properties": {
-                  "kind": {
-                    "const": "in place"
+                  "type": {
+                    "const": "in-place"
                   },
                   "distance": {
                     "type": "number"
@@ -10969,7 +10969,7 @@
                   }
                 },
                 "required": [
-                  "kind",
+                  "type",
                   "distance",
                   "speed",
                   "forward",
@@ -10981,15 +10981,15 @@
               {
                 "type": "object",
                 "properties": {
-                  "kind": {
-                    "const": "root motion"
+                  "type": {
+                    "const": "root-motion"
                   },
                   "distance": {
                     "type": "number"
                   }
                 },
                 "required": [
-                  "kind",
+                  "type",
                   "distance"
                 ],
                 "additionalProperties": false
@@ -10997,17 +10997,17 @@
               {
                 "type": "object",
                 "properties": {
-                  "kind": {
-                    "const": "not a walk"
+                  "type": {
+                    "const": "not-a-walk"
                   }
                 },
                 "required": [
-                  "kind"
+                  "type"
                 ],
                 "additionalProperties": false
               }
             ],
-            "description": "How far a walk or run played in place carries the character per loop, in the model's units: \"in place\" when its planted feet slide back at one speed, \"root motion\" when the Action moves the character itself, \"not a walk\" otherwise."
+            "description": "How far a walk or run played in place carries the character per loop, in the model's units: `in-place` when its planted feet slide back at one speed, `root-motion` when the Action moves the character itself, `not-a-walk` otherwise."
           },
           "GlbFoot": {
             "type": "object",
@@ -11046,7 +11046,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. source is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh, { type: \"loose-parts\" }), which makes each piece no edge joins an object of its own beside it, its origin at its bounds center, for an Action to turn or move. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The source runs only while it builds. No file keeps it. To change a model you built, build it again from new source. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To make a text object’s words 3D, give for: { slideId, objectId }: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column. Without source, the app’s letter builder makes them at data’s depth and bevel, in ems (0.2 and 0.02 when left out). The model’s file keeps those and for, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
+      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. source is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh), which makes each piece no edge joins an object of its own beside it, its origin at its bounds center, for an Action to turn or move. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The source runs only while it builds. No file keeps it. To change a model you built, build it again from new source. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To make a text object’s words 3D, give for: { slideId, objectId }: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column. Without source, the app’s letter builder makes them at data’s depth and bevel, in ems (0.2 and 0.02 when left out). The model’s file keeps those and for, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11579,8 +11579,8 @@
               {
                 "type": "object",
                 "properties": {
-                  "kind": {
-                    "const": "in place"
+                  "type": {
+                    "const": "in-place"
                   },
                   "distance": {
                     "type": "number"
@@ -11602,7 +11602,7 @@
                   }
                 },
                 "required": [
-                  "kind",
+                  "type",
                   "distance",
                   "speed",
                   "forward",
@@ -11614,15 +11614,15 @@
               {
                 "type": "object",
                 "properties": {
-                  "kind": {
-                    "const": "root motion"
+                  "type": {
+                    "const": "root-motion"
                   },
                   "distance": {
                     "type": "number"
                   }
                 },
                 "required": [
-                  "kind",
+                  "type",
                   "distance"
                 ],
                 "additionalProperties": false
@@ -11630,17 +11630,17 @@
               {
                 "type": "object",
                 "properties": {
-                  "kind": {
-                    "const": "not a walk"
+                  "type": {
+                    "const": "not-a-walk"
                   }
                 },
                 "required": [
-                  "kind"
+                  "type"
                 ],
                 "additionalProperties": false
               }
             ],
-            "description": "How far a walk or run played in place carries the character per loop, in the model's units: \"in place\" when its planted feet slide back at one speed, \"root motion\" when the Action moves the character itself, \"not a walk\" otherwise."
+            "description": "How far a walk or run played in place carries the character per loop, in the model's units: `in-place` when its planted feet slide back at one speed, `root-motion` when the Action moves the character itself, `not-a-walk` otherwise."
           },
           "GlbFoot": {
             "type": "object",

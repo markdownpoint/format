@@ -516,12 +516,8 @@
                 "type": "string"
               }
             },
-            "by": {
-              "type": "string",
-              "enum": [
-                "object",
-                "paragraph"
-              ]
+            "delivery": {
+              "const": "by-paragraph"
             },
             "afterStepId": {
               "type": [

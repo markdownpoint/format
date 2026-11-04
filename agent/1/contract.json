@@ -9806,9 +9806,9 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "type": "string",
-              "const": "in place"
+              "const": "in-place"
             },
             "distance": {
               "type": "number"
@@ -9830,7 +9830,7 @@
             }
           },
           "required": [
-            "kind",
+            "type",
             "distance",
             "speed",
             "forward",
@@ -9842,16 +9842,16 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "type": "string",
-              "const": "root motion"
+              "const": "root-motion"
             },
             "distance": {
               "type": "number"
             }
           },
           "required": [
-            "kind",
+            "type",
             "distance"
           ],
           "additionalProperties": false
@@ -9859,18 +9859,18 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "type": "string",
-              "const": "not a walk"
+              "const": "not-a-walk"
             }
           },
           "required": [
-            "kind"
+            "type"
           ],
           "additionalProperties": false
         }
       ],
-      "description": "How far a walk or run played in place carries the character per loop, in the model's units: \"in place\" when its planted feet slide back at one speed, \"root motion\" when the Action moves the character itself, \"not a walk\" otherwise."
+      "description": "How far a walk or run played in place carries the character per loop, in the model's units: `in-place` when its planted feet slide back at one speed, `root-motion` when the Action moves the character itself, `not-a-walk` otherwise."
     },
     "GlbFoot": {
       "type": "object",
@@ -19333,12 +19333,9 @@
                     "type": "string"
                   }
                 },
-                "by": {
+                "delivery": {
                   "type": "string",
-                  "enum": [
-                    "object",
-                    "paragraph"
-                  ]
+                  "const": "by-paragraph"
                 },
                 "afterStepId": {
                   "type": [
