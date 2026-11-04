@@ -11579,7 +11579,7 @@
           "$ref": "#/definitions/PresentationTextDirection"
         },
         "vertical-align": {
-          "$ref": "#/definitions/PresentationTextVAlign"
+          "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
         "inset-top": {
           "type": "number"
@@ -11954,7 +11954,7 @@
       ],
       "description": "The side a text box's lines start on: the left, or the right for words written right to left, as Arabic and Hebrew are."
     },
-    "PresentationTextVAlign": {
+    "PresentationTextVerticalAlign": {
       "type": "string",
       "enum": [
         "top",
@@ -12003,7 +12003,7 @@
           "type": "string"
         },
         "vertical-align": {
-          "$ref": "#/definitions/PresentationTextVAlign"
+          "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
         "rotation": {
           "type": "number"
@@ -12704,7 +12704,7 @@
           "$ref": "#/definitions/PresentationTextDirection"
         },
         "vertical-align": {
-          "$ref": "#/definitions/PresentationTextVAlign"
+          "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
         "inset-top": {
           "type": "number"
@@ -14826,7 +14826,7 @@
           "$ref": "#/definitions/PresentationTextDirection"
         },
         "vertical-align": {
-          "$ref": "#/definitions/PresentationTextVAlign"
+          "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
         "inset-top": {
           "type": "number"
@@ -14925,7 +14925,7 @@
           "type": "string"
         },
         "vertical-align": {
-          "$ref": "#/definitions/PresentationTextVAlign"
+          "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
         "rotation": {
           "type": "number"
@@ -15565,7 +15565,7 @@
           "$ref": "#/definitions/PresentationTextDirection"
         },
         "vertical-align": {
-          "$ref": "#/definitions/PresentationTextVAlign"
+          "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
         "inset-top": {
           "type": "number"
