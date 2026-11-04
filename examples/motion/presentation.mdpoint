@@ -514,7 +514,7 @@
                 {"id":"card-swings-back","time":2.4,"value":240,"interpolation":"smooth"}
               ],
               "loop": "repeat",
-              "loop-from": "card-settles"
+              "loop-keyframe": "card-settles"
             },
             "noise.translation.y": {
               "keyframes": [

@@ -7622,9 +7622,9 @@
                     "repeat",
                     "ping-pong"
                   ],
-                  "description": "How it loops after its last keyframe until the step ends: `repeat` replays from `loop-from` to the last, and `ping-pong` plays that back and forth. Left out, it plays once."
+                  "description": "How it loops after its last keyframe until the step ends: `repeat` replays from `loop-keyframe` to the last, and `ping-pong` plays that back and forth. Left out, it plays once."
                 },
-                "loop-from": {
+                "loop-keyframe": {
                   "allOf": [
                     {
                       "$ref": "#/definitions/object-id"

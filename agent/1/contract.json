@@ -3187,7 +3187,7 @@
         "loop": {
           "$ref": "#/definitions/PresentationAnimationLoop"
         },
-        "loop-from": {
+        "loop-keyframe": {
           "type": "string"
         }
       },
@@ -14597,19 +14597,19 @@
           "properties": {
             "type": {
               "type": "string",
-              "const": "loop-from"
+              "const": "loop-keyframe"
             },
             "keyframeId": {
               "type": "string"
             },
-            "loop-from": {
+            "loop-keyframe": {
               "type": "boolean"
             }
           },
           "required": [
             "type",
             "keyframeId",
-            "loop-from"
+            "loop-keyframe"
           ],
           "additionalProperties": false
         },
@@ -14666,7 +14666,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A timing edit in the file's words: `loop-from` and a key's `exponential-scale`, and a swing's `wave-shape`."
+      "description": "A timing edit in the file's words: `loop-keyframe` and a key's `exponential-scale`, and a swing's `wave-shape`."
     },
     "PresentationCommentMutation": {
       "anyOf": [
@@ -16538,14 +16538,14 @@
                       "loop": {
                         "$ref": "#/definitions/PresentationAnimationLoop"
                       },
-                      "loop-from": {
+                      "loop-keyframe": {
                         "type": "string"
                       }
                     },
                     "required": [
                       "target",
                       "loop",
-                      "loop-from"
+                      "loop-keyframe"
                     ],
                     "additionalProperties": false
                   },
