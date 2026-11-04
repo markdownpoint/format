@@ -13497,8 +13497,13 @@
       "type": "object",
       "properties": {
         "status": {
-          "$ref": "#/definitions/AgentMutationStatus",
-          "description": "noChange when there was no step to take, or the step on top changed nothing and left the history."
+          "type": "string",
+          "enum": [
+            "applied",
+            "noChange",
+            "discarded"
+          ],
+          "description": "noChange when there was no step to take. discarded when another window, a peer or an outside edit has since deleted everything the step on top changed. The call drops that step from the history without taking it, and the next call takes the step beneath."
         },
         "revision": {
           "$ref": "#/definitions/AgentRevision"

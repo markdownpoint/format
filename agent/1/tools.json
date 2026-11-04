@@ -1614,7 +1614,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "Edit > Undo over the presentation’s one history of slide and theme steps, only while the presentation is still at the revision given, so undoing your own change never undoes someone’s later edit. A theme step also needs themeRevision. Returns the new revisions, or status noChange when there was nothing to undo or the step on top changed nothing, which then leaves the history.",
+      "description": "Edit > Undo over the presentation’s one history of slide and theme steps, only while the presentation is still at the revision given, so undoing your own change never undoes someone’s later edit. A theme step also needs themeRevision. Returns the new revisions, with status noChange when there was nothing to undo, or discarded when someone has since deleted everything the step on top changed. Undo then removes that step from the history without undoing it, and the next call undoes the step beneath.",
       "inputSchema": {
         "type": "object",
         "properties": {
