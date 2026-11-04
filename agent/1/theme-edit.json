@@ -748,7 +748,7 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "const": "grid"
             },
             "columns": {
@@ -771,7 +771,7 @@
             }
           },
           "required": [
-            "kind",
+            "type",
             "columns",
             "rows"
           ],
@@ -780,7 +780,7 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "const": "ring"
             },
             "count": {
@@ -797,7 +797,7 @@
             }
           },
           "required": [
-            "kind",
+            "type",
             "count"
           ],
           "additionalProperties": false

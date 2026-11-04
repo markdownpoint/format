@@ -11234,7 +11234,7 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "type": "string",
               "const": "grid"
             },
@@ -11249,7 +11249,7 @@
             }
           },
           "required": [
-            "kind",
+            "type",
             "columns",
             "rows"
           ],
@@ -11258,7 +11258,7 @@
         {
           "type": "object",
           "properties": {
-            "kind": {
+            "type": {
               "type": "string",
               "const": "ring"
             },
@@ -11270,7 +11270,7 @@
             }
           },
           "required": [
-            "kind",
+            "type",
             "count"
           ],
           "additionalProperties": false
@@ -12148,7 +12148,7 @@
           "$ref": "#/definitions/PresentationMask"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "color": {
           "type": "string"
@@ -12286,7 +12286,7 @@
     "PresentationMask": {
       "type": "string"
     },
-    "ReplicateSource": {
+    "RepeaterSource": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -12572,7 +12572,7 @@
           "type": "boolean"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "enter": {
           "$ref": "#/definitions/TextEnterSource"
@@ -12835,7 +12835,7 @@
           "$ref": "#/definitions/PresentationShadow"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -13109,7 +13109,7 @@
           "type": "number"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "auto-layout": {
           "$ref": "#/definitions/AutoLayoutSource"
@@ -13231,7 +13231,7 @@
           "not": {}
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "name": {
           "type": "string"
@@ -13338,7 +13338,7 @@
           "not": {}
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "name": {
           "type": "string"
@@ -13965,7 +13965,7 @@
           "type": "boolean"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "rotation": {
           "type": "number"
@@ -14081,7 +14081,7 @@
           "type": "boolean"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "rotation": {
           "type": "number"
@@ -15055,7 +15055,7 @@
           "$ref": "#/definitions/PresentationMask"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "color": {
           "type": "string"
@@ -15436,7 +15436,7 @@
           "type": "boolean"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "enter": {
           "$ref": "#/definitions/TextEnterSource"
@@ -15682,7 +15682,7 @@
           "type": "boolean"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -15778,7 +15778,7 @@
           "$ref": "#/definitions/PresentationShadow"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -16006,7 +16006,7 @@
           "type": "number"
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "auto-layout": {
           "$ref": "#/definitions/AutoLayoutSource"
@@ -16095,7 +16095,7 @@
           "not": {}
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "name": {
           "type": "string"
@@ -16195,7 +16195,7 @@
           "not": {}
         },
         "repeater": {
-          "$ref": "#/definitions/ReplicateSource"
+          "$ref": "#/definitions/RepeaterSource"
         },
         "name": {
           "type": "string"
