@@ -16274,78 +16274,32 @@
               "type": "string"
             },
             "content": {
-              "anyOf": [
-                {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                },
-                {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  },
-                  "description": "Initial text and file values keyed by inherited object id."
-                }
-              ]
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Initial text and file values keyed by inherited object id."
             },
             "role": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "const": "composition"
-                },
-                {
-                  "type": "string",
-                  "const": "composition",
-                  "description": "Makes the slide a composition, a reusable scene other slides place; `size`, `controls` and `name` belong to it alone."
-                }
-              ]
+              "type": "string",
+              "const": "composition",
+              "description": "Makes the slide a composition, a reusable scene other slides place; `size`, `controls` and `name` belong to it alone."
             },
             "size": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/SlideSize"
-                },
-                {
-                  "$ref": "#/definitions/SlideSize",
-                  "description": "A composition's own size; only with `role: composition`."
-                }
-              ]
+              "$ref": "#/definitions/SlideSize",
+              "description": "A composition's own size; only with `role: composition`."
             },
             "controls": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/CompositionInputs"
-                },
-                {
-                  "$ref": "#/definitions/CompositionInputs",
-                  "description": "A composition's controls; only with `role: composition`."
-                }
-              ]
+              "$ref": "#/definitions/CompositionInputs",
+              "description": "A composition's controls; only with `role: composition`."
             },
             "name": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "string",
-                  "description": "A composition's name; only with `role: composition`."
-                }
-              ]
+              "type": "string",
+              "description": "A composition's name; only with `role: composition`."
             },
             "slideId": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "string",
-                  "description": "Minted when omitted; the batch may place slides against it, and later proposals change its objects."
-                }
-              ]
+              "type": "string",
+              "description": "Minted when omitted; the batch may place slides against it, and later proposals change its objects."
             }
           },
           "required": [
