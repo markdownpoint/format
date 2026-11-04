@@ -12139,7 +12139,7 @@
           "type": "string"
         },
         "scale-mode": {
-          "$ref": "#/definitions/PresentationMediaFit"
+          "$ref": "#/definitions/PresentationScaleMode"
         },
         "crop": {
           "$ref": "#/definitions/CropSource"
@@ -12322,7 +12322,7 @@
         "copies"
       ]
     },
-    "PresentationMediaFit": {
+    "PresentationScaleMode": {
       "type": "string",
       "enum": [
         "fill",
@@ -12374,7 +12374,7 @@
           "type": "number"
         },
         "scale-mode": {
-          "$ref": "#/definitions/PresentationMediaFit"
+          "$ref": "#/definitions/PresentationScaleMode"
         },
         "crop": {
           "$ref": "#/definitions/CropSource"
@@ -15046,7 +15046,7 @@
           "type": "string"
         },
         "scale-mode": {
-          "$ref": "#/definitions/PresentationMediaFit"
+          "$ref": "#/definitions/PresentationScaleMode"
         },
         "crop": {
           "$ref": "#/definitions/CropSource"
@@ -15214,7 +15214,7 @@
           "type": "number"
         },
         "scale-mode": {
-          "$ref": "#/definitions/PresentationMediaFit"
+          "$ref": "#/definitions/PresentationScaleMode"
         },
         "crop": {
           "$ref": "#/definitions/CropSource"
