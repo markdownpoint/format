@@ -919,7 +919,7 @@
                               "const": "none"
                             },
                             {
-                              "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size.",
+                              "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
@@ -2219,7 +2219,7 @@
                                         "$ref": "#/definitions/constraint-id"
                                       }
                                     ],
-                                    "description": "The constraint's id, such as follow, unique among the camera's constraints."
+                                    "description": "The constraint's id, such as follow, unique among the camera's constraints. A step animates its strength as constraints.follow.strength."
                                   },
                                   "type": {
                                     "const": "position"
@@ -2255,7 +2255,7 @@
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1,
-                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. Left out, it's 1."
+                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. Left out, it's 1. A step can animate it."
                                   },
                                   "spring": {
                                     "description": "The spring the camera follows on, in a key's spring's words. Left out, the camera follows exactly.",
@@ -3348,7 +3348,7 @@
           "const": "none"
         },
         {
-          "description": "A drop shadow, as Photoshop's Drop Shadow sets one.",
+          "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
@@ -6532,7 +6532,7 @@
               "const": "none"
             },
             {
-              "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size.",
+              "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
               "type": "object",
               "properties": {
                 "size": {
