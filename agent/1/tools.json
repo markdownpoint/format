@@ -1423,6 +1423,9 @@
               "image-result": {
                 "$ref": "#/definitions/ImageResultSource"
               },
+              "drop-shadow": {
+                "$ref": "#/definitions/PresentationShadow"
+              },
               "image": {
                 "type": "string"
               },
@@ -1434,9 +1437,6 @@
               },
               "transparent": {
                 "type": "boolean"
-              },
-              "shadow": {
-                "$ref": "#/definitions/PresentationShadow"
               },
               "grayscale": {
                 "type": "number"
