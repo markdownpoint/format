@@ -12280,10 +12280,10 @@
                   "null"
                 ]
               },
-              "slots": {
+              "placeholders": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/LayoutEditableSlot"
+                  "$ref": "#/definitions/LayoutEditablePlaceholder"
                 },
                 "description": "Its placeholders, back to front."
               },
@@ -12307,14 +12307,14 @@
               "key",
               "name",
               "scheme",
-              "slots",
+              "placeholders",
               "objects",
               "artwork"
             ],
             "additionalProperties": false,
             "description": "A layout as its pane and inspector show it."
           },
-          "LayoutEditableSlot": {
+          "LayoutEditablePlaceholder": {
             "type": "object",
             "properties": {
               "name": {
@@ -12333,7 +12333,7 @@
               "kind"
             ],
             "additionalProperties": false,
-            "description": "One placeholder of a layout: the slot a slide fills by its id."
+            "description": "One placeholder of a layout, which a slide fills by its id."
           }
         }
       }
