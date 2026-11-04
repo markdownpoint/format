@@ -3141,11 +3141,11 @@
         },
         "duration": {
           "type": "number",
-          "description": "Minimum seconds for this section; admitted later events extend its endpoint."
+          "description": "Minimum seconds for this step; admitted later events extend its endpoint."
         },
         "repeat": {
           "type": "number",
-          "description": "Play the section this many times before it completes; omitted plays once."
+          "description": "Play the step this many times before it completes; omitted plays once."
         },
         "unstaggered": {
           "type": "boolean",
@@ -3604,7 +3604,7 @@
             },
             "end": {
               "type": "number",
-              "description": "Original endpoint in section seconds; must be at or after time and does not extend the section."
+              "description": "Original endpoint in step seconds; must be at or after time and does not extend the step."
             }
           },
           "required": [
@@ -3628,7 +3628,7 @@
         },
         "start": {
           "type": "number",
-          "description": "When the move into this key begins, in section seconds; until then the value before it holds. Absent, at the key before."
+          "description": "When the move into this key begins, in step seconds; until then the value before it holds. Absent, at the key before."
         },
         "time": {
           "type": "number",
@@ -3636,7 +3636,7 @@
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "Interpolation into this key, from the preceding key or section start."
+          "description": "Interpolation into this key, from the preceding key or the step's start."
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
@@ -17699,7 +17699,7 @@
       "properties": {
         "duration": {
           "type": "number",
-          "description": "Minimum seconds for this section; left out or 0, it lasts as long as what it holds."
+          "description": "Minimum seconds for this step; left out or 0, it lasts as long as what it holds."
         },
         "curves": {
           "type": "array",
@@ -17725,7 +17725,7 @@
         },
         "repeat": {
           "type": "number",
-          "description": "Play the section this many times before it completes; omitted plays once."
+          "description": "Play the step this many times before it completes; omitted plays once."
         }
       },
       "description": "A step as a proposal spells it; its curves may be left out, as a step that only waits or cues has none."
@@ -19900,7 +19900,7 @@
                       },
                       "start": {
                         "type": "number",
-                        "description": "When the move into this key begins, in section seconds; until then the value before it holds. Absent, at the key before."
+                        "description": "When the move into this key begins, in step seconds; until then the value before it holds. Absent, at the key before."
                       },
                       "time": {
                         "type": "number",
@@ -19908,7 +19908,7 @@
                       },
                       "interpolation": {
                         "$ref": "#/definitions/PresentationAnimationInterpolation",
-                        "description": "Interpolation into this key, from the preceding key or section start."
+                        "description": "Interpolation into this key, from the preceding key or the step's start."
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
@@ -19927,7 +19927,7 @@
                           },
                           "end": {
                             "type": "number",
-                            "description": "Original endpoint in section seconds; must be at or after time and does not extend the section."
+                            "description": "Original endpoint in step seconds; must be at or after time and does not extend the step."
                           }
                         },
                         "required": [
