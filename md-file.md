@@ -211,6 +211,8 @@ Lists==.==
 
 Indent an item to nest it under the one above, as far as the text after that item's marker: two spaces under `- `, three under `1. `. A numbered list can start at any number of up to nine digits.
 
+An empty item holds `<br>`, as an empty paragraph does: `- <br>`. An empty item with a list nested under it is its marker alone. A `<br>` line there would take in the list below it in GitHub and other apps that read CommonMark. A nested numbered list that starts at a number other than 1 comes after a blank line.
+
 To start another list immediately after one, change the list marker. MarkdownPoint uses `*` after `-`, or `1)` after `1.`.
 
 ### Fields
@@ -317,7 +319,7 @@ A step in [the .mdpoint file](mdpoint-file.md) names a paragraph by its id to br
 
 MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is new. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. Keep each id at the end of its paragraph, and give a new paragraph none: MarkdownPoint gives it one.
 
-Each id belongs to one paragraph of its text. A copied line or a merge can leave two paragraphs with one id. The first keeps it, and the later one reads as a new paragraph. MarkdownPoint warns of it and names the line. It also warns of a comment that looks like a misspelled id. `<!-- ID: k3x9a2 -->`, `<!-- id k3x9a2 -->` and an id alone on its line are three. Each reads as a note.
+Each id belongs to one paragraph of its text. A copied line or a merge can leave two paragraphs with one id. The first keeps it, and the later one reads as a new paragraph. MarkdownPoint warns of it and names the line. When it saves that text, it writes the later paragraph without the id. It also warns of a comment that looks like a misspelled id. `<!-- ID: k3x9a2 -->`, `<!-- id k3x9a2 -->` and an id alone on its line are three. Each reads as a note.
 
 ## Editing by hand
 
