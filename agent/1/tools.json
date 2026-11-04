@@ -268,7 +268,7 @@
           "interpolations": {
             "type": "array",
             "items": {
-              "$ref": "#/definitions/PresentationAnimationEasingName"
+              "$ref": "#/definitions/PresentationAnimationInterpolationName"
             },
             "description": "The named interpolations; a key may instead carry four cubic-bezier numbers [x1, y1, x2, y2] with x within 0–1."
           }
@@ -393,7 +393,7 @@
             ],
             "additionalProperties": false
           },
-          "PresentationAnimationEasingName": {
+          "PresentationAnimationInterpolationName": {
             "type": "string",
             "enum": [
               "linear",
@@ -1267,7 +1267,7 @@
                 "description": "Seconds."
               },
               "interpolation": {
-                "$ref": "#/definitions/PresentationTransitionEasing",
+                "$ref": "#/definitions/PresentationTransitionInterpolation",
                 "description": "The interpolation a carry-over or a scroll moves with; ease-in-out when omitted."
               },
               "match": {
@@ -1312,7 +1312,7 @@
               "fade-through-color"
             ]
           },
-          "PresentationTransitionEasing": {
+          "PresentationTransitionInterpolation": {
             "type": "string",
             "enum": [
               "linear",
@@ -1913,7 +1913,7 @@
         ],
         "additionalProperties": false,
         "definitions": {
-          "PresentationAnimationEasingName": {
+          "PresentationAnimationInterpolationName": {
             "type": "string",
             "enum": [
               "linear",
@@ -3075,7 +3075,7 @@
                 "description": "Nonnegative seconds, kept to the microsecond."
               },
               "interpolation": {
-                "$ref": "#/definitions/PresentationAnimationEasing",
+                "$ref": "#/definitions/PresentationAnimationInterpolation",
                 "description": "Interpolation into this key, from the preceding key or section start."
               },
               "path": {
@@ -3185,16 +3185,16 @@
               "noise"
             ]
           },
-          "PresentationAnimationEasing": {
+          "PresentationAnimationInterpolation": {
             "anyOf": [
               {
-                "$ref": "#/definitions/PresentationAnimationEasingName"
+                "$ref": "#/definitions/PresentationAnimationInterpolationName"
               },
               {
                 "$ref": "#/definitions/PresentationAnimationBezier"
               },
               {
-                "$ref": "#/definitions/PresentationAnimationCurveEasing"
+                "$ref": "#/definitions/PresentationAnimationCurveInterpolation"
               }
             ]
           },
@@ -3207,16 +3207,16 @@
             "maxItems": 4,
             "description": "A cubic Bézier easing as CSS spells it: two control points with time on x within 0–1 and value on y, which may overshoot."
           },
-          "PresentationAnimationCurveEasing": {
+          "PresentationAnimationCurveInterpolation": {
             "anyOf": [
               {
-                "$ref": "#/definitions/PresentationAnimationBackEasing"
+                "$ref": "#/definitions/PresentationAnimationBackInterpolation"
               },
               {
-                "$ref": "#/definitions/PresentationAnimationElasticEasing"
+                "$ref": "#/definitions/PresentationAnimationElasticInterpolation"
               },
               {
-                "$ref": "#/definitions/PresentationAnimationBounceEasing"
+                "$ref": "#/definitions/PresentationAnimationBounceInterpolation"
               },
               {
                 "$ref": "#/definitions/PresentationAnimationSpring"
@@ -3224,7 +3224,7 @@
             ],
             "description": "A named curve with its settings, the key-interpolation record: Blender's Back with its back, its Elastic with an amplitude and a period, its Bounce with a bounciness, or a spring."
           },
-          "PresentationAnimationBackEasing": {
+          "PresentationAnimationBackInterpolation": {
             "type": "object",
             "properties": {
               "curve": {
@@ -3246,7 +3246,7 @@
             "additionalProperties": false,
             "description": "Blender's Back with its Back setting: how far anticipate winds up, overshoot swings past its key, or both."
           },
-          "PresentationAnimationElasticEasing": {
+          "PresentationAnimationElasticInterpolation": {
             "type": "object",
             "properties": {
               "curve": {
@@ -3265,7 +3265,7 @@
             "additionalProperties": false,
             "description": "Blender's Elastic ringing into its key: its ring as a multiple of the move, and its length in seconds, or 0.3 of the move."
           },
-          "PresentationAnimationBounceEasing": {
+          "PresentationAnimationBounceInterpolation": {
             "type": "object",
             "properties": {
               "curve": {
@@ -7391,8 +7391,9 @@
               "target": {
                 "$ref": "#/definitions/PresentationAnimationTargetSource"
               },
-              "interpolation": {
-                "description": "Failed to correctly infer type"
+              "valueType": {
+                "$ref": "#/definitions/ObjectAnimationValueType",
+                "description": "What kind of value the parameter holds, which says how its keys blend: a discrete value holds until the next key."
               },
               "value": {
                 "$ref": "#/definitions/PresentationAnimationValueSource",
@@ -7401,9 +7402,23 @@
             },
             "required": [
               "target",
-              "interpolation"
+              "valueType"
             ],
             "additionalProperties": false
+          },
+          "ObjectAnimationValueType": {
+            "type": "string",
+            "enum": [
+              "number",
+              "color",
+              "discrete",
+              "fill",
+              "paint",
+              "lengths",
+              "path",
+              "orientation"
+            ],
+            "description": "What kind of value a channel holds, which says how it passes between keys, as three.js's ValueTypeName does: a `discrete` value, a flag, a word or a record, holds until the next key, as a discrete curve does in Unity; a `paint` passes as a color between two colors and as a fill between two gradients."
           },
           "anchor-point": {
             "type": "object",

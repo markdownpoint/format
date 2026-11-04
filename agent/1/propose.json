@@ -445,7 +445,7 @@
               "maximum": 4294967296
             },
             "interpolation": {
-              "$ref": "#/definitions/PresentationAnimationEasing"
+              "$ref": "#/definitions/PresentationAnimationInterpolation"
             },
             "orient": {
               "type": "boolean"
@@ -1028,7 +1028,7 @@
                         "maximum": 4294967296
                       },
                       "interpolation": {
-                        "$ref": "#/definitions/PresentationAnimationEasing",
+                        "$ref": "#/definitions/PresentationAnimationInterpolation",
                         "description": "Interpolation into this key, from the preceding key or section start."
                       },
                       "path": {
@@ -1295,7 +1295,7 @@
               "maximum": 4294967296
             },
             "interpolation": {
-              "$ref": "#/definitions/PresentationAnimationEasing"
+              "$ref": "#/definitions/PresentationAnimationInterpolation"
             },
             "stagger": {
               "type": "number",
@@ -1735,7 +1735,7 @@
       ],
       "additionalProperties": false
     },
-    "PresentationAnimationEasing": {
+    "PresentationAnimationInterpolation": {
       "anyOf": [
         {
           "enum": [
@@ -13157,7 +13157,7 @@
           "maximum": 4294967296
         },
         "interpolation": {
-          "$ref": "#/definitions/PresentationAnimationEasing",
+          "$ref": "#/definitions/PresentationAnimationInterpolation",
           "description": "Interpolation into this key, from the preceding key or section start."
         },
         "path": {
@@ -13644,7 +13644,7 @@
                   }
                 },
                 "interpolation": {
-                  "$ref": "#/definitions/PresentationAnimationEasing"
+                  "$ref": "#/definitions/PresentationAnimationInterpolation"
                 }
               },
               "required": [
