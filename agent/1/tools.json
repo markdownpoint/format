@@ -5875,7 +5875,144 @@
         "required": [
           "action"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "action": {
+              "enum": [
+                "create"
+              ]
+            }
+          },
+          "required": [
+            "action"
+          ]
+        },
+        "then": {
+          "required": [
+            "name"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "action": {
+                "enum": [
+                  "rename"
+                ]
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "theme",
+              "name"
+            ]
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "action": {
+                  "enum": [
+                    "delete"
+                  ]
+                }
+              },
+              "required": [
+                "action"
+              ]
+            },
+            "then": {
+              "required": [
+                "theme"
+              ]
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "duplicateLayout",
+                      "moveLayout"
+                    ]
+                  }
+                },
+                "required": [
+                  "action"
+                ]
+              },
+              "then": {
+                "required": [
+                  "from",
+                  "layout",
+                  "to"
+                ]
+              },
+              "else": {
+                "if": {
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "export"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "action"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "theme",
+                    "destination"
+                  ]
+                },
+                "else": {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "install"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "action"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "path"
+                    ]
+                  },
+                  "else": {
+                    "if": {
+                      "properties": {
+                        "action": {
+                          "enum": [
+                            "saveSlide"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "action"
+                      ]
+                    },
+                    "then": {
+                      "required": [
+                        "slideId",
+                        "name"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "outputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -6641,7 +6778,83 @@
         "required": [
           "action"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "action": {
+              "enum": [
+                "save"
+              ]
+            }
+          },
+          "required": [
+            "action"
+          ]
+        },
+        "then": {
+          "required": [
+            "definition"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "action": {
+                "enum": [
+                  "duplicate",
+                  "delete",
+                  "preview"
+                ]
+              }
+            },
+            "required": [
+              "action"
+            ]
+          },
+          "then": {
+            "required": [
+              "id"
+            ]
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "action": {
+                  "enum": [
+                    "import"
+                  ]
+                }
+              },
+              "required": [
+                "action"
+              ]
+            },
+            "then": {
+              "required": [
+                "path"
+              ]
+            },
+            "else": {
+              "if": {
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "export"
+                    ]
+                  }
+                },
+                "required": [
+                  "action"
+                ]
+              },
+              "then": {
+                "required": [
+                  "destination"
+                ]
+              }
+            }
+          }
+        }
       },
       "outputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -7086,7 +7299,24 @@
         "required": [
           "action"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "action": {
+              "enum": [
+                "slide"
+              ]
+            }
+          },
+          "required": [
+            "action"
+          ]
+        },
+        "then": {
+          "required": [
+            "slideId"
+          ]
+        }
       },
       "outputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
