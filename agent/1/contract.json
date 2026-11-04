@@ -5840,7 +5840,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 33554431.984375,
-              "description": "icon viewport units"
+              "description": "icon units"
             }
           },
           "required": [

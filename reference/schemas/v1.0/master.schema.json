@@ -590,13 +590,13 @@
                     "type": "number",
                     "minimum": -65536,
                     "maximum": 65536,
-                    "description": "Where the left edge is, across."
+                    "description": "Where the left edge is, across. On a text box that grows to fit its text, it's the point the text grows from."
                   },
                   "y": {
                     "type": "number",
                     "minimum": -65536,
                     "maximum": 65536,
-                    "description": "Where the top edge is, down."
+                    "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
                   },
                   "width": {
                     "type": "number",
@@ -1071,13 +1071,13 @@
                     "type": "number",
                     "minimum": -65536,
                     "maximum": 65536,
-                    "description": "Where the left edge is, across."
+                    "description": "Where the left edge is, across. On a text box that grows to fit its text, it's the point the text grows from."
                   },
                   "y": {
                     "type": "number",
                     "minimum": -65536,
                     "maximum": 65536,
-                    "description": "Where the top edge is, down."
+                    "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
                   },
                   "width": {
                     "type": "number",
@@ -2395,7 +2395,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 33554431.984375,
-                "description": "icon viewport units"
+                "description": "icon units"
               },
               "placeholder": {
                 "type": "boolean"
@@ -4555,13 +4555,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the left edge is, across."
+          "description": "Where the left edge is, across. On a text box that grows to fit its text, it's the point the text grows from."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the top edge is, down."
+          "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
         },
         "width": {
           "type": "number",
