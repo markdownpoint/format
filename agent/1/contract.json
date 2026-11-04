@@ -11465,7 +11465,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -11852,7 +11852,7 @@
       ],
       "description": "A text's exit, written as its entrance is."
     },
-    "PresentationAnchor": {
+    "PresentationAnchorPoint": {
       "type": "object",
       "properties": {
         "x": {
@@ -12009,7 +12009,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -12184,7 +12184,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -12419,7 +12419,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -12590,7 +12590,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -12844,7 +12844,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -12924,7 +12924,7 @@
           "not": {}
         },
         "connection": {
-          "$ref": "#/definitions/LineRoute"
+          "$ref": "#/definitions/LineConnection"
         },
         "bend": {
           "type": "number"
@@ -13000,7 +13000,7 @@
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
     },
-    "LineRoute": {
+    "LineConnection": {
       "type": "string",
       "enum": [
         "straight",
@@ -13100,7 +13100,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "rotation-x": {
           "type": "number"
@@ -13213,7 +13213,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "composition": {
           "type": "string"
@@ -13299,7 +13299,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "chart-type": {
           "$ref": "#/definitions/PresentationChartType"
@@ -13971,7 +13971,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -14087,7 +14087,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -14715,7 +14715,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -14931,7 +14931,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -15091,7 +15091,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -15259,7 +15259,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -15454,7 +15454,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -15691,7 +15691,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -15787,7 +15787,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -15873,7 +15873,7 @@
           "not": {}
         },
         "connection": {
-          "$ref": "#/definitions/LineRoute"
+          "$ref": "#/definitions/LineConnection"
         },
         "bend": {
           "type": "number"
@@ -15997,7 +15997,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "rotation-x": {
           "type": "number"
@@ -16077,7 +16077,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "composition": {
           "type": "string"
@@ -16156,7 +16156,7 @@
           "type": "number"
         },
         "anchor-point": {
-          "$ref": "#/definitions/PresentationAnchor"
+          "$ref": "#/definitions/PresentationAnchorPoint"
         },
         "chart-type": {
           "$ref": "#/definitions/PresentationChartType"
@@ -19496,7 +19496,7 @@
               "additionalProperties": false
             }
           ],
-          "description": "The operations as the kernel spells them, in the model's words (`strokeColor`, a fill as `{ kind, color }`): what the app runs once it has read an operation's file words."
+          "description": "The operations as the kernel spells them, in the model's words (`strokeWeight`, a fill as `{ kind, color }`): what the app runs once it has read an operation's file words."
         },
         {
           "type": "object",
