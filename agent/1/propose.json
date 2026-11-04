@@ -1037,7 +1037,7 @@
                       },
                       "value": {
                         "$ref": "#/definitions/PresentationAnimationValueSource",
-                        "description": "Null clears an optional property; its current type-style/default then applies."
+                        "description": "Null clears an optional property; its current text-style/default then applies."
                       },
                       "incoming": {
                         "type": "object",
@@ -13105,7 +13105,7 @@
       "properties": {
         "value": {
           "$ref": "#/definitions/PresentationAnimationValueSource",
-          "description": "Null clears an optional property; its current type-style/default then applies."
+          "description": "Null clears an optional property; its current text-style/default then applies."
         },
         "incoming": {
           "type": "object",

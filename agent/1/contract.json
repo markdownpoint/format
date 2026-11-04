@@ -1956,7 +1956,7 @@
                 "unknown-scheme",
                 "missing-content",
                 "unknown-role",
-                "unknown-type-style",
+                "unknown-text-style",
                 "invalid-table",
                 "table-track-count",
                 "unresolved-field",
@@ -2106,7 +2106,7 @@
         "unknown-object",
         "unknown-role",
         "unknown-scheme",
-        "unknown-type-style",
+        "unknown-text-style",
         "discovery-io-error",
         "render-failed",
         "rest-camera",
@@ -3593,7 +3593,7 @@
       "properties": {
         "value": {
           "$ref": "#/definitions/PresentationAnimationValueSource",
-          "description": "Null clears an optional property; its current type-style/default then applies."
+          "description": "Null clears an optional property; its current text-style/default then applies."
         },
         "incoming": {
           "type": "object",
@@ -10819,7 +10819,7 @@
         "text-styles": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/MasterAuthoredTypeStyle"
+            "$ref": "#/definitions/MasterAuthoredTextStyle"
           }
         },
         "guides": {
@@ -10931,7 +10931,7 @@
       ],
       "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
     },
-    "MasterAuthoredTypeStyle": {
+    "MasterAuthoredTextStyle": {
       "type": "object",
       "properties": {
         "name": {
@@ -19916,7 +19916,7 @@
                       },
                       "value": {
                         "$ref": "#/definitions/PresentationAnimationValueSource",
-                        "description": "Null clears an optional property; its current type-style/default then applies."
+                        "description": "Null clears an optional property; its current text-style/default then applies."
                       },
                       "incoming": {
                         "type": "object",

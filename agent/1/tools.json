@@ -864,7 +864,7 @@
                       "unknown-scheme",
                       "missing-content",
                       "unknown-role",
-                      "unknown-type-style",
+                      "unknown-text-style",
                       "invalid-table",
                       "table-track-count",
                       "unresolved-field",
@@ -1014,7 +1014,7 @@
               "unknown-object",
               "unknown-role",
               "unknown-scheme",
-              "unknown-type-style",
+              "unknown-text-style",
               "discovery-io-error",
               "render-failed",
               "rest-camera",
@@ -2036,7 +2036,7 @@
                       "unknown-scheme",
                       "missing-content",
                       "unknown-role",
-                      "unknown-type-style",
+                      "unknown-text-style",
                       "invalid-table",
                       "table-track-count",
                       "unresolved-field",
@@ -2186,7 +2186,7 @@
               "unknown-object",
               "unknown-role",
               "unknown-scheme",
-              "unknown-type-style",
+              "unknown-text-style",
               "discovery-io-error",
               "render-failed",
               "rest-camera",
@@ -3033,7 +3033,7 @@
             "properties": {
               "value": {
                 "$ref": "#/definitions/PresentationAnimationValueSource",
-                "description": "Null clears an optional property; its current type-style/default then applies."
+                "description": "Null clears an optional property; its current text-style/default then applies."
               },
               "incoming": {
                 "type": "object",
@@ -11974,7 +11974,7 @@
               "text-styles": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/MasterAuthoredTypeStyle"
+                  "$ref": "#/definitions/MasterAuthoredTextStyle"
                 }
               },
               "guides": {
@@ -12086,7 +12086,7 @@
             ],
             "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
           },
-          "MasterAuthoredTypeStyle": {
+          "MasterAuthoredTextStyle": {
             "type": "object",
             "properties": {
               "name": {
@@ -14349,7 +14349,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "If operation fields appear as unknown, call schema with the operation name. Propose a change against a fresh revision from presentations_get or slides_get. The app tries the operations, each with exactly the keys the schema gives it, without writing them; nothing is written until proposals_accept. Use stable slide/object/step ids from slides_get; it also discovers parameter targets, current values and interpolation. Initial values, timed keys and cues use the shared agent contract. New key/cue ids must be fresh within a step; reusing an id replaces its whole record. A null key value clears an optional property to its type-style/default, while a null updateStep entry deletes that key or cue. insertSlide takes an optional slideId of your choosing and objects to seed the new slide. insertObject takes an optional objectId. It can’t name a slide inserted by the same proposal. A proposal its validation refuses is not held: the call fails with validation-failed, and the error's validation holds its errors and warnings; an error with code no-change means everything is already so. Otherwise read the proposal's warnings and summaries, then accept it by its id as one undo step.",
+      "description": "If operation fields appear as unknown, call schema with the operation name. Propose a change against a fresh revision from presentations_get or slides_get. The app tries the operations, each with exactly the keys the schema gives it, without writing them; nothing is written until proposals_accept. Use stable slide/object/step ids from slides_get; it also discovers parameter targets, current values and interpolation. Initial values, timed keys and cues use the shared agent contract. New key/cue ids must be fresh within a step; reusing an id replaces its whole record. A null key value clears an optional property to its text-style/default, while a null updateStep entry deletes that key or cue. insertSlide takes an optional slideId of your choosing and objects to seed the new slide. insertObject takes an optional objectId. It can’t name a slide inserted by the same proposal. A proposal its validation refuses is not held: the call fails with validation-failed, and the error's validation holds its errors and warnings; an error with code no-change means everything is already so. Otherwise read the proposal's warnings and summaries, then accept it by its id as one undo step.",
       "inputSchema": {
         "type": "object",
         "properties": {
