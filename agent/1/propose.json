@@ -2505,7 +2505,7 @@
           "description": "The Animate tab's and the timeline's timing edits, each as the app makes it."
         }
       ],
-      "description": "A timing edit in the file's words: `loop-keyframe` and a keyframe's `exponential-scale`, and a swing's `wave-shape`."
+      "description": "A timing edit in the file's words: `loop-keyframe` and a keyframe's `exponential-scale`, and an oscillation's `wave-shape`."
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
