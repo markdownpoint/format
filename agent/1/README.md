@@ -96,7 +96,7 @@ Where an issue stands depends on its `source`:
   refused.
 - `file`: `path` is the file's path as the presentation, or its theme's
   folder when `fileScope` is `theme`, names it; `slideId`, `objectId` and
-  `property` name each place that uses it.
+  `property` name each use of it.
 - `scene`, `master` and `layout`: `slideId`, and `objectId` or `objectIds`.
 
 Each code an issue carries:

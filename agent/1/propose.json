@@ -1711,7 +1711,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's place and a line's ends."
+      "description": "A transform as the file names an audio icon's position and a line's ends."
     },
     "AgentPoint": {
       "$ref": "#/definitions/PresentationPoint"
