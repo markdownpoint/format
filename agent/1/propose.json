@@ -14648,7 +14648,7 @@
       "properties": {
         "block": {
           "type": "integer",
-          "description": "Its place among the text's nonempty blocks, from 0; a cue names a paragraph by id.",
+          "description": "Its index among the text's nonempty blocks, from 0; a cue names a paragraph by id.",
           "minimum": -9007199254740991,
           "maximum": 9007199254740991
         },

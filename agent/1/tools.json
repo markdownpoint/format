@@ -1482,7 +1482,7 @@
               "id"
             ],
             "additionalProperties": false,
-            "description": "A slide's place; a composition stands in no section and follows the slides."
+            "description": "A slide's entry; a composition stands in no section and follows the slides."
           },
           "PresentationObjectType": {
             "type": "string",
@@ -7394,7 +7394,7 @@
                 "items": {
                   "type": "string"
                 },
-                "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to its place on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
+                "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to where it stands on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
               },
               "unstaggered": {
                 "const": true,

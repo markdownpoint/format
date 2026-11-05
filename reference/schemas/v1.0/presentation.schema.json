@@ -7646,7 +7646,7 @@
           "cues": {
             "type": "array",
             "items": {
-              "description": "An event at a set time in a step. A clip names the model's Action as every reader names the file's animations, in file order: a name the file gives, not empty, is kept and matched exactly, and every such name is reserved first, wherever it stands in the file; an animation with no name, or an empty one, is Animation and its place in the file, from 1, as Animation 1; an animation whose name an earlier one has, or whose generated name is reserved or already given, takes the first of name 2, name 3 and on not yet taken, a space before the number. So Walk, Walk, Walk 2 read as Walk, Walk 3, Walk 2, and an unnamed first animation beside a given Animation 1 reads as Animation 1 2.",
+              "description": "An event at a set time in a step. A clip names the model's Action as every reader names the file's animations, in file order: a name the file gives, not empty, is kept and matched exactly, and every such name is reserved first, wherever it stands in the file; an animation with no name, or an empty one, is Animation and its number in the file, from 1, as Animation 1; an animation whose name an earlier one has, or whose generated name is reserved or already given, takes the first of name 2, name 3 and on not yet taken, a space before the number. So Walk, Walk, Walk 2 read as Walk, Walk 3, Walk 2, and an unnamed first animation beside a given Animation 1 reads as Animation 1 2.",
               "anyOf": [
                 {
                   "type": "object",
@@ -7833,7 +7833,7 @@
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the model's Action that a clip plays. An unnamed Action is Animation and its place in the file, Animation 1; a name the file repeats or gives another Action takes 2, 3 in file order."
+                      "description": "The name of the model's Action that a clip plays. An unnamed Action is Animation and its number in the file, Animation 1; a name the file repeats or gives another Action takes 2, 3 in file order."
                     },
                     "loop": {
                       "const": "repeat",
@@ -8043,7 +8043,7 @@
       "description": "a text style name"
     },
     "transition": {
-      "description": "A slide transition. A scroll moves both slides along one strip. Each slide's 3D objects keep their place in its stacking order and are clipped at its edge. A model or 3D text with the same id on both slides crosses between them whole. Neither slide's camera drifts during a scroll. During any other transition, both cameras drift. Keys left out default to interpolation ease-in-out, match object, direction left, color black, and delay 0.",
+      "description": "A slide transition. A scroll moves both slides along one strip. Each slide's 3D objects keep their index in its stacking order and are clipped at its edge. A model or 3D text with the same id on both slides crosses between them whole. Neither slide's camera drifts during a scroll. During any other transition, both cameras drift. Keys left out default to interpolation ease-in-out, match object, direction left, color black, and delay 0.",
       "anyOf": [
         {
           "type": "object",

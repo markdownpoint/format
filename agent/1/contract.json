@@ -18870,7 +18870,7 @@
         "id"
       ],
       "additionalProperties": false,
-      "description": "A slide's place; a composition stands in no section and follows the slides."
+      "description": "A slide's entry; a composition stands in no section and follows the slides."
     },
     "PresentationObjectLevel": {
       "type": "string",
@@ -19843,7 +19843,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to its place on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
+          "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to where it stands on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
         },
         "unstaggered": {
           "type": "boolean",
@@ -19932,15 +19932,15 @@
         },
         "x": {
           "type": "number",
-          "description": "Em right of its place."
+          "description": "Em right of where it rests."
         },
         "y": {
           "type": "number",
-          "description": "Em below its place."
+          "description": "Em below where it rests."
         }
       },
       "additionalProperties": false,
-      "description": "Where an arriving unit starts, as Motion's Sequence Text: absent values are its place; offsets and blur are in its font size."
+      "description": "Where an arriving unit starts, as Motion's Sequence Text: absent values leave it where it rests; offsets and blur are in its font size."
     },
     "PresentationTextReplacementTarget": {
       "type": "object",
@@ -20185,7 +20185,7 @@
         },
         "position-randomness": {
           "type": "number",
-          "description": "How far, in canvas units, each copy may stand from its place, chosen by the seed."
+          "description": "How far, in canvas units, each copy may stand from where the repeater puts it, chosen by the seed."
         },
         "rotation": {
           "type": "number"
@@ -20536,7 +20536,7 @@
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "How each unit travels from its pose to its place, on its own; linear when absent."
+          "description": "How each unit travels from its pose to where it rests, on its own; linear when absent."
         },
         "order": {
           "type": "string",
@@ -20604,7 +20604,7 @@
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "How each unit travels from its pose to its place, on its own; linear when absent."
+          "description": "How each unit travels from its pose to where it rests, on its own; linear when absent."
         },
         "order": {
           "type": "string",
@@ -20640,7 +20640,7 @@
         },
         "to": {
           "$ref": "#/definitions/PresentationTextPose",
-          "description": "The pose each unit exits to, as Motion's Sequence Text sequences To: absent values are its place."
+          "description": "The pose each unit exits to, as Motion's Sequence Text sequences To: absent values leave it where it rests."
         }
       },
       "required": [
@@ -20670,7 +20670,7 @@
       "properties": {
         "block": {
           "type": "number",
-          "description": "Its place among the text's nonempty blocks, from 0; a cue names a paragraph by id."
+          "description": "Its index among the text's nonempty blocks, from 0; a cue names a paragraph by id."
         },
         "from": {
           "type": "number"
