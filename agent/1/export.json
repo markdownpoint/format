@@ -82,7 +82,7 @@
             "to"
           ],
           "additionalProperties": false,
-          "description": "Slides by the numbers the author knows them by, hidden slides skipped; every shown slide when omitted."
+          "description": "Slides by the numbers the author knows them by, skipped slides left out; every shown slide when omitted."
         },
         "transparent": {
           "type": "boolean",

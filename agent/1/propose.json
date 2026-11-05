@@ -72,7 +72,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the key buttons: Start (`stepId` null), or `time` in a step."
+      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the keyframe buttons: Start (`stepId` null), or `time` in a step."
     },
     "AgentBatchableOperation": {
       "anyOf": [
@@ -300,7 +300,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "The new steps' ids, one per step, so a later `updateStep` or `tween` of the same batch, or the next proposal, keys them without reading them back; minted when omitted."
+              "description": "The new steps' ids, one per step, so a later `updateStep` or `tween` of the same batch, or the next proposal, addresses them without reading them back; minted when omitted."
             },
             "steps": {
               "type": "array",
@@ -1013,7 +1013,7 @@
                     "properties": {
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether the move to this key scales at an even rate, as After Effects' Exponential Scale does."
+                        "description": "Whether the move to this keyframe scales at an even rate, as After Effects' Exponential Scale does."
                       },
                       "incoming": {
                         "type": "object",
@@ -1034,7 +1034,7 @@
                           "value"
                         ],
                         "additionalProperties": false,
-                        "description": "Preserve an interpolation prefix before this key; at time, value applies immediately."
+                        "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
                       },
                       "interpolation": {
                         "$ref": "#/definitions/PresentationAnimationInterpolation",
@@ -1042,7 +1042,7 @@
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
-                        "description": "A swing added from this key on, its wave named as the file names it."
+                        "description": "A swing added from this keyframe on, its wave named as the file names it."
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
@@ -1139,7 +1139,7 @@
                   }
                 ]
               },
-              "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No key's edit changes it."
+              "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No keyframe's edit changes it."
             },
             "name": {
               "type": [
@@ -1637,7 +1637,7 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "Authored degrees. Animation keys allow explicit turns."
+              "description": "Authored degrees. Animation keyframes allow explicit turns."
             }
           },
           "required": [
@@ -2505,7 +2505,7 @@
           "description": "The Animate tab's and the timeline's timing edits, each as the app makes it."
         }
       ],
-      "description": "A timing edit in the file's words: `loop-keyframe` and a key's `exponential-scale`, and a swing's `wave-shape`."
+      "description": "A timing edit in the file's words: `loop-keyframe` and a keyframe's `exponential-scale`, and a swing's `wave-shape`."
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
@@ -11085,7 +11085,7 @@
       "properties": {
         "exponential-scale": {
           "type": "boolean",
-          "description": "Whether the move to this key scales at an even rate, as After Effects' Exponential Scale does."
+          "description": "Whether the move to this keyframe scales at an even rate, as After Effects' Exponential Scale does."
         },
         "id": {
           "type": "string",
@@ -11114,7 +11114,7 @@
             "value"
           ],
           "additionalProperties": false,
-          "description": "Preserve an interpolation prefix before this key; at time, value applies immediately."
+          "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
@@ -11122,7 +11122,7 @@
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
-          "description": "A swing added from this key on, its wave named as the file names it."
+          "description": "A swing added from this keyframe on, its wave named as the file names it."
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
@@ -11150,7 +11150,7 @@
         "time",
         "value"
       ],
-      "description": "A key as the file spells it: a move's `end` and `exponential-scale`, and a fill as the object spells its fill."
+      "description": "A keyframe as the file spells it: a move's `end` and `exponential-scale`, and a fill as the object spells its fill."
     },
     "PresentationAnimationLoop": {
       "type": "string",
@@ -16727,7 +16727,7 @@
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
-      "description": "Authored degrees. Animation keys allow explicit turns."
+      "description": "Authored degrees. Animation keyframes allow explicit turns."
     }
   }
 }

@@ -237,7 +237,7 @@
             "items": {
               "$ref": "#/definitions/PresentationAnimationInterpolationName"
             },
-            "description": "The named interpolations; a key may instead carry four cubic-bezier numbers [x1, y1, x2, y2] with x within 0–1."
+            "description": "The named interpolations; a keyframe may instead carry four cubic-bezier numbers [x1, y1, x2, y2] with x within 0–1."
           },
           "limits": {
             "$ref": "#/definitions/AgentLimits"
@@ -1107,10 +1107,10 @@
             "type": "string",
             "enum": [
               "aim-cycle",
-              "auto-layout-held-key",
+              "auto-layout-held-animation",
               "blur-past-page",
               "bound-value",
-              "clashing-keys",
+              "clashing-keyframes",
               "color-needs-svg",
               "composition-cycle",
               "content-overlap",
@@ -1905,7 +1905,7 @@
                 }
               }
             },
-            "description": "For each drawing, where its points fall along each contour as fractions of the contour's length: the values a trim key takes to stop at a point."
+            "description": "For each drawing, where its points fall along each contour as fractions of the contour's length: the values a trim keyframe takes to stop at a point."
           }
         },
         "required": [
@@ -1938,7 +1938,7 @@
               },
               "valueType": {
                 "$ref": "#/definitions/ObjectAnimationValueType",
-                "description": "What kind of value the parameter holds, which says how its keys blend: a discrete value holds until the next key."
+                "description": "What kind of value the parameter holds, which says how its keyframes blend: a discrete value holds until the next keyframe."
               }
             },
             "required": [
@@ -6110,10 +6110,10 @@
             "type": "string",
             "enum": [
               "aim-cycle",
-              "auto-layout-held-key",
+              "auto-layout-held-animation",
               "blur-past-page",
               "bound-value",
-              "clashing-keys",
+              "clashing-keyframes",
               "color-needs-svg",
               "composition-cycle",
               "content-overlap",
@@ -6525,7 +6525,7 @@
             "properties": {
               "exponential-scale": {
                 "type": "boolean",
-                "description": "Whether the move to this key scales at an even rate, as After Effects' Exponential Scale does."
+                "description": "Whether the move to this keyframe scales at an even rate, as After Effects' Exponential Scale does."
               },
               "id": {
                 "type": "string",
@@ -6548,7 +6548,7 @@
                   "value"
                 ],
                 "additionalProperties": false,
-                "description": "Preserve an interpolation prefix before this key; at time, value applies immediately."
+                "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
               },
               "interpolation": {
                 "$ref": "#/definitions/PresentationAnimationInterpolation",
@@ -6556,7 +6556,7 @@
               },
               "oscillate": {
                 "$ref": "#/definitions/PresentationAnimationOscillationSource",
-                "description": "A swing added from this key on, its wave named as the file names it."
+                "description": "A swing added from this keyframe on, its wave named as the file names it."
               },
               "path": {
                 "$ref": "#/definitions/PresentationAnimationPath",
@@ -6580,7 +6580,7 @@
               "time",
               "value"
             ],
-            "description": "A key as the file spells it: a move's `end` and `exponential-scale`, and a fill as the object spells its fill."
+            "description": "A keyframe as the file spells it: a move's `end` and `exponential-scale`, and a fill as the object spells its fill."
           },
           "PresentationAnimationLoop": {
             "type": "string",
@@ -8509,7 +8509,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Render one slide through the app renderer at authored Base or an exact animation position. Base is the authored composition; Start applies initial values. Returns a PNG image plus revision, canonical position, pixel dimensions, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write with transformObjects at the same position, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
+      "description": "Render one slide through the app renderer at authored Base or an exact animation position. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, canonical position, pixel dimensions, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write with transformObjects at the same position, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -8655,7 +8655,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Sample every parameter one animation step keys over a range of its time, at a rate, with the presenter’s sampler: returns the times and one value list per parameter target, in authored parameter space before ancestor group poses. At most 1200 samples. Nothing renders or changes.",
+      "description": "Sample every parameter with keyframes in one animation step over a range of its time, at a rate, with the presenter’s sampler: returns the times and one value list per parameter target, in authored parameter space before ancestor group poses. At most 1200 samples. Nothing renders or changes.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -8728,7 +8728,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "Each parameter the step keys, sampled at every time in authored parameter space, before ancestor group poses."
+            "description": "Each parameter with keyframes in the step, sampled at every time in authored parameter space, before ancestor group poses."
           },
           "revision": {
             "$ref": "#/definitions/AgentRevision"
@@ -10169,7 +10169,7 @@
                   "to"
                 ],
                 "additionalProperties": false,
-                "description": "Slides by the numbers the author knows them by, hidden slides skipped; every shown slide when omitted."
+                "description": "Slides by the numbers the author knows them by, skipped slides left out; every shown slide when omitted."
               },
               "transparent": {
                 "type": "boolean",
@@ -10749,7 +10749,7 @@
               },
               "duration": {
                 "type": "number",
-                "description": "Its last key: how long it plays from the file's 0."
+                "description": "Its last keyframe: how long it plays from the file's 0."
               },
               "loop": {
                 "type": [
@@ -10785,7 +10785,7 @@
               },
               "start": {
                 "type": "number",
-                "description": "Its first key, in seconds on the file's clock. An Action's time 0 is the file's 0, so it may start late."
+                "description": "Its first keyframe, in seconds on the file's clock. An Action's time 0 is the file's 0, so it may start late."
               },
               "stride": {
                 "anyOf": [
@@ -11106,7 +11106,7 @@
         "idempotentHint": true,
         "openWorldHint": true
       },
-      "description": "List the actions of Meshy’s library that a model Meshy rigged can play, by the id models_animate takes: walks, runs, idles, gestures and more. filter keeps those whose name or category holds every word. A motion whose name ends in inplace plays where the model stands, as a slide’s keys move it; each is named as its Action will be. Free; uses the Meshy key in Settings > AI.",
+      "description": "List the actions of Meshy’s library that a model Meshy rigged can play, by the id models_animate takes: walks, runs, idles, gestures and more. filter keeps those whose name or category holds every word. A motion whose name ends in inplace plays where the model stands, as a slide’s keyframes move it; each is named as its Action will be. Free; uses the Meshy key in Settings > AI.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11461,7 +11461,7 @@
               },
               "duration": {
                 "type": "number",
-                "description": "Its last key: how long it plays from the file's 0."
+                "description": "Its last keyframe: how long it plays from the file's 0."
               },
               "loop": {
                 "type": [
@@ -11497,7 +11497,7 @@
               },
               "start": {
                 "type": "number",
-                "description": "Its first key, in seconds on the file's clock. An Action's time 0 is the file's 0, so it may start late."
+                "description": "Its first keyframe, in seconds on the file's clock. An Action's time 0 is the file's 0, so it may start late."
               },
               "stride": {
                 "anyOf": [
@@ -14377,7 +14377,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "If operation fields appear as unknown, call schema with the operation name. Propose a change against a fresh revision from presentations_get or slides_get. The app tries the operations, each with exactly the keys the schema gives it, without writing them; nothing is written until proposals_accept. Use stable slide/object/step ids from slides_get; it also discovers parameter targets, current values and interpolation. Initial values, timed keys and cues use the shared agent contract. New key/cue ids must be fresh within a step; reusing an id replaces its whole record. A null key value clears an optional property to its text-style/default, while a null updateStep entry deletes that key or cue. insertSlide takes an optional slideId of your choosing and objects to seed the new slide. insertObject takes an optional objectId. It can’t name a slide inserted by the same proposal. A proposal its validation refuses is not held: the call fails with validation-failed, and the error's validation holds its errors and warnings; an error with code no-change means everything is already so. Otherwise read the proposal's warnings and summaries, then accept it by its id as one undo step.",
+      "description": "If operation fields appear as unknown, call schema with the operation name. Propose a change against a fresh revision from presentations_get or slides_get. The app tries the operations, each with exactly the keys the schema gives it, without writing them; nothing is written until proposals_accept. Use stable slide/object/step ids from slides_get; it also discovers parameter targets, current values and interpolation. Initial values, timed keyframes and cues use the shared agent contract. New keyframe and cue ids must be fresh within a step; reusing an id replaces its whole record. A null key value clears an optional property to its text-style/default, while a null updateStep entry deletes that keyframe or cue. insertSlide takes an optional slideId of your choosing and objects to seed the new slide. insertObject takes an optional objectId. It can’t name a slide inserted by the same proposal. A proposal its validation refuses is not held: the call fails with validation-failed, and the error's validation holds its errors and warnings; an error with code no-change means everything is already so. Otherwise read the proposal's warnings and summaries, then accept it by its id as one undo step.",
       "inputSchema": {
         "type": "object",
         "properties": {

@@ -55,7 +55,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the key buttons: Start (`stepId` null), or `time` in a step."
+      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the keyframe buttons: Start (`stepId` null), or `time` in a step."
     },
     "AgentLineEnd": {
       "$ref": "#/definitions/LineEnd"
@@ -93,7 +93,7 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "Authored degrees. Animation keys allow explicit turns."
+              "description": "Authored degrees. Animation keyframes allow explicit turns."
             }
           },
           "required": [
@@ -11737,7 +11737,7 @@
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
-      "description": "Authored degrees. Animation keys allow explicit turns."
+      "description": "Authored degrees. Animation keyframes allow explicit turns."
     }
   }
 }

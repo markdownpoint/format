@@ -1129,7 +1129,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the key buttons: Start (`stepId` null), or `time` in a step."
+      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the keyframe buttons: Start (`stepId` null), or `time` in a step."
     },
     "AgentAnimationParameter": {
       "type": "object",
@@ -1143,7 +1143,7 @@
         },
         "valueType": {
           "$ref": "#/definitions/ObjectAnimationValueType",
-          "description": "What kind of value the parameter holds, which says how its keys blend: a discrete value holds until the next key."
+          "description": "What kind of value the parameter holds, which says how its keyframes blend: a discrete value holds until the next keyframe."
         }
       },
       "required": [
@@ -1178,7 +1178,7 @@
           "items": {
             "$ref": "#/definitions/PresentationAnimationInterpolationName"
           },
-          "description": "The named interpolations; a key may instead carry four cubic-bezier numbers [x1, y1, x2, y2] with x within 0–1."
+          "description": "The named interpolations; a keyframe may instead carry four cubic-bezier numbers [x1, y1, x2, y2] with x within 0–1."
         },
         "limits": {
           "$ref": "#/definitions/AgentLimits"
@@ -3510,7 +3510,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "The new steps' ids, one per step, so a later `updateStep` or `tween` of the same batch, or the next proposal, keys them without reading them back; minted when omitted."
+              "description": "The new steps' ids, one per step, so a later `updateStep` or `tween` of the same batch, or the next proposal, addresses them without reading them back; minted when omitted."
             },
             "steps": {
               "type": "array",
@@ -3991,7 +3991,7 @@
                     "properties": {
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether the move to this key scales at an even rate, as After Effects' Exponential Scale does."
+                        "description": "Whether the move to this keyframe scales at an even rate, as After Effects' Exponential Scale does."
                       },
                       "incoming": {
                         "type": "object",
@@ -4010,7 +4010,7 @@
                           "value"
                         ],
                         "additionalProperties": false,
-                        "description": "Preserve an interpolation prefix before this key; at time, value applies immediately."
+                        "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
                       },
                       "interpolation": {
                         "$ref": "#/definitions/PresentationAnimationInterpolation",
@@ -4018,7 +4018,7 @@
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
-                        "description": "A swing added from this key on, its wave named as the file names it."
+                        "description": "A swing added from this keyframe on, its wave named as the file names it."
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
@@ -4102,7 +4102,7 @@
                   }
                 ]
               },
-              "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No key's edit changes it."
+              "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No keyframe's edit changes it."
             },
             "name": {
               "type": [
@@ -5172,7 +5172,7 @@
           "description": "The operations as the kernel spells them, in the model's words (`strokeWeight`, a fill as `{ type, color }`): what the app runs once it has read an operation's file words."
         }
       ],
-      "description": "Operations the app serves as a kernel batch or one standalone step, in the words the .mdpoint file spells objects and properties in (`stroke`, `fill: accent`, `crop.focal-point`). The kernel owns semantics; closed-shape validation runs before it sees them. An object edit with `at` lands in the slide's motion as the Inspector's does with the playhead there: keys at that time, or Start values."
+      "description": "Operations the app serves as a kernel batch or one standalone step, in the words the .mdpoint file spells objects and properties in (`stroke`, `fill: accent`, `crop.focal-point`). The kernel owns semantics; closed-shape validation runs before it sees them. An object edit with `at` lands in the slide's motion as the Inspector's does with the playhead there: keyframes at that time, or Start values."
     },
     "AgentPresentationResult": {
       "type": "object",
@@ -10200,7 +10200,7 @@
               }
             }
           },
-          "description": "For each drawing, where its points fall along each contour as fractions of the contour's length: the values a trim key takes to stop at a point."
+          "description": "For each drawing, where its points fall along each contour as fractions of the contour's length: the values a trim keyframe takes to stop at a point."
         }
       },
       "required": [
@@ -10252,7 +10252,7 @@
             ],
             "additionalProperties": false
           },
-          "description": "Each parameter the step keys, sampled at every time in authored parameter space, before ancestor group poses."
+          "description": "Each parameter with keyframes in the step, sampled at every time in authored parameter space, before ancestor group poses."
         },
         "revision": {
           "$ref": "#/definitions/AgentRevision"
@@ -10778,7 +10778,7 @@
           "description": "The Animate tab's and the timeline's timing edits, each as the app makes it."
         }
       ],
-      "description": "A timing edit in the file's words: `loop-keyframe` and a key's `exponential-scale`, and a swing's `wave-shape`."
+      "description": "A timing edit in the file's words: `loop-keyframe` and a keyframe's `exponential-scale`, and a swing's `wave-shape`."
     },
     "AgentStepMeasureRequest": {
       "type": "object",
@@ -11841,7 +11841,7 @@
         },
         "duration": {
           "type": "number",
-          "description": "Its last key: how long it plays from the file's 0."
+          "description": "Its last keyframe: how long it plays from the file's 0."
         },
         "loop": {
           "type": [
@@ -11877,7 +11877,7 @@
         },
         "start": {
           "type": "number",
-          "description": "Its first key, in seconds on the file's clock. An Action's time 0 is the file's 0, so it may start late."
+          "description": "Its first keyframe, in seconds on the file's clock. An Action's time 0 is the file's 0, so it may start late."
         },
         "stride": {
           "anyOf": [
@@ -14183,10 +14183,10 @@
       "type": "string",
       "enum": [
         "aim-cycle",
-        "auto-layout-held-key",
+        "auto-layout-held-animation",
         "blur-past-page",
         "bound-value",
-        "clashing-keys",
+        "clashing-keyframes",
         "color-needs-svg",
         "composition-cycle",
         "content-overlap",
@@ -17146,7 +17146,7 @@
       "properties": {
         "exponential-scale": {
           "type": "boolean",
-          "description": "Whether the move to this key scales at an even rate, as After Effects' Exponential Scale does."
+          "description": "Whether the move to this keyframe scales at an even rate, as After Effects' Exponential Scale does."
         },
         "id": {
           "type": "string",
@@ -17169,7 +17169,7 @@
             "value"
           ],
           "additionalProperties": false,
-          "description": "Preserve an interpolation prefix before this key; at time, value applies immediately."
+          "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
@@ -17177,7 +17177,7 @@
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
-          "description": "A swing added from this key on, its wave named as the file names it."
+          "description": "A swing added from this keyframe on, its wave named as the file names it."
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
@@ -17201,7 +17201,7 @@
         "time",
         "value"
       ],
-      "description": "A key as the file spells it: a move's `end` and `exponential-scale`, and a fill as the object spells its fill."
+      "description": "A keyframe as the file spells it: a move's `end` and `exponential-scale`, and a fill as the object spells its fill."
     },
     "PresentationAnimationLoop": {
       "type": "string",
