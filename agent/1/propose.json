@@ -1038,7 +1038,7 @@
                       },
                       "interpolation": {
                         "$ref": "#/definitions/PresentationAnimationInterpolation",
-                        "description": "Interpolation into this key, from the preceding key or the step's start."
+                        "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -1046,11 +1046,11 @@
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
-                        "description": "On a path pair's x key, `frame.x` or `translation.x`: the move into it, with the pair's y key there, bends along this path."
+                        "description": "On a path pair's x keyframe, `frame.x` or `translation.x`: the move into it, with the pair's y keyframe there, bends along this path."
                       },
                       "start": {
                         "type": "number",
-                        "description": "When the move into this key begins, in step seconds; until then the value before it holds. Absent, at the key before.",
+                        "description": "When the move into this keyframe begins, in step seconds; until then the value before it holds. Absent, at the keyframe before.",
                         "minimum": 0,
                         "maximum": 4294967296
                       },
@@ -10890,7 +10890,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID, unique together with keys in this step.",
+          "description": "Caller-minted stable ID, unique together with keyframes in this step.",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "examples": [
             "event-a1b2"
@@ -11089,7 +11089,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID; new keys/cues share one unique namespace within the step. Reusing an ID replaces the whole event.",
+          "description": "Caller-minted stable ID; new keyframes/cues share one unique namespace within the step. Reusing an ID replaces the whole event.",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "examples": [
             "event-a1b2"
@@ -11118,7 +11118,7 @@
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "Interpolation into this key, from the preceding key or the step's start."
+          "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -11126,11 +11126,11 @@
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
-          "description": "On a path pair's x key, `frame.x` or `translation.x`: the move into it, with the pair's y key there, bends along this path."
+          "description": "On a path pair's x keyframe, `frame.x` or `translation.x`: the move into it, with the pair's y keyframe there, bends along this path."
         },
         "start": {
           "type": "number",
-          "description": "When the move into this key begins, in step seconds; until then the value before it holds. Absent, at the key before.",
+          "description": "When the move into this keyframe begins, in step seconds; until then the value before it holds. Absent, at the keyframe before.",
           "minimum": 0,
           "maximum": 4294967296
         },
@@ -11173,7 +11173,7 @@
         },
         "phase": {
           "type": "number",
-          "description": "Degrees into the cycle at the key.",
+          "description": "Degrees into the cycle at the keyframe.",
           "minimum": -8589934592,
           "maximum": 8589934592
         },
@@ -11404,7 +11404,7 @@
               "type": "string"
             }
           ],
-          "description": "What a key holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
+          "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
         }
       ],
       "description": "A value as the file spells it: a fill as `accent` or a gradient whose stops name their colors. The scene's `animationValueSchemas` gives the range of each channel the slide's objects offer, by kind of object. Core refuses a value outside its channel's range and names both."

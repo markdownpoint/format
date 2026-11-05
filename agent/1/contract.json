@@ -4014,7 +4014,7 @@
                       },
                       "interpolation": {
                         "$ref": "#/definitions/PresentationAnimationInterpolation",
-                        "description": "Interpolation into this key, from the preceding key or the step's start."
+                        "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -4022,11 +4022,11 @@
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
-                        "description": "On a path pair's x key, `frame.x` or `translation.x`: the move into it, with the pair's y key there, bends along this path."
+                        "description": "On a path pair's x keyframe, `frame.x` or `translation.x`: the move into it, with the pair's y keyframe there, bends along this path."
                       },
                       "start": {
                         "type": "number",
-                        "description": "When the move into this key begins, in step seconds; until then the value before it holds. Absent, at the key before."
+                        "description": "When the move into this keyframe begins, in step seconds; until then the value before it holds. Absent, at the keyframe before."
                       },
                       "target": {
                         "$ref": "#/definitions/PresentationAnimationTargetSource"
@@ -16981,7 +16981,7 @@
         "curve"
       ],
       "additionalProperties": false,
-      "description": "Blender's Back with its Back setting: how far anticipate winds up, overshoot swings past its key, or both."
+      "description": "Blender's Back with its Back setting: how far anticipate winds up, overshoot swings past its keyframe, or both."
     },
     "PresentationAnimationBezier": {
       "type": "array",
@@ -16990,7 +16990,7 @@
       },
       "minItems": 4,
       "maxItems": 4,
-      "description": "A cubic Bézier easing as CSS spells it: two control points with time on x within 0–1 and value on y, which may overshoot."
+      "description": "A cubic Bézier interpolation as CSS spells it: two control points with time on x within 0–1 and value on y, which may overshoot."
     },
     "PresentationAnimationBounceInterpolation": {
       "type": "object",
@@ -17019,7 +17019,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID, unique together with keys in this step."
+          "description": "Caller-minted stable ID, unique together with keyframes in this step."
         },
         "time": {
           "type": "number",
@@ -17047,7 +17047,7 @@
           "$ref": "#/definitions/PresentationAnimationSpring"
         }
       ],
-      "description": "A named curve with its settings, the key-interpolation record: Blender's Back with its back, its Elastic with an amplitude and a period, a bounce with a bounciness, or a spring."
+      "description": "A named curve with its settings, the keyframe-interpolation record: Blender's Back with its back, its Elastic with an amplitude and a period, a bounce with a bounciness, or a spring."
     },
     "PresentationAnimationCurveSource": {
       "type": "object",
@@ -17093,7 +17093,7 @@
         "curve"
       ],
       "additionalProperties": false,
-      "description": "Blender's Elastic ringing into its key: its ring as a multiple of the move, and its length in seconds, or 0.3 of the move."
+      "description": "Blender's Elastic ringing into its keyframe: its ring as a multiple of the move, and its length in seconds, or 0.3 of the move."
     },
     "PresentationAnimationInitialValueSource": {
       "type": "object",
@@ -17150,7 +17150,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID; new keys/cues share one unique namespace within the step. Reusing an ID replaces the whole event."
+          "description": "Caller-minted stable ID; new keyframes/cues share one unique namespace within the step. Reusing an ID replaces the whole event."
         },
         "incoming": {
           "type": "object",
@@ -17173,7 +17173,7 @@
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "Interpolation into this key, from the preceding key or the step's start."
+          "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -17181,11 +17181,11 @@
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
-          "description": "On a path pair's x key, `frame.x` or `translation.x`: the move into it, with the pair's y key there, bends along this path."
+          "description": "On a path pair's x keyframe, `frame.x` or `translation.x`: the move into it, with the pair's y keyframe there, bends along this path."
         },
         "start": {
           "type": "number",
-          "description": "When the move into this key begins, in step seconds; until then the value before it holds. Absent, at the key before."
+          "description": "When the move into this keyframe begins, in step seconds; until then the value before it holds. Absent, at the keyframe before."
         },
         "time": {
           "type": "number",
@@ -17272,7 +17272,7 @@
         },
         "phase": {
           "type": "number",
-          "description": "Degrees into the cycle at the key."
+          "description": "Degrees into the cycle at the keyframe."
         },
         "seed": {
           "type": "number",
@@ -17692,7 +17692,7 @@
         "curve"
       ],
       "additionalProperties": false,
-      "description": "A spring landing on its key: `amount` sets how far it swings past, from 0, which settles with no overshoot, to 1, and `response` its period in seconds as SwiftUI's does, or it fits the key."
+      "description": "A spring landing on its keyframe: `amount` sets how far it swings past, from 0, which settles with no overshoot, to 1, and `response` its period in seconds as SwiftUI's does, or it fits the keyframe."
     },
     "PresentationAnimationTargetSource": {
       "type": "object",
@@ -17742,7 +17742,7 @@
               "type": "string"
             }
           ],
-          "description": "What a key holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
+          "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
         }
       ],
       "description": "A value as the file spells it: a fill as `accent` or a gradient whose stops name their colors."
@@ -19831,7 +19831,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Objects auto layout places that stay where this step's keys put them while it plays, their X and Y or a line's free ends, as a transition carries each object to its place on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
+          "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to its place on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
         },
         "unstaggered": {
           "type": "boolean",
