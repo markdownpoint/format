@@ -6496,6 +6496,25 @@
           "maximum": 513,
           "description": "How many there are, the original included."
         },
+        "position": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            },
+            "y": {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          },
+          "additionalProperties": false,
+          "description": "How far each copy moves from the one before, as {x, y} across and down. A step animates them as repeater.position.x and repeater.position.y."
+        },
         "rotation": {
           "type": "number",
           "minimum": -16777216,
@@ -6507,6 +6526,21 @@
           "minimum": 0.01,
           "maximum": 33554431,
           "description": "How much each copy scales from the one before, where 1 keeps its size."
+        },
+        "anchor-point": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "description": "frame fraction"
+            },
+            "y": {
+              "type": "number",
+              "description": "frame fraction"
+            }
+          },
+          "additionalProperties": false,
+          "description": "The point the copies turn and scale about, {x, y}, each a fraction of the frame across and down."
         },
         "stagger": {
           "type": "number",
@@ -6549,40 +6583,6 @@
           "minimum": 0,
           "maximum": 4294967294,
           "description": "The random seed. The same seed always gives the same variation."
-        },
-        "position": {
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "canvas units"
-            },
-            "y": {
-              "type": "number",
-              "minimum": -65536,
-              "maximum": 65536,
-              "description": "canvas units"
-            }
-          },
-          "additionalProperties": false,
-          "description": "How far each copy moves from the one before, as {x, y} across and down. A step animates them as repeater.position.x and repeater.position.y."
-        },
-        "anchor-point": {
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "description": "frame fraction"
-            },
-            "y": {
-              "type": "number",
-              "description": "frame fraction"
-            }
-          },
-          "additionalProperties": false,
-          "description": "The point the copies turn and scale about, {x, y}, each a fraction of the frame across and down."
         }
       },
       "required": [

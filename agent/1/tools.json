@@ -2984,19 +2984,19 @@
                   "wipe.progress",
                   "wipe.angle",
                   "wipe.feather",
+                  "crop.scale",
                   "crop.focal-point.x",
                   "crop.focal-point.y",
-                  "crop.scale",
                   "motion-blur.shutter",
+                  "target.z",
                   "target.x",
                   "target.y",
-                  "target.z",
                   "tail.x",
                   "tail.y",
+                  "repeater.scale",
+                  "repeater.rotation",
                   "repeater.position.x",
                   "repeater.position.y",
-                  "repeater.rotation",
-                  "repeater.scale",
                   "enter.progress",
                   "exit.progress",
                   "trim.start",
@@ -8228,6 +8228,24 @@
                 "maximum": 513,
                 "description": "copies"
               },
+              "position": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -65536,
+                    "maximum": 65536,
+                    "description": "canvas units"
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -65536,
+                    "maximum": 65536,
+                    "description": "canvas units"
+                  }
+                },
+                "additionalProperties": false
+              },
               "rotation": {
                 "type": "number",
                 "minimum": -16777216,
@@ -8239,6 +8257,20 @@
                 "minimum": 0.01,
                 "maximum": 33554431,
                 "description": "ratio"
+              },
+              "anchor-point": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "description": "frame fraction"
+                  },
+                  "y": {
+                    "type": "number",
+                    "description": "frame fraction"
+                  }
+                },
+                "additionalProperties": false
               },
               "stagger": {
                 "type": "number",
@@ -8281,38 +8313,6 @@
                 "minimum": 0,
                 "maximum": 4294967294,
                 "description": "shuffle"
-              },
-              "position": {
-                "type": "object",
-                "properties": {
-                  "x": {
-                    "type": "number",
-                    "minimum": -65536,
-                    "maximum": 65536,
-                    "description": "canvas units"
-                  },
-                  "y": {
-                    "type": "number",
-                    "minimum": -65536,
-                    "maximum": 65536,
-                    "description": "canvas units"
-                  }
-                },
-                "additionalProperties": false
-              },
-              "anchor-point": {
-                "type": "object",
-                "properties": {
-                  "x": {
-                    "type": "number",
-                    "description": "frame fraction"
-                  },
-                  "y": {
-                    "type": "number",
-                    "description": "frame fraction"
-                  }
-                },
-                "additionalProperties": false
               }
             },
             "required": [
@@ -9196,19 +9196,19 @@
                   "wipe.progress",
                   "wipe.angle",
                   "wipe.feather",
+                  "crop.scale",
                   "crop.focal-point.x",
                   "crop.focal-point.y",
-                  "crop.scale",
                   "motion-blur.shutter",
+                  "target.z",
                   "target.x",
                   "target.y",
-                  "target.z",
                   "tail.x",
                   "tail.y",
+                  "repeater.scale",
+                  "repeater.rotation",
                   "repeater.position.x",
                   "repeater.position.y",
-                  "repeater.rotation",
-                  "repeater.scale",
                   "enter.progress",
                   "exit.progress",
                   "trim.start",
