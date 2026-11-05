@@ -4129,20 +4129,22 @@
     "model": {
       "anyOf": [
         {
+          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from.",
           "type": "object",
           "properties": {
             "letters": {
+              "description": "The depth and bevel MarkdownPoint builds the words' letters to, in ems. An empty record builds them to its defaults.",
               "type": "object",
               "properties": {
                 "depth": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "em"
+                  "description": "How far the letters stand out from the slide, in ems."
                 },
                 "bevel": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "em"
+                  "description": "How far the letters' edges are rounded, in ems. 0 leaves them sharp."
                 }
               },
               "additionalProperties": false
@@ -4154,17 +4156,18 @@
           "additionalProperties": false
         },
         {
+          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from.",
           "type": "object",
           "properties": {
             "file": {
               "type": "string",
               "pattern": "\\.(?:[gG][lL][bB])(?![\\s\\S])",
-              "description": "a GLB in the presentation"
+              "description": "The GLB a program built from the words, as a presentation's file path."
             },
             "built-from": {
               "type": "string",
               "pattern": "^text-model-[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
-              "description": "text-model-<rule>:sha256:<hex>"
+              "description": "The fingerprint of what the GLB was built from, compared whole: `text-model-`, its rule's number, `:sha256:`, and 64 lowercase hex digits. A rule this reader doesn't know reads as out of sync."
             }
           },
           "required": [
