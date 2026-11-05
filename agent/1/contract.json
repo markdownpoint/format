@@ -19493,7 +19493,7 @@
               "additionalProperties": false
             }
           ],
-          "description": "The operations as the kernel spells them, in the model's words (`strokeWeight`, a fill as `{ kind, color }`): what the app runs once it has read an operation's file words."
+          "description": "The operations as the kernel spells them, in the model's words (`strokeWeight`, a fill as `{ type, color }`): what the app runs once it has read an operation's file words."
         },
         {
           "type": "object",
