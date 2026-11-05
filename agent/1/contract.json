@@ -1098,7 +1098,7 @@
       ],
       "additionalProperties": false
     },
-    "AgentAnimationAim": {
+    "AgentAnimationMoment": {
       "anyOf": [
         {
           "type": "object",
@@ -1129,7 +1129,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "Where in a slide's motion an edit lands, as the Animate tab's playhead aims the Inspector and the key buttons: at Start (`stepId` null), or at `time` in a step."
+      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the key buttons: Start (`stepId` null), or `time` in a step."
     },
     "AgentAnimationParameter": {
       "type": "object",
@@ -3616,7 +3616,7 @@
           "type": "object",
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "changes": {
               "type": "array",
@@ -3648,7 +3648,7 @@
           "additionalProperties": false,
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "objectIds": {
               "type": "array",
@@ -3684,7 +3684,7 @@
           "additionalProperties": false,
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "objectIds": {
               "type": "array",
@@ -3719,7 +3719,7 @@
           "additionalProperties": false,
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "objectIds": {
               "type": "array",
@@ -3753,7 +3753,7 @@
           "type": "object",
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "slideId": {
               "type": "string"
@@ -4503,7 +4503,7 @@
               "type": "object",
               "properties": {
                 "at": {
-                  "$ref": "#/definitions/AgentAnimationAim"
+                  "$ref": "#/definitions/AgentAnimationMoment"
                 },
                 "hidden": {
                   "type": "boolean"
@@ -5911,6 +5911,29 @@
         "walks"
       ],
       "additionalProperties": false
+    },
+    "AgentSlideMoment": {
+      "type": "object",
+      "properties": {
+        "stepId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The step to sample; null selects Start."
+        },
+        "time": {
+          "type": "number",
+          "description": "Seconds within the step, at least 0.",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "stepId",
+        "time"
+      ],
+      "additionalProperties": false,
+      "description": "A moment in a slide's motion: Start, or seconds within a step, clamped to its effective duration."
     },
     "AgentSlideObject": {
       "anyOf": [
@@ -9730,34 +9753,11 @@
       ],
       "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setContent takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
     },
-    "AgentSlidePosition": {
-      "type": "object",
-      "properties": {
-        "stepId": {
-          "type": [
-            "null",
-            "string"
-          ],
-          "description": "The step to sample; null selects Start."
-        },
-        "time": {
-          "type": "number",
-          "description": "Seconds within the step, at least 0.",
-          "minimum": 0
-        }
-      },
-      "required": [
-        "stepId",
-        "time"
-      ],
-      "additionalProperties": false,
-      "description": "A position in a slide's motion: Start, or seconds within a step, clamped to its effective duration."
-    },
     "AgentSlideRenderRequest": {
       "type": "object",
       "properties": {
         "at": {
-          "$ref": "#/definitions/AgentSlidePosition",
+          "$ref": "#/definitions/AgentSlideMoment",
           "description": "Omitted is authored Base."
         },
         "destination": {
@@ -9950,7 +9950,7 @@
       "type": "object",
       "properties": {
         "at": {
-          "$ref": "#/definitions/AgentSlidePosition",
+          "$ref": "#/definitions/AgentSlideMoment",
           "description": "Omitted is authored Base."
         },
         "slideId": {

@@ -24,7 +24,7 @@
   ],
   "additionalProperties": false,
   "definitions": {
-    "AgentAnimationAim": {
+    "AgentAnimationMoment": {
       "anyOf": [
         {
           "type": "object",
@@ -55,7 +55,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "Where in a slide's motion an edit lands, as the Animate tab's playhead aims the Inspector and the key buttons: at Start (`stepId` null), or at `time` in a step."
+      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the key buttons: Start (`stepId` null), or `time` in a step."
     },
     "AgentLineEnd": {
       "$ref": "#/definitions/LineEnd"
@@ -325,7 +325,7 @@
           "type": "object",
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "changes": {
               "type": "array",
@@ -355,7 +355,7 @@
           "type": "object",
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "hidden": {
               "type": "boolean"
@@ -387,7 +387,7 @@
           "type": "object",
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationAim"
+              "$ref": "#/definitions/AgentAnimationMoment"
             },
             "slideId": {
               "type": "string"
