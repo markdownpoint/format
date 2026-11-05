@@ -2538,7 +2538,7 @@
             "additionalProperties": {
               "$ref": "#/definitions/initial"
             },
-            "description": "The values of animated properties before the slide's first step, as \"object.property\" keys such as \"card.opacity\"."
+            "description": "The values of animated parameters before the slide's first step, as \"object.parameter\" keys such as \"card.opacity\"."
           },
           "steps": {
             "allOf": [
@@ -2811,7 +2811,7 @@
             "additionalProperties": {
               "$ref": "#/definitions/initial"
             },
-            "description": "The values of animated properties before its first step, as \"object.property\" keys."
+            "description": "The values of animated parameters before its first step, as \"object.parameter\" keys."
           },
           "steps": {
             "allOf": [
@@ -7644,7 +7644,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "The step's animation, by object and property, such as card.opacity."
+            "description": "The step's animation, by object and parameter, such as card.opacity."
           },
           "cues": {
             "type": "array",
