@@ -14211,6 +14211,7 @@
         "invalid-comments",
         "invalid-composition",
         "invalid-compositions",
+        "invalid-control-value",
         "invalid-file-path",
         "invalid-font",
         "invalid-format",
