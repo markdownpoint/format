@@ -13637,7 +13637,7 @@
         "target"
       ],
       "additionalProperties": false,
-      "description": "An Aim as the file spells it, each key but its id, type and target left out where it is Blender's default."
+      "description": "An Aim as the file spells it, each key but its id, type and target left out where it is the default of Blender's Damped Track."
     },
     "SquashAndStretchSource": {
       "type": "object",
@@ -13679,7 +13679,7 @@
         "type"
       ],
       "additionalProperties": false,
-      "description": "A Squash and Stretch as the file spells it, each key but its id and type left out where it is Blender's default."
+      "description": "A Squash and Stretch as the file spells it, each key but its id and type left out where it is the default of Blender's Maintain Volume."
     },
     "InsertLight": {
       "type": "object",
