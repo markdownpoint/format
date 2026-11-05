@@ -1694,8 +1694,8 @@
             "type": "string",
             "enum": [
               "cache",
-              "master",
-              "presentation"
+              "presentation",
+              "theme"
             ],
             "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
           },
@@ -7418,8 +7418,8 @@
             "type": "string",
             "enum": [
               "cache",
-              "master",
-              "presentation"
+              "presentation",
+              "theme"
             ],
             "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
           },

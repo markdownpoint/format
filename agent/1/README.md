@@ -94,9 +94,9 @@ Where an issue stands depends on its `source`:
   1, with the column when known.
 - `theme`: `slideId` when only the slides that name the layout or scheme are
   refused.
-- `file`: `path` is the file's path as the presentation, or its theme when
-  `fileScope` says so, names it; `slideId`, `objectId` and `property` name
-  each place that uses it.
+- `file`: `path` is the file's path as the presentation, or its theme's
+  folder when `fileScope` is `theme`, names it; `slideId`, `objectId` and
+  `property` name each place that uses it.
 - `scene`, `master` and `layout`: `slideId`, and `objectId` or `objectIds`.
 
 Each code an issue carries:
