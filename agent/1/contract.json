@@ -1957,9 +1957,9 @@
                 "table-track-count",
                 "unresolved-field",
                 "color-needs-svg",
-                "missing-track-target",
+                "missing-constraint-target",
                 "aim-cycle",
-                "shared-track-joint",
+                "shared-constraint-joint",
                 "drift-with-scroll",
                 "missing-parent",
                 "missing-parent-joint",
@@ -2011,7 +2011,6 @@
         "invalid-comments",
         "invalid-composition",
         "invalid-compositions",
-        "invalid-connector-anchor",
         "invalid-file-path",
         "invalid-font",
         "invalid-format",
@@ -2027,8 +2026,8 @@
         "invalid-json-root",
         "invalid-kind",
         "invalid-layout",
+        "invalid-line-end",
         "invalid-link-target",
-        "invalid-mapping",
         "invalid-marker-id",
         "invalid-master-id",
         "invalid-media",
@@ -2047,11 +2046,11 @@
         "invalid-poster",
         "invalid-presentation-field",
         "invalid-presentation-root",
+        "invalid-record",
         "invalid-required-value",
         "invalid-restyle",
         "invalid-section-heading",
         "invalid-selected-master",
-        "invalid-set-root",
         "invalid-slide-id",
         "invalid-slides",
         "invalid-space-parent",
@@ -2061,13 +2060,14 @@
         "invalid-text-format",
         "invalid-theme-document",
         "invalid-theme-key",
+        "invalid-theme-root",
         "invalid-uuid",
         "invalid-web-video-source",
         "malformed-marker",
         "paragraph-id-misspelled",
         "missing-action",
         "missing-alt",
-        "missing-connector-endpoint",
+        "missing-constraint-target",
         "missing-content",
         "missing-file",
         "missing-font",
@@ -2076,6 +2076,7 @@
         "missing-key",
         "missing-light-intensity",
         "missing-light-type",
+        "missing-line-end",
         "missing-link-slide",
         "missing-marker-newline",
         "missing-master",
@@ -2086,7 +2087,6 @@
         "missing-poster",
         "missing-slide-section",
         "missing-text-block",
-        "missing-track-target",
         "duplicate-notes",
         "duplicate-object-id",
         "duplicate-section",
@@ -2117,8 +2117,8 @@
         "unplayable-chain",
         "unreadable-files",
         "unreadable-peer-value",
-        "unresolved-connector-anchor",
         "unresolved-field",
+        "unresolved-line-end",
         "unresolved-theme",
         "unsupported-locale",
         "clashing-keys",
@@ -2161,8 +2161,8 @@
         "path-delivery",
         "reserved-camera-id",
         "reserved-world-id",
+        "shared-constraint-joint",
         "shared-parent-joint",
-        "shared-track-joint",
         "space-object-in-group",
         "table-track-count",
         "text-input-in-json",
@@ -3548,9 +3548,9 @@
             "crop.focal-point.x",
             "crop.focal-point.y",
             "motion-blur.shutter",
-            "target.z",
             "target.x",
             "target.y",
+            "target.z",
             "tail.x",
             "tail.y",
             "repeater.scale",
@@ -14547,7 +14547,7 @@
             "parentIndex": {
               "type": "number"
             },
-            "trackTargets": {
+            "aimTargets": {
               "type": "object",
               "additionalProperties": {
                 "type": "number"
@@ -14668,7 +14668,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -14888,7 +14888,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15035,7 +15035,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15187,7 +15187,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15325,7 +15325,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15407,7 +15407,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15636,7 +15636,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15752,7 +15752,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15853,7 +15853,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -15977,7 +15977,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -16054,7 +16054,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -16133,7 +16133,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -16275,7 +16275,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -16363,7 +16363,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -16463,7 +16463,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
@@ -16543,7 +16543,7 @@
         "parentIndex": {
           "type": "number"
         },
-        "trackTargets": {
+        "aimTargets": {
           "type": "object",
           "additionalProperties": {
             "type": "number"
