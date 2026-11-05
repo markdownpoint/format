@@ -4291,7 +4291,7 @@
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
-                    "description": "ratio"
+                    "description": "fraction"
                   },
                   "spread": {
                     "type": "number",
@@ -7704,7 +7704,7 @@
                     "type": "number",
                     "minimum": 0.000001,
                     "maximum": 1,
-                    "description": "ratio"
+                    "description": "fraction"
                   }
                 },
                 "required": [
@@ -7744,7 +7744,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "ratio"
+                "description": "fraction"
               }
             },
             "required": [
@@ -7822,7 +7822,7 @@
                     "type": "number",
                     "minimum": 0.000001,
                     "maximum": 1,
-                    "description": "ratio"
+                    "description": "fraction"
                   }
                 },
                 "required": [
@@ -7862,7 +7862,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "ratio"
+                "description": "fraction"
               }
             },
             "required": [
@@ -8484,7 +8484,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "ratio"
+                "description": "fraction"
               },
               "angle": {
                 "type": "number",

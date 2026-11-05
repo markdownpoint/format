@@ -3037,7 +3037,7 @@
           "type": "string"
         },
         "progress": {
-          "$ref": "#/definitions/Prop_progress"
+          "$ref": "#/definitions/Prop_opacity"
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
@@ -7875,7 +7875,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_progress"
+                  "$ref": "#/definitions/Prop_opacity"
                 },
                 {
                   "type": "null"
@@ -8779,7 +8779,7 @@
           "type": "number"
         },
         "progress": {
-          "$ref": "#/definitions/Prop_progress"
+          "$ref": "#/definitions/Prop_opacity"
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
@@ -14753,7 +14753,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "ratio"
+          "description": "fraction"
         },
         "angle": {
           "type": "number",
@@ -15372,7 +15372,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 1,
-              "description": "ratio"
+              "description": "fraction"
             }
           },
           "required": [
@@ -15412,7 +15412,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "ratio"
+          "description": "fraction"
         }
       },
       "required": [
@@ -15605,7 +15605,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 1,
-              "description": "ratio"
+              "description": "fraction"
             }
           },
           "required": [
@@ -15645,7 +15645,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "ratio"
+          "description": "fraction"
         }
       },
       "required": [
@@ -16325,12 +16325,6 @@
         "counter"
       ],
       "description": "What a chart draws from its table: columns standing up from or bars lying along its categories, side by side or stacked, a line or a stacked area per series, a pie or a donut of its first series, or a counter that counts to its first value in that cell's spelling."
-    },
-    "Prop_progress": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1,
-      "description": "ratio"
     },
     "Prop_spread": {
       "type": "number",
