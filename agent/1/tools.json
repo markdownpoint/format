@@ -3235,7 +3235,7 @@
                 "$ref": "#/definitions/PresentationAnimationSpring"
               }
             ],
-            "description": "A named curve with its settings, the key-interpolation record: Blender's Back with its back, its Elastic with an amplitude and a period, its Bounce with a bounciness, or a spring."
+            "description": "A named curve with its settings, the key-interpolation record: Blender's Back with its back, its Elastic with an amplitude and a period, a bounce with a bounciness, or a spring."
           },
           "PresentationAnimationBackInterpolation": {
             "type": "object",
@@ -3293,7 +3293,7 @@
               "bounciness"
             ],
             "additionalProperties": false,
-            "description": "Blender's Bounce at a bounciness, Blender's Rigid Body word for a rebound's share of the speed it lands with."
+            "description": "A bounce at a bounciness, Blender's Rigid Body word for a rebound's share of the speed it lands with; Blender's Bounce at 0.5."
           },
           "PresentationAnimationSpring": {
             "type": "object",
