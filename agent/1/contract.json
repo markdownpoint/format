@@ -3163,7 +3163,7 @@
         "unstaggered": {
           "type": "boolean",
           "const": true,
-          "description": "Every copy of a staggered repeat plays this step with its source instead of after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
+          "description": "Every copy of a staggered repeater plays this step with its source instead of after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
         },
         "unanchored": {
           "type": "array",
@@ -11270,7 +11270,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A replica's copies in a grid a gap apart, or a ring a radius from the selection's center, as groups and repeats."
+      "description": "A replica's copies in a grid a gap apart, or a ring a radius from the selection's center, as groups and repeaters."
     },
     "AgentPoint": {
       "$ref": "#/definitions/PresentationPoint"

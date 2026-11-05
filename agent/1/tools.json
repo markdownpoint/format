@@ -2680,7 +2680,7 @@
               },
               "unstaggered": {
                 "const": true,
-                "description": "Every copy of a staggered repeat plays this step with its source instead of after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
+                "description": "Every copy of a staggered repeater plays this step with its source instead of after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
               },
               "unanchored": {
                 "type": "array",

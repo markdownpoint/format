@@ -1655,7 +1655,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A replica's copies in a grid a gap apart, or a ring a radius from the selection's center, as groups and repeats."
+      "description": "A replica's copies in a grid a gap apart, or a ring a radius from the selection's center, as groups and repeaters."
     },
     "AgentEnterEffect": {
       "$ref": "#/definitions/EnterEffect",
