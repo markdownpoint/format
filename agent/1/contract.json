@@ -3548,9 +3548,9 @@
             "crop.focal-point.x",
             "crop.focal-point.y",
             "motion-blur.shutter",
+            "target.z",
             "target.x",
             "target.y",
-            "target.z",
             "tail.x",
             "tail.y",
             "repeater.scale",
@@ -12924,10 +12924,10 @@
           "type": "number"
         },
         "start": {
-          "$ref": "#/definitions/ConnectorEndpoint"
+          "$ref": "#/definitions/LineEnd"
         },
         "end": {
-          "$ref": "#/definitions/ConnectorEndpoint"
+          "$ref": "#/definitions/LineEnd"
         },
         "cap-start": {
           "$ref": "#/definitions/PresentationLineCap"
@@ -13002,17 +13002,17 @@
         "bent"
       ]
     },
-    "ConnectorEndpoint": {
+    "LineEnd": {
       "anyOf": [
         {
-          "$ref": "#/definitions/ConnectorPoint"
+          "$ref": "#/definitions/LineEndPoint"
         },
         {
-          "$ref": "#/definitions/ConnectorAnchor"
+          "$ref": "#/definitions/AttachedLineEnd"
         }
       ]
     },
-    "ConnectorPoint": {
+    "LineEndPoint": {
       "type": "object",
       "properties": {
         "x": {
@@ -13028,17 +13028,17 @@
       ],
       "additionalProperties": false
     },
-    "ConnectorAnchor": {
+    "AttachedLineEnd": {
       "type": "object",
       "properties": {
         "object": {
           "type": "string"
         },
         "side": {
-          "$ref": "#/definitions/ConnectorSide"
+          "$ref": "#/definitions/LineEndSide"
         },
         "at": {
-          "$ref": "#/definitions/ConnectorPoint",
+          "$ref": "#/definitions/LineEndPoint",
           "description": "Last checkpoint or deletion position; a live target takes precedence."
         }
       },
@@ -13048,7 +13048,7 @@
       ],
       "additionalProperties": false
     },
-    "ConnectorSide": {
+    "LineEndSide": {
       "type": "string",
       "enum": [
         "auto",
@@ -14409,10 +14409,10 @@
               "type": "string"
             },
             "start": {
-              "$ref": "#/definitions/AgentConnectorEndpoint"
+              "$ref": "#/definitions/AgentLineEnd"
             },
             "end": {
-              "$ref": "#/definitions/AgentConnectorEndpoint"
+              "$ref": "#/definitions/AgentLineEnd"
             }
           },
           "required": [
@@ -14511,8 +14511,8 @@
       ],
       "description": "The frame a transform gives an object: every side, but a table's height only where the edit sizes the table, as a move leaves its rows as they are."
     },
-    "AgentConnectorEndpoint": {
-      "$ref": "#/definitions/ConnectorEndpoint"
+    "AgentLineEnd": {
+      "$ref": "#/definitions/LineEnd"
     },
     "PresentationPasteObjectSource": {
       "anyOf": [
@@ -15926,10 +15926,10 @@
           ]
         },
         "start": {
-          "$ref": "#/definitions/PresentationPastedEndpoint"
+          "$ref": "#/definitions/PresentationPastedLineEnd"
         },
         "end": {
-          "$ref": "#/definitions/PresentationPastedEndpoint"
+          "$ref": "#/definitions/PresentationPastedLineEnd"
         }
       },
       "required": [
@@ -15940,24 +15940,24 @@
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
     },
-    "PresentationPastedEndpoint": {
+    "PresentationPastedLineEnd": {
       "anyOf": [
         {
           "$ref": "#/definitions/PresentationPoint"
         },
         {
-          "$ref": "#/definitions/PresentationPastedConnectorAnchor"
+          "$ref": "#/definitions/PresentationPastedAttachedLineEnd"
         }
       ]
     },
-    "PresentationPastedConnectorAnchor": {
+    "PresentationPastedAttachedLineEnd": {
       "type": "object",
       "properties": {
         "objectIndex": {
           "type": "number"
         },
         "side": {
-          "$ref": "#/definitions/ConnectorSide"
+          "$ref": "#/definitions/LineEndSide"
         },
         "at": {
           "$ref": "#/definitions/PresentationPoint"
