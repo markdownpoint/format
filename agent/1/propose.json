@@ -1042,7 +1042,7 @@
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
-                        "description": "A swing added from this keyframe on, its wave named as the file names it."
+                        "description": "An oscillation added from this keyframe on, its wave named as the file names it."
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
@@ -11122,7 +11122,7 @@
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
-          "description": "A swing added from this keyframe on, its wave named as the file names it."
+          "description": "An oscillation added from this keyframe on, its wave named as the file names it."
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
@@ -11191,7 +11191,7 @@
         "amplitude",
         "frequency"
       ],
-      "description": "A swing as the file spells it: its wave is `wave-shape`.",
+      "description": "An oscillation as the file spells it: its wave is `wave-shape`.",
       "if": {
         "required": [
           "seed"
@@ -11407,7 +11407,7 @@
           "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
         }
       ],
-      "description": "A value as the file spells it: a fill as `accent` or a gradient whose stops name their colors. The scene's `animationValueSchemas` gives the range of each channel the slide's objects offer, by kind of object. Core refuses a value outside its channel's range and names both."
+      "description": "A value as the file spells it: a fill as `accent` or a gradient whose stops name their colors. The scene's `animationValueSchemas` gives the range of each parameter the slide's objects offer, by kind of object. Core refuses a value outside its parameter's range and names both."
     },
     "PresentationAnimationWave": {
       "type": "string",

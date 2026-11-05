@@ -2257,7 +2257,7 @@
                                     "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. Left out, it's 1. A step can animate it."
                                   },
                                   "spring": {
-                                    "description": "The spring the camera follows on, in a key's spring's words. Left out, the camera follows exactly.",
+                                    "description": "The spring the camera follows on, written as a keyframe's `spring` interpolation is: its `amount` and `response`. Left out, the camera follows exactly.",
                                     "type": "object",
                                     "properties": {
                                       "amount": {
@@ -7565,7 +7565,7 @@
                       },
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether a scale move changes by a steady ratio over time, so a zoom looks even. Only a scale channel takes it."
+                        "description": "Whether a scale move changes by a steady ratio over time, so a zoom looks even. Only a scale parameter takes it."
                       },
                       "oscillate": {
                         "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",

@@ -4018,7 +4018,7 @@
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
-                        "description": "A swing added from this keyframe on, its wave named as the file names it."
+                        "description": "An oscillation added from this keyframe on, its wave named as the file names it."
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
@@ -10229,7 +10229,7 @@
     "AgentSlideTraceResult": {
       "type": "object",
       "properties": {
-        "channels": {
+        "parameters": {
           "type": "array",
           "items": {
             "type": "object",
@@ -10276,7 +10276,7 @@
         }
       },
       "required": [
-        "channels",
+        "parameters",
         "revision",
         "slideId",
         "stepId",
@@ -14842,7 +14842,7 @@
         "paint",
         "path"
       ],
-      "description": "What kind of value a channel holds, which says how it passes between keyframes, as three.js's ValueTypeName does: a `discrete` value, a flag, a word or a record, holds until the next keyframe, as a discrete curve does in Unity; a `paint` passes as a color between two colors and as a fill between two gradients."
+      "description": "What kind of value a parameter holds, which says how it passes between keyframes, as three.js's ValueTypeName does: a `discrete` value, a flag, a word or a record, holds until the next keyframe, as a discrete curve does in Unity; a `paint` passes as a color between two colors and as a fill between two gradients."
     },
     "ObjectFlip": {
       "type": "string",
@@ -17188,7 +17188,7 @@
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
-          "description": "A swing added from this keyframe on, its wave named as the file names it."
+          "description": "An oscillation added from this keyframe on, its wave named as the file names it."
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
@@ -17297,7 +17297,7 @@
         "amplitude",
         "frequency"
       ],
-      "description": "A swing as the file spells it: its wave is `wave-shape`."
+      "description": "An oscillation as the file spells it: its wave is `wave-shape`."
     },
     "PresentationAnimationParameterSource": {
       "anyOf": [
@@ -17665,7 +17665,8 @@
           ],
           "description": "A geometry parameter as the file names it: a line's ends are its start and end."
         }
-      ]
+      ],
+      "description": "A parameter as the file names it: `stroke-weight`, `crop.focal-point.x`, `frame.x`."
     },
     "PresentationAnimationPath": {
       "type": "object",
