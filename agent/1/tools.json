@@ -638,18 +638,14 @@
                   "name": {
                     "type": "string"
                   },
-                  "width": {
-                    "type": "number"
-                  },
-                  "height": {
-                    "type": "number"
+                  "size": {
+                    "$ref": "#/definitions/SlideSize"
                   }
                 },
                 "required": [
                   "id",
                   "name",
-                  "width",
-                  "height"
+                  "size"
                 ],
                 "additionalProperties": false
               },
@@ -1704,6 +1700,23 @@
             "additionalProperties": false,
             "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
           },
+          "SlideSize": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ],
+            "additionalProperties": false,
+            "description": "A slide's size in canvas units."
+          },
           "PresentationObjectType": {
             "type": "string",
             "enum": [
@@ -1811,9 +1824,9 @@
               "$ref": "#/definitions/PresentationAnimationInitialValueSource"
             }
           },
-          "motion": {
-            "$ref": "#/definitions/PresentationMotion",
-            "description": "The master's motion setting, resolved for every consumer."
+          "stepDuration": {
+            "type": "number",
+            "description": "How long a step's fade or move takes, in seconds: the master's step-duration, or the format's default."
           },
           "revision": {
             "$ref": "#/definitions/AgentRevision"
@@ -1900,7 +1913,7 @@
           "steps",
           "playbackStepIds",
           "initial",
-          "motion",
+          "stepDuration",
           "revision",
           "slideId",
           "at",
@@ -3495,20 +3508,6 @@
               "value"
             ],
             "additionalProperties": false
-          },
-          "PresentationMotion": {
-            "type": "object",
-            "properties": {
-              "duration": {
-                "type": "number",
-                "description": "Seconds."
-              }
-            },
-            "required": [
-              "duration"
-            ],
-            "additionalProperties": false,
-            "description": "The one in-slide motion setting: how long a step's fade or move takes, set on the master."
           },
           "PresentationAnimationMoment": {
             "type": "object",
@@ -11714,6 +11713,23 @@
         ],
         "additionalProperties": false,
         "definitions": {
+          "SlideSize": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ],
+            "additionalProperties": false,
+            "description": "A slide's size in canvas units."
+          },
           "AgentThemeSummary": {
             "type": "object",
             "properties": {
@@ -11731,18 +11747,16 @@
               "name": {
                 "type": "string"
               },
-              "width": {
-                "type": [
-                  "number",
-                  "null"
+              "size": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/SlideSize"
+                  },
+                  {
+                    "type": "null"
+                  }
                 ],
                 "description": "The theme's slide size; null while its master cannot be read."
-              },
-              "height": {
-                "type": [
-                  "number",
-                  "null"
-                ]
               },
               "layouts": {
                 "type": "array",
@@ -11772,8 +11786,7 @@
               "key",
               "id",
               "name",
-              "width",
-              "height",
+              "size",
               "layouts"
             ],
             "additionalProperties": false,
@@ -11961,6 +11974,23 @@
         "additionalProperties": false,
         "description": "The presentation's theme as Edit theme edits it: the master and each layout, authored values only.",
         "definitions": {
+          "SlideSize": {
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ],
+            "additionalProperties": false,
+            "description": "A slide's size in canvas units."
+          },
           "MasterEditableSource": {
             "type": "object",
             "additionalProperties": false,
@@ -12006,11 +12036,9 @@
               "name": {
                 "type": "string"
               },
-              "width": {
-                "type": "number"
-              },
-              "height": {
-                "type": "number"
+              "size": {
+                "$ref": "#/definitions/SlideSize",
+                "description": "The slide size in canvas units, as the file's `size`."
               },
               "fonts": {
                 "type": "object",
@@ -12075,14 +12103,13 @@
               "fonts",
               "grid",
               "guides",
-              "height",
               "id",
               "name",
               "objects",
               "schemes",
+              "size",
               "step-duration",
-              "text-styles",
-              "width"
+              "text-styles"
             ],
             "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
           },
@@ -12231,7 +12258,7 @@
               "files"
             ],
             "additionalProperties": false,
-            "description": "The settings of a theme's documents as their editors change them: the master's fonts, colors, text styles, guides, grid, motion and layout order, a layout's name and scheme, which of its words and pictures are placeholders, and a theme picture's file per scheme. Each edit changes the document's authored values and is accepted only when the document it leaves reads back, so no edit writes a file the next read would refuse."
+            "description": "The settings of a theme's documents as their editors change them: the master's fonts, colors, text styles, guides, grid, step duration and layout order, a layout's name and scheme, which of its words and pictures are placeholders, and a theme picture's file per scheme. Each edit changes the document's authored values and is accepted only when the document it leaves reads back, so no edit writes a file the next read would refuse."
           },
           "MasterAuthoredScheme": {
             "type": "object",
@@ -12335,17 +12362,18 @@
               "name": {
                 "type": "string"
               },
-              "kind": {
+              "type": {
                 "type": "string",
                 "enum": [
                   "text",
-                  "media"
-                ]
+                  "image"
+                ],
+                "description": "The placeholder object's type, as the layout file spells it: words or a picture."
               }
             },
             "required": [
               "name",
-              "kind"
+              "type"
             ],
             "additionalProperties": false,
             "description": "One placeholder of a layout, which a slide fills by its id."
