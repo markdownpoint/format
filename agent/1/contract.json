@@ -1230,7 +1230,7 @@
     },
     "AgentEnterEffect": {
       "$ref": "#/definitions/EnterEffect",
-      "description": "The Animate tab's builds, as core names them."
+      "description": "The Animate tab's effects, as core names them."
     },
     "AgentExitEffect": {
       "$ref": "#/definitions/ExitEffect"
@@ -20015,7 +20015,7 @@
         },
         "delay": {
           "type": "number",
-          "description": "For one that starts by itself, the seconds it waits after the slide's last build ends, as Keynote's Delay; none when omitted."
+          "description": "For one that starts by itself, the seconds it waits after the slide's last step ends, as Keynote's Delay; none when omitted."
         },
         "direction": {
           "$ref": "#/definitions/PresentationTransitionDirection",
@@ -20038,7 +20038,7 @@
         },
         "start": {
           "$ref": "#/definitions/PresentationTransitionStart",
-          "description": "When it starts: `automatically` after the slide's last build, as Keynote's Start Transition Automatically; on a click when omitted."
+          "description": "When it starts: `automatically` after the slide's last step, as Keynote's Start Transition Automatically; on a click when omitted."
         }
       },
       "required": [
@@ -20511,7 +20511,7 @@
         "delivery": {
           "type": "string",
           "const": "by-paragraph",
-          "description": "By paragraph: each paragraph arrives on a step of its own, the one its cue stands in, taking `duration` seconds, as Keynote's Delivery and PowerPoint's By Paragraph deliver a build. Absent, every piece arrives as `progress` says."
+          "description": "By paragraph: each paragraph arrives on a step of its own, the one its cue stands in, taking `duration` seconds, as Keynote's Delivery and PowerPoint's By Paragraph deliver an effect. Absent, every piece arrives as `progress` says."
         },
         "duration": {
           "type": "number",

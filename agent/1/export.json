@@ -63,7 +63,7 @@
         },
         "secondsPerStep": {
           "type": "number",
-          "description": "Hold each completed build for this many seconds.",
+          "description": "Hold each completed step for this many seconds.",
           "minimum": 0,
           "maximum": 3600
         },

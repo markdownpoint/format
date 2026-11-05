@@ -1596,7 +1596,7 @@
     },
     "AgentEnterEffect": {
       "$ref": "#/definitions/EnterEffect",
-      "description": "The Animate tab's builds, as core names them."
+      "description": "The Animate tab's effects, as core names them."
     },
     "AgentExitEffect": {
       "$ref": "#/definitions/ExitEffect"

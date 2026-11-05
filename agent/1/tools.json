@@ -537,7 +537,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-document. Warnings with code text-overflow name each object whose words run past its frame on a slide as its builds leave it, where they still show (slides_render’s fits give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
+      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-document. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fits give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -1588,7 +1588,7 @@
               },
               "delay": {
                 "type": "number",
-                "description": "For one that starts by itself, the seconds it waits after the slide's last build ends, as Keynote's Delay; none when omitted."
+                "description": "For one that starts by itself, the seconds it waits after the slide's last step ends, as Keynote's Delay; none when omitted."
               },
               "direction": {
                 "$ref": "#/definitions/PresentationTransitionDirection",
@@ -1611,7 +1611,7 @@
               },
               "start": {
                 "$ref": "#/definitions/PresentationTransitionStart",
-                "description": "When it starts: `automatically` after the slide's last build, as Keynote's Start Transition Automatically; on a click when omitted."
+                "description": "When it starts: `automatically` after the slide's last step, as Keynote's Start Transition Automatically; on a click when omitted."
               }
             },
             "required": [
@@ -10155,7 +10155,7 @@
               },
               "secondsPerStep": {
                 "type": "number",
-                "description": "Hold each completed build for this many seconds.",
+                "description": "Hold each completed step for this many seconds.",
                 "minimum": 0,
                 "maximum": 3600
               },
