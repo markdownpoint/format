@@ -715,10 +715,10 @@
     "AgentThemeOperation": {
       "anyOf": [
         {
-          "$ref": "#/definitions/LayoutSettingMutation"
+          "$ref": "#/definitions/LayoutSettingOperation"
         },
         {
-          "$ref": "#/definitions/ThemeArtworkMutation"
+          "$ref": "#/definitions/ThemeArtworkOperation"
         },
         {
           "type": "object",
@@ -761,7 +761,7 @@
         {
           "type": "object",
           "properties": {
-            "mutation": {
+            "operation": {
               "$ref": "#/definitions/AgentThemeObjectOperation"
             },
             "type": {
@@ -769,7 +769,7 @@
             }
           },
           "required": [
-            "mutation",
+            "operation",
             "type"
           ],
           "additionalProperties": false
@@ -3162,7 +3162,7 @@
         }
       ]
     },
-    "LayoutSettingMutation": {
+    "LayoutSettingOperation": {
       "anyOf": [
         {
           "type": "object",
@@ -9659,7 +9659,7 @@
         "mono"
       ]
     },
-    "ThemeArtworkMutation": {
+    "ThemeArtworkOperation": {
       "type": "object",
       "properties": {
         "file": {

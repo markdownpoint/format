@@ -1885,7 +1885,7 @@
           "$ref": "#/definitions/AgentRevision"
         },
         "status": {
-          "$ref": "#/definitions/AgentMutationStatus",
+          "$ref": "#/definitions/AgentOperationStatus",
           "description": "noChange when the image already shows the variant."
         }
       },
@@ -3004,14 +3004,6 @@
       "additionalProperties": false,
       "description": "A model of the presentation for Meshy to rig, a humanoid facing +Z, `height` meters tall."
     },
-    "AgentMutationStatus": {
-      "type": "string",
-      "enum": [
-        "applied",
-        "noChange"
-      ],
-      "description": "A mutation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
-    },
     "AgentNoParams": {
       "type": "object",
       "additionalProperties": {
@@ -3122,6 +3114,14 @@
         }
       ],
       "description": "A transform as the file names an audio icon's position and a line's ends."
+    },
+    "AgentOperationStatus": {
+      "type": "string",
+      "enum": [
+        "applied",
+        "noChange"
+      ],
+      "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
     },
     "AgentOperationType": {
       "type": "string",
@@ -4328,10 +4328,10 @@
         {
           "anyOf": [
             {
-              "$ref": "#/definitions/PresentationCommentMutation"
+              "$ref": "#/definitions/PresentationCommentOperation"
             },
             {
-              "$ref": "#/definitions/PresentationNavigationMutation"
+              "$ref": "#/definitions/PresentationNavigationOperation"
             },
             {
               "type": "object",
@@ -10335,7 +10335,7 @@
           "$ref": "#/definitions/AgentRevision"
         },
         "status": {
-          "$ref": "#/definitions/AgentMutationStatus",
+          "$ref": "#/definitions/AgentOperationStatus",
           "description": "noChange when the slides already have the size."
         },
         "width": {
@@ -11012,7 +11012,7 @@
       "type": "object",
       "properties": {
         "status": {
-          "$ref": "#/definitions/AgentMutationStatus"
+          "$ref": "#/definitions/AgentOperationStatus"
         },
         "themeRevision": {
           "type": "string"
@@ -11335,7 +11335,7 @@
           "$ref": "#/definitions/AgentRevision"
         },
         "status": {
-          "$ref": "#/definitions/AgentMutationStatus"
+          "$ref": "#/definitions/AgentOperationStatus"
         },
         "themeRevision": {
           "type": "string"
@@ -11455,7 +11455,7 @@
           "$ref": "#/definitions/AgentRevision"
         },
         "status": {
-          "$ref": "#/definitions/AgentMutationStatus",
+          "$ref": "#/definitions/AgentOperationStatus",
           "description": "noChange when the presentation already uses the theme."
         },
         "theme": {
@@ -17969,7 +17969,7 @@
       ],
       "additionalProperties": false
     },
-    "PresentationCommentMutation": {
+    "PresentationCommentOperation": {
       "anyOf": [
         {
           "type": "object",
@@ -18717,7 +18717,7 @@
       ],
       "additionalProperties": false
     },
-    "PresentationNavigationMutation": {
+    "PresentationNavigationOperation": {
       "anyOf": [
         {
           "type": "object",

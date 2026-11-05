@@ -1843,10 +1843,10 @@
     "AgentStandaloneOperation": {
       "anyOf": [
         {
-          "$ref": "#/definitions/PresentationCommentMutation"
+          "$ref": "#/definitions/PresentationCommentOperation"
         },
         {
-          "$ref": "#/definitions/PresentationNavigationMutation"
+          "$ref": "#/definitions/PresentationNavigationOperation"
         },
         {
           "type": "object",
@@ -11823,7 +11823,7 @@
       ],
       "additionalProperties": false
     },
-    "PresentationCommentMutation": {
+    "PresentationCommentOperation": {
       "anyOf": [
         {
           "type": "object",
@@ -12249,7 +12249,7 @@
       ],
       "description": "An object to insert, in the file's words. A path is drawn either through `d` or through `points`."
     },
-    "PresentationNavigationMutation": {
+    "PresentationNavigationOperation": {
       "anyOf": [
         {
           "type": "object",
