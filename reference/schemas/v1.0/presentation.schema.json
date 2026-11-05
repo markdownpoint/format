@@ -7850,7 +7850,7 @@
                     "blend-in": {
                       "type": "number",
                       "minimum": 0,
-                      "description": "How long the clip takes to blend in fully over the model's current motion. Left out, it starts at full strength."
+                      "description": "How long the clip takes to blend in fully over the model's current motion. Left out, it is fully blended in from its start."
                     },
                     "clip-scale": {
                       "type": "number",
