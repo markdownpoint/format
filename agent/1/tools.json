@@ -13153,7 +13153,7 @@
               "file": {
                 "type": "string"
               },
-              "createdAt": {
+              "created": {
                 "type": "string"
               },
               "current": {
@@ -13166,7 +13166,7 @@
               "current"
             ],
             "additionalProperties": false,
-            "description": "A generated image kept for the target, as the variant strip shows them; `current` is the one in use. `createdAt` is when it was made, left out where its record doesn't say."
+            "description": "A generated image kept for the target, as the variant strip shows them; `current` is the one in use. `created` is when it was made, left out where its record doesn't say."
           }
         }
       }
