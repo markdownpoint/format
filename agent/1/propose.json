@@ -13813,7 +13813,7 @@
             "loop": {
               "const": "repeat"
             },
-            "media-trim": {
+            "clip-trim": {
               "$ref": "#/definitions/MediaTrim"
             },
             "stride": {
@@ -13905,7 +13905,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "What a cue starts, as the file spells it: its `type`, and a clip's `media-trim`, `blend-in` and `clip-scale`."
+      "description": "What a cue starts, as the file spells it: its `type`, and a clip's `clip-trim`, `blend-in` and `clip-scale`."
     },
     "PresentationStepInputSource": {
       "type": "object",

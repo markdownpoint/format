@@ -7842,7 +7842,7 @@
                       "const": "repeat",
                       "description": "`repeat` plays the Action again from its start each time it ends. Left out, it plays once."
                     },
-                    "media-trim": {
+                    "clip-trim": {
                       "allOf": [
                         {
                           "$ref": "#/definitions/media-trim"

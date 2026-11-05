@@ -7252,11 +7252,11 @@
                   "clip-scale": {
                     "type": "number"
                   },
+                  "clip-trim": {
+                    "$ref": "#/definitions/MediaTrim"
+                  },
                   "loop": {
                     "const": "repeat"
-                  },
-                  "media-trim": {
-                    "$ref": "#/definitions/MediaTrim"
                   },
                   "object": {
                     "type": "string"
@@ -7343,7 +7343,7 @@
                 "additionalProperties": false
               }
             ],
-            "description": "What a cue starts, as the file spells it: its `type`, and a clip's `media-trim`, `blend-in` and `clip-scale`."
+            "description": "What a cue starts, as the file spells it: its `type`, and a clip's `clip-trim`, `blend-in` and `clip-scale`."
           },
           "PresentationStepSource": {
             "type": "object",
