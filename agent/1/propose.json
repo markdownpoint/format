@@ -487,9 +487,6 @@
             "at": {
               "$ref": "#/definitions/AgentAnimationMoment"
             },
-            "hidden": {
-              "type": "boolean"
-            },
             "locked": {
               "type": "boolean"
             },
@@ -504,6 +501,9 @@
             },
             "type": {
               "const": "setObjectFlags"
+            },
+            "visible": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -2938,9 +2938,6 @@
         "file": {
           "$ref": "#/definitions/Prop_audio.file"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "icon-position": {
           "$ref": "#/definitions/Prop_icon-position"
         },
@@ -2961,6 +2958,9 @@
         },
         "type": {
           "const": "audio"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "volume": {
           "$ref": "#/definitions/Prop_opacity"
@@ -3008,9 +3008,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
@@ -3072,6 +3069,9 @@
         "value-labels": {
           "$ref": "#/definitions/Prop_locked"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "z": {
           "$ref": "#/definitions/Prop_z"
         }
@@ -3099,9 +3099,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
@@ -3136,6 +3133,9 @@
         "type": {
           "const": "composition"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "z": {
           "$ref": "#/definitions/Prop_z"
         }
@@ -3150,9 +3150,6 @@
     "InsertFloor": {
       "type": "object",
       "properties": {
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "locked": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -3170,6 +3167,9 @@
         },
         "type": {
           "const": "floor"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         }
       },
       "required": [
@@ -3196,9 +3196,6 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
-        },
-        "hidden": {
           "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
@@ -3230,6 +3227,9 @@
         },
         "type": {
           "const": "group"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -3273,9 +3273,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "icon": {
           "$ref": "#/definitions/Prop_icon"
         },
@@ -3311,6 +3308,9 @@
         },
         "type": {
           "const": "icon"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -3398,9 +3398,6 @@
         "grayscale": {
           "$ref": "#/definitions/Prop_opacity"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -3467,6 +3464,9 @@
         "type": {
           "const": "image"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -3494,9 +3494,6 @@
         },
         "falloff-angle": {
           "$ref": "#/definitions/Prop_falloff-angle"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "intensity": {
           "$ref": "#/definitions/Prop_intensity"
@@ -3548,6 +3545,9 @@
         },
         "type": {
           "const": "light"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         }
       },
       "required": [
@@ -3877,9 +3877,6 @@
         "end": {
           "$ref": "#/definitions/LineEnd"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -3916,6 +3913,9 @@
         "type": {
           "const": "line"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "z": {
           "$ref": "#/definitions/Prop_z"
         }
@@ -3944,9 +3944,6 @@
         },
         "file": {
           "$ref": "#/definitions/Prop_model.file"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "locked": {
           "$ref": "#/definitions/Prop_locked"
@@ -3980,6 +3977,9 @@
         },
         "type": {
           "const": "model"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         }
       },
       "required": [
@@ -4115,9 +4115,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -4161,6 +4158,9 @@
           "const": "path"
         },
         "use-as-mask": {
+          "$ref": "#/definitions/Prop_locked"
+        },
+        "visible": {
           "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
@@ -4208,9 +4208,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
@@ -4263,6 +4260,9 @@
         "use-as-mask": {
           "$ref": "#/definitions/Prop_locked"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -4281,9 +4281,6 @@
       "properties": {
         "height": {
           "$ref": "#/definitions/Prop_width"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "locked": {
           "$ref": "#/definitions/Prop_locked"
@@ -4320,6 +4317,9 @@
         },
         "type": {
           "const": "shadow-catcher"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "width": {
           "$ref": "#/definitions/Prop_width"
@@ -4489,9 +4489,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -4594,6 +4591,9 @@
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -4677,9 +4677,6 @@
         "header-row": {
           "$ref": "#/definitions/Prop_locked"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -4730,6 +4727,9 @@
         },
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -4803,9 +4803,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationDrawnTextFrame"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
@@ -4903,6 +4900,9 @@
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -4967,9 +4967,6 @@
         "grayscale": {
           "$ref": "#/definitions/Prop_opacity"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -5023,6 +5020,9 @@
         },
         "type": {
           "const": "video"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "volume": {
           "$ref": "#/definitions/Prop_opacity"
@@ -8671,9 +8671,6 @@
         "file": {
           "$ref": "#/definitions/Prop_audio.file"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "icon-position": {
           "$ref": "#/definitions/Prop_icon-position"
         },
@@ -8697,6 +8694,9 @@
         },
         "type": {
           "const": "audio"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "volume": {
           "$ref": "#/definitions/Prop_opacity"
@@ -8750,9 +8750,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
@@ -8814,6 +8811,9 @@
         "value-labels": {
           "$ref": "#/definitions/Prop_locked"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "z": {
           "$ref": "#/definitions/Prop_z"
         }
@@ -8848,9 +8848,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -8884,6 +8881,9 @@
         "type": {
           "const": "composition"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "z": {
           "$ref": "#/definitions/Prop_z"
         }
@@ -8903,9 +8903,6 @@
           "additionalProperties": {
             "type": "number"
           }
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "locked": {
           "$ref": "#/definitions/Prop_locked"
@@ -8927,6 +8924,9 @@
         },
         "type": {
           "const": "floor"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         }
       },
       "required": [
@@ -8961,9 +8961,6 @@
         "constrain-proportions": {
           "$ref": "#/definitions/Prop_locked"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -8993,6 +8990,9 @@
         },
         "type": {
           "const": "group"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -9042,9 +9042,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "icon": {
           "$ref": "#/definitions/Prop_icon"
         },
@@ -9080,6 +9077,9 @@
         },
         "type": {
           "const": "icon"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -9173,9 +9173,6 @@
         "grayscale": {
           "$ref": "#/definitions/Prop_opacity"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -9242,6 +9239,9 @@
         "type": {
           "const": "image"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -9275,9 +9275,6 @@
         },
         "falloff-angle": {
           "$ref": "#/definitions/Prop_falloff-angle"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "intensity": {
           "$ref": "#/definitions/Prop_intensity"
@@ -9329,6 +9326,9 @@
         },
         "type": {
           "const": "light"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         }
       },
       "required": [
@@ -9686,9 +9686,6 @@
         "end": {
           "$ref": "#/definitions/PresentationPastedLineEnd"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -9725,6 +9722,9 @@
         "type": {
           "const": "line"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "z": {
           "$ref": "#/definitions/Prop_z"
         }
@@ -9760,9 +9760,6 @@
         "file": {
           "$ref": "#/definitions/Prop_model.file"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "locked": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -9795,6 +9792,9 @@
         },
         "type": {
           "const": "model"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         }
       },
       "required": [
@@ -9958,9 +9958,6 @@
         "geometry": {
           "type": "string"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -10006,6 +10003,9 @@
         "use-as-mask": {
           "$ref": "#/definitions/Prop_locked"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -10031,9 +10031,6 @@
         },
         "height": {
           "$ref": "#/definitions/Prop_width"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "locked": {
           "$ref": "#/definitions/Prop_locked"
@@ -10070,6 +10067,9 @@
         },
         "type": {
           "const": "shadow-catcher"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "width": {
           "$ref": "#/definitions/Prop_width"
@@ -10267,9 +10267,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -10372,6 +10369,9 @@
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -10461,9 +10461,6 @@
         "header-row": {
           "$ref": "#/definitions/Prop_locked"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -10514,6 +10511,9 @@
         },
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -10593,9 +10593,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationDrawnTextFrame"
-        },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
@@ -10693,6 +10690,9 @@
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
         },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
+        },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
         },
@@ -10763,9 +10763,6 @@
         "grayscale": {
           "$ref": "#/definitions/Prop_opacity"
         },
-        "hidden": {
-          "$ref": "#/definitions/Prop_locked"
-        },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Prop_locked"
         },
@@ -10819,6 +10816,9 @@
         },
         "type": {
           "const": "video"
+        },
+        "visible": {
+          "$ref": "#/definitions/Prop_locked"
         },
         "volume": {
           "$ref": "#/definitions/Prop_opacity"
@@ -11217,7 +11217,7 @@
             "translation.y",
             "rotation",
             "scale",
-            "shown",
+            "visible",
             "position.x",
             "position.y",
             "position.z",
@@ -12206,9 +12206,6 @@
             "frame": {
               "$ref": "#/definitions/PresentationFrame"
             },
-            "hidden": {
-              "$ref": "#/definitions/Prop_locked"
-            },
             "ignore-auto-layout": {
               "$ref": "#/definitions/Prop_locked"
             },
@@ -12238,6 +12235,9 @@
             },
             "url": {
               "$ref": "#/definitions/Prop_url"
+            },
+            "visible": {
+              "$ref": "#/definitions/Prop_locked"
             }
           },
           "required": [
@@ -12465,9 +12465,6 @@
             "frame": {
               "$ref": "#/definitions/PresentationFrame"
             },
-            "hidden": {
-              "$ref": "#/definitions/Prop_locked"
-            },
             "ignore-auto-layout": {
               "$ref": "#/definitions/Prop_locked"
             },
@@ -12503,6 +12500,9 @@
             },
             "url": {
               "$ref": "#/definitions/Prop_url"
+            },
+            "visible": {
+              "$ref": "#/definitions/Prop_locked"
             }
           },
           "required": [

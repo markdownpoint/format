@@ -2171,7 +2171,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -2600,7 +2600,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -2800,7 +2800,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "file": {
@@ -3064,7 +3064,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "file": {
@@ -3260,7 +3260,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -3597,7 +3597,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -3736,7 +3736,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -3849,7 +3849,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "start": {
@@ -4087,7 +4087,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -4189,7 +4189,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "link": {
@@ -4362,7 +4362,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "opacity": {
@@ -4520,7 +4520,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "start-on-click": {
@@ -4590,7 +4590,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "start-on-click": {
@@ -4723,7 +4723,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "opacity": {
@@ -4951,7 +4951,7 @@
                       "locked": {
                         "type": "boolean"
                       },
-                      "hidden": {
+                      "visible": {
                         "type": "boolean"
                       },
                       "color": {
@@ -5088,7 +5088,7 @@
                       "locked": {
                         "type": "boolean"
                       },
-                      "hidden": {
+                      "visible": {
                         "type": "boolean"
                       },
                       "color": {
@@ -5244,7 +5244,7 @@
                       "locked": {
                         "type": "boolean"
                       },
-                      "hidden": {
+                      "visible": {
                         "type": "boolean"
                       },
                       "color": {
@@ -5385,7 +5385,7 @@
                       "locked": {
                         "type": "boolean"
                       },
-                      "hidden": {
+                      "visible": {
                         "type": "boolean"
                       },
                       "color": {
@@ -5514,7 +5514,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "opacity": {
@@ -5600,7 +5600,7 @@
                   "locked": {
                     "type": "boolean"
                   },
-                  "hidden": {
+                  "visible": {
                     "type": "boolean"
                   },
                   "opacity": {
@@ -6947,11 +6947,11 @@
                   "scale.x",
                   "scale.y",
                   "scale.z",
-                  "shown",
                   "start.x",
                   "start.y",
                   "translation.x",
-                  "translation.y"
+                  "translation.y",
+                  "visible"
                 ],
                 "description": "A geometry parameter as the file names it: a line's ends are its start and end."
               }
@@ -9180,11 +9180,11 @@
                   "scale.x",
                   "scale.y",
                   "scale.z",
-                  "shown",
                   "start.x",
                   "start.y",
                   "translation.x",
-                  "translation.y"
+                  "translation.y",
+                  "visible"
                 ],
                 "description": "A geometry parameter as the file names it: a line's ends are its start and end."
               }

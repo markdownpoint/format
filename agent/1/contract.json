@@ -4505,9 +4505,6 @@
                 "at": {
                   "$ref": "#/definitions/AgentAnimationMoment"
                 },
-                "hidden": {
-                  "type": "boolean"
-                },
                 "locked": {
                   "type": "boolean"
                 },
@@ -4523,6 +4520,9 @@
                 "type": {
                   "type": "string",
                   "const": "setObjectFlags"
+                },
+                "visible": {
+                  "type": "boolean"
                 }
               },
               "required": [
@@ -6004,7 +6004,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -6433,7 +6433,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -6633,7 +6633,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "file": {
@@ -6897,7 +6897,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "file": {
@@ -7093,7 +7093,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -7430,7 +7430,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -7569,7 +7569,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -7682,7 +7682,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "start": {
@@ -7920,7 +7920,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -8022,7 +8022,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "link": {
@@ -8195,7 +8195,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "opacity": {
@@ -8353,7 +8353,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "start-on-click": {
@@ -8423,7 +8423,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "start-on-click": {
@@ -8556,7 +8556,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "opacity": {
@@ -8784,7 +8784,7 @@
                 "locked": {
                   "type": "boolean"
                 },
-                "hidden": {
+                "visible": {
                   "type": "boolean"
                 },
                 "color": {
@@ -8921,7 +8921,7 @@
                 "locked": {
                   "type": "boolean"
                 },
-                "hidden": {
+                "visible": {
                   "type": "boolean"
                 },
                 "color": {
@@ -9077,7 +9077,7 @@
                 "locked": {
                   "type": "boolean"
                 },
-                "hidden": {
+                "visible": {
                   "type": "boolean"
                 },
                 "color": {
@@ -9218,7 +9218,7 @@
                 "locked": {
                   "type": "boolean"
                 },
-                "hidden": {
+                "visible": {
                   "type": "boolean"
                 },
                 "color": {
@@ -9347,7 +9347,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "opacity": {
@@ -9433,7 +9433,7 @@
             "locked": {
               "type": "boolean"
             },
-            "hidden": {
+            "visible": {
               "type": "boolean"
             },
             "opacity": {
@@ -12300,9 +12300,6 @@
         "file": {
           "type": "string"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "icon-position": {
           "$ref": "#/definitions/PresentationPoint"
         },
@@ -12328,6 +12325,9 @@
         "type": {
           "type": "string",
           "const": "audio"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "volume": {
           "type": "number"
@@ -12404,9 +12404,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -12468,6 +12465,9 @@
         "value-labels": {
           "type": "boolean"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "not": {}
         },
@@ -12503,9 +12503,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -12540,6 +12537,9 @@
           "type": "string",
           "const": "composition"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "not": {}
         },
@@ -12560,9 +12560,6 @@
       "properties": {
         "bind": {
           "$ref": "#/definitions/CompositionBindings"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -12588,6 +12585,9 @@
         "type": {
           "type": "string",
           "const": "floor"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "z": {
           "not": {}
@@ -12620,9 +12620,6 @@
         "constrain-proportions": {
           "type": "boolean"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -12653,6 +12650,9 @@
         "type": {
           "type": "string",
           "const": "group"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
@@ -12696,9 +12696,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "icon": {
           "type": "string"
@@ -12747,6 +12744,9 @@
         "type": {
           "type": "string",
           "const": "icon"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
@@ -12818,9 +12818,6 @@
         },
         "grayscale": {
           "type": "number"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -12894,6 +12891,9 @@
           "type": "string",
           "const": "image"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -12925,9 +12925,6 @@
         },
         "falloff-angle": {
           "type": "number"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -12990,6 +12987,9 @@
           "type": "string",
           "const": "light"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "z": {
           "not": {}
         }
@@ -13028,9 +13028,6 @@
         },
         "end": {
           "$ref": "#/definitions/LineEnd"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -13074,6 +13071,9 @@
           "type": "string",
           "const": "line"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "not": {}
         },
@@ -13112,9 +13112,6 @@
         },
         "file": {
           "type": "string"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -13158,6 +13155,9 @@
         "type": {
           "type": "string",
           "const": "model"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "z": {
           "not": {}
@@ -13203,9 +13203,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -13266,6 +13263,9 @@
         "use-as-mask": {
           "type": "boolean"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -13312,9 +13312,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -13381,6 +13378,9 @@
         "use-as-mask": {
           "type": "boolean"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -13403,9 +13403,6 @@
         },
         "height": {
           "type": "number"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -13452,6 +13449,9 @@
         "type": {
           "type": "string",
           "const": "shadow-catcher"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "width": {
           "type": "number"
@@ -13549,9 +13549,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -13678,6 +13675,9 @@
         "vertical-align": {
           "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -13756,9 +13756,6 @@
         "header-row": {
           "type": "boolean"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -13818,6 +13815,9 @@
         },
         "vertical-align": {
           "$ref": "#/definitions/PresentationTextVerticalAlign"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
@@ -13910,9 +13910,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationDrawnTextFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -14033,6 +14030,9 @@
         "vertical-align": {
           "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -14098,9 +14098,6 @@
         "grayscale": {
           "type": "number"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -14161,6 +14158,9 @@
         "type": {
           "type": "string",
           "const": "video"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "volume": {
           "type": "number"
@@ -15029,9 +15029,6 @@
         "file": {
           "type": "string"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "icon-position": {
           "$ref": "#/definitions/PresentationPoint"
         },
@@ -15066,6 +15063,9 @@
         "type": {
           "type": "string",
           "const": "audio"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "volume": {
           "type": "number"
@@ -15148,9 +15148,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -15212,6 +15209,9 @@
         "value-labels": {
           "type": "boolean"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "not": {}
         },
@@ -15253,9 +15253,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -15290,6 +15287,9 @@
           "type": "string",
           "const": "composition"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "not": {}
         },
@@ -15316,9 +15316,6 @@
         },
         "bind": {
           "$ref": "#/definitions/CompositionBindings"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -15347,6 +15344,9 @@
         "type": {
           "type": "string",
           "const": "floor"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "z": {
           "not": {}
@@ -15385,9 +15385,6 @@
         "constrain-proportions": {
           "type": "boolean"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -15421,6 +15418,9 @@
         "type": {
           "type": "string",
           "const": "group"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
@@ -15471,9 +15471,6 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "icon": {
           "type": "string"
         },
@@ -15521,6 +15518,9 @@
         "type": {
           "type": "string",
           "const": "icon"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
@@ -15599,9 +15599,6 @@
         "grayscale": {
           "type": "number"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -15674,6 +15671,9 @@
           "type": "string",
           "const": "image"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -15711,9 +15711,6 @@
         },
         "falloff-angle": {
           "type": "number"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -15776,6 +15773,9 @@
           "type": "string",
           "const": "light"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "z": {
           "not": {}
         }
@@ -15821,9 +15821,6 @@
         "end": {
           "$ref": "#/definitions/PresentationPastedLineEnd"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -15865,6 +15862,9 @@
         "type": {
           "type": "string",
           "const": "line"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "not": {}
@@ -15911,9 +15911,6 @@
         "file": {
           "type": "string"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -15956,6 +15953,9 @@
         "type": {
           "type": "string",
           "const": "model"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "z": {
           "not": {}
@@ -16007,9 +16007,6 @@
         },
         "geometry": {
           "type": "string"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -16070,6 +16067,9 @@
         "use-as-mask": {
           "type": "boolean"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -16099,9 +16099,6 @@
         },
         "height": {
           "type": "number"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -16148,6 +16145,9 @@
         "type": {
           "type": "string",
           "const": "shadow-catcher"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "width": {
           "type": "number"
@@ -16251,9 +16251,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -16380,6 +16377,9 @@
         "vertical-align": {
           "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -16464,9 +16464,6 @@
         "header-row": {
           "type": "boolean"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -16526,6 +16523,9 @@
         },
         "vertical-align": {
           "$ref": "#/definitions/PresentationTextVerticalAlign"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
@@ -16624,9 +16624,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationDrawnTextFrame"
-        },
-        "hidden": {
-          "type": "boolean"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -16747,6 +16744,9 @@
         "vertical-align": {
           "$ref": "#/definitions/PresentationTextVerticalAlign"
         },
+        "visible": {
+          "type": "boolean"
+        },
         "wipe": {
           "$ref": "#/definitions/PresentationWipe"
         },
@@ -16818,9 +16818,6 @@
         "grayscale": {
           "type": "number"
         },
-        "hidden": {
-          "type": "boolean"
-        },
         "ignore-auto-layout": {
           "type": "boolean"
         },
@@ -16881,6 +16878,9 @@
         "type": {
           "type": "string",
           "const": "video"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "volume": {
           "type": "number"
@@ -17646,11 +17646,11 @@
             "scale.x",
             "scale.y",
             "scale.z",
-            "shown",
             "start.x",
             "start.y",
             "translation.x",
-            "translation.y"
+            "translation.y",
+            "visible"
           ],
           "description": "A geometry parameter as the file names it: a line's ends are its start and end."
         }
@@ -18604,9 +18604,6 @@
             "frame": {
               "$ref": "#/definitions/PresentationFrame"
             },
-            "hidden": {
-              "type": "boolean"
-            },
             "ignore-auto-layout": {
               "type": "boolean"
             },
@@ -18642,6 +18639,9 @@
             },
             "url": {
               "type": "string"
+            },
+            "visible": {
+              "type": "boolean"
             },
             "wipe": {
               "not": {}
@@ -18993,9 +18993,6 @@
             "frame": {
               "$ref": "#/definitions/PresentationFrame"
             },
-            "hidden": {
-              "type": "boolean"
-            },
             "ignore-auto-layout": {
               "type": "boolean"
             },
@@ -19043,6 +19040,9 @@
             },
             "url": {
               "type": "string"
+            },
+            "visible": {
+              "type": "boolean"
             },
             "wipe": {
               "not": {}
