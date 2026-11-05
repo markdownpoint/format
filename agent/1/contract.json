@@ -3553,8 +3553,8 @@
             "target.y",
             "tail.x",
             "tail.y",
-            "repeater.scale",
             "repeater.rotation",
+            "repeater.scale",
             "repeater.position.x",
             "repeater.position.y",
             "enter.progress",
@@ -17060,7 +17060,7 @@
         "frames": {
           "type": "number"
         },
-        "intervalMs": {
+        "intervalMilliseconds": {
           "anyOf": [
             {
               "type": "object",
@@ -17087,7 +17087,7 @@
             }
           ]
         },
-        "paintMs": {
+        "paintMilliseconds": {
           "anyOf": [
             {
               "type": "object",
@@ -17117,8 +17117,8 @@
       },
       "required": [
         "frames",
-        "intervalMs",
-        "paintMs",
+        "intervalMilliseconds",
+        "paintMilliseconds",
         "dropped"
       ],
       "additionalProperties": false,
