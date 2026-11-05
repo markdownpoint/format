@@ -28,7 +28,9 @@ grouped by what they act on, in plural collections such as `presentations`,
 names the contract gives are camelCase (`slides.get`, `insertSlide`, `noChange`,
 `slideId`), and MCP's tools are their methods in snake case (`slides_get`). Its
 codes are kebab-case (`stale-revision`, `text-overflow`), as the file's keys
-and values are.
+and values are. Order means nothing in the contract's schemas: most fields,
+branches and values are listed alphabetically, the same on every build, so
+`type` is seldom an operation's first field.
 
 Requests reach the focused presentation, or the only open one when no window
 is focused. With several presentations open and none focused, pass
