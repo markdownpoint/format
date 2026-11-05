@@ -14615,7 +14615,7 @@
               "additionalProperties": false
             }
           ],
-          "description": "Complete semantic value, or null to omit the property; null scheme returns to the layout's."
+          "description": "A slide property's whole value; null takes it away, and a null scheme returns to the layout's."
         }
       ],
       "description": "One of a slide's own properties and its value, as the file keys and spells it."
