@@ -11112,7 +11112,7 @@
         "idempotentHint": true,
         "openWorldHint": true
       },
-      "description": "List the actions of Meshy’s library that a model Meshy rigged can play, by the id models_animate takes: walks, runs, idles, gestures and more. filter keeps those whose name or category holds every word. A motion whose name ends in inplace plays where the model stands, as a slide’s keyframes move it; each is named as its Action will be. Free; uses the Meshy key in Settings > AI.",
+      "description": "List the actions of Meshy’s library that a model Meshy rigged can play, by the id models_animate takes: walks, runs, idles, gestures and more. filter keeps those whose name or category holds every word. An action whose name ends in inplace plays where the model stands, as a slide’s keyframes move it; each is named as its Action will be. Free; uses the Meshy key in Settings > AI.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14484,7 +14484,7 @@
           },
           "revision": {
             "type": "string",
-            "description": "From presentations.get or slides.get; stale when a slide it changes has changed, or anything, for a deck-wide change."
+            "description": "From presentations.get or slides.get; stale when a slide it changes has changed, or anything, for a presentation-wide change."
           },
           "root": {
             "type": "string",
@@ -15047,7 +15047,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "List the presentation’s proposals in the order they were made, as { proposals }: every held proposal (pending or stale) and the most recent accepted or rejected ones, each with its state, validation and summaries. A pending proposal turns stale when a slide it targets changes, or the presentation for document-wide operations; accept then refuses it, so propose again from a fresh revision.",
+      "description": "List the presentation’s proposals in the order they were made, as { proposals }: every held proposal (pending or stale) and the most recent accepted or rejected ones, each with its state, validation and summaries. A pending proposal turns stale when a slide it targets changes, or, for a presentation-wide operation, when the presentation changes; accept then refuses it, so propose again from a fresh revision.",
       "inputSchema": {
         "type": "object",
         "properties": {

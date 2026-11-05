@@ -29,7 +29,7 @@
     },
     "revision": {
       "$ref": "#/definitions/AgentRevision",
-      "description": "From presentations.get or slides.get; stale when a slide it changes has changed, or anything, for a deck-wide change."
+      "description": "From presentations.get or slides.get; stale when a slide it changes has changed, or anything, for a presentation-wide change."
     }
   },
   "required": [
