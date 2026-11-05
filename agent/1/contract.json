@@ -11435,7 +11435,7 @@
         "theme"
       ],
       "additionalProperties": false,
-      "description": "Change the presentation's theme, as the app's theme chooser does; slides keep their layouts by name."
+      "description": "Change the presentation's theme, as the app's theme chooser does; slides keep their layouts by key."
     },
     "AgentThemeUseResult": {
       "type": "object",

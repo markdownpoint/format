@@ -10147,15 +10147,9 @@
                 ],
                 "description": "Lines on the movie's shorter side: a landscape movie's height, a portrait movie's width; 2160 is 4K."
               },
-              "secondsPerSlide": {
+              "slideDelay": {
                 "type": "number",
                 "description": "Hold each slide for this many seconds.",
-                "minimum": 0,
-                "maximum": 3600
-              },
-              "secondsPerStep": {
-                "type": "number",
-                "description": "Hold each completed step for this many seconds.",
                 "minimum": 0,
                 "maximum": 3600
               },
@@ -10176,6 +10170,12 @@
                 "additionalProperties": false,
                 "description": "Slides by the numbers the author knows them by, skipped slides left out; every shown slide when omitted."
               },
+              "stepDelay": {
+                "type": "number",
+                "description": "Hold each completed step for this many seconds.",
+                "minimum": 0,
+                "maximum": 3600
+              },
               "transparent": {
                 "type": "boolean",
                 "description": "Leave slide backgrounds transparent; ProRes 4444 only."
@@ -10183,8 +10183,8 @@
             },
             "required": [
               "resolution",
-              "secondsPerSlide",
-              "secondsPerStep"
+              "slideDelay",
+              "stepDelay"
             ],
             "additionalProperties": false,
             "description": "Movie format only; omit to use the app’s default export settings."
@@ -11811,7 +11811,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Change the presentation’s theme, as the app’s Change theme does. Slides keep their layouts by name and their own content: a layout the theme lacks comes with them, copied into it. One Undo step takes the change back and removes what it copied in. A theme with another slide size needs rescale: fit keeps everything on the slide, fill covers it. Returns the new revision.",
+      "description": "Change the presentation’s theme, as the app’s Change theme does. Slides keep their layouts by key and their own content: a layout the theme lacks comes with them, copied into it. One Undo step takes the change back and removes what it copied in. A theme with another slide size needs rescale: fit keeps everything on the slide, fill covers it. Returns the new revision.",
       "inputSchema": {
         "type": "object",
         "properties": {
