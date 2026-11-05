@@ -9632,6 +9632,14 @@
                 "$ref": "#/definitions/AgentRestHold",
                 "description": "Why the slide's 3D holds still at the rest while something in it would move on, as the slide's warning says, whatever its 2D does."
               },
+              "motion": {
+                "type": "string",
+                "enum": [
+                  "loop",
+                  "still"
+                ],
+                "description": "`still` holds; `loop` repeats every `period` seconds."
+              },
               "period": {
                 "type": "number"
               },
@@ -9668,22 +9676,14 @@
               "slideAge": {
                 "type": "number",
                 "description": "Seconds since the slide began to appear, as it settles."
-              },
-              "tail": {
-                "type": "string",
-                "enum": [
-                  "loop",
-                  "still"
-                ],
-                "description": "`still` holds; `loop` repeats every `period` seconds."
               }
             },
             "required": [
               "after",
               "before",
+              "motion",
               "samples",
-              "slideAge",
-              "tail"
+              "slideAge"
             ],
             "additionalProperties": false,
             "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops: the period of the 3D's loop, or of the 2D's while the 3D stands still, held or at rest. Where both loop at lengths of their own, the period is the 3D's, the 2D measured on its own clock."
@@ -10902,11 +10902,12 @@
                 },
                 "description": "Nodes whose extras.markdownpoint say they cast no shadow."
               },
-              "colorSlots": {
+              "colorRoles": {
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "The color roles its materials name."
               },
               "extensions": {
                 "type": "array",
@@ -10951,7 +10952,7 @@
             "required": [
               "actions",
               "castsNoShadow",
-              "colorSlots",
+              "colorRoles",
               "extensions",
               "height",
               "hiddenAtRest",
@@ -11330,7 +11331,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in glTF meters and whether it stands on y = 0; each Action’s length, reach, lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale; nodes that cast no shadow; its color slots; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
+      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in glTF meters and whether it stands on y = 0; each Action’s length, reach, lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale; nodes that cast no shadow; the color roles its materials name; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11370,11 +11371,12 @@
             },
             "description": "Nodes whose extras.markdownpoint say they cast no shadow."
           },
-          "colorSlots": {
+          "colorRoles": {
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "The color roles its materials name."
           },
           "data": {
             "description": "Any JSON the build reads, such as sizes or colors. With for and no source: { depth?, bevel? } in ems. The model's file keeps them."
@@ -11439,7 +11441,7 @@
         "required": [
           "actions",
           "castsNoShadow",
-          "colorSlots",
+          "colorRoles",
           "extensions",
           "height",
           "hiddenAtRest",
