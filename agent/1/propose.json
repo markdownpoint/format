@@ -2255,7 +2255,7 @@
                   }
                 },
                 "type": {
-                  "const": "easeKeyframes"
+                  "const": "setKeyframeInterpolation"
                 }
               },
               "required": [

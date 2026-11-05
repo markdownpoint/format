@@ -10528,7 +10528,7 @@
                 },
                 "type": {
                   "type": "string",
-                  "const": "easeKeyframes"
+                  "const": "setKeyframeInterpolation"
                 }
               },
               "required": [
@@ -14831,7 +14831,7 @@
         "paint",
         "path"
       ],
-      "description": "What kind of value a channel holds, which says how it passes between keys, as three.js's ValueTypeName does: a `discrete` value, a flag, a word or a record, holds until the next key, as a discrete curve does in Unity; a `paint` passes as a color between two colors and as a fill between two gradients."
+      "description": "What kind of value a channel holds, which says how it passes between keyframes, as three.js's ValueTypeName does: a `discrete` value, a flag, a word or a record, holds until the next keyframe, as a discrete curve does in Unity; a `paint` passes as a color between two colors and as a fill between two gradients."
     },
     "ObjectFlip": {
       "type": "string",
