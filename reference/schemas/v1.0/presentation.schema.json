@@ -4164,7 +4164,7 @@
             "built-from": {
               "type": "string",
               "pattern": "^text-model-[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
-              "description": "text-model-<recipe>:sha256:<hex>"
+              "description": "text-model-<rule>:sha256:<hex>"
             }
           },
           "required": [
