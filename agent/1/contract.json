@@ -5303,6 +5303,9 @@
                 "id": {
                   "type": "string"
                 },
+                "key": {
+                  "type": "string"
+                },
                 "name": {
                   "type": "string"
                 },
@@ -5312,10 +5315,12 @@
               },
               "required": [
                 "id",
+                "key",
                 "name",
                 "size"
               ],
-              "additionalProperties": false
+              "additionalProperties": false,
+              "description": "The theme's key, its folder's name, and its master's id, a lowercase UUID."
             },
             "schemes": {
               "type": "array",
@@ -14230,7 +14235,6 @@
         "invalid-line-end",
         "invalid-link-target",
         "invalid-marker-id",
-        "invalid-master-id",
         "invalid-media",
         "invalid-motion",
         "invalid-name",
@@ -14441,8 +14445,9 @@
     "LayoutEditablePlaceholder": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
+        "id": {
+          "type": "string",
+          "description": "The placeholder object's id, which a slide fills it by."
         },
         "type": {
           "type": "string",
@@ -14454,7 +14459,7 @@
         }
       },
       "required": [
-        "name",
+        "id",
         "type"
       ],
       "additionalProperties": false,
@@ -14646,7 +14651,12 @@
           }
         },
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "The master's `id`, a lowercase UUID."
+        },
+        "key": {
+          "type": "string",
+          "description": "The theme's key, its folder's name."
         },
         "layout-order": {
           "type": "array",
@@ -14696,6 +14706,7 @@
         "grid",
         "guides",
         "id",
+        "key",
         "name",
         "objects",
         "schemes",
