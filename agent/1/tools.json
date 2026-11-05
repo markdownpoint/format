@@ -4976,7 +4976,7 @@
                       "intensity": {
                         "type": "number",
                         "minimum": 0,
-                        "description": "watts"
+                        "description": "ratio"
                       }
                     },
                     "required": [

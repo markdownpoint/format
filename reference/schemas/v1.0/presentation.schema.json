@@ -2332,6 +2332,11 @@
                         {
                           "type": "number",
                           "minimum": 0,
+                          "description": "ratio"
+                        },
+                        {
+                          "type": "number",
+                          "minimum": 0,
                           "maximum": 1e+22,
                           "description": "ratio"
                         }
@@ -5027,7 +5032,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "watts"
+              "description": "ratio"
             }
           },
           "required": [

@@ -1706,6 +1706,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "ratio"
+              }
             }
           }
         },
@@ -1742,6 +1749,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "watts"
+              }
             }
           }
         },
@@ -1793,6 +1807,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "watts"
+              }
             }
           }
         },
@@ -1829,6 +1850,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "watts"
+              }
             }
           }
         },
@@ -7619,6 +7647,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "ratio"
+              }
             }
           }
         },
@@ -7655,6 +7690,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "watts"
+              }
             }
           }
         },
@@ -7706,6 +7748,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "watts"
+              }
             }
           }
         },
@@ -7742,6 +7791,13 @@
                   ]
                 }
               ]
+            },
+            "properties": {
+              "intensity": {
+                "type": "number",
+                "minimum": 0,
+                "description": "watts"
+              }
             }
           }
         },
@@ -11604,9 +11660,18 @@
       ]
     },
     "Prop_intensity": {
-      "type": "number",
-      "minimum": 0,
-      "description": "watts"
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "description": "ratio"
+        },
+        {
+          "type": "number",
+          "minimum": 0,
+          "description": "watts"
+        }
+      ]
     },
     "Prop_cone-angle": {
       "type": "number",
