@@ -10195,7 +10195,7 @@
         "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
         "description": "one line with one space between words, none at the start or end, and no \"-->\""
       },
-      "description": "Property name to input name; `text` and `file` name the object's content."
+      "description": "Property name to control name; `text` and `file` name the object's content."
     },
     "Prop_enter": {
       "type": "object",

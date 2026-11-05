@@ -3444,7 +3444,7 @@
               "description": "Initial text and file values keyed by inherited object id."
             },
             "controls": {
-              "$ref": "#/definitions/CompositionInputs",
+              "$ref": "#/definitions/CompositionControls",
               "description": "A composition's controls; only with `role: composition`."
             },
             "layout": {
@@ -11686,9 +11686,9 @@
       "additionalProperties": {
         "type": "string"
       },
-      "description": "Property name to input name; `text` and `file` name the object's content."
+      "description": "Property name to control name; `text` and `file` name the object's content."
     },
-    "CompositionInput": {
+    "CompositionControl": {
       "type": "object",
       "properties": {
         "default": {
@@ -11699,17 +11699,17 @@
         },
         "min": {
           "type": "number",
-          "description": "Number inputs: the range a binding maps from; both or neither."
+          "description": "Number controls: the range a binding maps from; both or neither."
         },
         "options": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Choice inputs: the admitted values, the default among them."
+          "description": "Choice controls: the admitted values, the default among them."
         },
         "type": {
-          "$ref": "#/definitions/CompositionInputType"
+          "$ref": "#/definitions/CompositionControlType"
         }
       },
       "required": [
@@ -11718,7 +11718,7 @@
       ],
       "additionalProperties": false
     },
-    "CompositionInputType": {
+    "CompositionControlType": {
       "type": "string",
       "enum": [
         "boolean",
@@ -11728,6 +11728,12 @@
         "number",
         "text"
       ]
+    },
+    "CompositionControls": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/CompositionControl"
+      }
     },
     "CompositionInputValue": {
       "type": [
@@ -11740,12 +11746,6 @@
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/CompositionInputValue"
-      }
-    },
-    "CompositionInputs": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/CompositionInput"
       }
     },
     "ConstraintSource": {
@@ -14273,10 +14273,10 @@
         "missing-alt",
         "missing-constraint-target",
         "missing-content",
+        "missing-control-block",
         "missing-file",
         "missing-font",
         "missing-frontmatter",
-        "missing-input-block",
         "missing-key",
         "missing-light-intensity",
         "missing-light-type",
@@ -14323,9 +14323,9 @@
         "spelled-file",
         "table-track-count",
         "text-hidden",
-        "text-input-in-json",
         "text-overflow",
         "text-overflow-unchecked",
+        "text-value-in-json",
         "theme-composition",
         "theme-image-result",
         "theme-text-model",
@@ -14336,7 +14336,7 @@
         "unclosed-frontmatter",
         "unknown-animation-target",
         "unknown-composition",
-        "unknown-input",
+        "unknown-control",
         "unknown-key",
         "unknown-layout",
         "unknown-object",
@@ -20302,7 +20302,7 @@
                 "value": {
                   "anyOf": [
                     {
-                      "$ref": "#/definitions/CompositionInputs"
+                      "$ref": "#/definitions/CompositionControls"
                     },
                     {
                       "type": "null"
