@@ -19481,7 +19481,7 @@
         "z"
       ],
       "additionalProperties": false,
-      "description": "How a 3D object turns, in degrees about the 3D space's axes (x right, y up, z toward the viewer), in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, three.js's YXZ Euler. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer and a positive y brings its left side forward. With the rotation mode \"quaternion\" it is a quaternion instead, `w` and `x`, `y`, `z` in the same axes, which a key interpolates part by part and the turn reads normalized. A model's Blender quaternion (w, x, y, z), exported to glTF with +Y up, is (w, x, z, −y) here."
+      "description": "How a 3D object turns, in degrees about the 3D space's axes (x right, y up, z toward the viewer), in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, three.js's YXZ Euler. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer and a positive y brings its left side forward. With the rotation mode \"quaternion\" it is a quaternion instead, `w` and `x`, `y`, `z` in the same axes, read normalized, and its keyframes turn it whole, the shorter way round. A model's Blender quaternion (w, x, y, z), exported to glTF with +Y up, is (w, x, z, −y) here."
     },
     "PresentationRotationMode": {
       "type": "string",
@@ -20451,7 +20451,7 @@
             "y",
             "z"
           ],
-          "description": "The axis that scales as keyed; the other two follow."
+          "description": "The axis whose scale the keyframes set; the other two follow."
         },
         "id": {
           "type": "string"

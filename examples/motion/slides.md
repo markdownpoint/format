@@ -139,6 +139,6 @@ One composition at four moments==.==
 The last moment
 
 <!-- notes -->
-The sweep composition moves its dot along the track in 2 seconds. Each instance's `time-remap` holds it at one moment of that move. The fourth leaves `time-remap` out, so it shows the last moment. A step can key `time-remap` to play the composition at any speed.
+The sweep composition moves its dot along the track in 2 seconds. Each instance's `time-remap` holds it at one moment of that move. The fourth leaves `time-remap` out, so it shows the last moment. A step can animate `time-remap` to play the composition at any speed.
 
 <!-- composition: sweep -->
