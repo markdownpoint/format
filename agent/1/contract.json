@@ -19942,7 +19942,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "Where an arriving unit starts, as Motion's Sequence Text: absent values leave it where it rests; offsets and blur are in its font size."
+      "description": "Where an arriving piece starts, as Motion's Sequence Text: absent values leave it where it rests; offsets and blur are in its font size."
     },
     "PresentationTextReplacementTarget": {
       "type": "object",
@@ -20530,15 +20530,15 @@
             "length"
           ],
           "additionalProperties": false,
-          "description": "Opacity's own share of each unit's travel, on the travel's interpolation."
+          "description": "Opacity's own share of each piece's travel, on the travel's interpolation."
         },
         "from": {
           "$ref": "#/definitions/PresentationTextPose",
-          "description": "The pose each unit arrives from; a unit leaving by the same entrance returns to it."
+          "description": "The pose each piece arrives from; a piece leaving by the same entrance returns to it."
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "How each unit travels from its pose to where it rests, on its own; linear when absent."
+          "description": "How each piece travels from its pose to where it rests, on its own; linear when absent."
         },
         "order": {
           "type": "string",
@@ -20549,11 +20549,11 @@
             "forward",
             "random"
           ],
-          "description": "Which unit arrives first; absent, the first unit."
+          "description": "Which piece arrives first; absent, the first piece."
         },
         "pause": {
           "type": "number",
-          "description": "How long the entrance holds wherever the next unit to arrive lies in another paragraph, in units' time; absent, none."
+          "description": "How long the entrance holds wherever the next piece to arrive lies in another paragraph, in pieces' time; absent, none."
         },
         "progress": {
           "type": "number",
@@ -20566,11 +20566,11 @@
         "spaces": {
           "type": "boolean",
           "const": true,
-          "description": "By character: each space is a unit too, keeping its turn."
+          "description": "By character: each space is a piece too, keeping its turn."
         },
         "spread": {
           "type": "number",
-          "description": "Units in flight at once, at least 1."
+          "description": "Pieces in flight at once, at least 1."
         }
       },
       "required": [
@@ -20602,11 +20602,11 @@
             "length"
           ],
           "additionalProperties": false,
-          "description": "Opacity's own share of each unit's travel, on the travel's interpolation."
+          "description": "Opacity's own share of each piece's travel, on the travel's interpolation."
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "How each unit travels from its pose to where it rests, on its own; linear when absent."
+          "description": "How each piece travels from its pose to where it rests, on its own; linear when absent."
         },
         "order": {
           "type": "string",
@@ -20617,11 +20617,11 @@
             "forward",
             "random"
           ],
-          "description": "Which unit arrives first; absent, the first unit."
+          "description": "Which piece arrives first; absent, the first piece."
         },
         "pause": {
           "type": "number",
-          "description": "How long the entrance holds wherever the next unit to arrive lies in another paragraph, in units' time; absent, none."
+          "description": "How long the entrance holds wherever the next piece to arrive lies in another paragraph, in pieces' time; absent, none."
         },
         "progress": {
           "type": "number",
@@ -20634,15 +20634,15 @@
         "spaces": {
           "type": "boolean",
           "const": true,
-          "description": "By character: each space is a unit too, keeping its turn."
+          "description": "By character: each space is a piece too, keeping its turn."
         },
         "spread": {
           "type": "number",
-          "description": "Units in flight at once, at least 1."
+          "description": "Pieces in flight at once, at least 1."
         },
         "to": {
           "$ref": "#/definitions/PresentationTextPose",
-          "description": "The pose each unit exits to, as Motion's Sequence Text sequences To: absent values leave it where it rests."
+          "description": "The pose each piece exits to, as Motion's Sequence Text sequences To: absent values leave it where it rests."
         }
       },
       "required": [
