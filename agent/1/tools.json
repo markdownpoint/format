@@ -9472,7 +9472,7 @@
           },
           "AgentRestHold": {
             "$ref": "#/definitions/PresentationRestHold",
-            "description": "What moves on at a rest in a way no clip of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
+            "description": "What moves on at a rest in a way no video of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
           },
           "AgentRestTextSummary": {
             "type": "object",
@@ -9955,7 +9955,7 @@
                 "additionalProperties": false
               }
             ],
-            "description": "What moves on at a rest in a way no clip repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the clip may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
+            "description": "What moves on at a rest in a way no video repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the video may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
           }
         }
       }
