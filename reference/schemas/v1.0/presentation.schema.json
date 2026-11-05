@@ -963,7 +963,7 @@
                                       "$ref": "#/definitions/opaque-color"
                                     }
                                   ],
-                                  "description": "Its color: a color role or a hex color."
+                                  "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
                                 },
                                 "opacity": {
                                   "type": "number",
@@ -3390,7 +3390,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role or a hex color."
+              "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
             },
             "opacity": {
               "type": "number",
@@ -6582,7 +6582,7 @@
                       "$ref": "#/definitions/opaque-color"
                     }
                   ],
-                  "description": "Its color: a color role or a hex color."
+                  "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
                 },
                 "opacity": {
                   "type": "number",
