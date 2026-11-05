@@ -194,7 +194,7 @@
                 "$ref": "#/definitions/background"
               }
             ],
-            "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series."
+            "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
           },
           "stroke": {
             "allOf": [
@@ -4855,7 +4855,7 @@
               "$ref": "#/definitions/background"
             }
           ],
-          "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series."
+          "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
         },
         "stroke": {
           "allOf": [
