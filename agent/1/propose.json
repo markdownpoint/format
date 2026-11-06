@@ -87,16 +87,16 @@
               "const": true,
               "description": "Makes the slide a composition, a reusable scene other slides place; `size`, `controls` and `name` belong to it alone."
             },
-            "content": {
+            "controls": {
+              "$ref": "#/definitions/CompositionControls",
+              "description": "A composition's controls; only with `composition: true`."
+            },
+            "file": {
               "type": "object",
               "additionalProperties": {
                 "type": "string"
               },
-              "description": "Initial text and file values keyed by inherited object id."
-            },
-            "controls": {
-              "$ref": "#/definitions/CompositionControls",
-              "description": "A composition's controls; only with `composition: true`."
+              "description": "The files of the pictures its layout gives it, by object id: an image or a video in the media or generated folder."
             },
             "layout": {
               "type": "string"
@@ -127,6 +127,13 @@
             "slideId": {
               "type": "string",
               "description": "Minted when omitted; the batch may place slides against it, and later proposals change its objects."
+            },
+            "text": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "The words of the texts, tables and shapes its layout gives it, by object id, as Markdown."
             },
             "type": {
               "const": "insertSlide"
@@ -212,26 +219,14 @@
                 "string"
               ]
             },
-            "effect": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/AgentEmphasisEffect"
-                },
-                {
-                  "$ref": "#/definitions/AgentEnterEffect"
-                },
-                {
-                  "$ref": "#/definitions/AgentExitEffect"
-                }
-              ]
+            "emphasis": {
+              "$ref": "#/definitions/AgentEmphasisEffect"
             },
-            "kind": {
-              "type": "string",
-              "enum": [
-                "emphasis",
-                "enter",
-                "exit"
-              ]
+            "enter": {
+              "$ref": "#/definitions/AgentEnterEffect"
+            },
+            "exit": {
+              "$ref": "#/definitions/AgentExitEffect"
             },
             "objectIds": {
               "type": "array",
@@ -247,13 +242,32 @@
             }
           },
           "required": [
-            "effect",
-            "kind",
             "objectIds",
             "slideId",
             "type"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "oneOf": [
+                {
+                  "required": [
+                    "enter"
+                  ]
+                },
+                {
+                  "required": [
+                    "exit"
+                  ]
+                },
+                {
+                  "required": [
+                    "emphasis"
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "object",
@@ -1383,7 +1397,7 @@
               "type": "string"
             },
             "type": {
-              "const": "setContent"
+              "const": "setText"
             },
             "value": {
               "type": "string"

@@ -612,7 +612,7 @@
               "type": "string"
             },
             "type": {
-              "const": "setContent"
+              "const": "setText"
             },
             "value": {
               "type": "string"
@@ -710,7 +710,7 @@
           "$ref": "#/definitions/LayoutSettingOperation"
         },
         {
-          "$ref": "#/definitions/ThemeArtworkOperation"
+          "$ref": "#/definitions/ThemeFileOperation"
         },
         {
           "type": "object",
@@ -9655,7 +9655,7 @@
         "mono"
       ]
     },
-    "ThemeArtworkOperation": {
+    "ThemeFileOperation": {
       "type": "object",
       "properties": {
         "file": {
@@ -9669,7 +9669,7 @@
           "type": "string"
         },
         "type": {
-          "const": "setArtwork"
+          "const": "setFile"
         }
       },
       "required": [

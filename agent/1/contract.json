@@ -3158,11 +3158,11 @@
         "revertObjects",
         "setCommentResolved",
         "setCommentText",
-        "setContent",
         "setNotes",
         "setObjectFlags",
         "setObjectName",
         "setSlideLayout",
+        "setText",
         "setValues",
         "showFromStart",
         "transformObjects",
@@ -3436,16 +3436,16 @@
               "const": true,
               "description": "Makes the slide a composition, a reusable scene other slides place; `size`, `controls` and `name` belong to it alone."
             },
-            "content": {
+            "controls": {
+              "$ref": "#/definitions/CompositionControls",
+              "description": "A composition's controls; only with `composition: true`."
+            },
+            "file": {
               "type": "object",
               "additionalProperties": {
                 "type": "string"
               },
-              "description": "Initial text and file values keyed by inherited object id."
-            },
-            "controls": {
-              "$ref": "#/definitions/CompositionControls",
-              "description": "A composition's controls; only with `composition: true`."
+              "description": "The files of the pictures its layout gives it, by object id: an image or a video in the media or generated folder."
             },
             "layout": {
               "type": "string"
@@ -3476,6 +3476,13 @@
             "slideId": {
               "type": "string",
               "description": "Minted when omitted; the batch may place slides against it, and later proposals change its objects."
+            },
+            "text": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "The words of the texts, tables and shapes its layout gives it, by object id, as Markdown."
             },
             "type": {
               "type": "string",
@@ -4370,26 +4377,14 @@
                     "string"
                   ]
                 },
-                "effect": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/definitions/AgentEmphasisEffect"
-                    },
-                    {
-                      "$ref": "#/definitions/AgentEnterEffect"
-                    },
-                    {
-                      "$ref": "#/definitions/AgentExitEffect"
-                    }
-                  ]
+                "emphasis": {
+                  "$ref": "#/definitions/AgentEmphasisEffect"
                 },
-                "kind": {
-                  "type": "string",
-                  "enum": [
-                    "emphasis",
-                    "enter",
-                    "exit"
-                  ]
+                "enter": {
+                  "$ref": "#/definitions/AgentEnterEffect"
+                },
+                "exit": {
+                  "$ref": "#/definitions/AgentExitEffect"
                 },
                 "objectIds": {
                   "type": "array",
@@ -4406,8 +4401,6 @@
                 }
               },
               "required": [
-                "effect",
-                "kind",
                 "objectIds",
                 "slideId",
                 "type"
@@ -4871,7 +4864,7 @@
                 },
                 "type": {
                   "type": "string",
-                  "const": "setContent"
+                  "const": "setText"
                 },
                 "value": {
                   "type": "string"
@@ -5290,7 +5283,7 @@
                 ],
                 "additionalProperties": false
               },
-              "description": "Each layout's placeholders, by the object's id insertSlide's content is keyed by and its type as the layout file spells it."
+              "description": "Each layout's placeholders, by the object's id insertSlide's text and file are keyed by and its type as the layout file spells it."
             },
             "master": {
               "type": "object",
@@ -9225,7 +9218,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setContent takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
+      "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setText takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
     },
     "AgentSlideRenderRequest": {
       "type": "object",
@@ -9644,7 +9637,7 @@
             ],
             "additionalProperties": false
           },
-          "description": "Which theme level owns each object. Master and layout objects are the theme's; only a placeholder takes setContent."
+          "description": "Which theme level owns each object. Master and layout objects are the theme's; only a placeholder takes setText."
         },
         "revision": {
           "$ref": "#/definitions/AgentRevision"
@@ -10500,16 +10493,6 @@
           "items": {
             "type": "object",
             "properties": {
-              "document": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/LayoutEditableDocument"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
               "error": {
                 "type": [
                   "null",
@@ -10518,18 +10501,28 @@
               },
               "key": {
                 "type": "string"
+              },
+              "layout": {
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/EditableLayout"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             },
             "required": [
-              "document",
               "error",
-              "key"
+              "key",
+              "layout"
             ],
             "additionalProperties": false
           }
         },
         "master": {
-          "$ref": "#/definitions/MasterEditableSource",
+          "$ref": "#/definitions/EditableMasterSource",
           "description": "The master's settings as the file names them."
         },
         "themeRevision": {
@@ -11256,6 +11249,211 @@
         }
       },
       "additionalProperties": false
+    },
+    "EditableLayout": {
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ThemeFile"
+          },
+          "description": "Its own pictures by object id: one file, or one per scheme."
+        },
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name the chooser shows: the file's, or one spelled from the key."
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Its own objects, back to front."
+        },
+        "placeholders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EditableLayoutPlaceholder"
+          },
+          "description": "Its placeholders, back to front."
+        },
+        "scheme": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "const": "layout"
+        }
+      },
+      "required": [
+        "files",
+        "key",
+        "name",
+        "objects",
+        "placeholders",
+        "scheme",
+        "type"
+      ],
+      "additionalProperties": false,
+      "description": "A layout as its pane and inspector show it."
+    },
+    "EditableLayoutPlaceholder": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The placeholder object's id, which a slide fills it by."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "image",
+            "text"
+          ],
+          "description": "The placeholder object's type, as the layout file spells it: words or a picture."
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ],
+      "additionalProperties": false,
+      "description": "One placeholder of a layout, which a slide fills by its id."
+    },
+    "EditableMasterSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "brand": {
+          "type": "object",
+          "properties": {
+            "colors": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "colors"
+          ],
+          "additionalProperties": false
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ThemeFile"
+          },
+          "description": "The master's own pictures by object id: one file, or one per scheme."
+        },
+        "fonts": {
+          "type": "object",
+          "properties": {
+            "body": {
+              "$ref": "#/definitions/MasterAuthoredFont"
+            },
+            "display": {
+              "$ref": "#/definitions/MasterAuthoredFont"
+            },
+            "mono": {
+              "$ref": "#/definitions/MasterAuthoredFont"
+            }
+          },
+          "required": [
+            "body",
+            "display",
+            "mono"
+          ],
+          "additionalProperties": false
+        },
+        "grid": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MasterGridSource"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "guides": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MasterGuideSource"
+          }
+        },
+        "id": {
+          "type": "string",
+          "description": "The master's `id`, a lowercase UUID."
+        },
+        "key": {
+          "type": "string",
+          "description": "The theme's key, its folder's name."
+        },
+        "layout-order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "objects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Its own objects, back to front, whose names a layout's placeholder can't take."
+        },
+        "schemes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MasterAuthoredScheme"
+          },
+          "description": "`light`, `dark`, then every named scheme in file order."
+        },
+        "size": {
+          "$ref": "#/definitions/SlideSize",
+          "description": "The slide size in canvas units, as the file's `size`."
+        },
+        "step-duration": {
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "How long a slide step's fade or move takes; null takes the format's default."
+        },
+        "text-styles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MasterAuthoredTextStyle"
+          }
+        }
+      },
+      "required": [
+        "brand",
+        "files",
+        "fonts",
+        "grid",
+        "guides",
+        "id",
+        "key",
+        "name",
+        "objects",
+        "schemes",
+        "size",
+        "step-duration",
+        "text-styles"
+      ],
+      "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
     },
     "EmphasisEffect": {
       "type": "string",
@@ -13949,83 +14147,6 @@
       ],
       "description": "What raised an issue, which says how the issue names where it stands."
     },
-    "LayoutEditableDocument": {
-      "type": "object",
-      "properties": {
-        "artwork": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/ThemeFile"
-          },
-          "description": "Its own pictures by object id: one file, or one per scheme."
-        },
-        "key": {
-          "type": "string"
-        },
-        "kind": {
-          "type": "string",
-          "const": "layout"
-        },
-        "name": {
-          "type": "string",
-          "description": "The name the chooser shows: the file's, or one spelled from the key."
-        },
-        "objects": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Its own objects, back to front."
-        },
-        "placeholders": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LayoutEditablePlaceholder"
-          },
-          "description": "Its placeholders, back to front."
-        },
-        "scheme": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      },
-      "required": [
-        "artwork",
-        "key",
-        "kind",
-        "name",
-        "objects",
-        "placeholders",
-        "scheme"
-      ],
-      "additionalProperties": false,
-      "description": "A layout as its pane and inspector show it."
-    },
-    "LayoutEditablePlaceholder": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "The placeholder object's id, which a slide fills it by."
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "image",
-            "text"
-          ],
-          "description": "The placeholder object's type, as the layout file spells it: words or a picture."
-        }
-      },
-      "required": [
-        "id",
-        "type"
-      ],
-      "additionalProperties": false,
-      "description": "One placeholder of a layout, which a slide fills by its id."
-    },
     "LineConnection": {
       "type": "string",
       "enum": [
@@ -14149,134 +14270,6 @@
         "properties"
       ],
       "additionalProperties": false
-    },
-    "MasterEditableSource": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "artwork": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/ThemeFile"
-          },
-          "description": "The master's own pictures by object id: one file, or one per scheme."
-        },
-        "brand": {
-          "type": "object",
-          "properties": {
-            "colors": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "colors"
-          ],
-          "additionalProperties": false
-        },
-        "fonts": {
-          "type": "object",
-          "properties": {
-            "body": {
-              "$ref": "#/definitions/MasterAuthoredFont"
-            },
-            "display": {
-              "$ref": "#/definitions/MasterAuthoredFont"
-            },
-            "mono": {
-              "$ref": "#/definitions/MasterAuthoredFont"
-            }
-          },
-          "required": [
-            "body",
-            "display",
-            "mono"
-          ],
-          "additionalProperties": false
-        },
-        "grid": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/MasterGridSource"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "guides": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MasterGuideSource"
-          }
-        },
-        "id": {
-          "type": "string",
-          "description": "The master's `id`, a lowercase UUID."
-        },
-        "key": {
-          "type": "string",
-          "description": "The theme's key, its folder's name."
-        },
-        "layout-order": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "name": {
-          "type": "string"
-        },
-        "objects": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Its own objects, back to front, whose names a layout's placeholder can't take."
-        },
-        "schemes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MasterAuthoredScheme"
-          },
-          "description": "`light`, `dark`, then every named scheme in file order."
-        },
-        "size": {
-          "$ref": "#/definitions/SlideSize",
-          "description": "The slide size in canvas units, as the file's `size`."
-        },
-        "step-duration": {
-          "type": [
-            "null",
-            "number"
-          ],
-          "description": "How long a slide step's fade or move takes; null takes the format's default."
-        },
-        "text-styles": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MasterAuthoredTextStyle"
-          }
-        }
-      },
-      "required": [
-        "artwork",
-        "brand",
-        "fonts",
-        "grid",
-        "guides",
-        "id",
-        "key",
-        "name",
-        "objects",
-        "schemes",
-        "size",
-        "step-duration",
-        "text-styles"
-      ],
-      "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
     },
     "MasterGridSource": {
       "type": "object",

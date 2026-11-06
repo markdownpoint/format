@@ -372,11 +372,11 @@
               "revertObjects",
               "setCommentResolved",
               "setCommentText",
-              "setContent",
               "setNotes",
               "setObjectFlags",
               "setObjectName",
               "setSlideLayout",
+              "setText",
               "setValues",
               "showFromStart",
               "transformObjects",
@@ -483,11 +483,11 @@
                   "revertObjects",
                   "setCommentResolved",
                   "setCommentText",
-                  "setContent",
                   "setNotes",
                   "setObjectFlags",
                   "setObjectName",
                   "setSlideLayout",
+                  "setText",
                   "setValues",
                   "showFromStart",
                   "transformObjects",
@@ -670,7 +670,7 @@
                   ],
                   "additionalProperties": false
                 },
-                "description": "Each layout's placeholders, by the object's id insertSlide's content is keyed by and its type as the layout file spells it."
+                "description": "Each layout's placeholders, by the object's id insertSlide's text and file are keyed by and its type as the layout file spells it."
               },
               "master": {
                 "type": "object",
@@ -1761,7 +1761,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read one slide at authored Base or an exact animation position: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setContent takes), which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
+      "description": "Read one slide at authored Base or an exact animation position: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setText takes), which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -1883,7 +1883,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "Which theme level owns each object. Master and layout objects are the theme's; only a placeholder takes setContent."
+            "description": "Which theme level owns each object. Master and layout objects are the theme's; only a placeholder takes setText."
           },
           "revision": {
             "$ref": "#/definitions/AgentRevision"
@@ -5389,7 +5389,7 @@
                 "additionalProperties": false
               }
             ],
-            "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setContent takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
+            "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setText takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
           },
           "AgentTextOverflowIssue": {
             "type": "object",
@@ -11468,16 +11468,6 @@
             "items": {
               "type": "object",
               "properties": {
-                "document": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/definitions/LayoutEditableDocument"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                },
                 "error": {
                   "type": [
                     "null",
@@ -11486,18 +11476,28 @@
                 },
                 "key": {
                   "type": "string"
+                },
+                "layout": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/definitions/EditableLayout"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 }
               },
               "required": [
-                "document",
                 "error",
-                "key"
+                "key",
+                "layout"
               ],
               "additionalProperties": false
             }
           },
           "master": {
-            "$ref": "#/definitions/MasterEditableSource",
+            "$ref": "#/definitions/EditableMasterSource",
             "description": "The master's settings as the file names them."
           },
           "themeRevision": {
@@ -11513,10 +11513,10 @@
         "additionalProperties": false,
         "description": "The presentation's theme as Edit theme edits it: the master and each layout, authored values only.",
         "definitions": {
-          "LayoutEditableDocument": {
+          "EditableLayout": {
             "type": "object",
             "properties": {
-              "artwork": {
+              "files": {
                 "type": "object",
                 "additionalProperties": {
                   "$ref": "#/definitions/ThemeFile"
@@ -11525,9 +11525,6 @@
               },
               "key": {
                 "type": "string"
-              },
-              "kind": {
-                "const": "layout"
               },
               "name": {
                 "type": "string",
@@ -11543,7 +11540,7 @@
               "placeholders": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/LayoutEditablePlaceholder"
+                  "$ref": "#/definitions/EditableLayoutPlaceholder"
                 },
                 "description": "Its placeholders, back to front."
               },
@@ -11552,21 +11549,24 @@
                   "null",
                   "string"
                 ]
+              },
+              "type": {
+                "const": "layout"
               }
             },
             "required": [
-              "artwork",
+              "files",
               "key",
-              "kind",
               "name",
               "objects",
               "placeholders",
-              "scheme"
+              "scheme",
+              "type"
             ],
             "additionalProperties": false,
             "description": "A layout as its pane and inspector show it."
           },
-          "LayoutEditablePlaceholder": {
+          "EditableLayoutPlaceholder": {
             "type": "object",
             "properties": {
               "id": {
@@ -11589,96 +11589,10 @@
             "additionalProperties": false,
             "description": "One placeholder of a layout, which a slide fills by its id."
           },
-          "MasterAuthoredFont": {
-            "type": "object",
-            "properties": {
-              "family": {
-                "type": "string"
-              },
-              "files": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": [
-              "family",
-              "files"
-            ],
-            "additionalProperties": false,
-            "description": "The settings of a theme's documents as their editors change them: the master's fonts, colors, text styles, guides, grid, step duration and layout order, a layout's name and scheme, which of its words and pictures are placeholders, and a theme picture's file per scheme. Each edit changes the document's authored values and is accepted only when the document it leaves reads back, so no edit writes a file the next read would refuse."
-          },
-          "MasterAuthoredScheme": {
-            "type": "object",
-            "properties": {
-              "appearance": {
-                "type": "string",
-                "enum": [
-                  "dark",
-                  "light"
-                ]
-              },
-              "colors": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "description": "Its colors by role, as authored: a CSS hex or `{brand.<name>}`."
-              },
-              "name": {
-                "type": "string",
-                "description": "`light`, `dark`, or a named scheme."
-              }
-            },
-            "required": [
-              "appearance",
-              "colors",
-              "name"
-            ],
-            "additionalProperties": false
-          },
-          "MasterAuthoredTextStyle": {
-            "type": "object",
-            "properties": {
-              "marks": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              },
-              "name": {
-                "type": "string"
-              },
-              "properties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "string"
-                },
-                "description": "Property values as authored, spelled as text (`\"1.05\"`, `\"text\"`, `\"upper\"`)."
-              }
-            },
-            "required": [
-              "marks",
-              "name",
-              "properties"
-            ],
-            "additionalProperties": false
-          },
-          "MasterEditableSource": {
+          "EditableMasterSource": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "artwork": {
-                "type": "object",
-                "additionalProperties": {
-                  "$ref": "#/definitions/ThemeFile"
-                },
-                "description": "The master's own pictures by object id: one file, or one per scheme."
-              },
               "brand": {
                 "type": "object",
                 "properties": {
@@ -11693,6 +11607,13 @@
                   "colors"
                 ],
                 "additionalProperties": false
+              },
+              "files": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/definitions/ThemeFile"
+                },
+                "description": "The master's own pictures by object id: one file, or one per scheme."
               },
               "fonts": {
                 "type": "object",
@@ -11780,8 +11701,8 @@
               }
             },
             "required": [
-              "artwork",
               "brand",
+              "files",
               "fonts",
               "grid",
               "guides",
@@ -11795,6 +11716,85 @@
               "text-styles"
             ],
             "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
+          },
+          "MasterAuthoredFont": {
+            "type": "object",
+            "properties": {
+              "family": {
+                "type": "string"
+              },
+              "files": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "family",
+              "files"
+            ],
+            "additionalProperties": false,
+            "description": "The settings of a theme's documents as their editors change them: the master's fonts, colors, text styles, guides, grid, step duration and layout order, a layout's name and scheme, which of its words and pictures are placeholders, and a theme picture's file per scheme. Each edit changes the document's authored values and is accepted only when the document it leaves reads back, so no edit writes a file the next read would refuse."
+          },
+          "MasterAuthoredScheme": {
+            "type": "object",
+            "properties": {
+              "appearance": {
+                "type": "string",
+                "enum": [
+                  "dark",
+                  "light"
+                ]
+              },
+              "colors": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Its colors by role, as authored: a CSS hex or `{brand.<name>}`."
+              },
+              "name": {
+                "type": "string",
+                "description": "`light`, `dark`, or a named scheme."
+              }
+            },
+            "required": [
+              "appearance",
+              "colors",
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "MasterAuthoredTextStyle": {
+            "type": "object",
+            "properties": {
+              "marks": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "name": {
+                "type": "string"
+              },
+              "properties": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Property values as authored, spelled as text (`\"1.05\"`, `\"text\"`, `\"upper\"`)."
+              }
+            },
+            "required": [
+              "marks",
+              "name",
+              "properties"
+            ],
+            "additionalProperties": false
           },
           "MasterGridSource": {
             "type": "object",
@@ -11936,7 +11936,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setContent; setPlaceholder makes a layout’s text or picture a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
+      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setText; setPlaceholder makes a layout’s text or picture a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11956,7 +11956,7 @@
                     "setPlaceholder",
                     "setName",
                     "setScheme",
-                    "setArtwork",
+                    "setFile",
                     "createLayout",
                     "deleteLayouts",
                     "objects",
@@ -13973,7 +13973,7 @@
                 "type": {
                   "type": "string",
                   "enum": [
-                    "setContent",
+                    "setText",
                     "insertTableRow",
                     "insertTableColumn",
                     "deleteTableRow",
@@ -14044,7 +14044,7 @@
                 "type"
               ]
             },
-            "description": "Batch compatible edits as one Undo step, or send one standalone operation. Every number keeps the millionth. Batch the batchable types (setContent, insertTableRow, insertTableColumn, deleteTableRow, deleteTableColumn, setNotes, transformObjects, updateSlideProperties, updatePresentationProperties, applyBackgroundToAllSlides, setObjectFlags, setObjectName, updateObjectProperties, updateReplica, revertObjects, replaceMedia, replaceWebVideo, updateStep, updateInitial, insertSteps, deleteSteps, applyEffect, tween, travel, typewriter, oscillate, insertKeyframes, deleteKeyframes, editStep, pasteAnimation, insertRevealStep, insertPlayStep, showFromStart, setValues, insertObject, pasteObjects, deleteObjects, insertSlide, reorderSlides) as one Undo step; every other type goes alone. Read each type's exact fields with schema."
+            "description": "Batch compatible edits as one Undo step, or send one standalone operation. Every number keeps the millionth. Batch the batchable types (setText, insertTableRow, insertTableColumn, deleteTableRow, deleteTableColumn, setNotes, transformObjects, updateSlideProperties, updatePresentationProperties, applyBackgroundToAllSlides, setObjectFlags, setObjectName, updateObjectProperties, updateReplica, revertObjects, replaceMedia, replaceWebVideo, updateStep, updateInitial, insertSteps, deleteSteps, applyEffect, tween, travel, typewriter, oscillate, insertKeyframes, deleteKeyframes, editStep, pasteAnimation, insertRevealStep, insertPlayStep, showFromStart, setValues, insertObject, pasteObjects, deleteObjects, insertSlide, reorderSlides) as one Undo step; every other type goes alone. Read each type's exact fields with schema."
           },
           "revision": {
             "type": "string",
@@ -14160,7 +14160,7 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "setContent",
+                  "setText",
                   "insertTableRow",
                   "insertTableColumn",
                   "deleteTableRow",
@@ -14641,7 +14641,7 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "setContent",
+                  "setText",
                   "insertTableRow",
                   "insertTableColumn",
                   "deleteTableRow",
@@ -14970,7 +14970,7 @@
               "type": {
                 "type": "string",
                 "enum": [
-                  "setContent",
+                  "setText",
                   "insertTableRow",
                   "insertTableColumn",
                   "deleteTableRow",
