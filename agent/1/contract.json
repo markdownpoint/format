@@ -11832,7 +11832,7 @@
           "const": "repeat"
         },
         "media-trim": {
-          "$ref": "#/definitions/MediaTrim"
+          "$ref": "#/definitions/TimeTrim"
         },
         "name": {
           "type": "string"
@@ -13630,7 +13630,7 @@
           "const": "repeat"
         },
         "media-trim": {
-          "$ref": "#/definitions/MediaTrim"
+          "$ref": "#/definitions/TimeTrim"
         },
         "name": {
           "type": "string"
@@ -14326,23 +14326,6 @@
       ],
       "description": "A guide as the file writes it: at `x` an upright line, at `y` a level one."
     },
-    "MediaTrim": {
-      "type": "object",
-      "properties": {
-        "end": {
-          "type": "number",
-          "description": "The file's end when absent."
-        },
-        "start": {
-          "type": "number"
-        }
-      },
-      "required": [
-        "start"
-      ],
-      "additionalProperties": false,
-      "description": "The span of its file a movie or sound plays, in seconds. Its end, when given, is after its start. A loop repeats it."
-    },
     "ObjectAnimationValueType": {
       "type": "string",
       "enum": [
@@ -14570,7 +14553,7 @@
           "const": "repeat"
         },
         "media-trim": {
-          "$ref": "#/definitions/MediaTrim"
+          "$ref": "#/definitions/TimeTrim"
         },
         "name": {
           "type": "string"
@@ -16356,7 +16339,7 @@
           "const": "repeat"
         },
         "media-trim": {
-          "$ref": "#/definitions/MediaTrim"
+          "$ref": "#/definitions/TimeTrim"
         },
         "name": {
           "type": "string"
@@ -19172,7 +19155,7 @@
               "type": "number"
             },
             "clip-trim": {
-              "$ref": "#/definitions/MediaTrim"
+              "$ref": "#/definitions/TimeTrim"
             },
             "loop": {
               "type": "string",
@@ -20216,6 +20199,23 @@
         }
       ],
       "description": "A theme's own picture: one theme-relative file, or one per scheme, `light` and `dark` among them."
+    },
+    "TimeTrim": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "number",
+          "description": "The file's or the Action's end when absent."
+        },
+        "start": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "start"
+      ],
+      "additionalProperties": false,
+      "description": "The span of a movie's or a sound's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "anchor-point": {
       "type": "object",

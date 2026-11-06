@@ -5079,23 +5079,6 @@
         "top"
       ]
     },
-    "MediaTrim": {
-      "type": "object",
-      "properties": {
-        "start": {
-          "type": "number",
-          "minimum": 0,
-          "description": "seconds"
-        },
-        "end": {
-          "type": "number",
-          "minimum": 0,
-          "description": "seconds"
-        }
-      },
-      "additionalProperties": false,
-      "description": "The span of its file a movie or sound plays, in seconds. Its end, when given, is after its start. A loop repeats it."
-    },
     "ObjectPropertyChangeSource": {
       "description": "One property and its value; null restores its default, or with clear: true clears what an inherited object inherits. Every number keeps the millionth.",
       "anyOf": [
@@ -13814,7 +13797,7 @@
               "const": "repeat"
             },
             "clip-trim": {
-              "$ref": "#/definitions/MediaTrim"
+              "$ref": "#/definitions/TimeTrim"
             },
             "stride": {
               "type": "number",
@@ -14673,6 +14656,23 @@
         "value"
       ],
       "additionalProperties": false
+    },
+    "TimeTrim": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "number",
+          "minimum": 0,
+          "description": "seconds"
+        },
+        "end": {
+          "type": "number",
+          "minimum": 0,
+          "description": "seconds"
+        }
+      },
+      "additionalProperties": false,
+      "description": "The span of a movie's or a sound's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "Prop_name": {
       "type": "string",
@@ -16154,7 +16154,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "The span of its file a movie or sound plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or a sound's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "Prop_video.poster": {
       "type": "string",

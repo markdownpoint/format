@@ -5825,23 +5825,6 @@
             "additionalProperties": false,
             "description": "Where in a presentation's files an issue stands: the file's name, and its line, counted from 1, and column when known."
           },
-          "MediaTrim": {
-            "type": "object",
-            "properties": {
-              "end": {
-                "type": "number",
-                "description": "The file's end when absent."
-              },
-              "start": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "start"
-            ],
-            "additionalProperties": false,
-            "description": "The span of its file a movie or sound plays, in seconds. Its end, when given, is after its start. A loop repeats it."
-          },
           "ObjectAnimationValueType": {
             "type": "string",
             "enum": [
@@ -6764,7 +6747,7 @@
                     "type": "number"
                   },
                   "clip-trim": {
-                    "$ref": "#/definitions/MediaTrim"
+                    "$ref": "#/definitions/TimeTrim"
                   },
                   "loop": {
                     "const": "repeat"
@@ -6933,6 +6916,23 @@
               "theme"
             ],
             "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
+          },
+          "TimeTrim": {
+            "type": "object",
+            "properties": {
+              "end": {
+                "type": "number",
+                "description": "The file's or the Action's end when absent."
+              },
+              "start": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "start"
+            ],
+            "additionalProperties": false,
+            "description": "The span of a movie's or a sound's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
           },
           "anchor-point": {
             "type": "object",
