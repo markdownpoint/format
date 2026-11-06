@@ -2142,9 +2142,6 @@
             "code": {
               "$ref": "#/definitions/IssueCode"
             },
-            "contentId": {
-              "type": "string"
-            },
             "details": {},
             "disposition": {
               "$ref": "#/definitions/IssueDisposition"
@@ -13838,7 +13835,7 @@
       "type": "string",
       "enum": [
         "fallback",
-        "refuse-document",
+        "refuse-presentation",
         "refuse-slide",
         "skip-object"
       ]
@@ -13867,12 +13864,12 @@
       "type": "string",
       "enum": [
         "file",
+        "files",
         "json",
         "layout",
         "markdown",
         "master",
-        "pair",
-        "scene",
+        "slide",
         "theme"
       ],
       "description": "What raised an issue, which says how the issue names where it stands."

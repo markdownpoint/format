@@ -537,7 +537,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-document. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fits give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
+      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-presentation. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fits give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -742,9 +742,6 @@
                   },
                   "code": {
                     "$ref": "#/definitions/IssueCode"
-                  },
-                  "contentId": {
-                    "type": "string"
                   },
                   "details": {},
                   "disposition": {
@@ -1280,7 +1277,7 @@
             "type": "string",
             "enum": [
               "fallback",
-              "refuse-document",
+              "refuse-presentation",
               "refuse-slide",
               "skip-object"
             ]
@@ -1309,12 +1306,12 @@
             "type": "string",
             "enum": [
               "file",
+              "files",
               "json",
               "layout",
               "markdown",
               "master",
-              "pair",
-              "scene",
+              "slide",
               "theme"
             ],
             "description": "What raised an issue, which says how the issue names where it stands."
@@ -1971,9 +1968,6 @@
                   },
                   "code": {
                     "$ref": "#/definitions/IssueCode"
-                  },
-                  "contentId": {
-                    "type": "string"
                   },
                   "details": {},
                   "disposition": {
@@ -5763,7 +5757,7 @@
             "type": "string",
             "enum": [
               "fallback",
-              "refuse-document",
+              "refuse-presentation",
               "refuse-slide",
               "skip-object"
             ]
@@ -5792,12 +5786,12 @@
             "type": "string",
             "enum": [
               "file",
+              "files",
               "json",
               "layout",
               "markdown",
               "master",
-              "pair",
-              "scene",
+              "slide",
               "theme"
             ],
             "description": "What raised an issue, which says how the issue names where it stands."

@@ -351,7 +351,7 @@ A table's column widths and row heights in the .mdpoint file follow the table's 
 
 To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Run `mdpoint validate` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate`.
 
-Each issue includes a `severity` of `error` or `warning`, a `code` and a `message`. Most include the affected key's `path`. The `disposition` describes how MarkdownPoint handles the problem: `fallback`, `skip-object`, `refuse-slide` or `refuse-document`. The command exits with status 1 if any issue is an error.
+Each issue includes a `severity` of `error` or `warning`, a `code` and a `message`. Most include the affected key's `path`. The `disposition` describes how MarkdownPoint handles the problem: `fallback`, `skip-object`, `refuse-slide` or `refuse-presentation`. The command exits with status 1 if any issue is an error.
 
 ## Saving and formatting
 

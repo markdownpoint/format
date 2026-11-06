@@ -83,21 +83,21 @@ An issue is what `validate` and `presentation get` find in the files: `severity`
 (`error` or `warning`), `source`, `code`, `message` in English and
 `disposition`, what MarkdownPoint does about it. `fallback` shows the
 presentation with a default in its place, `skip-object` leaves the object out,
-`refuse-slide` refuses the slide and `refuse-document` the whole presentation.
+`refuse-slide` refuses the slide and `refuse-presentation` the whole presentation.
 Where an issue stands depends on its `source`:
 
 - `json`: `path` selects the value in the `.mdpoint` file, keys joined by dots
   and a list's item by its index in brackets, such as
-  `slides.intro.objects.title.opacity`; `slideId`, `objectId` or `contentId`
+  `slides.intro.objects.title.opacity`; `slideId` or `objectId`
   names what holds it.
-- `markdown` and `pair`: `location` names the file and its line, counted from
+- `markdown` and `files`: `location` names the file and its line, counted from
   1, with the column when known.
 - `theme`: `slideId` when only the slides that name the layout or scheme are
   refused.
 - `file`: `path` is the file's path as the presentation, or its theme's
   folder when `fileScope` is `theme`, names it; `slideId`, `objectId` and
   `property` name each use of it.
-- `scene`, `master` and `layout`: `slideId`, and `objectId` or `objectIds`.
+- `slide`, `master` and `layout`: `slideId`, and `objectId` or `objectIds`.
 
 Each code an issue carries:
 
