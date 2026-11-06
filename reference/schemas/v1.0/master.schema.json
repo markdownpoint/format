@@ -16,7 +16,7 @@
     "id": {
       "allOf": [
         {
-          "$ref": "#/definitions/id"
+          "$ref": "#/definitions/uuid"
         }
       ],
       "description": "The theme's identity, a lowercase UUID. It stays the same when the theme is renamed, installed under another key, or shared, and tells apart two themes of the same key."
@@ -130,10 +130,10 @@
       "type": "object",
       "properties": {
         "light": {
-          "$ref": "#/definitions/light"
+          "$ref": "#/definitions/fixed-scheme"
         },
         "dark": {
-          "$ref": "#/definitions/light"
+          "$ref": "#/definitions/fixed-scheme"
         }
       },
       "required": [
@@ -167,7 +167,7 @@
           "background": {
             "allOf": [
               {
-                "$ref": "#/definitions/background"
+                "$ref": "#/definitions/scheme-color"
               }
             ],
             "description": "The slide's base color, under everything else."
@@ -175,7 +175,7 @@
           "text": {
             "allOf": [
               {
-                "$ref": "#/definitions/background"
+                "$ref": "#/definitions/scheme-color"
               }
             ],
             "description": "The color of text."
@@ -183,7 +183,7 @@
           "muted": {
             "allOf": [
               {
-                "$ref": "#/definitions/background"
+                "$ref": "#/definitions/scheme-color"
               }
             ],
             "description": "The color of secondary text."
@@ -191,7 +191,7 @@
           "accent": {
             "allOf": [
               {
-                "$ref": "#/definitions/background"
+                "$ref": "#/definitions/scheme-color"
               }
             ],
             "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
@@ -199,7 +199,7 @@
           "stroke": {
             "allOf": [
               {
-                "$ref": "#/definitions/background"
+                "$ref": "#/definitions/scheme-color"
               }
             ],
             "description": "The color of a table's grid, and of any outline or line set to it."
@@ -207,7 +207,7 @@
           "link": {
             "allOf": [
               {
-                "$ref": "#/definitions/background"
+                "$ref": "#/definitions/scheme-color"
               }
             ],
             "description": "The color of links."
@@ -241,7 +241,7 @@
           ]
         },
         "additionalProperties": {
-          "$ref": "#/definitions/background"
+          "$ref": "#/definitions/scheme-color"
         }
       },
       "description": "The theme's color schemes, by name. Every theme has light and dark."
@@ -446,7 +446,7 @@
           "x": {
             "allOf": [
               {
-                "$ref": "#/definitions/x"
+                "$ref": "#/definitions/guide-position"
               }
             ],
             "description": "A vertical guide's position across: any number of canvas units, or a percentage of the slide from 0% to 100%, such as \"50%\"."
@@ -454,7 +454,7 @@
           "y": {
             "allOf": [
               {
-                "$ref": "#/definitions/x"
+                "$ref": "#/definitions/guide-position"
               }
             ],
             "description": "A horizontal guide's position down: any number of canvas units, or a percentage of the slide from 0% to 100%, such as \"50%\"."
@@ -716,14 +716,7 @@
                 "description": "font weight"
               },
               "color": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/color"
-                  },
-                  {
-                    "$ref": "#/definitions/gradient"
-                  }
-                ]
+                "$ref": "#/definitions/paint"
               },
               "align": {
                 "enum": [
@@ -1664,7 +1657,7 @@
                 "description": "seconds"
               },
               "media-trim": {
-                "$ref": "#/definitions/media-trim"
+                "$ref": "#/definitions/time-trim"
               },
               "link": {
                 "type": "string"
@@ -1909,14 +1902,7 @@
                 "description": "font weight"
               },
               "color": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/color"
-                  },
-                  {
-                    "$ref": "#/definitions/gradient"
-                  }
-                ]
+                "$ref": "#/definitions/paint"
               },
               "align": {
                 "enum": [
@@ -2248,14 +2234,7 @@
                 "$ref": "#/definitions/fill"
               },
               "stroke": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/color"
-                  },
-                  {
-                    "$ref": "#/definitions/gradient"
-                  }
-                ]
+                "$ref": "#/definitions/paint"
               },
               "stroke-weight": {
                 "type": "number",
@@ -2438,7 +2417,7 @@
               "start": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/start"
+                    "$ref": "#/definitions/slide-point"
                   },
                   {
                     "$ref": "#/definitions/line-end"
@@ -2448,7 +2427,7 @@
               "end": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/start"
+                    "$ref": "#/definitions/slide-point"
                   },
                   {
                     "$ref": "#/definitions/line-end"
@@ -2631,14 +2610,7 @@
                 "description": "font weight"
               },
               "color": {
-                "anyOf": [
-                  {
-                    "$ref": "#/definitions/color"
-                  },
-                  {
-                    "$ref": "#/definitions/gradient"
-                  }
-                ]
+                "$ref": "#/definitions/paint"
               },
               "align": {
                 "enum": [
@@ -2964,7 +2936,7 @@
                 ]
               },
               "icon-position": {
-                "$ref": "#/definitions/start"
+                "$ref": "#/definitions/slide-point"
               },
               "locked": {
                 "type": "boolean"
@@ -2997,7 +2969,7 @@
                 "description": "seconds"
               },
               "media-trim": {
-                "$ref": "#/definitions/media-trim"
+                "$ref": "#/definitions/time-trim"
               },
               "placeholder": {
                 "type": "boolean"
@@ -4111,7 +4083,7 @@
     "save": {
       "allOf": [
         {
-          "$ref": "#/definitions/id"
+          "$ref": "#/definitions/uuid"
         }
       ],
       "description": "A save stamp: the id of a save. MarkdownPoint writes it while the presentation is shared for editing, to tell this file apart from an older copy with the same content. Other tools keep it as it is."
@@ -4141,9 +4113,25 @@
       },
       "additionalProperties": false
     },
-    "background": {
-      "type": "string",
-      "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.[a-z][a-z0-9-]*\\})(?![\\s\\S])"
+    "back-curve": {
+      "type": "object",
+      "properties": {
+        "curve": {
+          "enum": [
+            "anticipate",
+            "overshoot",
+            "anticipate-overshoot"
+          ]
+        },
+        "back": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "curve"
+      ],
+      "additionalProperties": false
     },
     "color": {
       "type": "string",
@@ -4523,6 +4511,87 @@
         }
       ]
     },
+    "fixed-scheme": {
+      "type": "object",
+      "properties": {
+        "background": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The slide's base color, under everything else."
+        },
+        "text": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of text."
+        },
+        "muted": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of secondary text."
+        },
+        "accent": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
+        },
+        "stroke": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of a table's grid, and of any outline or line set to it."
+        },
+        "link": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of links."
+        }
+      },
+      "required": [
+        "background",
+        "text",
+        "muted",
+        "accent",
+        "stroke",
+        "link"
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "enum": [
+              "background",
+              "text",
+              "muted",
+              "accent",
+              "stroke",
+              "link"
+            ]
+          },
+          {
+            "pattern": "^(?!(?:none|appearance)(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+          }
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/scheme-color"
+      }
+    },
     "flat-scale": {
       "description": "A flat object's scale along its own axes, about its frame's center. Text breaks into lines first, then stretches with the scale.",
       "type": "object",
@@ -4693,9 +4762,18 @@
         }
       ]
     },
-    "id": {
-      "type": "string",
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+    "guide-position": {
+      "anyOf": [
+        {
+          "type": "number",
+          "description": "canvas units"
+        },
+        {
+          "type": "string",
+          "pattern": "^(?:-(?:0+(?:\\.(?:0{0,6}|0{6}(?:[0-4][0-9]*|50*)))?|\\.(?:0{1,6}|0{6}(?:[0-4][0-9]*|50*)))|0*(?:[0-9]{1,2}(?:\\.[0-9]*)?|\\.[0-9]+)|0*100(?:\\.(?:0{0,6}|0{6}(?:[0-4][0-9]*|50*)))?)%(?![\\s\\S])",
+          "description": "a percentage from 0% to 100%"
+        }
+      ]
     },
     "interpolation": {
       "anyOf": [
@@ -4740,7 +4818,7 @@
         {
           "anyOf": [
             {
-              "$ref": "#/definitions/interpolation-anticipate"
+              "$ref": "#/definitions/back-curve"
             },
             {
               "type": "object",
@@ -4797,111 +4875,10 @@
         }
       ]
     },
-    "interpolation-anticipate": {
-      "type": "object",
-      "properties": {
-        "curve": {
-          "enum": [
-            "anticipate",
-            "overshoot",
-            "anticipate-overshoot"
-          ]
-        },
-        "back": {
-          "type": "number",
-          "minimum": 0
-        }
-      },
-      "required": [
-        "curve"
-      ],
-      "additionalProperties": false
-    },
     "joint-name": {
       "type": "string",
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
       "description": "a joint’s name"
-    },
-    "light": {
-      "type": "object",
-      "properties": {
-        "background": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/background"
-            }
-          ],
-          "description": "The slide's base color, under everything else."
-        },
-        "text": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/background"
-            }
-          ],
-          "description": "The color of text."
-        },
-        "muted": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/background"
-            }
-          ],
-          "description": "The color of secondary text."
-        },
-        "accent": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/background"
-            }
-          ],
-          "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
-        },
-        "stroke": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/background"
-            }
-          ],
-          "description": "The color of a table's grid, and of any outline or line set to it."
-        },
-        "link": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/background"
-            }
-          ],
-          "description": "The color of links."
-        }
-      },
-      "required": [
-        "background",
-        "text",
-        "muted",
-        "accent",
-        "stroke",
-        "link"
-      ],
-      "propertyNames": {
-        "anyOf": [
-          {
-            "enum": [
-              "background",
-              "text",
-              "muted",
-              "accent",
-              "stroke",
-              "link"
-            ]
-          },
-          {
-            "pattern": "^(?!(?:none|appearance)(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-          }
-        ]
-      },
-      "additionalProperties": {
-        "$ref": "#/definitions/background"
-      }
     },
     "line-end": {
       "description": "A line end attached to an object.",
@@ -5001,23 +4978,6 @@
       },
       "additionalProperties": false
     },
-    "media-trim": {
-      "description": "The part of a video or sound file that plays.",
-      "type": "object",
-      "properties": {
-        "start": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Where it starts, in seconds into the file. Left out, it's 0."
-        },
-        "end": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Where it ends, in seconds into the file. It must come after start. Left out, it plays to the end."
-        }
-      },
-      "additionalProperties": false
-    },
     "nonblank-line": {
       "type": "string",
       "pattern": "^(?:(?![\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\r\\n][^\\r\\n]*(?![\\s\\S])",
@@ -5037,6 +4997,16 @@
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
       "description": "a color role or a hex color without opacity, such as \"#000000\""
+    },
+    "paint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/color"
+        },
+        {
+          "$ref": "#/definitions/gradient"
+        }
+      ]
     },
     "parent-inverse": {
       "type": "array",
@@ -5172,6 +5142,32 @@
         }
       ]
     },
+    "scheme-color": {
+      "type": "string",
+      "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.[a-z][a-z0-9-]*\\})(?![\\s\\S])"
+    },
+    "slide-point": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "canvas units"
+        },
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "canvas units"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false
+    },
     "space-euler": {
       "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
       "type": "object",
@@ -5299,28 +5295,6 @@
       ],
       "additionalProperties": false
     },
-    "start": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y"
-      ],
-      "additionalProperties": false
-    },
     "stops": {
       "type": "array",
       "items": {
@@ -5388,6 +5362,23 @@
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
       "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
     },
+    "time-trim": {
+      "description": "The part of a video or sound file, or of a model's Action, that plays.",
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Where it starts, in seconds into the file or the Action. Left out, it's 0."
+        },
+        "end": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Where it ends, in seconds into the file or the Action. It must come after start. Left out, it plays to the end."
+        }
+      },
+      "additionalProperties": false
+    },
     "trim": {
       "description": "The drawn part of a path's or a line's stroke.",
       "type": "object",
@@ -5410,6 +5401,10 @@
         "end"
       ],
       "additionalProperties": false
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
     },
     "wipe": {
       "description": "A reveal behind a moving straight edge.",
@@ -5435,19 +5430,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "x": {
-      "anyOf": [
-        {
-          "type": "number",
-          "description": "canvas units"
-        },
-        {
-          "type": "string",
-          "pattern": "^(?:-(?:0+(?:\\.(?:0{0,6}|0{6}(?:[0-4][0-9]*|50*)))?|\\.(?:0{1,6}|0{6}(?:[0-4][0-9]*|50*)))|0*(?:[0-9]{1,2}(?:\\.[0-9]*)?|\\.[0-9]+)|0*100(?:\\.(?:0{0,6}|0{6}(?:[0-4][0-9]*|50*)))?)%(?![\\s\\S])",
-          "description": "a percentage from 0% to 100%"
-        }
-      ]
     }
   }
 }

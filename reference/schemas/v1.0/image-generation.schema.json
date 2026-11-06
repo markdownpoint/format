@@ -102,7 +102,7 @@
         "prompt": {
           "allOf": [
             {
-              "$ref": "#/definitions/prompt"
+              "$ref": "#/definitions/request-text"
             }
           ],
           "description": "The words asked for, in Unicode NFC, each run of white space one space, none at either end. It isn't empty or `none`."
@@ -110,7 +110,7 @@
         "resolved-style": {
           "anyOf": [
             {
-              "$ref": "#/definitions/prompt"
+              "$ref": "#/definitions/request-text"
             },
             {
               "type": "null"
@@ -269,7 +269,7 @@
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
       "description": "one line"
     },
-    "prompt": {
+    "request-text": {
       "type": "string",
       "pattern": "^(?!none(?![\\s\\S]))[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])"
     },

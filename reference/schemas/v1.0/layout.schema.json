@@ -455,12 +455,10 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   }
                 ]
               },
@@ -791,9 +789,7 @@
                     "type": "null"
                   },
                   {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   }
                 ]
               },
@@ -876,12 +872,10 @@
                     "type": "null"
                   },
                   {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   }
                 ]
               },
@@ -1312,7 +1306,7 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/media-trim"
+                    "$ref": "#/definitions/time-trim"
                   }
                 ]
               },
@@ -1468,7 +1462,7 @@
                   {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/start"
+                        "$ref": "#/definitions/slide-point"
                       },
                       {
                         "$ref": "#/definitions/line-end"
@@ -1485,7 +1479,7 @@
                   {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/start"
+                        "$ref": "#/definitions/slide-point"
                       },
                       {
                         "$ref": "#/definitions/line-end"
@@ -1745,7 +1739,7 @@
                     "additionalProperties": false
                   },
                   {
-                    "$ref": "#/definitions/start"
+                    "$ref": "#/definitions/slide-point"
                   }
                 ]
               },
@@ -2202,9 +2196,7 @@
                     "type": "null"
                   },
                   {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   }
                 ]
               },
@@ -2380,7 +2372,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "align": {
                     "enum": [
@@ -2501,9 +2493,7 @@
                     "$ref": "#/definitions/drop-shadow"
                   },
                   "text-stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "text-stroke-weight": {
                     "type": "number",
@@ -2530,9 +2520,7 @@
                     "$ref": "#/definitions/exit"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -2748,9 +2736,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "vertical-align": {
                     "enum": [
@@ -2781,9 +2767,7 @@
                     "$ref": "#/definitions/fill"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -2972,9 +2956,7 @@
                     "$ref": "#/definitions/wipe"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "drop-shadow": {
                     "anyOf": [
@@ -3133,9 +3115,7 @@
                     "$ref": "#/definitions/property-name"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3272,7 +3252,7 @@
                     "description": "seconds"
                   },
                   "media-trim": {
-                    "$ref": "#/definitions/media-trim"
+                    "$ref": "#/definitions/time-trim"
                   },
                   "link": {
                     "type": "string"
@@ -3434,9 +3414,7 @@
                     "$ref": "#/definitions/property-name"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3579,7 +3557,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "align": {
                     "enum": [
@@ -3724,9 +3702,7 @@
                     ]
                   },
                   "text-stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "text-stroke-weight": {
                     "type": "number",
@@ -3812,9 +3788,7 @@
                     "$ref": "#/definitions/fill"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -4015,7 +3989,7 @@
                     "$ref": "#/definitions/fill"
                   },
                   "stroke": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -4120,9 +4094,7 @@
                     "$ref": "#/definitions/wipe"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "drop-shadow": {
                     "anyOf": [
@@ -4260,7 +4232,7 @@
                   "start": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/start"
+                        "$ref": "#/definitions/slide-point"
                       },
                       {
                         "$ref": "#/definitions/line-end"
@@ -4270,7 +4242,7 @@
                   "end": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/start"
+                        "$ref": "#/definitions/slide-point"
                       },
                       {
                         "$ref": "#/definitions/line-end"
@@ -4322,9 +4294,7 @@
                     "$ref": "#/definitions/trim"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -4455,7 +4425,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "align": {
                     "enum": [
@@ -4471,9 +4441,7 @@
                     "description": "em"
                   },
                   "text-stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "text-stroke-weight": {
                     "type": "number",
@@ -4714,7 +4682,7 @@
                     ]
                   },
                   "icon-position": {
-                    "$ref": "#/definitions/start"
+                    "$ref": "#/definitions/slide-point"
                   },
                   "locked": {
                     "type": "boolean"
@@ -4747,7 +4715,7 @@
                     "description": "seconds"
                   },
                   "media-trim": {
-                    "$ref": "#/definitions/media-trim"
+                    "$ref": "#/definitions/time-trim"
                   },
                   "placeholder": {
                     "type": "boolean"
@@ -4799,9 +4767,7 @@
                     "type": "boolean"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -4997,9 +4963,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5075,9 +5039,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5172,9 +5134,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5254,9 +5214,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5369,9 +5327,7 @@
                     "$ref": "#/definitions/parent-inverse"
                   },
                   "shadow-color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "width": {
                     "type": "number",
@@ -5440,9 +5396,7 @@
                     "description": "fraction"
                   },
                   "shadow-color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "placeholder": {
                     "type": "boolean"
@@ -5560,26 +5514,37 @@
       ],
       "additionalProperties": false
     },
-    "color": {
-      "anyOf": [
-        {
-          "type": "string",
-          "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-          "description": "a color role or a hex color"
+    "back-curve": {
+      "type": "object",
+      "properties": {
+        "curve": {
+          "enum": [
+            "anticipate",
+            "overshoot",
+            "anticipate-overshoot"
+          ]
         },
-        {
-          "$ref": "#/definitions/gradient"
+        "back": {
+          "type": "number",
+          "minimum": 0
         }
-      ]
+      },
+      "required": [
+        "curve"
+      ],
+      "additionalProperties": false
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+      "description": "a color role or a hex color"
     },
     "colors": {
       "type": "array",
       "items": {
         "anyOf": [
           {
-            "type": "string",
-            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-            "description": "a color role or a hex color"
+            "$ref": "#/definitions/color"
           },
           {
             "type": "null"
@@ -6065,9 +6030,7 @@
           "const": "none"
         },
         {
-          "type": "string",
-          "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-          "description": "a color role or a hex color"
+          "$ref": "#/definitions/color"
         },
         {
           "$ref": "#/definitions/gradient"
@@ -6303,7 +6266,7 @@
         {
           "anyOf": [
             {
-              "$ref": "#/definitions/interpolation-anticipate"
+              "$ref": "#/definitions/back-curve"
             },
             {
               "type": "object",
@@ -6360,26 +6323,6 @@
         }
       ]
     },
-    "interpolation-anticipate": {
-      "type": "object",
-      "properties": {
-        "curve": {
-          "enum": [
-            "anticipate",
-            "overshoot",
-            "anticipate-overshoot"
-          ]
-        },
-        "back": {
-          "type": "number",
-          "minimum": 0
-        }
-      },
-      "required": [
-        "curve"
-      ],
-      "additionalProperties": false
-    },
     "joint-name": {
       "type": "string",
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
@@ -6434,23 +6377,6 @@
       ],
       "additionalProperties": false
     },
-    "media-trim": {
-      "description": "The part of a video or sound file that plays.",
-      "type": "object",
-      "properties": {
-        "start": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Where it starts, in seconds into the file. Left out, it's 0."
-        },
-        "end": {
-          "type": "number",
-          "minimum": 0,
-          "description": "Where it ends, in seconds into the file. It must come after start. Left out, it plays to the end."
-        }
-      },
-      "additionalProperties": false
-    },
     "nonblank-line": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
@@ -6470,6 +6396,16 @@
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
       "description": "a color role or a hex color without opacity, such as \"#000000\""
+    },
+    "paint": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/color"
+        },
+        {
+          "$ref": "#/definitions/gradient"
+        }
+      ]
     },
     "parent-inverse": {
       "type": "array",
@@ -6636,6 +6572,28 @@
         }
       ]
     },
+    "slide-point": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "canvas units"
+        },
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "canvas units"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false
+    },
     "space-euler": {
       "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, read normalized, and a quaternion of no length is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
       "type": "object",
@@ -6763,28 +6721,6 @@
       ],
       "additionalProperties": false
     },
-    "start": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y"
-      ],
-      "additionalProperties": false
-    },
     "stops": {
       "type": "array",
       "items": {
@@ -6792,8 +6728,11 @@
         "type": "object",
         "properties": {
           "color": {
-            "type": "string",
-            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+            "allOf": [
+              {
+                "$ref": "#/definitions/color"
+              }
+            ],
             "description": "The color: a color role or a hex color."
           },
           "position": {
@@ -6936,6 +6875,23 @@
       "type": "string",
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
       "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+    },
+    "time-trim": {
+      "description": "The part of a video or sound file, or of a model's Action, that plays.",
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Where it starts, in seconds into the file or the Action. Left out, it's 0."
+        },
+        "end": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Where it ends, in seconds into the file or the Action. It must come after start. Left out, it plays to the end."
+        }
+      },
+      "additionalProperties": false
     },
     "trim": {
       "description": "The drawn part of a path's or a line's stroke.",

@@ -2164,7 +2164,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -2256,7 +2256,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "align": {
                     "enum": [
@@ -2436,9 +2436,7 @@
                     ]
                   },
                   "text-stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "text-stroke-weight": {
                     "type": "number",
@@ -2514,9 +2512,7 @@
                     "$ref": "#/definitions/exit"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -2593,7 +2589,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -2673,9 +2669,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "vertical-align": {
                     "enum": [
@@ -2706,9 +2700,7 @@
                     "$ref": "#/definitions/fill"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -2793,7 +2785,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -2851,9 +2843,7 @@
                     "$ref": "#/definitions/wipe"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "drop-shadow": {
                     "$ref": "#/definitions/drop-shadow"
@@ -2972,7 +2962,7 @@
                     "type": "object",
                     "properties": {
                       "record": {
-                        "$ref": "#/definitions/record"
+                        "$ref": "#/definitions/uuid"
                       },
                       "original": {
                         "type": "object",
@@ -2983,7 +2973,7 @@
                             "description": "the path of an image"
                           },
                           "record": {
-                            "$ref": "#/definitions/record"
+                            "$ref": "#/definitions/uuid"
                           }
                         },
                         "required": [
@@ -3007,9 +2997,7 @@
                     "$ref": "#/definitions/property-name"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3057,7 +3045,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -3101,7 +3089,7 @@
                     "description": "seconds"
                   },
                   "media-trim": {
-                    "$ref": "#/definitions/media-trim"
+                    "$ref": "#/definitions/time-trim"
                   },
                   "link": {
                     "type": "string"
@@ -3203,9 +3191,7 @@
                     "$ref": "#/definitions/property-name"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3253,7 +3239,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -3345,7 +3331,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "align": {
                     "enum": [
@@ -3430,9 +3416,7 @@
                     "$ref": "#/definitions/drop-shadow"
                   },
                   "text-stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "text-stroke-weight": {
                     "type": "number",
@@ -3537,9 +3521,7 @@
                     "$ref": "#/definitions/fill"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3590,7 +3572,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -3680,7 +3662,7 @@
                     "$ref": "#/definitions/fill"
                   },
                   "stroke": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3729,7 +3711,7 @@
                     "description": "degrees"
                   },
                   "scale": {
-                    "$ref": "#/definitions/scale"
+                    "$ref": "#/definitions/flat-scale"
                   },
                   "opacity": {
                     "type": "number",
@@ -3782,9 +3764,7 @@
                     "$ref": "#/definitions/wipe"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "drop-shadow": {
                     "$ref": "#/definitions/drop-shadow"
@@ -3859,106 +3839,20 @@
                   "start": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/start"
+                        "$ref": "#/definitions/slide-point"
                       },
                       {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                            "description": "an object’s id"
-                          },
-                          "side": {
-                            "enum": [
-                              "auto",
-                              "top",
-                              "right",
-                              "bottom",
-                              "left"
-                            ]
-                          },
-                          "at": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false
-                          }
-                        },
-                        "required": [
-                          "object",
-                          "side"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/line-end"
                       }
                     ]
                   },
                   "end": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/start"
+                        "$ref": "#/definitions/slide-point"
                       },
                       {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                            "description": "an object’s id"
-                          },
-                          "side": {
-                            "enum": [
-                              "auto",
-                              "top",
-                              "right",
-                              "bottom",
-                              "left"
-                            ]
-                          },
-                          "at": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false
-                          }
-                        },
-                        "required": [
-                          "object",
-                          "side"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/line-end"
                       }
                     ]
                   },
@@ -4007,9 +3901,7 @@
                     "$ref": "#/definitions/trim"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -4239,7 +4131,7 @@
                     "description": "font weight"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/paint"
                   },
                   "align": {
                     "enum": [
@@ -4255,9 +4147,7 @@
                     "description": "em"
                   },
                   "text-stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "text-stroke-weight": {
                     "type": "number",
@@ -4312,9 +4202,7 @@
                     "items": {
                       "anyOf": [
                         {
-                          "type": "string",
-                          "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                          "description": "a color role or a hex color"
+                          "$ref": "#/definitions/color"
                         },
                         {
                           "type": "null"
@@ -4519,7 +4407,7 @@
                     "description": "a normalized relative file path"
                   },
                   "icon-position": {
-                    "$ref": "#/definitions/start"
+                    "$ref": "#/definitions/slide-point"
                   },
                   "locked": {
                     "type": "boolean"
@@ -4552,7 +4440,7 @@
                     "description": "seconds"
                   },
                   "media-trim": {
-                    "$ref": "#/definitions/media-trim"
+                    "$ref": "#/definitions/time-trim"
                   }
                 },
                 "required": [
@@ -4604,9 +4492,7 @@
                     "type": "boolean"
                   },
                   "stroke": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -4651,44 +4537,15 @@
                     "description": "a normalized relative file path"
                   },
                   "position": {
-                    "$ref": "#/definitions/position"
+                    "$ref": "#/definitions/space-position"
                   },
                   "rotation": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/rotation"
+                        "$ref": "#/definitions/space-euler"
                       },
                       {
-                        "type": "object",
-                        "properties": {
-                          "w": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "x": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          }
-                        },
-                        "required": [
-                          "w",
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-quaternion"
                       }
                     ]
                   },
@@ -4696,33 +4553,7 @@
                     "const": "quaternion"
                   },
                   "scale": {
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -1000000000000000000,
-                        "maximum": 1000000000000000000,
-                        "description": "ratio"
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -1000000000000000000,
-                        "maximum": 1000000000000000000,
-                        "description": "ratio"
-                      },
-                      "z": {
-                        "type": "number",
-                        "minimum": -1000000000000000000,
-                        "maximum": 1000000000000000000,
-                        "description": "ratio"
-                      }
-                    },
-                    "required": [
-                      "x",
-                      "y",
-                      "z"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#/definitions/space-scale"
                   },
                   "locked": {
                     "type": "boolean"
@@ -4879,78 +4710,16 @@
                         "$ref": "#/definitions/object-id"
                       },
                       "position": {
-                        "$ref": "#/definitions/position"
+                        "$ref": "#/definitions/space-position"
                       },
                       "rotation": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/definitions/rotation"
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "w": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "x": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "z": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              }
-                            },
-                            "required": [
-                              "w",
-                              "x",
-                              "y",
-                              "z"
-                            ],
-                            "additionalProperties": false
-                          }
-                        ]
+                        "$ref": "#/definitions/rotation"
                       },
                       "rotation-mode": {
                         "const": "quaternion"
                       },
                       "scale": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-scale"
                       },
                       "locked": {
                         "type": "boolean"
@@ -4959,9 +4728,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5016,78 +4783,16 @@
                         "$ref": "#/definitions/object-id"
                       },
                       "position": {
-                        "$ref": "#/definitions/position"
+                        "$ref": "#/definitions/space-position"
                       },
                       "rotation": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/definitions/rotation"
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "w": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "x": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "z": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              }
-                            },
-                            "required": [
-                              "w",
-                              "x",
-                              "y",
-                              "z"
-                            ],
-                            "additionalProperties": false
-                          }
-                        ]
+                        "$ref": "#/definitions/rotation"
                       },
                       "rotation-mode": {
                         "const": "quaternion"
                       },
                       "scale": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-scale"
                       },
                       "locked": {
                         "type": "boolean"
@@ -5096,9 +4801,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5172,78 +4875,16 @@
                         "$ref": "#/definitions/object-id"
                       },
                       "position": {
-                        "$ref": "#/definitions/position"
+                        "$ref": "#/definitions/space-position"
                       },
                       "rotation": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/definitions/rotation"
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "w": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "x": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "z": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              }
-                            },
-                            "required": [
-                              "w",
-                              "x",
-                              "y",
-                              "z"
-                            ],
-                            "additionalProperties": false
-                          }
-                        ]
+                        "$ref": "#/definitions/rotation"
                       },
                       "rotation-mode": {
                         "const": "quaternion"
                       },
                       "scale": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-scale"
                       },
                       "locked": {
                         "type": "boolean"
@@ -5252,9 +4893,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5313,78 +4952,16 @@
                         "$ref": "#/definitions/object-id"
                       },
                       "position": {
-                        "$ref": "#/definitions/position"
+                        "$ref": "#/definitions/space-position"
                       },
                       "rotation": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/definitions/rotation"
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "w": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "x": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              },
-                              "z": {
-                                "type": "number",
-                                "minimum": -8589934592,
-                                "maximum": 8589934592
-                              }
-                            },
-                            "required": [
-                              "w",
-                              "x",
-                              "y",
-                              "z"
-                            ],
-                            "additionalProperties": false
-                          }
-                        ]
+                        "$ref": "#/definitions/rotation"
                       },
                       "rotation-mode": {
                         "const": "quaternion"
                       },
                       "scale": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -1000000000000000000,
-                            "maximum": 1000000000000000000,
-                            "description": "ratio"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-scale"
                       },
                       "locked": {
                         "type": "boolean"
@@ -5393,9 +4970,7 @@
                         "type": "boolean"
                       },
                       "color": {
-                        "type": "string",
-                        "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                        "description": "a color role or a hex color"
+                        "$ref": "#/definitions/color"
                       },
                       "parent-joint": {
                         "$ref": "#/definitions/joint-name"
@@ -5471,44 +5046,15 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "position": {
-                    "$ref": "#/definitions/position"
+                    "$ref": "#/definitions/space-position"
                   },
                   "rotation": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/rotation"
+                        "$ref": "#/definitions/space-euler"
                       },
                       {
-                        "type": "object",
-                        "properties": {
-                          "w": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "x": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          }
-                        },
-                        "required": [
-                          "w",
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-quaternion"
                       }
                     ]
                   },
@@ -5534,9 +5080,7 @@
                     "$ref": "#/definitions/parent-inverse"
                   },
                   "shadow-color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "width": {
                     "type": "number",
@@ -5614,9 +5158,7 @@
                     "description": "fraction"
                   },
                   "shadow-color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   }
                 },
                 "required": [
@@ -5667,39 +5209,10 @@
                   "rotation": {
                     "anyOf": [
                       {
-                        "$ref": "#/definitions/rotation"
+                        "$ref": "#/definitions/space-euler"
                       },
                       {
-                        "type": "object",
-                        "properties": {
-                          "w": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "x": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          },
-                          "z": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592
-                          }
-                        },
-                        "required": [
-                          "w",
-                          "x",
-                          "y",
-                          "z"
-                        ],
-                        "additionalProperties": false
+                        "$ref": "#/definitions/space-quaternion"
                       }
                     ]
                   },
@@ -5901,9 +5414,7 @@
                     "$ref": "#/definitions/one-line"
                   },
                   "color": {
-                    "type": "string",
-                    "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                    "description": "a color role or a hex color"
+                    "$ref": "#/definitions/color"
                   },
                   "intensity": {
                     "type": "number",
@@ -7437,110 +6948,30 @@
             },
             "additionalProperties": false
           },
-          "color": {
-            "anyOf": [
-              {
-                "type": "string",
-                "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                "description": "a color role or a hex color"
-              },
-              {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "linear"
-                      },
-                      "angle": {
-                        "type": "number",
-                        "description": "degrees"
-                      },
-                      "line": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -511,
-                            "maximum": 511,
-                            "description": "frame fraction"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -511,
-                            "maximum": 511,
-                            "description": "frame fraction"
-                          },
-                          "length": {
-                            "type": "number",
-                            "minimum": 0.000001,
-                            "maximum": 362,
-                            "description": "frame diagonals"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y",
-                          "length"
-                        ],
-                        "additionalProperties": false
-                      },
-                      "stops": {
-                        "$ref": "#/definitions/stops"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "angle",
-                      "stops"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "radial"
-                      },
-                      "center": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -510.5,
-                            "maximum": 511.5,
-                            "description": "frame fraction"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -510.5,
-                            "maximum": 511.5,
-                            "description": "frame fraction"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y"
-                        ],
-                        "additionalProperties": false
-                      },
-                      "shape": {
-                        "const": "circle"
-                      },
-                      "stops": {
-                        "$ref": "#/definitions/stops"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "center",
-                      "stops"
-                    ],
-                    "additionalProperties": false
-                  }
+          "back-curve": {
+            "type": "object",
+            "properties": {
+              "curve": {
+                "enum": [
+                  "anticipate",
+                  "overshoot",
+                  "anticipate-overshoot"
                 ]
+              },
+              "back": {
+                "type": "number",
+                "minimum": 0
               }
-            ]
+            },
+            "required": [
+              "curve"
+            ],
+            "additionalProperties": false
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+            "description": "a color role or a hex color"
           },
           "constraint-id": {
             "type": "string",
@@ -7876,107 +7307,34 @@
                 "const": "none"
               },
               {
-                "type": "string",
-                "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                "description": "a color role or a hex color"
+                "$ref": "#/definitions/color"
               },
               {
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "linear"
-                      },
-                      "angle": {
-                        "type": "number",
-                        "description": "degrees"
-                      },
-                      "line": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -511,
-                            "maximum": 511,
-                            "description": "frame fraction"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -511,
-                            "maximum": 511,
-                            "description": "frame fraction"
-                          },
-                          "length": {
-                            "type": "number",
-                            "minimum": 0.000001,
-                            "maximum": 362,
-                            "description": "frame diagonals"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y",
-                          "length"
-                        ],
-                        "additionalProperties": false
-                      },
-                      "stops": {
-                        "$ref": "#/definitions/stops"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "angle",
-                      "stops"
-                    ],
-                    "additionalProperties": false
-                  },
-                  {
-                    "type": "object",
-                    "properties": {
-                      "type": {
-                        "const": "radial"
-                      },
-                      "center": {
-                        "type": "object",
-                        "properties": {
-                          "x": {
-                            "type": "number",
-                            "minimum": -510.5,
-                            "maximum": 511.5,
-                            "description": "frame fraction"
-                          },
-                          "y": {
-                            "type": "number",
-                            "minimum": -510.5,
-                            "maximum": 511.5,
-                            "description": "frame fraction"
-                          }
-                        },
-                        "required": [
-                          "x",
-                          "y"
-                        ],
-                        "additionalProperties": false
-                      },
-                      "shape": {
-                        "const": "circle"
-                      },
-                      "stops": {
-                        "$ref": "#/definitions/stops"
-                      }
-                    },
-                    "required": [
-                      "type",
-                      "center",
-                      "stops"
-                    ],
-                    "additionalProperties": false
-                  }
-                ]
+                "$ref": "#/definitions/gradient"
               }
             ]
+          },
+          "flat-scale": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 511,
+                "description": "ratio"
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 511,
+                "description": "ratio"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
           },
           "frame": {
             "type": "object",
@@ -8013,6 +7371,102 @@
               "height"
             ],
             "additionalProperties": false
+          },
+          "gradient": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "const": "linear"
+                  },
+                  "angle": {
+                    "type": "number",
+                    "description": "degrees"
+                  },
+                  "line": {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": -511,
+                        "maximum": 511,
+                        "description": "frame fraction"
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": -511,
+                        "maximum": 511,
+                        "description": "frame fraction"
+                      },
+                      "length": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 362,
+                        "description": "frame diagonals"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y",
+                      "length"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "stops": {
+                    "$ref": "#/definitions/stops"
+                  }
+                },
+                "required": [
+                  "type",
+                  "angle",
+                  "stops"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "const": "radial"
+                  },
+                  "center": {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": -510.5,
+                        "maximum": 511.5,
+                        "description": "frame fraction"
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": -510.5,
+                        "maximum": 511.5,
+                        "description": "frame fraction"
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "shape": {
+                    "const": "circle"
+                  },
+                  "stops": {
+                    "$ref": "#/definitions/stops"
+                  }
+                },
+                "required": [
+                  "type",
+                  "center",
+                  "stops"
+                ],
+                "additionalProperties": false
+              }
+            ]
           },
           "interpolation": {
             "anyOf": [
@@ -8057,7 +7511,7 @@
               {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/interpolation-anticipate"
+                    "$ref": "#/definitions/back-curve"
                   },
                   {
                     "type": "object",
@@ -8114,45 +7568,55 @@
               }
             ]
           },
-          "interpolation-anticipate": {
-            "type": "object",
-            "properties": {
-              "curve": {
-                "enum": [
-                  "anticipate",
-                  "overshoot",
-                  "anticipate-overshoot"
-                ]
-              },
-              "back": {
-                "type": "number",
-                "minimum": 0
-              }
-            },
-            "required": [
-              "curve"
-            ],
-            "additionalProperties": false
-          },
           "joint-name": {
             "type": "string",
             "pattern": "^[^\\r\\n]+(?![\\s\\S])",
             "description": "a joint’s name"
           },
-          "media-trim": {
+          "line-end": {
             "type": "object",
             "properties": {
-              "start": {
-                "type": "number",
-                "minimum": 0,
-                "description": "seconds"
+              "object": {
+                "type": "string",
+                "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                "description": "an object’s id"
               },
-              "end": {
-                "type": "number",
-                "minimum": 0,
-                "description": "seconds"
+              "side": {
+                "enum": [
+                  "auto",
+                  "top",
+                  "right",
+                  "bottom",
+                  "left"
+                ]
+              },
+              "at": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -33554431.984375,
+                    "maximum": 33554431.984375,
+                    "description": "canvas units"
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -33554431.984375,
+                    "maximum": 33554431.984375,
+                    "description": "canvas units"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "additionalProperties": false
               }
             },
+            "required": [
+              "object",
+              "side"
+            ],
             "additionalProperties": false
           },
           "object-id": {
@@ -8170,6 +7634,16 @@
             "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
             "description": "a color role or a hex color without opacity, such as \"#000000\""
           },
+          "paint": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/color"
+              },
+              {
+                "$ref": "#/definitions/gradient"
+              }
+            ]
+          },
           "parent-inverse": {
             "type": "array",
             "items": {
@@ -8177,35 +7651,6 @@
             },
             "minItems": 16,
             "maxItems": 16
-          },
-          "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number",
-                "minimum": -1000000000000000000,
-                "maximum": 1000000000000000000,
-                "description": "canvas units"
-              },
-              "y": {
-                "type": "number",
-                "minimum": -1000000000000000000,
-                "maximum": 1000000000000000000,
-                "description": "canvas units"
-              },
-              "z": {
-                "type": "number",
-                "minimum": -1000000000000000000,
-                "maximum": 1000000000000000000,
-                "description": "canvas units"
-              }
-            },
-            "required": [
-              "x",
-              "y",
-              "z"
-            ],
-            "additionalProperties": false
           },
           "property-name": {
             "type": "object",
@@ -8218,10 +7663,6 @@
               "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
               "description": "one line with one space between words, none at the start or end, and no \"-->\""
             }
-          },
-          "record": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
           },
           "repeater": {
             "type": "object",
@@ -8325,6 +7766,38 @@
             "additionalProperties": false
           },
           "rotation": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/space-euler"
+              },
+              {
+                "$ref": "#/definitions/space-quaternion"
+              }
+            ]
+          },
+          "slide-point": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -65536,
+                "maximum": 65536,
+                "description": "canvas units"
+              },
+              "y": {
+                "type": "number",
+                "minimum": -65536,
+                "maximum": 65536,
+                "description": "canvas units"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
+          },
+          "space-euler": {
             "type": "object",
             "properties": {
               "x": {
@@ -8353,47 +7826,93 @@
             ],
             "additionalProperties": false
           },
-          "scale": {
+          "space-position": {
             "type": "object",
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": 0,
-                "maximum": 511,
-                "description": "ratio"
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "canvas units"
               },
               "y": {
                 "type": "number",
-                "minimum": 0,
-                "maximum": 511,
-                "description": "ratio"
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "canvas units"
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "canvas units"
               }
             },
             "required": [
               "x",
-              "y"
+              "y",
+              "z"
             ],
             "additionalProperties": false
           },
-          "start": {
+          "space-quaternion": {
+            "type": "object",
+            "properties": {
+              "w": {
+                "type": "number",
+                "minimum": -8589934592,
+                "maximum": 8589934592
+              },
+              "x": {
+                "type": "number",
+                "minimum": -8589934592,
+                "maximum": 8589934592
+              },
+              "y": {
+                "type": "number",
+                "minimum": -8589934592,
+                "maximum": 8589934592
+              },
+              "z": {
+                "type": "number",
+                "minimum": -8589934592,
+                "maximum": 8589934592
+              }
+            },
+            "required": [
+              "w",
+              "x",
+              "y",
+              "z"
+            ],
+            "additionalProperties": false
+          },
+          "space-scale": {
             "type": "object",
             "properties": {
               "x": {
                 "type": "number",
-                "minimum": -65536,
-                "maximum": 65536,
-                "description": "canvas units"
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "ratio"
               },
               "y": {
                 "type": "number",
-                "minimum": -65536,
-                "maximum": 65536,
-                "description": "canvas units"
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "ratio"
+              },
+              "z": {
+                "type": "number",
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "ratio"
               }
             },
             "required": [
               "x",
-              "y"
+              "y",
+              "z"
             ],
             "additionalProperties": false
           },
@@ -8403,9 +7922,7 @@
               "type": "object",
               "properties": {
                 "color": {
-                  "type": "string",
-                  "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-                  "description": "a color role or a hex color"
+                  "$ref": "#/definitions/color"
                 },
                 "position": {
                   "type": "number",
@@ -8455,6 +7972,22 @@
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "a text style name"
           },
+          "time-trim": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "number",
+                "minimum": 0,
+                "description": "seconds"
+              },
+              "end": {
+                "type": "number",
+                "minimum": 0,
+                "description": "seconds"
+              }
+            },
+            "additionalProperties": false
+          },
           "trim": {
             "type": "object",
             "properties": {
@@ -8476,6 +8009,10 @@
               "end"
             ],
             "additionalProperties": false
+          },
+          "uuid": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
           },
           "wipe": {
             "type": "object",
