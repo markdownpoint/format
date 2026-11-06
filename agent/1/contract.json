@@ -1537,7 +1537,7 @@
     },
     "AgentFrame": {
       "$ref": "#/definitions/PresentationFrame",
-      "description": "A box on the slide in canvas units, as the kernel's own frame: an object's, its words' or a model's bounds."
+      "description": "A box on the slide in canvas units, as MarkdownPoint measures it: an object's, its words' or a model's bounds."
     },
     "AgentFrameProbe": {
       "type": "object",
@@ -2333,7 +2333,7 @@
         },
         "proposalOperations": {
           "type": "number",
-          "description": "Operations one proposal carries: it is applied as one kernel batch."
+          "description": "Operations one proposal carries: it is applied as one batch."
         },
         "rangeSamples": {
           "type": "number",
@@ -3424,7 +3424,7 @@
         },
         "root": {
           "type": "string",
-          "description": "The canonical root the app now shows."
+          "description": "The presentation's folder the app now shows, its path as the app resolves it."
         }
       },
       "required": [
@@ -5175,10 +5175,10 @@
               "additionalProperties": false
             }
           ],
-          "description": "The operations as the kernel spells them, in the model's words (`strokeWeight`, a fill as `{ type, color }`): what the app runs once it has read an operation's file words."
+          "description": "The operations as MarkdownPoint spells them, in the model's words (`strokeWeight`, a fill as `{ type, color }`): what the app runs once it has read an operation's file words."
         }
       ],
-      "description": "Operations the app serves as a kernel batch or one standalone step, in the words the .mdpoint file spells objects and properties in (`stroke`, `fill: accent`, `crop.focal-point`). The kernel owns semantics; closed-shape validation runs before it sees them. An object edit with `at` lands in the slide's motion as the Inspector's does with the playhead there: keyframes at that time, or Start values."
+      "description": "Operations the app serves as one batch or one standalone step, in the words the .mdpoint file spells objects and properties in (`stroke`, `fill: accent`, `crop.focal-point`). MarkdownPoint judges what they mean, once a check of each record's shape has passed. An object edit with `at` lands in the slide's motion as the Inspector's does with the playhead there: keyframes at that time, or Start values."
     },
     "AgentPresentationResult": {
       "type": "object",
@@ -5535,7 +5535,7 @@
     },
     "AgentRequestId": {
       "type": "string",
-      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?![\\s\\S])",
       "description": "A UUID the caller makes for its request, in either case."
     },
     "AgentRescale": {
@@ -5666,7 +5666,7 @@
       "type": "integer",
       "minimum": 1,
       "maximum": 8192,
-      "description": "A slide's width or height in canvas units, as the .mdpoint file holds it.; canvas units"
+      "description": "A slide's width or height in canvas units, as its theme's master.json holds it.; canvas units"
     },
     "AgentSlideFramesRequest": {
       "type": "object",
@@ -9592,7 +9592,7 @@
               "additionalProperties": {}
             }
           },
-          "description": "Each parameter's value domain by object type, then by parameter, once for each type on the slide that has it: a type holds its own range where it differs, as a text's scale and a model's do. The ordinary dry-run retains contextual admission."
+          "description": "Each parameter's value domain by object type, then by parameter, once for each type on the slide that has it: a type holds its own range where it differs, as a text's scale and a model's do. A dry run still checks each value against its own object."
         },
         "at": {
           "anyOf": [
@@ -18378,7 +18378,7 @@
         "master",
         "slide"
       ],
-      "description": "Where a materialized object came from and which of its properties the slide overrides."
+      "description": "Where an object the slide shows, its own or inherited, came from, and which of its properties the slide overrides."
     },
     "PresentationObjectType": {
       "type": "string",

@@ -63,7 +63,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Show an existing presentation folder in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the canonical root to pass as \"root\" to the other tools.",
+      "description": "Show an existing presentation folder in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the presentation folder's path, as the app resolves it, to pass as \"root\" to the other tools.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -87,7 +87,7 @@
           },
           "root": {
             "type": "string",
-            "description": "The canonical root the app now shows."
+            "description": "The presentation's folder the app now shows, its path as the app resolves it."
           }
         },
         "required": [
@@ -107,7 +107,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Create a presentation folder from a bundled theme (Basic when omitted) and show it in a document window. Needs no open presentation. Each bundled theme starts the presentation with one slide. Returns the canonical root to pass as \"root\" to the other tools.",
+      "description": "Create a presentation folder from a bundled theme (Basic when omitted) and show it in a document window. Needs no open presentation. Each bundled theme starts the presentation with one slide. Returns the presentation folder's path, as the app resolves it, to pass as \"root\" to the other tools.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -302,7 +302,7 @@
               },
               "proposalOperations": {
                 "type": "number",
-                "description": "Operations one proposal carries: it is applied as one kernel batch."
+                "description": "Operations one proposal carries: it is applied as one batch."
               },
               "rangeSamples": {
                 "type": "number",
@@ -1817,7 +1817,7 @@
                 "additionalProperties": {}
               }
             },
-            "description": "Each parameter's value domain by object type, then by parameter, once for each type on the slide that has it: a type holds its own range where it differs, as a text's scale and a model's do. The ordinary dry-run retains contextual admission."
+            "description": "Each parameter's value domain by object type, then by parameter, once for each type on the slide that has it: a type holds its own range where it differs, as a text's scale and a model's do. A dry run still checks each value against its own object."
           },
           "at": {
             "anyOf": [
@@ -6673,7 +6673,7 @@
               "master",
               "slide"
             ],
-            "description": "Where a materialized object came from and which of its properties the slide overrides."
+            "description": "Where an object the slide shows, its own or inherited, came from, and which of its properties the slide overrides."
           },
           "PresentationOrientation": {
             "type": "object",
@@ -7991,7 +7991,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Render one slide through the app renderer at authored Base or an exact animation position. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, canonical position, pixel dimensions, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write with transformObjects at the same position, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
+      "description": "Render one slide through the app renderer at authored Base or an exact animation position. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, the position as MarkdownPoint spells it, its width and height in pixels, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write with transformObjects at the same position, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -8900,7 +8900,7 @@
           },
           "AgentFrame": {
             "$ref": "#/definitions/PresentationFrame",
-            "description": "A box on the slide in canvas units, as the kernel's own frame: an object's, its words' or a model's bounds."
+            "description": "A box on the slide in canvas units, as MarkdownPoint measures it: an object's, its words' or a model's bounds."
           },
           "AgentModelMeasure": {
             "type": "object",
@@ -9501,7 +9501,7 @@
         "definitions": {
           "AgentFrame": {
             "$ref": "#/definitions/PresentationFrame",
-            "description": "A box on the slide in canvas units, as the kernel's own frame: an object's, its words' or a model's bounds."
+            "description": "A box on the slide in canvas units, as MarkdownPoint measures it: an object's, its words' or a model's bounds."
           },
           "AgentLetter": {
             "type": "object",
@@ -9602,7 +9602,7 @@
           },
           "id": {
             "type": "string",
-            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?![\\s\\S])",
             "description": "Fresh request identity. Movie cancellation matches this ID in the current window/session."
           },
           "movie": {
@@ -9922,7 +9922,7 @@
         "properties": {
           "id": {
             "type": "string",
-            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?![\\s\\S])",
             "description": "The id of the movie export to cancel, as its exports.run request gave it."
           },
           "root": {
@@ -10019,7 +10019,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Open a local picture object in the external image editor the author chose in the app. Generated pictures are copied into media/ and bound only after launch; stale edits refuse that binding. Uses the same admission and Undo behavior as the Media tab. Shared presentations and theme artwork refuse external editing. Returns the resulting file and whether it was copied.",
+      "description": "Open a local picture object in the external image editor the author chose in the app. Generated pictures are copied into media/ and bound only after launch; stale edits refuse that binding. Uses the same checks and Undo behavior as the Media tab. Shared presentations and theme artwork refuse external editing. Returns the resulting file and whether it was copied.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -12322,7 +12322,7 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 8192,
-            "description": "A slide's width or height in canvas units, as the .mdpoint file holds it.; canvas units"
+            "description": "A slide's width or height in canvas units, as its theme's master.json holds it.; canvas units"
           },
           "rescale": {
             "type": "string",
@@ -12335,7 +12335,7 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 8192,
-            "description": "A slide's width or height in canvas units, as the .mdpoint file holds it.; canvas units"
+            "description": "A slide's width or height in canvas units, as its theme's master.json holds it.; canvas units"
           },
           "root": {
             "type": "string",
