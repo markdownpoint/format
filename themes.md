@@ -30,23 +30,25 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Color schemes
 
-A scheme sets a color for each role. A role names how the color is used: `background`, `text` or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
+A scheme's `colors` set a color for each role. A role names how the color is used: `background`, `text` or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
 
-Every theme has a `light` and a `dark` scheme. Another scheme, such as Basic's butter, states its `appearance`, light or dark:
+Every theme has a `light` and a `dark` scheme. Another scheme, such as Basic's butter, states its `appearance`, light or dark, beside its colors:
 
 ```json
 {
   "appearance": "light",
-  "background": "#FBE991",
-  "text": "#17120F",
-  "muted": "#524843",
-  "accent": "{brand.ember}",
-  "stroke": "#17120F1F",
-  "link": "#17120F"
+  "colors": {
+    "background": "#FBE991",
+    "text": "#17120F",
+    "muted": "#524843",
+    "accent": "{brand.ember}",
+    "stroke": "#17120F1F",
+    "link": "#17120F"
+  }
 }
 ```
 
-`{brand.ember}` refers to the `ember` color under `brand.colors`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `stroke` and `link`. It can add roles of its own. The [scheme reference](reference/v1.md#scheme) says what each role colors.
+`{brand.ember}` refers to the `ember` color under `brand.colors`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `stroke` and `link`. It can add roles of its own. The [scheme colors reference](reference/v1.md#scheme-colors) says what each role colors.
 
 ## Text styles
 

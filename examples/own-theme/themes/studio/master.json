@@ -15,20 +15,24 @@
   },
   "schemes": {
     "light": {
-      "background": "#F4EDE4",
-      "text": "#1B2A3A",
-      "muted": "#6B7480",
-      "accent": "#E4572E",
-      "stroke": "#D9CFC2",
-      "link": "#1B2A3A"
+      "colors": {
+        "background": "#F4EDE4",
+        "text": "#1B2A3A",
+        "muted": "#6B7480",
+        "accent": "#E4572E",
+        "stroke": "#D9CFC2",
+        "link": "#1B2A3A"
+      }
     },
     "dark": {
-      "background": "#1B2A3A",
-      "text": "#F4EDE4",
-      "muted": "#A7B0BA",
-      "accent": "#E4572E",
-      "stroke": "#2F4256",
-      "link": "#F4EDE4"
+      "colors": {
+        "background": "#1B2A3A",
+        "text": "#F4EDE4",
+        "muted": "#A7B0BA",
+        "accent": "#E4572E",
+        "stroke": "#2F4256",
+        "link": "#F4EDE4"
+      }
     }
   },
   "text-styles": {

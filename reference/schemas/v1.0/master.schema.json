@@ -154,7 +154,7 @@
         ]
       },
       "additionalProperties": {
-        "description": "One color scheme: a color for each of its six roles, and for any further role it names. Every theme has light and dark, and can add more. Each role's color is a hex color or a brand color written `{brand.name}`.",
+        "description": "One color scheme: whether it is light or dark, and its colors. Every theme has light and dark, and can add more.",
         "type": "object",
         "properties": {
           "appearance": {
@@ -164,85 +164,20 @@
             ],
             "description": "Whether the scheme is light or dark. Schemes named light and dark don't state it."
           },
-          "background": {
+          "colors": {
             "allOf": [
               {
-                "$ref": "#/definitions/scheme-color"
+                "$ref": "#/definitions/scheme-colors"
               }
             ],
-            "description": "The slide's base color, under everything else."
-          },
-          "text": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/scheme-color"
-              }
-            ],
-            "description": "The color of text."
-          },
-          "muted": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/scheme-color"
-              }
-            ],
-            "description": "The color of secondary text."
-          },
-          "accent": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/scheme-color"
-              }
-            ],
-            "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
-          },
-          "stroke": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/scheme-color"
-              }
-            ],
-            "description": "The color of a table's grid, and of any outline or line set to it."
-          },
-          "link": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/scheme-color"
-              }
-            ],
-            "description": "The color of links."
+            "description": "The scheme's colors, by role."
           }
         },
         "required": [
           "appearance",
-          "background",
-          "text",
-          "muted",
-          "accent",
-          "stroke",
-          "link"
+          "colors"
         ],
-        "propertyNames": {
-          "anyOf": [
-            {
-              "enum": [
-                "appearance",
-                "background",
-                "text",
-                "muted",
-                "accent",
-                "stroke",
-                "link"
-              ]
-            },
-            {
-              "pattern": "^(?!(?:none|appearance)(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            }
-          ]
-        },
-        "additionalProperties": {
-          "$ref": "#/definitions/scheme-color"
-        }
+        "additionalProperties": false
       },
       "description": "The theme's color schemes, by name. Every theme has light and dark."
     },
@@ -4496,83 +4431,19 @@
     "fixed-scheme": {
       "type": "object",
       "properties": {
-        "background": {
+        "colors": {
           "allOf": [
             {
-              "$ref": "#/definitions/scheme-color"
+              "$ref": "#/definitions/scheme-colors"
             }
           ],
-          "description": "The slide's base color, under everything else."
-        },
-        "text": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/scheme-color"
-            }
-          ],
-          "description": "The color of text."
-        },
-        "muted": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/scheme-color"
-            }
-          ],
-          "description": "The color of secondary text."
-        },
-        "accent": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/scheme-color"
-            }
-          ],
-          "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
-        },
-        "stroke": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/scheme-color"
-            }
-          ],
-          "description": "The color of a table's grid, and of any outline or line set to it."
-        },
-        "link": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/scheme-color"
-            }
-          ],
-          "description": "The color of links."
+          "description": "The scheme's colors, by role."
         }
       },
       "required": [
-        "background",
-        "text",
-        "muted",
-        "accent",
-        "stroke",
-        "link"
+        "colors"
       ],
-      "propertyNames": {
-        "anyOf": [
-          {
-            "enum": [
-              "background",
-              "text",
-              "muted",
-              "accent",
-              "stroke",
-              "link"
-            ]
-          },
-          {
-            "pattern": "^(?!(?:none|appearance)(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-          }
-        ]
-      },
-      "additionalProperties": {
-        "$ref": "#/definitions/scheme-color"
-      }
+      "additionalProperties": false
     },
     "flat-scale": {
       "description": "A flat object's scale along its own axes, about its frame's center. Text breaks into lines first, then stretches with the scale.",
@@ -5115,6 +4986,88 @@
     "scheme-color": {
       "type": "string",
       "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.[a-z][a-z0-9-]*\\})(?![\\s\\S])"
+    },
+    "scheme-colors": {
+      "description": "A scheme's colors: one for each of its six roles, and for any further role it names. Each is a hex color or a brand color written `{brand.name}`.",
+      "type": "object",
+      "properties": {
+        "background": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The slide's base color, under everything else."
+        },
+        "text": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of text."
+        },
+        "muted": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of secondary text."
+        },
+        "accent": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
+        },
+        "stroke": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of a table's grid, and of any outline or line set to it."
+        },
+        "link": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/scheme-color"
+            }
+          ],
+          "description": "The color of links."
+        }
+      },
+      "required": [
+        "background",
+        "text",
+        "muted",
+        "accent",
+        "stroke",
+        "link"
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "enum": [
+              "background",
+              "text",
+              "muted",
+              "accent",
+              "stroke",
+              "link"
+            ]
+          },
+          {
+            "pattern": "^(?!none(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+          }
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/scheme-color"
+      }
     },
     "slide-point": {
       "type": "object",

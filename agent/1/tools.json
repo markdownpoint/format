@@ -11573,22 +11573,22 @@
                   "light"
                 ]
               },
-              "name": {
-                "type": "string",
-                "description": "`light`, `dark`, or a named scheme."
-              },
-              "roles": {
+              "colors": {
                 "type": "object",
                 "additionalProperties": {
                   "type": "string"
                 },
-                "description": "Role values as authored: a CSS hex or `{brand.<name>}`."
+                "description": "Its colors by role, as authored: a CSS hex or `{brand.<name>}`."
+              },
+              "name": {
+                "type": "string",
+                "description": "`light`, `dark`, or a named scheme."
               }
             },
             "required": [
               "appearance",
-              "name",
-              "roles"
+              "colors",
+              "name"
             ],
             "additionalProperties": false
           },
