@@ -2197,17 +2197,7 @@
               "type": "string"
             },
             "source": {
-              "type": "string",
-              "enum": [
-                "file",
-                "json",
-                "layout",
-                "markdown",
-                "master",
-                "pair",
-                "scene",
-                "theme"
-              ]
+              "$ref": "#/definitions/IssueSource"
             }
           },
           "required": [
@@ -13869,6 +13859,20 @@
       ],
       "additionalProperties": false,
       "description": "Where in a presentation's files an issue stands: the file's name, and its line, counted from 1, and column when known."
+    },
+    "IssueSource": {
+      "type": "string",
+      "enum": [
+        "file",
+        "json",
+        "layout",
+        "markdown",
+        "master",
+        "pair",
+        "scene",
+        "theme"
+      ],
+      "description": "What raised an issue, which says how the issue names where it stands."
     },
     "LayoutEditableDocument": {
       "type": "object",
