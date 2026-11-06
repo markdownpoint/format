@@ -2503,7 +2503,7 @@
                     ]
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "enter": {
                     "$ref": "#/definitions/enter"
@@ -2694,7 +2694,7 @@
                     "$ref": "#/definitions/anchor-point"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "fill": {
                     "$ref": "#/definitions/fill"
@@ -2994,7 +2994,7 @@
                     "$ref": "#/definitions/repeater"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "stroke": {
                     "$ref": "#/definitions/color"
@@ -3188,7 +3188,7 @@
                     "$ref": "#/definitions/anchor-point"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "stroke": {
                     "$ref": "#/definitions/color"
@@ -3509,7 +3509,7 @@
                     "$ref": "#/definitions/repeater"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "enter": {
                     "$ref": "#/definitions/enter"
@@ -3653,7 +3653,7 @@
                     "$ref": "#/definitions/repeater"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "trim": {
                     "$ref": "#/definitions/trim"
@@ -3793,7 +3793,7 @@
                     "$ref": "#/definitions/repeater"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "stroke-weight": {
                     "type": "number",
@@ -3895,7 +3895,7 @@
                     "type": "boolean"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "trim": {
                     "$ref": "#/definitions/trim"
@@ -4041,7 +4041,7 @@
                     "description": "seconds"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   }
                 },
                 "required": [
@@ -4217,7 +4217,7 @@
                     "description": "fraction"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   },
                   "text": {
                     "type": "string"
@@ -4380,7 +4380,7 @@
                     "$ref": "#/definitions/repeater"
                   },
                   "bind": {
-                    "$ref": "#/definitions/property-name"
+                    "$ref": "#/definitions/composition-bindings"
                   }
                 },
                 "required": [
@@ -6973,6 +6973,18 @@
             "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
             "description": "a color role or a hex color"
           },
+          "composition-bindings": {
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "description": "a property name"
+            },
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
+              "description": "one line with one space between words, none at the start or end, and no \"-->\""
+            }
+          },
           "constraint-id": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -7651,18 +7663,6 @@
             },
             "minItems": 16,
             "maxItems": 16
-          },
-          "property-name": {
-            "type": "object",
-            "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-              "description": "a property name"
-            },
-            "additionalProperties": {
-              "type": "string",
-              "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-              "description": "one line with one space between words, none at the start or end, and no \"-->\""
-            }
           },
           "repeater": {
             "type": "object",

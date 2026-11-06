@@ -921,7 +921,7 @@
                 "$ref": "#/definitions/anchor-point"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "enter": {
                 "$ref": "#/definitions/enter"
@@ -1198,7 +1198,7 @@
                 "$ref": "#/definitions/anchor-point"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "fill": {
                 "$ref": "#/definitions/fill"
@@ -1517,7 +1517,7 @@
                 "$ref": "#/definitions/repeater"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "stroke": {
                 "$ref": "#/definitions/color"
@@ -1756,7 +1756,7 @@
                 "$ref": "#/definitions/anchor-point"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "stroke": {
                 "$ref": "#/definitions/color"
@@ -2081,7 +2081,7 @@
                 "$ref": "#/definitions/repeater"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "enter": {
                 "$ref": "#/definitions/enter"
@@ -2225,7 +2225,7 @@
                 "$ref": "#/definitions/repeater"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "trim": {
                 "$ref": "#/definitions/trim"
@@ -2368,7 +2368,7 @@
                 "$ref": "#/definitions/repeater"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "stroke-weight": {
                 "type": "number",
@@ -2473,7 +2473,7 @@
                 "type": "boolean"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "trim": {
                 "$ref": "#/definitions/trim"
@@ -2696,7 +2696,7 @@
                 "description": "fraction"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "placeholder": {
                 "type": "boolean"
@@ -2864,7 +2864,7 @@
                 "$ref": "#/definitions/repeater"
               },
               "bind": {
-                "$ref": "#/definitions/property-name"
+                "$ref": "#/definitions/composition-bindings"
               },
               "placeholder": {
                 "type": "boolean"
@@ -4138,6 +4138,18 @@
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
       "description": "a color role or a hex color"
     },
+    "composition-bindings": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "a property name"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
+        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+      }
+    },
     "constraint-id": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -5015,18 +5027,6 @@
       },
       "minItems": 16,
       "maxItems": 16
-    },
-    "property-name": {
-      "type": "object",
-      "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "a property name"
-      },
-      "additionalProperties": {
-        "type": "string",
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
-      }
     },
     "repeater": {
       "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line attached inside the group.",

@@ -1049,7 +1049,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/property-name"
+                          "$ref": "#/definitions/composition-bindings"
                         }
                       ]
                     },
@@ -1767,7 +1767,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/control-name"
+                          "$ref": "#/definitions/composition-input-values"
                         }
                       ]
                     },
@@ -2516,14 +2516,11 @@
             "description": "The slide's objects, back to front. Its own objects are written out, and a layout object appears as its id."
           },
           "initial": {
-            "type": "object",
-            "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
-              "description": "a property name"
-            },
-            "additionalProperties": {
-              "$ref": "#/definitions/parameter-value"
-            },
+            "allOf": [
+              {
+                "$ref": "#/definitions/initial"
+              }
+            ],
             "description": "The values of animated parameters before the slide's first step, as \"object.parameter\" keys such as \"card.opacity\"."
           },
           "steps": {
@@ -2789,14 +2786,11 @@
             "description": "Its objects, back to front."
           },
           "initial": {
-            "type": "object",
-            "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
-              "description": "a property name"
-            },
-            "additionalProperties": {
-              "$ref": "#/definitions/parameter-value"
-            },
+            "allOf": [
+              {
+                "$ref": "#/definitions/initial"
+              }
+            ],
             "description": "The values of animated parameters before its first step, as \"object.parameter\" keys."
           },
           "steps": {
@@ -3189,6 +3183,38 @@
       ],
       "additionalProperties": false
     },
+    "composition-bindings": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "a property name"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
+        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+      }
+    },
+    "composition-input-values": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
+        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      }
+    },
     "constraint-id": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -3296,26 +3322,6 @@
               "type"
             ],
             "additionalProperties": false
-          }
-        ]
-      }
-    },
-    "control-name": {
-      "type": "object",
-      "propertyNames": {
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
-      },
-      "additionalProperties": {
-        "anyOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "boolean"
           }
         ]
       }
@@ -3915,6 +3921,16 @@
       ],
       "additionalProperties": false
     },
+    "initial": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
+        "description": "a property name"
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/parameter-value"
+      }
+    },
     "interpolation": {
       "anyOf": [
         {
@@ -4347,7 +4363,7 @@
           "description": "fraction"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         }
       },
       "required": [
@@ -4422,7 +4438,7 @@
           "description": "a composition slide id"
         },
         "inputs": {
-          "$ref": "#/definitions/control-name"
+          "$ref": "#/definitions/composition-input-values"
         },
         "time-remap": {
           "type": "number",
@@ -4431,7 +4447,7 @@
           "description": "seconds"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         }
       },
       "required": [
@@ -4575,7 +4591,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         }
       },
       "required": [
@@ -4691,7 +4707,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "stroke-weight": {
           "type": "number",
@@ -4889,7 +4905,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "stroke": {
           "$ref": "#/definitions/color"
@@ -5339,7 +5355,7 @@
           "type": "boolean"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "trim": {
           "$ref": "#/definitions/trim"
@@ -5588,7 +5604,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "trim": {
           "$ref": "#/definitions/trim"
@@ -5985,7 +6001,7 @@
           "$ref": "#/definitions/repeater"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "enter": {
           "$ref": "#/definitions/enter"
@@ -6150,7 +6166,7 @@
           "$ref": "#/definitions/anchor-point"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "fill": {
           "$ref": "#/definitions/fill"
@@ -6538,7 +6554,7 @@
           "$ref": "#/definitions/model"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "enter": {
           "$ref": "#/definitions/enter"
@@ -6821,7 +6837,7 @@
           "$ref": "#/definitions/anchor-point"
         },
         "bind": {
-          "$ref": "#/definitions/property-name"
+          "$ref": "#/definitions/composition-bindings"
         },
         "stroke": {
           "$ref": "#/definitions/color"
@@ -6959,18 +6975,6 @@
       },
       "minItems": 16,
       "maxItems": 16
-    },
-    "property-name": {
-      "type": "object",
-      "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "a property name"
-      },
-      "additionalProperties": {
-        "type": "string",
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
-      }
     },
     "repeater": {
       "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line attached inside the group.",
