@@ -3594,7 +3594,7 @@
                     "maximum": 90,
                     "description": "degrees"
                   },
-                  "light-radius": {
+                  "radius": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1000000000000000000,
@@ -3674,7 +3674,7 @@
                     "minimum": 0,
                     "description": "watts"
                   },
-                  "light-radius": {
+                  "radius": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1000000000000000000,

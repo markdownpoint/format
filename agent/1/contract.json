@@ -8634,7 +8634,7 @@
                   "maximum": 90,
                   "description": "degrees"
                 },
-                "light-radius": {
+                "radius": {
                   "type": "number",
                   "minimum": 0,
                   "maximum": 1000000000000000000,
@@ -8711,7 +8711,7 @@
                   "minimum": 0,
                   "description": "watts"
                 },
-                "light-radius": {
+                "radius": {
                   "type": "number",
                   "minimum": 0,
                   "maximum": 1000000000000000000,
@@ -12411,9 +12411,6 @@
         "intensity": {
           "type": "number"
         },
-        "light-radius": {
-          "type": "number"
-        },
         "light-type": {
           "$ref": "#/definitions/PresentationLightType"
         },
@@ -12440,6 +12437,9 @@
         },
         "position": {
           "$ref": "#/definitions/PresentationPoint3d"
+        },
+        "radius": {
+          "type": "number"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -14409,7 +14409,6 @@
         "kerning",
         "leading-zero-opacity",
         "legend",
-        "light-radius",
         "light-type",
         "line-height",
         "link",
@@ -14431,6 +14430,7 @@
         "poster-frame",
         "progress",
         "prompt",
+        "radius",
         "render-effects",
         "repeater",
         "restyle",
@@ -15202,9 +15202,6 @@
         "intensity": {
           "type": "number"
         },
-        "light-radius": {
-          "type": "number"
-        },
         "light-type": {
           "$ref": "#/definitions/PresentationLightType"
         },
@@ -15231,6 +15228,9 @@
         },
         "position": {
           "$ref": "#/definitions/PresentationPoint3d"
+        },
+        "radius": {
+          "type": "number"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -16976,10 +16976,6 @@
         },
         {
           "type": "string",
-          "const": "light-radius"
-        },
-        {
-          "type": "string",
           "const": "line-height"
         },
         {
@@ -17009,6 +17005,10 @@
         {
           "type": "string",
           "const": "progress"
+        },
+        {
+          "type": "string",
+          "const": "radius"
         },
         {
           "type": "string",

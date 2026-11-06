@@ -1594,9 +1594,6 @@
         "intensity": {
           "$ref": "#/definitions/Prop_intensity"
         },
-        "light-radius": {
-          "$ref": "#/definitions/Prop_light-radius"
-        },
         "light-type": {
           "$ref": "#/definitions/Prop_light-type"
         },
@@ -1617,6 +1614,9 @@
         },
         "position": {
           "$ref": "#/definitions/SpacePosition"
+        },
+        "radius": {
+          "$ref": "#/definitions/Prop_radius"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -1685,7 +1685,7 @@
                 },
                 {
                   "required": [
-                    "light-radius"
+                    "radius"
                   ]
                 },
                 {
@@ -1838,7 +1838,7 @@
                 },
                 {
                   "required": [
-                    "light-radius"
+                    "radius"
                   ]
                 }
               ]
@@ -5663,12 +5663,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "light-radius"
+              "const": "radius"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_light-radius"
+                  "$ref": "#/definitions/Prop_radius"
                 },
                 {
                   "type": "null"
@@ -6841,7 +6841,6 @@
         "kerning",
         "leading-zero-opacity",
         "legend",
-        "light-radius",
         "light-type",
         "line-height",
         "link",
@@ -6863,6 +6862,7 @@
         "poster-frame",
         "progress",
         "prompt",
+        "radius",
         "render-effects",
         "repeater",
         "restyle",
@@ -7531,9 +7531,6 @@
         "intensity": {
           "$ref": "#/definitions/Prop_intensity"
         },
-        "light-radius": {
-          "$ref": "#/definitions/Prop_light-radius"
-        },
         "light-type": {
           "$ref": "#/definitions/Prop_light-type"
         },
@@ -7554,6 +7551,9 @@
         },
         "position": {
           "$ref": "#/definitions/SpacePosition"
+        },
+        "radius": {
+          "$ref": "#/definitions/Prop_radius"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -7622,7 +7622,7 @@
                 },
                 {
                   "required": [
-                    "light-radius"
+                    "radius"
                   ]
                 },
                 {
@@ -7775,7 +7775,7 @@
                 },
                 {
                   "required": [
-                    "light-radius"
+                    "radius"
                   ]
                 }
               ]
@@ -11631,7 +11631,7 @@
       "maximum": 90,
       "description": "degrees"
     },
-    "Prop_light-radius": {
+    "Prop_radius": {
       "type": "number",
       "minimum": 0,
       "maximum": 1000000000000000000,
