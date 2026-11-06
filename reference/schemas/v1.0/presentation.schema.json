@@ -175,7 +175,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "a composition slide id"
+        "description": "a stable id, such as \"title-card\""
       },
       "additionalProperties": {
         "description": "One slide's objects, look, and animation. Its text is in the .md file.",
@@ -2525,7 +2525,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "a composition slide id"
+        "description": "a stable id, such as \"title-card\""
       },
       "additionalProperties": {
         "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another.",
@@ -2795,7 +2795,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "an object’s id"
+        "description": "a stable id, such as \"title-card\""
       },
       "additionalProperties": {
         "description": "A comment thread pinned to a slide or a composition, stored under an id unique among the presentation's threads. A thread stays when its slide is deleted.",
@@ -2859,7 +2859,7 @@
             "type": "object",
             "propertyNames": {
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-              "description": "an object’s id"
+              "description": "a stable id, such as \"title-card\""
             },
             "additionalProperties": {
               "description": "One reply in a comment thread, stored under an id unique in its thread.",
@@ -7225,6 +7225,11 @@
       ],
       "additionalProperties": false
     },
+    "stable-id": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "a stable id, such as \"title-card\""
+    },
     "steps": {
       "type": "array",
       "items": {
@@ -7234,7 +7239,7 @@
           "id": {
             "allOf": [
               {
-                "$ref": "#/definitions/object-id"
+                "$ref": "#/definitions/stable-id"
               }
             ],
             "description": "The step's id, unique on its slide."
@@ -7288,7 +7293,7 @@
                       "id": {
                         "allOf": [
                           {
-                            "$ref": "#/definitions/object-id"
+                            "$ref": "#/definitions/stable-id"
                           }
                         ],
                         "description": "The keyframe's id, unique in its step among its keyframes and cues."
@@ -7534,7 +7539,7 @@
                 "loop-keyframe": {
                   "allOf": [
                     {
-                      "$ref": "#/definitions/object-id"
+                      "$ref": "#/definitions/stable-id"
                     }
                   ],
                   "description": "The id of the keyframe the loop starts at, where its move begins if it has a `start`. Left out, or naming no keyframe of the curve, it is the first. It needs `loop`."
@@ -7558,7 +7563,7 @@
                     "id": {
                       "allOf": [
                         {
-                          "$ref": "#/definitions/object-id"
+                          "$ref": "#/definitions/stable-id"
                         }
                       ],
                       "description": "The cue's id, unique in its step among its keyframes and cues."
@@ -7601,7 +7606,7 @@
                     "id": {
                       "allOf": [
                         {
-                          "$ref": "#/definitions/object-id"
+                          "$ref": "#/definitions/stable-id"
                         }
                       ],
                       "description": "The cue's id, unique in its step among its keyframes and cues."
@@ -7638,7 +7643,7 @@
                     "id": {
                       "allOf": [
                         {
-                          "$ref": "#/definitions/object-id"
+                          "$ref": "#/definitions/stable-id"
                         }
                       ],
                       "description": "The cue's id, unique in its step among its keyframes and cues."
@@ -7675,7 +7680,7 @@
                     "id": {
                       "allOf": [
                         {
-                          "$ref": "#/definitions/object-id"
+                          "$ref": "#/definitions/stable-id"
                         }
                       ],
                       "description": "The cue's id, unique in its step among its keyframes and cues."
@@ -7712,7 +7717,7 @@
                     "id": {
                       "allOf": [
                         {
-                          "$ref": "#/definitions/object-id"
+                          "$ref": "#/definitions/stable-id"
                         }
                       ],
                       "description": "The cue's id, unique in its step among its keyframes and cues."
