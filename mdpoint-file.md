@@ -403,9 +403,9 @@ The hills carry a restyle, and the background is still a request:
 
 ![The generate slide, as MarkdownPoint draws it](images/pictures-generate.png)
 
-## Sound and video
+## Audio and video
 
-A video or a sound waits for a click to play. With `start-on-click` set to false, it starts when its slide appears. `media-trim` plays part of its file, from `start` to `end` in seconds:
+A video or an audio object waits for a click to play. With `start-on-click` set to false, it starts when its slide appears. `media-trim` plays part of its file, from `start` to `end` in seconds:
 
 ```json
 {
@@ -418,7 +418,7 @@ A video or a sound waits for a click to play. With `start-on-click` set to false
 }
 ```
 
-A sound's `fade-in` and `fade-out` are in seconds:
+An audio object's `fade-in` and `fade-out` are in seconds:
 
 ```json
 {
@@ -435,7 +435,7 @@ A sound's `fade-in` and `fade-out` are in seconds:
 
 ![The play slide, as MarkdownPoint draws it](images/sound-and-video-play.png)
 
-`soundtrack` plays one sound under the whole presentation, with fades of its own:
+`soundtrack` plays one audio file under the whole presentation, with fades of its own:
 
 ```json
 {"file": "media/chord.m4a", "fade-in": 2, "fade-out": 3}

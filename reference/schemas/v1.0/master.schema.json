@@ -1305,7 +1305,7 @@
                     "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -1581,7 +1581,7 @@
                     "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -2872,7 +2872,7 @@
                     "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -3089,7 +3089,7 @@
                 "type": "number",
                 "minimum": 0.000001,
                 "maximum": 4394531250000000,
-                "description": "mm"
+                "description": "millimeters"
               },
               "motion-blur": {
                 "description": "The camera's motion blur. Only the 3D layer blurs, and only in exported movies and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
@@ -3302,7 +3302,7 @@
                     "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, sound, or model can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -3645,7 +3645,7 @@
                   "intensity": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "W"
+                    "description": "watts"
                   },
                   "cone-angle": {
                     "type": "number",
@@ -3737,7 +3737,7 @@
                   "intensity": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "W"
+                    "description": "watts"
                   },
                   "light-radius": {
                     "type": "number",
@@ -3826,7 +3826,7 @@
                   "intensity": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "W"
+                    "description": "watts"
                   },
                   "size-x": {
                     "type": "number",
@@ -5333,7 +5333,7 @@
       "description": "a normalized path inside the theme’s folder, not hidden, not manifest.json, and not in previews or example"
     },
     "time-trim": {
-      "description": "The part of a video or sound file, or of a model's Action, that plays.",
+      "description": "The part of a video or audio file, or of a model's Action, that plays.",
       "type": "object",
       "properties": {
         "start": {

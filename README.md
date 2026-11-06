@@ -63,7 +63,7 @@ The [complete presentation](examples/first-deck) includes the theme and JSON fil
 My talk/
   slides.md              text, notes, sections and slide order
   presentation.mdpoint   objects, layout, styles and animation
-  media/                 imported images, videos, sounds and models
+  media/                 imported images, videos, audio and models
   generated/             generated images, 3D text models and image generation records
   themes/<key>/          master.json, layout files, fonts and images
   versions/              saved versions, one folder each

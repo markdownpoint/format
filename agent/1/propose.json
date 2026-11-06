@@ -3641,7 +3641,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "W"
+                "description": "watts"
               }
             }
           }
@@ -3699,7 +3699,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "W"
+                "description": "watts"
               }
             }
           }
@@ -3742,7 +3742,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "W"
+                "description": "watts"
               }
             }
           }
@@ -6962,7 +6962,7 @@
                   "type": "number",
                   "minimum": 0.000001,
                   "maximum": 4394531250000000,
-                  "description": "mm"
+                  "description": "millimeters"
                 },
                 {
                   "type": "null"
@@ -9404,7 +9404,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "W"
+                "description": "watts"
               }
             }
           }
@@ -9462,7 +9462,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "W"
+                "description": "watts"
               }
             }
           }
@@ -9505,7 +9505,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "W"
+                "description": "watts"
               }
             }
           }
@@ -14641,7 +14641,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "The span of a movie's or a sound's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "Prop_name": {
       "type": "string",
@@ -16096,7 +16096,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "The span of a movie's or a sound's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "Prop_video.poster": {
       "type": "string",
@@ -16591,7 +16591,7 @@
         {
           "type": "number",
           "minimum": 0,
-          "description": "W"
+          "description": "watts"
         }
       ]
     },

@@ -57,7 +57,7 @@
         "file": {
           "type": "string",
           "pattern": "\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-          "description": "The sound, as a presentation's file path."
+          "description": "The audio file, as a presentation's file path."
         },
         "loop": {
           "const": "repeat",
@@ -2028,7 +2028,7 @@
                           "type": "number",
                           "minimum": 0.000001,
                           "maximum": 4394531250000000,
-                          "description": "mm"
+                          "description": "millimeters"
                         }
                       ]
                     },
@@ -2297,7 +2297,7 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "description": "W"
+                          "description": "watts"
                         },
                         {
                           "type": "number",
@@ -5024,7 +5024,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "W"
+              "description": "watts"
             },
             "cone-angle": {
               "type": "number",
@@ -5113,7 +5113,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "W"
+              "description": "watts"
             },
             "light-radius": {
               "type": "number",
@@ -5199,7 +5199,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "W"
+              "description": "watts"
             },
             "size-x": {
               "type": "number",
@@ -7778,7 +7778,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step: a paragraph appearing, a sound, a video, or an online video starting, or a clip playing a model's Action."
+            "description": "Events at set times in the step: a paragraph appearing, an audio object, a video, or a web video starting, or a clip playing a model's Action."
           }
         },
         "required": [
@@ -7947,7 +7947,7 @@
       "description": "a text style name"
     },
     "time-trim": {
-      "description": "The part of a video or sound file, or of a model's Action, that plays.",
+      "description": "The part of a video or audio file, or of a model's Action, that plays.",
       "type": "object",
       "properties": {
         "start": {
