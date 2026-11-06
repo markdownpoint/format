@@ -16735,7 +16735,7 @@
             "seconds"
           ],
           "additionalProperties": false,
-          "description": "In a show's rest that loops, past its click's motion: how far into the rest, in seconds, and the period it repeats over. Each Action that repeats plays a whole number of times over the period from the rest's start, as the rest's clip renders it (`restRepeats`)."
+          "description": "In a show's rest that loops, past its click's motion: how far into the rest, in seconds, and the period it repeats over. Each Action that repeats plays a whole number of times over the period from the rest's start, as the rest's video renders it (`restRepeats`)."
         },
         "running": {
           "type": "boolean",
