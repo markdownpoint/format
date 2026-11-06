@@ -11259,7 +11259,7 @@
     },
     "Prop_composition": {
       "type": "string",
-      "description": "a composition slide id"
+      "description": "a composition’s id"
     },
     "Prop_inputs": {
       "type": "object",

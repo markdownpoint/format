@@ -3984,7 +3984,7 @@
                   },
                   "composition": {
                     "type": "string",
-                    "description": "a composition slide id"
+                    "description": "a composition’s id"
                   },
                   "inputs": {
                     "type": "object",
