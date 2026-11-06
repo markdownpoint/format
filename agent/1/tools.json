@@ -10151,7 +10151,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Copy a picture, video, sound or 3D model into the presentation’s folder, as the app’s media picker does, and return the file’s path in the presentation, which insertObject and replaceMedia take. A picture also returns dimensions, its pixels as saved: a PNG, JPEG or WebP longer than 4096 pixels on a side is saved at 4096 on its long side, in its own type, and reducedFrom gives the pixels it had. An animated one, one too large to reduce and every other type are saved whole. Give path for a file on this machine, or name (with the media’s extension) and data (its bytes in base64) when the file is not reachable. A movie takes its first frame as its poster; when that frame cannot be read it is still imported and warnings says so. A model (.glb, or a .gltf by path with its files beside it) becomes one self-contained GLB: compressed geometry and KTX2 textures decoded, its own cameras and lights removed, its Actions named apart; changes says what changed and report what the model does, as models_inspect gives it. Shared presentations publish the file before it is returned.",
+      "description": "Copy a picture, video, sound or 3D model into the presentation’s folder, as the app’s media picker does, and return the file’s path in the presentation, which insertObject and replaceMedia take. A picture also returns its size, its pixels as saved: a PNG, JPEG or WebP longer than 4096 pixels on a side is saved at 4096 on its long side, in its own type, and reducedFrom gives the pixels it had. An animated one, one too large to reduce and every other type are saved whole. Give path for a file on this machine, or name (with the media’s extension) and data (its bytes in base64) when the file is not reachable. A movie takes its first frame as its poster; when that frame cannot be read it is still imported and warnings says so. A model (.glb, or a .gltf by path with its files beside it) becomes one self-contained GLB: compressed geometry and KTX2 textures decoded, its own cameras and lights removed, its Actions named apart; changes says what changed and report what the model does, as models_inspect gives it. Shared presentations publish the file before it is returned.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -10207,7 +10207,10 @@
           {
             "type": "object",
             "properties": {
-              "dimensions": {
+              "file": {
+                "type": "string"
+              },
+              "reducedFrom": {
                 "type": "object",
                 "properties": {
                   "height": {
@@ -10223,10 +10226,7 @@
                 ],
                 "additionalProperties": false
               },
-              "file": {
-                "type": "string"
-              },
-              "reducedFrom": {
+              "size": {
                 "type": "object",
                 "properties": {
                   "height": {
