@@ -2174,26 +2174,6 @@
             "keyframeId": {
               "type": "string"
             },
-            "loop-keyframe": {
-              "type": "boolean"
-            },
-            "type": {
-              "const": "loopKeyframe"
-            }
-          },
-          "required": [
-            "keyframeId",
-            "loop-keyframe",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "keyframeId": {
-              "type": "string"
-            },
             "oscillate": {
               "anyOf": [
                 {
@@ -2511,7 +2491,7 @@
           "description": "The Animate tab's and the timeline's timing edits, each as the app makes it."
         }
       ],
-      "description": "A timing edit with its fields in the file's words: a keyframe's `loop-keyframe` and `exponential-scale`, and an oscillation's `wave-shape`."
+      "description": "A timing edit with its fields in the file's words: a keyframe's `exponential-scale` and an oscillation's `wave-shape`."
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",

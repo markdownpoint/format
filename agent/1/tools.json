@@ -537,7 +537,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-presentation. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fits give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
+      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: fallback, skip-object, refuse-slide or refuse-presentation. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fittedFrames give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -2121,20 +2121,15 @@
                     "properties": {
                       "x": {
                         "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
                         "description": "canvas units"
                       },
                       "y": {
                         "type": "number",
-                        "minimum": -65536,
-                        "maximum": 65536,
                         "description": "canvas units"
                       },
                       "width": {
                         "type": "number",
                         "minimum": 0.000001,
-                        "maximum": 65536,
                         "description": "canvas units"
                       },
                       "height": {
@@ -10814,7 +10809,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Have Meshy play one to ten actions from models_actions on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. loop names the Actions to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
+      "description": "Have Meshy play one to ten actions from models_actions on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. looping names the Actions to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -10831,12 +10826,12 @@
             "type": "string",
             "description": "A model models_rig made, or one models_animate made from it."
           },
-          "loop": {
+          "looping": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Names of the Actions to loop, as models_actions names them."
+            "description": "Names of the Actions that loop, closed on their cycle, as models_actions names them."
           },
           "name": {
             "type": "string",
