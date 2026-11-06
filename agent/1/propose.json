@@ -83,6 +83,10 @@
             "afterSlideId": {
               "type": "string"
             },
+            "composition": {
+              "const": true,
+              "description": "Makes the slide a composition, a reusable scene other slides place; `size`, `controls` and `name` belong to it alone."
+            },
             "content": {
               "type": "object",
               "additionalProperties": {
@@ -92,24 +96,20 @@
             },
             "controls": {
               "$ref": "#/definitions/CompositionControls",
-              "description": "A composition's controls; only with `role: composition`."
+              "description": "A composition's controls; only with `composition: true`."
             },
             "layout": {
               "type": "string"
             },
             "name": {
               "type": "string",
-              "description": "A composition's name; only with `role: composition`."
+              "description": "A composition's name; only with `composition: true`."
             },
             "objects": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PresentationPasteObjectSource"
               }
-            },
-            "role": {
-              "const": "composition",
-              "description": "Makes the slide a composition, a reusable scene other slides place; `size`, `controls` and `name` belong to it alone."
             },
             "scheme": {
               "type": "string"
@@ -122,7 +122,7 @@
             },
             "size": {
               "$ref": "#/definitions/SlideSize",
-              "description": "A composition's own size; only with `role: composition`."
+              "description": "A composition's own size; only with `composition: true`."
             },
             "slideId": {
               "type": "string",
@@ -144,13 +144,13 @@
                   ],
                   "not": {
                     "required": [
-                      "role"
+                      "composition"
                     ]
                   }
                 },
                 {
                   "required": [
-                    "role"
+                    "composition"
                   ],
                   "not": {
                     "anyOf": [
@@ -11933,11 +11933,46 @@
         {
           "type": "object",
           "properties": {
-            "position": {
-              "$ref": "#/definitions/PresentationCommentPosition"
+            "compositionId": {
+              "type": "string"
             },
             "slideId": {
               "type": "string"
+            },
+            "thread": {
+              "$ref": "#/definitions/PresentationCommentThreadSeed"
+            },
+            "type": {
+              "const": "addCommentThread"
+            }
+          },
+          "required": [
+            "thread",
+            "type"
+          ],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "oneOf": [
+                {
+                  "required": [
+                    "slideId"
+                  ]
+                },
+                {
+                  "required": [
+                    "compositionId"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "position": {
+              "$ref": "#/definitions/PresentationCommentPosition"
             },
             "threadId": {
               "type": "string"
@@ -11948,7 +11983,6 @@
           },
           "required": [
             "position",
-            "slideId",
             "threadId",
             "type"
           ],
@@ -11960,9 +11994,6 @@
             "reply": {
               "$ref": "#/definitions/PresentationCommentMessageSeed"
             },
-            "slideId": {
-              "type": "string"
-            },
             "threadId": {
               "type": "string"
             },
@@ -11972,7 +12003,6 @@
           },
           "required": [
             "reply",
-            "slideId",
             "threadId",
             "type"
           ],
@@ -11984,9 +12014,6 @@
             "replyId": {
               "type": "string"
             },
-            "slideId": {
-              "type": "string"
-            },
             "threadId": {
               "type": "string"
             },
@@ -11996,7 +12023,6 @@
           },
           "required": [
             "replyId",
-            "slideId",
             "threadId",
             "type"
           ],
@@ -12011,9 +12037,6 @@
                 "string"
               ]
             },
-            "slideId": {
-              "type": "string"
-            },
             "text": {
               "type": "string"
             },
@@ -12026,7 +12049,6 @@
           },
           "required": [
             "replyId",
-            "slideId",
             "text",
             "threadId",
             "type"
@@ -12039,9 +12061,6 @@
             "resolved": {
               "type": "boolean"
             },
-            "slideId": {
-              "type": "string"
-            },
             "threadId": {
               "type": "string"
             },
@@ -12051,7 +12070,6 @@
           },
           "required": [
             "resolved",
-            "slideId",
             "threadId",
             "type"
           ],
@@ -12060,29 +12078,6 @@
         {
           "type": "object",
           "properties": {
-            "slideId": {
-              "type": "string"
-            },
-            "thread": {
-              "$ref": "#/definitions/PresentationCommentThreadSeed"
-            },
-            "type": {
-              "const": "addCommentThread"
-            }
-          },
-          "required": [
-            "slideId",
-            "thread",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "slideId": {
-              "type": "string"
-            },
             "threadId": {
               "type": "string"
             },
@@ -12091,14 +12086,13 @@
             }
           },
           "required": [
-            "slideId",
             "threadId",
             "type"
           ],
           "additionalProperties": false
         }
       ],
-      "description": "Each comment command is one standalone, undoable operation."
+      "description": "Each comment command is one standalone, undoable operation. A new thread names what it is pinned to, exactly one of `slideId` and `compositionId`, as its record names one of `slide` and `composition`; every other command names the thread alone, its id unique among the presentation's threads."
     },
     "PresentationCommentPosition": {
       "type": "object",

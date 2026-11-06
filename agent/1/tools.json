@@ -1472,11 +1472,11 @@
           "PresentationNavigationSlide": {
             "type": "object",
             "properties": {
+              "composition": {
+                "const": true
+              },
               "id": {
                 "type": "string"
-              },
-              "role": {
-                "const": "composition"
               },
               "section": {
                 "type": "string"
@@ -6585,48 +6585,94 @@
             "description": "Fractions of the slide's width and height, independent of its current size."
           },
           "PresentationCommentThread": {
-            "type": "object",
-            "properties": {
-              "author": {
-                "$ref": "#/definitions/PresentationCommentAuthor"
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "author": {
+                    "$ref": "#/definitions/PresentationCommentAuthor"
+                  },
+                  "compositionId": {
+                    "type": "string"
+                  },
+                  "created": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "$ref": "#/definitions/PresentationCommentPosition"
+                  },
+                  "replies": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/PresentationCommentMessage"
+                    }
+                  },
+                  "resolved": {
+                    "type": "boolean"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "author",
+                  "compositionId",
+                  "created",
+                  "id",
+                  "position",
+                  "replies",
+                  "resolved",
+                  "text"
+                ]
               },
-              "created": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "position": {
-                "$ref": "#/definitions/PresentationCommentPosition"
-              },
-              "replies": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/PresentationCommentMessage"
-                }
-              },
-              "resolved": {
-                "type": "boolean"
-              },
-              "slideId": {
-                "type": "string",
-                "description": "The slide or composition it is pinned to. A thread outlives its slide: one whose slide is gone is on a deleted slide."
-              },
-              "text": {
-                "type": "string"
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "author": {
+                    "$ref": "#/definitions/PresentationCommentAuthor"
+                  },
+                  "created": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "$ref": "#/definitions/PresentationCommentPosition"
+                  },
+                  "replies": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/PresentationCommentMessage"
+                    }
+                  },
+                  "resolved": {
+                    "type": "boolean"
+                  },
+                  "slideId": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "author",
+                  "created",
+                  "id",
+                  "position",
+                  "replies",
+                  "resolved",
+                  "slideId",
+                  "text"
+                ]
               }
-            },
-            "required": [
-              "author",
-              "created",
-              "id",
-              "position",
-              "replies",
-              "resolved",
-              "slideId",
-              "text"
-            ],
-            "additionalProperties": false
+            ]
           },
           "PresentationDropShadow": {
             "type": "object",
@@ -14298,19 +14344,16 @@
                   "string"
                 ]
               },
-              "slideId": {
-                "type": "string"
-              },
               "threadId": {
                 "type": "string"
               }
             },
             "required": [
               "replyId",
-              "slideId",
               "threadId"
             ],
-            "additionalProperties": false
+            "additionalProperties": false,
+            "description": "A thread, or one of its replies, by the thread's id, unique among the presentation's threads."
           },
           "PresentationIdEffects": {
             "type": "object",

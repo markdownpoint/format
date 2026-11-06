@@ -2798,13 +2798,18 @@
         "description": "a stable id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A comment thread pinned to a slide or a composition, stored under an id unique among the presentation's threads. A thread stays when its slide is deleted.",
+        "description": "A comment thread pinned to a slide or a composition, stored under an id unique among the presentation's threads. A thread stays when its slide or composition is deleted.",
         "type": "object",
         "properties": {
           "slide": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The id of the slide or composition it is pinned to."
+            "description": "The id of the slide it is pinned to."
+          },
+          "composition": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The id of the composition it is pinned to."
           },
           "author": {
             "allOf": [
@@ -2849,7 +2854,7 @@
               "y"
             ],
             "additionalProperties": false,
-            "description": "Where it is pinned, as {x, y} fractions of the slide."
+            "description": "Where it is pinned, as {x, y} fractions of the slide or composition."
           },
           "resolved": {
             "type": "boolean",
@@ -2901,13 +2906,30 @@
           }
         },
         "required": [
-          "slide",
           "author",
           "created",
           "text",
           "position"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "slide": true
+            },
+            "required": [
+              "slide"
+            ]
+          },
+          {
+            "properties": {
+              "composition": true
+            },
+            "required": [
+              "composition"
+            ]
+          }
+        ]
       },
       "description": "Comment threads, by id, written in the order they were made, then by id. Each names the slide or composition it is pinned to."
     }
