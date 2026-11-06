@@ -6009,8 +6009,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -6092,8 +6091,7 @@
                 600,
                 700,
                 900
-              ],
-              "description": "font weight"
+              ]
             },
             "color": {
               "$ref": "#/definitions/paint"
@@ -6152,8 +6150,7 @@
             "path-offset": {
               "type": "number",
               "minimum": -1,
-              "maximum": 1,
-              "description": "signed fraction"
+              "maximum": 1
             },
             "paragraph-spacing": {
               "type": "number",
@@ -6197,7 +6194,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 33554431,
-              "description": "line-height ratio"
+              "description": "× the font size"
             },
             "tracking": {
               "type": "number",
@@ -6230,8 +6227,7 @@
                     "spread": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1,
-                      "description": "fraction"
+                      "maximum": 1
                     },
                     "offset": {
                       "type": "object",
@@ -6261,8 +6257,7 @@
                     "opacity": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1,
-                      "description": "fraction"
+                      "maximum": 1
                     }
                   },
                   "required": [
@@ -6434,8 +6429,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -6505,8 +6499,7 @@
                 600,
                 700,
                 900
-              ],
-              "description": "font weight"
+              ]
             },
             "color": {
               "$ref": "#/definitions/color"
@@ -6630,8 +6623,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -6707,32 +6699,27 @@
             "grayscale": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "exposure": {
               "type": "number",
               "minimum": -1,
-              "maximum": 1,
-              "description": "signed fraction"
+              "maximum": 1
             },
             "contrast": {
               "type": "number",
               "minimum": -1,
-              "maximum": 1,
-              "description": "signed fraction"
+              "maximum": 1
             },
             "saturation": {
               "type": "number",
               "minimum": -1,
-              "maximum": 1,
-              "description": "signed fraction"
+              "maximum": 1
             },
             "temperature": {
               "type": "number",
               "minimum": -1,
-              "maximum": 1,
-              "description": "signed fraction"
+              "maximum": 1
             },
             "corner-radius": {
               "type": "number",
@@ -6890,8 +6877,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -6913,8 +6899,7 @@
             "volume": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "fade-in": {
               "type": "number",
@@ -6991,8 +6976,7 @@
             "grayscale": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "corner-radius": {
               "type": "number",
@@ -7084,8 +7068,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -7167,8 +7150,7 @@
                 600,
                 700,
                 900
-              ],
-              "description": "font weight"
+              ]
             },
             "color": {
               "$ref": "#/definitions/paint"
@@ -7236,7 +7218,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 33554431,
-              "description": "line-height ratio"
+              "description": "× the font size"
             },
             "tracking": {
               "type": "number",
@@ -7327,13 +7309,13 @@
                   "type": "number",
                   "minimum": -510,
                   "maximum": 510,
-                  "description": "shape fraction"
+                  "description": "of the frame"
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510,
                   "maximum": 510,
-                  "description": "shape fraction"
+                  "description": "of the frame"
                 }
               },
               "required": [
@@ -7417,8 +7399,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -7556,8 +7537,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -7667,8 +7647,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -7767,7 +7746,7 @@
               "type": "number",
               "minimum": -181,
               "maximum": 181,
-              "description": "chord lengths"
+              "description": "lengths of the line"
             },
             "cap-start": {
               "enum": [
@@ -7817,8 +7796,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -7919,8 +7897,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "locked": {
               "type": "boolean"
@@ -7967,8 +7944,7 @@
                 600,
                 700,
                 900
-              ],
-              "description": "font weight"
+              ]
             },
             "color": {
               "$ref": "#/definitions/paint"
@@ -8020,8 +7996,7 @@
             "progress": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "spread": {
               "type": "number",
@@ -8053,8 +8028,7 @@
             "leading-zero-opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "bind": {
               "$ref": "#/definitions/composition-bindings"
@@ -8100,8 +8074,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "blur": {
               "type": "number",
@@ -8264,8 +8237,7 @@
             "volume": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "fade-in": {
               "type": "number",
@@ -8404,8 +8376,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "alt": {
               "type": "string",
@@ -8460,8 +8431,7 @@
                       "strength": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -8496,14 +8466,12 @@
                       },
                       "volume": {
                         "type": "number",
-                        "minimum": 0.000001,
-                        "description": "ratio"
+                        "minimum": 0.000001
                       },
                       "strength": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -8587,8 +8555,7 @@
                 },
                 "intensity": {
                   "type": "number",
-                  "minimum": 0,
-                  "description": "ratio"
+                  "minimum": 0
                 }
               },
               "required": [
@@ -8661,7 +8628,7 @@
                 "intensity": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "watts"
+                  "description": "W"
                 },
                 "cone-angle": {
                   "type": "number",
@@ -8750,7 +8717,7 @@
                 "intensity": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "watts"
+                  "description": "W"
                 },
                 "light-radius": {
                   "type": "number",
@@ -8836,7 +8803,7 @@
                 "intensity": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "watts"
+                  "description": "W"
                 },
                 "size-x": {
                   "type": "number",
@@ -8910,8 +8877,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "parent-joint": {
               "$ref": "#/definitions/joint-name"
@@ -8994,8 +8960,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "shadow-color": {
               "$ref": "#/definitions/color"
@@ -9069,7 +9034,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4394531250000000,
-              "description": "millimeters"
+              "description": "mm"
             },
             "motion-blur": {
               "type": "object",
@@ -9189,8 +9154,7 @@
                       "strength": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       },
                       "spring": {
                         "type": "object",
@@ -9259,8 +9223,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1e+22,
-              "description": "ratio"
+              "maximum": 1e+22
             },
             "placeholder": {
               "type": "boolean"
@@ -20231,11 +20194,11 @@
       "properties": {
         "x": {
           "type": "number",
-          "description": "frame fraction"
+          "description": "of the frame"
         },
         "y": {
           "type": "number",
-          "description": "frame fraction"
+          "description": "of the frame"
         }
       },
       "additionalProperties": false
@@ -20289,7 +20252,7 @@
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "zoom ratio"
+          "description": "×"
         },
         "focal-point": {
           "type": "object",
@@ -20298,13 +20261,13 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "image fraction"
+              "description": "of the image"
             },
             "y": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "image fraction"
+              "description": "of the image"
             }
           },
           "additionalProperties": false
@@ -20354,8 +20317,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -20393,8 +20355,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "x": {
               "type": "number",
@@ -20411,8 +20372,7 @@
             "scale": {
               "type": "number",
               "minimum": 0,
-              "maximum": 511,
-              "description": "ratio"
+              "maximum": 511
             },
             "rotation": {
               "type": "number",
@@ -20438,8 +20398,7 @@
             "length": {
               "type": "number",
               "minimum": 0.000001,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -20462,8 +20421,7 @@
         "seed": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 4294967294,
-          "description": "shuffle"
+          "maximum": 4294967294
         },
         "spread": {
           "type": "number",
@@ -20478,8 +20436,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         }
       },
       "required": [
@@ -20511,8 +20468,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "x": {
               "type": "number",
@@ -20529,8 +20485,7 @@
             "scale": {
               "type": "number",
               "minimum": 0,
-              "maximum": 511,
-              "description": "ratio"
+              "maximum": 511
             },
             "rotation": {
               "type": "number",
@@ -20556,8 +20511,7 @@
             "length": {
               "type": "number",
               "minimum": 0.000001,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -20580,8 +20534,7 @@
         "seed": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 4294967294,
-          "description": "shuffle"
+          "maximum": 4294967294
         },
         "spread": {
           "type": "number",
@@ -20596,8 +20549,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         }
       },
       "required": [
@@ -20624,14 +20576,12 @@
         "x": {
           "type": "number",
           "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
+          "maximum": 511
         },
         "y": {
           "type": "number",
           "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
+          "maximum": 511
         }
       },
       "required": [
@@ -20695,13 +20645,13 @@
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "frame fraction"
+                  "description": "of the frame"
                 },
                 "y": {
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "frame fraction"
+                  "description": "of the frame"
                 },
                 "length": {
                   "type": "number",
@@ -20741,13 +20691,13 @@
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "frame fraction"
+                  "description": "of the frame"
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "frame fraction"
+                  "description": "of the frame"
                 }
               },
               "required": [
@@ -20992,19 +20942,18 @@
         "scale": {
           "type": "number",
           "minimum": 0.01,
-          "maximum": 33554431,
-          "description": "ratio"
+          "maximum": 33554431
         },
         "anchor-point": {
           "type": "object",
           "properties": {
             "x": {
               "type": "number",
-              "description": "frame fraction"
+              "description": "of the frame"
             },
             "y": {
               "type": "number",
-              "description": "frame fraction"
+              "description": "of the frame"
             }
           },
           "additionalProperties": false
@@ -21018,8 +20967,7 @@
         "end-opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "position-randomness": {
           "type": "number",
@@ -21036,8 +20984,7 @@
         "scale-randomness": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "stagger-randomness": {
           "type": "number",
@@ -21048,8 +20995,7 @@
         "seed": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 4294967294,
-          "description": "shuffle"
+          "maximum": 4294967294
         }
       },
       "required": [
@@ -21185,20 +21131,17 @@
         "x": {
           "type": "number",
           "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
+          "maximum": 1000000000000000000
         },
         "y": {
           "type": "number",
           "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
+          "maximum": 1000000000000000000
         },
         "z": {
           "type": "number",
           "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
+          "maximum": 1000000000000000000
         }
       },
       "required": [
@@ -21219,8 +21162,7 @@
           "position": {
             "type": "number",
             "minimum": 0,
-            "maximum": 1,
-            "description": "fraction"
+            "maximum": 1
           }
         },
         "required": [
@@ -21287,13 +21229,13 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "path fraction"
+          "description": "of the path"
         },
         "end": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "path fraction"
+          "description": "of the path"
         }
       },
       "required": [
@@ -21312,8 +21254,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "angle": {
           "type": "number",

@@ -1672,14 +1672,12 @@
                 "x": {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 511,
-                  "description": "ratio"
+                  "maximum": 511
                 },
                 "y": {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 511,
-                  "description": "ratio"
+                  "maximum": 511
                 }
               },
               "additionalProperties": false
@@ -1815,20 +1813,17 @@
             "x": {
               "type": "number",
               "minimum": -1000000000000000000,
-              "maximum": 1000000000000000000,
-              "description": "ratio"
+              "maximum": 1000000000000000000
             },
             "y": {
               "type": "number",
               "minimum": -1000000000000000000,
-              "maximum": 1000000000000000000,
-              "description": "ratio"
+              "maximum": 1000000000000000000
             },
             "z": {
               "type": "number",
               "minimum": -1000000000000000000,
-              "maximum": 1000000000000000000,
-              "description": "ratio"
+              "maximum": 1000000000000000000
             }
           },
           "additionalProperties": false
@@ -2802,13 +2797,13 @@
                       "type": "number",
                       "minimum": -511,
                       "maximum": 511,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -511,
                       "maximum": 511,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "length": {
                       "type": "number",
@@ -2837,8 +2832,7 @@
                       "position": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -2869,13 +2863,13 @@
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     }
                   },
                   "required": [
@@ -2900,8 +2894,7 @@
                       "position": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -3605,8 +3598,7 @@
             "properties": {
               "intensity": {
                 "type": "number",
-                "minimum": 0,
-                "description": "ratio"
+                "minimum": 0
               }
             }
           }
@@ -3649,7 +3641,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "watts"
+                "description": "W"
               }
             }
           }
@@ -3707,7 +3699,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "watts"
+                "description": "W"
               }
             }
           }
@@ -3750,7 +3742,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "watts"
+                "description": "W"
               }
             }
           }
@@ -6970,7 +6962,7 @@
                   "type": "number",
                   "minimum": 0.000001,
                   "maximum": 4394531250000000,
-                  "description": "millimeters"
+                  "description": "mm"
                 },
                 {
                   "type": "null"
@@ -7236,8 +7228,7 @@
                           "strength": {
                             "type": "number",
                             "minimum": 0,
-                            "maximum": 1,
-                            "description": "fraction"
+                            "maximum": 1
                           },
                           "spring": {
                             "type": "object",
@@ -9370,8 +9361,7 @@
             "properties": {
               "intensity": {
                 "type": "number",
-                "minimum": 0,
-                "description": "ratio"
+                "minimum": 0
               }
             }
           }
@@ -9414,7 +9404,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "watts"
+                "description": "W"
               }
             }
           }
@@ -9472,7 +9462,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "watts"
+                "description": "W"
               }
             }
           }
@@ -9515,7 +9505,7 @@
               "intensity": {
                 "type": "number",
                 "minimum": 0,
-                "description": "watts"
+                "description": "W"
               }
             }
           }
@@ -11466,13 +11456,13 @@
                           "type": "number",
                           "minimum": -511,
                           "maximum": 511,
-                          "description": "frame fraction"
+                          "description": "of the frame"
                         },
                         "y": {
                           "type": "number",
                           "minimum": -511,
                           "maximum": 511,
-                          "description": "frame fraction"
+                          "description": "of the frame"
                         },
                         "length": {
                           "type": "number",
@@ -11501,8 +11491,7 @@
                           "position": {
                             "type": "number",
                             "minimum": 0,
-                            "maximum": 1,
-                            "description": "fraction"
+                            "maximum": 1
                           }
                         },
                         "required": [
@@ -11533,13 +11522,13 @@
                           "type": "number",
                           "minimum": -510.5,
                           "maximum": 511.5,
-                          "description": "frame fraction"
+                          "description": "of the frame"
                         },
                         "y": {
                           "type": "number",
                           "minimum": -510.5,
                           "maximum": 511.5,
-                          "description": "frame fraction"
+                          "description": "of the frame"
                         }
                       },
                       "required": [
@@ -11564,8 +11553,7 @@
                           "position": {
                             "type": "number",
                             "minimum": 0,
-                            "maximum": 1,
-                            "description": "fraction"
+                            "maximum": 1
                           }
                         },
                         "required": [
@@ -11605,7 +11593,7 @@
               "type": "number",
               "minimum": 0.01,
               "maximum": 511,
-              "description": "zoom ratio"
+              "description": "×"
             },
             "focal-point": {
               "type": "object",
@@ -11614,13 +11602,13 @@
                   "type": "number",
                   "minimum": 0,
                   "maximum": 1,
-                  "description": "image fraction"
+                  "description": "of the image"
                 },
                 "y": {
                   "type": "number",
                   "minimum": 0,
                   "maximum": 1,
-                  "description": "image fraction"
+                  "description": "of the image"
                 }
               },
               "additionalProperties": false
@@ -11631,8 +11619,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "prompt": {
           "type": "string",
@@ -11749,8 +11736,7 @@
                 "opacity": {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 1,
-                  "description": "fraction"
+                  "maximum": 1
                 }
               },
               "required": [
@@ -11766,32 +11752,27 @@
         "exposure": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "contrast": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "saturation": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "temperature": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "grayscale": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         }
       },
       "additionalProperties": false,
@@ -12016,14 +11997,12 @@
         "x": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "y": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         }
       },
       "required": [
@@ -12107,8 +12086,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -12668,13 +12646,13 @@
                                       "type": "number",
                                       "minimum": -511,
                                       "maximum": 511,
-                                      "description": "frame fraction"
+                                      "description": "of the frame"
                                     },
                                     "y": {
                                       "type": "number",
                                       "minimum": -511,
                                       "maximum": 511,
-                                      "description": "frame fraction"
+                                      "description": "of the frame"
                                     },
                                     "length": {
                                       "type": "number",
@@ -12703,8 +12681,7 @@
                                       "position": {
                                         "type": "number",
                                         "minimum": 0,
-                                        "maximum": 1,
-                                        "description": "fraction"
+                                        "maximum": 1
                                       }
                                     },
                                     "required": [
@@ -12735,13 +12712,13 @@
                                       "type": "number",
                                       "minimum": -510.5,
                                       "maximum": 511.5,
-                                      "description": "frame fraction"
+                                      "description": "of the frame"
                                     },
                                     "y": {
                                       "type": "number",
                                       "minimum": -510.5,
                                       "maximum": 511.5,
-                                      "description": "frame fraction"
+                                      "description": "of the frame"
                                     }
                                   },
                                   "required": [
@@ -12766,8 +12743,7 @@
                                       "position": {
                                         "type": "number",
                                         "minimum": 0,
-                                        "maximum": 1,
-                                        "description": "fraction"
+                                        "maximum": 1
                                       }
                                     },
                                     "required": [
@@ -12807,7 +12783,7 @@
                           "type": "number",
                           "minimum": 0.01,
                           "maximum": 511,
-                          "description": "zoom ratio"
+                          "description": "×"
                         },
                         "focal-point": {
                           "type": "object",
@@ -12816,13 +12792,13 @@
                               "type": "number",
                               "minimum": 0,
                               "maximum": 1,
-                              "description": "image fraction"
+                              "description": "of the image"
                             },
                             "y": {
                               "type": "number",
                               "minimum": 0,
                               "maximum": 1,
-                              "description": "image fraction"
+                              "description": "of the image"
                             }
                           },
                           "additionalProperties": false
@@ -12833,8 +12809,7 @@
                     "opacity": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1,
-                      "description": "fraction"
+                      "maximum": 1
                     },
                     "prompt": {
                       "type": "string",
@@ -12951,8 +12926,7 @@
                             "opacity": {
                               "type": "number",
                               "minimum": 0,
-                              "maximum": 1,
-                              "description": "fraction"
+                              "maximum": 1
                             }
                           },
                           "required": [
@@ -12968,32 +12942,27 @@
                     "exposure": {
                       "type": "number",
                       "minimum": -1,
-                      "maximum": 1,
-                      "description": "signed fraction"
+                      "maximum": 1
                     },
                     "contrast": {
                       "type": "number",
                       "minimum": -1,
-                      "maximum": 1,
-                      "description": "signed fraction"
+                      "maximum": 1
                     },
                     "saturation": {
                       "type": "number",
                       "minimum": -1,
-                      "maximum": 1,
-                      "description": "signed fraction"
+                      "maximum": 1
                     },
                     "temperature": {
                       "type": "number",
                       "minimum": -1,
-                      "maximum": 1,
-                      "description": "signed fraction"
+                      "maximum": 1
                     },
                     "grayscale": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1,
-                      "description": "fraction"
+                      "maximum": 1
                     }
                   },
                   "additionalProperties": false,
@@ -13172,8 +13141,7 @@
                     "volume": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1,
-                      "description": "fraction"
+                      "maximum": 1
                     },
                     "fade-in": {
                       "type": "number",
@@ -14686,14 +14654,12 @@
         "x": {
           "type": "number",
           "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
+          "maximum": 511
         },
         "y": {
           "type": "number",
           "minimum": 0,
-          "maximum": 511,
-          "description": "ratio"
+          "maximum": 511
         }
       },
       "required": [
@@ -14706,8 +14672,7 @@
     "Fraction": {
       "type": "number",
       "minimum": 0,
-      "maximum": 1,
-      "description": "fraction"
+      "maximum": 1
     },
     "Boolean": {
       "type": "boolean"
@@ -14753,8 +14718,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "angle": {
           "type": "number",
@@ -14804,8 +14768,7 @@
         600,
         700,
         900
-      ],
-      "description": "font weight"
+      ]
     },
     "Paint": {
       "anyOf": [
@@ -14833,13 +14796,13 @@
                       "type": "number",
                       "minimum": -511,
                       "maximum": 511,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -511,
                       "maximum": 511,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "length": {
                       "type": "number",
@@ -14868,8 +14831,7 @@
                       "position": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -14900,13 +14862,13 @@
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     }
                   },
                   "required": [
@@ -14931,8 +14893,7 @@
                       "position": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -15010,8 +14971,7 @@
     "SignedFraction": {
       "type": "number",
       "minimum": -1,
-      "maximum": 1,
-      "description": "signed fraction"
+      "maximum": 1
     },
     "BulletStyle": {
       "enum": [
@@ -15024,7 +14984,7 @@
       "type": "number",
       "minimum": 0,
       "maximum": 33554431,
-      "description": "line-height ratio"
+      "description": "× the font size"
     },
     "Prop_tracking": {
       "type": "number",
@@ -15057,8 +15017,7 @@
             "spread": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "offset": {
               "type": "object",
@@ -15090,8 +15049,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -15115,11 +15073,11 @@
       "properties": {
         "x": {
           "type": "number",
-          "description": "frame fraction"
+          "description": "of the frame"
         },
         "y": {
           "type": "number",
-          "description": "frame fraction"
+          "description": "of the frame"
         }
       },
       "additionalProperties": false,
@@ -15213,8 +15171,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "x": {
               "type": "number",
@@ -15231,8 +15188,7 @@
             "scale": {
               "type": "number",
               "minimum": 0,
-              "maximum": 511,
-              "description": "ratio"
+              "maximum": 511
             },
             "rotation": {
               "type": "number",
@@ -15372,8 +15328,7 @@
             "length": {
               "type": "number",
               "minimum": 0.000001,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -15396,8 +15351,7 @@
         "seed": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 4294967294,
-          "description": "shuffle"
+          "maximum": 4294967294
         },
         "spread": {
           "type": "number",
@@ -15412,8 +15366,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         }
       },
       "required": [
@@ -15446,8 +15399,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             },
             "x": {
               "type": "number",
@@ -15464,8 +15416,7 @@
             "scale": {
               "type": "number",
               "minimum": 0,
-              "maximum": 511,
-              "description": "ratio"
+              "maximum": 511
             },
             "rotation": {
               "type": "number",
@@ -15605,8 +15556,7 @@
             "length": {
               "type": "number",
               "minimum": 0.000001,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -15629,8 +15579,7 @@
         "seed": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 4294967294,
-          "description": "shuffle"
+          "maximum": 4294967294
         },
         "spread": {
           "type": "number",
@@ -15645,8 +15594,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         }
       },
       "required": [
@@ -15691,13 +15639,13 @@
                       "type": "number",
                       "minimum": -511,
                       "maximum": 511,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -511,
                       "maximum": 511,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "length": {
                       "type": "number",
@@ -15726,8 +15674,7 @@
                       "position": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -15758,13 +15705,13 @@
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "frame fraction"
+                      "description": "of the frame"
                     }
                   },
                   "required": [
@@ -15789,8 +15736,7 @@
                       "position": {
                         "type": "number",
                         "minimum": 0,
-                        "maximum": 1,
-                        "description": "fraction"
+                        "maximum": 1
                       }
                     },
                     "required": [
@@ -15894,8 +15840,7 @@
             "opacity": {
               "type": "number",
               "minimum": 0,
-              "maximum": 1,
-              "description": "fraction"
+              "maximum": 1
             }
           },
           "required": [
@@ -15922,7 +15867,7 @@
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "zoom ratio"
+          "description": "×"
         },
         "focal-point": {
           "type": "object",
@@ -15931,13 +15876,13 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "image fraction"
+              "description": "of the image"
             },
             "y": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "image fraction"
+              "description": "of the image"
             }
           },
           "additionalProperties": false
@@ -16061,19 +16006,18 @@
         "scale": {
           "type": "number",
           "minimum": 0.01,
-          "maximum": 33554431,
-          "description": "ratio"
+          "maximum": 33554431
         },
         "anchor-point": {
           "type": "object",
           "properties": {
             "x": {
               "type": "number",
-              "description": "frame fraction"
+              "description": "of the frame"
             },
             "y": {
               "type": "number",
-              "description": "frame fraction"
+              "description": "of the frame"
             }
           },
           "additionalProperties": false
@@ -16087,8 +16031,7 @@
         "end-opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "position-randomness": {
           "type": "number",
@@ -16105,8 +16048,7 @@
         "scale-randomness": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "stagger-randomness": {
           "type": "number",
@@ -16117,8 +16059,7 @@
         "seed": {
           "type": "integer",
           "minimum": 0,
-          "maximum": 4294967294,
-          "description": "shuffle"
+          "maximum": 4294967294
         }
       },
       "required": [
@@ -16210,13 +16151,13 @@
           "type": "number",
           "minimum": -510,
           "maximum": 510,
-          "description": "shape fraction"
+          "description": "of the frame"
         },
         "y": {
           "type": "number",
           "minimum": -510,
           "maximum": 510,
-          "description": "shape fraction"
+          "description": "of the frame"
         }
       },
       "required": [
@@ -16238,13 +16179,13 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "path fraction"
+          "description": "of the path"
         },
         "end": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "path fraction"
+          "description": "of the path"
         }
       },
       "required": [
@@ -16274,7 +16215,7 @@
       "type": "number",
       "minimum": -181,
       "maximum": 181,
-      "description": "chord lengths"
+      "description": "lengths of the line"
     },
     "LineCap": {
       "enum": [
@@ -16497,20 +16438,17 @@
         "x": {
           "type": "number",
           "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
+          "maximum": 1000000000000000000
         },
         "y": {
           "type": "number",
           "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
+          "maximum": 1000000000000000000
         },
         "z": {
           "type": "number",
           "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "ratio"
+          "maximum": 1000000000000000000
         }
       },
       "required": [
@@ -16648,13 +16586,12 @@
       "anyOf": [
         {
           "type": "number",
-          "minimum": 0,
-          "description": "ratio"
+          "minimum": 0
         },
         {
           "type": "number",
           "minimum": 0,
-          "description": "watts"
+          "description": "W"
         }
       ]
     },

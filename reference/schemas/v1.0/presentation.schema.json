@@ -402,14 +402,12 @@
                             "x": {
                               "type": "number",
                               "minimum": 0,
-                              "maximum": 511,
-                              "description": "ratio"
+                              "maximum": 511
                             },
                             "y": {
                               "type": "number",
                               "minimum": 0,
-                              "maximum": 511,
-                              "description": "ratio"
+                              "maximum": 511
                             }
                           },
                           "additionalProperties": false
@@ -423,20 +421,17 @@
                             "x": {
                               "type": "number",
                               "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "ratio"
+                              "maximum": 1000000000000000000
                             },
                             "y": {
                               "type": "number",
                               "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "ratio"
+                              "maximum": 1000000000000000000
                             },
                             "z": {
                               "type": "number",
                               "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "ratio"
+                              "maximum": 1000000000000000000
                             }
                           },
                           "additionalProperties": false
@@ -454,8 +449,7 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "maximum": 1,
-                          "description": "fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -635,8 +629,7 @@
                             600,
                             700,
                             900
-                          ],
-                          "description": "font weight"
+                          ]
                         }
                       ]
                     },
@@ -775,8 +768,7 @@
                         {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1,
-                          "description": "signed fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -869,7 +861,7 @@
                           "type": "number",
                           "minimum": 0,
                           "maximum": 33554431,
-                          "description": "line-height ratio"
+                          "description": "× the font size"
                         }
                       ]
                     },
@@ -1290,8 +1282,7 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "maximum": 1,
-                          "description": "fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1303,8 +1294,7 @@
                         {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1,
-                          "description": "signed fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1316,8 +1306,7 @@
                         {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1,
-                          "description": "signed fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1329,8 +1318,7 @@
                         {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1,
-                          "description": "signed fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1342,8 +1330,7 @@
                         {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1,
-                          "description": "signed fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1486,8 +1473,7 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "maximum": 1,
-                          "description": "fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1731,7 +1717,7 @@
                           "type": "number",
                           "minimum": -181,
                           "maximum": 181,
-                          "description": "chord lengths"
+                          "description": "lengths of the line"
                         }
                       ]
                     },
@@ -1812,8 +1798,7 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "maximum": 1,
-                          "description": "fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -1877,8 +1862,7 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "maximum": 1,
-                          "description": "fraction"
+                          "maximum": 1
                         }
                       ]
                     },
@@ -2044,7 +2028,7 @@
                           "type": "number",
                           "minimum": 0.000001,
                           "maximum": 4394531250000000,
-                          "description": "millimeters"
+                          "description": "mm"
                         }
                       ]
                     },
@@ -2313,18 +2297,16 @@
                         {
                           "type": "number",
                           "minimum": 0,
-                          "description": "watts"
+                          "description": "W"
+                        },
+                        {
+                          "type": "number",
+                          "minimum": 0
                         },
                         {
                           "type": "number",
                           "minimum": 0,
-                          "description": "ratio"
-                        },
-                        {
-                          "type": "number",
-                          "minimum": 0,
-                          "maximum": 1e+22,
-                          "description": "ratio"
+                          "maximum": 1e+22
                         }
                       ]
                     },
@@ -2854,14 +2836,12 @@
               "x": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 1,
-                "description": "fraction"
+                "maximum": 1
               },
               "y": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 1,
-                "description": "fraction"
+                "maximum": 1
               }
             },
             "required": [
@@ -3343,13 +3323,13 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "image fraction"
+              "description": "of the image"
             },
             "y": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "image fraction"
+              "description": "of the image"
             }
           },
           "additionalProperties": false,
@@ -4182,8 +4162,7 @@
         "volume": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "fade-in": {
           "type": "number",
@@ -4235,8 +4214,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -4283,8 +4261,7 @@
             600,
             700,
             900
-          ],
-          "description": "font weight"
+          ]
         },
         "color": {
           "$ref": "#/definitions/paint"
@@ -4336,8 +4313,7 @@
         "progress": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "spread": {
           "type": "number",
@@ -4359,8 +4335,7 @@
         "leading-zero-opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "bind": {
           "$ref": "#/definitions/composition-bindings"
@@ -4400,8 +4375,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -4482,8 +4456,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "shadow-color": {
           "$ref": "#/definitions/color"
@@ -4525,8 +4498,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "blur": {
           "type": "number",
@@ -4630,8 +4602,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -4753,8 +4724,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -4830,32 +4800,27 @@
         "grayscale": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "exposure": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "contrast": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "saturation": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "temperature": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "corner-radius": {
           "type": "number",
@@ -4986,8 +4951,7 @@
             },
             "intensity": {
               "type": "number",
-              "minimum": 0,
-              "description": "ratio"
+              "minimum": 0
             }
           },
           "required": [
@@ -5060,7 +5024,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "watts"
+              "description": "W"
             },
             "cone-angle": {
               "type": "number",
@@ -5149,7 +5113,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "watts"
+              "description": "W"
             },
             "light-radius": {
               "type": "number",
@@ -5235,7 +5199,7 @@
             "intensity": {
               "type": "number",
               "minimum": 0,
-              "description": "watts"
+              "description": "W"
             },
             "size-x": {
               "type": "number",
@@ -5287,8 +5251,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -5387,7 +5350,7 @@
           "type": "number",
           "minimum": -181,
           "maximum": 181,
-          "description": "chord lengths"
+          "description": "lengths of the line"
         },
         "cap-start": {
           "enum": [
@@ -5458,8 +5421,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "alt": {
           "type": "string",
@@ -5528,8 +5490,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -5677,8 +5638,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "parent-joint": {
           "$ref": "#/definitions/joint-name"
@@ -5755,8 +5715,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -5838,8 +5797,7 @@
             600,
             700,
             900
-          ],
-          "description": "font weight"
+          ]
         },
         "color": {
           "$ref": "#/definitions/paint"
@@ -5907,7 +5865,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431,
-          "description": "line-height ratio"
+          "description": "× the font size"
         },
         "tracking": {
           "type": "number",
@@ -6066,8 +6024,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -6137,8 +6094,7 @@
             600,
             700,
             900
-          ],
-          "description": "font weight"
+          ]
         },
         "color": {
           "$ref": "#/definitions/color"
@@ -6259,8 +6215,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -6342,8 +6297,7 @@
             600,
             700,
             900
-          ],
-          "description": "font weight"
+          ]
         },
         "color": {
           "$ref": "#/definitions/paint"
@@ -6402,8 +6356,7 @@
         "path-offset": {
           "type": "number",
           "minimum": -1,
-          "maximum": 1,
-          "description": "signed fraction"
+          "maximum": 1
         },
         "paragraph-spacing": {
           "type": "number",
@@ -6447,7 +6400,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431,
-          "description": "line-height ratio"
+          "description": "× the font size"
         },
         "tracking": {
           "type": "number",
@@ -6701,8 +6654,7 @@
         "opacity": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "locked": {
           "type": "boolean"
@@ -6724,8 +6676,7 @@
         "volume": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "fade-in": {
           "type": "number",
@@ -6802,8 +6753,7 @@
         "grayscale": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1,
-          "description": "fraction"
+          "maximum": 1
         },
         "corner-radius": {
           "type": "number",
@@ -7022,11 +6972,11 @@
           "properties": {
             "x": {
               "type": "number",
-              "description": "frame fraction"
+              "description": "of the frame"
             },
             "y": {
               "type": "number",
-              "description": "frame fraction"
+              "description": "of the frame"
             }
           },
           "additionalProperties": false,
