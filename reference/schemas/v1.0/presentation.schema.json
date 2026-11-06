@@ -2054,14 +2054,14 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's motion blur. Only the 3D layer blurs, and only in exported films and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
+                          "description": "The camera's motion blur. Only the 3D layer blurs, and only in exported movies and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
                           "type": "object",
                           "properties": {
                             "shutter": {
                               "type": "number",
                               "minimum": 0,
                               "maximum": 4294967296,
-                              "description": "How long the shutter stays open, in frames of the film. 0 draws no blur. Left out, it's 0.5. A step can animate it."
+                              "description": "How long the shutter stays open, in frames of the movie. 0 draws no blur. Left out, it's 0.5. A step can animate it."
                             },
                             "frame-position": {
                               "enum": [
@@ -2088,7 +2088,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's render effects, as Cinema 4D's Render Settings add Global Illumination and Ambient Occlusion: a fast estimate of light bouncing between surfaces and of the World's light closed off where they meet. It shows wherever the 3D layer does: in the editor, presentations, exports, and films. Only surfaces in view bounce light, and a shadow catcher bounces none. An override replaces the whole record. Each key may be left out.",
+                          "description": "The camera's render effects, as Cinema 4D's Render Settings add Global Illumination and Ambient Occlusion: a fast estimate of light bouncing between surfaces and of the World's light closed off where they meet. It shows wherever the 3D layer does: in the editor, presentations, exports, and movies. Only surfaces in view bounce light, and a shadow catcher bounces none. An override replaces the whole record. Each key may be left out.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {

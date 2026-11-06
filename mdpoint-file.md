@@ -482,7 +482,7 @@ Models, lights and the camera stand in a 3D space. A constraint ties one of them
 }
 ```
 
-The camera stands on the master. A slide changes it in `overrides`. Its `position` constraint follows an object, and its `motion-blur` blurs the 3D layer in films:
+The camera stands on the master. A slide changes it in `overrides`. Its `position` constraint follows an object, and its `motion-blur` blurs the 3D layer in movies:
 
 ```json
 {
