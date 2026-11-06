@@ -3286,11 +3286,11 @@
             "notesVisible": {
               "type": "boolean"
             },
+            "presentation": {
+              "type": "string"
+            },
             "presenterDisplayId": {
               "type": "number"
-            },
-            "root": {
-              "type": "string"
             },
             "slideId": {
               "type": "string"
@@ -3311,7 +3311,7 @@
             "audienceDisplayId",
             "blankScreen",
             "notesVisible",
-            "root",
+            "presentation",
             "slideId",
             "stepId",
             "time"
@@ -3323,33 +3323,33 @@
     "AgentPresentationCloseRequest": {
       "type": "object",
       "properties": {
-        "root": {
+        "presentation": {
           "type": "string",
           "description": "Absolute folder of a presentation a window shows."
         }
       },
       "required": [
-        "root"
+        "presentation"
       ],
       "additionalProperties": false
     },
     "AgentPresentationCloseResult": {
       "type": "object",
       "properties": {
-        "root": {
+        "presentation": {
           "type": "string",
-          "description": "The root whose windows closed, once each had saved."
+          "description": "The presentation whose windows closed, once each had saved."
         }
       },
       "required": [
-        "root"
+        "presentation"
       ],
       "additionalProperties": false
     },
     "AgentPresentationCreateRequest": {
       "type": "object",
       "properties": {
-        "root": {
+        "presentation": {
           "type": "string",
           "description": "Absolute folder to create; its parent must exist and the folder must not."
         },
@@ -3359,14 +3359,14 @@
         }
       },
       "required": [
-        "root"
+        "presentation"
       ],
       "additionalProperties": false
     },
     "AgentPresentationCreateResult": {
       "type": "object",
       "properties": {
-        "root": {
+        "presentation": {
           "type": "string"
         },
         "theme": {
@@ -3388,7 +3388,7 @@
         }
       },
       "required": [
-        "root",
+        "presentation",
         "theme"
       ],
       "additionalProperties": false
@@ -3397,13 +3397,13 @@
     "AgentPresentationOpenRequest": {
       "type": "object",
       "properties": {
-        "root": {
+        "presentation": {
           "type": "string",
           "description": "Absolute folder of an existing presentation."
         }
       },
       "required": [
-        "root"
+        "presentation"
       ],
       "additionalProperties": false
     },
@@ -3414,14 +3414,14 @@
           "type": "boolean",
           "description": "False when a window already showed it and was focused instead."
         },
-        "root": {
+        "presentation": {
           "type": "string",
           "description": "The presentation's folder the app now shows, its path as the app resolves it."
         }
       },
       "required": [
         "opened",
-        "root"
+        "presentation"
       ],
       "additionalProperties": false
     },
@@ -10982,7 +10982,7 @@
         "focused": {
           "type": "boolean"
         },
-        "root": {
+        "presentation": {
           "type": [
             "null",
             "string"
@@ -10991,7 +10991,7 @@
       },
       "required": [
         "focused",
-        "root"
+        "presentation"
       ],
       "additionalProperties": false,
       "description": "A document window, as `windows.list` gives it: the presentation it shows, or null, and whether it is focused."
@@ -21288,9 +21288,9 @@
           "type": "string"
         },
         "params": {},
-        "root": {
+        "presentation": {
           "type": "string",
-          "description": "Absolute presentation root; omitted means the focused presentation, or the only open one when no window is focused."
+          "description": "The presentation's absolute folder; omitted means the focused presentation, or the only open one when no window is focused."
         }
       },
       "required": [

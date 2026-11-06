@@ -9,7 +9,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "List the document windows open in MarkdownPoint as { windows }: each one’s root path, null for a window with no presentation, and which is focused. A tool that acts on a presentation takes one of these roots as \"root\". Omit it to use the focused one, or the only one open when none is focused. presentations_open, presentations_create, capabilities and schema need no open presentation.",
+      "description": "List the document windows open in MarkdownPoint as { windows }: each one’s presentation folder, null for a window with no presentation, and which is focused. A tool that acts on a presentation takes one of these folders as \"presentation\". Omit it to use the focused one, or the only one open when none is focused. presentations_open, presentations_create, capabilities and schema need no open presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {},
@@ -37,7 +37,7 @@
               "focused": {
                 "type": "boolean"
               },
-              "root": {
+              "presentation": {
                 "type": [
                   "null",
                   "string"
@@ -46,7 +46,7 @@
             },
             "required": [
               "focused",
-              "root"
+              "presentation"
             ],
             "additionalProperties": false,
             "description": "A document window, as `windows.list` gives it: the presentation it shows, or null, and whether it is focused."
@@ -63,17 +63,17 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Show an existing presentation folder in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the presentation folder's path, as the app resolves it, to pass as \"root\" to the other tools.",
+      "description": "Show an existing presentation folder in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the presentation folder's path, as the app resolves it, to pass as \"presentation\" to the other tools.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
             "description": "Absolute folder of an existing presentation."
           }
         },
         "required": [
-          "root"
+          "presentation"
         ],
         "additionalProperties": false
       },
@@ -85,14 +85,14 @@
             "type": "boolean",
             "description": "False when a window already showed it and was focused instead."
           },
-          "root": {
+          "presentation": {
             "type": "string",
             "description": "The presentation's folder the app now shows, its path as the app resolves it."
           }
         },
         "required": [
           "opened",
-          "root"
+          "presentation"
         ],
         "additionalProperties": false,
         "definitions": {}
@@ -107,11 +107,11 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Create a presentation folder from a bundled theme (Basic when omitted) and show it in a document window. Needs no open presentation. Each bundled theme starts the presentation with one slide. Returns the presentation folder's path, as the app resolves it, to pass as \"root\" to the other tools.",
+      "description": "Create a presentation folder from a bundled theme (Basic when omitted) and show it in a document window. Needs no open presentation. Each bundled theme starts the presentation with one slide. Returns the presentation folder's path, as the app resolves it, to pass as \"presentation\" to the other tools.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
             "description": "Absolute folder to create; its parent must exist and the folder must not."
           },
@@ -121,7 +121,7 @@
           }
         },
         "required": [
-          "root"
+          "presentation"
         ],
         "additionalProperties": false
       },
@@ -129,7 +129,7 @@
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string"
           },
           "theme": {
@@ -151,7 +151,7 @@
           }
         },
         "required": [
-          "root",
+          "presentation",
           "theme"
         ],
         "additionalProperties": false,
@@ -171,13 +171,13 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
             "description": "Absolute folder of a presentation a window shows."
           }
         },
         "required": [
-          "root"
+          "presentation"
         ],
         "additionalProperties": false
       },
@@ -185,13 +185,13 @@
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "The root whose windows closed, once each had saved."
+            "description": "The presentation whose windows closed, once each had saved."
           }
         },
         "required": [
-          "root"
+          "presentation"
         ],
         "additionalProperties": false,
         "definitions": {}
@@ -541,9 +541,9 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -1792,9 +1792,9 @@
             "type": "string",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -8090,9 +8090,9 @@
             ],
             "description": "slide (the default) as the audience sees it; top or left for the slide's 3D content from above, the audience at the bottom, or from the slide's left, the audience on the right, with the slide's plane and its shadow catchers' planes drawn in and lines from the slide's corners toward its camera, to judge depth a front view hides. A slide with no 3D content has no top or side view."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false,
@@ -8166,9 +8166,9 @@
             ],
             "description": "slide (the default) as the audience sees it; top or left for the slide's 3D content from above, the audience at the bottom, or from the slide's left, the audience on the right, with the slide's plane and its shadow catchers' planes drawn in and lines from the slide's corners toward its camera, to judge depth a front view hides. A slide with no 3D content has no top or side view."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false,
@@ -8216,9 +8216,9 @@
             "type": "number",
             "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -8889,9 +8889,9 @@
             "type": "number",
             "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -9509,9 +9509,9 @@
             "type": "string",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -9629,7 +9629,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute output path: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When text overflows, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmOverflow: true only when clipping is acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and root.",
+      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute output path: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When text overflows, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmOverflow: true only when clipping is acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -9717,9 +9717,9 @@
             "type": "string",
             "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -9976,9 +9976,9 @@
             "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?![\\s\\S])",
             "description": "The id of the movie export to cancel, as its exports.run request gave it."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10082,9 +10082,9 @@
             "type": "string",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10159,9 +10159,9 @@
             "type": "string",
             "description": "Absolute path of the media file on this machine; or name and data in its place."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -10621,9 +10621,9 @@
             "type": "string",
             "description": "The build: an ES module with a default export build(kit, data). No file keeps it. Left out with for, the app's letter builder makes the words: kit.text(data.words, { depth, bevel })."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10649,9 +10649,9 @@
             "type": "string",
             "description": "Words the action's name or category must hold, such as walk inplace."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -10714,9 +10714,9 @@
             "type": "string",
             "description": "What the picture shows, worded as the \"Make models with Meshy\" section of the MarkdownPoint skill says. Settings > Coding agents installs the skill."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10754,9 +10754,9 @@
             "type": "string",
             "description": "The picture models_picture returned."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10790,9 +10790,9 @@
             "type": "string",
             "description": "The rigged model's file name; the model's with -rigged when left out."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10839,9 +10839,9 @@
             "type": "string",
             "description": "The animated model's file name; the model's when left out."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -10868,9 +10868,9 @@
             "type": "string",
             "description": "The model's path, such as media/bird-1a2b3c4d.glb."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -11218,9 +11218,9 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -11356,9 +11356,9 @@
             "type": "string",
             "description": "A theme's key or name from `themes.list`."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -11449,9 +11449,9 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -11978,9 +11978,9 @@
             "type": "string",
             "description": "`themeRevision` from a fresh `themes.get` or `themes.edit`; a theme edited since refuses the change."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12051,9 +12051,9 @@
             "type": "string",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12158,9 +12158,9 @@
             "type": "string",
             "description": "The theme key or name it goes to. Required by duplicateLayout and moveLayout."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12388,9 +12388,9 @@
             "maximum": 8192,
             "description": "A slide's width or height in canvas units, as its theme's master.json holds it.; canvas units"
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12480,9 +12480,9 @@
             "type": "string",
             "description": "Needed when the step is a theme edit: `themeRevision` from `themes.get` or `themes.edit`."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12548,9 +12548,9 @@
             "type": "string",
             "description": "Needed when the step is a theme edit: `themeRevision` from `themes.get` or `themes.edit`."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12620,9 +12620,9 @@
             "type": "string",
             "description": "The slide the picture or background is on."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12759,9 +12759,9 @@
             "type": "string",
             "description": "The token images.prepare returned; it is spent once and expires."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12832,9 +12832,9 @@
             "type": "string",
             "description": "The slide the picture or background is on."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -12893,9 +12893,9 @@
             "type": "string",
             "description": "The slide whose words the prompt is drawn from."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -13231,7 +13231,7 @@
         "idempotentHint": true,
         "openWorldHint": true
       },
-      "description": "Start Present for the open presentation at the slide slideId names, or at its first slide that isn’t skipped. The show plays the presentation as it stood when it started, by that presentation’s slide ids, whatever is edited meanwhile. If this window is already presenting, its show comes to the front where it stands. Pass root on later calls, since Present brings its audience window to the front. A web video’s limits are refused with their notice; start again with confirmWebVideoNotice only once that notice is accepted. No dialog opens.",
+      "description": "Start Present for the open presentation at the slide slideId names, or at its first slide that isn’t skipped. The show plays the presentation as it stood when it started, by that presentation’s slide ids, whatever is edited meanwhile. If this window is already presenting, its show comes to the front where it stands. Pass presentation on later calls, since Present brings its audience window to the front. A web video’s limits are refused with their notice; start again with confirmWebVideoNotice only once that notice is accepted. No dialog opens.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13243,9 +13243,9 @@
             "type": "string",
             "description": "The id of a slide that isn't skipped to start at, as presentations.get lists it; omit for the first such slide."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -13291,11 +13291,11 @@
               "notesVisible": {
                 "type": "boolean"
               },
+              "presentation": {
+                "type": "string"
+              },
               "presenterDisplayId": {
                 "type": "number"
-              },
-              "root": {
-                "type": "string"
               },
               "slideId": {
                 "type": "string"
@@ -13316,7 +13316,7 @@
               "audienceDisplayId",
               "blankScreen",
               "notesVisible",
-              "root",
+              "presentation",
               "slideId",
               "stepId",
               "time"
@@ -13414,9 +13414,9 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -13462,11 +13462,11 @@
               "notesVisible": {
                 "type": "boolean"
               },
+              "presentation": {
+                "type": "string"
+              },
               "presenterDisplayId": {
                 "type": "number"
-              },
-              "root": {
-                "type": "string"
               },
               "slideId": {
                 "type": "string"
@@ -13487,7 +13487,7 @@
               "audienceDisplayId",
               "blankScreen",
               "notesVisible",
-              "root",
+              "presentation",
               "slideId",
               "stepId",
               "time"
@@ -13602,9 +13602,9 @@
             "type": "string",
             "description": "The slide to enter at Start, by its id as the show captured it. Required by slide."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -13670,11 +13670,11 @@
               "notesVisible": {
                 "type": "boolean"
               },
+              "presentation": {
+                "type": "string"
+              },
               "presenterDisplayId": {
                 "type": "number"
-              },
-              "root": {
-                "type": "string"
               },
               "slideId": {
                 "type": "string"
@@ -13695,7 +13695,7 @@
               "audienceDisplayId",
               "blankScreen",
               "notesVisible",
-              "root",
+              "presentation",
               "slideId",
               "stepId",
               "time"
@@ -13793,9 +13793,9 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -13841,11 +13841,11 @@
               "notesVisible": {
                 "type": "boolean"
               },
+              "presentation": {
+                "type": "string"
+              },
               "presenterDisplayId": {
                 "type": "number"
-              },
-              "root": {
-                "type": "string"
               },
               "slideId": {
                 "type": "string"
@@ -13866,7 +13866,7 @@
               "audienceDisplayId",
               "blankScreen",
               "notesVisible",
-              "root",
+              "presentation",
               "slideId",
               "stepId",
               "time"
@@ -14055,9 +14055,9 @@
             "type": "string",
             "description": "From presentations.get or slides.get; stale when a slide it changes has changed, or anything, for a presentation-wide change."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -14295,9 +14295,9 @@
             "type": "string",
             "description": "The proposal's id from proposals.create."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -14575,9 +14575,9 @@
             "type": "string",
             "description": "The proposal's id from proposals.create."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
@@ -14617,9 +14617,9 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "additionalProperties": false
@@ -14867,9 +14867,9 @@
             "type": "string",
             "description": "The proposal's id from proposals.create."
           },
-          "root": {
+          "presentation": {
             "type": "string",
-            "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
+            "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
