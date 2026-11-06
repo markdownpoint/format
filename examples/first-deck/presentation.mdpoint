@@ -1,6 +1,6 @@
 {
   "markdownpoint": "1.0",
-  "kind": "presentation",
+  "type": "presentation",
   "id": "318494ee-4e44-456f-818a-ec761b41fec2",
   "theme": "basic",
   "countdown": 600,

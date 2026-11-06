@@ -26,7 +26,7 @@ The slide's objects and motion are in the .mdpoint file:
 ```json
 {
   "markdownpoint": "1.0",
-  "kind": "presentation",
+  "type": "presentation",
   "id": "64ea077f-d2ca-4f8c-9015-61feb4de5cb8",
   "theme": "basic",
   "slides": {
@@ -108,7 +108,7 @@ Settings for the whole presentation stand beside `slides`:
 ```json
 {
   "markdownpoint": "1.0",
-  "kind": "presentation",
+  "type": "presentation",
   "id": "318494ee-4e44-456f-818a-ec761b41fec2",
   "theme": "basic",
   "countdown": 600,
@@ -349,7 +349,7 @@ The record, generated/<id>.json, holds what was asked and the picture that came 
 ```json
 {
   "markdownpoint": "1.0",
-  "kind": "image-generation",
+  "type": "image-generation",
   "created": "2026-11-03T17:59:43.070Z",
   "name": "Red Paper Boat",
   "target": {"type": "image-object", "slide-id": "generate", "object-id": "boat"},

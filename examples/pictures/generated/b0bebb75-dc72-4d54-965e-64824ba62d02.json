@@ -1,6 +1,6 @@
 {
   "markdownpoint": "1.0",
-  "kind": "image-generation",
+  "type": "image-generation",
   "created": "2026-11-03T17:59:43.070Z",
   "name": "Red Paper Boat",
   "target": {

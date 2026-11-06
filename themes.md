@@ -74,7 +74,7 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 ```json
 {
   "markdownpoint": "1.0",
-  "kind": "layout",
+  "type": "layout",
   "scheme": "apricot",
   "overrides": {"footer": null, "slide-number": null},
   "objects": [

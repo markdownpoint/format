@@ -1,6 +1,6 @@
 {
   "markdownpoint": "1.0",
-  "kind": "presentation",
+  "type": "presentation",
   "id": "af844d36-9fc5-492e-a487-5ad3a9c01761",
   "theme": "basic",
   "soundtrack": {"file":"media/chord.m4a","fade-in":2,"fade-out":3},
