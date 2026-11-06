@@ -92,7 +92,7 @@
       "description": "What was asked of the image model.",
       "type": "object",
       "properties": {
-        "compiler": {
+        "instructions": {
           "enum": [
             "markdownpoint/image-prompt/1",
             "none"
@@ -107,16 +107,16 @@
           ],
           "description": "The words asked for, in Unicode NFC, each run of white space one space, none at either end. It isn't empty or `none`."
         },
-        "resolved-style": {
+        "image-style": {
           "anyOf": [
             {
               "$ref": "#/definitions/request-text"
             },
             {
-              "type": "null"
+              "const": "none"
             }
           ],
-          "description": "The image style's words added to the prompt, written the same way, or null for none."
+          "description": "The style the image was made in, its words written the same way, or `none` for no style."
         },
         "provider": {
           "enum": [
@@ -155,22 +155,18 @@
               "description": "The size asked for, in the model's own words, on one line."
             },
             "quality": {
-              "anyOf": [
+              "allOf": [
                 {
                   "$ref": "#/definitions/one-line"
-                },
-                {
-                  "type": "null"
                 }
               ],
-              "description": "The quality asked for, in the model's own words, on one line, or null where none was."
+              "description": "The quality asked for, in the model's own words, on one line. Left out, none was."
             }
           },
           "required": [
             "aspect-ratio",
             "transparent",
-            "size",
-            "quality"
+            "size"
           ],
           "additionalProperties": false
         },
@@ -200,9 +196,9 @@
         }
       },
       "required": [
-        "compiler",
+        "instructions",
         "prompt",
-        "resolved-style",
+        "image-style",
         "provider",
         "model",
         "parameters"

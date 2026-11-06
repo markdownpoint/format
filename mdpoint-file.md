@@ -354,9 +354,9 @@ The record, generated/<id>.json, holds what was asked and the picture that came 
   "name": "Red Paper Boat",
   "target": {"type": "image-object", "slide-id": "generate", "object-id": "boat"},
   "request": {
-    "compiler": "markdownpoint/image-prompt/1",
+    "instructions": "markdownpoint/image-prompt/1",
     "prompt": "A red paper boat on calm water",
-    "resolved-style": "Flat illustration",
+    "image-style": "Flat illustration",
     "provider": "openai",
     "model": "gpt-image-2.5-sunburst",
     "parameters": {

@@ -9,9 +9,9 @@
     "object-id": "boat"
   },
   "request": {
-    "compiler": "markdownpoint/image-prompt/1",
+    "instructions": "markdownpoint/image-prompt/1",
     "prompt": "A red paper boat on calm water",
-    "resolved-style": "Flat illustration",
+    "image-style": "Flat illustration",
     "provider": "openai",
     "model": "gpt-image-2.5-sunburst",
     "parameters": {
