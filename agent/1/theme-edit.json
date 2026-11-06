@@ -1364,7 +1364,7 @@
           "$ref": "#/definitions/Prop_image.drop-shadow"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_image.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -1486,7 +1486,7 @@
           "$ref": "#/definitions/Prop_image.file"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_image.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -2570,7 +2570,7 @@
           "$ref": "#/definitions/Prop_fill"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_shape.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "font-family": {
           "$ref": "#/definitions/Prop_font-family"
@@ -3054,7 +3054,7 @@
           "$ref": "#/definitions/Prop_video.file"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_image.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -4517,10 +4517,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_image.flip"
-                },
-                {
-                  "$ref": "#/definitions/Prop_shape.flip"
+                  "$ref": "#/definitions/Prop_flip"
                 },
                 {
                   "type": "null"
@@ -7292,7 +7289,7 @@
           "$ref": "#/definitions/Prop_image.drop-shadow"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_image.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -7420,7 +7417,7 @@
           "$ref": "#/definitions/Prop_image.file"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_image.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -8507,7 +8504,7 @@
           "$ref": "#/definitions/Prop_fill"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_shape.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "font-family": {
           "$ref": "#/definitions/Prop_font-family"
@@ -9009,7 +9006,7 @@
           "$ref": "#/definitions/Prop_video.file"
         },
         "flip": {
-          "$ref": "#/definitions/Prop_image.flip"
+          "$ref": "#/definitions/Prop_flip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -10924,12 +10921,13 @@
       },
       "additionalProperties": false
     },
-    "Prop_image.flip": {
+    "Prop_flip": {
       "enum": [
         "horizontal",
         "vertical",
         "both"
-      ]
+      ],
+      "description": "An object mirrored in its frame: across its vertical axis, its horizontal one, or both."
     },
     "Prop_image.alt": {
       "type": "string",
@@ -11141,14 +11139,6 @@
       "type": "number",
       "minimum": 0,
       "description": "seconds"
-    },
-    "Prop_shape.flip": {
-      "enum": [
-        "horizontal",
-        "vertical",
-        "both"
-      ],
-      "description": "An object mirrored in its frame: across its vertical axis, its horizontal one, or both."
     },
     "Prop_shape.shape": {
       "enum": [

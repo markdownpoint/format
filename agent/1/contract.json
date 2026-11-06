@@ -12169,7 +12169,7 @@
           "$ref": "#/definitions/PresentationShadow"
         },
         "flip": {
-          "$ref": "#/definitions/PresentationMediaFlip"
+          "$ref": "#/definitions/ObjectFlip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -12288,7 +12288,7 @@
           ]
         },
         "flip": {
-          "$ref": "#/definitions/PresentationMediaFlip"
+          "$ref": "#/definitions/ObjectFlip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -13567,7 +13567,7 @@
           "type": "string"
         },
         "flip": {
-          "$ref": "#/definitions/PresentationMediaFlip"
+          "$ref": "#/definitions/ObjectFlip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -14947,7 +14947,7 @@
           "$ref": "#/definitions/PresentationShadow"
         },
         "flip": {
-          "$ref": "#/definitions/PresentationMediaFlip"
+          "$ref": "#/definitions/ObjectFlip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -15072,7 +15072,7 @@
           ]
         },
         "flip": {
-          "$ref": "#/definitions/PresentationMediaFlip"
+          "$ref": "#/definitions/ObjectFlip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -16291,7 +16291,7 @@
           "type": "string"
         },
         "flip": {
-          "$ref": "#/definitions/PresentationMediaFlip"
+          "$ref": "#/definitions/ObjectFlip"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -18192,9 +18192,6 @@
     },
     "PresentationMask": {
       "type": "string"
-    },
-    "PresentationMediaFlip": {
-      "$ref": "#/definitions/ObjectFlip"
     },
     "PresentationNavigation": {
       "type": "object",
