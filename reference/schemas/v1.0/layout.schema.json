@@ -6341,7 +6341,7 @@
       "description": "a joint’s name"
     },
     "line-end": {
-      "description": "A line end attached to an object.",
+      "description": "A line end attached to an object. Its last position reaches further than a point, since an object at the edge of the canvas can have its side past a point's range.",
       "type": "object",
       "properties": {
         "object": {
@@ -6359,7 +6359,7 @@
           ],
           "description": "Which side of the object it attaches to, or the nearest."
         },
-        "at": {
+        "last-position": {
           "type": "object",
           "properties": {
             "x": {

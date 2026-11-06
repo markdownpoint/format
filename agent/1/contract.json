@@ -2354,9 +2354,6 @@
       ],
       "additionalProperties": false
     },
-    "AgentLineEnd": {
-      "$ref": "#/definitions/LineEnd"
-    },
     "AgentLongestEdge": {
       "type": "integer",
       "minimum": 1,
@@ -3021,13 +3018,13 @@
           "type": "object",
           "properties": {
             "end": {
-              "$ref": "#/definitions/AgentLineEnd"
+              "$ref": "#/definitions/LineEndSource"
             },
             "objectId": {
               "type": "string"
             },
             "start": {
-              "$ref": "#/definitions/AgentLineEnd"
+              "$ref": "#/definitions/LineEndSource"
             }
           },
           "required": [
@@ -3113,7 +3110,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's position and a line's ends."
+      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them."
     },
     "AgentOperationStatus": {
       "type": "string",
@@ -11130,12 +11127,12 @@
       "additionalProperties": false,
       "description": "An Aim as the file spells it, each key but its id, type and target left out where it is the default of Blender's Damped Track."
     },
-    "AttachedLineEnd": {
+    "AttachedLineEndSource": {
       "type": "object",
       "properties": {
-        "at": {
+        "last-position": {
           "$ref": "#/definitions/LineEndPoint",
-          "description": "Last checkpoint or deletion position; a live target takes precedence."
+          "description": "Where the end was when last drawn; a live target takes precedence."
         },
         "object": {
           "type": "string"
@@ -11148,7 +11145,8 @@
         "object",
         "side"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "A line's end on an object as the file spells it."
     },
     "AutoLayoutSource": {
       "type": "object",
@@ -12553,7 +12551,7 @@
           "$ref": "#/definitions/LineConnection"
         },
         "end": {
-          "$ref": "#/definitions/LineEnd"
+          "$ref": "#/definitions/LineEndSource"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -12574,7 +12572,7 @@
           "type": "string"
         },
         "start": {
-          "$ref": "#/definitions/LineEnd"
+          "$ref": "#/definitions/LineEndSource"
         },
         "stroke": {
           "type": "string"
@@ -13994,16 +13992,6 @@
         "straight"
       ]
     },
-    "LineEnd": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/AttachedLineEnd"
-        },
-        {
-          "$ref": "#/definitions/LineEndPoint"
-        }
-      ]
-    },
     "LineEndPoint": {
       "type": "object",
       "properties": {
@@ -14029,6 +14017,17 @@
         "right",
         "top"
       ]
+    },
+    "LineEndSource": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AttachedLineEndSource"
+        },
+        {
+          "$ref": "#/definitions/LineEndPoint"
+        }
+      ],
+      "description": "A line's end as the file spells it: a point, or an end on an object."
     },
     "MasterAuthoredFont": {
       "type": "object",
@@ -15334,7 +15333,7 @@
           "$ref": "#/definitions/LineConnection"
         },
         "end": {
-          "$ref": "#/definitions/PresentationPastedLineEnd"
+          "$ref": "#/definitions/PastedLineEndSource"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -15355,7 +15354,7 @@
           "type": "number"
         },
         "start": {
-          "$ref": "#/definitions/PresentationPastedLineEnd"
+          "$ref": "#/definitions/PastedLineEndSource"
         },
         "stroke": {
           "type": "string"
@@ -16413,6 +16412,39 @@
       ],
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
+    },
+    "PastedAttachedLineEndSource": {
+      "type": "object",
+      "properties": {
+        "last-position": {
+          "$ref": "#/definitions/PresentationPoint",
+          "description": "Where the end was when last drawn, where it stands until attached."
+        },
+        "objectIndex": {
+          "type": "number"
+        },
+        "side": {
+          "$ref": "#/definitions/LineEndSide"
+        }
+      },
+      "required": [
+        "last-position",
+        "objectIndex",
+        "side"
+      ],
+      "additionalProperties": false,
+      "description": "A pasted line's end on an object of the same paste, by index as `parentIndex`, its last position spelled as the file spells it."
+    },
+    "PastedLineEndSource": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PastedAttachedLineEndSource"
+        },
+        {
+          "$ref": "#/definitions/PresentationPoint"
+        }
+      ],
+      "description": "A pasted line's end as the file spells it: a point, or an end on an object of the same paste."
     },
     "PathFillRule": {
       "type": "string",
@@ -18575,37 +18607,6 @@
         }
       ],
       "description": "A pasted object, in the file's words."
-    },
-    "PresentationPastedAttachedLineEnd": {
-      "type": "object",
-      "properties": {
-        "at": {
-          "$ref": "#/definitions/PresentationPoint"
-        },
-        "objectIndex": {
-          "type": "number"
-        },
-        "side": {
-          "$ref": "#/definitions/LineEndSide"
-        }
-      },
-      "required": [
-        "at",
-        "objectIndex",
-        "side"
-      ],
-      "additionalProperties": false,
-      "description": "A pasted line end on an object of the same paste, by index as `parentIndex`; `at` is where it stands until attached."
-    },
-    "PresentationPastedLineEnd": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/PresentationPastedAttachedLineEnd"
-        },
-        {
-          "$ref": "#/definitions/PresentationPoint"
-        }
-      ]
     },
     "PresentationPoint": {
       "type": "object",
@@ -20893,7 +20894,7 @@
             "left"
           ]
         },
-        "at": {
+        "last-position": {
           "type": "object",
           "properties": {
             "x": {

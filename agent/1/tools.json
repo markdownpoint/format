@@ -7602,7 +7602,7 @@
                   "left"
                 ]
               },
-              "at": {
+              "last-position": {
                 "type": "object",
                 "properties": {
                   "x": {

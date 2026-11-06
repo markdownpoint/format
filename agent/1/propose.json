@@ -1601,22 +1601,19 @@
     "AgentExitEffect": {
       "$ref": "#/definitions/ExitEffect"
     },
-    "AgentLineEnd": {
-      "$ref": "#/definitions/LineEnd"
-    },
     "AgentObjectTransformSource": {
       "anyOf": [
         {
           "type": "object",
           "properties": {
             "end": {
-              "$ref": "#/definitions/AgentLineEnd"
+              "$ref": "#/definitions/LineEndSource"
             },
             "objectId": {
               "type": "string"
             },
             "start": {
-              "$ref": "#/definitions/AgentLineEnd"
+              "$ref": "#/definitions/LineEndSource"
             }
           },
           "required": [
@@ -1711,7 +1708,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's position and a line's ends."
+      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them."
     },
     "AgentPoint": {
       "$ref": "#/definitions/PresentationPoint"
@@ -2535,7 +2532,7 @@
       ],
       "description": "A tween's change in the file's words."
     },
-    "AttachedLineEnd": {
+    "AttachedLineEndSource": {
       "type": "object",
       "properties": {
         "object": {
@@ -2552,7 +2549,7 @@
             "left"
           ]
         },
-        "at": {
+        "last-position": {
           "type": "object",
           "properties": {
             "x": {
@@ -2573,14 +2570,15 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Last checkpoint or deletion position; a live target takes precedence."
+          "description": "Where the end was when last drawn; a live target takes precedence."
         }
       },
       "required": [
         "object",
         "side"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "A line's end on an object as the file spells it."
     },
     "ChoiceRenames": {
       "type": "object",
@@ -3875,7 +3873,7 @@
           "$ref": "#/definitions/Prop_connection"
         },
         "end": {
-          "$ref": "#/definitions/LineEnd"
+          "$ref": "#/definitions/LineEndSource"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
@@ -3896,7 +3894,7 @@
           "type": "string"
         },
         "start": {
-          "$ref": "#/definitions/LineEnd"
+          "$ref": "#/definitions/LineEndSource"
         },
         "stroke": {
           "$ref": "#/definitions/Color"
@@ -5059,16 +5057,6 @@
         }
       ]
     },
-    "LineEnd": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/AttachedLineEnd"
-        },
-        {
-          "$ref": "#/definitions/PresentationPoint"
-        }
-      ]
-    },
     "LineEndSide": {
       "type": "string",
       "enum": [
@@ -5078,6 +5066,17 @@
         "right",
         "top"
       ]
+    },
+    "LineEndSource": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AttachedLineEndSource"
+        },
+        {
+          "$ref": "#/definitions/PresentationPoint"
+        }
+      ],
+      "description": "A line's end as the file spells it: a point, or an end on an object."
     },
     "ObjectPropertyChangeSource": {
       "description": "One property and its value; null restores its default, or with clear: true clears what an inherited object inherits. Every number keeps the millionth.",
@@ -9667,7 +9666,7 @@
           "$ref": "#/definitions/Prop_connection"
         },
         "end": {
-          "$ref": "#/definitions/PresentationPastedLineEnd"
+          "$ref": "#/definitions/PastedLineEndSource"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
@@ -9688,7 +9687,7 @@
           "type": "number"
         },
         "start": {
-          "$ref": "#/definitions/PresentationPastedLineEnd"
+          "$ref": "#/definitions/PastedLineEndSource"
         },
         "stroke": {
           "$ref": "#/definitions/Color"
@@ -10837,6 +10836,39 @@
           }
         }
       ]
+    },
+    "PastedAttachedLineEndSource": {
+      "type": "object",
+      "properties": {
+        "last-position": {
+          "$ref": "#/definitions/PresentationPoint",
+          "description": "Where the end was when last drawn, where it stands until attached."
+        },
+        "objectIndex": {
+          "type": "number"
+        },
+        "side": {
+          "$ref": "#/definitions/LineEndSide"
+        }
+      },
+      "required": [
+        "last-position",
+        "objectIndex",
+        "side"
+      ],
+      "additionalProperties": false,
+      "description": "A pasted line's end on an object of the same paste, by index as `parentIndex`, its last position spelled as the file spells it."
+    },
+    "PastedLineEndSource": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PastedAttachedLineEndSource"
+        },
+        {
+          "$ref": "#/definitions/PresentationPoint"
+        }
+      ],
+      "description": "A pasted line's end as the file spells it: a point, or an end on an object of the same paste."
     },
     "PathThroughPoint": {
       "type": "object",
@@ -12496,37 +12528,6 @@
         }
       ],
       "description": "A pasted object, in the file's words."
-    },
-    "PresentationPastedAttachedLineEnd": {
-      "type": "object",
-      "properties": {
-        "at": {
-          "$ref": "#/definitions/PresentationPoint"
-        },
-        "objectIndex": {
-          "type": "number"
-        },
-        "side": {
-          "$ref": "#/definitions/LineEndSide"
-        }
-      },
-      "required": [
-        "at",
-        "objectIndex",
-        "side"
-      ],
-      "additionalProperties": false,
-      "description": "A pasted line end on an object of the same paste, by index as `parentIndex`; `at` is where it stands until attached."
-    },
-    "PresentationPastedLineEnd": {
-      "anyOf": [
-        {
-          "$ref": "#/definitions/PresentationPastedAttachedLineEnd"
-        },
-        {
-          "$ref": "#/definitions/PresentationPoint"
-        }
-      ]
     },
     "PresentationPoint": {
       "type": "object",
