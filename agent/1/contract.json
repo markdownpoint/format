@@ -20042,7 +20042,7 @@
       "required": [
         "based-on"
       ],
-      "description": "A text's entrance, its pose, spread and progress left out where they are the defaults, as the file writes it."
+      "description": "A text's entrance, its `from`, `spread` and `progress` left out where they are the defaults, as the file writes it."
     },
     "TextExitSource": {
       "type": "object",
