@@ -1885,7 +1885,7 @@
                 "string"
               ]
             },
-            "parentJoint": {
+            "parentNode": {
               "type": "string"
             },
             "slideId": {
@@ -3507,8 +3507,8 @@
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
         },
-        "parent-joint": {
-          "$ref": "#/definitions/Prop_parent-joint"
+        "parent-node": {
+          "$ref": "#/definitions/Prop_parent-node"
         },
         "position": {
           "$ref": "#/definitions/SpacePosition"
@@ -3832,7 +3832,7 @@
         }
       ],
       "dependencies": {
-        "parent-joint": [
+        "parent-node": [
           "parent"
         ],
         "parent-inverse": [
@@ -3950,8 +3950,8 @@
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
         },
-        "parent-joint": {
-          "$ref": "#/definitions/Prop_parent-joint"
+        "parent-node": {
+          "$ref": "#/definitions/Prop_parent-node"
         },
         "position": {
           "$ref": "#/definitions/SpacePosition"
@@ -3979,7 +3979,7 @@
       ],
       "additionalProperties": false,
       "dependencies": {
-        "parent-joint": [
+        "parent-node": [
           "parent"
         ],
         "parent-inverse": [
@@ -4290,8 +4290,8 @@
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
         },
-        "parent-joint": {
-          "$ref": "#/definitions/Prop_parent-joint"
+        "parent-node": {
+          "$ref": "#/definitions/Prop_parent-node"
         },
         "position": {
           "$ref": "#/definitions/SpacePosition"
@@ -4323,7 +4323,7 @@
       ],
       "additionalProperties": false,
       "dependencies": {
-        "parent-joint": [
+        "parent-node": [
           "parent"
         ],
         "parent-inverse": [
@@ -6467,12 +6467,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "parent-joint"
+              "const": "parent-node"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_parent-joint"
+                  "$ref": "#/definitions/Prop_parent-node"
                 },
                 {
                   "type": "null"
@@ -7205,10 +7205,10 @@
                             "pattern": "^[\\s\\S]+(?![\\s\\S])",
                             "description": "the id of an object on the slide"
                           },
-                          "target-joint": {
+                          "target-node": {
                             "type": "string",
                             "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                            "description": "the name of one of the model’s joints"
+                            "description": "the name of one of the model’s nodes"
                           },
                           "axes": {
                             "type": "array",
@@ -8577,7 +8577,7 @@
         "orientation",
         "paragraph-spacing",
         "parent-inverse",
-        "parent-joint",
+        "parent-node",
         "path-offset",
         "point-count",
         "poster",
@@ -9267,8 +9267,8 @@
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
         },
-        "parent-joint": {
-          "$ref": "#/definitions/Prop_parent-joint"
+        "parent-node": {
+          "$ref": "#/definitions/Prop_parent-node"
         },
         "parentIndex": {
           "type": "number"
@@ -9595,7 +9595,7 @@
         }
       ],
       "dependencies": {
-        "parent-joint": {
+        "parent-node": {
           "anyOf": [
             {
               "required": [
@@ -9744,8 +9744,8 @@
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
         },
-        "parent-joint": {
-          "$ref": "#/definitions/Prop_parent-joint"
+        "parent-node": {
+          "$ref": "#/definitions/Prop_parent-node"
         },
         "parentIndex": {
           "type": "number"
@@ -9776,7 +9776,7 @@
       ],
       "additionalProperties": false,
       "dependencies": {
-        "parent-joint": {
+        "parent-node": {
           "anyOf": [
             {
               "required": [
@@ -10019,8 +10019,8 @@
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
         },
-        "parent-joint": {
-          "$ref": "#/definitions/Prop_parent-joint"
+        "parent-node": {
+          "$ref": "#/definitions/Prop_parent-node"
         },
         "parentIndex": {
           "type": "number"
@@ -10055,7 +10055,7 @@
       ],
       "additionalProperties": false,
       "dependencies": {
-        "parent-joint": {
+        "parent-node": {
           "anyOf": [
             {
               "required": [
@@ -16459,10 +16459,10 @@
       "additionalProperties": false,
       "description": "A 3D object's scale along its own x, y and z axes."
     },
-    "Prop_parent-joint": {
+    "Prop_parent-node": {
       "type": "string",
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-      "description": "a joint’s name"
+      "description": "a node’s name"
     },
     "Prop_parent-inverse": {
       "type": "array",
@@ -16490,10 +16490,10 @@
               "type": {
                 "const": "aim"
               },
-              "owner-joint": {
+              "owner-node": {
                 "type": "string",
                 "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                "description": "the name of one of the model’s joints"
+                "description": "the name of one of the model’s nodes"
               },
               "target": {
                 "type": "string",

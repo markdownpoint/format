@@ -1796,13 +1796,13 @@
                   }
                 ]
               },
-              "parent-joint": {
+              "parent-node": {
                 "anyOf": [
                   {
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/joint-name"
+                    "$ref": "#/definitions/node-name"
                   }
                 ]
               },
@@ -1995,10 +1995,10 @@
                               "pattern": "^[\\s\\S]+(?![\\s\\S])",
                               "description": "The id of the object the camera follows."
                             },
-                            "target-joint": {
+                            "target-node": {
                               "type": "string",
                               "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                              "description": "The name of a joint or node in the target's model, such as ball. The camera follows it where the model's Action moves it. Left out, the camera follows the target's origin."
+                              "description": "The name of a node in the target's model, such as ball. The camera follows it where the model's Action moves it. Left out, the camera follows the target's origin."
                             },
                             "axes": {
                               "type": "array",
@@ -4848,8 +4848,8 @@
                     "pattern": "^[^\\r\\n]*(?![\\s\\S])",
                     "description": "one line"
                   },
-                  "parent-joint": {
-                    "$ref": "#/definitions/joint-name"
+                  "parent-node": {
+                    "$ref": "#/definitions/node-name"
                   },
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
@@ -4874,7 +4874,7 @@
                   "position"
                 ],
                 "dependencies": {
-                  "parent-joint": [
+                  "parent-node": [
                     "parent"
                   ],
                   "parent-inverse": [
@@ -4921,8 +4921,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -4951,7 +4951,7 @@
                       "light-type"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -4996,8 +4996,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -5046,7 +5046,7 @@
                       "intensity"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -5091,8 +5091,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -5126,7 +5126,7 @@
                       "intensity"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -5171,8 +5171,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -5221,7 +5221,7 @@
                       "intensity"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -5274,8 +5274,8 @@
                     "minimum": 0,
                     "maximum": 1
                   },
-                  "parent-joint": {
-                    "$ref": "#/definitions/joint-name"
+                  "parent-node": {
+                    "$ref": "#/definitions/node-name"
                   },
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
@@ -5313,7 +5313,7 @@
                   "height"
                 ],
                 "dependencies": {
-                  "parent-joint": [
+                  "parent-node": [
                     "parent"
                   ],
                   "parent-inverse": [
@@ -5527,7 +5527,7 @@
       "items": {
         "anyOf": [
           {
-            "description": "A constraint that turns a model, or one of its joints, toward a target, as Cinema 4D's Aim constraint does. Keys other than id, type, and target may be left out.",
+            "description": "A constraint that turns a model, or one of its nodes, toward a target, as Cinema 4D's Aim constraint does. Keys other than id, type, and target may be left out.",
             "type": "object",
             "properties": {
               "id": {
@@ -5541,10 +5541,10 @@
               "type": {
                 "const": "aim"
               },
-              "owner-joint": {
+              "owner-node": {
                 "type": "string",
                 "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                "description": "The name of the model's joint that turns, such as Head. Left out, the whole model turns."
+                "description": "The name of the model's node that turns, such as Head. Left out, the whole model turns."
               },
               "target": {
                 "type": "string",
@@ -5560,7 +5560,7 @@
                   "-y",
                   "-z"
                 ],
-                "description": "The axis of the model or joint that points at the target, in its GLB's axes: y is up, and a model faces along +z. Left out, it's y."
+                "description": "The axis of the model or node that points at the target, in its GLB's axes: y is up, and a model faces along +z. Left out, it's y."
               },
               "strength": {
                 "type": "number",
@@ -6288,11 +6288,6 @@
         }
       ]
     },
-    "joint-name": {
-      "type": "string",
-      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-      "description": "a joint’s name"
-    },
     "line-end": {
       "description": "A line end attached to an object. Its last position reaches further than a point, since an object at the edge of the canvas can have its side past a point's range.",
       "type": "object",
@@ -6341,6 +6336,11 @@
         "side"
       ],
       "additionalProperties": false
+    },
+    "node-name": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
+      "description": "a node’s name"
     },
     "nonblank-line": {
       "type": "string",

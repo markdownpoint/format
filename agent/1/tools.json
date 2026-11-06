@@ -825,10 +825,10 @@
                       "missing-constraint-target",
                       "missing-content",
                       "missing-parent",
-                      "missing-parent-joint",
+                      "missing-parent-node",
                       "parent-cycle",
-                      "shared-constraint-joint",
-                      "shared-parent-joint",
+                      "shared-constraint-node",
+                      "shared-parent-node",
                       "unknown-role",
                       "unknown-scheme",
                       "unknown-text-style",
@@ -1159,7 +1159,7 @@
               "invalid-override",
               "invalid-override-value",
               "invalid-parent-inverse",
-              "invalid-parent-joint",
+              "invalid-parent-node",
               "invalid-placeholder",
               "invalid-point",
               "invalid-poster",
@@ -1206,7 +1206,7 @@
               "missing-master",
               "missing-object-type",
               "missing-parent",
-              "missing-parent-joint",
+              "missing-parent-node",
               "missing-position",
               "missing-poster",
               "missing-slide-entry",
@@ -1226,7 +1226,7 @@
               "paragraph-id-repeated",
               "parent-cycle",
               "parent-inverse-without-parent",
-              "parent-joint-without-parent",
+              "parent-node-without-parent",
               "path-delivery",
               "raster-upscaled",
               "render-failed",
@@ -1237,8 +1237,8 @@
               "rest-loops",
               "rest-walk",
               "rounded-number",
-              "shared-constraint-joint",
-              "shared-parent-joint",
+              "shared-constraint-node",
+              "shared-parent-node",
               "slide-outside-section",
               "space-object-in-group",
               "spelled-file",
@@ -2051,10 +2051,10 @@
                       "missing-constraint-target",
                       "missing-content",
                       "missing-parent",
-                      "missing-parent-joint",
+                      "missing-parent-node",
                       "parent-cycle",
-                      "shared-constraint-joint",
-                      "shared-parent-joint",
+                      "shared-constraint-node",
+                      "shared-parent-node",
                       "unknown-role",
                       "unknown-scheme",
                       "unknown-text-style",
@@ -4537,8 +4537,8 @@
                     "pattern": "^[^\\r\\n]*(?![\\s\\S])",
                     "description": "one line"
                   },
-                  "parent-joint": {
-                    "$ref": "#/definitions/joint-name"
+                  "parent-node": {
+                    "$ref": "#/definitions/node-name"
                   },
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
@@ -4562,10 +4562,10 @@
                             "type": {
                               "const": "aim"
                             },
-                            "owner-joint": {
+                            "owner-node": {
                               "type": "string",
                               "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                              "description": "the name of one of the model’s joints"
+                              "description": "the name of one of the model’s nodes"
                             },
                             "target": {
                               "type": "string",
@@ -4645,7 +4645,7 @@
                   "position"
                 ],
                 "dependencies": {
-                  "parent-joint": [
+                  "parent-node": [
                     "parent"
                   ],
                   "parent-inverse": [
@@ -4692,8 +4692,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -4719,7 +4719,7 @@
                       "light-type"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -4764,8 +4764,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -4811,7 +4811,7 @@
                       "intensity"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -4856,8 +4856,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -4888,7 +4888,7 @@
                       "intensity"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -4933,8 +4933,8 @@
                       "color": {
                         "$ref": "#/definitions/color"
                       },
-                      "parent-joint": {
-                        "$ref": "#/definitions/joint-name"
+                      "parent-node": {
+                        "$ref": "#/definitions/node-name"
                       },
                       "parent-inverse": {
                         "$ref": "#/definitions/parent-inverse"
@@ -4980,7 +4980,7 @@
                       "intensity"
                     ],
                     "dependencies": {
-                      "parent-joint": [
+                      "parent-node": [
                         "parent"
                       ],
                       "parent-inverse": [
@@ -5033,8 +5033,8 @@
                     "minimum": 0,
                     "maximum": 1
                   },
-                  "parent-joint": {
-                    "$ref": "#/definitions/joint-name"
+                  "parent-node": {
+                    "$ref": "#/definitions/node-name"
                   },
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
@@ -5069,7 +5069,7 @@
                   "height"
                 ],
                 "dependencies": {
-                  "parent-joint": [
+                  "parent-node": [
                     "parent"
                   ],
                   "parent-inverse": [
@@ -5178,8 +5178,8 @@
                   "rotation-mode": {
                     "const": "quaternion"
                   },
-                  "parent-joint": {
-                    "$ref": "#/definitions/joint-name"
+                  "parent-node": {
+                    "$ref": "#/definitions/node-name"
                   },
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
@@ -5285,10 +5285,10 @@
                               "pattern": "^[\\s\\S]+(?![\\s\\S])",
                               "description": "the id of an object on the slide"
                             },
-                            "target-joint": {
+                            "target-node": {
                               "type": "string",
                               "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                              "description": "the name of one of the model’s joints"
+                              "description": "the name of one of the model’s nodes"
                             },
                             "axes": {
                               "type": "array",
@@ -5350,7 +5350,7 @@
                   "type"
                 ],
                 "dependencies": {
-                  "parent-joint": [
+                  "parent-node": [
                     "parent"
                   ],
                   "parent-inverse": [
@@ -5639,7 +5639,7 @@
               "invalid-override",
               "invalid-override-value",
               "invalid-parent-inverse",
-              "invalid-parent-joint",
+              "invalid-parent-node",
               "invalid-placeholder",
               "invalid-point",
               "invalid-poster",
@@ -5686,7 +5686,7 @@
               "missing-master",
               "missing-object-type",
               "missing-parent",
-              "missing-parent-joint",
+              "missing-parent-node",
               "missing-position",
               "missing-poster",
               "missing-slide-entry",
@@ -5706,7 +5706,7 @@
               "paragraph-id-repeated",
               "parent-cycle",
               "parent-inverse-without-parent",
-              "parent-joint-without-parent",
+              "parent-node-without-parent",
               "path-delivery",
               "raster-upscaled",
               "render-failed",
@@ -5717,8 +5717,8 @@
               "rest-loops",
               "rest-walk",
               "rounded-number",
-              "shared-constraint-joint",
-              "shared-parent-joint",
+              "shared-constraint-node",
+              "shared-parent-node",
               "slide-outside-section",
               "space-object-in-group",
               "spelled-file",
@@ -7538,11 +7538,6 @@
               }
             ]
           },
-          "joint-name": {
-            "type": "string",
-            "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-            "description": "a joint’s name"
-          },
           "line-end": {
             "type": "object",
             "properties": {
@@ -7588,6 +7583,11 @@
               "side"
             ],
             "additionalProperties": false
+          },
+          "node-name": {
+            "type": "string",
+            "pattern": "^[^\\r\\n]+(?![\\s\\S])",
+            "description": "a node’s name"
           },
           "object-id": {
             "type": "string",
