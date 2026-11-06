@@ -2930,10 +2930,10 @@
       "type": "object",
       "properties": {
         "fade-in": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "fade-out": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "file": {
           "$ref": "#/definitions/Prop_audio.file"
@@ -2942,7 +2942,7 @@
           "$ref": "#/definitions/Prop_icon-position"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "loop": {
           "$ref": "#/definitions/Prop_loop"
@@ -2954,16 +2954,16 @@
           "$ref": "#/definitions/Prop_name"
         },
         "start-on-click": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "type": {
           "const": "audio"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "volume": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         }
       },
       "required": [
@@ -2992,7 +2992,7 @@
           "$ref": "#/definitions/Prop_chart-type"
         },
         "color": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "colors": {
           "$ref": "#/definitions/Prop_colors"
@@ -3010,40 +3010,40 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "italic": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "leading-zero-opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "legend": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
         },
         "progress": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
         },
         "roll": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
@@ -3055,10 +3055,10 @@
           "type": "string"
         },
         "text-stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "text-stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "tracking": {
           "$ref": "#/definitions/Prop_tracking"
@@ -3067,10 +3067,10 @@
           "const": "chart"
         },
         "value-labels": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "z": {
           "$ref": "#/definitions/Prop_z"
@@ -3101,7 +3101,7 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inputs": {
           "$ref": "#/definitions/Prop_inputs"
@@ -3110,13 +3110,13 @@
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -3128,13 +3128,13 @@
           "$ref": "#/definitions/Prop_rotation"
         },
         "time-remap": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "type": {
           "const": "composition"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "z": {
           "$ref": "#/definitions/Prop_z"
@@ -3151,25 +3151,25 @@
       "type": "object",
       "properties": {
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "position": {
           "$ref": "#/definitions/Prop_floor.position"
         },
         "shadow-color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "type": {
           "const": "floor"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         }
       },
       "required": [
@@ -3196,19 +3196,19 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -3220,16 +3220,16 @@
           "$ref": "#/definitions/Prop_rotation"
         },
         "rotation-x": {
-          "$ref": "#/definitions/Prop_rotation-x"
+          "$ref": "#/definitions/Tilt"
         },
         "rotation-y": {
-          "$ref": "#/definitions/Prop_rotation-x"
+          "$ref": "#/definitions/Tilt"
         },
         "type": {
           "const": "group"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -3259,10 +3259,10 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
@@ -3277,19 +3277,19 @@
           "$ref": "#/definitions/Prop_icon"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -3304,13 +3304,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_stroke-weight"
+          "$ref": "#/definitions/Prop_icon.stroke-weight"
         },
         "type": {
           "const": "icon"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -3363,28 +3363,28 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "contrast": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "corner-radius": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "crop": {
           "$ref": "#/definitions/Prop_crop"
         },
         "decorative": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
         },
         "exposure": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "file": {
           "$ref": "#/definitions/Prop_image.file"
@@ -3396,10 +3396,10 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "grayscale": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "image-result": {
           "$ref": "#/definitions/Prop_image-result"
@@ -3411,16 +3411,16 @@
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "mask": {
-          "$ref": "#/definitions/Prop_text-path"
+          "$ref": "#/definitions/PathData"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -3438,7 +3438,7 @@
           "$ref": "#/definitions/Prop_rotation"
         },
         "saturation": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "scale": {
           "$ref": "#/definitions/Prop_text.scale"
@@ -3447,25 +3447,25 @@
           "$ref": "#/definitions/Prop_scale-mode"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "temperature": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "transparent": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "type": {
           "const": "image"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -3484,10 +3484,10 @@
       "type": "object",
       "properties": {
         "cast-shadow": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "cone-angle": {
           "$ref": "#/definitions/Prop_cone-angle"
@@ -3505,7 +3505,7 @@
           "$ref": "#/definitions/Prop_light-type"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
@@ -3520,7 +3520,7 @@
           "$ref": "#/definitions/Prop_parent-joint"
         },
         "position": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -3535,19 +3535,19 @@
           "$ref": "#/definitions/Prop_light.shape"
         },
         "size-x": {
-          "$ref": "#/definitions/Prop_size-x"
+          "$ref": "#/definitions/LightSize"
         },
         "size-y": {
-          "$ref": "#/definitions/Prop_size-x"
+          "$ref": "#/definitions/LightSize"
         },
         "target": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "type": {
           "const": "light"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         }
       },
       "required": [
@@ -3866,10 +3866,10 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "cap-end": {
-          "$ref": "#/definitions/Prop_cap-start"
+          "$ref": "#/definitions/LineCap"
         },
         "cap-start": {
-          "$ref": "#/definitions/Prop_cap-start"
+          "$ref": "#/definitions/LineCap"
         },
         "connection": {
           "$ref": "#/definitions/Prop_connection"
@@ -3878,19 +3878,19 @@
           "$ref": "#/definitions/LineEnd"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -3899,13 +3899,13 @@
           "$ref": "#/definitions/LineEnd"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "trim": {
           "$ref": "#/definitions/Prop_trim"
@@ -3914,7 +3914,7 @@
           "const": "line"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "z": {
           "$ref": "#/definitions/Prop_z"
@@ -3934,25 +3934,25 @@
           "$ref": "#/definitions/Prop_image.alt"
         },
         "cast-shadow": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "constraints": {
           "$ref": "#/definitions/Prop_constraints"
         },
         "decorative": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "file": {
           "$ref": "#/definitions/Prop_model.file"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -3964,7 +3964,7 @@
           "$ref": "#/definitions/Prop_parent-joint"
         },
         "position": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -3979,7 +3979,7 @@
           "const": "model"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         }
       },
       "required": [
@@ -4098,7 +4098,7 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "d": {
           "type": "string"
@@ -4116,19 +4116,19 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -4143,13 +4143,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "trim": {
           "$ref": "#/definitions/Prop_trim"
@@ -4158,10 +4158,10 @@
           "const": "path"
         },
         "use-as-mask": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -4195,7 +4195,7 @@
           "type": "boolean"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
@@ -4210,19 +4210,19 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -4243,13 +4243,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "trim": {
           "$ref": "#/definitions/Prop_trim"
@@ -4258,10 +4258,10 @@
           "const": "path"
         },
         "use-as-mask": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -4280,16 +4280,16 @@
       "type": "object",
       "properties": {
         "height": {
-          "$ref": "#/definitions/Prop_width"
+          "$ref": "#/definitions/CatcherSize"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "orientation": {
           "$ref": "#/definitions/Prop_orientation"
@@ -4304,7 +4304,7 @@
           "$ref": "#/definitions/Prop_parent-joint"
         },
         "position": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -4313,16 +4313,16 @@
           "$ref": "#/definitions/Prop_rotation-mode"
         },
         "shadow-color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "type": {
           "const": "shadow-catcher"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "width": {
-          "$ref": "#/definitions/Prop_width"
+          "$ref": "#/definitions/CatcherSize"
         }
       },
       "required": [
@@ -4445,19 +4445,19 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "case": {
           "$ref": "#/definitions/Prop_case"
         },
         "color": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "corner-radius": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "direction": {
           "$ref": "#/definitions/Prop_direction"
@@ -4490,19 +4490,19 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inset": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "inset-bottom": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "inset-top": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "italic": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "kerning": {
           "$ref": "#/definitions/Prop_kerning"
@@ -4514,19 +4514,19 @@
           "$ref": "#/definitions/Prop_link"
         },
         "list-indent": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "paragraph-spacing": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "parent": {
           "type": "string"
@@ -4547,19 +4547,19 @@
           "$ref": "#/definitions/Prop_shape.shape"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "sub-bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "tabular": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "tail": {
           "$ref": "#/definitions/Prop_tail"
@@ -4571,10 +4571,10 @@
           "$ref": "#/definitions/Prop_text-direction"
         },
         "text-stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "text-stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "text-style": {
           "$ref": "#/definitions/Prop_text-style"
@@ -4586,13 +4586,13 @@
           "const": "shape"
         },
         "use-as-mask": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -4630,7 +4630,7 @@
       "type": "object",
       "properties": {
         "alternating-fills": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
@@ -4645,13 +4645,13 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "columns": {
           "$ref": "#/definitions/Prop_columns"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "fill": {
           "$ref": "#/definitions/Prop_fill"
@@ -4672,28 +4672,28 @@
           "$ref": "#/definitions/Prop_gridlines"
         },
         "header-column": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "header-row": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inset": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -4708,13 +4708,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "text": {
           "type": "string"
@@ -4729,7 +4729,7 @@
           "$ref": "#/definitions/Prop_vertical-align"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -4766,22 +4766,22 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "case": {
           "$ref": "#/definitions/Prop_case"
         },
         "color": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "column-count": {
           "$ref": "#/definitions/Prop_column-count"
         },
         "column-gutter": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_text.drop-shadow"
@@ -4805,16 +4805,16 @@
           "$ref": "#/definitions/PresentationDrawnTextFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inset-bottom": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "inset-top": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "italic": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "kerning": {
           "$ref": "#/definitions/Prop_kerning"
@@ -4826,10 +4826,10 @@
           "$ref": "#/definitions/Prop_link"
         },
         "list-indent": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "min-height": {
           "$ref": "#/definitions/Prop_min-height"
@@ -4841,16 +4841,16 @@
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "paragraph-spacing": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "parent": {
           "type": "string"
         },
         "path-offset": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
@@ -4859,19 +4859,19 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "sub-bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "tabular": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "text": {
           "type": "string"
@@ -4880,13 +4880,13 @@
           "$ref": "#/definitions/Prop_text-direction"
         },
         "text-path": {
-          "$ref": "#/definitions/Prop_text-path"
+          "$ref": "#/definitions/PathData"
         },
         "text-stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "text-stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "text-style": {
           "$ref": "#/definitions/Prop_text-style"
@@ -4901,7 +4901,7 @@
           "$ref": "#/definitions/Prop_vertical-align"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -4935,25 +4935,25 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "corner-radius": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "crop": {
           "$ref": "#/definitions/Prop_crop"
         },
         "decorative": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
         },
         "fade-in": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "fade-out": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "file": {
           "$ref": "#/definitions/Prop_video.file"
@@ -4965,16 +4965,16 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "grayscale": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "loop": {
           "$ref": "#/definitions/Prop_loop"
@@ -4986,7 +4986,7 @@
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent": {
           "type": "string"
@@ -5007,25 +5007,25 @@
           "$ref": "#/definitions/Prop_scale-mode"
         },
         "start-on-click": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "type": {
           "const": "video"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "volume": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -5108,7 +5108,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -5160,7 +5160,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_opacity"
+                  "$ref": "#/definitions/Fraction"
                 },
                 {
                   "type": "null"
@@ -5186,7 +5186,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_fade-in"
+                  "$ref": "#/definitions/Seconds"
                 },
                 {
                   "type": "null"
@@ -5212,7 +5212,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_fade-in"
+                  "$ref": "#/definitions/Seconds"
                 },
                 {
                   "type": "null"
@@ -5290,7 +5290,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_opacity"
+                  "$ref": "#/definitions/Fraction"
                 },
                 {
                   "type": "null"
@@ -5472,7 +5472,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -5498,7 +5498,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -5602,10 +5602,10 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_color"
+                  "$ref": "#/definitions/Paint"
                 },
                 {
-                  "$ref": "#/definitions/Prop_text-stroke"
+                  "$ref": "#/definitions/Color"
                 },
                 {
                   "type": "null"
@@ -5790,7 +5790,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -5816,7 +5816,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_text-path"
+                  "$ref": "#/definitions/PathData"
                 },
                 {
                   "type": "null"
@@ -5842,7 +5842,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_path-offset"
+                  "$ref": "#/definitions/SignedFraction"
                 },
                 {
                   "type": "null"
@@ -5868,7 +5868,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -5894,7 +5894,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -5920,7 +5920,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -5946,7 +5946,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -5972,7 +5972,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_bullet-style"
+                  "$ref": "#/definitions/BulletStyle"
                 },
                 {
                   "type": "null"
@@ -5998,7 +5998,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_bullet-style"
+                  "$ref": "#/definitions/BulletStyle"
                 },
                 {
                   "type": "null"
@@ -6131,7 +6131,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_text-stroke"
+                  "$ref": "#/definitions/Color"
                 },
                 {
                   "type": "null"
@@ -6157,7 +6157,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -6183,7 +6183,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -6290,7 +6290,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_opacity"
+                  "$ref": "#/definitions/Fraction"
                 },
                 {
                   "type": "null"
@@ -6316,7 +6316,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_path-offset"
+                  "$ref": "#/definitions/SignedFraction"
                 },
                 {
                   "type": "null"
@@ -6342,7 +6342,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_path-offset"
+                  "$ref": "#/definitions/SignedFraction"
                 },
                 {
                   "type": "null"
@@ -6368,7 +6368,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_path-offset"
+                  "$ref": "#/definitions/SignedFraction"
                 },
                 {
                   "type": "null"
@@ -6394,7 +6394,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_path-offset"
+                  "$ref": "#/definitions/SignedFraction"
                 },
                 {
                   "type": "null"
@@ -6420,7 +6420,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -6446,7 +6446,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_text-path"
+                  "$ref": "#/definitions/PathData"
                 },
                 {
                   "type": "null"
@@ -6550,7 +6550,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -6576,7 +6576,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -6602,7 +6602,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -6628,7 +6628,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -6933,7 +6933,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_rotation-x"
+                  "$ref": "#/definitions/Tilt"
                 },
                 {
                   "type": "null"
@@ -6959,7 +6959,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_rotation-x"
+                  "$ref": "#/definitions/Tilt"
                 },
                 {
                   "type": "null"
@@ -7157,7 +7157,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_model.position"
+                  "$ref": "#/definitions/SpacePosition"
                 },
                 {
                   "type": "null"
@@ -7183,7 +7183,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -7442,7 +7442,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_size-x"
+                  "$ref": "#/definitions/LightSize"
                 },
                 {
                   "type": "null"
@@ -7468,7 +7468,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_size-x"
+                  "$ref": "#/definitions/LightSize"
                 },
                 {
                   "type": "null"
@@ -7494,7 +7494,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_text-stroke"
+                  "$ref": "#/definitions/Color"
                 },
                 {
                   "type": "null"
@@ -7520,7 +7520,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_width"
+                  "$ref": "#/definitions/CatcherSize"
                 },
                 {
                   "type": "null"
@@ -7546,7 +7546,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_width"
+                  "$ref": "#/definitions/CatcherSize"
                 },
                 {
                   "type": "null"
@@ -7719,7 +7719,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -7823,7 +7823,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_fade-in"
+                  "$ref": "#/definitions/Seconds"
                 },
                 {
                   "type": "null"
@@ -7875,7 +7875,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_opacity"
+                  "$ref": "#/definitions/Fraction"
                 },
                 {
                   "type": "null"
@@ -7927,7 +7927,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -7953,7 +7953,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -7979,7 +7979,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -8031,7 +8031,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_opacity"
+                  "$ref": "#/definitions/Fraction"
                 },
                 {
                   "type": "null"
@@ -8187,10 +8187,10 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_text-stroke"
+                  "$ref": "#/definitions/Color"
                 },
                 {
-                  "$ref": "#/definitions/Prop_color"
+                  "$ref": "#/definitions/Paint"
                 },
                 {
                   "type": "null"
@@ -8216,7 +8216,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_column-gutter"
+                  "$ref": "#/definitions/Length"
                 },
                 {
                   "type": "null"
@@ -8320,7 +8320,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -8346,7 +8346,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -8372,7 +8372,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_locked"
+                  "$ref": "#/definitions/Boolean"
                 },
                 {
                   "type": "null"
@@ -8476,7 +8476,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_cap-start"
+                  "$ref": "#/definitions/LineCap"
                 },
                 {
                   "type": "null"
@@ -8502,7 +8502,7 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_cap-start"
+                  "$ref": "#/definitions/LineCap"
                 },
                 {
                   "type": "null"
@@ -8663,10 +8663,10 @@
           }
         },
         "fade-in": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "fade-out": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "file": {
           "$ref": "#/definitions/Prop_audio.file"
@@ -8675,7 +8675,7 @@
           "$ref": "#/definitions/Prop_icon-position"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "loop": {
           "$ref": "#/definitions/Prop_loop"
@@ -8690,16 +8690,16 @@
           "type": "number"
         },
         "start-on-click": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "type": {
           "const": "audio"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "volume": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         }
       },
       "required": [
@@ -8734,7 +8734,7 @@
           "$ref": "#/definitions/Prop_chart-type"
         },
         "color": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "colors": {
           "$ref": "#/definitions/Prop_colors"
@@ -8752,40 +8752,40 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "italic": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "leading-zero-opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "legend": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
         },
         "progress": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
         },
         "roll": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
@@ -8797,10 +8797,10 @@
           "type": "string"
         },
         "text-stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "text-stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "tracking": {
           "$ref": "#/definitions/Prop_tracking"
@@ -8809,10 +8809,10 @@
           "const": "chart"
         },
         "value-labels": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "z": {
           "$ref": "#/definitions/Prop_z"
@@ -8849,7 +8849,7 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inputs": {
           "$ref": "#/definitions/Prop_inputs"
@@ -8858,13 +8858,13 @@
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -8876,13 +8876,13 @@
           "$ref": "#/definitions/Prop_rotation"
         },
         "time-remap": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "type": {
           "const": "composition"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "z": {
           "$ref": "#/definitions/Prop_z"
@@ -8905,13 +8905,13 @@
           }
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -8920,13 +8920,13 @@
           "$ref": "#/definitions/Prop_floor.position"
         },
         "shadow-color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "type": {
           "const": "floor"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         }
       },
       "required": [
@@ -8959,19 +8959,19 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -8983,16 +8983,16 @@
           "$ref": "#/definitions/Prop_rotation"
         },
         "rotation-x": {
-          "$ref": "#/definitions/Prop_rotation-x"
+          "$ref": "#/definitions/Tilt"
         },
         "rotation-y": {
-          "$ref": "#/definitions/Prop_rotation-x"
+          "$ref": "#/definitions/Tilt"
         },
         "type": {
           "const": "group"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -9028,10 +9028,10 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
@@ -9046,19 +9046,19 @@
           "$ref": "#/definitions/Prop_icon"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -9073,13 +9073,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_stroke-weight"
+          "$ref": "#/definitions/Prop_icon.stroke-weight"
         },
         "type": {
           "const": "icon"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -9138,28 +9138,28 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "contrast": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "corner-radius": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "crop": {
           "$ref": "#/definitions/Prop_crop"
         },
         "decorative": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
         },
         "exposure": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "file": {
           "$ref": "#/definitions/Prop_image.file"
@@ -9171,10 +9171,10 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "grayscale": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "image-result": {
           "$ref": "#/definitions/Prop_image-result"
@@ -9186,16 +9186,16 @@
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "mask": {
-          "$ref": "#/definitions/Prop_text-path"
+          "$ref": "#/definitions/PathData"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -9213,7 +9213,7 @@
           "$ref": "#/definitions/Prop_rotation"
         },
         "saturation": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "scale": {
           "$ref": "#/definitions/Prop_text.scale"
@@ -9222,25 +9222,25 @@
           "$ref": "#/definitions/Prop_scale-mode"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "temperature": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "transparent": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "type": {
           "const": "image"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -9265,10 +9265,10 @@
           }
         },
         "cast-shadow": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "cone-angle": {
           "$ref": "#/definitions/Prop_cone-angle"
@@ -9286,7 +9286,7 @@
           "$ref": "#/definitions/Prop_light-type"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
@@ -9301,7 +9301,7 @@
           "type": "number"
         },
         "position": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -9316,19 +9316,19 @@
           "$ref": "#/definitions/Prop_light.shape"
         },
         "size-x": {
-          "$ref": "#/definitions/Prop_size-x"
+          "$ref": "#/definitions/LightSize"
         },
         "size-y": {
-          "$ref": "#/definitions/Prop_size-x"
+          "$ref": "#/definitions/LightSize"
         },
         "target": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "type": {
           "const": "light"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         }
       },
       "required": [
@@ -9675,10 +9675,10 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "cap-end": {
-          "$ref": "#/definitions/Prop_cap-start"
+          "$ref": "#/definitions/LineCap"
         },
         "cap-start": {
-          "$ref": "#/definitions/Prop_cap-start"
+          "$ref": "#/definitions/LineCap"
         },
         "connection": {
           "$ref": "#/definitions/Prop_connection"
@@ -9687,19 +9687,19 @@
           "$ref": "#/definitions/PresentationPastedLineEnd"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -9708,13 +9708,13 @@
           "$ref": "#/definitions/PresentationPastedLineEnd"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "trim": {
           "$ref": "#/definitions/Prop_trim"
@@ -9723,7 +9723,7 @@
           "const": "line"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "z": {
           "$ref": "#/definitions/Prop_z"
@@ -9749,25 +9749,25 @@
           "$ref": "#/definitions/Prop_image.alt"
         },
         "cast-shadow": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "constraints": {
           "$ref": "#/definitions/Prop_constraints"
         },
         "decorative": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "file": {
           "$ref": "#/definitions/Prop_model.file"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parent-inverse": {
           "$ref": "#/definitions/Prop_parent-inverse"
@@ -9779,7 +9779,7 @@
           "type": "number"
         },
         "position": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -9794,7 +9794,7 @@
           "const": "model"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         }
       },
       "required": [
@@ -9941,7 +9941,7 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
@@ -9959,19 +9959,19 @@
           "type": "string"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -9986,13 +9986,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "trim": {
           "$ref": "#/definitions/Prop_trim"
@@ -10001,10 +10001,10 @@
           "const": "path"
         },
         "use-as-mask": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -10030,16 +10030,16 @@
           }
         },
         "height": {
-          "$ref": "#/definitions/Prop_width"
+          "$ref": "#/definitions/CatcherSize"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "orientation": {
           "$ref": "#/definitions/Prop_orientation"
@@ -10054,7 +10054,7 @@
           "type": "number"
         },
         "position": {
-          "$ref": "#/definitions/Prop_model.position"
+          "$ref": "#/definitions/SpacePosition"
         },
         "rotation": {
           "$ref": "#/definitions/PresentationRotation3d"
@@ -10063,16 +10063,16 @@
           "$ref": "#/definitions/Prop_rotation-mode"
         },
         "shadow-color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "type": {
           "const": "shadow-catcher"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "width": {
-          "$ref": "#/definitions/Prop_width"
+          "$ref": "#/definitions/CatcherSize"
         }
       },
       "required": [
@@ -10223,19 +10223,19 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "case": {
           "$ref": "#/definitions/Prop_case"
         },
         "color": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "corner-radius": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "direction": {
           "$ref": "#/definitions/Prop_direction"
@@ -10268,19 +10268,19 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inset": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "inset-bottom": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "inset-top": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "italic": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "kerning": {
           "$ref": "#/definitions/Prop_kerning"
@@ -10292,19 +10292,19 @@
           "$ref": "#/definitions/Prop_link"
         },
         "list-indent": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "paragraph-spacing": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "parentIndex": {
           "type": "number"
@@ -10325,19 +10325,19 @@
           "$ref": "#/definitions/Prop_shape.shape"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "sub-bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "tabular": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "tail": {
           "$ref": "#/definitions/Prop_tail"
@@ -10349,10 +10349,10 @@
           "$ref": "#/definitions/Prop_text-direction"
         },
         "text-stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "text-stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "text-style": {
           "$ref": "#/definitions/Prop_text-style"
@@ -10364,13 +10364,13 @@
           "const": "shape"
         },
         "use-as-mask": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "vertical-align": {
           "$ref": "#/definitions/Prop_vertical-align"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -10414,7 +10414,7 @@
           }
         },
         "alternating-fills": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
@@ -10429,13 +10429,13 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "color": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "columns": {
           "$ref": "#/definitions/Prop_columns"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "fill": {
           "$ref": "#/definitions/Prop_fill"
@@ -10456,28 +10456,28 @@
           "$ref": "#/definitions/Prop_gridlines"
         },
         "header-column": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "header-row": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inset": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -10492,13 +10492,13 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "text": {
           "type": "string"
@@ -10513,7 +10513,7 @@
           "$ref": "#/definitions/Prop_vertical-align"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -10556,22 +10556,22 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "case": {
           "$ref": "#/definitions/Prop_case"
         },
         "color": {
-          "$ref": "#/definitions/Prop_color"
+          "$ref": "#/definitions/Paint"
         },
         "column-count": {
           "$ref": "#/definitions/Prop_column-count"
         },
         "column-gutter": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_text.drop-shadow"
@@ -10595,16 +10595,16 @@
           "$ref": "#/definitions/PresentationDrawnTextFrame"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "inset-bottom": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "inset-top": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "italic": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "kerning": {
           "$ref": "#/definitions/Prop_kerning"
@@ -10616,10 +10616,10 @@
           "$ref": "#/definitions/Prop_link"
         },
         "list-indent": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "min-height": {
           "$ref": "#/definitions/Prop_min-height"
@@ -10631,16 +10631,16 @@
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "paragraph-spacing": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "parentIndex": {
           "type": "number"
         },
         "path-offset": {
-          "$ref": "#/definitions/Prop_path-offset"
+          "$ref": "#/definitions/SignedFraction"
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
@@ -10649,19 +10649,19 @@
           "$ref": "#/definitions/Prop_text.scale"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "sub-bullet-style": {
-          "$ref": "#/definitions/Prop_bullet-style"
+          "$ref": "#/definitions/BulletStyle"
         },
         "tabular": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "text": {
           "type": "string"
@@ -10670,13 +10670,13 @@
           "$ref": "#/definitions/Prop_text-direction"
         },
         "text-path": {
-          "$ref": "#/definitions/Prop_text-path"
+          "$ref": "#/definitions/PathData"
         },
         "text-stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "text-stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "text-style": {
           "$ref": "#/definitions/Prop_text-style"
@@ -10691,7 +10691,7 @@
           "$ref": "#/definitions/Prop_vertical-align"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -10731,25 +10731,25 @@
           "$ref": "#/definitions/Prop_blur"
         },
         "constrain-proportions": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "corner-radius": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "crop": {
           "$ref": "#/definitions/Prop_crop"
         },
         "decorative": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "drop-shadow": {
           "$ref": "#/definitions/Prop_image.drop-shadow"
         },
         "fade-in": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "fade-out": {
-          "$ref": "#/definitions/Prop_fade-in"
+          "$ref": "#/definitions/Seconds"
         },
         "file": {
           "$ref": "#/definitions/Prop_video.file"
@@ -10761,16 +10761,16 @@
           "$ref": "#/definitions/PresentationFrame"
         },
         "grayscale": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "ignore-auto-layout": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
         },
         "locked": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "loop": {
           "$ref": "#/definitions/Prop_loop"
@@ -10782,7 +10782,7 @@
           "$ref": "#/definitions/Prop_name"
         },
         "opacity": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "parentIndex": {
           "type": "number"
@@ -10803,25 +10803,25 @@
           "$ref": "#/definitions/Prop_scale-mode"
         },
         "start-on-click": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "stroke": {
-          "$ref": "#/definitions/Prop_text-stroke"
+          "$ref": "#/definitions/Color"
         },
         "stroke-style": {
           "$ref": "#/definitions/Prop_stroke-style"
         },
         "stroke-weight": {
-          "$ref": "#/definitions/Prop_column-gutter"
+          "$ref": "#/definitions/Length"
         },
         "type": {
           "const": "video"
         },
         "visible": {
-          "$ref": "#/definitions/Prop_locked"
+          "$ref": "#/definitions/Boolean"
         },
         "volume": {
-          "$ref": "#/definitions/Prop_opacity"
+          "$ref": "#/definitions/Fraction"
         },
         "wipe": {
           "$ref": "#/definitions/Prop_wipe"
@@ -12207,10 +12207,10 @@
               "$ref": "#/definitions/PresentationFrame"
             },
             "ignore-auto-layout": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             },
             "locked": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             },
             "name": {
               "$ref": "#/definitions/Prop_name"
@@ -12219,16 +12219,16 @@
               "$ref": "#/definitions/Prop_web-video.poster"
             },
             "start-on-click": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             },
             "stroke": {
-              "$ref": "#/definitions/Prop_text-stroke"
+              "$ref": "#/definitions/Color"
             },
             "stroke-style": {
               "$ref": "#/definitions/Prop_stroke-style"
             },
             "stroke-weight": {
-              "$ref": "#/definitions/Prop_column-gutter"
+              "$ref": "#/definitions/Length"
             },
             "type": {
               "const": "web-video"
@@ -12237,7 +12237,7 @@
               "$ref": "#/definitions/Prop_url"
             },
             "visible": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             }
           },
           "required": [
@@ -12466,10 +12466,10 @@
               "$ref": "#/definitions/PresentationFrame"
             },
             "ignore-auto-layout": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             },
             "locked": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             },
             "name": {
               "$ref": "#/definitions/Prop_name"
@@ -12484,16 +12484,16 @@
               "$ref": "#/definitions/Prop_rotation"
             },
             "start-on-click": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             },
             "stroke": {
-              "$ref": "#/definitions/Prop_text-stroke"
+              "$ref": "#/definitions/Color"
             },
             "stroke-style": {
               "$ref": "#/definitions/Prop_stroke-style"
             },
             "stroke-weight": {
-              "$ref": "#/definitions/Prop_column-gutter"
+              "$ref": "#/definitions/Length"
             },
             "type": {
               "const": "web-video"
@@ -12502,7 +12502,7 @@
               "$ref": "#/definitions/Prop_url"
             },
             "visible": {
-              "$ref": "#/definitions/Prop_locked"
+              "$ref": "#/definitions/Boolean"
             }
           },
           "required": [
@@ -14702,13 +14702,13 @@
       "additionalProperties": false,
       "description": "A single object's scale along its own x and y axes."
     },
-    "Prop_opacity": {
+    "Fraction": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
       "description": "fraction"
     },
-    "Prop_locked": {
+    "Boolean": {
       "type": "boolean"
     },
     "Prop_link": {
@@ -14806,7 +14806,7 @@
       ],
       "description": "font weight"
     },
-    "Prop_color": {
+    "Paint": {
       "anyOf": [
         {
           "type": "string",
@@ -14996,23 +14996,23 @@
       "maximum": 65535,
       "description": "columns"
     },
-    "Prop_column-gutter": {
+    "Length": {
       "type": "number",
       "minimum": 0,
       "maximum": 33554431.984375,
       "description": "canvas units"
     },
-    "Prop_text-path": {
+    "PathData": {
       "type": "string",
       "description": "SVG path data in frame units"
     },
-    "Prop_path-offset": {
+    "SignedFraction": {
       "type": "number",
       "minimum": -1,
       "maximum": 1,
       "description": "signed fraction"
     },
-    "Prop_bullet-style": {
+    "BulletStyle": {
       "enum": [
         "disc",
         "circle",
@@ -15104,7 +15104,7 @@
       ],
       "description": "An object's shadow: a drop shadow, or none. An object without the property casts none; \"none\" is written only to take back a shadow it would otherwise inherit from its layout or its presentation."
     },
-    "Prop_text-stroke": {
+    "Color": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
       "description": "a color role or a hex color"
@@ -16133,7 +16133,7 @@
     "Prop_loop": {
       "const": "repeat"
     },
-    "Prop_fade-in": {
+    "Seconds": {
       "type": "number",
       "minimum": 0,
       "maximum": 4294967296,
@@ -16256,7 +16256,7 @@
       "type": "string",
       "description": "a bundled Lucide icon’s name"
     },
-    "Prop_stroke-weight": {
+    "Prop_icon.stroke-weight": {
       "type": "number",
       "minimum": 0,
       "maximum": 33554431.984375,
@@ -16275,7 +16275,7 @@
       "maximum": 181,
       "description": "chord lengths"
     },
-    "Prop_cap-start": {
+    "LineCap": {
       "enum": [
         "none",
         "arrow"
@@ -16346,7 +16346,7 @@
         ]
       }
     },
-    "Prop_rotation-x": {
+    "Tilt": {
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
@@ -16456,7 +16456,7 @@
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
       "description": "a normalized relative file path"
     },
-    "Prop_model.position": {
+    "SpacePosition": {
       "type": "object",
       "properties": {
         "x": {
@@ -16682,13 +16682,13 @@
       ],
       "description": "An area light's shape, as Redshift's Area Shape names its two: a rectangle, or a disk, round or oval."
     },
-    "Prop_size-x": {
+    "LightSize": {
       "type": "number",
       "minimum": 1,
       "maximum": 1000000000000000000,
       "description": "canvas units"
     },
-    "Prop_width": {
+    "CatcherSize": {
       "type": "number",
       "minimum": 0.000001,
       "maximum": 1000000000000000000,
