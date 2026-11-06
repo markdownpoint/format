@@ -812,8 +812,7 @@
             },
             "pause": {
               "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296
+              "minimum": 0
             },
             "rate": {
               "type": "number"
@@ -2231,6 +2230,48 @@
             {
               "type": "object",
               "properties": {
+                "delay": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296
+                },
+                "objectIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "type": {
+                  "const": "delay"
+                }
+              },
+              "required": [
+                "delay",
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "duration": {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296
+                },
+                "type": {
+                  "const": "duration"
+                }
+              },
+              "required": [
+                "duration",
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
                 "interpolation": {
                   "$ref": "#/definitions/PresentationAnimationInterpolation"
                 },
@@ -2422,30 +2463,6 @@
             {
               "type": "object",
               "properties": {
-                "objectIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "seconds": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 4294967296
-                },
-                "type": {
-                  "const": "delay"
-                }
-              },
-              "required": [
-                "seconds",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
                 "order": {
                   "type": "string",
                   "enum": [
@@ -2454,7 +2471,7 @@
                     "forward"
                   ]
                 },
-                "seconds": {
+                "stagger": {
                   "type": "number",
                   "minimum": 0,
                   "maximum": 4294967296
@@ -2464,25 +2481,7 @@
                 }
               },
               "required": [
-                "seconds",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "seconds": {
-                  "type": "number",
-                  "minimum": 0.000001,
-                  "maximum": 4294967296
-                },
-                "type": {
-                  "const": "duration"
-                }
-              },
-              "required": [
-                "seconds",
+                "stagger",
                 "type"
               ],
               "additionalProperties": false
@@ -12353,26 +12352,6 @@
         {
           "type": "object",
           "properties": {
-            "deleteSlides": {
-              "type": "boolean"
-            },
-            "sectionId": {
-              "type": "string"
-            },
-            "type": {
-              "const": "deleteSection"
-            }
-          },
-          "required": [
-            "deleteSlides",
-            "sectionId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
             "name": {
               "type": "string"
             },
@@ -12406,6 +12385,26 @@
           "required": [
             "order",
             "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "sectionId": {
+              "type": "string"
+            },
+            "type": {
+              "const": "deleteSection"
+            },
+            "withSlides": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "sectionId",
+            "type",
+            "withSlides"
           ],
           "additionalProperties": false
         },

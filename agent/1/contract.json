@@ -1274,8 +1274,9 @@
             "bytes": {
               "type": "number"
             },
-            "durationSeconds": {
-              "type": "number"
+            "duration": {
+              "type": "number",
+              "description": "How long the movie plays, in seconds."
             },
             "files": {
               "type": "array",
@@ -1309,7 +1310,7 @@
           },
           "required": [
             "bytes",
-            "durationSeconds",
+            "duration",
             "files",
             "format",
             "height",
@@ -1549,7 +1550,7 @@
         "frames": {
           "type": "number"
         },
-        "intervalMilliseconds": {
+        "interval": {
           "anyOf": [
             {
               "type": "object",
@@ -1574,9 +1575,10 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "The time from one frame to the next, in milliseconds."
         },
-        "paintMilliseconds": {
+        "paint": {
           "anyOf": [
             {
               "type": "object",
@@ -1597,14 +1599,15 @@
             {
               "type": "null"
             }
-          ]
+          ],
+          "description": "How long each frame took to paint, in milliseconds."
         }
       },
       "required": [
         "dropped",
         "frames",
-        "intervalMilliseconds",
-        "paintMilliseconds"
+        "interval",
+        "paint"
       ],
       "additionalProperties": false,
       "description": "How the audience window painted its last continuous playback, from each frame's own timestamp."
@@ -1904,17 +1907,17 @@
               "type": "string",
               "const": "export"
             },
-            "destination": {
-              "type": "string",
-              "description": "Absolute path of a new .json file outside any presentation folder."
-            },
             "id": {
               "type": "string"
+            },
+            "output": {
+              "type": "string",
+              "description": "Absolute path of a new .json file outside any presentation folder."
             }
           },
           "required": [
             "action",
-            "destination"
+            "output"
           ],
           "additionalProperties": false
         },
@@ -5653,10 +5656,6 @@
     "AgentSlideFramesRequest": {
       "type": "object",
       "properties": {
-        "destination": {
-          "type": "string",
-          "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
-        },
         "fps": {
           "$ref": "#/definitions/AgentSampleRate",
           "description": "Samples per second. Defaults to 30."
@@ -5668,6 +5667,10 @@
         "longestEdge": {
           "$ref": "#/definitions/AgentLongestEdge",
           "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
+        },
+        "output": {
+          "type": "string",
+          "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
         },
         "slideId": {
           "$ref": "#/definitions/AgentSlideId"
@@ -5702,7 +5705,7 @@
           "items": {
             "type": "string"
           },
-          "description": "With a destination, the frames written in order and then the sheet."
+          "description": "With an output, the frames written in order and then the sheet."
         },
         "height": {
           "type": "number"
@@ -9222,13 +9225,13 @@
           "$ref": "#/definitions/AgentSlideMoment",
           "description": "Omitted is authored Base."
         },
-        "destination": {
-          "type": "string",
-          "description": "Absolute path of a new .png file outside any presentation folder, which the app writes instead of returning the image inline; the result then names it in files and carries no image."
-        },
         "longestEdge": {
           "$ref": "#/definitions/AgentLongestEdge",
           "description": "Maximum PNG edge in pixels, preserving the slide's aspect ratio. Defaults to 1024."
+        },
+        "output": {
+          "type": "string",
+          "description": "Absolute path of a new .png file outside any presentation folder, which the app writes instead of returning the image inline; the result then names it in files and carries no image."
         },
         "slideId": {
           "$ref": "#/definitions/AgentSlideId"
@@ -9406,7 +9409,7 @@
           ]
         }
       ],
-      "description": "The PNG in the answer, or with a destination the one file written, in `files`."
+      "description": "The PNG in the answer, or with an output the one file written, in `files`."
     },
     "AgentSlideRequest": {
       "type": "object",
@@ -9958,6 +9961,46 @@
             {
               "type": "object",
               "properties": {
+                "delay": {
+                  "type": "number"
+                },
+                "objectIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "type": {
+                  "type": "string",
+                  "const": "delay"
+                }
+              },
+              "required": [
+                "delay",
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "duration": {
+                  "type": "number"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "duration"
+                }
+              },
+              "required": [
+                "duration",
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
                 "interpolation": {
                   "$ref": "#/definitions/PresentationAnimationInterpolation"
                 },
@@ -10153,29 +10196,6 @@
             {
               "type": "object",
               "properties": {
-                "objectIds": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "seconds": {
-                  "type": "number"
-                },
-                "type": {
-                  "type": "string",
-                  "const": "delay"
-                }
-              },
-              "required": [
-                "seconds",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
                 "order": {
                   "type": "string",
                   "enum": [
@@ -10184,7 +10204,7 @@
                     "forward"
                   ]
                 },
-                "seconds": {
+                "stagger": {
                   "type": "number"
                 },
                 "type": {
@@ -10193,24 +10213,7 @@
                 }
               },
               "required": [
-                "seconds",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "seconds": {
-                  "type": "number"
-                },
-                "type": {
-                  "type": "string",
-                  "const": "duration"
-                }
-              },
-              "required": [
-                "seconds",
+                "stagger",
                 "type"
               ],
               "additionalProperties": false
@@ -10579,7 +10582,7 @@
               "type": "string",
               "const": "export"
             },
-            "destination": {
+            "output": {
               "type": "string",
               "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files."
             },
@@ -10589,7 +10592,7 @@
           },
           "required": [
             "action",
-            "destination",
+            "output",
             "theme"
           ],
           "additionalProperties": false
@@ -10959,18 +10962,19 @@
         "model": {
           "type": "string"
         },
-        "unitsPerSecond": {
-          "type": "number"
+        "speed": {
+          "type": "number",
+          "description": "In canvas units a second."
         }
       },
       "required": [
         "action",
         "certain",
         "model",
-        "unitsPerSecond"
+        "speed"
       ],
       "additionalProperties": false,
-      "description": "The speed an in-place walk travels at this model's size, canvas units a second, at which its planted feet hold."
+      "description": "The speed an in-place walk travels at this model's size, at which its planted feet hold."
     },
     "AgentWindow": {
       "type": "object",
@@ -18366,27 +18370,6 @@
         {
           "type": "object",
           "properties": {
-            "deleteSlides": {
-              "type": "boolean"
-            },
-            "sectionId": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string",
-              "const": "deleteSection"
-            }
-          },
-          "required": [
-            "deleteSlides",
-            "sectionId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
             "name": {
               "type": "string"
             },
@@ -18422,6 +18405,27 @@
           "required": [
             "order",
             "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "sectionId": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "deleteSection"
+            },
+            "withSlides": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "sectionId",
+            "type",
+            "withSlides"
           ],
           "additionalProperties": false
         },
@@ -19292,6 +19296,11 @@
           "type": "number",
           "description": "Play the step this many times before it completes; omitted plays once."
         },
+        "staggered": {
+          "type": "boolean",
+          "const": false,
+          "description": "False where a repeater's copies play this step with their source, none after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
+        },
         "start": {
           "$ref": "#/definitions/PresentationStepStart",
           "description": "Plays without a click of its own: with the step before it, or after that step ends, as PowerPoint's With Previous and After Previous do. Its times then count from that start. On the first step it plays after the transition. Omitted, the step waits for a click."
@@ -19309,11 +19318,6 @@
             "type": "string"
           },
           "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to where it stands on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
-        },
-        "unstaggered": {
-          "type": "boolean",
-          "const": true,
-          "description": "Every copy of a staggered repeater plays this step with its source instead of after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
         }
       },
       "required": [

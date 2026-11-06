@@ -6884,6 +6884,10 @@
                 "type": "number",
                 "description": "Play the step this many times before it completes; omitted plays once."
               },
+              "staggered": {
+                "const": false,
+                "description": "False where a repeater's copies play this step with their source, none after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
+              },
               "start": {
                 "$ref": "#/definitions/PresentationStepStart",
                 "description": "Plays without a click of its own: with the step before it, or after that step ends, as PowerPoint's With Previous and After Previous do. Its times then count from that start. On the first step it plays after the transition. Omitted, the step waits for a click."
@@ -6901,10 +6905,6 @@
                   "type": "string"
                 },
                 "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to where it stands on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
-              },
-              "unstaggered": {
-                "const": true,
-                "description": "Every copy of a staggered repeater plays this step with its source instead of after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
               }
             },
             "required": [
@@ -8067,15 +8067,15 @@
             "additionalProperties": false,
             "description": "Omitted is authored Base."
           },
-          "destination": {
-            "type": "string",
-            "description": "Absolute path of a new .png file outside any presentation folder, which the app writes instead of returning the image inline; the result then names it in files and carries no image."
-          },
           "longestEdge": {
             "type": "integer",
             "minimum": 1,
             "maximum": 3840,
             "description": "Maximum PNG edge in pixels, preserving the slide's aspect ratio. Defaults to 1024."
+          },
+          "output": {
+            "type": "string",
+            "description": "Absolute path of a new .png file outside any presentation folder, which the app writes instead of returning the image inline; the result then names it in files and carries no image."
           },
           "slideId": {
             "type": "string",
@@ -8110,14 +8110,10 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Render one animation step over a range of its time, or with transition: true the slide’s transition into the next shown slide (Carry over included) over its duration, sampled at a rate, through the app renderer: returns a contact sheet of every frame, each labeled with its time, plus the times and frame size. With destination, the app also writes frame-0001.png onward and sheet.png into that absolute directory. At most 120 frames; lower fps or narrow from/to for longer steps. It never starts media or changes the presentation.",
+      "description": "Render one animation step over a range of its time, or with transition: true the slide’s transition into the next shown slide (Carry over included) over its duration, sampled at a rate, through the app renderer: returns a contact sheet of every frame, each labeled with its time, plus the times and frame size. With output, the app also writes frame-0001.png onward and sheet.png into that absolute directory. At most 120 frames; lower fps or narrow from/to for longer steps. It never starts media or changes the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "destination": {
-            "type": "string",
-            "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
-          },
           "fps": {
             "type": "number",
             "minimum": 1,
@@ -8135,6 +8131,10 @@
             "minimum": 1,
             "maximum": 3840,
             "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
+          },
+          "output": {
+            "type": "string",
+            "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
           },
           "slideId": {
             "type": "string",
@@ -9364,18 +9364,19 @@
               "model": {
                 "type": "string"
               },
-              "unitsPerSecond": {
-                "type": "number"
+              "speed": {
+                "type": "number",
+                "description": "In canvas units a second."
               }
             },
             "required": [
               "action",
               "certain",
               "model",
-              "unitsPerSecond"
+              "speed"
             ],
             "additionalProperties": false,
-            "description": "The speed an in-place walk travels at this model's size, canvas units a second, at which its planted feet hold."
+            "description": "The speed an in-place walk travels at this model's size, at which its planted feet hold."
           },
           "PresentationFrame": {
             "type": "object",
@@ -9628,17 +9629,13 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute destination: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When text overflows, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmOverflow: true only when clipping is acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and root.",
+      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute output path: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When text overflows, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmOverflow: true only when clipping is acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and root.",
       "inputSchema": {
         "type": "object",
         "properties": {
           "confirmOverflow": {
             "type": "boolean",
             "description": "Accept known overflowing text in this export."
-          },
-          "destination": {
-            "type": "string",
-            "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
           },
           "format": {
             "type": "string",
@@ -9716,15 +9713,19 @@
             "additionalProperties": false,
             "description": "Movie format only; omit to use the app’s default export settings."
           },
+          "output": {
+            "type": "string",
+            "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
+          },
           "root": {
             "type": "string",
             "description": "Presentation root path to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
-          "destination",
           "format",
-          "id"
+          "id",
+          "output"
         ],
         "additionalProperties": false
       },
@@ -9738,8 +9739,9 @@
               "bytes": {
                 "type": "number"
               },
-              "durationSeconds": {
-                "type": "number"
+              "duration": {
+                "type": "number",
+                "description": "How long the movie plays, in seconds."
               },
               "files": {
                 "type": "array",
@@ -9771,7 +9773,7 @@
             },
             "required": [
               "bytes",
-              "durationSeconds",
+              "duration",
               "files",
               "format",
               "height",
@@ -12107,7 +12109,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mdptheme file at destination; install adds a .mdptheme file’s theme; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
+      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mdptheme file at output; install adds a .mdptheme file’s theme; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -12132,7 +12134,7 @@
             "type": "string",
             "description": "A theme's key or name from themes.list. Required by delete, export and rename."
           },
-          "destination": {
+          "output": {
             "type": "string",
             "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files. Required by export."
           },
@@ -12215,7 +12217,7 @@
             },
             "then": {
               "required": [
-                "destination",
+                "output",
                 "theme"
               ]
             },
@@ -13006,7 +13008,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Change this machine’s style library, as the Choose style… dialog does: save a definition (a new style, or over id), duplicate, delete, generate a style’s preview pair (spends on OpenAI, as Generate preview does), import a styles file from path, or export one style (id) or all to destination. Returns the styles and the one acted on. Needs no open presentation.",
+      "description": "Change this machine’s style library, as the Choose style… dialog does: save a definition (a new style, or over id), duplicate, delete, generate a style’s preview pair (spends on OpenAI, as Generate preview does), import a styles file from path, or export one style (id) or all to output. Returns the styles and the one acted on. Needs no open presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13021,13 +13023,13 @@
               "preview"
             ]
           },
-          "destination": {
-            "type": "string",
-            "description": "Absolute path of a new .json file outside any presentation folder. Required by export."
-          },
           "id": {
             "type": "string",
             "description": "A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone. Required by delete, duplicate and preview."
+          },
+          "output": {
+            "type": "string",
+            "description": "Absolute path of a new .json file outside any presentation folder. Required by export."
           },
           "path": {
             "type": "string",
@@ -13082,7 +13084,7 @@
         },
         "then": {
           "required": [
-            "destination"
+            "output"
           ]
         },
         "else": {
@@ -13334,7 +13336,7 @@
               "frames": {
                 "type": "number"
               },
-              "intervalMilliseconds": {
+              "interval": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13359,9 +13361,10 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "The time from one frame to the next, in milliseconds."
               },
-              "paintMilliseconds": {
+              "paint": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13382,14 +13385,15 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "How long each frame took to paint, in milliseconds."
               }
             },
             "required": [
               "dropped",
               "frames",
-              "intervalMilliseconds",
-              "paintMilliseconds"
+              "interval",
+              "paint"
             ],
             "additionalProperties": false,
             "description": "How the audience window painted its last continuous playback, from each frame's own timestamp."
@@ -13503,7 +13507,7 @@
               "frames": {
                 "type": "number"
               },
-              "intervalMilliseconds": {
+              "interval": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13528,9 +13532,10 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "The time from one frame to the next, in milliseconds."
               },
-              "paintMilliseconds": {
+              "paint": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13551,14 +13556,15 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "How long each frame took to paint, in milliseconds."
               }
             },
             "required": [
               "dropped",
               "frames",
-              "intervalMilliseconds",
-              "paintMilliseconds"
+              "interval",
+              "paint"
             ],
             "additionalProperties": false,
             "description": "How the audience window painted its last continuous playback, from each frame's own timestamp."
@@ -13709,7 +13715,7 @@
               "frames": {
                 "type": "number"
               },
-              "intervalMilliseconds": {
+              "interval": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13734,9 +13740,10 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "The time from one frame to the next, in milliseconds."
               },
-              "paintMilliseconds": {
+              "paint": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13757,14 +13764,15 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "How long each frame took to paint, in milliseconds."
               }
             },
             "required": [
               "dropped",
               "frames",
-              "intervalMilliseconds",
-              "paintMilliseconds"
+              "interval",
+              "paint"
             ],
             "additionalProperties": false,
             "description": "How the audience window painted its last continuous playback, from each frame's own timestamp."
@@ -13878,7 +13886,7 @@
               "frames": {
                 "type": "number"
               },
-              "intervalMilliseconds": {
+              "interval": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13903,9 +13911,10 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "The time from one frame to the next, in milliseconds."
               },
-              "paintMilliseconds": {
+              "paint": {
                 "anyOf": [
                   {
                     "type": "object",
@@ -13926,14 +13935,15 @@
                   {
                     "type": "null"
                   }
-                ]
+                ],
+                "description": "How long each frame took to paint, in milliseconds."
               }
             },
             "required": [
               "dropped",
               "frames",
-              "intervalMilliseconds",
-              "paintMilliseconds"
+              "interval",
+              "paint"
             ],
             "additionalProperties": false,
             "description": "How the audience window painted its last continuous playback, from each frame's own timestamp."

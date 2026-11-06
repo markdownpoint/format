@@ -6,10 +6,6 @@
       "type": "boolean",
       "description": "Accept known overflowing text in this export."
     },
-    "destination": {
-      "type": "string",
-      "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
-    },
     "format": {
       "type": "string",
       "enum": [
@@ -26,12 +22,16 @@
     "movie": {
       "$ref": "#/definitions/AgentMovieExportOptions",
       "description": "Movie format only; omit to use the app’s default export settings."
+    },
+    "output": {
+      "type": "string",
+      "description": "Absolute path of a new file, or for png a new folder, outside any presentation folder: an export never replaces what stands there when it is asked, and never writes among a presentation's files."
     }
   },
   "required": [
-    "destination",
     "format",
-    "id"
+    "id",
+    "output"
   ],
   "additionalProperties": false,
   "definitions": {
