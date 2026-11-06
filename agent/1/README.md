@@ -87,9 +87,13 @@ presentation with a default in its place, `skip-object` leaves the object out,
 Where an issue stands depends on its `source`:
 
 - `json`: `path` selects the value in the `.mdpoint` file, keys joined by dots
-  and a list's item by its index in brackets, such as
-  `slides.intro.objects.title.opacity`; `slideId` or `objectId`
-  names what holds it.
+  and a list's item by its index in brackets, as in `slides.intro.objects[2]`.
+  An object stands by its id once its id reads, as in
+  `slides.intro.objects.title.opacity`, and a step or a keyframe by its id once
+  the slide is read, as in
+  `slides.intro.steps.reveal.curves.title.opacity.keyframes.fade.value`; a
+  composition stands under `compositions`. `slideId` names the slide or
+  composition that holds it, and `objectId` the object.
 - `markdown` and `files`: `location` names the file and its line, counted from
   1, with the column when known.
 - `theme`: `slideId` when only the slides that name the layout or scheme are
