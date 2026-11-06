@@ -13282,8 +13282,16 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blackoutActive": {
-                "type": "boolean"
+              "blankScreen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ]
               },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
@@ -13314,7 +13322,7 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blackoutActive",
+              "blankScreen",
               "notesVisible",
               "root",
               "slideId",
@@ -13408,7 +13416,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read whether this document owner is presenting, its captured slide/step IDs, finite local step time, blackout/notes state and display IDs. Time uses the same presentation clock and freezes during blackout. Refuses control of a previous document still presenting in a reused editor window.",
+      "description": "Read whether this document owner is presenting, its captured slide/step IDs, finite local step time, blank screen and notes state and display IDs. Time uses the same presentation clock and freezes on a blank screen. Refuses control of a previous document still presenting in a reused editor window.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13443,8 +13451,16 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blackoutActive": {
-                "type": "boolean"
+              "blankScreen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ]
               },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
@@ -13475,7 +13491,7 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blackoutActive",
+              "blankScreen",
               "notesVisible",
               "root",
               "slideId",
@@ -13569,7 +13585,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Control the selected owner’s existing Present session through its normal navigation. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; slide enters the slide slideId names at Start, a captured stable slide ID. During blackout a navigation action first resumes the same position. Commands do not edit the document.",
+      "description": "Control the selected owner’s existing Present session through its normal navigation. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; slide enters the slide slideId names at Start, a captured stable slide ID. On a blank screen a navigation action first resumes the same position. Commands do not edit the document.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13581,7 +13597,7 @@
               "nextStepInstant",
               "previousSlide",
               "previousStep",
-              "toggleBlackout",
+              "toggleBlackScreen",
               "toggleNotes",
               "slide"
             ]
@@ -13641,8 +13657,16 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blackoutActive": {
-                "type": "boolean"
+              "blankScreen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ]
               },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
@@ -13673,7 +13697,7 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blackoutActive",
+              "blankScreen",
               "notesVisible",
               "root",
               "slideId",
@@ -13802,8 +13826,16 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blackoutActive": {
-                "type": "boolean"
+              "blankScreen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ]
               },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
@@ -13834,7 +13866,7 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blackoutActive",
+              "blankScreen",
               "notesVisible",
               "root",
               "slideId",

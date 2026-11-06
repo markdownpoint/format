@@ -3203,7 +3203,7 @@
         "nextStepInstant",
         "previousSlide",
         "previousStep",
-        "toggleBlackout",
+        "toggleBlackScreen",
         "toggleNotes"
       ]
     },
@@ -3280,8 +3280,16 @@
             "audienceDisplayId": {
               "type": "number"
             },
-            "blackoutActive": {
-              "type": "boolean"
+            "blankScreen": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "enum": [
+                "black",
+                "white",
+                null
+              ]
             },
             "frameProbe": {
               "$ref": "#/definitions/AgentFrameProbe"
@@ -3312,7 +3320,7 @@
           "required": [
             "active",
             "audienceDisplayId",
-            "blackoutActive",
+            "blankScreen",
             "notesVisible",
             "root",
             "slideId",
