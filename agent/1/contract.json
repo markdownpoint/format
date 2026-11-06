@@ -1139,7 +1139,7 @@
         },
         "value": {
           "$ref": "#/definitions/PresentationAnimationValueSource",
-          "description": "Effective value in authored parameter space before ancestor group poses; omitted when no value or default exists."
+          "description": "Effective value in authored parameter space before its groups' transforms; omitted when no value or default exists."
         },
         "valueType": {
           "$ref": "#/definitions/ObjectAnimationValueType",
@@ -9324,7 +9324,7 @@
               "additionalProperties": {
                 "$ref": "#/definitions/AgentFrame"
               },
-              "description": "Where each object's words stand at this position, in canvas units, as After Effects' sourceRectAtTime reads a text layer's: the axis-aligned union of its lines' boxes, its pose included. Objects with no words are left out."
+              "description": "Where each object's words stand at this position, in canvas units, as After Effects' sourceRectAtTime reads a text layer's: the axis-aligned union of its lines' boxes, its transform included. Objects with no words are left out."
             },
             "width": {
               "type": "number"
@@ -9410,7 +9410,7 @@
               "additionalProperties": {
                 "$ref": "#/definitions/AgentFrame"
               },
-              "description": "Where each object's words stand at this position, in canvas units, as After Effects' sourceRectAtTime reads a text layer's: the axis-aligned union of its lines' boxes, its pose included. Objects with no words are left out."
+              "description": "Where each object's words stand at this position, in canvas units, as After Effects' sourceRectAtTime reads a text layer's: the axis-aligned union of its lines' boxes, its transform included. Objects with no words are left out."
             },
             "width": {
               "type": "number"
@@ -9737,7 +9737,7 @@
             ],
             "additionalProperties": false
           },
-          "description": "Each parameter with keyframes in the step, sampled at every time in authored parameter space, before ancestor group poses."
+          "description": "Each parameter with keyframes in the step, sampled at every time in authored parameter space, before its groups' transforms."
         },
         "revision": {
           "$ref": "#/definitions/AgentRevision"
@@ -19379,7 +19379,7 @@
       ],
       "description": "The side a text box's lines start on: the left, or the right for words written right to left, as Arabic and Hebrew are."
     },
-    "PresentationTextPose": {
+    "PresentationTextPieceLook": {
       "type": "object",
       "properties": {
         "blur": {
@@ -19999,12 +19999,12 @@
           "description": "Opacity's own share of each piece's travel, on the travel's interpolation."
         },
         "from": {
-          "$ref": "#/definitions/PresentationTextPose",
-          "description": "The pose each piece arrives from; a piece leaving by the same entrance returns to it."
+          "$ref": "#/definitions/PresentationTextPieceLook",
+          "description": "How each piece looks as it starts to enter; a piece leaving by the same entrance returns to it."
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "How each piece travels from its pose to where it rests, on its own; linear when absent."
+          "description": "How each piece travels from that look to where it rests, on its own; linear when absent."
         },
         "order": {
           "type": "string",
@@ -20072,7 +20072,7 @@
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "How each piece travels from its pose to where it rests, on its own; linear when absent."
+          "description": "How each piece travels from that look to where it rests, on its own; linear when absent."
         },
         "order": {
           "type": "string",
@@ -20107,8 +20107,8 @@
           "description": "Pieces in flight at once, at least 1."
         },
         "to": {
-          "$ref": "#/definitions/PresentationTextPose",
-          "description": "The pose each piece exits to, as Motion's Sequence Text sequences To: absent values leave it where it rests."
+          "$ref": "#/definitions/PresentationTextPieceLook",
+          "description": "How each piece looks as it finishes exiting, as Motion's Sequence Text sequences To: absent values leave it where it rests."
         }
       },
       "required": [

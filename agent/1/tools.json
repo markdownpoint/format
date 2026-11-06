@@ -1938,7 +1938,7 @@
               },
               "value": {
                 "$ref": "#/definitions/PresentationAnimationValueSource",
-                "description": "Effective value in authored parameter space before ancestor group poses; omitted when no value or default exists."
+                "description": "Effective value in authored parameter space before its groups' transforms; omitted when no value or default exists."
               },
               "valueType": {
                 "$ref": "#/definitions/ObjectAnimationValueType",
@@ -8137,7 +8137,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Sample every parameter with keyframes in one animation step over a range of its time, at a rate, with the presenter’s sampler: returns the times and one value list per parameter target, in authored parameter space before ancestor group poses. At most 1200 samples. Nothing renders or changes.",
+      "description": "Sample every parameter with keyframes in one animation step over a range of its time, at a rate, with the presenter’s sampler: returns the times and one value list per parameter target, in authored parameter space before its groups’ transforms. At most 1200 samples. Nothing renders or changes.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -8210,7 +8210,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "Each parameter with keyframes in the step, sampled at every time in authored parameter space, before ancestor group poses."
+            "description": "Each parameter with keyframes in the step, sampled at every time in authored parameter space, before its groups' transforms."
           },
           "revision": {
             "$ref": "#/definitions/AgentRevision"
