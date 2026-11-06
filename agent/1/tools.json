@@ -11732,7 +11732,7 @@
               "files"
             ],
             "additionalProperties": false,
-            "description": "The settings of a theme's documents as their editors change them: the master's fonts, colors, text styles, guides, grid, step duration and layout order, a layout's name and scheme, which of its words and pictures are placeholders, and a theme picture's file per scheme. Each edit changes the document's authored values and is accepted only when the document it leaves reads back, so no edit writes a file the next read would refuse."
+            "description": "The settings of a theme's master and layouts as their editors change them: the master's fonts, colors, text styles, guides, grid, step duration and layout order, a layout's name and scheme, which of its words and pictures are placeholders, and a theme picture's file per scheme. Each edit changes the file's authored values and is accepted only when the file it leaves reads back, so no edit writes a file the next read would refuse."
           },
           "MasterAuthoredScheme": {
             "type": "object",

@@ -702,7 +702,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "An edit of the theme document's objects, as on a slide: the master or the layout is edited as one slide, whose `slideId` any value names. A picture names a file of the presentation, which the theme takes a copy of."
+      "description": "An edit of the master's or a layout's objects, as on a slide: the master or the layout is edited as one slide, whose `slideId` any value names. A picture names a file of the presentation, which the theme takes a copy of."
     },
     "AgentThemeOperation": {
       "anyOf": [
