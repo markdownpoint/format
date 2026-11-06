@@ -1639,7 +1639,7 @@
             "discarded",
             "noChange"
           ],
-          "description": "noChange when there was no step to take. discarded when another window, a peer or an outside edit has since deleted everything the step on top changed. The call drops that step from the history without taking it, and the next call takes the step beneath."
+          "description": "noChange when there was no step to take. discarded when another window, a collaborator or an outside edit has since deleted everything the step on top changed. The call drops that step from the history without taking it, and the next call takes the step beneath."
         },
         "themeRevision": {
           "type": [
@@ -2228,8 +2228,9 @@
                 "aim-cycle",
                 "color-needs-svg",
                 "drift-with-scroll",
+                "extra-table-lengths",
                 "invalid-table",
-                "link-glyphs-away",
+                "link-letters-away",
                 "missing-action",
                 "missing-constraint-target",
                 "missing-content",
@@ -2238,7 +2239,6 @@
                 "parent-cycle",
                 "shared-constraint-joint",
                 "shared-parent-joint",
-                "table-track-count",
                 "unknown-role",
                 "unknown-scheme",
                 "unknown-text-style",
@@ -13723,6 +13723,7 @@
         "duplicate-slide-id",
         "duplicate-slide-section",
         "duplicate-text-block",
+        "extra-table-lengths",
         "group-cycle",
         "group-depth",
         "group-order",
@@ -13787,7 +13788,7 @@
         "invalid-theme-root",
         "invalid-uuid",
         "invalid-web-video-source",
-        "link-glyphs-away",
+        "link-letters-away",
         "low-text-contrast",
         "malformed-marker",
         "marker-outside-slide",
@@ -13845,7 +13846,6 @@
         "slide-outside-section",
         "space-object-in-group",
         "spelled-file",
-        "table-track-count",
         "text-hidden",
         "text-overflow",
         "text-overflow-unchecked",
@@ -13870,8 +13870,8 @@
         "unmatched-slide-section",
         "unpaired-motion-path",
         "unplayable-chain",
+        "unreadable-collaborator-value",
         "unreadable-files",
-        "unreadable-peer-value",
         "unresolved-field",
         "unresolved-line-end",
         "unresolved-theme",
