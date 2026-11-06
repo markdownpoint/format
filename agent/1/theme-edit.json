@@ -3154,6 +3154,56 @@
         }
       ]
     },
+    "InsertWebVideo": {
+      "type": "object",
+      "properties": {
+        "alt": {
+          "$ref": "#/definitions/Prop_web-video.alt"
+        },
+        "frame": {
+          "$ref": "#/definitions/PresentationFrame"
+        },
+        "ignore-auto-layout": {
+          "$ref": "#/definitions/Boolean"
+        },
+        "locked": {
+          "$ref": "#/definitions/Boolean"
+        },
+        "name": {
+          "$ref": "#/definitions/Prop_name"
+        },
+        "poster": {
+          "$ref": "#/definitions/Prop_web-video.poster"
+        },
+        "start-on-click": {
+          "$ref": "#/definitions/Boolean"
+        },
+        "stroke": {
+          "$ref": "#/definitions/Color"
+        },
+        "stroke-style": {
+          "$ref": "#/definitions/Prop_stroke-style"
+        },
+        "stroke-weight": {
+          "$ref": "#/definitions/Length"
+        },
+        "type": {
+          "const": "web-video"
+        },
+        "url": {
+          "$ref": "#/definitions/Prop_url"
+        },
+        "visible": {
+          "$ref": "#/definitions/Boolean"
+        }
+      },
+      "required": [
+        "frame",
+        "type",
+        "url"
+      ],
+      "additionalProperties": false
+    },
     "LayoutSettingOperation": {
       "anyOf": [
         {
@@ -9106,6 +9156,68 @@
         }
       ]
     },
+    "PasteWebVideo": {
+      "type": "object",
+      "properties": {
+        "aimTargets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "alt": {
+          "$ref": "#/definitions/Prop_web-video.alt"
+        },
+        "frame": {
+          "$ref": "#/definitions/PresentationFrame"
+        },
+        "ignore-auto-layout": {
+          "$ref": "#/definitions/Boolean"
+        },
+        "locked": {
+          "$ref": "#/definitions/Boolean"
+        },
+        "name": {
+          "$ref": "#/definitions/Prop_name"
+        },
+        "parentIndex": {
+          "type": "number"
+        },
+        "poster": {
+          "$ref": "#/definitions/Prop_web-video.poster"
+        },
+        "rotation": {
+          "$ref": "#/definitions/Prop_rotation"
+        },
+        "start-on-click": {
+          "$ref": "#/definitions/Boolean"
+        },
+        "stroke": {
+          "$ref": "#/definitions/Color"
+        },
+        "stroke-style": {
+          "$ref": "#/definitions/Prop_stroke-style"
+        },
+        "stroke-weight": {
+          "$ref": "#/definitions/Length"
+        },
+        "type": {
+          "const": "web-video"
+        },
+        "url": {
+          "$ref": "#/definitions/Prop_url"
+        },
+        "visible": {
+          "$ref": "#/definitions/Boolean"
+        }
+      },
+      "required": [
+        "frame",
+        "type",
+        "url"
+      ],
+      "additionalProperties": false
+    },
     "PastedAttachedLineEndSource": {
       "type": "object",
       "properties": {
@@ -9259,54 +9371,7 @@
           "$ref": "#/definitions/InsertVideo"
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "alt": {
-              "$ref": "#/definitions/Prop_web-video.alt"
-            },
-            "frame": {
-              "$ref": "#/definitions/PresentationFrame"
-            },
-            "ignore-auto-layout": {
-              "$ref": "#/definitions/Boolean"
-            },
-            "locked": {
-              "$ref": "#/definitions/Boolean"
-            },
-            "name": {
-              "$ref": "#/definitions/Prop_name"
-            },
-            "poster": {
-              "$ref": "#/definitions/Prop_web-video.poster"
-            },
-            "start-on-click": {
-              "$ref": "#/definitions/Boolean"
-            },
-            "stroke": {
-              "$ref": "#/definitions/Color"
-            },
-            "stroke-style": {
-              "$ref": "#/definitions/Prop_stroke-style"
-            },
-            "stroke-weight": {
-              "$ref": "#/definitions/Length"
-            },
-            "type": {
-              "const": "web-video"
-            },
-            "url": {
-              "$ref": "#/definitions/Prop_url"
-            },
-            "visible": {
-              "$ref": "#/definitions/Boolean"
-            }
-          },
-          "required": [
-            "frame",
-            "type",
-            "url"
-          ]
+          "$ref": "#/definitions/InsertWebVideo"
         }
       ],
       "description": "An object to insert, in the file's words. A path is drawn either through `d` or through `points`."
@@ -9362,66 +9427,7 @@
           "$ref": "#/definitions/PasteVideo"
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "aimTargets": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "number"
-              }
-            },
-            "alt": {
-              "$ref": "#/definitions/Prop_web-video.alt"
-            },
-            "frame": {
-              "$ref": "#/definitions/PresentationFrame"
-            },
-            "ignore-auto-layout": {
-              "$ref": "#/definitions/Boolean"
-            },
-            "locked": {
-              "$ref": "#/definitions/Boolean"
-            },
-            "name": {
-              "$ref": "#/definitions/Prop_name"
-            },
-            "parentIndex": {
-              "type": "number"
-            },
-            "poster": {
-              "$ref": "#/definitions/Prop_web-video.poster"
-            },
-            "rotation": {
-              "$ref": "#/definitions/Prop_rotation"
-            },
-            "start-on-click": {
-              "$ref": "#/definitions/Boolean"
-            },
-            "stroke": {
-              "$ref": "#/definitions/Color"
-            },
-            "stroke-style": {
-              "$ref": "#/definitions/Prop_stroke-style"
-            },
-            "stroke-weight": {
-              "$ref": "#/definitions/Length"
-            },
-            "type": {
-              "const": "web-video"
-            },
-            "url": {
-              "$ref": "#/definitions/Prop_url"
-            },
-            "visible": {
-              "$ref": "#/definitions/Boolean"
-            }
-          },
-          "required": [
-            "frame",
-            "type",
-            "url"
-          ]
+          "$ref": "#/definitions/PasteWebVideo"
         }
       ],
       "description": "A pasted object, in the file's words."

@@ -13655,6 +13655,81 @@
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
     },
+    "InsertWebVideo": {
+      "type": "object",
+      "properties": {
+        "alt": {
+          "type": "string"
+        },
+        "bind": {
+          "$ref": "#/definitions/CompositionBindings"
+        },
+        "blend-mode": {
+          "not": {}
+        },
+        "blur": {
+          "not": {}
+        },
+        "constrain-proportions": {
+          "type": "boolean"
+        },
+        "frame": {
+          "$ref": "#/definitions/PresentationFrame"
+        },
+        "ignore-auto-layout": {
+          "type": "boolean"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "poster": {
+          "type": "string"
+        },
+        "start-on-click": {
+          "type": "boolean"
+        },
+        "stroke": {
+          "type": "string"
+        },
+        "stroke-style": {
+          "type": "string",
+          "enum": [
+            "dashed",
+            "dotted",
+            "solid"
+          ]
+        },
+        "stroke-weight": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string",
+          "const": "web-video"
+        },
+        "url": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "wipe": {
+          "not": {}
+        },
+        "z": {
+          "not": {}
+        }
+      },
+      "required": [
+        "frame",
+        "type",
+        "url"
+      ],
+      "additionalProperties": false,
+      "description": "One object's keys and values as the file spells them."
+    },
     "IssueCode": {
       "type": "string",
       "enum": [
@@ -16380,6 +16455,102 @@
       "additionalProperties": false,
       "description": "One object's keys and values as the file spells them."
     },
+    "PasteWebVideo": {
+      "type": "object",
+      "properties": {
+        "aimTargets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "alt": {
+          "type": "string"
+        },
+        "anchor-point": {
+          "not": {}
+        },
+        "bind": {
+          "$ref": "#/definitions/CompositionBindings"
+        },
+        "blend-mode": {
+          "not": {}
+        },
+        "blur": {
+          "not": {}
+        },
+        "constrain-proportions": {
+          "type": "boolean"
+        },
+        "frame": {
+          "$ref": "#/definitions/PresentationFrame"
+        },
+        "ignore-auto-layout": {
+          "type": "boolean"
+        },
+        "link": {
+          "type": "string"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "opacity": {
+          "type": "number"
+        },
+        "parentIndex": {
+          "type": "number"
+        },
+        "poster": {
+          "type": "string"
+        },
+        "rotation": {
+          "type": "number"
+        },
+        "start-on-click": {
+          "type": "boolean"
+        },
+        "stroke": {
+          "type": "string"
+        },
+        "stroke-style": {
+          "type": "string",
+          "enum": [
+            "dashed",
+            "dotted",
+            "solid"
+          ]
+        },
+        "stroke-weight": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string",
+          "const": "web-video"
+        },
+        "url": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "wipe": {
+          "not": {}
+        },
+        "z": {
+          "not": {}
+        }
+      },
+      "required": [
+        "frame",
+        "type",
+        "url"
+      ],
+      "additionalProperties": false,
+      "description": "One object's keys and values as the file spells them."
+    },
     "PastedAttachedLineEndSource": {
       "type": "object",
       "properties": {
@@ -18098,78 +18269,7 @@
           "$ref": "#/definitions/InsertVideo"
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "alt": {
-              "type": "string"
-            },
-            "bind": {
-              "$ref": "#/definitions/CompositionBindings"
-            },
-            "blend-mode": {
-              "not": {}
-            },
-            "blur": {
-              "not": {}
-            },
-            "constrain-proportions": {
-              "type": "boolean"
-            },
-            "frame": {
-              "$ref": "#/definitions/PresentationFrame"
-            },
-            "ignore-auto-layout": {
-              "type": "boolean"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "name": {
-              "type": "string"
-            },
-            "poster": {
-              "type": "string"
-            },
-            "start-on-click": {
-              "type": "boolean"
-            },
-            "stroke": {
-              "type": "string"
-            },
-            "stroke-style": {
-              "type": "string",
-              "enum": [
-                "dashed",
-                "dotted",
-                "solid"
-              ]
-            },
-            "stroke-weight": {
-              "type": "number"
-            },
-            "type": {
-              "type": "string",
-              "const": "web-video"
-            },
-            "url": {
-              "type": "string"
-            },
-            "visible": {
-              "type": "boolean"
-            },
-            "wipe": {
-              "not": {}
-            },
-            "z": {
-              "not": {}
-            }
-          },
-          "required": [
-            "frame",
-            "type",
-            "url"
-          ]
+          "$ref": "#/definitions/InsertWebVideo"
         }
       ],
       "description": "An object to insert, in the file's words. A path is drawn either through `d` or through `points`."
@@ -18475,99 +18575,7 @@
           "$ref": "#/definitions/PasteVideo"
         },
         {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "aimTargets": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "number"
-              }
-            },
-            "alt": {
-              "type": "string"
-            },
-            "anchor-point": {
-              "not": {}
-            },
-            "bind": {
-              "$ref": "#/definitions/CompositionBindings"
-            },
-            "blend-mode": {
-              "not": {}
-            },
-            "blur": {
-              "not": {}
-            },
-            "constrain-proportions": {
-              "type": "boolean"
-            },
-            "frame": {
-              "$ref": "#/definitions/PresentationFrame"
-            },
-            "ignore-auto-layout": {
-              "type": "boolean"
-            },
-            "link": {
-              "type": "string"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "name": {
-              "type": "string"
-            },
-            "opacity": {
-              "type": "number"
-            },
-            "parentIndex": {
-              "type": "number"
-            },
-            "poster": {
-              "type": "string"
-            },
-            "rotation": {
-              "type": "number"
-            },
-            "start-on-click": {
-              "type": "boolean"
-            },
-            "stroke": {
-              "type": "string"
-            },
-            "stroke-style": {
-              "type": "string",
-              "enum": [
-                "dashed",
-                "dotted",
-                "solid"
-              ]
-            },
-            "stroke-weight": {
-              "type": "number"
-            },
-            "type": {
-              "type": "string",
-              "const": "web-video"
-            },
-            "url": {
-              "type": "string"
-            },
-            "visible": {
-              "type": "boolean"
-            },
-            "wipe": {
-              "not": {}
-            },
-            "z": {
-              "not": {}
-            }
-          },
-          "required": [
-            "frame",
-            "type",
-            "url"
-          ]
+          "$ref": "#/definitions/PasteWebVideo"
         }
       ],
       "description": "A pasted object, in the file's words."
