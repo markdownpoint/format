@@ -2508,7 +2508,7 @@
       "properties": {
         "exponential-scale": {
           "type": "boolean",
-          "description": "On a `scale` or `crop.scale` change: reach `to` at one rate of zoom, as a camera push does; absent, it changes evenly."
+          "description": "On a `scale`, `scale.x`, `scale.y`, `scale.z`, or `crop.scale` change: reach `to` at one rate of zoom, as a camera push does; absent, it changes evenly."
         },
         "from": {
           "$ref": "#/definitions/PresentationAnimationValueSource"
