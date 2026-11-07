@@ -6934,7 +6934,7 @@
                   "author": {
                     "$ref": "#/definitions/PresentationCommentAuthor"
                   },
-                  "compositionId": {
+                  "composition": {
                     "type": "string"
                   },
                   "created": {
@@ -6961,7 +6961,7 @@
                 },
                 "required": [
                   "author",
-                  "compositionId",
+                  "composition",
                   "created",
                   "id",
                   "position",
@@ -6995,7 +6995,7 @@
                   "resolved": {
                     "type": "boolean"
                   },
-                  "slideId": {
+                  "slide": {
                     "type": "string"
                   },
                   "text": {
@@ -7009,7 +7009,7 @@
                   "position",
                   "replies",
                   "resolved",
-                  "slideId",
+                  "slide",
                   "text"
                 ]
               }

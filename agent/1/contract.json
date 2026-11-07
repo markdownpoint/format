@@ -18354,10 +18354,10 @@
         {
           "type": "object",
           "properties": {
-            "compositionId": {
+            "composition": {
               "type": "string"
             },
-            "slideId": {
+            "slide": {
               "type": "string"
             },
             "thread": {
@@ -18504,7 +18504,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "Each comment command is one standalone, undoable operation. A new thread names what it is pinned to, exactly one of `slideId` and `compositionId`, as its record names one of `slide` and `composition`; every other command names the thread alone, its id unique among the presentation's threads."
+      "description": "Each comment command is one standalone, undoable operation. A new thread names what it is pinned to, exactly one of `slide` and `composition`, as its record does; every other command names the thread alone, its id unique among the presentation's threads."
     },
     "PresentationCommentPosition": {
       "type": "object",
@@ -18532,7 +18532,7 @@
             "author": {
               "$ref": "#/definitions/PresentationCommentAuthor"
             },
-            "compositionId": {
+            "composition": {
               "type": "string"
             },
             "created": {
@@ -18559,7 +18559,7 @@
           },
           "required": [
             "author",
-            "compositionId",
+            "composition",
             "created",
             "id",
             "position",
@@ -18593,7 +18593,7 @@
             "resolved": {
               "type": "boolean"
             },
-            "slideId": {
+            "slide": {
               "type": "string"
             },
             "text": {
@@ -18607,7 +18607,7 @@
             "position",
             "replies",
             "resolved",
-            "slideId",
+            "slide",
             "text"
           ]
         }
