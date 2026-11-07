@@ -123,7 +123,7 @@ Settings for the whole presentation stand beside `slides`:
 }
 ```
 
-`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box takes `default-text-style`. `swatches` are the colors saved for this presentation. A generated image that names no style of its own is made in `image-style`.
+`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box takes `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own is made in `image-style`. A background takes its own instead.
 
 ## Objects
 
@@ -508,7 +508,7 @@ A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to
 
 `initial` sets a parameter's value at the start of the slide, as `object.parameter`. Here the card starts hidden.
 
-`steps` lists the slide's animation steps in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `after` starts playback when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
+`steps` lists the slide's animation steps in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `with` and `after` both start it when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
 `curves` lists animated parameters as `object.parameter`. A parameter's curve holds its keyframes in `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `duration` lasts as long as its keyframes, its cues and the paragraphs they bring in.
 
