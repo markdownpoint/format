@@ -24,7 +24,7 @@
         "description": "One file of a theme package.",
         "type": "object",
         "properties": {
-          "path": {
+          "file": {
             "type": "string",
             "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S])",
             "description": "Its path inside the package, as a theme's file path."
@@ -42,7 +42,7 @@
           }
         },
         "required": [
-          "path",
+          "file",
           "sha256",
           "bytes"
         ],
@@ -52,12 +52,12 @@
       "contains": {
         "type": "object",
         "properties": {
-          "path": {
+          "file": {
             "const": "master.json"
           }
         },
         "required": [
-          "path"
+          "file"
         ]
       },
       "description": "Each file of the theme, once, master.json included, with its size and digest."
