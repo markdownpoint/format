@@ -4103,7 +4103,7 @@
     "model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from.",
+          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
           "type": "object",
           "properties": {
             "letters": {
@@ -4130,7 +4130,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from.",
+          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
           "type": "object",
           "properties": {
             "file": {
