@@ -63,13 +63,13 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Show an existing presentation folder in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the presentation folder's path, as the app resolves it, to pass as \"presentation\" to the other tools.",
+      "description": "Show an existing presentation, by its folder or a file in it such as its presentation.mdpoint, in a MarkdownPoint document window, or focus the window that already shows it. Needs no open presentation. Returns the presentation folder's path, as the app resolves it, to pass as \"presentation\" to the other tools.",
       "inputSchema": {
         "type": "object",
         "properties": {
           "presentation": {
             "type": "string",
-            "description": "Absolute folder of an existing presentation."
+            "description": "An existing presentation, by its absolute folder or a file in it such as its presentation.mdpoint."
           }
         },
         "required": [

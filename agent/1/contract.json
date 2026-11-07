@@ -3410,7 +3410,7 @@
       "properties": {
         "presentation": {
           "type": "string",
-          "description": "Absolute folder of an existing presentation."
+          "description": "An existing presentation, by its absolute folder or a file in it such as its presentation.mdpoint."
         }
       },
       "required": [
