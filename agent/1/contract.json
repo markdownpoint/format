@@ -15329,12 +15329,6 @@
     "PasteAudio": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "bind": {
           "$ref": "#/definitions/CompositionBindings"
         },
@@ -15378,9 +15372,6 @@
         "opacity": {
           "type": "number"
         },
-        "parentIndex": {
-          "type": "number"
-        },
         "start-on-click": {
           "type": "boolean"
         },
@@ -15411,12 +15402,6 @@
     "PasteChart": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "align": {
           "$ref": "#/definitions/PresentationTextAlign"
         },
@@ -15553,12 +15538,6 @@
     "PasteComposition": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/PresentationAnchorPoint"
         },
@@ -15632,12 +15611,6 @@
     "PasteFloor": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "bind": {
           "$ref": "#/definitions/CompositionBindings"
         },
@@ -15654,9 +15627,6 @@
           "type": "string"
         },
         "opacity": {
-          "type": "number"
-        },
-        "parentIndex": {
           "type": "number"
         },
         "position": {
@@ -15685,12 +15655,6 @@
     "PasteGroup": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/PresentationAnchorPoint"
         },
@@ -15762,12 +15726,6 @@
     "PasteIcon": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/PresentationAnchorPoint"
         },
@@ -15863,12 +15821,6 @@
     "PasteImage": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alt": {
           "type": "string"
         },
@@ -16015,12 +15967,6 @@
     "PasteLight": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "bind": {
           "$ref": "#/definitions/CompositionBindings"
         },
@@ -16115,12 +16061,6 @@
     "PasteLine": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "bend": {
           "type": "number"
         },
@@ -16296,12 +16236,6 @@
     "PastePath": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/PresentationAnchorPoint"
         },
@@ -16412,12 +16346,6 @@
     "PasteShadowCatcher": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "bind": {
           "$ref": "#/definitions/CompositionBindings"
         },
@@ -16492,12 +16420,6 @@
     "PasteShape": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "align": {
           "$ref": "#/definitions/PresentationTextAlign"
         },
@@ -16721,12 +16643,6 @@
     "PasteTable": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alternating-fills": {
           "type": "boolean"
         },
@@ -16868,12 +16784,6 @@
     "PasteText": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "align": {
           "$ref": "#/definitions/PresentationTextAlign"
         },
@@ -17088,12 +16998,6 @@
     "PasteVideo": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alt": {
           "type": "string"
         },
@@ -17226,12 +17130,6 @@
     "PasteWebVideo": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alt": {
           "type": "string"
         },
@@ -17268,14 +17166,8 @@
         "opacity": {
           "type": "number"
         },
-        "parentIndex": {
-          "type": "number"
-        },
         "poster": {
           "type": "string"
-        },
-        "rotation": {
-          "type": "number"
         },
         "start-on-click": {
           "type": "boolean"
@@ -20047,35 +19939,17 @@
           "type": "number",
           "description": "Play the step this many times before it completes; omitted plays once."
         },
-        "staggered": {
-          "type": "boolean",
-          "const": false,
-          "description": "False where a repeater's copies play this step with their source, none after its delay, as a transition carries each object whole. Only derived steps set it; a file cannot."
-        },
         "start": {
           "$ref": "#/definitions/PresentationStepStart",
           "description": "Plays without a click of its own: with the step before it, or after that step ends, as PowerPoint's With Previous and After Previous do. Its times then count from that start. On the first step it plays after the transition. Omitted, the step waits for a click."
-        },
-        "unanchored": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Objects that turn and scale about their centers while this step plays, their anchors set aside until its end, as a transition carries each object as Keynote's Magic Move does. Only derived steps set it; a file cannot."
-        },
-        "unplaced": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Objects auto layout places that stay where this step's keyframes put them while it plays, their X and Y or a line's free ends, as a transition carries each object to where it stands on the next slide. Layout still gives each its room, so the others stand as they would; at the step's end layout places them again. Only derived steps set it; a file cannot."
         }
       },
       "required": [
         "curves",
         "duration",
         "id"
-      ]
+      ],
+      "description": "A step as its file writes it: `staggered`, `unanchored` and `unplaced` belong to derived steps alone."
     },
     "PresentationStepStart": {
       "type": "string",

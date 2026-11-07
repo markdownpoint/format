@@ -6966,12 +6966,6 @@
     "PasteAudio": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "fade-in": {
           "$ref": "#/definitions/Seconds"
         },
@@ -6996,9 +6990,6 @@
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
-        "parentIndex": {
-          "type": "number"
-        },
         "start-on-click": {
           "$ref": "#/definitions/Boolean"
         },
@@ -7022,12 +7013,6 @@
     "PasteChart": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "align": {
           "$ref": "#/definitions/Prop_chart.align"
         },
@@ -7137,12 +7122,6 @@
     "PasteComposition": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
         },
@@ -7208,12 +7187,6 @@
     "PasteFloor": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "locked": {
           "$ref": "#/definitions/Boolean"
         },
@@ -7222,9 +7195,6 @@
         },
         "opacity": {
           "$ref": "#/definitions/Fraction"
-        },
-        "parentIndex": {
-          "type": "number"
         },
         "position": {
           "$ref": "#/definitions/Prop_floor.position"
@@ -7247,12 +7217,6 @@
     "PasteGroup": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
         },
@@ -7319,12 +7283,6 @@
     "PasteIcon": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
         },
@@ -7426,12 +7384,6 @@
     "PasteImage": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alt": {
           "$ref": "#/definitions/Prop_image.alt"
         },
@@ -7568,12 +7520,6 @@
     "PasteLight": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "cast-shadow": {
           "$ref": "#/definitions/Boolean"
         },
@@ -7965,12 +7911,6 @@
     "PasteLine": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "bend": {
           "$ref": "#/definitions/Prop_bend"
         },
@@ -8231,12 +8171,6 @@
     "PastePath": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "anchor-point": {
           "$ref": "#/definitions/Prop_anchor-point"
         },
@@ -8332,12 +8266,6 @@
     "PasteShadowCatcher": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "height": {
           "$ref": "#/definitions/CatcherSize"
         },
@@ -8510,12 +8438,6 @@
     "PasteShape": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "align": {
           "$ref": "#/definitions/Prop_text.align"
         },
@@ -8716,12 +8638,6 @@
     "PasteTable": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alternating-fills": {
           "$ref": "#/definitions/Boolean"
         },
@@ -8840,12 +8756,6 @@
     "PasteText": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "align": {
           "$ref": "#/definitions/Prop_text.align"
         },
@@ -9018,12 +8928,6 @@
     "PasteVideo": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alt": {
           "$ref": "#/definitions/Prop_image.alt"
         },
@@ -9167,12 +9071,6 @@
     "PasteWebVideo": {
       "type": "object",
       "properties": {
-        "aimTargets": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number"
-          }
-        },
         "alt": {
           "$ref": "#/definitions/Prop_web-video.alt"
         },
@@ -9188,14 +9086,8 @@
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
-        "parentIndex": {
-          "type": "number"
-        },
         "poster": {
           "$ref": "#/definitions/Prop_web-video.poster"
-        },
-        "rotation": {
-          "$ref": "#/definitions/Prop_rotation"
         },
         "start-on-click": {
           "$ref": "#/definitions/Boolean"
