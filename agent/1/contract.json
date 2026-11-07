@@ -2597,9 +2597,9 @@
     "AgentModelBuildResult": {
       "type": "object",
       "properties": {
-        "built-from": {
+        "builtFrom": {
           "type": "string",
-          "description": "With for: the built-from the text's model carries, { file, built-from }, to show while its words are these."
+          "description": "With for: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these."
         },
         "changes": {
           "type": "array",
@@ -6117,13 +6117,18 @@
                 },
                 "size": {
                   "$ref": "#/definitions/SlideSize"
+                },
+                "unitScale": {
+                  "type": "number",
+                  "description": "The meters a canvas unit stands for, the master's `unit-scale`, 0.001 when it leaves it out: one meter of a model's GLB spans `1 / unitScale` canvas units."
                 }
               },
               "required": [
                 "id",
                 "key",
                 "name",
-                "size"
+                "size",
+                "unitScale"
               ],
               "additionalProperties": false,
               "description": "The theme's key, its folder's name, and its master's id, a lowercase UUID."
@@ -6134,18 +6139,19 @@
                 "type": "string"
               }
             },
-            "text-styles": {
+            "textStyles": {
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "description": "The master's text styles, by the names the file gives them."
             }
           },
           "required": [
             "layouts",
             "master",
             "schemes",
-            "text-styles"
+            "textStyles"
           ],
           "additionalProperties": false,
           "description": "Accepted theme at this revision."
@@ -12202,6 +12208,9 @@
           "items": {
             "$ref": "#/definitions/MasterAuthoredTextStyle"
           }
+        },
+        "unit-scale": {
+          "type": "number"
         }
       },
       "required": [
@@ -12217,7 +12226,8 @@
         "schemes",
         "size",
         "step-duration",
-        "text-styles"
+        "text-styles",
+        "unit-scale"
       ],
       "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
     },
