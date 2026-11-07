@@ -39,41 +39,6 @@
   ],
   "additionalProperties": false,
   "definitions": {
-    "AgentAnimationMoment": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "stepId": {
-              "type": "null"
-            }
-          },
-          "required": [
-            "stepId"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "stepId": {
-              "type": "string"
-            },
-            "time": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296
-            }
-          },
-          "required": [
-            "stepId",
-            "time"
-          ],
-          "additionalProperties": false
-        }
-      ],
-      "description": "The moment in a slide's motion an edit lands at, as the Animate tab's playhead sets it for the Inspector and the keyframe buttons: Start (`stepId` null), or `time` in a step."
-    },
     "AgentBatchableOperation": {
       "anyOf": [
         {
@@ -469,197 +434,6 @@
           "type": "object",
           "properties": {
             "at": {
-              "$ref": "#/definitions/AgentAnimationMoment"
-            },
-            "changes": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/ObjectPropertyChangeSource"
-              }
-            },
-            "objectId": {
-              "type": "string"
-            },
-            "slideId": {
-              "type": "string"
-            },
-            "type": {
-              "const": "updateObjectProperties"
-            }
-          },
-          "required": [
-            "changes",
-            "objectId",
-            "slideId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "at": {
-              "$ref": "#/definitions/AgentAnimationMoment"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "objectIds": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "slideId": {
-              "type": "string"
-            },
-            "type": {
-              "const": "setObjectFlags"
-            },
-            "visible": {
-              "type": "boolean"
-            }
-          },
-          "required": [
-            "objectIds",
-            "slideId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "at": {
-              "$ref": "#/definitions/AgentAnimationMoment"
-            },
-            "objectIds": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "parameter": {
-              "$ref": "#/definitions/PresentationAnimationParameterSource"
-            },
-            "slideId": {
-              "type": "string"
-            },
-            "type": {
-              "const": "setValues"
-            },
-            "value": {
-              "$ref": "#/definitions/PresentationAnimationValueSource"
-            }
-          },
-          "required": [
-            "at",
-            "objectIds",
-            "parameter",
-            "slideId",
-            "type",
-            "value"
-          ]
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "at": {
-              "$ref": "#/definitions/AgentAnimationMoment"
-            },
-            "objectIds": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "parameters": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/PresentationAnimationParameterSource"
-              }
-            },
-            "slideId": {
-              "type": "string"
-            },
-            "type": {
-              "const": "deleteKeyframes"
-            }
-          },
-          "required": [
-            "at",
-            "objectIds",
-            "parameters",
-            "slideId",
-            "type"
-          ]
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "at": {
-              "$ref": "#/definitions/AgentAnimationMoment"
-            },
-            "objectIds": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "parameters": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/PresentationAnimationParameterSource"
-              }
-            },
-            "slideId": {
-              "type": "string"
-            },
-            "type": {
-              "const": "insertKeyframes"
-            }
-          },
-          "required": [
-            "at",
-            "objectIds",
-            "parameters",
-            "slideId",
-            "type"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "at": {
-              "$ref": "#/definitions/AgentAnimationMoment"
-            },
-            "slideId": {
-              "type": "string"
-            },
-            "transforms": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AgentObjectTransformSource"
-              }
-            },
-            "type": {
-              "const": "transformObjects"
-            }
-          },
-          "required": [
-            "slideId",
-            "transforms",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "at": {
               "type": "integer",
               "minimum": 0,
               "maximum": 9007199254740991
@@ -928,6 +702,36 @@
             "stepId",
             "type"
           ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "changes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ObjectPropertyChangeSource"
+              }
+            },
+            "moment": {
+              "$ref": "#/definitions/AgentMoment"
+            },
+            "objectId": {
+              "type": "string"
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "type": {
+              "const": "updateObjectProperties"
+            }
+          },
+          "required": [
+            "changes",
+            "objectId",
+            "slideId",
+            "type"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
@@ -1339,6 +1143,167 @@
         {
           "type": "object",
           "properties": {
+            "locked": {
+              "type": "boolean"
+            },
+            "moment": {
+              "$ref": "#/definitions/AgentMoment"
+            },
+            "objectIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "type": {
+              "const": "setObjectFlags"
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "objectIds",
+            "slideId",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "moment": {
+              "$ref": "#/definitions/AgentMoment"
+            },
+            "objectIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "parameter": {
+              "$ref": "#/definitions/PresentationAnimationParameterSource"
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "type": {
+              "const": "setValues"
+            },
+            "value": {
+              "$ref": "#/definitions/PresentationAnimationValueSource"
+            }
+          },
+          "required": [
+            "moment",
+            "objectIds",
+            "parameter",
+            "slideId",
+            "type",
+            "value"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "moment": {
+              "$ref": "#/definitions/AgentMoment"
+            },
+            "objectIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PresentationAnimationParameterSource"
+              }
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "type": {
+              "const": "deleteKeyframes"
+            }
+          },
+          "required": [
+            "moment",
+            "objectIds",
+            "parameters",
+            "slideId",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "moment": {
+              "$ref": "#/definitions/AgentMoment"
+            },
+            "objectIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PresentationAnimationParameterSource"
+              }
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "type": {
+              "const": "insertKeyframes"
+            }
+          },
+          "required": [
+            "moment",
+            "objectIds",
+            "parameters",
+            "slideId",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "moment": {
+              "$ref": "#/definitions/AgentMoment"
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "transforms": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentObjectTransformSource"
+              }
+            },
+            "type": {
+              "const": "transformObjects"
+            }
+          },
+          "required": [
+            "slideId",
+            "transforms",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "name": {
               "type": [
                 "null",
@@ -1613,6 +1578,47 @@
     },
     "AgentExitEffect": {
       "$ref": "#/definitions/ExitEffect"
+    },
+    "AgentMoment": {
+      "type": "object",
+      "properties": {
+        "stepId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The step; null is Start."
+        },
+        "time": {
+          "type": "number",
+          "description": "Seconds within the step, at least 0; 0 at Start.",
+          "minimum": 0,
+          "maximum": 4294967296
+        }
+      },
+      "required": [
+        "stepId",
+        "time"
+      ],
+      "additionalProperties": false,
+      "description": "A moment in a slide's motion, as a read, a render and an edit name it alike: Start, its `stepId` null and its `time` 0, or seconds within a step, clamped to its effective duration.",
+      "if": {
+        "properties": {
+          "stepId": {
+            "const": null
+          }
+        },
+        "required": [
+          "stepId"
+        ]
+      },
+      "then": {
+        "properties": {
+          "time": {
+            "const": 0
+          }
+        }
+      }
     },
     "AgentObjectTransformSource": {
       "anyOf": [
