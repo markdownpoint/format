@@ -6513,7 +6513,7 @@
                 "dotted"
               ]
             },
-            "columns": {
+            "column-widths": {
               "type": "array",
               "items": {
                 "type": "number",
@@ -6522,7 +6522,7 @@
                 "description": "canvas units"
               }
             },
-            "rows": {
+            "min-row-heights": {
               "type": "array",
               "items": {
                 "type": "number",
@@ -13350,7 +13350,7 @@
         "color": {
           "type": "string"
         },
-        "columns": {
+        "column-widths": {
           "type": "array",
           "items": {
             "type": "number"
@@ -13405,6 +13405,12 @@
         "locked": {
           "type": "boolean"
         },
+        "min-row-heights": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
         "name": {
           "type": "string"
         },
@@ -13416,12 +13422,6 @@
         },
         "rotation": {
           "type": "number"
-        },
-        "rows": {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -14392,7 +14392,7 @@
         "colors",
         "column-count",
         "column-gutter",
-        "columns",
+        "column-widths",
         "composition",
         "cone-angle",
         "connection",
@@ -14445,6 +14445,7 @@
         "mask",
         "media-trim",
         "min-height",
+        "min-row-heights",
         "model",
         "motion-blur",
         "opacity",
@@ -14465,7 +14466,6 @@
         "roll",
         "rotation-x",
         "rotation-y",
-        "rows",
         "saturation",
         "scale-mode",
         "shadow-color",
@@ -15933,7 +15933,7 @@
         "color": {
           "type": "string"
         },
-        "columns": {
+        "column-widths": {
           "type": "array",
           "items": {
             "type": "number"
@@ -15988,6 +15988,12 @@
         "locked": {
           "type": "boolean"
         },
+        "min-row-heights": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
         "name": {
           "type": "string"
         },
@@ -15999,12 +16005,6 @@
         },
         "rotation": {
           "type": "number"
-        },
-        "rows": {
-          "type": "array",
-          "items": {
-            "type": "number"
-          }
         },
         "scale": {
           "$ref": "#/definitions/PresentationScale2d"
@@ -16931,7 +16931,7 @@
         },
         {
           "type": "string",
-          "const": "columns"
+          "const": "column-widths"
         },
         {
           "type": "string",
@@ -17063,6 +17063,10 @@
         },
         {
           "type": "string",
+          "const": "min-row-heights"
+        },
+        {
+          "type": "string",
           "const": "opacity"
         },
         {
@@ -17096,10 +17100,6 @@
         {
           "type": "string",
           "const": "rotation-y"
-        },
-        {
-          "type": "string",
-          "const": "rows"
         },
         {
           "type": "string",

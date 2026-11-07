@@ -4636,8 +4636,8 @@
         "color": {
           "$ref": "#/definitions/Color"
         },
-        "columns": {
-          "$ref": "#/definitions/Prop_columns"
+        "column-widths": {
+          "$ref": "#/definitions/Prop_column-widths"
         },
         "constrain-proportions": {
           "$ref": "#/definitions/Boolean"
@@ -4678,6 +4678,9 @@
         "locked": {
           "$ref": "#/definitions/Boolean"
         },
+        "min-row-heights": {
+          "$ref": "#/definitions/Prop_min-row-heights"
+        },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
@@ -4689,9 +4692,6 @@
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
-        },
-        "rows": {
-          "$ref": "#/definitions/Prop_rows"
         },
         "scale": {
           "$ref": "#/definitions/Prop_text.scale"
@@ -8282,12 +8282,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "columns"
+              "const": "column-widths"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_columns"
+                  "$ref": "#/definitions/Prop_column-widths"
                 },
                 {
                   "type": "null"
@@ -8308,12 +8308,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "rows"
+              "const": "min-row-heights"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_rows"
+                  "$ref": "#/definitions/Prop_min-row-heights"
                 },
                 {
                   "type": "null"
@@ -8563,7 +8563,7 @@
         "colors",
         "column-count",
         "column-gutter",
-        "columns",
+        "column-widths",
         "composition",
         "cone-angle",
         "connection",
@@ -8616,6 +8616,7 @@
         "mask",
         "media-trim",
         "min-height",
+        "min-row-heights",
         "model",
         "motion-blur",
         "opacity",
@@ -8636,7 +8637,6 @@
         "roll",
         "rotation-x",
         "rotation-y",
-        "rows",
         "saturation",
         "scale-mode",
         "shadow-color",
@@ -10449,8 +10449,8 @@
         "color": {
           "$ref": "#/definitions/Color"
         },
-        "columns": {
-          "$ref": "#/definitions/Prop_columns"
+        "column-widths": {
+          "$ref": "#/definitions/Prop_column-widths"
         },
         "constrain-proportions": {
           "$ref": "#/definitions/Boolean"
@@ -10491,6 +10491,9 @@
         "locked": {
           "$ref": "#/definitions/Boolean"
         },
+        "min-row-heights": {
+          "$ref": "#/definitions/Prop_min-row-heights"
+        },
         "name": {
           "$ref": "#/definitions/Prop_name"
         },
@@ -10502,9 +10505,6 @@
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
-        },
-        "rows": {
-          "$ref": "#/definitions/Prop_rows"
         },
         "scale": {
           "$ref": "#/definitions/Prop_text.scale"
@@ -11435,8 +11435,8 @@
             "stroke",
             "stroke-weight",
             "stroke-style",
-            "columns",
-            "rows",
+            "column-widths",
+            "min-row-heights",
             "header-row",
             "header-column",
             "alternating-fills",
@@ -15755,7 +15755,7 @@
       ],
       "description": "A fill as the file spells it: `none`, one color, or a gradient whose stops name their colors."
     },
-    "Prop_columns": {
+    "Prop_column-widths": {
       "type": "array",
       "items": {
         "type": "number",
@@ -15764,7 +15764,7 @@
         "description": "canvas units"
       }
     },
-    "Prop_rows": {
+    "Prop_min-row-heights": {
       "type": "array",
       "items": {
         "type": "number",

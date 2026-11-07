@@ -1149,7 +1149,7 @@
                   "dotted"
                 ]
               },
-              "columns": {
+              "column-widths": {
                 "type": "array",
                 "items": {
                   "type": "number",
@@ -1158,7 +1158,7 @@
                   "description": "canvas units"
                 }
               },
-              "rows": {
+              "min-row-heights": {
                 "type": "array",
                 "items": {
                   "type": "number",

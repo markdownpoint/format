@@ -927,7 +927,7 @@
                   }
                 ]
               },
-              "columns": {
+              "column-widths": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -943,7 +943,7 @@
                   }
                 ]
               },
-              "rows": {
+              "min-row-heights": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -2759,7 +2759,7 @@
                       "dotted"
                     ]
                   },
-                  "columns": {
+                  "column-widths": {
                     "type": "array",
                     "items": {
                       "type": "number",
@@ -2768,7 +2768,7 @@
                       "description": "canvas units"
                     }
                   },
-                  "rows": {
+                  "min-row-heights": {
                     "type": "array",
                     "items": {
                       "type": "number",

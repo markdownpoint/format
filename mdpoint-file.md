@@ -208,7 +208,7 @@ The table's first column is its header, and its first row is a row like the othe
     "type": "table",
     "frame": {"x": 120, "y": 340, "width": 760},
     "text-style": "body",
-    "columns": [380, 380],
+    "column-widths": [380, 380],
     "header-row": false,
     "header-column": true
   },

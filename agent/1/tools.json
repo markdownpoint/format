@@ -2759,7 +2759,7 @@
                       "dotted"
                     ]
                   },
-                  "columns": {
+                  "column-widths": {
                     "type": "array",
                     "items": {
                       "type": "number",
@@ -2768,7 +2768,7 @@
                       "description": "canvas units"
                     }
                   },
-                  "rows": {
+                  "min-row-heights": {
                     "type": "array",
                     "items": {
                       "type": "number",
@@ -6183,7 +6183,7 @@
                 "const": "column-gutter"
               },
               {
-                "const": "columns"
+                "const": "column-widths"
               },
               {
                 "const": "cone-angle"
@@ -6282,6 +6282,9 @@
                 "const": "mask"
               },
               {
+                "const": "min-row-heights"
+              },
+              {
                 "const": "opacity"
               },
               {
@@ -6307,9 +6310,6 @@
               },
               {
                 "const": "rotation-y"
-              },
-              {
-                "const": "rows"
               },
               {
                 "const": "saturation"
@@ -8506,7 +8506,7 @@
                 "const": "column-gutter"
               },
               {
-                "const": "columns"
+                "const": "column-widths"
               },
               {
                 "const": "cone-angle"
@@ -8605,6 +8605,9 @@
                 "const": "mask"
               },
               {
+                "const": "min-row-heights"
+              },
+              {
                 "const": "opacity"
               },
               {
@@ -8630,9 +8633,6 @@
               },
               {
                 "const": "rotation-y"
-              },
-              {
-                "const": "rows"
               },
               {
                 "const": "saturation"

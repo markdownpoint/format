@@ -276,8 +276,8 @@ Its position, columns, row heights and style are in the .mdpoint file. A row is 
     "frame": {"x": 120, "y": 380, "width": 1680},
     "inset": 24,
     "text-style": "body",
-    "columns": [840, 420, 420],
-    "rows": [140, 140, 140],
+    "column-widths": [840, 420, 420],
+    "min-row-heights": [140, 140, 140],
     "alternating-fills": true
   }
 ]

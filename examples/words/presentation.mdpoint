@@ -17,7 +17,7 @@
             "width": 760
           },
           "text-style": "body",
-          "columns": [380,380],
+          "column-widths": [380,380],
           "header-row": false,
           "header-column": true
         },
@@ -84,8 +84,8 @@
           },
           "inset": 24,
           "text-style": "body",
-          "columns": [840,420,420],
-          "rows": [140,140,140],
+          "column-widths": [840,420,420],
+          "min-row-heights": [140,140,140],
           "alternating-fills": true
         }
       ]
