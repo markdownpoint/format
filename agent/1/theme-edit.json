@@ -11499,8 +11499,8 @@
     },
     "Prop_parent-node": {
       "type": "string",
-      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-      "description": "a node’s name"
+      "pattern": "^[\\s\\S]+(?![\\s\\S])",
+      "description": "the name of one of the model’s nodes"
     },
     "Prop_parent-inverse": {
       "type": "array",

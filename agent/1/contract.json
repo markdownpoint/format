@@ -9153,7 +9153,7 @@
               "description": "one line"
             },
             "parent-node": {
-              "$ref": "#/definitions/node-name"
+              "$ref": "#/definitions/model-node-name"
             },
             "parent-inverse": {
               "$ref": "#/definitions/parent-inverse"
@@ -9178,9 +9178,7 @@
                         "const": "aim"
                       },
                       "owner-node": {
-                        "type": "string",
-                        "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                        "description": "the name of one of the model’s nodes"
+                        "$ref": "#/definitions/model-node-name"
                       },
                       "target": {
                         "type": "string",
@@ -9308,7 +9306,7 @@
                   "$ref": "#/definitions/color"
                 },
                 "parent-node": {
-                  "$ref": "#/definitions/node-name"
+                  "$ref": "#/definitions/model-node-name"
                 },
                 "parent-inverse": {
                   "$ref": "#/definitions/parent-inverse"
@@ -9380,7 +9378,7 @@
                   "$ref": "#/definitions/color"
                 },
                 "parent-node": {
-                  "$ref": "#/definitions/node-name"
+                  "$ref": "#/definitions/model-node-name"
                 },
                 "parent-inverse": {
                   "$ref": "#/definitions/parent-inverse"
@@ -9472,7 +9470,7 @@
                   "$ref": "#/definitions/color"
                 },
                 "parent-node": {
-                  "$ref": "#/definitions/node-name"
+                  "$ref": "#/definitions/model-node-name"
                 },
                 "parent-inverse": {
                   "$ref": "#/definitions/parent-inverse"
@@ -9549,7 +9547,7 @@
                   "$ref": "#/definitions/color"
                 },
                 "parent-node": {
-                  "$ref": "#/definitions/node-name"
+                  "$ref": "#/definitions/model-node-name"
                 },
                 "parent-inverse": {
                   "$ref": "#/definitions/parent-inverse"
@@ -9649,7 +9647,7 @@
               "maximum": 1
             },
             "parent-node": {
-              "$ref": "#/definitions/node-name"
+              "$ref": "#/definitions/model-node-name"
             },
             "parent-inverse": {
               "$ref": "#/definitions/parent-inverse"
@@ -9794,7 +9792,7 @@
               "const": "quaternion"
             },
             "parent-node": {
-              "$ref": "#/definitions/node-name"
+              "$ref": "#/definitions/model-node-name"
             },
             "parent-inverse": {
               "$ref": "#/definitions/parent-inverse"
@@ -9901,9 +9899,7 @@
                         "description": "the id of an object on the slide"
                       },
                       "target-node": {
-                        "type": "string",
-                        "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                        "description": "the name of one of the model’s nodes"
+                        "$ref": "#/definitions/model-node-name"
                       },
                       "axes": {
                         "type": "array",
@@ -21610,10 +21606,10 @@
       ],
       "additionalProperties": false
     },
-    "node-name": {
+    "model-node-name": {
       "type": "string",
-      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-      "description": "a node’s name"
+      "pattern": "^[\\s\\S]+(?![\\s\\S])",
+      "description": "the name of one of the model’s nodes"
     },
     "object-id": {
       "type": "string",
