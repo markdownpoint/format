@@ -9642,7 +9642,7 @@
           },
           "AgentWaitHold": {
             "$ref": "#/definitions/PresentationRestHold",
-            "description": "What moves on at a wait in a way no video of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
+            "description": "What moves on at a wait in a way no video of a show repeats, so its 3D holds still until the next click: the objects a step's wait loop moves (`looped`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
           },
           "AgentWaitTextSummary": {
             "type": "object",
@@ -9816,7 +9816,7 @@
                       "type": "string"
                     }
                   },
-                  "waits": {
+                  "looped": {
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -9826,7 +9826,7 @@
                 "required": [
                   "cause",
                   "followed",
-                  "waits"
+                  "looped"
                 ],
                 "additionalProperties": false
               },
