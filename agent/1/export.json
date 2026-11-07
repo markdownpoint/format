@@ -57,7 +57,7 @@
         },
         "slideDelay": {
           "type": "number",
-          "description": "Hold each slide for this many seconds.",
+          "description": "Seconds a slide holds once its last step and its sound have ended, before the next slide. A slide whose transition starts by itself holds for that transition's own delay instead, and one that scrolls out goes on as its last step ends.",
           "minimum": 0,
           "maximum": 3600
         },
@@ -80,7 +80,7 @@
         },
         "stepDelay": {
           "type": "number",
-          "description": "Hold each completed step for this many seconds.",
+          "description": "Seconds the movie waits before each step that waits for a click, the first one too, from when what plays before it ends.",
           "minimum": 0,
           "maximum": 3600
         },

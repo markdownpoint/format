@@ -12741,7 +12741,7 @@
             },
             "type": {
               "type": "string",
-              "const": "in-place"
+              "const": "inPlace"
             }
           },
           "required": [
@@ -12762,7 +12762,7 @@
             },
             "type": {
               "type": "string",
-              "const": "root-motion"
+              "const": "rootMotion"
             }
           },
           "required": [
@@ -12776,7 +12776,7 @@
           "properties": {
             "type": {
               "type": "string",
-              "const": "not-a-walk"
+              "const": "notAWalk"
             }
           },
           "required": [
@@ -12785,7 +12785,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "How far a walk or run played in place carries the character per loop, in the model's units: `in-place` when its planted feet slide back at one speed, `root-motion` when the Action moves the character itself, `not-a-walk` otherwise."
+      "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `notAWalk` otherwise."
     },
     "GlbVector": {
       "type": "array",
