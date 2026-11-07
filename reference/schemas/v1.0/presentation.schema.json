@@ -7319,7 +7319,7 @@
               "description": "a property name"
             },
             "additionalProperties": {
-              "description": "One property's animation in a step: its keyframes and what happens after the last one.",
+              "description": "One property's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point: `frame.xy` and `translation.xy` hold {x, y}, and `position.xyz` holds {x, y, z}, each keyframe holding every part, as a move along a motion path is keyed. A step keys a position as a point or by its parts, not both: a step that keys both reads with a warning, and the point plays. An initial value sets each part on its own.",
               "type": "object",
               "properties": {
                 "keyframes": {
@@ -7493,7 +7493,7 @@
                         "additionalProperties": false
                       },
                       "path": {
-                        "description": "A curved motion path for the move into the keyframe. It goes on the x keyframe and also drives the matching y keyframe.",
+                        "description": "A curved motion path for the move into the keyframe. It goes on a point keyframe, or on an x keyframe and also drives the matching y keyframe.",
                         "type": "object",
                         "properties": {
                           "geometry": {

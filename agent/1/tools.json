@@ -1738,6 +1738,7 @@
               "auto-layout-held-animation",
               "blur-past-page",
               "bound-value",
+              "clashing-curves",
               "clashing-keyframes",
               "color-needs-svg",
               "composition-cycle",
@@ -5998,6 +5999,7 @@
               "auto-layout-held-animation",
               "blur-past-page",
               "bound-value",
+              "clashing-curves",
               "clashing-keyframes",
               "color-needs-svg",
               "composition-cycle",
@@ -6220,7 +6222,8 @@
               "number",
               "orientation",
               "paint",
-              "path"
+              "path",
+              "point"
             ],
             "description": "What kind of value a parameter holds, which says how it passes between keyframes, as three.js's ValueTypeName does: a `discrete` value, a flag, a word or a record, holds until the next keyframe, as a discrete curve does in Unity; a `paint` passes as a color between two colors and as a fill between two gradients."
           },
@@ -6809,6 +6812,26 @@
             "additionalProperties": false,
             "description": "A path in chord space: the start is (0, 0), the end (1, 0), and one unit across is a chord length right of travel."
           },
+          "PresentationAnimationPoint": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "description": "A point keyframe's value: a frame's or a translation's x and y, or a 3D position's x, y and z."
+          },
           "PresentationAnimationSpring": {
             "type": "object",
             "properties": {
@@ -6854,6 +6877,9 @@
               {
                 "anyOf": [
                   {
+                    "$ref": "#/definitions/PresentationAnimationPoint"
+                  },
+                  {
                     "$ref": "#/definitions/PresentationDropShadow"
                   },
                   {
@@ -6878,7 +6904,7 @@
                     "type": "string"
                   }
                 ],
-                "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
+                "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, a 3D object's whole orientation, or a point."
               }
             ],
             "description": "A value as the file spells it: a fill as `accent` or a gradient whose stops name their colors."
@@ -9110,6 +9136,26 @@
             ],
             "description": "A parameter as the file names it: `stroke-weight`, `crop.focal-point.x`, `frame.x`."
           },
+          "PresentationAnimationPoint": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "description": "A point keyframe's value: a frame's or a translation's x and y, or a 3D position's x, y and z."
+          },
           "PresentationAnimationTargetSource": {
             "type": "object",
             "properties": {
@@ -9135,6 +9181,9 @@
               {
                 "anyOf": [
                   {
+                    "$ref": "#/definitions/PresentationAnimationPoint"
+                  },
+                  {
                     "$ref": "#/definitions/PresentationDropShadow"
                   },
                   {
@@ -9159,7 +9208,7 @@
                     "type": "string"
                   }
                 ],
-                "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, or a 3D object's whole orientation."
+                "description": "What a keyframe holds: a number, a flag, a color or a role, a fill, lengths, a shadow, a 3D object's whole orientation, or a point."
               }
             ],
             "description": "A value as the file spells it: a fill as `accent` or a gradient whose stops name their colors."
