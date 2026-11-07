@@ -1226,7 +1226,11 @@
                         "description": "How long it takes. With effect `none`, it's left out."
                       },
                       "color": {
-                        "type": "string",
+                        "allOf": [
+                          {
+                            "$ref": "#/definitions/color"
+                          }
+                        ],
                         "description": "The color of a fade through color: a color role or a hex color."
                       },
                       "start": {
@@ -1413,8 +1417,7 @@
                     "description": "text without NUL characters"
                   },
                   "image-style": {
-                    "type": "string",
-                    "description": "nonempty text without NUL characters, or \"none\""
+                    "$ref": "#/definitions/image-style-or-none"
                   },
                   "transparent": {
                     "type": "boolean"
@@ -1649,8 +1652,7 @@
                 ]
               },
               "image-style": {
-                "type": "string",
-                "description": "nonempty text without NUL characters, or \"none\""
+                "$ref": "#/definitions/image-style-or-none"
               },
               "swatches": {
                 "type": "array",
@@ -2085,6 +2087,11 @@
           "uuid": {
             "type": "string",
             "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+          },
+          "image-style-or-none": {
+            "type": "string",
+            "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+            "description": "nonempty text without NUL characters, or \"none\""
           }
         }
       }
@@ -3302,6 +3309,7 @@
                   },
                   "image-style": {
                     "type": "string",
+                    "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                     "description": "nonempty text without NUL characters, or \"none\""
                   },
                   "restyle": {
@@ -4378,6 +4386,7 @@
                   },
                   "composition": {
                     "type": "string",
+                    "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
                     "description": "a composition’s id"
                   },
                   "inputs": {

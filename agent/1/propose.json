@@ -11628,6 +11628,7 @@
         },
         "image-style": {
           "type": "string",
+          "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
           "description": "nonempty text without NUL characters, or \"none\""
         },
         "transparent": {
@@ -12706,6 +12707,7 @@
                     },
                     "image-style": {
                       "type": "string",
+                      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                       "description": "nonempty text without NUL characters, or \"none\""
                     },
                     "transparent": {
@@ -12949,6 +12951,7 @@
               "anyOf": [
                 {
                   "type": "string",
+                  "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                   "description": "nonempty text without NUL characters, or \"none\""
                 },
                 {
@@ -13469,6 +13472,7 @@
                         },
                         "color": {
                           "type": "string",
+                          "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
                           "description": "a color role or a hex color"
                         },
                         "start": {
@@ -14267,6 +14271,7 @@
             },
             "color": {
               "type": "string",
+              "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
               "description": "a color role or a hex color"
             },
             "start": {
@@ -15800,6 +15805,7 @@
     },
     "Prop_image-style": {
       "type": "string",
+      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
       "description": "nonempty text without NUL characters, or \"none\""
     },
     "Prop_restyle": {
@@ -16109,6 +16115,7 @@
     },
     "Prop_composition": {
       "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "a composition’s id"
     },
     "Prop_inputs": {

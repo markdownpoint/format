@@ -149,7 +149,11 @@
       "description": "The text style and color of a new text box, or none for no style."
     },
     "image-style": {
-      "type": "string",
+      "allOf": [
+        {
+          "$ref": "#/definitions/image-style-or-none"
+        }
+      ],
       "description": "The style a generated image object is made in when it sets none of its own, as text, or `none` for no style. Left out, it's none."
     },
     "swatches": {
@@ -1410,8 +1414,7 @@
                           "type": "null"
                         },
                         {
-                          "type": "string",
-                          "description": "nonempty text without NUL characters, or \"none\""
+                          "$ref": "#/definitions/image-style-or-none"
                         }
                       ]
                     },
@@ -3086,7 +3089,11 @@
           "description": "The prompt for a generated background image."
         },
         "image-style": {
-          "type": "string",
+          "allOf": [
+            {
+              "$ref": "#/definitions/image-style-or-none"
+            }
+          ],
           "description": "The style of a generated background image, as text, or `none` for no style. Left out, a slide takes the presentation's style, then MarkdownPoint's own."
         },
         "transparent": {
@@ -3929,6 +3936,11 @@
       ],
       "additionalProperties": false
     },
+    "image-style-or-none": {
+      "type": "string",
+      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+      "description": "nonempty text without NUL characters, or \"none\""
+    },
     "initial": {
       "type": "object",
       "propertyNames": {
@@ -4437,6 +4449,7 @@
         },
         "composition": {
           "type": "string",
+          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "description": "a composition’s id"
         },
         "inputs": {
@@ -4882,8 +4895,7 @@
           "description": "text without NUL characters"
         },
         "image-style": {
-          "type": "string",
-          "description": "nonempty text without NUL characters, or \"none\""
+          "$ref": "#/definitions/image-style-or-none"
         },
         "restyle": {
           "$ref": "#/definitions/restyle"
@@ -8382,7 +8394,11 @@
               "description": "How long it takes. With effect `none`, it's left out."
             },
             "color": {
-              "type": "string",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/color"
+                }
+              ],
               "description": "The color of a fade through color: a color role or a hex color."
             },
             "start": {
