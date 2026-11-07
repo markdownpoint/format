@@ -32,9 +32,13 @@ and values are. Order means nothing in the contract's schemas: most fields,
 branches and values are listed alphabetically, the same on every build, so
 `type` is seldom an operation's first field.
 
-Requests reach the focused presentation, or the only open one when no window
-is focused. With several presentations open and none focused, pass
-`--presentation "/absolute/presentation/folder"` from `window list`. Configure an MCP
+A CLI request reaches the presentation `--presentation` names, by its folder
+or a file in it. Without it, the request goes to the current folder when that
+holds a presentation, then to the focused presentation, then to the only open
+one. With several presentations open and none focused, pass
+`--presentation "/absolute/presentation/folder"` from `window list`. An MCP
+request names its presentation in `presentation`; without it, the request
+reaches the focused presentation, then the only open one. Configure an MCP
 client to run `mdpoint mcp` over stdio. Both use the same live app API,
 validation and proposals; `mdpoint call` also accepts a method name
 and JSON parameters directly. MCP lists each tool with a title and hints.
