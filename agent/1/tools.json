@@ -9995,13 +9995,13 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute output path: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When text overflows, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmOverflow: true only when clipping is acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and presentation.",
+      "description": "If request fields appear as unknown, call schema with selector exports.run. Export the current presentation as PDF, PNG files, PowerPoint or a movie to an explicit absolute output path: a new file, or a new folder for PNG files, outside any presentation folder. Supply a fresh caller-generated UUID. The call waits for the existing app export to finish and returns its report, whose files names every file written; there are no durable jobs or automatic retries. Export does not alter the authored presentation. When words are hidden, by a slide’s edge, the end of a path or a table cell, the refusal is { code: \"refused\", message }. Its message names the slides. Resend with a fresh id and confirmHiddenText: true only when the hidden words are acceptable. A movie can be canceled while this call is pending with exports_cancel and the same id and presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "confirmOverflow": {
+          "confirmHiddenText": {
             "type": "boolean",
-            "description": "Accept known overflowing text in this export."
+            "description": "Export even where words are hidden: the words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
           },
           "format": {
             "type": "string",
@@ -10121,14 +10121,15 @@
               "height": {
                 "type": "number"
               },
-              "id": {
-                "type": "string"
-              },
-              "overflowingSlides": {
+              "hiddenTextSlides": {
                 "type": "array",
                 "items": {
                   "type": "number"
-                }
+                },
+                "description": "The slides, by number, whose words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
+              },
+              "id": {
+                "type": "string"
               },
               "status": {
                 "const": "exported"
@@ -10143,8 +10144,8 @@
               "files",
               "format",
               "height",
+              "hiddenTextSlides",
               "id",
-              "overflowingSlides",
               "status",
               "width"
             ]
@@ -10243,14 +10244,15 @@
               "format": {
                 "const": "pdf"
               },
-              "id": {
-                "type": "string"
-              },
-              "overflowingSlides": {
+              "hiddenTextSlides": {
                 "type": "array",
                 "items": {
                   "type": "number"
-                }
+                },
+                "description": "The slides, by number, whose words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
+              },
+              "id": {
+                "type": "string"
               },
               "status": {
                 "const": "exported"
@@ -10260,8 +10262,8 @@
               "bytes",
               "files",
               "format",
+              "hiddenTextSlides",
               "id",
-              "overflowingSlides",
               "status"
             ]
           },
@@ -10278,14 +10280,15 @@
               "format": {
                 "const": "png"
               },
-              "id": {
-                "type": "string"
-              },
-              "overflowingSlides": {
+              "hiddenTextSlides": {
                 "type": "array",
                 "items": {
                   "type": "number"
-                }
+                },
+                "description": "The slides, by number, whose words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
+              },
+              "id": {
+                "type": "string"
               },
               "status": {
                 "const": "exported"
@@ -10294,8 +10297,8 @@
             "required": [
               "files",
               "format",
+              "hiddenTextSlides",
               "id",
-              "overflowingSlides",
               "status"
             ]
           },

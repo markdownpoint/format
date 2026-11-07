@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "confirmOverflow": {
+    "confirmHiddenText": {
       "type": "boolean",
-      "description": "Accept known overflowing text in this export."
+      "description": "Export even where words are hidden: the words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
     },
     "format": {
       "type": "string",

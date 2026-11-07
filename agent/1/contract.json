@@ -1258,14 +1258,15 @@
             "height": {
               "type": "number"
             },
-            "id": {
-              "type": "string"
-            },
-            "overflowingSlides": {
+            "hiddenTextSlides": {
               "type": "array",
               "items": {
                 "type": "number"
-              }
+              },
+              "description": "The slides, by number, whose words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
+            },
+            "id": {
+              "type": "string"
             },
             "status": {
               "type": "string",
@@ -1281,8 +1282,8 @@
             "files",
             "format",
             "height",
+            "hiddenTextSlides",
             "id",
-            "overflowingSlides",
             "status",
             "width"
           ]
@@ -1384,14 +1385,15 @@
               "type": "string",
               "const": "pdf"
             },
-            "id": {
-              "type": "string"
-            },
-            "overflowingSlides": {
+            "hiddenTextSlides": {
               "type": "array",
               "items": {
                 "type": "number"
-              }
+              },
+              "description": "The slides, by number, whose words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
+            },
+            "id": {
+              "type": "string"
             },
             "status": {
               "type": "string",
@@ -1402,8 +1404,8 @@
             "bytes",
             "files",
             "format",
+            "hiddenTextSlides",
             "id",
-            "overflowingSlides",
             "status"
           ]
         },
@@ -1421,14 +1423,15 @@
               "type": "string",
               "const": "png"
             },
-            "id": {
-              "type": "string"
-            },
-            "overflowingSlides": {
+            "hiddenTextSlides": {
               "type": "array",
               "items": {
                 "type": "number"
-              }
+              },
+              "description": "The slides, by number, whose words a slide's edge, the end of a path or a table cell hides (`text-hidden`)."
+            },
+            "id": {
+              "type": "string"
             },
             "status": {
               "type": "string",
@@ -1438,8 +1441,8 @@
           "required": [
             "files",
             "format",
+            "hiddenTextSlides",
             "id",
-            "overflowingSlides",
             "status"
           ]
         },
