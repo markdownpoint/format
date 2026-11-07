@@ -4526,19 +4526,19 @@
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "Its middle's x, as a fraction of the box's width."
+                  "description": "Its middle's x, as a fraction of the frame's width."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "Its middle's y, as a fraction of the box's height."
+                  "description": "Its middle's y, as a fraction of the frame's height."
                 },
                 "length": {
                   "type": "number",
                   "minimum": 0.000001,
                   "maximum": 362,
-                  "description": "Its length, as a fraction of the box's diagonal."
+                  "description": "Its length, as a fraction of the frame's diagonal."
                 }
               },
               "required": [

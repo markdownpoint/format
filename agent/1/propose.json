@@ -2862,13 +2862,13 @@
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "of the frame"
+                      "description": "of the box"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "of the frame"
+                      "description": "of the box"
                     }
                   },
                   "required": [
@@ -11630,13 +11630,13 @@
                           "type": "number",
                           "minimum": -510.5,
                           "maximum": 511.5,
-                          "description": "of the frame"
+                          "description": "of the box"
                         },
                         "y": {
                           "type": "number",
                           "minimum": -510.5,
                           "maximum": 511.5,
-                          "description": "of the frame"
+                          "description": "of the box"
                         }
                       },
                       "required": [
@@ -12708,13 +12708,13 @@
                                       "type": "number",
                                       "minimum": -510.5,
                                       "maximum": 511.5,
-                                      "description": "of the frame"
+                                      "description": "of the box"
                                     },
                                     "y": {
                                       "type": "number",
                                       "minimum": -510.5,
                                       "maximum": 511.5,
-                                      "description": "of the frame"
+                                      "description": "of the box"
                                     }
                                   },
                                   "required": [
@@ -14860,13 +14860,13 @@
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "of the frame"
+                      "description": "of the box"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "of the frame"
+                      "description": "of the box"
                     }
                   },
                   "required": [
@@ -15703,13 +15703,13 @@
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "of the frame"
+                      "description": "of the box"
                     },
                     "y": {
                       "type": "number",
                       "minimum": -510.5,
                       "maximum": 511.5,
-                      "description": "of the frame"
+                      "description": "of the box"
                     }
                   },
                   "required": [
