@@ -563,45 +563,7 @@
             "description": "Its sections and slides in order."
           },
           "properties": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "background": {
-                "$ref": "#/definitions/PresentationBackgroundSource"
-              },
-              "countdown": {
-                "type": "number"
-              },
-              "date": {
-                "type": "string",
-                "description": "A chosen Gregorian calendar date, independent of the render clock."
-              },
-              "default-text-style": {
-                "$ref": "#/definitions/PresentationDefaultTextStyleSource"
-              },
-              "footer": {
-                "type": "string"
-              },
-              "locale": {
-                "type": "string"
-              },
-              "self-playing": {
-                "$ref": "#/definitions/PresentationSelfPlayingSource"
-              },
-              "soundtrack": {
-                "$ref": "#/definitions/PresentationSoundtrackSource"
-              },
-              "swatches": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "transition": {
-                "$ref": "#/definitions/PresentationTransitionSetting"
-              }
-            },
-            "description": "The presentation's own properties as updatePresentationProperties sets them; an absent one is its default."
+            "$ref": "#/definitions/AgentPresentationProperties"
           },
           "revision": {
             "$ref": "#/definitions/AgentRevision"
@@ -869,6 +831,848 @@
             ],
             "description": "A problem with the presentation as the contract gives it: its English, where it stands and what the app does about it."
           },
+          "AgentPresentationProperties": {
+            "type": "object",
+            "properties": {
+              "transition": {
+                "description": "A slide transition. A scroll moves both slides along one strip. Each slide's 3D objects keep their index in its stacking order and are clipped at its edge. A model or 3D text with the same id on both slides crosses between them whole. Neither slide's camera drifts during a scroll. During any other transition, both cameras drift. Keys left out default to interpolation ease-in-out, match object, direction left, color black, and delay 0.",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "none"
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "cross-dissolve"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "carry-over"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "interpolation": {
+                        "enum": [
+                          "linear",
+                          "ease-in",
+                          "ease-out",
+                          "ease-in-out"
+                        ],
+                        "description": "How the transition speeds up and slows down. Only `carry-over` and `scroll` take it."
+                      },
+                      "match": {
+                        "enum": [
+                          "object",
+                          "word",
+                          "character"
+                        ],
+                        "description": "What `carry-over` matches between two texts: whole objects, words, or characters."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "push"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "direction": {
+                        "enum": [
+                          "left",
+                          "right",
+                          "up",
+                          "down"
+                        ],
+                        "description": "Which way a push, scroll, move in, reveal, or wipe travels across the screen."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "scroll"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "interpolation": {
+                        "enum": [
+                          "linear",
+                          "ease-in",
+                          "ease-out",
+                          "ease-in-out"
+                        ],
+                        "description": "How the transition speeds up and slows down. Only `carry-over` and `scroll` take it."
+                      },
+                      "direction": {
+                        "enum": [
+                          "left",
+                          "right",
+                          "up",
+                          "down"
+                        ],
+                        "description": "Which way a push, scroll, move in, reveal, or wipe travels across the screen."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "move-in"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "direction": {
+                        "enum": [
+                          "left",
+                          "right",
+                          "up",
+                          "down"
+                        ],
+                        "description": "Which way a push, scroll, move in, reveal, or wipe travels across the screen."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "reveal"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "direction": {
+                        "enum": [
+                          "left",
+                          "right",
+                          "up",
+                          "down"
+                        ],
+                        "description": "Which way a push, scroll, move in, reveal, or wipe travels across the screen."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "wipe"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "direction": {
+                        "enum": [
+                          "left",
+                          "right",
+                          "up",
+                          "down"
+                        ],
+                        "description": "Which way a push, scroll, move in, reveal, or wipe travels across the screen."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "zoom"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "effect": {
+                        "const": "fade-through-color"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "minimum": 0.000001,
+                        "maximum": 4294967296,
+                        "description": "How long it takes. With effect `none`, it's left out."
+                      },
+                      "color": {
+                        "type": "string",
+                        "description": "The color of a fade through color: a color role or a hex color."
+                      },
+                      "start": {
+                        "const": "automatically",
+                        "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+                      },
+                      "delay": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 4294967296,
+                        "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+                      }
+                    },
+                    "required": [
+                      "effect",
+                      "duration"
+                    ],
+                    "dependencies": {
+                      "delay": [
+                        "start"
+                      ]
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "background": {
+                "type": "object",
+                "properties": {
+                  "fill": {
+                    "anyOf": [
+                      {
+                        "const": "none"
+                      },
+                      {
+                        "$ref": "#/definitions/color"
+                      },
+                      {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "const": "linear"
+                              },
+                              "angle": {
+                                "type": "number",
+                                "description": "degrees"
+                              },
+                              "line": {
+                                "type": "object",
+                                "properties": {
+                                  "x": {
+                                    "type": "number",
+                                    "minimum": -511,
+                                    "maximum": 511,
+                                    "description": "of the frame"
+                                  },
+                                  "y": {
+                                    "type": "number",
+                                    "minimum": -511,
+                                    "maximum": 511,
+                                    "description": "of the frame"
+                                  },
+                                  "length": {
+                                    "type": "number",
+                                    "minimum": 0.000001,
+                                    "maximum": 362,
+                                    "description": "frame diagonals"
+                                  }
+                                },
+                                "required": [
+                                  "x",
+                                  "y",
+                                  "length"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "stops": {
+                                "$ref": "#/definitions/stops"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "angle",
+                              "stops"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "const": "radial"
+                              },
+                              "center": {
+                                "type": "object",
+                                "properties": {
+                                  "x": {
+                                    "type": "number",
+                                    "minimum": -510.5,
+                                    "maximum": 511.5,
+                                    "description": "of the frame"
+                                  },
+                                  "y": {
+                                    "type": "number",
+                                    "minimum": -510.5,
+                                    "maximum": 511.5,
+                                    "description": "of the frame"
+                                  }
+                                },
+                                "required": [
+                                  "x",
+                                  "y"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "shape": {
+                                "const": "circle"
+                              },
+                              "stops": {
+                                "$ref": "#/definitions/stops"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "center",
+                              "stops"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "image": {
+                    "anyOf": [
+                      {
+                        "const": "none"
+                      },
+                      {
+                        "type": "string",
+                        "description": "a normalized relative path"
+                      }
+                    ]
+                  },
+                  "crop": {
+                    "type": "object",
+                    "properties": {
+                      "scale": {
+                        "type": "number",
+                        "minimum": 0.01,
+                        "maximum": 511,
+                        "description": "×"
+                      },
+                      "focal-point": {
+                        "type": "object",
+                        "properties": {
+                          "x": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "of the image"
+                          },
+                          "y": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "of the image"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "opacity": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "text without NUL characters"
+                  },
+                  "image-style": {
+                    "type": "string",
+                    "description": "nonempty text without NUL characters, or \"none\""
+                  },
+                  "transparent": {
+                    "type": "boolean"
+                  },
+                  "restyle": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
+                        "description": "one line that isn’t blank"
+                      },
+                      "reference-prompt": {
+                        "type": "string",
+                        "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+                        "description": "text that isn’t blank"
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+                        "description": "text that isn’t blank"
+                      },
+                      "transparent": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "reference-prompt",
+                      "prompt"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "image-result": {
+                    "type": "object",
+                    "properties": {
+                      "record": {
+                        "$ref": "#/definitions/uuid"
+                      },
+                      "original": {
+                        "type": "object",
+                        "properties": {
+                          "file": {
+                            "type": "string",
+                            "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                            "description": "the path of an image"
+                          },
+                          "record": {
+                            "$ref": "#/definitions/uuid"
+                          }
+                        },
+                        "required": [
+                          "file"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "record"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "drop-shadow": {
+                    "anyOf": [
+                      {
+                        "const": "none"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "size": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 780.352997,
+                            "description": "canvas units"
+                          },
+                          "offset": {
+                            "type": "object",
+                            "properties": {
+                              "x": {
+                                "type": "number",
+                                "minimum": -33554431.984375,
+                                "maximum": 33554431.984375,
+                                "description": "canvas units"
+                              },
+                              "y": {
+                                "type": "number",
+                                "minimum": -33554431.984375,
+                                "maximum": 33554431.984375,
+                                "description": "canvas units"
+                              }
+                            },
+                            "required": [
+                              "x",
+                              "y"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "color": {
+                            "type": "string",
+                            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
+                            "description": "a color role or a hex color without opacity, such as \"#000000\""
+                          },
+                          "opacity": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          }
+                        },
+                        "required": [
+                          "size",
+                          "offset",
+                          "color",
+                          "opacity"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "exposure": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "contrast": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "saturation": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "temperature": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1
+                  },
+                  "grayscale": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "additionalProperties": false
+              },
+              "soundtrack": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "pattern": "\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
+                    "description": "an audio file in the presentation’s media or generated folder"
+                  },
+                  "loop": {
+                    "const": "repeat"
+                  },
+                  "volume": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "fade-in": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967296,
+                    "description": "seconds"
+                  },
+                  "fade-out": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967296,
+                    "description": "seconds"
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
+              },
+              "self-playing": {
+                "type": "object",
+                "properties": {
+                  "slide-delay": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967296,
+                    "description": "seconds"
+                  },
+                  "step-delay": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967296,
+                    "description": "seconds"
+                  },
+                  "loop": {
+                    "const": "repeat"
+                  }
+                },
+                "required": [
+                  "slide-delay",
+                  "step-delay"
+                ],
+                "additionalProperties": false
+              },
+              "countdown": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 4294967296,
+                "description": "seconds"
+              },
+              "default-text-style": {
+                "anyOf": [
+                  {
+                    "const": "none"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "text-style": {
+                        "type": "string",
+                        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                        "description": "a text style name"
+                      },
+                      "color": {
+                        "$ref": "#/definitions/color"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "image-style": {
+                "type": "string",
+                "description": "nonempty text without NUL characters, or \"none\""
+              },
+              "swatches": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})(?![\\s\\S])",
+                  "description": "a hex color, such as \"#E85D3F\""
+                }
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)(?![\\s\\S])",
+                "description": "a valid calendar date in YYYY-MM-DD form, such as \"2026-03-14\""
+              },
+              "locale": {
+                "type": "string",
+                "pattern": "^(?![\\s\\S]*-[Pp][Oo][Ss][Ii][Xx](?![^-]))(?:[A-Za-z]{2,3}|[A-Za-z]{5,8})(?:-[A-Za-z]{4})?(?:-(?:[A-Za-z]{2}|[0-9]{3}))?(?:-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(?![\\s\\S])",
+                "description": "a language tag, such as \"sv\" or \"sv-SE\""
+              },
+              "footer": {
+                "type": "string",
+                "pattern": "^[^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
+                "description": "one line"
+              }
+            },
+            "additionalProperties": false,
+            "description": "The presentation's own properties as updatePresentationProperties sets them, by the .mdpoint file's keys and in its words, and the footer; an absent one is its default. Its schema is the file grammar's for those keys, so every property the writer writes is one the schema names."
+          },
           "AgentRevision": {
             "type": "string",
             "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
@@ -918,184 +1722,6 @@
             ],
             "additionalProperties": false,
             "description": "A presentations.get warning about words that run past their frame, where they still show; about words something hides, the slide's edge, the end of their path or their table cell, which an export asks about; or that this could not be measured."
-          },
-          "ColorSource": {
-            "type": "string",
-            "description": "A color as the file spells it: a theme color by name, as `accent`, or a hex color, as `\"#2F7D4F\"`."
-          },
-          "CropSource": {
-            "type": "object",
-            "properties": {
-              "focal-point": {
-                "$ref": "#/definitions/PairSource"
-              },
-              "scale": {
-                "type": "number"
-              }
-            },
-            "additionalProperties": false
-          },
-          "FillSource": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/ColorSource"
-              },
-              {
-                "$ref": "#/definitions/GradientFillSource"
-              }
-            ],
-            "description": "A fill as the file spells it: `none`, one color, or a gradient whose stops name their colors."
-          },
-          "GradientCenter": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "x",
-              "y"
-            ],
-            "additionalProperties": false,
-            "description": "Where a radial gradient centers: a point in the box it paints, in fractions of it across and down, 0 at its top left."
-          },
-          "GradientFillSource": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "angle": {
-                    "type": "number"
-                  },
-                  "line": {
-                    "$ref": "#/definitions/GradientLine"
-                  },
-                  "stops": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "properties": {
-                        "color": {
-                          "$ref": "#/definitions/ColorSource"
-                        },
-                        "position": {
-                          "type": "number",
-                          "description": "Where the stop stands along the gradient, 0–1."
-                        }
-                      },
-                      "required": [
-                        "color"
-                      ]
-                    }
-                  },
-                  "type": {
-                    "const": "linear"
-                  }
-                },
-                "required": [
-                  "angle",
-                  "stops",
-                  "type"
-                ]
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "center": {
-                    "$ref": "#/definitions/GradientCenter"
-                  },
-                  "shape": {
-                    "const": "circle"
-                  },
-                  "stops": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "properties": {
-                        "color": {
-                          "$ref": "#/definitions/ColorSource"
-                        },
-                        "position": {
-                          "type": "number",
-                          "description": "Where the stop stands along the gradient, 0–1."
-                        }
-                      },
-                      "required": [
-                        "color"
-                      ]
-                    }
-                  },
-                  "type": {
-                    "const": "radial"
-                  }
-                },
-                "required": [
-                  "center",
-                  "stops",
-                  "type"
-                ]
-              }
-            ],
-            "description": "A gradient as the file spells it: its type, and stops that name their colors."
-          },
-          "GradientLine": {
-            "type": "object",
-            "properties": {
-              "length": {
-                "type": "number"
-              },
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "length",
-              "x",
-              "y"
-            ],
-            "additionalProperties": false,
-            "description": "A linear gradient's own line: centered at (`x`, `y`) in frame fractions, `length` frame diagonals long. It may reach past the frame, holds while an outline morphs, and turns about its center with the angle."
-          },
-          "ImageResultOriginalSource": {
-            "type": "object",
-            "properties": {
-              "file": {
-                "type": "string"
-              },
-              "record": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "file"
-            ],
-            "additionalProperties": false
-          },
-          "ImageResultSource": {
-            "type": "object",
-            "properties": {
-              "original": {
-                "$ref": "#/definitions/ImageResultOriginalSource"
-              },
-              "record": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "record"
-            ],
-            "additionalProperties": false
           },
           "IssueCode": {
             "type": "string",
@@ -1316,137 +1942,6 @@
             ],
             "description": "What raised an issue, which says how the issue names where it stands."
           },
-          "PairSource": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number"
-              },
-              "y": {
-                "type": "number"
-              }
-            },
-            "additionalProperties": false,
-            "description": "A pair of numbers as the file spells it."
-          },
-          "PresentationBackgroundSource": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "contrast": {
-                "type": "number"
-              },
-              "crop": {
-                "$ref": "#/definitions/CropSource"
-              },
-              "drop-shadow": {
-                "$ref": "#/definitions/PresentationShadow"
-              },
-              "exposure": {
-                "type": "number"
-              },
-              "fill": {
-                "$ref": "#/definitions/FillSource"
-              },
-              "grayscale": {
-                "type": "number"
-              },
-              "image": {
-                "type": "string"
-              },
-              "image-result": {
-                "$ref": "#/definitions/ImageResultSource"
-              },
-              "image-style": {
-                "type": "string"
-              },
-              "opacity": {
-                "type": "number"
-              },
-              "prompt": {
-                "type": "string"
-              },
-              "restyle": {
-                "$ref": "#/definitions/RestyleSource"
-              },
-              "saturation": {
-                "type": "number"
-              },
-              "temperature": {
-                "type": "number"
-              },
-              "transparent": {
-                "type": "boolean"
-              }
-            },
-            "description": "A background as the file spells it."
-          },
-          "PresentationDefaultTextStyleSource": {
-            "anyOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "color": {
-                    "type": "string"
-                  },
-                  "text-style": {
-                    "type": "string"
-                  }
-                },
-                "additionalProperties": false
-              },
-              {
-                "const": "none"
-              }
-            ],
-            "description": "A default text style as the .mdpoint file spells it: `none`, for a new text box with no style, or its style under `text-style`, as an object's, and its color."
-          },
-          "PresentationDropShadow": {
-            "type": "object",
-            "properties": {
-              "color": {
-                "type": "string",
-                "description": "A color role or an opaque CSS hex: a role's own opacity doesn't reach the shadow, whose opacity is its only one."
-              },
-              "offset": {
-                "type": "object",
-                "properties": {
-                  "x": {
-                    "type": "number"
-                  },
-                  "y": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "x",
-                  "y"
-                ],
-                "additionalProperties": false,
-                "description": "Across and down from the object, in the object's own turn."
-              },
-              "opacity": {
-                "type": "number",
-                "description": "0–1."
-              },
-              "size": {
-                "type": "number",
-                "description": "How far past what casts it the shadow reaches, as Photoshop's Size."
-              },
-              "spread": {
-                "type": "number",
-                "description": "The share of the size, 0–1, by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread: at 1 the shadow stands solid all the way out. A text's alone; none where left out."
-              }
-            },
-            "required": [
-              "color",
-              "offset",
-              "opacity",
-              "size"
-            ],
-            "additionalProperties": false,
-            "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
-          },
           "PresentationNavigation": {
             "type": "object",
             "properties": {
@@ -1529,171 +2024,6 @@
             "additionalProperties": false,
             "description": "A section of the presentation: the .md file's header, its id and the name its heading line gives it."
           },
-          "PresentationSelfPlayingSource": {
-            "type": "object",
-            "properties": {
-              "loop": {
-                "const": "repeat"
-              },
-              "slide-delay": {
-                "type": "number"
-              },
-              "step-delay": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "slide-delay",
-              "step-delay"
-            ],
-            "additionalProperties": false
-          },
-          "PresentationShadow": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/PresentationDropShadow"
-              },
-              {
-                "const": "none"
-              }
-            ],
-            "description": "An object's shadow: a drop shadow, or none. An object without the property casts none; \"none\" is written only to take back a shadow it would otherwise inherit from its layout or its presentation."
-          },
-          "PresentationSoundtrackSource": {
-            "type": "object",
-            "properties": {
-              "fade-in": {
-                "type": "number"
-              },
-              "fade-out": {
-                "type": "number"
-              },
-              "file": {
-                "type": "string"
-              },
-              "loop": {
-                "const": "repeat"
-              },
-              "volume": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "file"
-            ],
-            "additionalProperties": false
-          },
-          "PresentationTransition": {
-            "type": "object",
-            "properties": {
-              "color": {
-                "type": "string",
-                "description": "The color a fade passes through: a theme role or a hex color; black when omitted."
-              },
-              "delay": {
-                "type": "number",
-                "description": "For one that starts by itself, the seconds it waits after the slide's last step ends, as Keynote's Delay; none when omitted."
-              },
-              "direction": {
-                "$ref": "#/definitions/PresentationTransitionDirection",
-                "description": "Which way a push, scroll, move in, reveal or wipe travels across the screen; right to left (`left`) when omitted."
-              },
-              "duration": {
-                "type": "number",
-                "description": "Seconds."
-              },
-              "effect": {
-                "$ref": "#/definitions/PresentationTransitionEffect"
-              },
-              "interpolation": {
-                "$ref": "#/definitions/PresentationTransitionInterpolation",
-                "description": "The interpolation a carry-over or a scroll moves with; ease-in-out when omitted."
-              },
-              "match": {
-                "$ref": "#/definitions/PresentationTransitionMatch",
-                "description": "What a carry-over matches in text, as Keynote's Magic Move does: whole objects, or the words or characters two texts share; objects when omitted."
-              },
-              "start": {
-                "$ref": "#/definitions/PresentationTransitionStart",
-                "description": "When it starts: `automatically` after the slide's last step, as Keynote's Start Transition Automatically; on a click when omitted."
-              }
-            },
-            "required": [
-              "duration",
-              "effect"
-            ],
-            "additionalProperties": false,
-            "description": "The outgoing transition: a crossfade; Carry over, moving each object both slides share; the next slide pushing this one off, moving in over it, or revealed as this one moves off, in a direction; Scroll, both slides one strip the view travels across, this one held where it was left and the next playing its first step with the move; a wipe across it; a zoom in to it; or a fade through a color."
-          },
-          "PresentationTransitionDirection": {
-            "type": "string",
-            "enum": [
-              "down",
-              "left",
-              "right",
-              "up"
-            ]
-          },
-          "PresentationTransitionEffect": {
-            "type": "string",
-            "enum": [
-              "carry-over",
-              "cross-dissolve",
-              "fade-through-color",
-              "move-in",
-              "push",
-              "reveal",
-              "scroll",
-              "wipe",
-              "zoom"
-            ]
-          },
-          "PresentationTransitionInterpolation": {
-            "type": "string",
-            "enum": [
-              "ease-in",
-              "ease-in-out",
-              "ease-out",
-              "linear"
-            ]
-          },
-          "PresentationTransitionMatch": {
-            "type": "string",
-            "enum": [
-              "character",
-              "object",
-              "word"
-            ]
-          },
-          "PresentationTransitionSetting": {
-            "anyOf": [
-              {
-                "$ref": "#/definitions/PresentationTransition"
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "delay": {
-                    "type": "number"
-                  },
-                  "effect": {
-                    "const": "none"
-                  },
-                  "start": {
-                    "$ref": "#/definitions/PresentationTransitionStart"
-                  }
-                },
-                "required": [
-                  "effect"
-                ],
-                "additionalProperties": false
-              }
-            ],
-            "description": "Omission inherits; None explicitly disables the presentation's transition, and still starts on a click or by itself, a cut that moves on as an automatic transition does."
-          },
-          "PresentationTransitionStart": {
-            "const": "automatically"
-          },
           "RenderFileScope": {
             "type": "string",
             "enum": [
@@ -1702,35 +2032,6 @@
               "theme"
             ],
             "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
-          },
-          "RestyleSource": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
-                "description": "one line that isn’t blank"
-              },
-              "reference-prompt": {
-                "type": "string",
-                "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                "description": "text that isn’t blank"
-              },
-              "prompt": {
-                "type": "string",
-                "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                "description": "text that isn’t blank"
-              },
-              "transparent": {
-                "type": "boolean"
-              }
-            },
-            "required": [
-              "name",
-              "reference-prompt",
-              "prompt"
-            ],
-            "additionalProperties": false
           },
           "SlideSize": {
             "type": "object",
@@ -1748,6 +2049,36 @@
             ],
             "additionalProperties": false,
             "description": "A slide's size in canvas units."
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+            "description": "a color role or a hex color"
+          },
+          "stops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "$ref": "#/definitions/color"
+                },
+                "position": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "required": [
+                "color"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 2
+          },
+          "uuid": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
           }
         }
       }
@@ -8155,7 +8486,7 @@
             "type": "number",
             "minimum": 1,
             "maximum": 60,
-            "description": "Samples per second. Defaults to 30."
+            "description": "Frames a second it samples, 30 when omitted."
           },
           "from": {
             "minimum": 0,
@@ -8231,7 +8562,7 @@
             "type": "number",
             "minimum": 1,
             "maximum": 60,
-            "description": "Samples per second. Defaults to 30."
+            "description": "Frames a second it samples, 30 when omitted."
           },
           "from": {
             "minimum": 0,
@@ -8897,7 +9228,7 @@
             "type": "number",
             "minimum": 1,
             "maximum": 60,
-            "description": "Samples per second over a rest that loops. Defaults to 30. Samples per second over a step. Defaults to 10."
+            "description": "Frames a second it samples over a rest that loops, 30 when omitted. Frames a second it samples over a step, 10 when omitted."
           },
           "rests": {
             "type": "boolean",

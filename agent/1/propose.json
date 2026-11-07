@@ -13101,7 +13101,8 @@
                     "slide-delay",
                     "step-delay"
                   ],
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "description": "Self-playing settings as the file spells them."
                 },
                 {
                   "type": "null"
@@ -13155,7 +13156,8 @@
                   "required": [
                     "file"
                   ],
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "description": "A soundtrack as the file spells it."
                 },
                 {
                   "type": "null"
