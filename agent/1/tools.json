@@ -13242,6 +13242,7 @@
         "properties": {
           "token": {
             "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
             "description": "The token images.prepare returned; it is spent once and expires."
           },
           "presentation": {
@@ -13303,6 +13304,7 @@
         "properties": {
           "generationId": {
             "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
             "description": "A variant's generationId from images.prepare."
           },
           "objectId": {
@@ -13513,7 +13515,8 @@
           },
           "id": {
             "type": "string",
-            "description": "A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone. Required by delete, duplicate and preview."
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
+            "description": "A lowercase UUID the app minted. A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone. Required by delete, duplicate and preview."
           },
           "output": {
             "type": "string",
@@ -14783,6 +14786,7 @@
         "properties": {
           "id": {
             "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
             "description": "The proposal's id from proposals.create."
           },
           "presentation": {
@@ -15063,6 +15067,7 @@
         "properties": {
           "id": {
             "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
             "description": "The proposal's id from proposals.create."
           },
           "presentation": {
@@ -15355,6 +15360,7 @@
         "properties": {
           "id": {
             "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
             "description": "The proposal's id from proposals.create."
           },
           "presentation": {

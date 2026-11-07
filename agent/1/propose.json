@@ -12174,6 +12174,61 @@
             "size": {
               "type": "number",
               "minimum": 0,
+              "maximum": 33554431,
+              "description": "em"
+            },
+            "spread": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "offset": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ],
+              "additionalProperties": false
+            },
+            "color": {
+              "type": "string",
+              "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
+              "description": "a color role or a hex color without opacity, such as \"#000000\""
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "size",
+            "offset",
+            "color",
+            "opacity"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "number",
+              "minimum": 0,
               "maximum": 780.352997,
               "description": "canvas units"
             },

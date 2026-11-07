@@ -1705,7 +1705,7 @@
       "type": "object",
       "properties": {
         "token": {
-          "type": "string",
+          "$ref": "#/definitions/AgentMintedId",
           "description": "The token images.prepare returned; it is spent once and expires."
         }
       },
@@ -1829,7 +1829,7 @@
       "type": "object",
       "properties": {
         "generationId": {
-          "type": "string",
+          "$ref": "#/definitions/AgentMintedId",
           "description": "A variant's generationId from images.prepare."
         },
         "objectId": {
@@ -1878,7 +1878,7 @@
               "const": "export"
             },
             "id": {
-              "type": "string"
+              "$ref": "#/definitions/AgentMintedId"
             },
             "output": {
               "type": "string",
@@ -1921,7 +1921,7 @@
               "description": "A style definition as images.styles.list lists them."
             },
             "id": {
-              "type": "string"
+              "$ref": "#/definitions/AgentMintedId"
             }
           },
           "required": [
@@ -1942,7 +1942,7 @@
               ]
             },
             "id": {
-              "type": "string",
+              "$ref": "#/definitions/AgentMintedId",
               "description": "A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone."
             }
           },
@@ -2536,6 +2536,11 @@
       "maxItems": 10,
       "uniqueItems": true,
       "description": "Actions of Meshy's library for one task, each once."
+    },
+    "AgentMintedId": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
+      "description": "A lowercase UUID the app minted."
     },
     "AgentModelActionsRequest": {
       "type": "object",
@@ -6417,7 +6422,7 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string",
+          "$ref": "#/definitions/AgentMintedId",
           "description": "The proposal's id from proposals.create."
         }
       },
