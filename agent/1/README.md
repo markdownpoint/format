@@ -94,8 +94,11 @@ Where an issue stands depends on its `source`:
   `slides.intro.steps.reveal.curves.title.opacity.keyframes.fade.value`; a
   composition stands under `compositions`. `slideId` names the slide or
   composition that holds it, and `objectId` the object.
-- `markdown` and `files`: `location` names the file and its line, counted from
-  1, with the column when known.
+- `markdown`: `location` names the file and its line, counted from 1, with the
+  column when known.
+- `folder`: the two files disagree, or the folder can't be read. `path`
+  selects the record in the `.mdpoint` file, as for `json`, and `location`
+  names the line of the `.md` file, each when the issue has one.
 - `theme`: `slideId` when only the slides that name the layout or scheme are
   refused.
 - `file`: `path` is the file's path as the presentation, or its theme's

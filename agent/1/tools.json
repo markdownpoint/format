@@ -1932,7 +1932,7 @@
             "type": "string",
             "enum": [
               "file",
-              "files",
+              "folder",
               "json",
               "layout",
               "markdown",
@@ -6171,7 +6171,7 @@
             "type": "string",
             "enum": [
               "file",
-              "files",
+              "folder",
               "json",
               "layout",
               "markdown",
