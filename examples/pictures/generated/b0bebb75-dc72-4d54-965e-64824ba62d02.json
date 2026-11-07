@@ -5,8 +5,8 @@
   "name": "Red Paper Boat",
   "target": {
     "type": "image-object",
-    "slide-id": "generate",
-    "object-id": "boat"
+    "slide": "generate",
+    "object": "boat"
   },
   "request": {
     "instructions": "markdownpoint/image-prompt/1",

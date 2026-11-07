@@ -44,18 +44,18 @@
             "type": {
               "const": "slide-background"
             },
-            "slide-id": {
+            "slide": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/slide-id"
+                  "$ref": "#/definitions/stable-id"
                 }
               ],
-              "description": "The slide's id."
+              "description": "The id of the slide whose background it is, or that the image object is on."
             }
           },
           "required": [
             "type",
-            "slide-id"
+            "slide"
           ],
           "additionalProperties": false
         },
@@ -65,15 +65,23 @@
             "type": {
               "const": "image-object"
             },
-            "slide-id": {
+            "slide": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/slide-id"
+                  "$ref": "#/definitions/stable-id"
                 }
               ],
-              "description": "The slide's id."
+              "description": "The id of the slide whose background it is, or that the image object is on."
             },
-            "object-id": {
+            "composition": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/stable-id"
+                }
+              ],
+              "description": "The id of the composition the image object is on."
+            },
+            "object": {
               "type": "string",
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
               "description": "The image object's id."
@@ -81,10 +89,27 @@
           },
           "required": [
             "type",
-            "slide-id",
-            "object-id"
+            "object"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "oneOf": [
+            {
+              "properties": {
+                "slide": true
+              },
+              "required": [
+                "slide"
+              ]
+            },
+            {
+              "properties": {
+                "composition": true
+              },
+              "required": [
+                "composition"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -274,9 +299,10 @@
       "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
       "description": "64 lowercase hexadecimal digits"
     },
-    "slide-id": {
+    "stable-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "a stable id, such as \"title-card\""
     }
   }
 }

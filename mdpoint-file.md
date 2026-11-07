@@ -352,7 +352,7 @@ The record, generated/<id>.json, holds what was asked and the picture that came 
   "type": "image-generation",
   "created": "2026-11-03T17:59:43.070Z",
   "name": "Red Paper Boat",
-  "target": {"type": "image-object", "slide-id": "generate", "object-id": "boat"},
+  "target": {"type": "image-object", "slide": "generate", "object": "boat"},
   "request": {
     "instructions": "markdownpoint/image-prompt/1",
     "prompt": "A red paper boat on calm water",
