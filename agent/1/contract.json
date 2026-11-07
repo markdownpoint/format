@@ -784,7 +784,7 @@
                   "$ref": "#/definitions/AgentSlideMeasureResult"
                 },
                 {
-                  "$ref": "#/definitions/AgentSlideRestsResult"
+                  "$ref": "#/definitions/AgentSlideWaitsResult"
                 }
               ]
             }
@@ -1749,7 +1749,7 @@
                 "regenerate"
               ]
             },
-            "aspect-ratio": {
+            "aspectRatio": {
               "type": "string"
             },
             "model": {
@@ -1780,7 +1780,7 @@
           },
           "required": [
             "action",
-            "aspect-ratio",
+            "aspectRatio",
             "model",
             "provider",
             "requiresProvider",
@@ -6342,82 +6342,6 @@
         "fit"
       ]
     },
-    "AgentRestHold": {
-      "$ref": "#/definitions/PresentationRestHold",
-      "description": "What moves on at a rest in a way no video of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
-    },
-    "AgentRestTextSummary": {
-      "type": "object",
-      "properties": {
-        "covered": {
-          "type": "number"
-        },
-        "model": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "rest": {
-          "type": [
-            "null",
-            "number"
-          ]
-        },
-        "shadow": {
-          "type": "object",
-          "properties": {
-            "model": {
-              "type": [
-                "null",
-                "string"
-              ]
-            },
-            "rest": {
-              "type": [
-                "null",
-                "number"
-              ]
-            },
-            "shadowed": {
-              "type": "number"
-            },
-            "time": {
-              "type": [
-                "null",
-                "number"
-              ]
-            }
-          },
-          "required": [
-            "model",
-            "rest",
-            "shadowed",
-            "time"
-          ],
-          "additionalProperties": false
-        },
-        "text": {
-          "type": "string"
-        },
-        "time": {
-          "type": [
-            "null",
-            "number"
-          ]
-        }
-      },
-      "required": [
-        "covered",
-        "model",
-        "rest",
-        "shadow",
-        "text",
-        "time"
-      ],
-      "additionalProperties": false,
-      "description": "The most any model covers a text at the slide's rests, as a sample's `covered` says, and its shadow does, and where: counted only while both draw."
-    },
     "AgentRevision": {
       "type": "string",
       "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
@@ -6648,13 +6572,13 @@
     "AgentSlideMeasureRequest": {
       "anyOf": [
         {
-          "$ref": "#/definitions/AgentSlideRestsRequest"
+          "$ref": "#/definitions/AgentSlideWaitsRequest"
         },
         {
           "$ref": "#/definitions/AgentStepMeasureRequest"
         }
       ],
-      "description": "What `slides.measure` takes: a step's range, or the slide's rests."
+      "description": "What `slides.measure` takes: a step's range, or the slide's waits."
     },
     "AgentSlideMeasureResult": {
       "type": "object",
@@ -10212,133 +10136,6 @@
       ],
       "additionalProperties": false
     },
-    "AgentSlideRest": {
-      "type": "object",
-      "properties": {
-        "after": {
-          "type": "string",
-          "description": "`entry` for the rest as the slide has appeared, or the step that leads the click it follows."
-        },
-        "before": {
-          "type": [
-            "null",
-            "string"
-          ],
-          "description": "The step that leads the click that ends it; null after the last."
-        },
-        "hold": {
-          "$ref": "#/definitions/AgentRestHold",
-          "description": "Why the slide's 3D holds still at the rest while something in it would move on, as the slide's warning says, whatever its 2D does."
-        },
-        "motion": {
-          "type": "string",
-          "enum": [
-            "loop",
-            "still"
-          ],
-          "description": "`still` holds; `loop` repeats every `period` seconds."
-        },
-        "period": {
-          "type": "number"
-        },
-        "samples": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "models": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/AgentModelMeasure"
-                }
-              },
-              "time": {
-                "type": "number"
-              },
-              "visibility": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "number"
-                }
-              }
-            },
-            "required": [
-              "models",
-              "time",
-              "visibility"
-            ],
-            "additionalProperties": false
-          },
-          "description": "Each moment measured, `time` seconds into the rest: how much of each object draws, 0 to 1, its opacity and its groups', 0 while hidden; and each model and 3D text's measures, as `slides_measure` gives them for a step."
-        },
-        "slideAge": {
-          "type": "number",
-          "description": "Seconds since the slide began to appear, as it settles."
-        }
-      },
-      "required": [
-        "after",
-        "before",
-        "motion",
-        "samples",
-        "slideAge"
-      ],
-      "additionalProperties": false,
-      "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops: the period of the 3D's loop, or of the 2D's while the 3D stands still, held or at rest. Where both loop at lengths of their own, the period is the 3D's, the 2D measured on its own clock."
-    },
-    "AgentSlideRestsRequest": {
-      "type": "object",
-      "properties": {
-        "fps": {
-          "$ref": "#/definitions/AgentSampleRate",
-          "description": "Frames a second it samples over a rest that loops, 30 when omitted."
-        },
-        "rests": {
-          "type": "boolean",
-          "const": true,
-          "description": "Measure the slide at every rest its show makes instead of a step; omit stepId, from and to."
-        },
-        "slideId": {
-          "$ref": "#/definitions/AgentSlideId"
-        }
-      },
-      "required": [
-        "rests",
-        "slideId"
-      ],
-      "additionalProperties": false,
-      "description": "A slide measured at each rest its show makes, in place of a step's range: over a rest that loops, `fps` frames a second, 30 when omitted."
-    },
-    "AgentSlideRestsResult": {
-      "type": "object",
-      "properties": {
-        "rests": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AgentSlideRest"
-          }
-        },
-        "revision": {
-          "$ref": "#/definitions/AgentRevision"
-        },
-        "slideId": {
-          "type": "string"
-        },
-        "summary": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AgentRestTextSummary"
-          }
-        }
-      },
-      "required": [
-        "rests",
-        "revision",
-        "slideId",
-        "summary"
-      ],
-      "additionalProperties": false
-    },
     "AgentSlideResult": {
       "type": "object",
       "properties": {
@@ -10537,6 +10334,133 @@
         "top"
       ],
       "description": "slide (the default) as the audience sees it; top or left for the slide's 3D content from above, the audience at the bottom, or from the slide's left, the audience on the right, with the slide's plane and its shadow catchers' planes drawn in and lines from the slide's corners toward its camera, to judge depth a front view hides. A slide with no 3D content has no top or side view."
+    },
+    "AgentSlideWait": {
+      "type": "object",
+      "properties": {
+        "after": {
+          "type": "string",
+          "description": "`entry` for the wait as the slide has appeared, or the step that leads the click it follows."
+        },
+        "before": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The step that leads the click that ends it; null after the last."
+        },
+        "hold": {
+          "$ref": "#/definitions/AgentWaitHold",
+          "description": "Why the slide's 3D holds still at the wait while something in it would move on, as the slide's warning says, whatever its 2D does."
+        },
+        "motion": {
+          "type": "string",
+          "enum": [
+            "loop",
+            "still"
+          ],
+          "description": "`still` holds; `loop` repeats every `period` seconds."
+        },
+        "period": {
+          "type": "number"
+        },
+        "samples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "models": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/AgentModelMeasure"
+                }
+              },
+              "time": {
+                "type": "number"
+              },
+              "visibility": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "models",
+              "time",
+              "visibility"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Each moment measured, `time` seconds into the wait: how much of each object draws, 0 to 1, its opacity and its groups', 0 while hidden; and each model and 3D text's measures, as `slides_measure` gives them for a step."
+        },
+        "slideAge": {
+          "type": "number",
+          "description": "Seconds since the slide began to appear, as it settles."
+        }
+      },
+      "required": [
+        "after",
+        "before",
+        "motion",
+        "samples",
+        "slideAge"
+      ],
+      "additionalProperties": false,
+      "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops: the period of the 3D's loop, or of the 2D's while the 3D stands still, held or at rest. Where both loop at lengths of their own, the period is the 3D's, the 2D measured on its own clock."
+    },
+    "AgentSlideWaitsRequest": {
+      "type": "object",
+      "properties": {
+        "fps": {
+          "$ref": "#/definitions/AgentSampleRate",
+          "description": "Frames a second it samples over a wait that loops, 30 when omitted."
+        },
+        "slideId": {
+          "$ref": "#/definitions/AgentSlideId"
+        },
+        "waits": {
+          "type": "boolean",
+          "const": true,
+          "description": "Measure the slide at every wait for a click its show makes instead of a step; omit stepId, from and to."
+        }
+      },
+      "required": [
+        "slideId",
+        "waits"
+      ],
+      "additionalProperties": false,
+      "description": "A slide measured at each wait for a click its show makes, in place of a step's range: over a wait that loops, `fps` frames a second, 30 when omitted."
+    },
+    "AgentSlideWaitsResult": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "$ref": "#/definitions/AgentRevision"
+        },
+        "slideId": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentWaitTextSummary"
+          }
+        },
+        "waits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentSlideWait"
+          }
+        }
+      },
+      "required": [
+        "revision",
+        "slideId",
+        "summary",
+        "waits"
+      ],
+      "additionalProperties": false
     },
     "AgentSlidesResizeRequest": {
       "type": "object",
@@ -11734,6 +11658,82 @@
         "to"
       ],
       "description": "A tween's change in the file's words."
+    },
+    "AgentWaitHold": {
+      "$ref": "#/definitions/PresentationRestHold",
+      "description": "What moves on at a wait in a way no video of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
+    },
+    "AgentWaitTextSummary": {
+      "type": "object",
+      "properties": {
+        "covered": {
+          "type": "number"
+        },
+        "model": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "shadow": {
+          "type": "object",
+          "properties": {
+            "model": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "shadowed": {
+              "type": "number"
+            },
+            "time": {
+              "type": [
+                "null",
+                "number"
+              ]
+            },
+            "waitIndex": {
+              "type": [
+                "null",
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "model",
+            "shadowed",
+            "time",
+            "waitIndex"
+          ],
+          "additionalProperties": false
+        },
+        "text": {
+          "type": "string"
+        },
+        "time": {
+          "type": [
+            "null",
+            "number"
+          ]
+        },
+        "waitIndex": {
+          "type": [
+            "null",
+            "number"
+          ]
+        }
+      },
+      "required": [
+        "covered",
+        "model",
+        "shadow",
+        "text",
+        "time",
+        "waitIndex"
+      ],
+      "additionalProperties": false,
+      "description": "The most any model covers a text at the slide's waits, as a sample's `covered` says, and its shadow does, and where: `waitIndex` is the wait's place in `waits`. Counted only while both draw."
     },
     "AgentWalkSpeed": {
       "type": "object",

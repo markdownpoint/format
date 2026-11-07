@@ -9216,7 +9216,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Measure a step’s 3D content over a range of its time, or with rests: true the slide at every rest its show makes, from the geometry the page samples. For each model and 3D text at each time: its bounds on the slide and its shadows’, how much of each text’s box its silhouette and its shadow cover, and how far its lowest point stands above the slide’s floor, its highest floor object. A model covers flat words where its silhouette falls on their box through the camera, whichever of them draws in front, and 3D words only where it draws in front of their letters. A shadow covers a text where it falls on its box. A shadow here is the sharp outline its parts cast on each catcher. A render shows what is seen. Over the range: for a model with an in-place walk, how fast its planted feet slide against its body’s travel, and the speed each walk travels at its size, at which its feet hold; and for each text, the most it is covered and shadowed, and when. Numbers decide what a picture misjudges: a model landing beside words, feet sliding, a shadow over a headline. With rests: true in place of stepId and a range: the slide at every rest its show makes, where it holds until the next click. That is as it has appeared when its first click waits, after each click once that click’s steps, their with and after members, its Actions and the camera’s drift have ended, and after the last. A rest that loops is measured over one period, fps times a second, 30 when omitted: its 3D’s loop, or its 2D’s while the 3D stands still; where both loop at lengths of their own, the 2D on its own clock over the 3D’s period. A rest where the show holds the 3D still while something in it would move on gives its hold, the cause and the objects to change, as the slide’s warning does: fix it, or the show freezes the 3D there. Each sample adds how much of each object draws, 0 to 1, its opacity and its groups’, 0 while hidden; and for each text, the most a drawn model covers it while it draws, and at which rest. At most 120 samples. Nothing changes.",
+      "description": "Measure a step’s 3D content over a range of its time, or with waits: true the slide at every wait for a click its show makes, from the geometry the page samples. For each model and 3D text at each time: its bounds on the slide and its shadows’, how much of each text’s box its silhouette and its shadow cover, and how far its lowest point stands above the slide’s floor, its highest floor object. A model covers flat words where its silhouette falls on their box through the camera, whichever of them draws in front, and 3D words only where it draws in front of their letters. A shadow covers a text where it falls on its box. A shadow here is the sharp outline its parts cast on each catcher. A render shows what is seen. Over the range: for a model with an in-place walk, how fast its planted feet slide against its body’s travel, and the speed each walk travels at its size, at which its feet hold; and for each text, the most it is covered and shadowed, and when. Numbers decide what a picture misjudges: a model landing beside words, feet sliding, a shadow over a headline. With waits: true in place of stepId and a range: the slide at every wait for a click its show makes, where it holds until the next click. That is as it has appeared when its first click waits, after each click once that click’s steps, their with and after members, its Actions and the camera’s drift have ended, and after the last. A wait that loops is measured over one period, fps times a second, 30 when omitted: its 3D’s loop, or its 2D’s while the 3D stands still; where both loop at lengths of their own, the 2D on its own clock over the 3D’s period. A wait where the show holds the 3D still while something in it would move on gives its hold, the cause and the objects to change, as the slide’s warning does: fix it, or the show freezes the 3D there. Each sample adds how much of each object draws, 0 to 1, its opacity and its groups’, 0 while hidden; and for each text, the most a drawn model covers it while it draws, and at which wait. At most 120 samples. Nothing changes.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -9224,18 +9224,18 @@
             "type": "number",
             "minimum": 1,
             "maximum": 60,
-            "description": "Frames a second it samples over a rest that loops, 30 when omitted. Frames a second it samples over a step, 10 when omitted."
-          },
-          "rests": {
-            "type": "boolean",
-            "enum": [
-              true
-            ],
-            "description": "Measure the slide at every rest its show makes instead of a step; omit stepId, from and to."
+            "description": "Frames a second it samples over a wait that loops, 30 when omitted. Frames a second it samples over a step, 10 when omitted."
           },
           "slideId": {
             "type": "string",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
+          },
+          "waits": {
+            "type": "boolean",
+            "enum": [
+              true
+            ],
+            "description": "Measure the slide at every wait for a click its show makes instead of a step; omit stepId, from and to."
           },
           "from": {
             "minimum": 0,
@@ -9270,7 +9270,7 @@
             "$ref": "#/definitions/AgentSlideMeasureResult"
           },
           {
-            "$ref": "#/definitions/AgentSlideRestsResult"
+            "$ref": "#/definitions/AgentSlideWaitsResult"
           }
         ],
         "type": "object",
@@ -9361,82 +9361,6 @@
             "additionalProperties": false,
             "description": "A model at one time: its bounds and its shadows' on the slide, what it covers of each text, and its gap to the floor."
           },
-          "AgentRestHold": {
-            "$ref": "#/definitions/PresentationRestHold",
-            "description": "What moves on at a rest in a way no video of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
-          },
-          "AgentRestTextSummary": {
-            "type": "object",
-            "properties": {
-              "covered": {
-                "type": "number"
-              },
-              "model": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "rest": {
-                "type": [
-                  "null",
-                  "number"
-                ]
-              },
-              "shadow": {
-                "type": "object",
-                "properties": {
-                  "model": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "rest": {
-                    "type": [
-                      "null",
-                      "number"
-                    ]
-                  },
-                  "shadowed": {
-                    "type": "number"
-                  },
-                  "time": {
-                    "type": [
-                      "null",
-                      "number"
-                    ]
-                  }
-                },
-                "required": [
-                  "model",
-                  "rest",
-                  "shadowed",
-                  "time"
-                ],
-                "additionalProperties": false
-              },
-              "text": {
-                "type": "string"
-              },
-              "time": {
-                "type": [
-                  "null",
-                  "number"
-                ]
-              }
-            },
-            "required": [
-              "covered",
-              "model",
-              "rest",
-              "shadow",
-              "text",
-              "time"
-            ],
-            "additionalProperties": false,
-            "description": "The most any model covers a text at the slide's rests, as a sample's `covered` says, and its shadow does, and where: counted only while both draw."
-          },
           "AgentRevision": {
             "type": "string",
             "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
@@ -9505,12 +9429,12 @@
             ],
             "additionalProperties": false
           },
-          "AgentSlideRest": {
+          "AgentSlideWait": {
             "type": "object",
             "properties": {
               "after": {
                 "type": "string",
-                "description": "`entry` for the rest as the slide has appeared, or the step that leads the click it follows."
+                "description": "`entry` for the wait as the slide has appeared, or the step that leads the click it follows."
               },
               "before": {
                 "type": [
@@ -9520,8 +9444,8 @@
                 "description": "The step that leads the click that ends it; null after the last."
               },
               "hold": {
-                "$ref": "#/definitions/AgentRestHold",
-                "description": "Why the slide's 3D holds still at the rest while something in it would move on, as the slide's warning says, whatever its 2D does."
+                "$ref": "#/definitions/AgentWaitHold",
+                "description": "Why the slide's 3D holds still at the wait while something in it would move on, as the slide's warning says, whatever its 2D does."
               },
               "motion": {
                 "type": "string",
@@ -9562,7 +9486,7 @@
                   ],
                   "additionalProperties": false
                 },
-                "description": "Each moment measured, `time` seconds into the rest: how much of each object draws, 0 to 1, its opacity and its groups', 0 while hidden; and each model and 3D text's measures, as `slides_measure` gives them for a step."
+                "description": "Each moment measured, `time` seconds into the wait: how much of each object draws, 0 to 1, its opacity and its groups', 0 while hidden; and each model and 3D text's measures, as `slides_measure` gives them for a step."
               },
               "slideAge": {
                 "type": "number",
@@ -9579,15 +9503,9 @@
             "additionalProperties": false,
             "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops: the period of the 3D's loop, or of the 2D's while the 3D stands still, held or at rest. Where both loop at lengths of their own, the period is the 3D's, the 2D measured on its own clock."
           },
-          "AgentSlideRestsResult": {
+          "AgentSlideWaitsResult": {
             "type": "object",
             "properties": {
-              "rests": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/AgentSlideRest"
-                }
-              },
               "revision": {
                 "$ref": "#/definitions/AgentRevision"
               },
@@ -9597,15 +9515,21 @@
               "summary": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/definitions/AgentRestTextSummary"
+                  "$ref": "#/definitions/AgentWaitTextSummary"
+                }
+              },
+              "waits": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/AgentSlideWait"
                 }
               }
             },
             "required": [
-              "rests",
               "revision",
               "slideId",
-              "summary"
+              "summary",
+              "waits"
             ],
             "additionalProperties": false
           },
@@ -9715,6 +9639,82 @@
             ],
             "additionalProperties": false,
             "description": "The most any model covers a text and its shadow does, when and which, and the spans of time either is on it."
+          },
+          "AgentWaitHold": {
+            "$ref": "#/definitions/PresentationRestHold",
+            "description": "What moves on at a wait in a way no video of a show repeats, so its 3D holds still until the next click: wait loops (`waits`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
+          },
+          "AgentWaitTextSummary": {
+            "type": "object",
+            "properties": {
+              "covered": {
+                "type": "number"
+              },
+              "model": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "shadow": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "shadowed": {
+                    "type": "number"
+                  },
+                  "time": {
+                    "type": [
+                      "null",
+                      "number"
+                    ]
+                  },
+                  "waitIndex": {
+                    "type": [
+                      "null",
+                      "number"
+                    ]
+                  }
+                },
+                "required": [
+                  "model",
+                  "shadowed",
+                  "time",
+                  "waitIndex"
+                ],
+                "additionalProperties": false
+              },
+              "text": {
+                "type": "string"
+              },
+              "time": {
+                "type": [
+                  "null",
+                  "number"
+                ]
+              },
+              "waitIndex": {
+                "type": [
+                  "null",
+                  "number"
+                ]
+              }
+            },
+            "required": [
+              "covered",
+              "model",
+              "shadow",
+              "text",
+              "time",
+              "waitIndex"
+            ],
+            "additionalProperties": false,
+            "description": "The most any model covers a text at the slide's waits, as a sample's `covered` says, and its shadow does, and where: `waitIndex` is the wait's place in `waits`. Counted only while both draw."
           },
           "AgentWalkSpeed": {
             "type": "object",
@@ -13005,7 +13005,7 @@
                   "regenerate"
                 ]
               },
-              "aspect-ratio": {
+              "aspectRatio": {
                 "type": "string"
               },
               "model": {
@@ -13035,7 +13035,7 @@
             },
             "required": [
               "action",
-              "aspect-ratio",
+              "aspectRatio",
               "model",
               "provider",
               "requiresProvider",
