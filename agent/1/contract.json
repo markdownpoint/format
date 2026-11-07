@@ -1514,8 +1514,11 @@
       "type": "object",
       "properties": {
         "dropped": {
-          "type": "number",
-          "description": "Frames that came late: intervals over one and a half of the display's usual interval."
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "The display frames the playback missed, at the refresh rate of the display the show is on: each interval's refresh periods, rounded to whole ones, past the first. Null when that display gives no refresh rate."
         },
         "frames": {
           "type": "number"
