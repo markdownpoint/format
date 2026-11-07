@@ -2486,16 +2486,551 @@
                       "$ref": "#/definitions/objects-web-video"
                     },
                     {
-                      "$ref": "#/definitions/objects-model"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "type": {
+                          "const": "model"
+                        },
+                        "name": {
+                          "$ref": "#/definitions/one-line"
+                        },
+                        "parent": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "file": {
+                          "type": "string",
+                          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
+                          "description": "a normalized relative file path"
+                        },
+                        "position": {
+                          "$ref": "#/definitions/space-position"
+                        },
+                        "rotation": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/space-euler"
+                            },
+                            {
+                              "$ref": "#/definitions/space-quaternion"
+                            }
+                          ]
+                        },
+                        "rotation-mode": {
+                          "const": "quaternion"
+                        },
+                        "scale": {
+                          "$ref": "#/definitions/space-scale"
+                        },
+                        "locked": {
+                          "type": "boolean"
+                        },
+                        "visible": {
+                          "type": "boolean"
+                        },
+                        "opacity": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "alt": {
+                          "type": "string",
+                          "pattern": "^[^\\r\\n]*(?![\\s\\S])",
+                          "description": "one line"
+                        },
+                        "parent-node": {
+                          "$ref": "#/definitions/model-node-name"
+                        },
+                        "parent-inverse": {
+                          "$ref": "#/definitions/parent-inverse"
+                        },
+                        "decorative": {
+                          "type": "boolean"
+                        },
+                        "cast-shadow": {
+                          "type": "boolean"
+                        },
+                        "constraints": {
+                          "$ref": "#/definitions/constraints"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "file",
+                        "position"
+                      ],
+                      "dependencies": {
+                        "parent-node": [
+                          "parent"
+                        ],
+                        "parent-inverse": [
+                          "parent"
+                        ]
+                      },
+                      "additionalProperties": false
                     },
                     {
-                      "$ref": "#/definitions/objects-light"
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "type": {
+                              "const": "light"
+                            },
+                            "name": {
+                              "$ref": "#/definitions/one-line"
+                            },
+                            "parent": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "position": {
+                              "$ref": "#/definitions/space-position"
+                            },
+                            "rotation": {
+                              "$ref": "#/definitions/rotation"
+                            },
+                            "rotation-mode": {
+                              "const": "quaternion"
+                            },
+                            "scale": {
+                              "$ref": "#/definitions/space-scale"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "visible": {
+                              "type": "boolean"
+                            },
+                            "color": {
+                              "$ref": "#/definitions/color"
+                            },
+                            "parent-node": {
+                              "$ref": "#/definitions/model-node-name"
+                            },
+                            "parent-inverse": {
+                              "$ref": "#/definitions/parent-inverse"
+                            },
+                            "target": {
+                              "$ref": "#/definitions/target"
+                            },
+                            "cast-shadow": {
+                              "type": "boolean"
+                            },
+                            "light-type": {
+                              "const": "directional"
+                            },
+                            "intensity": {
+                              "type": "number",
+                              "minimum": 0
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "position",
+                            "light-type"
+                          ],
+                          "dependencies": {
+                            "parent-node": [
+                              "parent"
+                            ],
+                            "parent-inverse": [
+                              "parent"
+                            ]
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "type": {
+                              "const": "light"
+                            },
+                            "name": {
+                              "$ref": "#/definitions/one-line"
+                            },
+                            "parent": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "position": {
+                              "$ref": "#/definitions/space-position"
+                            },
+                            "rotation": {
+                              "$ref": "#/definitions/rotation"
+                            },
+                            "rotation-mode": {
+                              "const": "quaternion"
+                            },
+                            "scale": {
+                              "$ref": "#/definitions/space-scale"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "visible": {
+                              "type": "boolean"
+                            },
+                            "color": {
+                              "$ref": "#/definitions/color"
+                            },
+                            "parent-node": {
+                              "$ref": "#/definitions/model-node-name"
+                            },
+                            "parent-inverse": {
+                              "$ref": "#/definitions/parent-inverse"
+                            },
+                            "target": {
+                              "$ref": "#/definitions/target"
+                            },
+                            "cast-shadow": {
+                              "type": "boolean"
+                            },
+                            "light-type": {
+                              "const": "spot"
+                            },
+                            "intensity": {
+                              "type": "number",
+                              "minimum": 0,
+                              "description": "watts"
+                            },
+                            "cone-angle": {
+                              "type": "number",
+                              "minimum": 0.000001,
+                              "maximum": 179.999999,
+                              "description": "degrees"
+                            },
+                            "falloff-angle": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 90,
+                              "description": "degrees"
+                            },
+                            "radius": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000000000000000000,
+                              "description": "canvas units"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "position",
+                            "light-type",
+                            "intensity"
+                          ],
+                          "dependencies": {
+                            "parent-node": [
+                              "parent"
+                            ],
+                            "parent-inverse": [
+                              "parent"
+                            ]
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "type": {
+                              "const": "light"
+                            },
+                            "name": {
+                              "$ref": "#/definitions/one-line"
+                            },
+                            "parent": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "position": {
+                              "$ref": "#/definitions/space-position"
+                            },
+                            "rotation": {
+                              "$ref": "#/definitions/rotation"
+                            },
+                            "rotation-mode": {
+                              "const": "quaternion"
+                            },
+                            "scale": {
+                              "$ref": "#/definitions/space-scale"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "visible": {
+                              "type": "boolean"
+                            },
+                            "color": {
+                              "$ref": "#/definitions/color"
+                            },
+                            "parent-node": {
+                              "$ref": "#/definitions/model-node-name"
+                            },
+                            "parent-inverse": {
+                              "$ref": "#/definitions/parent-inverse"
+                            },
+                            "cast-shadow": {
+                              "type": "boolean"
+                            },
+                            "light-type": {
+                              "const": "point"
+                            },
+                            "intensity": {
+                              "type": "number",
+                              "minimum": 0,
+                              "description": "watts"
+                            },
+                            "radius": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000000000000000000,
+                              "description": "canvas units"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "position",
+                            "light-type",
+                            "intensity"
+                          ],
+                          "dependencies": {
+                            "parent-node": [
+                              "parent"
+                            ],
+                            "parent-inverse": [
+                              "parent"
+                            ]
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "type": {
+                              "const": "light"
+                            },
+                            "name": {
+                              "$ref": "#/definitions/one-line"
+                            },
+                            "parent": {
+                              "$ref": "#/definitions/object-id"
+                            },
+                            "position": {
+                              "$ref": "#/definitions/space-position"
+                            },
+                            "rotation": {
+                              "$ref": "#/definitions/rotation"
+                            },
+                            "rotation-mode": {
+                              "const": "quaternion"
+                            },
+                            "scale": {
+                              "$ref": "#/definitions/space-scale"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "visible": {
+                              "type": "boolean"
+                            },
+                            "color": {
+                              "$ref": "#/definitions/color"
+                            },
+                            "parent-node": {
+                              "$ref": "#/definitions/model-node-name"
+                            },
+                            "parent-inverse": {
+                              "$ref": "#/definitions/parent-inverse"
+                            },
+                            "shape": {
+                              "enum": [
+                                "rectangle",
+                                "disk"
+                              ]
+                            },
+                            "target": {
+                              "$ref": "#/definitions/target"
+                            },
+                            "cast-shadow": {
+                              "type": "boolean"
+                            },
+                            "light-type": {
+                              "const": "area"
+                            },
+                            "intensity": {
+                              "type": "number",
+                              "minimum": 0,
+                              "description": "watts"
+                            },
+                            "size-x": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000000000000000000,
+                              "description": "canvas units"
+                            },
+                            "size-y": {
+                              "type": "number",
+                              "minimum": 1,
+                              "maximum": 1000000000000000000,
+                              "description": "canvas units"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "type",
+                            "position",
+                            "light-type",
+                            "intensity"
+                          ],
+                          "dependencies": {
+                            "parent-node": [
+                              "parent"
+                            ],
+                            "parent-inverse": [
+                              "parent"
+                            ]
+                          },
+                          "additionalProperties": false
+                        }
+                      ]
                     },
                     {
-                      "$ref": "#/definitions/objects-shadow-catcher"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "type": {
+                          "const": "shadow-catcher"
+                        },
+                        "name": {
+                          "$ref": "#/definitions/one-line"
+                        },
+                        "parent": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "position": {
+                          "$ref": "#/definitions/space-position"
+                        },
+                        "rotation": {
+                          "anyOf": [
+                            {
+                              "$ref": "#/definitions/space-euler"
+                            },
+                            {
+                              "$ref": "#/definitions/space-quaternion"
+                            }
+                          ]
+                        },
+                        "rotation-mode": {
+                          "const": "quaternion"
+                        },
+                        "locked": {
+                          "type": "boolean"
+                        },
+                        "visible": {
+                          "type": "boolean"
+                        },
+                        "opacity": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "parent-node": {
+                          "$ref": "#/definitions/model-node-name"
+                        },
+                        "parent-inverse": {
+                          "$ref": "#/definitions/parent-inverse"
+                        },
+                        "shadow-color": {
+                          "$ref": "#/definitions/color"
+                        },
+                        "width": {
+                          "type": "number",
+                          "minimum": 0.000001,
+                          "maximum": 1000000000000000000,
+                          "description": "canvas units"
+                        },
+                        "height": {
+                          "type": "number",
+                          "minimum": 0.000001,
+                          "maximum": 1000000000000000000,
+                          "description": "canvas units"
+                        },
+                        "orientation": {
+                          "enum": [
+                            "y",
+                            "z"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "position",
+                        "width",
+                        "height"
+                      ],
+                      "dependencies": {
+                        "parent-node": [
+                          "parent"
+                        ],
+                        "parent-inverse": [
+                          "parent"
+                        ]
+                      },
+                      "additionalProperties": false
                     },
                     {
-                      "$ref": "#/definitions/objects-floor"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "type": {
+                          "const": "floor"
+                        },
+                        "name": {
+                          "$ref": "#/definitions/one-line"
+                        },
+                        "position": {
+                          "$ref": "#/definitions/floor-position"
+                        },
+                        "locked": {
+                          "type": "boolean"
+                        },
+                        "visible": {
+                          "type": "boolean"
+                        },
+                        "opacity": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "shadow-color": {
+                          "$ref": "#/definitions/color"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type"
+                      ],
+                      "additionalProperties": false
                     }
                   ]
                 }
@@ -2756,22 +3291,10 @@
                 },
                 {
                   "$ref": "#/definitions/objects-web-video"
-                },
-                {
-                  "$ref": "#/definitions/objects-model"
-                },
-                {
-                  "$ref": "#/definitions/objects-light"
-                },
-                {
-                  "$ref": "#/definitions/objects-shadow-catcher"
-                },
-                {
-                  "$ref": "#/definitions/objects-floor"
                 }
               ]
             },
-            "description": "Its objects, back to front."
+            "description": "Its objects, back to front. A composition can't hold a model, a light, a shadow catcher, a floor, a camera, the World, or a text with a `model`."
           },
           "initial": {
             "allOf": [
@@ -4474,42 +4997,6 @@
       ],
       "additionalProperties": false
     },
-    "objects-floor": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "floor"
-        },
-        "name": {
-          "$ref": "#/definitions/one-line"
-        },
-        "position": {
-          "$ref": "#/definitions/floor-position"
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "visible": {
-          "type": "boolean"
-        },
-        "opacity": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "shadow-color": {
-          "$ref": "#/definitions/color"
-        }
-      },
-      "required": [
-        "id",
-        "type"
-      ],
-      "additionalProperties": false
-    },
     "objects-group": {
       "type": "object",
       "properties": {
@@ -4937,343 +5424,6 @@
       ],
       "additionalProperties": false
     },
-    "objects-light": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "$ref": "#/definitions/object-id"
-            },
-            "type": {
-              "const": "light"
-            },
-            "name": {
-              "$ref": "#/definitions/one-line"
-            },
-            "parent": {
-              "$ref": "#/definitions/object-id"
-            },
-            "position": {
-              "$ref": "#/definitions/space-position"
-            },
-            "rotation": {
-              "$ref": "#/definitions/rotation"
-            },
-            "rotation-mode": {
-              "const": "quaternion"
-            },
-            "scale": {
-              "$ref": "#/definitions/space-scale"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "visible": {
-              "type": "boolean"
-            },
-            "color": {
-              "$ref": "#/definitions/color"
-            },
-            "parent-node": {
-              "$ref": "#/definitions/model-node-name"
-            },
-            "parent-inverse": {
-              "$ref": "#/definitions/parent-inverse"
-            },
-            "target": {
-              "$ref": "#/definitions/target"
-            },
-            "cast-shadow": {
-              "type": "boolean"
-            },
-            "light-type": {
-              "const": "directional"
-            },
-            "intensity": {
-              "type": "number",
-              "minimum": 0
-            }
-          },
-          "required": [
-            "id",
-            "type",
-            "position",
-            "light-type"
-          ],
-          "dependencies": {
-            "parent-node": [
-              "parent"
-            ],
-            "parent-inverse": [
-              "parent"
-            ]
-          },
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "$ref": "#/definitions/object-id"
-            },
-            "type": {
-              "const": "light"
-            },
-            "name": {
-              "$ref": "#/definitions/one-line"
-            },
-            "parent": {
-              "$ref": "#/definitions/object-id"
-            },
-            "position": {
-              "$ref": "#/definitions/space-position"
-            },
-            "rotation": {
-              "$ref": "#/definitions/rotation"
-            },
-            "rotation-mode": {
-              "const": "quaternion"
-            },
-            "scale": {
-              "$ref": "#/definitions/space-scale"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "visible": {
-              "type": "boolean"
-            },
-            "color": {
-              "$ref": "#/definitions/color"
-            },
-            "parent-node": {
-              "$ref": "#/definitions/model-node-name"
-            },
-            "parent-inverse": {
-              "$ref": "#/definitions/parent-inverse"
-            },
-            "target": {
-              "$ref": "#/definitions/target"
-            },
-            "cast-shadow": {
-              "type": "boolean"
-            },
-            "light-type": {
-              "const": "spot"
-            },
-            "intensity": {
-              "type": "number",
-              "minimum": 0,
-              "description": "watts"
-            },
-            "cone-angle": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 179.999999,
-              "description": "degrees"
-            },
-            "falloff-angle": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 90,
-              "description": "degrees"
-            },
-            "radius": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 1000000000000000000,
-              "description": "canvas units"
-            }
-          },
-          "required": [
-            "id",
-            "type",
-            "position",
-            "light-type",
-            "intensity"
-          ],
-          "dependencies": {
-            "parent-node": [
-              "parent"
-            ],
-            "parent-inverse": [
-              "parent"
-            ]
-          },
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "$ref": "#/definitions/object-id"
-            },
-            "type": {
-              "const": "light"
-            },
-            "name": {
-              "$ref": "#/definitions/one-line"
-            },
-            "parent": {
-              "$ref": "#/definitions/object-id"
-            },
-            "position": {
-              "$ref": "#/definitions/space-position"
-            },
-            "rotation": {
-              "$ref": "#/definitions/rotation"
-            },
-            "rotation-mode": {
-              "const": "quaternion"
-            },
-            "scale": {
-              "$ref": "#/definitions/space-scale"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "visible": {
-              "type": "boolean"
-            },
-            "color": {
-              "$ref": "#/definitions/color"
-            },
-            "parent-node": {
-              "$ref": "#/definitions/model-node-name"
-            },
-            "parent-inverse": {
-              "$ref": "#/definitions/parent-inverse"
-            },
-            "cast-shadow": {
-              "type": "boolean"
-            },
-            "light-type": {
-              "const": "point"
-            },
-            "intensity": {
-              "type": "number",
-              "minimum": 0,
-              "description": "watts"
-            },
-            "radius": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 1000000000000000000,
-              "description": "canvas units"
-            }
-          },
-          "required": [
-            "id",
-            "type",
-            "position",
-            "light-type",
-            "intensity"
-          ],
-          "dependencies": {
-            "parent-node": [
-              "parent"
-            ],
-            "parent-inverse": [
-              "parent"
-            ]
-          },
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "id": {
-              "$ref": "#/definitions/object-id"
-            },
-            "type": {
-              "const": "light"
-            },
-            "name": {
-              "$ref": "#/definitions/one-line"
-            },
-            "parent": {
-              "$ref": "#/definitions/object-id"
-            },
-            "position": {
-              "$ref": "#/definitions/space-position"
-            },
-            "rotation": {
-              "$ref": "#/definitions/rotation"
-            },
-            "rotation-mode": {
-              "const": "quaternion"
-            },
-            "scale": {
-              "$ref": "#/definitions/space-scale"
-            },
-            "locked": {
-              "type": "boolean"
-            },
-            "visible": {
-              "type": "boolean"
-            },
-            "color": {
-              "$ref": "#/definitions/color"
-            },
-            "parent-node": {
-              "$ref": "#/definitions/model-node-name"
-            },
-            "parent-inverse": {
-              "$ref": "#/definitions/parent-inverse"
-            },
-            "shape": {
-              "enum": [
-                "rectangle",
-                "disk"
-              ]
-            },
-            "target": {
-              "$ref": "#/definitions/target"
-            },
-            "cast-shadow": {
-              "type": "boolean"
-            },
-            "light-type": {
-              "const": "area"
-            },
-            "intensity": {
-              "type": "number",
-              "minimum": 0,
-              "description": "watts"
-            },
-            "size-x": {
-              "type": "number",
-              "minimum": 1,
-              "maximum": 1000000000000000000,
-              "description": "canvas units"
-            },
-            "size-y": {
-              "type": "number",
-              "minimum": 1,
-              "maximum": 1000000000000000000,
-              "description": "canvas units"
-            }
-          },
-          "required": [
-            "id",
-            "type",
-            "position",
-            "light-type",
-            "intensity"
-          ],
-          "dependencies": {
-            "parent-node": [
-              "parent"
-            ],
-            "parent-inverse": [
-              "parent"
-            ]
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
     "objects-line": {
       "type": "object",
       "properties": {
@@ -5414,93 +5564,6 @@
       ],
       "additionalProperties": false
     },
-    "objects-model": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "model"
-        },
-        "name": {
-          "$ref": "#/definitions/one-line"
-        },
-        "parent": {
-          "$ref": "#/definitions/object-id"
-        },
-        "file": {
-          "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-          "description": "a normalized relative file path"
-        },
-        "position": {
-          "$ref": "#/definitions/space-position"
-        },
-        "rotation": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/space-euler"
-            },
-            {
-              "$ref": "#/definitions/space-quaternion"
-            }
-          ]
-        },
-        "rotation-mode": {
-          "const": "quaternion"
-        },
-        "scale": {
-          "$ref": "#/definitions/space-scale"
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "visible": {
-          "type": "boolean"
-        },
-        "opacity": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "alt": {
-          "type": "string",
-          "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-          "description": "one line"
-        },
-        "parent-node": {
-          "$ref": "#/definitions/model-node-name"
-        },
-        "parent-inverse": {
-          "$ref": "#/definitions/parent-inverse"
-        },
-        "decorative": {
-          "type": "boolean"
-        },
-        "cast-shadow": {
-          "type": "boolean"
-        },
-        "constraints": {
-          "$ref": "#/definitions/constraints"
-        }
-      },
-      "required": [
-        "id",
-        "type",
-        "file",
-        "position"
-      ],
-      "dependencies": {
-        "parent-node": [
-          "parent"
-        ],
-        "parent-inverse": [
-          "parent"
-        ]
-      },
-      "additionalProperties": false
-    },
     "objects-path": {
       "type": "object",
       "properties": {
@@ -5637,93 +5700,6 @@
         "frame",
         "geometry"
       ],
-      "additionalProperties": false
-    },
-    "objects-shadow-catcher": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "shadow-catcher"
-        },
-        "name": {
-          "$ref": "#/definitions/one-line"
-        },
-        "parent": {
-          "$ref": "#/definitions/object-id"
-        },
-        "position": {
-          "$ref": "#/definitions/space-position"
-        },
-        "rotation": {
-          "anyOf": [
-            {
-              "$ref": "#/definitions/space-euler"
-            },
-            {
-              "$ref": "#/definitions/space-quaternion"
-            }
-          ]
-        },
-        "rotation-mode": {
-          "const": "quaternion"
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "visible": {
-          "type": "boolean"
-        },
-        "opacity": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "parent-node": {
-          "$ref": "#/definitions/model-node-name"
-        },
-        "parent-inverse": {
-          "$ref": "#/definitions/parent-inverse"
-        },
-        "shadow-color": {
-          "$ref": "#/definitions/color"
-        },
-        "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "orientation": {
-          "enum": [
-            "y",
-            "z"
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "type",
-        "position",
-        "width",
-        "height"
-      ],
-      "dependencies": {
-        "parent-node": [
-          "parent"
-        ],
-        "parent-inverse": [
-          "parent"
-        ]
-      },
       "additionalProperties": false
     },
     "objects-shape": {
