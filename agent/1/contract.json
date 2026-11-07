@@ -8618,7 +8618,7 @@
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
               "description": "a composition’s id"
             },
-            "inputs": {
+            "controls": {
               "type": "object",
               "propertyNames": {
                 "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
@@ -12148,7 +12148,7 @@
       "type": "object",
       "properties": {
         "default": {
-          "$ref": "#/definitions/CompositionInputValue"
+          "$ref": "#/definitions/CompositionControlValue"
         },
         "max": {
           "type": "number"
@@ -12185,23 +12185,23 @@
         "text"
       ]
     },
-    "CompositionControls": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/CompositionControl"
-      }
-    },
-    "CompositionInputValue": {
+    "CompositionControlValue": {
       "type": [
         "boolean",
         "number",
         "string"
       ]
     },
-    "CompositionInputValues": {
+    "CompositionControlValues": {
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/definitions/CompositionInputValue"
+        "$ref": "#/definitions/CompositionControlValue"
+      }
+    },
+    "CompositionControls": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/CompositionControl"
       }
     },
     "ConstraintSource": {
@@ -13166,14 +13166,14 @@
         "composition": {
           "type": "string"
         },
+        "controls": {
+          "$ref": "#/definitions/CompositionControlValues"
+        },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
           "type": "boolean"
-        },
-        "inputs": {
-          "$ref": "#/definitions/CompositionInputValues"
         },
         "link": {
           "type": "string"
@@ -15428,6 +15428,7 @@
         "constrain-proportions",
         "constraints",
         "contrast",
+        "controls",
         "corner-radius",
         "crop",
         "decorative",
@@ -15457,7 +15458,6 @@
         "ignore-auto-layout",
         "image-result",
         "image-style",
-        "inputs",
         "inset",
         "inset-bottom",
         "inset-top",
@@ -15771,14 +15771,14 @@
         "composition": {
           "type": "string"
         },
+        "controls": {
+          "$ref": "#/definitions/CompositionControlValues"
+        },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
           "type": "boolean"
-        },
-        "inputs": {
-          "$ref": "#/definitions/CompositionInputValues"
         },
         "link": {
           "type": "string"

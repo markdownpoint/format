@@ -1750,13 +1750,13 @@
                         }
                       ]
                     },
-                    "inputs": {
+                    "controls": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/composition-input-values"
+                          "$ref": "#/definitions/composition-control-values"
                         }
                       ]
                     },
@@ -3207,7 +3207,7 @@
         "description": "one line with one space between words, none at the start or end, and no \"-->\""
       }
     },
-    "composition-input-values": {
+    "composition-control-values": {
       "type": "object",
       "propertyNames": {
         "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
@@ -4453,8 +4453,8 @@
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "description": "a composition’s id"
         },
-        "inputs": {
-          "$ref": "#/definitions/composition-input-values"
+        "controls": {
+          "$ref": "#/definitions/composition-control-values"
         },
         "time-remap": {
           "type": "number",

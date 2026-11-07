@@ -3192,14 +3192,14 @@
         "composition": {
           "$ref": "#/definitions/Prop_composition"
         },
+        "controls": {
+          "$ref": "#/definitions/Prop_controls"
+        },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
-        },
-        "inputs": {
-          "$ref": "#/definitions/Prop_inputs"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
@@ -7913,12 +7913,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "inputs"
+              "const": "controls"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_inputs"
+                  "$ref": "#/definitions/Prop_controls"
                 },
                 {
                   "type": "null"
@@ -8672,6 +8672,7 @@
         "constrain-proportions",
         "constraints",
         "contrast",
+        "controls",
         "corner-radius",
         "crop",
         "decorative",
@@ -8701,7 +8702,6 @@
         "ignore-auto-layout",
         "image-result",
         "image-style",
-        "inputs",
         "inset",
         "inset-bottom",
         "inset-top",
@@ -8945,14 +8945,14 @@
         "composition": {
           "$ref": "#/definitions/Prop_composition"
         },
+        "controls": {
+          "$ref": "#/definitions/Prop_controls"
+        },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
-        },
-        "inputs": {
-          "$ref": "#/definitions/Prop_inputs"
         },
         "link": {
           "$ref": "#/definitions/Prop_link"
@@ -16236,7 +16236,7 @@
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "a composition’s id"
     },
-    "Prop_inputs": {
+    "Prop_controls": {
       "type": "object",
       "propertyNames": {
         "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",

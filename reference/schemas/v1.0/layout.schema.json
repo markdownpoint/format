@@ -1526,7 +1526,7 @@
                   }
                 ]
               },
-              "inputs": {
+              "controls": {
                 "anyOf": [
                   {
                     "type": "null"
