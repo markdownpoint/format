@@ -11472,7 +11472,7 @@
     "PresentationAnimationTargetSource": {
       "type": "object",
       "properties": {
-        "objectId": {
+        "object": {
           "type": "string"
         },
         "parameter": {
@@ -11480,10 +11480,11 @@
         }
       },
       "required": [
-        "objectId",
+        "object",
         "parameter"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "A curve's target as the file names it: its object's id is `object`."
     },
     "PresentationAnimationValueSource": {
       "anyOf": [
