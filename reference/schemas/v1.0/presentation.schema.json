@@ -154,7 +154,7 @@
           "$ref": "#/definitions/image-style-or-none"
         }
       ],
-      "description": "The style a generated image object is made in when it sets none of its own, as text, or `none` for no style. Left out, it's none."
+      "description": "The style a generated image object is made in when it sets none of its own, as text, or `none` for no style. Left out, it's none. A background takes its own instead."
     },
     "swatches": {
       "type": "array",
@@ -2199,7 +2199,7 @@
                                   "target": {
                                     "type": "string",
                                     "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                                    "description": "The id of the object the camera follows."
+                                    "description": "The id of the model or light the camera follows."
                                   },
                                   "target-node": {
                                     "allOf": [
@@ -2245,7 +2245,7 @@
                                       "response": {
                                         "type": "number",
                                         "minimum": 0.000001,
-                                        "description": "The seconds the spring rings at, above 0. A shorter response catches up sooner."
+                                        "description": "The spring's natural period. A shorter response catches up sooner."
                                       }
                                     },
                                     "required": [
@@ -3094,7 +3094,7 @@
               "$ref": "#/definitions/image-style-or-none"
             }
           ],
-          "description": "The style of a generated background image, as text, or `none` for no style. Left out, a slide takes the presentation's style, then MarkdownPoint's own."
+          "description": "The style of a generated background image, as text, or `none` for no style. Left out on a slide, it's the presentation's background's `image-style`, and left out there, MarkdownPoint's own."
         },
         "transparent": {
           "type": "boolean",
@@ -7139,7 +7139,7 @@
       "additionalProperties": false
     },
     "space-euler": {
-      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, each part divided by the quaternion's length as written, then read to six decimal places. A quaternion whose length as written is 0 is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, read the same way, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, each part divided by the quaternion's length as written, then read to six decimal places. A quaternion whose length as written is 0 is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, read the same way, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down, along their own −Z. Convert theirs as a model's, then turn it −90° about its own x, as Blender's glTF exporter does. As a quaternion, that's (w, x, z, −y) times (0.707107, −0.707107, 0, 0), with the second on the right. In degrees, when Blender's Y is 0, as it is for a level horizon, x is Blender's X minus 90, y is Blender's Z, and z is 0.",
       "type": "object",
       "properties": {
         "x": {
@@ -7199,7 +7199,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, each part divided by the quaternion's length as written, then read to six decimal places. A quaternion whose length as written is 0 is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, read the same way, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down. Turn theirs 90° about x first, then convert it as a model's.",
+      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, each part divided by the quaternion's length as written, then read to six decimal places. A quaternion whose length as written is 0 is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, read the same way, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down, along their own −Z. Convert theirs as a model's, then turn it −90° about its own x, as Blender's glTF exporter does. As a quaternion, that's (w, x, z, −y) times (0.707107, −0.707107, 0, 0), with the second on the right. In degrees, when Blender's Y is 0, as it is for a level horizon, x is Blender's X minus 90, y is Blender's Z, and z is 0.",
       "type": "object",
       "properties": {
         "w": {
@@ -7273,7 +7273,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Every time in a step, and in its keyframes and cues, is in seconds, rounded to six decimal places. Sums of times and the times shown are rounded the same way. A step has no delay of its own: a keyframe's start delays its move. A first step that starts by itself plays after the slide's transition, except under a scroll. A step that repeats plays alone on its click, and a file that breaks that reads with a warning, without the repeat. A step after one that loops while waiting starts when that step's first pass ends, and the loop plays on under it.",
+        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Every time in a step, and in its keyframes and cues, is in seconds, rounded to six decimal places. Sums of times and the times shown are rounded the same way. A step has no delay of its own: a keyframe's start delays its move. A first step that starts by itself plays after the slide's transition. A scroll plays the next slide's first step with it, whatever its start. A step that repeats plays alone on its click, and a file that breaks that reads with a warning, without the repeat. A step after one that loops while waiting starts when that step's first pass ends, and the loop plays on under it.",
         "type": "object",
         "properties": {
           "id": {
@@ -7294,7 +7294,7 @@
               "with",
               "after"
             ],
-            "description": "When the step starts: with the previous step, or after it ends. Left out, it waits for a click. A scroll plays the next slide's first step with it, whatever its start."
+            "description": "When the step starts: with the previous step, or after it ends. On the first step, either starts it when the slide's transition ends, except under a scroll. Left out, it waits for a click."
           },
           "duration": {
             "type": "number",
