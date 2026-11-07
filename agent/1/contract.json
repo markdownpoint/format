@@ -12566,8 +12566,7 @@
         "type": "number"
       },
       "minItems": 3,
-      "maxItems": 3,
-      "description": "A model's GLB, read as three.js draws it: every vertex posed through its node transforms, morph weights and skin, so the bounds core measures are where the renderer puts the model. Core reads plain glTF 2.0 geometry from a GLB's own BIN chunk. Import has already decompressed Draco and meshopt and packed every file in, so data that would still need a decoder or another file is refused rather than read as nothing."
+      "maxItems": 3
     },
     "GradientCenter": {
       "type": "object",
