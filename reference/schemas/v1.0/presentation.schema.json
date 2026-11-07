@@ -4223,6 +4223,7 @@
       "required": [
         "id",
         "type",
+        "file",
         "icon-position"
       ],
       "additionalProperties": false
@@ -6886,9 +6887,6 @@
           "type": "boolean"
         },
         "start-on-click": {
-          "type": "boolean"
-        },
-        "ignore-auto-layout": {
           "type": "boolean"
         },
         "stroke": {

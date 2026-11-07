@@ -3062,9 +3062,9 @@
         }
       },
       "required": [
+        "file",
         "icon-position",
-        "type",
-        "file"
+        "type"
       ],
       "additionalProperties": false
     },
@@ -5161,9 +5161,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "ignore-auto-layout": {
-          "$ref": "#/definitions/Boolean"
         },
         "locked": {
           "$ref": "#/definitions/Boolean"
@@ -8818,9 +8815,9 @@
         }
       },
       "required": [
+        "file",
         "icon-position",
-        "type",
-        "file"
+        "type"
       ],
       "additionalProperties": false
     },
@@ -10890,9 +10887,6 @@
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
-        },
-        "ignore-auto-layout": {
-          "$ref": "#/definitions/Boolean"
         },
         "locked": {
           "$ref": "#/definitions/Boolean"
