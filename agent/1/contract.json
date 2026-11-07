@@ -10430,8 +10430,11 @@
       "type": "object",
       "properties": {
         "after": {
-          "type": "string",
-          "description": "`entry` for the wait as the slide has appeared, or the step that leads the click it follows."
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The step that leads the click it follows; null for the wait as the slide has appeared."
         },
         "before": {
           "type": [
