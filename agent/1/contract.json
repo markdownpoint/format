@@ -15253,9 +15253,10 @@
           "additionalProperties": {
             "type": "object",
             "additionalProperties": {
-              "type": "string"
+              "$ref": "#/definitions/MasterTextStyleValue"
             }
-          }
+          },
+          "description": "Each mark's values, as the master file holds them."
         },
         "name": {
           "type": "string"
@@ -15263,9 +15264,9 @@
         "properties": {
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "$ref": "#/definitions/MasterTextStyleValue"
           },
-          "description": "Property values as authored, spelled as text (`\"1.05\"`, `\"text\"`, `\"upper\"`)."
+          "description": "Its own properties' values, as the master file holds them."
         }
       },
       "required": [
@@ -15371,6 +15372,13 @@
         }
       ],
       "description": "A guide as the file writes it: at `x` an upright line, at `y` a level one."
+    },
+    "MasterTextStyleValue": {
+      "type": [
+        "number",
+        "string"
+      ],
+      "description": "A text style's value as the master file holds it: a size, weight, measure or spacing as a number (`44`, `1.05`), a font role, case or bullet as its word, and a color as a role or a hex color."
     },
     "ObjectAnimationValueType": {
       "type": "string",
