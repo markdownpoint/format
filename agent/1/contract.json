@@ -2278,6 +2278,62 @@
       "additionalProperties": false,
       "description": "A letter of a text where its slide draws it at rest, in canvas units: what a model sits on, lands on or points at."
     },
+    "AgentLetterBuildRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "bevel": {
+              "type": "number",
+              "description": "How far their edges bevel, 0.02 when left out.",
+              "minimum": 0
+            },
+            "depth": {
+              "type": "number",
+              "description": "How deep the letters extrude, 0.2 when left out.",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "description": "With for and no source, the letters' depth and bevel, in ems of the text's size."
+        },
+        "for": {
+          "type": "object",
+          "properties": {
+            "objectId": {
+              "$ref": "#/definitions/AgentObjectId"
+            },
+            "slideId": {
+              "$ref": "#/definitions/AgentSlideId"
+            }
+          },
+          "required": [
+            "objectId",
+            "slideId"
+          ],
+          "additionalProperties": false,
+          "description": "A text object whose words a build makes 3D: data.words holds its letters, as its page lays them out at rest."
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
+        },
+        "name": {
+          "type": "string",
+          "description": "The model's file name without extension, such as bird."
+        }
+      },
+      "required": [
+        "for",
+        "name"
+      ],
+      "additionalProperties": false,
+      "description": "A text's words the app's letter builder makes 3D: kit.text(data.words, { depth, bevel })."
+    },
     "AgentLimits": {
       "type": "object",
       "properties": {
@@ -2471,6 +2527,16 @@
       "minimum": 0,
       "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
     },
+    "AgentMeshyActions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AgentMeshyActionId"
+      },
+      "minItems": 1,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "description": "Actions of Meshy's library for one task, each once."
+    },
     "AgentModelActionsRequest": {
       "type": "object",
       "properties": {
@@ -2520,10 +2586,7 @@
       "type": "object",
       "properties": {
         "actions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AgentMeshyActionId"
-          },
+          "$ref": "#/definitions/AgentMeshyActions",
           "description": "Action ids from models_actions, in the order the Actions should come."
         },
         "file": {
@@ -2550,49 +2613,18 @@
       "description": "Actions of Meshy's library, by id, on a model Meshy rigged; `looping` names the Actions to close on their cycle."
     },
     "AgentModelBuildRequest": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "description": "Any JSON the build reads, such as sizes or colors. With for and no source: { depth?, bevel? } in ems. The model's file keeps them."
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AgentLetterBuildRequest"
         },
-        "for": {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "$ref": "#/definitions/AgentObjectId"
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId"
-            }
-          },
-          "required": [
-            "objectId",
-            "slideId"
-          ],
-          "additionalProperties": false,
-          "description": "A text object whose words the build makes 3D: data.words holds its letters, as its page lays them out at rest."
+        {
+          "$ref": "#/definitions/AgentModelSourceBuildRequest"
         },
-        "models": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
-        },
-        "name": {
-          "type": "string",
-          "description": "The model's file name without extension, such as bird."
-        },
-        "source": {
-          "type": "string",
-          "description": "The build: an ES module with a default export build(kit, data). No file keeps it. Left out with for, the app's letter builder makes the words: kit.text(data.words, { depth, bevel })."
+        {
+          "$ref": "#/definitions/AgentTextSourceBuildRequest"
         }
-      },
-      "required": [
-        "name"
       ],
-      "additionalProperties": false,
-      "description": "A model to build from source in the build window, saved as media/<name>-<hash>.glb, or a text's as generated/<name>-<hash>.glb."
+      "description": "A model to build in the build window, saved as media/<name>-<hash>.glb: from source, or a text's words, from source or by the app's letter builder, saved as generated/<name>-<hash>.glb."
     },
     "AgentModelBuildResult": {
       "type": "object",
@@ -2647,7 +2679,7 @@
       "additionalProperties": false,
       "description": "The saved model, what import changed in the build's GLB, what the model does, and its sheet."
     },
-    "AgentModelGenerateRequest": {
+    "AgentModelFromFileRequest": {
       "type": "object",
       "properties": {
         "character": {
@@ -2656,7 +2688,26 @@
         },
         "file": {
           "type": "string",
-          "description": "A picture of the presentation instead, such as media/rocket-1a2b3c4d.png."
+          "description": "A picture of the presentation in place of picture, such as media/rocket-1a2b3c4d.png."
+        },
+        "name": {
+          "type": "string",
+          "description": "The model's file name without extension, such as rocket."
+        }
+      },
+      "required": [
+        "file",
+        "name"
+      ],
+      "additionalProperties": false,
+      "description": "A model from a picture of the presentation."
+    },
+    "AgentModelFromPictureRequest": {
+      "type": "object",
+      "properties": {
+        "character": {
+          "type": "boolean",
+          "description": "A figure to rig, in a T-pose."
         },
         "name": {
           "type": "string",
@@ -2668,9 +2719,21 @@
         }
       },
       "required": [
-        "name"
+        "name",
+        "picture"
       ],
       "additionalProperties": false,
+      "description": "A model from the picture models_picture returned."
+    },
+    "AgentModelGenerateRequest": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AgentModelFromFileRequest"
+        },
+        {
+          "$ref": "#/definitions/AgentModelFromPictureRequest"
+        }
+      ],
       "description": "A model Meshy makes from a picture, saved as media/<name>-<hash>.glb: `picture` from models_picture, or `file`, a picture of the presentation. A character's comes in a T-pose, ready for models_rig."
     },
     "AgentModelInspectRequest": {
@@ -2716,7 +2779,21 @@
           "description": "The color roles its materials name."
         },
         "data": {
-          "description": "Any JSON the build reads, such as sizes or colors. With for and no source: { depth?, bevel? } in ems. The model's file keeps them."
+          "type": "object",
+          "properties": {
+            "bevel": {
+              "type": "number",
+              "description": "How far their edges bevel, 0.02 when left out.",
+              "minimum": 0
+            },
+            "depth": {
+              "type": "number",
+              "description": "How deep the letters extrude, 0.2 when left out.",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "description": "The letters' depth and bevel, in ems of the text's size."
         },
         "extensions": {
           "type": "array",
@@ -2739,7 +2816,7 @@
             "slideId"
           ],
           "additionalProperties": false,
-          "description": "A text object whose words the build makes 3D: data.words holds its letters, as its page lays them out at rest."
+          "description": "The text object whose words the app's letter builder made the letters from."
         },
         "height": {
           "type": "number",
@@ -2949,7 +3026,8 @@
         },
         "height": {
           "type": "number",
-          "description": "Its height in meters."
+          "description": "Its height in meters, above 0.",
+          "exclusiveMinimum": 0
         },
         "name": {
           "type": "string",
@@ -2963,13 +3041,46 @@
       "additionalProperties": false,
       "description": "A model of the presentation for Meshy to rig, a humanoid facing +Z, `height` meters tall."
     },
+    "AgentModelSourceBuildRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "description": "Any JSON the build reads, such as sizes or colors. The model's file keeps it."
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
+        },
+        "name": {
+          "type": "string",
+          "description": "The model's file name without extension, such as bird."
+        },
+        "source": {
+          "type": "string",
+          "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+        }
+      },
+      "required": [
+        "name",
+        "source"
+      ],
+      "additionalProperties": false,
+      "description": "A model its source builds."
+    },
     "AgentMoment": {
       "type": "object",
       "properties": {
         "stepId": {
-          "type": [
-            "null",
-            "string"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentStepId"
+            },
+            {
+              "type": "null"
+            }
           ],
           "description": "The step; null is Start."
         },
@@ -3013,6 +3124,7 @@
     },
     "AgentObjectId": {
       "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "An object's id on its slide, as `slides.get` lists it."
     },
     "AgentObjectTransformSource": {
@@ -6401,48 +6513,15 @@
       "description": "A slide's width or height in canvas units, as its theme's master.json holds it.; canvas units"
     },
     "AgentSlideFramesRequest": {
-      "type": "object",
-      "properties": {
-        "fps": {
-          "$ref": "#/definitions/AgentSampleRate",
-          "description": "Frames a second it samples, 30 when omitted."
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AgentStepFramesRequest"
         },
-        "from": {
-          "$ref": "#/definitions/AgentStepSeconds",
-          "description": "Seconds within the step where the range starts. Defaults to 0."
-        },
-        "longestEdge": {
-          "$ref": "#/definitions/AgentLongestEdge",
-          "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
-        },
-        "output": {
-          "type": "string",
-          "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
-        },
-        "slideId": {
-          "$ref": "#/definitions/AgentSlideId"
-        },
-        "stepId": {
-          "type": "string",
-          "description": "The step whose time the frames sample, from slides.get; omitted with `transition`."
-        },
-        "to": {
-          "$ref": "#/definitions/AgentStepSeconds",
-          "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
-        },
-        "transition": {
-          "type": "boolean",
-          "const": true,
-          "description": "Render the slide's transition into the next shown slide instead of a step, from 0 to its duration in seconds; omit stepId."
-        },
-        "view": {
-          "$ref": "#/definitions/AgentSlideView"
+        {
+          "$ref": "#/definitions/AgentTransitionFramesRequest"
         }
-      },
-      "additionalProperties": false,
-      "required": [
-        "slideId"
-      ]
+      ],
+      "description": "What `slides.frames` takes: a step's range, or the slide's transition into the next shown slide."
     },
     "AgentSlideFramesResult": {
       "type": "object",
@@ -6532,6 +6611,7 @@
     },
     "AgentSlideId": {
       "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "A slide's stable id, as presentations.get and slides.get list it."
     },
     "AgentSlideLettersRequest": {
@@ -10946,6 +11026,52 @@
       ],
       "description": "A timing edit with its fields in the file's words: a keyframe's `exponential-scale` and an oscillation's `wave-shape`."
     },
+    "AgentStepFramesRequest": {
+      "type": "object",
+      "properties": {
+        "fps": {
+          "$ref": "#/definitions/AgentSampleRate",
+          "description": "Frames a second it samples, 30 when omitted."
+        },
+        "from": {
+          "$ref": "#/definitions/AgentStepSeconds",
+          "description": "Seconds within the step where the range starts. Defaults to 0."
+        },
+        "longestEdge": {
+          "$ref": "#/definitions/AgentLongestEdge",
+          "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
+        },
+        "output": {
+          "type": "string",
+          "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
+        },
+        "slideId": {
+          "$ref": "#/definitions/AgentSlideId"
+        },
+        "stepId": {
+          "$ref": "#/definitions/AgentStepId",
+          "description": "The step whose time is sampled, from slides.get."
+        },
+        "to": {
+          "$ref": "#/definitions/AgentStepSeconds",
+          "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+        },
+        "view": {
+          "$ref": "#/definitions/AgentSlideView"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "slideId",
+        "stepId"
+      ],
+      "description": "Frames of a step's range."
+    },
+    "AgentStepId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "A step's stable id, as `slides.get` lists it."
+    },
     "AgentStepMeasureRequest": {
       "type": "object",
       "properties": {
@@ -10961,7 +11087,7 @@
           "$ref": "#/definitions/AgentSlideId"
         },
         "stepId": {
-          "type": "string",
+          "$ref": "#/definitions/AgentStepId",
           "description": "The step whose time is sampled, from slides.get."
         },
         "to": {
@@ -10991,7 +11117,7 @@
           "$ref": "#/definitions/AgentSlideId"
         },
         "stepId": {
-          "type": "string",
+          "$ref": "#/definitions/AgentStepId",
           "description": "The step whose time is sampled, from slides.get."
         },
         "to": {
@@ -11085,6 +11211,55 @@
       ],
       "additionalProperties": false,
       "description": "A presentations.get warning about words that run past their frame, where they still show; about words something hides, the slide's edge, the end of their path or their table cell, which an export asks about; or that this could not be measured."
+    },
+    "AgentTextSourceBuildRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": {},
+          "description": "With for, a record, to which data.words adds the text's letters."
+        },
+        "for": {
+          "type": "object",
+          "properties": {
+            "objectId": {
+              "$ref": "#/definitions/AgentObjectId"
+            },
+            "slideId": {
+              "$ref": "#/definitions/AgentSlideId"
+            }
+          },
+          "required": [
+            "objectId",
+            "slideId"
+          ],
+          "additionalProperties": false,
+          "description": "A text object whose words a build makes 3D: data.words holds its letters, as its page lays them out at rest."
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
+        },
+        "name": {
+          "type": "string",
+          "description": "The model's file name without extension, such as bird."
+        },
+        "source": {
+          "type": "string",
+          "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+        }
+      },
+      "required": [
+        "for",
+        "name",
+        "source"
+      ],
+      "additionalProperties": false,
+      "description": "A text's words its source makes 3D."
     },
     "AgentTextSummary": {
       "type": "object",
@@ -11647,6 +11822,45 @@
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
       "description": "The frame a transform gives an object, where it is drawn: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
+    },
+    "AgentTransitionFramesRequest": {
+      "type": "object",
+      "properties": {
+        "fps": {
+          "$ref": "#/definitions/AgentSampleRate",
+          "description": "Frames a second it samples, 30 when omitted."
+        },
+        "from": {
+          "$ref": "#/definitions/AgentStepSeconds",
+          "description": "Seconds within the step where the range starts. Defaults to 0."
+        },
+        "longestEdge": {
+          "$ref": "#/definitions/AgentLongestEdge",
+          "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
+        },
+        "output": {
+          "type": "string",
+          "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
+        },
+        "slideId": {
+          "$ref": "#/definitions/AgentSlideId"
+        },
+        "to": {
+          "$ref": "#/definitions/AgentStepSeconds",
+          "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+        },
+        "transition": {
+          "type": "boolean",
+          "const": true,
+          "description": "Render the slide's transition into the next shown slide instead of a step, from 0 to its duration in seconds; omit stepId and view."
+        }
+      },
+      "required": [
+        "slideId",
+        "transition"
+      ],
+      "additionalProperties": false,
+      "description": "Frames of the slide's transition into the next shown slide, in place of a step's."
     },
     "AgentTweenChangeSource": {
       "type": "object",
@@ -21907,10 +22121,18 @@
       "description": "nonempty text without NUL characters, or \"none\""
     },
     "AgentEnvelopeId": {
-      "type": [
-        "number",
-        "string"
-      ]
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      ],
+      "description": "A request's id, which its response answers with: a nonempty string or an integer."
     },
     "AgentRequestEnvelope": {
       "type": "object",
@@ -21919,7 +22141,8 @@
           "$ref": "#/definitions/AgentEnvelopeId"
         },
         "method": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "params": {},
         "presentation": {
@@ -22002,7 +22225,10 @@
               "$ref": "#/definitions/AgentError"
             },
             "id": {
-              "$ref": "#/definitions/AgentEnvelopeId"
+              "type": [
+                "number",
+                "string"
+              ]
             }
           },
           "required": [
@@ -22025,7 +22251,8 @@
           ],
           "additionalProperties": false
         }
-      ]
+      ],
+      "description": "A response, with its request's id. An envelope refused before its id could be read is answered with the string or number it held as its id, or 0."
     }
   }
 }

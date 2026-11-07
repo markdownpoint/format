@@ -65,10 +65,10 @@
           "type": "object",
           "properties": {
             "from": {
-              "type": "number"
+              "$ref": "#/definitions/AgentSlideNumber"
             },
             "to": {
-              "type": "number"
+              "$ref": "#/definitions/AgentSlideNumber"
             }
           },
           "required": [
@@ -100,6 +100,12 @@
       "type": "string",
       "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?![\\s\\S])",
       "description": "A UUID the caller makes for its request, in either case."
+    },
+    "AgentSlideNumber": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991,
+      "description": "A slide by the number the author knows it by, from 1."
     }
   }
 }

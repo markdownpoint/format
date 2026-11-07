@@ -1583,9 +1583,13 @@
       "type": "object",
       "properties": {
         "stepId": {
-          "type": [
-            "null",
-            "string"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentStepId"
+            },
+            {
+              "type": "null"
+            }
           ],
           "description": "The step; null is Start."
         },
@@ -2497,6 +2501,11 @@
         }
       ],
       "description": "A timing edit with its fields in the file's words: a keyframe's `exponential-scale` and an oscillation's `wave-shape`."
+    },
+    "AgentStepId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "A step's stable id, as `slides.get` lists it."
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",

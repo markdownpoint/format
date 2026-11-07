@@ -28,9 +28,13 @@
       "type": "object",
       "properties": {
         "stepId": {
-          "type": [
-            "null",
-            "string"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentStepId"
+            },
+            {
+              "type": "null"
+            }
           ],
           "description": "The step; null is Start."
         },
@@ -291,6 +295,11 @@
       },
       "additionalProperties": false,
       "description": "A 3D object's move: any parts of its position, its whole rotation in its rotation mode and any parts of a model's or a light's scale. The parts it leaves out stay as they are."
+    },
+    "AgentStepId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "A step's stable id, as `slides.get` lists it."
     },
     "AgentThemeObjectOperation": {
       "anyOf": [

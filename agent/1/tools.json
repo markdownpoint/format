@@ -2113,9 +2113,15 @@
             "type": "object",
             "properties": {
               "stepId": {
-                "type": [
-                  "null",
-                  "string"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                    "description": "A step's stable id, as `slides.get` lists it."
+                  },
+                  {
+                    "type": "null"
+                  }
                 ],
                 "description": "The step; null is Start."
               },
@@ -2156,6 +2162,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "presentation": {
@@ -2465,9 +2472,13 @@
             "type": "object",
             "properties": {
               "stepId": {
-                "type": [
-                  "null",
-                  "string"
+                "anyOf": [
+                  {
+                    "$ref": "#/definitions/AgentStepId"
+                  },
+                  {
+                    "type": "null"
+                  }
                 ],
                 "description": "The step; null is Start."
               },
@@ -5791,6 +5802,11 @@
             ],
             "description": "An object as the .mdpoint file spells it, with its words when it holds text (a text box, a shape, a table, a chart): exactly the Markdown setText takes, so writing it back unchanged changes nothing; \"\" for empty words. A paragraph's `<!-- id: … -->` at the end of its last line is the id a step's text cue names it by, and it travels with its paragraph. In words written without ids, an unchanged paragraph keeps its id wherever it moves. Every other paragraph keeps its id where its words start: a split's first part keeps it, and a join keeps the first paragraph's. Give a new paragraph none, so the app gives it one and its own step. Words that leave out a paragraph a step's cue names are refused, naming the step: keep the paragraph's id, or remove the cue first."
           },
+          "AgentStepId": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "A step's stable id, as `slides.get` lists it."
+          },
           "AgentTextOverflowIssue": {
             "type": "object",
             "properties": {
@@ -8395,9 +8411,15 @@
             "type": "object",
             "properties": {
               "stepId": {
-                "type": [
-                  "null",
-                  "string"
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                    "description": "A step's stable id, as `slides.get` lists it."
+                  },
+                  {
+                    "type": "null"
+                  }
                 ],
                 "description": "The step; null is Start."
               },
@@ -8442,6 +8464,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "view": {
@@ -8501,24 +8524,19 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "stepId": {
             "type": "string",
-            "description": "The step whose time the frames sample, from slides.get; omitted with `transition`."
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The step whose time is sampled, from slides.get."
           },
           "to": {
             "minimum": 0,
             "maximum": 4294967296,
             "type": "number",
             "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
-          },
-          "transition": {
-            "type": "boolean",
-            "enum": [
-              true
-            ],
-            "description": "Render the slide's transition into the next shown slide instead of a step, from 0 to its duration in seconds; omit stepId."
           },
           "view": {
             "type": "string",
@@ -8529,15 +8547,22 @@
             ],
             "description": "slide (the default) as the audience sees it; top or left for the slide's 3D content from above, the audience at the bottom, or from the slide's left, the audience on the right, with the slide's plane and its shadow catchers' planes drawn in and lines from the slide's corners toward its camera, to judge depth a front view hides. A slide with no 3D content has no top or side view."
           },
+          "transition": {
+            "type": "boolean",
+            "enum": [
+              true
+            ],
+            "description": "Render the slide's transition into the next shown slide instead of a step, from 0 to its duration in seconds; omit stepId and view."
+          },
           "presentation": {
             "type": "string",
             "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
-        "additionalProperties": false,
         "required": [
           "slideId"
-        ]
+        ],
+        "additionalProperties": false
       }
     },
     {
@@ -8567,10 +8592,12 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "stepId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The step whose time is sampled, from slides.get."
           },
           "to": {
@@ -9228,6 +9255,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "waits": {
@@ -9245,6 +9273,7 @@
           },
           "stepId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The step whose time is sampled, from slides.get."
           },
           "to": {
@@ -9867,10 +9896,12 @@
         "properties": {
           "objectId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A text object on that slide."
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "presentation": {
@@ -10045,10 +10076,16 @@
                 "type": "object",
                 "properties": {
                   "from": {
-                    "type": "number"
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991,
+                    "description": "A slide by the number the author knows it by, from 1."
                   },
                   "to": {
-                    "type": "number"
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 9007199254740991,
+                    "description": "A slide by the number the author knows it by, from 1."
                   }
                 },
                 "required": [
@@ -10443,10 +10480,12 @@
         "properties": {
           "objectId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A picture object on that slide."
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "presentation": {
@@ -10951,17 +10990,19 @@
         "type": "object",
         "properties": {
           "data": {
-            "description": "Any JSON the build reads, such as sizes or colors. With for and no source: { depth?, bevel? } in ems. The model's file keeps them."
+            "description": "With for and no source, the letters' depth and bevel, in ems of the text's size. Any JSON the build reads, such as sizes or colors. The model's file keeps it. With for, a record, to which data.words adds the text's letters."
           },
           "for": {
             "type": "object",
             "properties": {
               "objectId": {
                 "type": "string",
+                "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
                 "description": "An object's id on its slide, as `slides.get` lists it."
               },
               "slideId": {
                 "type": "string",
+                "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
                 "description": "A slide's stable id, as presentations.get and slides.get list it."
               }
             },
@@ -10970,7 +11011,7 @@
               "slideId"
             ],
             "additionalProperties": false,
-            "description": "A text object whose words the build makes 3D: data.words holds its letters, as its page lays them out at rest."
+            "description": "A text object whose words a build makes 3D: data.words holds its letters, as its page lays them out at rest."
           },
           "models": {
             "type": "array",
@@ -10985,7 +11026,7 @@
           },
           "source": {
             "type": "string",
-            "description": "The build: an ES module with a default export build(kit, data). No file keeps it. Left out with for, the app's letter builder makes the words: kit.text(data.words, { depth, bevel })."
+            "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
           },
           "presentation": {
             "type": "string",
@@ -11110,7 +11151,7 @@
           },
           "file": {
             "type": "string",
-            "description": "A picture of the presentation instead, such as media/rocket-1a2b3c4d.png."
+            "description": "A picture of the presentation in place of picture, such as media/rocket-1a2b3c4d.png."
           },
           "name": {
             "type": "string",
@@ -11150,7 +11191,8 @@
           },
           "height": {
             "type": "number",
-            "description": "Its height in meters."
+            "description": "Its height in meters, above 0.",
+            "exclusiveMinimum": 0
           },
           "name": {
             "type": "string",
@@ -11188,6 +11230,9 @@
               "minimum": 0,
               "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
             },
+            "minItems": 1,
+            "maxItems": 10,
+            "uniqueItems": true,
             "description": "Action ids from models_actions, in the order the Actions should come."
           },
           "file": {
@@ -11274,7 +11319,21 @@
             "description": "The color roles its materials name."
           },
           "data": {
-            "description": "Any JSON the build reads, such as sizes or colors. With for and no source: { depth?, bevel? } in ems. The model's file keeps them."
+            "type": "object",
+            "properties": {
+              "bevel": {
+                "type": "number",
+                "description": "How far their edges bevel, 0.02 when left out.",
+                "minimum": 0
+              },
+              "depth": {
+                "type": "number",
+                "description": "How deep the letters extrude, 0.2 when left out.",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false,
+            "description": "The letters' depth and bevel, in ems of the text's size."
           },
           "extensions": {
             "type": "array",
@@ -11297,7 +11356,7 @@
               "slideId"
             ],
             "additionalProperties": false,
-            "description": "A text object whose words the build makes 3D: data.words holds its letters, as its page lays them out at rest."
+            "description": "The text object whose words the app's letter builder made the letters from."
           },
           "height": {
             "type": "number",
@@ -11348,10 +11407,12 @@
         "definitions": {
           "AgentObjectId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "An object's id on its slide, as `slides.get` lists it."
           },
           "AgentSlideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "GlbActionReport": {
@@ -12410,6 +12471,7 @@
           },
           "objectId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "An object's id on its slide, as `slides.get` lists it."
           },
           "revision": {
@@ -12418,6 +12480,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
           "presentation": {
@@ -12513,6 +12576,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide to save. Required by saveSlide."
           },
           "from": {
@@ -12979,6 +13043,7 @@
         "properties": {
           "objectId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A picture object on that slide; omit for the slide's background."
           },
           "restyle": {
@@ -12987,6 +13052,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide the picture or background is on."
           },
           "presentation": {
@@ -13191,6 +13257,7 @@
           },
           "objectId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A picture object on that slide; omit for the slide's background."
           },
           "restyle": {
@@ -13199,6 +13266,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide the picture or background is on."
           },
           "presentation": {
@@ -13260,6 +13328,7 @@
         "properties": {
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide whose words the prompt is drawn from."
           },
           "presentation": {
@@ -13610,6 +13679,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The id of a slide that isn't skipped to start at, as presentations.get lists it; omit for the first such slide."
           },
           "presentation": {
@@ -13969,6 +14039,7 @@
           },
           "slideId": {
             "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide to enter at Start, by its id as the show captured it. Required by slide."
           },
           "presentation": {
