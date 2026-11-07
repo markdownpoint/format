@@ -46,7 +46,7 @@
           "additionalProperties": false,
           "properties": {
             "afterSlideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "composition": {
               "const": true,
@@ -61,7 +61,10 @@
               "additionalProperties": {
                 "type": "string"
               },
-              "description": "The files of the pictures its layout gives it, by object id: an image or a video in the media or generated folder."
+              "description": "The files of the pictures its layout gives it, by object id: an image or a video in the media or generated folder.",
+              "propertyNames": {
+                "$ref": "#/definitions/AgentObjectId"
+              }
             },
             "layout": {
               "type": "string"
@@ -80,9 +83,13 @@
               "type": "string"
             },
             "sectionId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSectionId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "size": {
@@ -90,7 +97,7 @@
               "description": "A composition's own size; only with `composition: true`."
             },
             "slideId": {
-              "type": "string",
+              "$ref": "#/definitions/AgentSlideId",
               "description": "Minted when omitted; the batch may place slides against it, and later proposals change its objects."
             },
             "text": {
@@ -98,7 +105,10 @@
               "additionalProperties": {
                 "type": "string"
               },
-              "description": "The words of the texts, tables and shapes its layout gives it, by object id, as Markdown."
+              "description": "The words of the texts, tables and shapes its layout gives it, by object id, as Markdown.",
+              "propertyNames": {
+                "$ref": "#/definitions/AgentObjectId"
+              }
             },
             "type": {
               "const": "insertSlide"
@@ -147,9 +157,13 @@
           "type": "object",
           "properties": {
             "afterStepId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentStepId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "delivery": {
@@ -158,11 +172,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "insertRevealStep"
@@ -179,9 +195,13 @@
           "type": "object",
           "properties": {
             "afterStepId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentStepId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "emphasis": {
@@ -196,11 +216,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "applyEffect"
@@ -238,16 +260,20 @@
           "type": "object",
           "properties": {
             "afterStepId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentStepId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "insertPlayStep"
@@ -265,21 +291,27 @@
           "additionalProperties": false,
           "properties": {
             "afterStepId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentStepId"
+                },
+                {
+                  "type": "null"
+                }
               ],
               "description": "Insert after this step; null means first, omitted means last."
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "stepIds": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/definitions/AgentStepId"
               },
-              "description": "The new steps' ids, one per step, so a later `updateStep` or `tween` of the same batch, or the next proposal, addresses them without reading them back; minted when omitted."
+              "description": "The new steps' ids, one per step, so a later `updateStep` or `tween` of the same batch, or the next proposal, addresses them without reading them back; minted when omitted.",
+              "minItems": 1,
+              "uniqueItems": true
             },
             "steps": {
               "type": "array",
@@ -305,14 +337,14 @@
               "type": "string"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "poster": {
               "type": "string",
               "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "replaceWebVideo"
@@ -343,8 +375,10 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "parameter": {
               "$ref": "#/definitions/PresentationAnimationParameterSource"
@@ -360,7 +394,7 @@
               "maximum": 4294967294
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "start": {
               "type": "number",
@@ -368,7 +402,7 @@
               "maximum": 4294967296
             },
             "stepId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentStepId"
             },
             "type": {
               "const": "oscillate"
@@ -413,10 +447,10 @@
               "$ref": "#/definitions/PresentationReplicaArrangement"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "updateReplica"
@@ -444,7 +478,7 @@
               "maximum": 9007199254740991
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "side": {
               "type": "string",
@@ -454,7 +488,7 @@
               ]
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "insertTableColumn"
@@ -483,7 +517,7 @@
               "maximum": 9007199254740991
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "side": {
               "type": "string",
@@ -493,7 +527,7 @@
               ]
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "insertTableRow"
@@ -522,10 +556,10 @@
               "maximum": 9007199254740991
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "deleteTableColumn"
@@ -553,10 +587,10 @@
               "maximum": 9007199254740991
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "deleteTableRow"
@@ -582,7 +616,7 @@
               ]
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "pause": {
               "type": "number",
@@ -592,7 +626,7 @@
               "type": "number"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "start": {
               "type": "number",
@@ -600,7 +634,7 @@
               "maximum": 4294967296
             },
             "stepId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentStepId"
             },
             "type": {
               "const": "typewriter"
@@ -620,7 +654,7 @@
           "additionalProperties": false,
           "properties": {
             "beforeObjectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "delta": {
               "$ref": "#/definitions/PresentationPoint"
@@ -632,13 +666,17 @@
               }
             },
             "parent": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentObjectId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "pasteObjects"
@@ -671,11 +709,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "stagger": {
               "type": "number",
@@ -688,7 +728,7 @@
               "maximum": 4294967296
             },
             "stepId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentStepId"
             },
             "type": {
               "const": "tween"
@@ -716,10 +756,10 @@
               "$ref": "#/definitions/AgentMoment"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "updateObjectProperties"
@@ -762,7 +802,7 @@
               }
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "updateSlideProperties"
@@ -974,7 +1014,7 @@
               "maximum": 64
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "start": {
               "anyOf": [
@@ -988,7 +1028,7 @@
               "description": "Play with the step before it or after it ends, within its click; null waits for a click."
             },
             "stepId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentStepId"
             },
             "type": {
               "const": "updateStep"
@@ -1008,10 +1048,10 @@
               "$ref": "#/definitions/AgentStepEditSource"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "stepId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentStepId"
             },
             "type": {
               "const": "editStep"
@@ -1036,7 +1076,7 @@
               "$ref": "#/definitions/PresentationAnimationInterpolation"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "orient": {
               "type": "boolean"
@@ -1048,7 +1088,7 @@
               }
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "start": {
               "type": "number",
@@ -1056,7 +1096,7 @@
               "maximum": 4294967296
             },
             "stepId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentStepId"
             },
             "type": {
               "const": "travel"
@@ -1084,10 +1124,10 @@
               "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP]|[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV]|[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC]|[gG][lL][bB])(?![\\s\\S])"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "replaceMedia"
@@ -1107,10 +1147,10 @@
               "type": "object",
               "properties": {
                 "objectId": {
-                  "type": "string"
+                  "$ref": "#/definitions/AgentObjectId"
                 },
                 "slideId": {
-                  "type": "string"
+                  "$ref": "#/definitions/AgentSlideId"
                 }
               },
               "required": [
@@ -1122,11 +1162,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "pasteAnimation"
@@ -1152,11 +1194,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "setObjectFlags"
@@ -1182,14 +1226,16 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "parameter": {
               "$ref": "#/definitions/PresentationAnimationParameterSource"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "setValues"
@@ -1217,8 +1263,10 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "parameters": {
               "type": "array",
@@ -1227,7 +1275,7 @@
               }
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "deleteKeyframes"
@@ -1251,8 +1299,10 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "parameters": {
               "type": "array",
@@ -1261,7 +1311,7 @@
               }
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "insertKeyframes"
@@ -1282,7 +1332,7 @@
               "$ref": "#/definitions/AgentMoment"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "transforms": {
               "type": "array",
@@ -1311,10 +1361,10 @@
               ]
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "setObjectName"
@@ -1335,10 +1385,10 @@
               "$ref": "#/definitions/PresentationInsertObjectSource"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "insertObject"
@@ -1355,10 +1405,10 @@
           "type": "object",
           "properties": {
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "setText"
@@ -1381,8 +1431,10 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "properties": {
               "type": "array",
@@ -1391,7 +1443,7 @@
               }
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "revertObjects"
@@ -1410,11 +1462,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "deleteObjects"
@@ -1433,8 +1487,10 @@
             "order": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "reorderSlides"
@@ -1450,13 +1506,15 @@
           "type": "object",
           "properties": {
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "stepIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentStepId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "deleteSteps"
@@ -1473,7 +1531,7 @@
           "type": "object",
           "properties": {
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "applyBackgroundToAllSlides"
@@ -1489,7 +1547,7 @@
           "type": "object",
           "properties": {
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "setNotes"
@@ -1512,7 +1570,7 @@
           "type": "object",
           "properties": {
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "showFromStart"
@@ -1528,7 +1586,7 @@
           "type": "object",
           "properties": {
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "updateInitial"
@@ -1633,7 +1691,7 @@
               "$ref": "#/definitions/LineEndSource"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "start": {
               "$ref": "#/definitions/LineEndSource"
@@ -1651,7 +1709,7 @@
               "$ref": "#/definitions/AgentTransformFrame"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "rotation": {
               "type": "number",
@@ -1674,7 +1732,7 @@
               "$ref": "#/definitions/AgentPoint"
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             }
           },
           "required": [
@@ -1687,7 +1745,7 @@
           "type": "object",
           "properties": {
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "scale": {
               "type": "object",
@@ -1716,7 +1774,7 @@
           "type": "object",
           "properties": {
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "space": {
               "$ref": "#/definitions/AgentSpaceTransform"
@@ -1872,11 +1930,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "replicateObjects"
@@ -1894,25 +1954,31 @@
           "type": "object",
           "properties": {
             "beforeObjectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "parent": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentObjectId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "parentNode": {
               "type": "string"
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "reparentObjects"
@@ -1935,11 +2001,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "duplicateObjects"
@@ -1956,16 +2024,18 @@
           "type": "object",
           "properties": {
             "groupId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "groupObjects"
@@ -1990,8 +2060,10 @@
             "slideIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "setSlideLayout"
@@ -2010,11 +2082,13 @@
             "objectIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "ungroupObjects"
@@ -2033,11 +2107,13 @@
             "order": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "reorderObjects"
@@ -2056,11 +2132,13 @@
             "order": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentStepId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
               "const": "reorderSteps"
@@ -2079,8 +2157,10 @@
             "slideIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "deleteSlides"
@@ -2098,8 +2178,10 @@
             "slideIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "duplicateSlides"
@@ -2117,8 +2199,10 @@
             "slideIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "resetSlides"
@@ -2163,8 +2247,10 @@
             "keyframeIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentKeyframeId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "exponentialScale"
@@ -2181,7 +2267,7 @@
           "type": "object",
           "properties": {
             "keyframeId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentKeyframeId"
             },
             "oscillate": {
               "anyOf": [
@@ -2219,7 +2305,7 @@
               ]
             },
             "objectId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentObjectId"
             },
             "parameter": {
               "$ref": "#/definitions/PresentationAnimationParameterSource"
@@ -2248,8 +2334,10 @@
                 "objectIds": {
                   "type": "array",
                   "items": {
-                    "type": "string"
-                  }
+                    "$ref": "#/definitions/AgentObjectId"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
                 },
                 "type": {
                   "const": "delay"
@@ -2288,8 +2376,10 @@
                 "keyframeIds": {
                   "type": "array",
                   "items": {
-                    "type": "string"
-                  }
+                    "$ref": "#/definitions/AgentKeyframeId"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
                 },
                 "type": {
                   "const": "setKeyframeInterpolation"
@@ -2308,8 +2398,10 @@
                 "keyframeIds": {
                   "type": "array",
                   "items": {
-                    "type": "string"
-                  }
+                    "$ref": "#/definitions/AgentKeyframeId"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
                 },
                 "type": {
                   "const": "deleteKeyframes"
@@ -2327,8 +2419,10 @@
                 "keyframeIds": {
                   "type": "array",
                   "items": {
-                    "type": "string"
-                  }
+                    "$ref": "#/definitions/AgentKeyframeId"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
                 },
                 "type": {
                   "const": "rove"
@@ -2349,7 +2443,7 @@
                     "type": "object",
                     "properties": {
                       "keyframeId": {
-                        "type": "string"
+                        "$ref": "#/definitions/AgentKeyframeId"
                       },
                       "time": {
                         "type": "number",
@@ -2388,8 +2482,10 @@
                 "objectIds": {
                   "type": "array",
                   "items": {
-                    "type": "string"
-                  }
+                    "$ref": "#/definitions/AgentObjectId"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
                 },
                 "type": {
                   "const": "start"
@@ -2405,7 +2501,7 @@
               "type": "object",
               "properties": {
                 "objectId": {
-                  "type": "string"
+                  "$ref": "#/definitions/AgentObjectId"
                 },
                 "orient": {
                   "type": "boolean"
@@ -2425,7 +2521,7 @@
               "type": "object",
               "properties": {
                 "objectId": {
-                  "type": "string"
+                  "$ref": "#/definitions/AgentObjectId"
                 },
                 "path": {
                   "anyOf": [
@@ -2458,7 +2554,7 @@
               "type": "object",
               "properties": {
                 "objectId": {
-                  "type": "string"
+                  "$ref": "#/definitions/AgentObjectId"
                 },
                 "type": {
                   "const": "straighten"
@@ -12206,9 +12302,13 @@
           "type": "object",
           "properties": {
             "beforeSlideId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSlideId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "name": {
@@ -12229,22 +12329,32 @@
           "type": "object",
           "properties": {
             "beforeSlideId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSlideId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "sectionId": {
-              "type": [
-                "null",
-                "string"
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSectionId"
+                },
+                {
+                  "type": "null"
+                }
               ]
             },
             "slideIds": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "type": {
               "const": "moveSlides"
@@ -12265,7 +12375,7 @@
               "type": "string"
             },
             "sectionId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSectionId"
             },
             "type": {
               "const": "renameSection"
@@ -12284,8 +12394,9 @@
             "order": {
               "type": "array",
               "items": {
-                "type": "string"
-              }
+                "$ref": "#/definitions/AgentSectionId"
+              },
+              "uniqueItems": true
             },
             "type": {
               "const": "reorderSections"
@@ -12301,7 +12412,7 @@
           "type": "object",
           "properties": {
             "sectionId": {
-              "type": "string"
+              "$ref": "#/definitions/AgentSectionId"
             },
             "type": {
               "const": "deleteSection"
@@ -13851,9 +13962,13 @@
           "description": "The words as read; a text changed since refuses the replacement."
         },
         "objectId": {
-          "type": [
-            "null",
-            "string"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentObjectId"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
         "replacements": {
@@ -13864,7 +13979,7 @@
           "minItems": 1
         },
         "slideId": {
-          "type": "string"
+          "$ref": "#/definitions/AgentSlideId"
         }
       },
       "required": [
@@ -16560,6 +16675,26 @@
       "minimum": -8589934592,
       "maximum": 8589934592,
       "description": "Authored degrees. Animation keyframes allow explicit turns."
+    },
+    "AgentSlideId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "A slide's stable id, as presentations.get and slides.get list it."
+    },
+    "AgentObjectId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "An object's id on its slide, as `slides.get` lists it."
+    },
+    "AgentSectionId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "A section's stable id, as `presentations.get` lists it."
+    },
+    "AgentKeyframeId": {
+      "type": "string",
+      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "description": "A keyframe's stable id in its step, as `slides.get` lists it."
     }
   }
 }
