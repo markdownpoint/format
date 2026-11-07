@@ -2710,7 +2710,7 @@
                 "description": "degrees"
               },
               "auto-layout": {
-                "description": "How a group places its members one after another. Keys left out default to direction vertical, gap 0, align start, and reference point start. Members are placed in the order the group lists them. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
+                "description": "How a group places its members one after another. Keys left out default to direction vertical, gap 0, align start, and reference point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
                 "type": "object",
                 "properties": {
                   "direction": {
