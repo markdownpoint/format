@@ -872,7 +872,11 @@
                         "type": "boolean",
                         "description": "Whether the move to this keyframe scales at an even rate, as After Effects' Exponential Scale does."
                       },
-                      "incoming": {
+                      "interpolation": {
+                        "$ref": "#/definitions/PresentationAnimationInterpolation",
+                        "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
+                      },
+                      "interrupted": {
                         "type": "object",
                         "properties": {
                           "end": {
@@ -892,10 +896,6 @@
                         ],
                         "additionalProperties": false,
                         "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
-                      },
-                      "interpolation": {
-                        "$ref": "#/definitions/PresentationAnimationInterpolation",
-                        "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -11241,7 +11241,11 @@
             "event-a1b2"
           ]
         },
-        "incoming": {
+        "interpolation": {
+          "$ref": "#/definitions/PresentationAnimationInterpolation",
+          "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
+        },
+        "interrupted": {
           "type": "object",
           "properties": {
             "end": {
@@ -11261,10 +11265,6 @@
           ],
           "additionalProperties": false,
           "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
-        },
-        "interpolation": {
-          "$ref": "#/definitions/PresentationAnimationInterpolation",
-          "description": "Interpolation into this keyframe, from the preceding keyframe or the step's start."
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",

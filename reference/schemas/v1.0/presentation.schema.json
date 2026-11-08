@@ -7445,7 +7445,7 @@
                         ],
                         "description": "How the value reaches the keyframe: gradually on a curve, or at once with hold. It's a named curve, a named curve with its settings, a cubic Bézier, or a spring. Left out, linear."
                       },
-                      "incoming": {
+                      "interrupted": {
                         "description": "The longer move this keyframe interrupts. Up to this keyframe, the motion follows that move's curve.",
                         "type": "object",
                         "properties": {
