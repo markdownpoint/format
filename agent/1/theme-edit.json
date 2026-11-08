@@ -611,7 +611,7 @@
               }
             },
             "type": {
-              "const": "revertObjects"
+              "const": "resetObjects"
             }
           },
           "required": [

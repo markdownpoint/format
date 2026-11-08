@@ -1447,7 +1447,7 @@
               "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
-              "const": "revertObjects"
+              "const": "resetObjects"
             }
           },
           "required": [
@@ -1917,9 +1917,6 @@
     "AgentStandaloneOperation": {
       "anyOf": [
         {
-          "$ref": "#/definitions/PresentationCommentOperation"
-        },
-        {
           "type": "object",
           "properties": {
             "afterSlideId": {
@@ -2032,6 +2029,46 @@
             "parent",
             "slideId",
             "type"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "composition": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "slide": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "thread": {
+              "$ref": "#/definitions/PresentationCommentThreadSeed"
+            },
+            "type": {
+              "const": "insertCommentThread"
+            }
+          },
+          "required": [
+            "thread",
+            "type"
+          ],
+          "allOf": [
+            {
+              "oneOf": [
+                {
+                  "required": [
+                    "slide"
+                  ]
+                },
+                {
+                  "required": [
+                    "composition"
+                  ]
+                }
+              ]
+            }
           ]
         },
         {
@@ -2156,7 +2193,7 @@
               "$ref": "#/definitions/AgentSectionId"
             },
             "type": {
-              "const": "renameSection"
+              "const": "setSectionName"
             }
           },
           "required": [
@@ -2264,6 +2301,120 @@
         {
           "type": "object",
           "properties": {
+            "position": {
+              "$ref": "#/definitions/PresentationCommentPosition"
+            },
+            "threadId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "type": {
+              "const": "moveCommentThread"
+            }
+          },
+          "required": [
+            "position",
+            "threadId",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "reply": {
+              "$ref": "#/definitions/PresentationCommentMessageSeed"
+            },
+            "threadId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "type": {
+              "const": "insertCommentReply"
+            }
+          },
+          "required": [
+            "reply",
+            "threadId",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "replyId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "threadId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "type": {
+              "const": "deleteCommentReply"
+            }
+          },
+          "required": [
+            "replyId",
+            "threadId",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "replyId": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "text": {
+              "$ref": "#/definitions/CommentText"
+            },
+            "threadId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "type": {
+              "const": "setCommentText"
+            }
+          },
+          "required": [
+            "replyId",
+            "text",
+            "threadId",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "resolved": {
+              "type": "boolean"
+            },
+            "threadId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "type": {
+              "const": "setCommentResolved"
+            }
+          },
+          "required": [
+            "resolved",
+            "threadId",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "sectionId": {
               "$ref": "#/definitions/AgentSectionId"
             },
@@ -2360,6 +2511,23 @@
           },
           "required": [
             "targets",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "threadId": {
+              "type": "string",
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            },
+            "type": {
+              "const": "deleteCommentThread"
+            }
+          },
+          "required": [
+            "threadId",
             "type"
           ],
           "additionalProperties": false
@@ -12195,182 +12363,6 @@
         "text"
       ],
       "additionalProperties": false
-    },
-    "PresentationCommentOperation": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "composition": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "slide": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "thread": {
-              "$ref": "#/definitions/PresentationCommentThreadSeed"
-            },
-            "type": {
-              "const": "addCommentThread"
-            }
-          },
-          "required": [
-            "thread",
-            "type"
-          ],
-          "additionalProperties": false,
-          "allOf": [
-            {
-              "oneOf": [
-                {
-                  "required": [
-                    "slide"
-                  ]
-                },
-                {
-                  "required": [
-                    "composition"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "position": {
-              "$ref": "#/definitions/PresentationCommentPosition"
-            },
-            "threadId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "type": {
-              "const": "moveCommentThread"
-            }
-          },
-          "required": [
-            "position",
-            "threadId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "reply": {
-              "$ref": "#/definitions/PresentationCommentMessageSeed"
-            },
-            "threadId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "type": {
-              "const": "addCommentReply"
-            }
-          },
-          "required": [
-            "reply",
-            "threadId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "replyId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "threadId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "type": {
-              "const": "deleteCommentReply"
-            }
-          },
-          "required": [
-            "replyId",
-            "threadId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "replyId": {
-              "type": [
-                "null",
-                "string"
-              ],
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "text": {
-              "$ref": "#/definitions/CommentText"
-            },
-            "threadId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "type": {
-              "const": "setCommentText"
-            }
-          },
-          "required": [
-            "replyId",
-            "text",
-            "threadId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "resolved": {
-              "type": "boolean"
-            },
-            "threadId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "type": {
-              "const": "setCommentResolved"
-            }
-          },
-          "required": [
-            "resolved",
-            "threadId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "threadId": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-            },
-            "type": {
-              "const": "deleteCommentThread"
-            }
-          },
-          "required": [
-            "threadId",
-            "type"
-          ],
-          "additionalProperties": false
-        }
-      ],
-      "description": "Each comment command is one standalone, undoable operation. A new thread names what it is pinned to, exactly one of `slide` and `composition`, as its record does; every other command names the thread alone, its id unique among the presentation's threads."
     },
     "PresentationCommentPosition": {
       "type": "object",
