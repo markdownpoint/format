@@ -1606,7 +1606,7 @@
                         "const": true
                       },
                       "target": {
-                        "$ref": "#/definitions/PresentationAnimationTargetSource"
+                        "$ref": "#/definitions/PresentationAnimationInitialTargetSource"
                       }
                     },
                     "required": [
@@ -11443,7 +11443,7 @@
       "type": "object",
       "properties": {
         "target": {
-          "$ref": "#/definitions/PresentationAnimationTargetSource"
+          "$ref": "#/definitions/PresentationAnimationInitialTargetSource"
         },
         "value": {
           "$ref": "#/definitions/PresentationAnimationValueSource"
@@ -14867,6 +14867,25 @@
       },
       "additionalProperties": false,
       "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+    },
+    "PresentationAnimationInitialTargetSource": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/PresentationAnimationTargetSource"
+        }
+      ],
+      "properties": {
+        "parameter": {
+          "not": {
+            "enum": [
+              "frame.xy",
+              "translation.xy",
+              "position.xyz"
+            ]
+          }
+        }
+      },
+      "description": "A Start value's target: a coordinate by its components, never the point a curve keys."
     },
     "CommentText": {
       "type": "string",

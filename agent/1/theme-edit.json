@@ -11,7 +11,8 @@
       "items": {
         "$ref": "#/definitions/AgentThemeOperation"
       },
-      "description": "Applied in order to one file as one Undo step."
+      "description": "Applied in order to one file as one Undo step.",
+      "minItems": 1
     },
     "themeRevision": {
       "type": "string",
