@@ -4174,7 +4174,7 @@
         },
         "delivery": {
           "const": "by-paragraph",
-          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It takes based-on `paragraph`, and no order, seed, spread, pause, or progress."
+          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It takes based-on `paragraph`, no seed, and order, spread, pause, and progress only at their defaults."
         },
         "duration": {
           "type": "number",

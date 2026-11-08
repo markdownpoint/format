@@ -3106,7 +3106,7 @@
                 "$ref": "#/definitions/scheme-name"
               }
             ],
-            "description": "The color scheme it is drawn in. Left out, it uses the light scheme."
+            "description": "The color scheme it is drawn in on its own canvas, where it is edited. Left out, it uses the light scheme. Each instance takes the scheme of the slide it stands on."
           },
           "controls": {
             "type": "object",
@@ -3973,7 +3973,7 @@
         },
         "delivery": {
           "const": "by-paragraph",
-          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It takes based-on `paragraph`, and no order, seed, spread, pause, or progress."
+          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It takes based-on `paragraph`, no seed, and order, spread, pause, and progress only at their defaults."
         },
         "duration": {
           "type": "number",
@@ -7488,7 +7488,7 @@
                       },
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether a scale move changes by a steady ratio over time, so a zoom looks even. Only a scale parameter takes it."
+                        "description": "Whether a scale move changes by a steady ratio over time, so a zoom looks even; from or to 0, or across it, it moves at an even pace. Only a scale parameter takes it."
                       },
                       "oscillate": {
                         "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",
