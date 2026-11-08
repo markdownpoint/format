@@ -2775,7 +2775,7 @@
         "castsNoShadow": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/GlbNodeName"
           },
           "description": "Nodes whose extras.markdownpoint say they cast no shadow."
         },
@@ -2834,19 +2834,23 @@
           "type": "array",
           "items": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
-              "node": {
+              "name": {
                 "type": "string"
+              },
+              "node": {
+                "type": "number"
               },
               "scale": {
                 "type": "number"
               }
             },
             "required": [
+              "name",
               "node",
               "scale"
-            ],
-            "additionalProperties": false
+            ]
           },
           "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
         },
@@ -10112,7 +10116,7 @@
               "additionalProperties": {
                 "$ref": "#/definitions/AgentFrame"
               },
-              "description": "Where each object's words stand at this position, in canvas units, as After Effects' sourceRectAtTime reads a text layer's: the axis-aligned union of its lines' boxes, its transform included. Objects with no words are left out."
+              "description": "Where each object's words stand on the slide at this position, in canvas units: the axis-aligned box around its lines' boxes as the slide draws them, after every turn, scale and move of the object and its groups. Objects with no words are left out."
             },
             "width": {
               "type": "number"
@@ -10198,7 +10202,7 @@
               "additionalProperties": {
                 "$ref": "#/definitions/AgentFrame"
               },
-              "description": "Where each object's words stand at this position, in canvas units, as After Effects' sourceRectAtTime reads a text layer's: the axis-aligned union of its lines' boxes, its transform included. Objects with no words are left out."
+              "description": "Where each object's words stand on the slide at this position, in canvas units: the axis-aligned box around its lines' boxes as the slide draws them, after every turn, scale and move of the object and its groups. Objects with no words are left out."
             },
             "width": {
               "type": "number"
@@ -11877,7 +11881,7 @@
       "properties": {
         "exponential-scale": {
           "type": "boolean",
-          "description": "On a `scale`, `scale.x`, `scale.y`, `scale.z`, or `crop.scale` change: reach `to` at one rate of zoom, as a camera push does; absent, it changes evenly."
+          "description": "On a `scale`, `scale.x`, `scale.y`, `scale.z`, or `crop.scale` change: reach `to` at one rate of zoom, as a camera push does, or evenly from or to 0 or across it, where no rate reaches; absent, it changes evenly."
         },
         "from": {
           "$ref": "#/definitions/PresentationAnimationValueSource"
@@ -12513,7 +12517,7 @@
       "properties": {
         "bounds": {
           "$ref": "#/definitions/GlbBounds",
-          "description": "The box around every vertex over the whole Action."
+          "description": "The box around every vertex over the whole Action; left out for a model with no vertices, as the report's own is."
         },
         "duration": {
           "type": "number",
@@ -12541,11 +12545,11 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Its lowest point and when, against a floor at y = 0."
+          "description": "Its lowest point and when, against a floor at y = 0; left out for a model with no vertices."
         },
         "name": {
           "type": "string",
-          "description": "The Action's name, as `glbActionNames` gives it: the file's, or \"Animation 1\", \"Animation 2\" in file order for an unnamed one."
+          "description": "The Action's name, unique among the model's, which a clip plays it by: a name the file gives is kept, and every such name is reserved first; an unnamed Action is \"Animation\" and its number in the file, from 1, as \"Animation 1\"; a name an earlier Action has, or a generated name already reserved or given, takes the first of \" 2\", \" 3\" and on not yet taken."
         },
         "seam": {
           "type": "number",
@@ -12592,10 +12596,8 @@
         }
       },
       "required": [
-        "bounds",
         "duration",
         "loop",
-        "lowest",
         "name",
         "seam",
         "start",
@@ -12645,6 +12647,23 @@
       "additionalProperties": false,
       "description": "A foot of a walk: the joint by its glTF node index, which names it exactly, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader; how much of the Action it stands planted, and how fast it slides then."
     },
+    "GlbNodeName": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "node": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "node"
+      ],
+      "additionalProperties": false,
+      "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
+    },
     "GlbReport": {
       "type": "object",
       "properties": {
@@ -12661,7 +12680,7 @@
         "castsNoShadow": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/GlbNodeName"
           },
           "description": "Nodes whose extras.markdownpoint say they cast no shadow."
         },
@@ -12686,19 +12705,23 @@
           "type": "array",
           "items": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
-              "node": {
+              "name": {
                 "type": "string"
+              },
+              "node": {
+                "type": "number"
               },
               "scale": {
                 "type": "number"
               }
             },
             "required": [
+              "name",
               "node",
               "scale"
-            ],
-            "additionalProperties": false
+            ]
           },
           "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
         },

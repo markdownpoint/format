@@ -10737,7 +10737,7 @@
             "properties": {
               "bounds": {
                 "$ref": "#/definitions/GlbBounds",
-                "description": "The box around every vertex over the whole Action."
+                "description": "The box around every vertex over the whole Action; left out for a model with no vertices, as the report's own is."
               },
               "duration": {
                 "type": "number",
@@ -10765,11 +10765,11 @@
                   "y"
                 ],
                 "additionalProperties": false,
-                "description": "Its lowest point and when, against a floor at y = 0."
+                "description": "Its lowest point and when, against a floor at y = 0; left out for a model with no vertices."
               },
               "name": {
                 "type": "string",
-                "description": "The Action's name, as `glbActionNames` gives it: the file's, or \"Animation 1\", \"Animation 2\" in file order for an unnamed one."
+                "description": "The Action's name, unique among the model's, which a clip plays it by: a name the file gives is kept, and every such name is reserved first; an unnamed Action is \"Animation\" and its number in the file, from 1, as \"Animation 1\"; a name an earlier Action has, or a generated name already reserved or given, takes the first of \" 2\", \" 3\" and on not yet taken."
               },
               "seam": {
                 "type": "number",
@@ -10816,10 +10816,8 @@
               }
             },
             "required": [
-              "bounds",
               "duration",
               "loop",
-              "lowest",
               "name",
               "seam",
               "start",
@@ -10869,6 +10867,23 @@
             "additionalProperties": false,
             "description": "A foot of a walk: the joint by its glTF node index, which names it exactly, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader; how much of the Action it stands planted, and how fast it slides then."
           },
+          "GlbNodeName": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "node": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "name",
+              "node"
+            ],
+            "additionalProperties": false,
+            "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
+          },
           "GlbReport": {
             "type": "object",
             "properties": {
@@ -10885,7 +10900,7 @@
               "castsNoShadow": {
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "$ref": "#/definitions/GlbNodeName"
                 },
                 "description": "Nodes whose extras.markdownpoint say they cast no shadow."
               },
@@ -10910,19 +10925,23 @@
                 "type": "array",
                 "items": {
                   "type": "object",
+                  "additionalProperties": false,
                   "properties": {
-                    "node": {
+                    "name": {
                       "type": "string"
+                    },
+                    "node": {
+                      "type": "number"
                     },
                     "scale": {
                       "type": "number"
                     }
                   },
                   "required": [
+                    "name",
                     "node",
                     "scale"
-                  ],
-                  "additionalProperties": false
+                  ]
                 },
                 "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
               },
@@ -11323,7 +11342,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in glTF meters and whether it stands on y = 0; each Action’s length, reach, lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale; nodes that cast no shadow; the color roles its materials name; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
+      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in the model’s own coordinates, meters for an ordinary model and ems for a text model, unscaled by the text’s size or the slide, and whether it stands on y = 0; each Action’s length, reach, lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale and nodes that cast no shadow, each by its node index with its name; the color roles its materials name; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11359,7 +11378,7 @@
           "castsNoShadow": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/definitions/GlbNodeName"
             },
             "description": "Nodes whose extras.markdownpoint say they cast no shadow."
           },
@@ -11418,19 +11437,23 @@
             "type": "array",
             "items": {
               "type": "object",
+              "additionalProperties": false,
               "properties": {
-                "node": {
+                "name": {
                   "type": "string"
+                },
+                "node": {
+                  "type": "number"
                 },
                 "scale": {
                   "type": "number"
                 }
               },
               "required": [
+                "name",
                 "node",
                 "scale"
-              ],
-              "additionalProperties": false
+              ]
             },
             "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
           },
@@ -11472,7 +11495,7 @@
             "properties": {
               "bounds": {
                 "$ref": "#/definitions/GlbBounds",
-                "description": "The box around every vertex over the whole Action."
+                "description": "The box around every vertex over the whole Action; left out for a model with no vertices, as the report's own is."
               },
               "duration": {
                 "type": "number",
@@ -11500,11 +11523,11 @@
                   "y"
                 ],
                 "additionalProperties": false,
-                "description": "Its lowest point and when, against a floor at y = 0."
+                "description": "Its lowest point and when, against a floor at y = 0; left out for a model with no vertices."
               },
               "name": {
                 "type": "string",
-                "description": "The Action's name, as `glbActionNames` gives it: the file's, or \"Animation 1\", \"Animation 2\" in file order for an unnamed one."
+                "description": "The Action's name, unique among the model's, which a clip plays it by: a name the file gives is kept, and every such name is reserved first; an unnamed Action is \"Animation\" and its number in the file, from 1, as \"Animation 1\"; a name an earlier Action has, or a generated name already reserved or given, takes the first of \" 2\", \" 3\" and on not yet taken."
               },
               "seam": {
                 "type": "number",
@@ -11551,10 +11574,8 @@
               }
             },
             "required": [
-              "bounds",
               "duration",
               "loop",
-              "lowest",
               "name",
               "seam",
               "start",
@@ -11603,6 +11624,23 @@
             ],
             "additionalProperties": false,
             "description": "A foot of a walk: the joint by its glTF node index, which names it exactly, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader; how much of the Action it stands planted, and how fast it slides then."
+          },
+          "GlbNodeName": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "node": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "name",
+              "node"
+            ],
+            "additionalProperties": false,
+            "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
           },
           "GlbStride": {
             "anyOf": [
