@@ -1078,23 +1078,36 @@
           "$ref": "#/definitions/PresentationIdEffects",
           "description": "The sections, comments, slides, objects and steps the change created or deleted."
         },
+        "locked": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "objectId": {
+                "type": "string"
+              },
+              "slideId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "objectId",
+              "slideId"
+            ],
+            "additionalProperties": false
+          },
+          "description": "The objects the change left as they were because they are locked."
+        },
         "revision": {
           "$ref": "#/definitions/AgentRevision",
           "description": "The presentation's revision with the change in it."
-        },
-        "skipped": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PresentationSkippedObject"
-          },
-          "description": "Objects the change left as they were because they are locked."
         }
       },
       "required": [
         "id",
         "ids",
-        "revision",
-        "skipped"
+        "locked",
+        "revision"
       ],
       "additionalProperties": false
     },
@@ -1713,25 +1726,20 @@
         "generationId": {
           "type": "string"
         },
-        "outcome": {
-          "type": "string",
-          "enum": [
-            "generatedUnselected",
-            "reused",
-            "selected"
-          ]
-        },
         "revision": {
           "$ref": "#/definitions/AgentRevision"
+        },
+        "status": {
+          "$ref": "#/definitions/AgentOperationStatus",
+          "description": "applied when the image is in place, one reused for the same settings among them; noChange when it is kept among the variants, unused, as when the target changed while it was made, and images.select puts it in place by its generationId."
         }
       },
       "required": [
         "generationId",
-        "outcome",
-        "revision"
+        "revision",
+        "status"
       ],
-      "additionalProperties": false,
-      "description": "`generatedUnselected`: the target changed while its image was made, so it is kept among the variants, unused."
+      "additionalProperties": false
     },
     "AgentImagePrepareResult": {
       "anyOf": [
@@ -1798,7 +1806,7 @@
             },
             "status": {
               "type": "string",
-              "const": "unavailable"
+              "const": "blocked"
             },
             "variants": {
               "type": "array",
@@ -1827,15 +1835,15 @@
         },
         "objectId": {
           "$ref": "#/definitions/AgentObjectId",
-          "description": "A picture object on that slide; omit for the slide's background."
+          "description": "An image object on that slide; omit for the slide's background."
         },
-        "restyle": {
+        "restyled": {
           "type": "boolean",
-          "description": "true for the restyle of the picture or the slide's background, made from its image as first made, rather than its prompt."
+          "description": "true for the restyle of the image or the slide's background, made from its image as first made, rather than its prompt."
         },
         "slideId": {
           "$ref": "#/definitions/AgentSlideId",
-          "description": "The slide the picture or background is on."
+          "description": "The slide the image or background is on."
         }
       },
       "required": [
@@ -2053,22 +2061,22 @@
       "properties": {
         "objectId": {
           "$ref": "#/definitions/AgentObjectId",
-          "description": "A picture object on that slide; omit for the slide's background."
+          "description": "An image object on that slide; omit for the slide's background."
         },
-        "restyle": {
+        "restyled": {
           "type": "boolean",
-          "description": "true for the restyle of the picture or the slide's background, made from its image as first made, rather than its prompt."
+          "description": "true for the restyle of the image or the slide's background, made from its image as first made, rather than its prompt."
         },
         "slideId": {
           "$ref": "#/definitions/AgentSlideId",
-          "description": "The slide the picture or background is on."
+          "description": "The slide the image or background is on."
         }
       },
       "required": [
         "slideId"
       ],
       "additionalProperties": false,
-      "description": "The image a generation is for, as the inspector's image sections name it: a picture by `objectId` on `slideId`, or the slide's background by `slideId` alone. `restyle` is the restyle of the picture or the background, generated from its current image as its Restyle section does, rather than from its prompt."
+      "description": "The image a generation is for, as the inspector's image sections name it: an image object by `objectId` on `slideId`, or the slide's background by `slideId` alone. `restyled` is its restyle, generated from its current image as its Restyle section does, rather than from its prompt."
     },
     "AgentImageVariant": {
       "type": "object",
@@ -2123,7 +2131,7 @@
                   "const": "bundled"
                 }
               ],
-              "description": "A file's issue: the folder the file it is about is in, the presentation's or its theme's, since each may hold a file of that path."
+              "description": "A file's issue: whose folder the file it is about is in, since each may hold a file of that path."
             },
             "id": {
               "type": "string"
@@ -2711,14 +2719,14 @@
           "type": "string",
           "description": "The model's file name without extension, such as rocket."
         },
-        "picture": {
+        "pictureId": {
           "type": "string",
-          "description": "The picture models_picture returned."
+          "description": "The pictureId models_picture returned."
         }
       },
       "required": [
         "name",
-        "picture"
+        "pictureId"
       ],
       "additionalProperties": false,
       "description": "A model from the picture models_picture returned."
@@ -2732,7 +2740,7 @@
           "$ref": "#/definitions/AgentModelFromPictureRequest"
         }
       ],
-      "description": "A model Meshy makes from a picture, saved as media/<name>-<hash>.glb: `picture` from models_picture, or `file`, a picture of the presentation. A character's comes in a T-pose, ready for models_rig."
+      "description": "A model Meshy makes from a picture, saved as media/<name>-<hash>.glb: `pictureId` from models_picture, or `file`, an image of the presentation. A character's comes in a T-pose, ready for models_rig."
     },
     "AgentModelInspectRequest": {
       "type": "object",
@@ -2762,12 +2770,12 @@
           "$ref": "#/definitions/GlbBounds",
           "description": "The exact box around every vertex at rest."
         },
-        "castsNoShadow": {
+        "castShadowOff": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/GlbNodeName"
           },
-          "description": "Nodes whose extras.markdownpoint say they cast no shadow."
+          "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
         },
         "colorRoles": {
           "type": "array",
@@ -2856,7 +2864,7 @@
       },
       "required": [
         "actions",
-        "castsNoShadow",
+        "castShadowOff",
         "colorRoles",
         "extensions",
         "height",
@@ -3007,17 +3015,17 @@
           ],
           "additionalProperties": false
         },
-        "picture": {
+        "pictureId": {
           "type": "string"
         }
       },
       "required": [
         "credits",
         "image",
-        "picture"
+        "pictureId"
       ],
       "additionalProperties": false,
-      "description": "Meshy's picture, which isn't saved in the presentation: `picture` names it to models_generate until `expires`, an ISO date-time as the file writes `created`; `credits` is what it cost."
+      "description": "Meshy's picture, which isn't saved in the presentation: `pictureId` names it to models_generate until `expires`, an ISO date-time as the file writes `created`; `credits` is what it cost."
     },
     "AgentModelRigRequest": {
       "type": "object",
@@ -3135,7 +3143,7 @@
         "applied",
         "noChange"
       ],
-      "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+      "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
     },
     "AgentOperationType": {
       "type": "string",
@@ -3291,17 +3299,6 @@
             "audienceDisplayId": {
               "type": "number"
             },
-            "blankScreen": {
-              "type": [
-                "null",
-                "string"
-              ],
-              "enum": [
-                "black",
-                "white",
-                null
-              ]
-            },
             "frameProbe": {
               "$ref": "#/definitions/AgentFrameProbe"
             },
@@ -3313,6 +3310,18 @@
             },
             "presenterDisplayId": {
               "type": "number"
+            },
+            "screen": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "enum": [
+                "black",
+                "white",
+                null
+              ],
+              "description": "`black` or `white` while the audience sees a black or white screen in place of the slide, null otherwise."
             },
             "slideId": {
               "type": "string"
@@ -3331,9 +3340,9 @@
           "required": [
             "active",
             "audienceDisplayId",
-            "blankScreen",
             "notesVisible",
             "presentation",
+            "screen",
             "slideId",
             "stepId",
             "time"
@@ -4349,7 +4358,10 @@
                     "type": "string"
                   },
                   "name": {
-                    "type": "string"
+                    "type": [
+                      "null",
+                      "string"
+                    ]
                   },
                   "placeholders": {
                     "type": "array",
@@ -4376,12 +4388,13 @@
                 },
                 "required": [
                   "key",
+                  "name",
                   "placeholders",
                   "scheme"
                 ],
                 "additionalProperties": false
               },
-              "description": "Each layout's placeholders, by the object's id insertSlide's text and file are keyed by and its type as the layout file spells it."
+              "description": "Each layout's name, null where its key spells it, as themes.list gives it, and its placeholders, by the object's id insertSlide's text and file are keyed by and its type as the layout file spells it."
             },
             "master": {
               "type": "object",
@@ -4464,9 +4477,6 @@
           ],
           "additionalProperties": false
         },
-        "baseRevision": {
-          "$ref": "#/definitions/AgentRevision"
-        },
         "id": {
           "type": "string",
           "description": "A lowercase UUID, as every id the contract mints."
@@ -4477,6 +4487,10 @@
         "operations": {
           "$ref": "propose.json#/properties/operations",
           "description": "The operations as they were sent."
+        },
+        "revision": {
+          "$ref": "#/definitions/AgentRevision",
+          "description": "The revision the proposal was made against, as its request named it."
         },
         "state": {
           "$ref": "#/definitions/AgentProposalState"
@@ -4525,10 +4539,10 @@
       },
       "required": [
         "affected",
-        "baseRevision",
         "id",
         "intent",
         "operations",
+        "revision",
         "state",
         "summaries",
         "validation"
@@ -4541,7 +4555,7 @@
         "code": {
           "type": "string",
           "const": "no-change",
-          "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal."
+          "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal: a code's word for a status's `noChange`."
         },
         "message": {
           "type": "string"
@@ -4838,7 +4852,10 @@
     "AgentSlideMeasureResult": {
       "type": "object",
       "properties": {
-        "frames": {
+        "revision": {
+          "$ref": "#/definitions/AgentRevision"
+        },
+        "samples": {
           "type": "array",
           "items": {
             "type": "object",
@@ -4859,9 +4876,6 @@
             ],
             "additionalProperties": false
           }
-        },
-        "revision": {
-          "$ref": "#/definitions/AgentRevision"
         },
         "slideId": {
           "type": "string"
@@ -4889,8 +4903,8 @@
         }
       },
       "required": [
-        "frames",
         "revision",
+        "samples",
         "slideId",
         "slips",
         "stepId",
@@ -9183,17 +9197,6 @@
             "maxItems": 2
           }
         },
-        "shaded": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "minItems": 2,
-            "maxItems": 2
-          }
-        },
         "shadow": {
           "type": "object",
           "properties": {
@@ -9202,6 +9205,17 @@
                 "null",
                 "string"
               ]
+            },
+            "over": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
             },
             "shadowed": {
               "type": "number"
@@ -9215,6 +9229,7 @@
           },
           "required": [
             "model",
+            "over",
             "shadowed",
             "time"
           ],
@@ -9234,13 +9249,12 @@
         "covered",
         "model",
         "over",
-        "shaded",
         "shadow",
         "text",
         "time"
       ],
       "additionalProperties": false,
-      "description": "The most any model covers a text and its shadow does, when and which, and the spans of time either is on it."
+      "description": "The most any model covers a text, when and which, and the spans of time one is `over` it; and the same of their shadows, in `shadow`."
     },
     "AgentThemeEditResult": {
       "type": "object",
@@ -9758,7 +9772,7 @@
       "description": "Frames of the slide's transition into the next shown slide, in place of a step's."
     },
     "AgentWaitHold": {
-      "$ref": "#/definitions/PresentationRestHold",
+      "$ref": "#/definitions/PresentationWaitHold",
       "description": "What moves on at a wait in a way no video of a show repeats, so its 3D holds still until the next click: the objects a step's wait loop moves (`looped`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
     },
     "AgentWaitTextSummary": {
@@ -10287,12 +10301,12 @@
           "$ref": "#/definitions/GlbBounds",
           "description": "The exact box around every vertex at rest."
         },
-        "castsNoShadow": {
+        "castShadowOff": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/GlbNodeName"
           },
-          "description": "Nodes whose extras.markdownpoint say they cast no shadow."
+          "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
         },
         "colorRoles": {
           "type": "array",
@@ -10347,7 +10361,7 @@
       },
       "required": [
         "actions",
-        "castsNoShadow",
+        "castShadowOff",
         "colorRoles",
         "extensions",
         "height",
@@ -10418,7 +10432,7 @@
           "properties": {
             "type": {
               "type": "string",
-              "const": "notAWalk"
+              "const": "none"
             }
           },
           "required": [
@@ -10427,7 +10441,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `notAWalk` otherwise."
+      "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `none` otherwise."
     },
     "GlbVector": {
       "type": "array",
@@ -12270,93 +12284,6 @@
       ],
       "additionalProperties": false
     },
-    "PresentationRestHold": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string"
-            },
-            "cause": {
-              "type": "string",
-              "const": "action"
-            },
-            "object": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "action",
-            "cause",
-            "object"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "cause": {
-              "type": "string",
-              "const": "camera"
-            },
-            "object": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "cause",
-            "object"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "cause": {
-              "type": "string",
-              "const": "loops"
-            },
-            "followed": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "looped": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "required": [
-            "cause",
-            "followed",
-            "looped"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "cause": {
-              "type": "string",
-              "const": "walk"
-            },
-            "object": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "cause",
-            "object"
-          ],
-          "additionalProperties": false
-        }
-      ],
-      "description": "What moves on at a rest in a way no video repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the video may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
-    },
     "PresentationSection": {
       "type": "object",
       "properties": {
@@ -12373,27 +12300,6 @@
       ],
       "additionalProperties": false,
       "description": "A section of the presentation: the .md file's header, its id and the name its heading line gives it."
-    },
-    "PresentationSkippedObject": {
-      "type": "object",
-      "properties": {
-        "objectId": {
-          "type": "string"
-        },
-        "reason": {
-          "type": "string",
-          "const": "locked"
-        },
-        "slideId": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "objectId",
-        "reason",
-        "slideId"
-      ],
-      "additionalProperties": false
     },
     "PresentationStepCueSource": {
       "anyOf": [
@@ -12560,6 +12466,93 @@
         "with"
       ]
     },
+    "PresentationWaitHold": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string"
+            },
+            "cause": {
+              "type": "string",
+              "const": "action"
+            },
+            "object": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "action",
+            "cause",
+            "object"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "camera"
+            },
+            "object": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cause",
+            "object"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "loops"
+            },
+            "followed": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "looped": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "cause",
+            "followed",
+            "looped"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "cause": {
+              "type": "string",
+              "const": "walk"
+            },
+            "object": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cause",
+            "object"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "description": "What moves on at a wait in a way no video repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the video may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
+    },
     "RenderFileScope": {
       "type": "string",
       "enum": [
@@ -12567,7 +12560,7 @@
         "presentation",
         "theme"
       ],
-      "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
+      "description": "Whose folder a file is in: the presentation's, its theme's, or the cache where MarkdownPoint keeps the models it builds from a text's letters on this computer."
     },
     "RestyleSource": {
       "type": "object",

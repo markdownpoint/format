@@ -600,7 +600,10 @@
                       "type": "string"
                     },
                     "name": {
-                      "type": "string"
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "placeholders": {
                       "type": "array",
@@ -627,12 +630,13 @@
                   },
                   "required": [
                     "key",
+                    "name",
                     "placeholders",
                     "scheme"
                   ],
                   "additionalProperties": false
                 },
-                "description": "Each layout's placeholders, by the object's id insertSlide's text and file are keyed by and its type as the layout file spells it."
+                "description": "Each layout's name, null where its key spells it, as themes.list gives it, and its placeholders, by the object's id insertSlide's text and file are keyed by and its type as the layout file spells it."
               },
               "master": {
                 "type": "object",
@@ -725,7 +729,7 @@
                         "const": "bundled"
                       }
                     ],
-                    "description": "A file's issue: the folder the file it is about is in, the presentation's or its theme's, since each may hold a file of that path."
+                    "description": "A file's issue: whose folder the file it is about is in, since each may hold a file of that path."
                   },
                   "id": {
                     "type": "string"
@@ -2045,7 +2049,7 @@
               "presentation",
               "theme"
             ],
-            "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
+            "description": "Whose folder a file is in: the presentation's, its theme's, or the cache where MarkdownPoint keeps the models it builds from a text's letters on this computer."
           },
           "SlideSize": {
             "type": "object",
@@ -2430,7 +2434,7 @@
                         "const": "bundled"
                       }
                     ],
-                    "description": "A file's issue: the folder the file it is about is in, the presentation's or its theme's, since each may hold a file of that path."
+                    "description": "A file's issue: whose folder the file it is about is in, since each may hold a file of that path."
                   },
                   "id": {
                     "type": "string"
@@ -7505,7 +7509,7 @@
               "presentation",
               "theme"
             ],
-            "description": "Browser-safe file identity used between scene resolution and filesystem join: the presentation's own files, its theme's, or the models the app built from words' letters into its own cache on this computer."
+            "description": "Whose folder a file is in: the presentation's, its theme's, or the cache where MarkdownPoint keeps the models it builds from a text's letters on this computer."
           },
           "TimeTrim": {
             "type": "object",
@@ -9649,7 +9653,10 @@
           "AgentSlideMeasureResult": {
             "type": "object",
             "properties": {
-              "frames": {
+              "revision": {
+                "$ref": "#/definitions/AgentRevision"
+              },
+              "samples": {
                 "type": "array",
                 "items": {
                   "type": "object",
@@ -9670,9 +9677,6 @@
                   ],
                   "additionalProperties": false
                 }
-              },
-              "revision": {
-                "$ref": "#/definitions/AgentRevision"
               },
               "slideId": {
                 "type": "string"
@@ -9700,8 +9704,8 @@
               }
             },
             "required": [
-              "frames",
               "revision",
+              "samples",
               "slideId",
               "slips",
               "stepId",
@@ -9865,17 +9869,6 @@
                   "maxItems": 2
                 }
               },
-              "shaded": {
-                "type": "array",
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "number"
-                  },
-                  "minItems": 2,
-                  "maxItems": 2
-                }
-              },
               "shadow": {
                 "type": "object",
                 "properties": {
@@ -9884,6 +9877,17 @@
                       "null",
                       "string"
                     ]
+                  },
+                  "over": {
+                    "type": "array",
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
+                      "minItems": 2,
+                      "maxItems": 2
+                    }
                   },
                   "shadowed": {
                     "type": "number"
@@ -9897,6 +9901,7 @@
                 },
                 "required": [
                   "model",
+                  "over",
                   "shadowed",
                   "time"
                 ],
@@ -9916,16 +9921,15 @@
               "covered",
               "model",
               "over",
-              "shaded",
               "shadow",
               "text",
               "time"
             ],
             "additionalProperties": false,
-            "description": "The most any model covers a text and its shadow does, when and which, and the spans of time either is on it."
+            "description": "The most any model covers a text, when and which, and the spans of time one is `over` it; and the same of their shadows, in `shadow`."
           },
           "AgentWaitHold": {
-            "$ref": "#/definitions/PresentationRestHold",
+            "$ref": "#/definitions/PresentationWaitHold",
             "description": "What moves on at a wait in a way no video of a show repeats, so its 3D holds still until the next click: the objects a step's wait loop moves (`looped`) and Actions a camera follows on a spring (`followed`), which keep their timing, that line up within no loop a show renders; a walk whose travel its step's loop moves on and on; the camera, whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read. Each names the objects to change."
           },
           "AgentWaitTextSummary": {
@@ -10050,7 +10054,7 @@
             ],
             "additionalProperties": false
           },
-          "PresentationRestHold": {
+          "PresentationWaitHold": {
             "anyOf": [
               {
                 "type": "object",
@@ -10131,7 +10135,7 @@
                 "additionalProperties": false
               }
             ],
-            "description": "What moves on at a rest in a way no video repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the video may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
+            "description": "What moves on at a wait in a way no video repeats, so the 3D layer holds still until the next click: wait loops and repeats a camera follows on a spring, which keep their timing, that come round together within no loop the video may render, by the objects they move; a walk paced by a travel that loops; a camera whose spring doesn't settle; or an Action whose length isn't known, as its model's file lacks it or isn't read."
           }
         }
       }
@@ -11100,12 +11104,12 @@
                 "$ref": "#/definitions/GlbBounds",
                 "description": "The exact box around every vertex at rest."
               },
-              "castsNoShadow": {
+              "castShadowOff": {
                 "type": "array",
                 "items": {
                   "$ref": "#/definitions/GlbNodeName"
                 },
-                "description": "Nodes whose extras.markdownpoint say they cast no shadow."
+                "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
               },
               "colorRoles": {
                 "type": "array",
@@ -11160,7 +11164,7 @@
             },
             "required": [
               "actions",
-              "castsNoShadow",
+              "castShadowOff",
               "colorRoles",
               "extensions",
               "height",
@@ -11228,7 +11232,7 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "const": "notAWalk"
+                    "const": "none"
                   }
                 },
                 "required": [
@@ -11237,7 +11241,7 @@
                 "additionalProperties": false
               }
             ],
-            "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `notAWalk` otherwise."
+            "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `none` otherwise."
           },
           "GlbVector": {
             "type": "array",
@@ -11383,7 +11387,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Have Meshy draw a picture from words, the first step of a 3D model: look at it before paying for the model. character stands one figure alone in a T-pose, as models_rig needs. About 9 credits; uses the Meshy key in Settings > AI, and credits says what it cost. The app adds a plain light background and even studio light, so nothing behind the subject becomes part of the model. The picture isn’t saved in the presentation: picture names it to models_generate until expires.",
+      "description": "Have Meshy draw a picture from words, the first step of a 3D model: look at it before paying for the model. character stands one figure alone in a T-pose, as models_rig needs. About 9 credits; uses the Meshy key in Settings > AI, and credits says what it cost. The app adds a plain light background and even studio light, so nothing behind the subject becomes part of the model. The picture isn’t saved in the presentation: pictureId names it to models_generate until expires.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11415,7 +11419,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Have Meshy make a 3D model from a picture: picture from models_picture, or file, a PNG, JPEG or WebP picture of the presentation. Remeshed to 30,000 quads with 2K physically based textures, and stood on y = 0; character keeps the T-pose for models_rig. About 30 credits; uses the Meshy key in Settings > AI, and credits says what it cost. Imported as a file is, saved as media/<name>-<hash>.glb and drawn on a sheet.",
+      "description": "Have Meshy make a 3D model from a picture: pictureId from models_picture, or file, a PNG, JPEG or WebP image of the presentation. Remeshed to 30,000 quads with 2K physically based textures, and stood on y = 0; character keeps the T-pose for models_rig. About 30 credits; uses the Meshy key in Settings > AI, and credits says what it cost. Imported as a file is, saved as media/<name>-<hash>.glb and drawn on a sheet.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11431,9 +11435,9 @@
             "type": "string",
             "description": "The model's file name without extension, such as rocket."
           },
-          "picture": {
+          "pictureId": {
             "type": "string",
-            "description": "The picture models_picture returned."
+            "description": "The pictureId models_picture returned."
           },
           "presentation": {
             "type": "string",
@@ -11578,12 +11582,12 @@
             "$ref": "#/definitions/GlbBounds",
             "description": "The exact box around every vertex at rest."
           },
-          "castsNoShadow": {
+          "castShadowOff": {
             "type": "array",
             "items": {
               "$ref": "#/definitions/GlbNodeName"
             },
-            "description": "Nodes whose extras.markdownpoint say they cast no shadow."
+            "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
           },
           "colorRoles": {
             "type": "array",
@@ -11672,7 +11676,7 @@
         },
         "required": [
           "actions",
-          "castsNoShadow",
+          "castShadowOff",
           "colorRoles",
           "extensions",
           "height",
@@ -11902,7 +11906,7 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "const": "notAWalk"
+                    "const": "none"
                   }
                 },
                 "required": [
@@ -11911,7 +11915,7 @@
                 "additionalProperties": false
               }
             ],
-            "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `notAWalk` otherwise."
+            "description": "How far a walk or run played in place carries the character per loop, in the model's units: `inPlace` when its planted feet slide back at one speed, `rootMotion` when the Action moves the character itself, `none` otherwise."
           },
           "GlbVector": {
             "type": "array",
@@ -12139,7 +12143,7 @@
               "applied",
               "noChange"
             ],
-            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
           },
           "AgentRescale": {
             "type": "string",
@@ -12736,7 +12740,7 @@
               "applied",
               "noChange"
             ],
-            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
           }
         }
       }
@@ -12817,7 +12821,7 @@
               "applied",
               "noChange"
             ],
-            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
           },
           "AgentRevision": {
             "type": "string",
@@ -13170,7 +13174,7 @@
               "applied",
               "noChange"
             ],
-            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
           },
           "AgentRescale": {
             "type": "string",
@@ -13331,23 +13335,23 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "Show what generating an image would do, as the app’s confirmation does, without spending: the provider and model, the aspect ratio, whether it pays a provider (requiresProvider) or reuses an image already made for the same settings, the variants already made, and a token images_generate spends. Name a picture by slideId and objectId, or a slide’s background by slideId alone. The prompt, transparent and image-style, the style it is generated in, are the picture’s or background’s own properties, set with updateObjectProperties or updateSlideProperties first; a picture without an image-style takes the presentation’s image-style. Unavailable says why, such as no prompt or no provider key.",
+      "description": "Show what generating an image would do, as the app’s confirmation does, without spending: the provider and model, the aspect ratio, whether it pays a provider (requiresProvider) or reuses an image already made for the same settings, the variants already made, and a token images_generate spends. Name an image object by slideId and objectId, or a slide’s background by slideId alone. The prompt, transparent and image-style, the style it is generated in, are the image’s or background’s own properties, set with updateObjectProperties or updateSlideProperties first; an image without an image-style takes the presentation’s image-style. A blocked status says why, such as no prompt or no provider key.",
       "inputSchema": {
         "type": "object",
         "properties": {
           "objectId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "A picture object on that slide; omit for the slide's background."
+            "description": "An image object on that slide; omit for the slide's background."
           },
-          "restyle": {
+          "restyled": {
             "type": "boolean",
-            "description": "true for the restyle of the picture or the slide's background, made from its image as first made, rather than its prompt."
+            "description": "true for the restyle of the image or the slide's background, made from its image as first made, rather than its prompt."
           },
           "slideId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The slide the picture or background is on."
+            "description": "The slide the image or background is on."
           },
           "presentation": {
             "type": "string",
@@ -13423,7 +13427,7 @@
                 "type": "boolean"
               },
               "status": {
-                "const": "unavailable"
+                "const": "blocked"
               },
               "variants": {
                 "type": "array",
@@ -13480,7 +13484,7 @@
         "idempotentHint": true,
         "openWorldHint": true
       },
-      "description": "Generate the image an images_prepare token describes, spending on the provider it named, and wait until the image is in place. The app shows it generating. Returns the new revision, the generationId and the outcome: selected, reused, or generatedUnselected when the target changed meanwhile and the image was kept among its variants.",
+      "description": "Generate the image an images_prepare token describes, spending on the provider it named, and wait until the image is in place. The app shows it generating. Returns the status, the new revision and the generationId: applied when the image is in place, or noChange when it was kept among its variants, unused, as when the target changed meanwhile.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13506,26 +13510,29 @@
           "generationId": {
             "type": "string"
           },
-          "outcome": {
-            "type": "string",
-            "enum": [
-              "generatedUnselected",
-              "reused",
-              "selected"
-            ]
-          },
           "revision": {
             "$ref": "#/definitions/AgentRevision"
+          },
+          "status": {
+            "$ref": "#/definitions/AgentOperationStatus",
+            "description": "applied when the image is in place, one reused for the same settings among them; noChange when it is kept among the variants, unused, as when the target changed while it was made, and images.select puts it in place by its generationId."
           }
         },
         "required": [
           "generationId",
-          "outcome",
-          "revision"
+          "revision",
+          "status"
         ],
         "additionalProperties": false,
-        "description": "`generatedUnselected`: the target changed while its image was made, so it is kept among the variants, unused.",
         "definitions": {
+          "AgentOperationStatus": {
+            "type": "string",
+            "enum": [
+              "applied",
+              "noChange"
+            ],
+            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
+          },
           "AgentRevision": {
             "type": "string",
             "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
@@ -13542,7 +13549,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Use an earlier generated variant of a picture or background, as the app’s variant strip does; one Undo step. Returns the revision and whether anything changed.",
+      "description": "Use an earlier generated variant of an image or background, as the app’s variant strip does; one Undo step. Returns the revision and whether anything changed.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13554,16 +13561,16 @@
           "objectId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "A picture object on that slide; omit for the slide's background."
+            "description": "An image object on that slide; omit for the slide's background."
           },
-          "restyle": {
+          "restyled": {
             "type": "boolean",
-            "description": "true for the restyle of the picture or the slide's background, made from its image as first made, rather than its prompt."
+            "description": "true for the restyle of the image or the slide's background, made from its image as first made, rather than its prompt."
           },
           "slideId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The slide the picture or background is on."
+            "description": "The slide the image or background is on."
           },
           "presentation": {
             "type": "string",
@@ -13600,7 +13607,7 @@
               "applied",
               "noChange"
             ],
-            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was. Its other facts stand beside it."
+            "description": "An operation's own outcome: applied, or noChange when it left the presentation as it was, the fact a proposal's issue names `no-change`, as a status is camelCase and a code kebab-case. Its other facts stand beside it."
           },
           "AgentRevision": {
             "type": "string",
@@ -13661,7 +13668,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "List this machine’s style library, as a picture’s Restyle popup does, each style with its definition; set a definition as a picture’s restyle with updateObjectProperties, or a slide background’s with updateSlideProperties, then images_prepare with restyle to generate it. To take the restyle off a slide that shows the presentation’s restyled background, set the slide’s image and image-result to the ones it shows and leave out restyle: the slide shows the original. Read-only; needs no open presentation.",
+      "description": "List this machine’s style library, as an image’s Restyle popup does, each style with its definition; set a definition as an image’s restyle with updateObjectProperties, or a slide background’s with updateSlideProperties, then images_prepare with restyled to generate it. To take the restyle off a slide that shows the presentation’s restyled background, set the slide’s image and image-result to the ones it shows and leave out restyle: the slide shows the original. Read-only; needs no open presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {},
@@ -14010,17 +14017,6 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blankScreen": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "enum": [
-                  "black",
-                  "white",
-                  null
-                ]
-              },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
               },
@@ -14032,6 +14028,18 @@
               },
               "presenterDisplayId": {
                 "type": "number"
+              },
+              "screen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ],
+                "description": "`black` or `white` while the audience sees a black or white screen in place of the slide, null otherwise."
               },
               "slideId": {
                 "type": "string"
@@ -14050,9 +14058,9 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blankScreen",
               "notesVisible",
               "presentation",
+              "screen",
               "slideId",
               "stepId",
               "time"
@@ -14149,7 +14157,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read whether this document owner is presenting, its captured slide/step IDs, finite local step time, blank screen and notes state and display IDs. Time uses the same presentation clock and freezes on a blank screen. Refuses control of a previous document still presenting in a reused editor window.",
+      "description": "Read whether the selected presentation’s show is running: the slide and step IDs it captured, the seconds into the step, its screen (black, white or null) and whether its notes show, and its displays. Its time runs on the show’s clock and holds while the screen is black or white. A show the window started for a presentation it has since closed is refused.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14184,17 +14192,6 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blankScreen": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "enum": [
-                  "black",
-                  "white",
-                  null
-                ]
-              },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
               },
@@ -14206,6 +14203,18 @@
               },
               "presenterDisplayId": {
                 "type": "number"
+              },
+              "screen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ],
+                "description": "`black` or `white` while the audience sees a black or white screen in place of the slide, null otherwise."
               },
               "slideId": {
                 "type": "string"
@@ -14224,9 +14233,9 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blankScreen",
               "notesVisible",
               "presentation",
+              "screen",
               "slideId",
               "stepId",
               "time"
@@ -14323,7 +14332,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Control the selected owner’s existing Present session through its normal navigation. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; slide enters the slide slideId names at Start, a captured stable slide ID. On a blank screen a navigation action first resumes the same position. Commands do not edit the document.",
+      "description": "Control the selected presentation’s running show as its own navigation does. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; slide enters the slide slideId names at Start, a captured stable slide ID. While the screen is black or white, a navigation action first shows the slide again where it was. Commands do not edit the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14396,17 +14405,6 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blankScreen": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "enum": [
-                  "black",
-                  "white",
-                  null
-                ]
-              },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
               },
@@ -14418,6 +14416,18 @@
               },
               "presenterDisplayId": {
                 "type": "number"
+              },
+              "screen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ],
+                "description": "`black` or `white` while the audience sees a black or white screen in place of the slide, null otherwise."
               },
               "slideId": {
                 "type": "string"
@@ -14436,9 +14446,9 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blankScreen",
               "notesVisible",
               "presentation",
+              "screen",
               "slideId",
               "stepId",
               "time"
@@ -14535,7 +14545,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Close the selected owner’s Present session and release its windows and staged files. Does not stop another owner’s presentation. Returns inactive when already stopped.",
+      "description": "Stop the selected presentation’s running show and release its windows and staged files; another presentation’s show runs on. Answers active: false when it was already stopped.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14570,17 +14580,6 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "blankScreen": {
-                "type": [
-                  "null",
-                  "string"
-                ],
-                "enum": [
-                  "black",
-                  "white",
-                  null
-                ]
-              },
               "frameProbe": {
                 "$ref": "#/definitions/AgentFrameProbe"
               },
@@ -14592,6 +14591,18 @@
               },
               "presenterDisplayId": {
                 "type": "number"
+              },
+              "screen": {
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "enum": [
+                  "black",
+                  "white",
+                  null
+                ],
+                "description": "`black` or `white` while the audience sees a black or white screen in place of the slide, null otherwise."
               },
               "slideId": {
                 "type": "string"
@@ -14610,9 +14621,9 @@
             "required": [
               "active",
               "audienceDisplayId",
-              "blankScreen",
               "notesVisible",
               "presentation",
+              "screen",
               "slideId",
               "stepId",
               "time"
@@ -14835,9 +14846,6 @@
             ],
             "additionalProperties": false
           },
-          "baseRevision": {
-            "$ref": "#/definitions/AgentRevision"
-          },
           "id": {
             "type": "string",
             "description": "A lowercase UUID, as every id the contract mints."
@@ -14851,6 +14859,10 @@
               "$ref": "#/definitions/AgentPresentationOperation"
             },
             "description": "The operations as they were sent."
+          },
+          "revision": {
+            "$ref": "#/definitions/AgentRevision",
+            "description": "The revision the proposal was made against, as its request named it."
           },
           "state": {
             "$ref": "#/definitions/AgentProposalState"
@@ -14899,10 +14911,10 @@
         },
         "required": [
           "affected",
-          "baseRevision",
           "id",
           "intent",
           "operations",
+          "revision",
           "state",
           "summaries",
           "validation"
@@ -14991,7 +15003,7 @@
             "properties": {
               "code": {
                 "const": "no-change",
-                "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal."
+                "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal: a code's word for a status's `noChange`."
               },
               "message": {
                 "type": "string"
@@ -15067,23 +15079,36 @@
             "$ref": "#/definitions/PresentationIdEffects",
             "description": "The sections, comments, slides, objects and steps the change created or deleted."
           },
+          "locked": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "objectId": {
+                  "type": "string"
+                },
+                "slideId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "objectId",
+                "slideId"
+              ],
+              "additionalProperties": false
+            },
+            "description": "The objects the change left as they were because they are locked."
+          },
           "revision": {
             "$ref": "#/definitions/AgentRevision",
             "description": "The presentation's revision with the change in it."
-          },
-          "skipped": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/PresentationSkippedObject"
-            },
-            "description": "Objects the change left as they were because they are locked."
           }
         },
         "required": [
           "id",
           "ids",
-          "revision",
-          "skipped"
+          "locked",
+          "revision"
         ],
         "additionalProperties": false,
         "definitions": {
@@ -15285,26 +15310,6 @@
               "steps"
             ],
             "additionalProperties": false
-          },
-          "PresentationSkippedObject": {
-            "type": "object",
-            "properties": {
-              "objectId": {
-                "type": "string"
-              },
-              "reason": {
-                "const": "locked"
-              },
-              "slideId": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "objectId",
-              "reason",
-              "slideId"
-            ],
-            "additionalProperties": false
           }
         }
       }
@@ -15487,9 +15492,6 @@
                 ],
                 "additionalProperties": false
               },
-              "baseRevision": {
-                "$ref": "#/definitions/AgentRevision"
-              },
               "id": {
                 "type": "string",
                 "description": "A lowercase UUID, as every id the contract mints."
@@ -15503,6 +15505,10 @@
                   "$ref": "#/definitions/AgentPresentationOperation"
                 },
                 "description": "The operations as they were sent."
+              },
+              "revision": {
+                "$ref": "#/definitions/AgentRevision",
+                "description": "The revision the proposal was made against, as its request named it."
               },
               "state": {
                 "$ref": "#/definitions/AgentProposalState"
@@ -15551,10 +15557,10 @@
             },
             "required": [
               "affected",
-              "baseRevision",
               "id",
               "intent",
               "operations",
+              "revision",
               "state",
               "summaries",
               "validation"
@@ -15566,7 +15572,7 @@
             "properties": {
               "code": {
                 "const": "no-change",
-                "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal."
+                "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal: a code's word for a status's `noChange`."
               },
               "message": {
                 "type": "string"
@@ -15650,9 +15656,6 @@
             ],
             "additionalProperties": false
           },
-          "baseRevision": {
-            "$ref": "#/definitions/AgentRevision"
-          },
           "id": {
             "type": "string",
             "description": "A lowercase UUID, as every id the contract mints."
@@ -15666,6 +15669,10 @@
               "$ref": "#/definitions/AgentPresentationOperation"
             },
             "description": "The operations as they were sent."
+          },
+          "revision": {
+            "$ref": "#/definitions/AgentRevision",
+            "description": "The revision the proposal was made against, as its request named it."
           },
           "state": {
             "$ref": "#/definitions/AgentProposalState"
@@ -15714,10 +15721,10 @@
         },
         "required": [
           "affected",
-          "baseRevision",
           "id",
           "intent",
           "operations",
+          "revision",
           "state",
           "summaries",
           "validation"
@@ -15806,7 +15813,7 @@
             "properties": {
               "code": {
                 "const": "no-change",
-                "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal."
+                "description": "`no-change` when the proposal leaves the presentation as it is, so an idempotent caller tells it from a refusal: a code's word for a status's `noChange`."
               },
               "message": {
                 "type": "string"
