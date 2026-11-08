@@ -710,13 +710,9 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "algorithm": {
-                    "type": "string"
-                  },
                   "code": {
                     "$ref": "#/definitions/IssueCode"
                   },
-                  "details": {},
                   "disposition": {
                     "$ref": "#/definitions/IssueDisposition"
                   },
@@ -730,9 +726,6 @@
                       }
                     ],
                     "description": "A file's issue: whose folder the file it is about is in, since each may hold a file of that path."
-                  },
-                  "id": {
-                    "type": "string"
                   },
                   "location": {
                     "$ref": "#/definitions/IssueLocation",
@@ -2415,13 +2408,9 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "algorithm": {
-                    "type": "string"
-                  },
                   "code": {
                     "$ref": "#/definitions/IssueCode"
                   },
-                  "details": {},
                   "disposition": {
                     "$ref": "#/definitions/IssueDisposition"
                   },
@@ -2435,9 +2424,6 @@
                       }
                     ],
                     "description": "A file's issue: whose folder the file it is about is in, since each may hold a file of that path."
-                  },
-                  "id": {
-                    "type": "string"
                   },
                   "location": {
                     "$ref": "#/definitions/IssueLocation",
