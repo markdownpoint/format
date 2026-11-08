@@ -1186,6 +1186,94 @@
         {
           "type": "object",
           "properties": {
+            "keyframeIds": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentKeyframeId"
+              },
+              "description": "With `stepId`: the keyframes, by their ids in the step.",
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "moment": {
+              "$ref": "#/definitions/AgentMoment",
+              "description": "With `objectIds` and `parameters`: where the keyframes stand."
+            },
+            "objectIds": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "description": "With `moment` and `parameters`: the objects whose keyframes go.",
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PresentationAnimationParameterSource"
+              },
+              "description": "With `moment` and `objectIds`: the parameters whose keyframes go."
+            },
+            "slideId": {
+              "$ref": "#/definitions/AgentSlideId"
+            },
+            "stepId": {
+              "$ref": "#/definitions/AgentStepId",
+              "description": "With `keyframeIds`: the step whose keyframes they are."
+            },
+            "type": {
+              "const": "deleteKeyframes"
+            }
+          },
+          "required": [
+            "slideId",
+            "type"
+          ],
+          "additionalProperties": false,
+          "dependencies": {
+            "stepId": [
+              "keyframeIds"
+            ],
+            "keyframeIds": [
+              "stepId"
+            ],
+            "moment": [
+              "objectIds",
+              "parameters"
+            ],
+            "objectIds": [
+              "moment",
+              "parameters"
+            ],
+            "parameters": [
+              "moment",
+              "objectIds"
+            ]
+          },
+          "allOf": [
+            {
+              "oneOf": [
+                {
+                  "required": [
+                    "stepId",
+                    "keyframeIds"
+                  ]
+                },
+                {
+                  "required": [
+                    "moment",
+                    "objectIds",
+                    "parameters"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
             "locked": {
               "type": "boolean"
             },
@@ -1252,42 +1340,6 @@
             "slideId",
             "type",
             "value"
-          ]
-        },
-        {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "moment": {
-              "$ref": "#/definitions/AgentMoment"
-            },
-            "objectIds": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AgentObjectId"
-              },
-              "minItems": 1,
-              "uniqueItems": true
-            },
-            "parameters": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/PresentationAnimationParameterSource"
-              }
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId"
-            },
-            "type": {
-              "const": "deleteKeyframes"
-            }
-          },
-          "required": [
-            "moment",
-            "objectIds",
-            "parameters",
-            "slideId",
-            "type"
           ]
         },
         {
@@ -2590,7 +2642,7 @@
               ]
             },
             "type": {
-              "const": "oscillate"
+              "const": "setKeyframeOscillation"
             }
           },
           "required": [
@@ -2729,27 +2781,6 @@
               },
               "required": [
                 "interpolation",
-                "keyframeIds",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "keyframeIds": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/AgentKeyframeId"
-                  },
-                  "minItems": 1,
-                  "uniqueItems": true
-                },
-                "type": {
-                  "const": "deleteKeyframes"
-                }
-              },
-              "required": [
                 "keyframeIds",
                 "type"
               ],
