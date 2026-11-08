@@ -14959,7 +14959,6 @@
       "enum": [
         "aim-cycle",
         "auto-layout-held-animation",
-        "blur-past-page",
         "bound-value",
         "clashing-curves",
         "clashing-keyframes",
@@ -14974,6 +14973,7 @@
         "duplicate-slide-id",
         "duplicate-slide-marker",
         "duplicate-text-block",
+        "effect-size-limit",
         "extra-table-lengths",
         "group-cycle",
         "group-depth",
