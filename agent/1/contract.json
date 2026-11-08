@@ -8570,6 +8570,41 @@
           "additionalProperties": {
             "type": "object",
             "properties": {
+              "fileScopes": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "enum": [
+                      "presentation",
+                      "theme"
+                    ]
+                  },
+                  "image-result.original": {
+                    "type": "string",
+                    "enum": [
+                      "presentation",
+                      "theme"
+                    ]
+                  },
+                  "model.file": {
+                    "type": "string",
+                    "enum": [
+                      "presentation",
+                      "theme"
+                    ]
+                  },
+                  "poster": {
+                    "type": "string",
+                    "enum": [
+                      "presentation",
+                      "theme"
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Whose folder each file an object names is in, by the key that names it; a key the object doesn't hold is absent."
+              },
               "level": {
                 "$ref": "#/definitions/PresentationObjectLevel"
               },
@@ -8583,7 +8618,7 @@
             ],
             "additionalProperties": false
           },
-          "description": "Which theme level owns each object. Master and layout objects are the theme's; only a placeholder takes setText."
+          "description": "Which theme level owns each object. Master and layout objects are the theme's; only a placeholder takes setText. `fileScopes` says whose folder each file the object names is in, by the key that names it: a path is the theme's (in the theme's folder, as its `theme` key names it) or the presentation's. Each level's own file stays in its own folder, so a slide's poster over a layout's video is the presentation's while the video is the theme's."
         },
         "revision": {
           "$ref": "#/definitions/AgentRevision"
