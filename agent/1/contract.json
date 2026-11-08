@@ -8595,6 +8595,13 @@
           ],
           "description": "Null is Base. A sampled moment reports the actual clamped time; Start has null stepId and time zero."
         },
+        "notes": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The slide's speaker notes, their whole Markdown exactly as replaceText compares its `before` with them when its `objectId` is null, from the same revision; null when the slide has none, as setNotes clears them."
+        },
         "objects": {
           "type": "array",
           "items": {
@@ -8701,6 +8708,7 @@
         "initial",
         "issues",
         "moment",
+        "notes",
         "objects",
         "playbackStepIds",
         "provenance",

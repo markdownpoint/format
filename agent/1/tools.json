@@ -2115,7 +2115,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read one slide at authored Base or an exact moment of its motion: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setText takes), drawnFrames and drawnEnds: where each is drawn, as transformObjects takes it, which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
+      "description": "Read one slide at authored Base or an exact moment of its motion: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setText takes), its notes, drawnFrames and drawnEnds: where each is drawn, as transformObjects takes it, which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -2266,6 +2266,13 @@
             ],
             "description": "Null is Base. A sampled moment reports the actual clamped time; Start has null stepId and time zero."
           },
+          "notes": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The slide's speaker notes, their whole Markdown exactly as replaceText compares its `before` with them when its `objectId` is null, from the same revision; null when the slide has none, as setNotes clears them."
+          },
           "objects": {
             "type": "array",
             "items": {
@@ -2371,6 +2378,7 @@
           "initial",
           "issues",
           "moment",
+          "notes",
           "objects",
           "playbackStepIds",
           "provenance",
