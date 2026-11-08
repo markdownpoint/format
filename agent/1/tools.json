@@ -2107,7 +2107,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read one slide at authored Base or an exact moment of its motion: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setText takes), which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
+      "description": "Read one slide at authored Base or an exact moment of its motion: its objects as the .mdpoint file spells them, a growing text’s frame the point its growth holds, each with its words as text when it holds any (exactly what setText takes), drawnFrames: where each framed object is drawn, the frame transformObjects takes as its drawnFrame, which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -2204,6 +2204,13 @@
               "$ref": "#/definitions/PresentationCommentThread"
             }
           },
+          "drawnFrames": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/definitions/AgentFrame"
+            },
+            "description": "Where each object a transform moves by a frame is drawn as authored, whatever `moment` names, by id: the frame transformObjects' `drawnFrame` takes and gives back, in the same space, its turn and scale apart. A growing text box stands at the size its words take, a table at its rows' height, a group at the box its members give it, an object auto layout places where it places it. A travel's `drawnPoints` are where this frame's corner goes."
+          },
           "initial": {
             "type": "array",
             "items": {
@@ -2232,7 +2239,7 @@
             "items": {
               "$ref": "#/definitions/AgentSlideObject"
             },
-            "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it; the values at the `moment` are each target's `animationParameters` value."
+            "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it, a growing text's `frame` the point its growth holds; the values at the `moment` are each target's `animationParameters` value."
           },
           "playbackStepIds": {
             "type": "array",
@@ -2295,6 +2302,7 @@
           "animationParameters",
           "animationValueSchemas",
           "comments",
+          "drawnFrames",
           "initial",
           "issues",
           "moment",
@@ -2329,6 +2337,10 @@
               "valueType"
             ],
             "additionalProperties": false
+          },
+          "AgentFrame": {
+            "$ref": "#/definitions/PresentationFrame",
+            "description": "A box on the slide in canvas units, as MarkdownPoint measures it: an object's, its words' or a model's bounds."
           },
           "AgentIssue": {
             "anyOf": [
@@ -2541,27 +2553,32 @@
                     "properties": {
                       "x": {
                         "type": "number",
+                        "minimum": -65536,
+                        "maximum": 65536,
                         "description": "canvas units"
                       },
                       "y": {
                         "type": "number",
+                        "minimum": -65536,
+                        "maximum": 65536,
                         "description": "canvas units"
                       },
                       "width": {
                         "type": "number",
                         "minimum": 0.000001,
+                        "maximum": 65536,
                         "description": "canvas units"
                       },
                       "height": {
                         "type": "number",
                         "minimum": 0.000001,
+                        "maximum": 65536,
                         "description": "canvas units"
                       }
                     },
                     "required": [
                       "x",
-                      "y",
-                      "width"
+                      "y"
                     ],
                     "additionalProperties": false
                   },
@@ -2939,7 +2956,92 @@
                   "type",
                   "frame"
                 ],
-                "additionalProperties": false
+                "additionalProperties": false,
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "auto-size": {
+                          "enum": [
+                            "both",
+                            "width"
+                          ]
+                        },
+                        "column-count": {
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 1
+                        },
+                        "text-path": false
+                      },
+                      "required": [
+                        "auto-size"
+                      ]
+                    },
+                    "then": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "width": false
+                          }
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "width": true
+                          },
+                          "required": [
+                            "width"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "auto-size": {
+                          "enum": [
+                            "both",
+                            "height"
+                          ]
+                        },
+                        "text-path": false
+                      },
+                      "required": [
+                        "auto-size"
+                      ]
+                    },
+                    "then": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "height": false
+                          }
+                        }
+                      }
+                    },
+                    "else": {
+                      "properties": {
+                        "frame": {
+                          "type": "object",
+                          "properties": {
+                            "height": true
+                          },
+                          "required": [
+                            "height"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               {
                 "type": "object",
@@ -7115,6 +7217,30 @@
             "additionalProperties": false,
             "description": "A drop shadow, as Photoshop's Layer Style › Drop Shadow sets one: how far it reaches, how much of that reach stands solid, how far each way it falls and in what color. Its lengths are canvas units, and a text's are ems of its size."
           },
+          "PresentationFrame": {
+            "type": "object",
+            "properties": {
+              "height": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "height",
+              "width",
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
+          },
           "PresentationObjectLevel": {
             "type": "string",
             "enum": [
@@ -8423,7 +8549,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Render one slide through the app renderer at authored Base or an exact moment of its motion. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, the moment as MarkdownPoint spells it, its width and height in pixels, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write with transformObjects at the same moment, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
+      "description": "Render one slide through the app renderer at authored Base or an exact moment of its motion. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, the moment as MarkdownPoint spells it, its width and height in pixels, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write as transformObjects’ drawnFrame at the same moment, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -10848,7 +10974,7 @@
               "contact": {
                 "type": "number"
               },
-              "foot": {
+              "name": {
                 "type": "string"
               },
               "node": {
@@ -10860,12 +10986,12 @@
             },
             "required": [
               "contact",
-              "foot",
+              "name",
               "node",
               "speed"
             ],
             "additionalProperties": false,
-            "description": "A foot of a walk: the joint by its glTF node index, which names it exactly, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader; how much of the Action it stands planted, and how fast it slides then."
+            "description": "A foot of a walk: the joint by its node index and name, as every node of the report is named; how much of the Action it stands planted, and how fast it slides then."
           },
           "GlbNodeName": {
             "type": "object",
@@ -11606,7 +11732,7 @@
               "contact": {
                 "type": "number"
               },
-              "foot": {
+              "name": {
                 "type": "string"
               },
               "node": {
@@ -11618,12 +11744,12 @@
             },
             "required": [
               "contact",
-              "foot",
+              "name",
               "node",
               "speed"
             ],
             "additionalProperties": false,
-            "description": "A foot of a walk: the joint by its glTF node index, which names it exactly, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader; how much of the Action it stands planted, and how fast it slides then."
+            "description": "A foot of a walk: the joint by its node index and name, as every node of the report is named; how much of the Action it stands planted, and how fast it slides then."
           },
           "GlbNodeName": {
             "type": "object",

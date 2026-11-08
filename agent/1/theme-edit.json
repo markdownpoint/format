@@ -74,25 +74,7 @@
         {
           "type": "object",
           "properties": {
-            "end": {
-              "$ref": "#/definitions/LineEndSource"
-            },
-            "objectId": {
-              "type": "string"
-            },
-            "start": {
-              "$ref": "#/definitions/LineEndSource"
-            }
-          },
-          "required": [
-            "objectId"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "frame": {
+            "drawnFrame": {
               "$ref": "#/definitions/AgentTransformFrame"
             },
             "objectId": {
@@ -106,9 +88,27 @@
             }
           },
           "required": [
-            "frame",
+            "drawnFrame",
             "objectId",
             "rotation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "end": {
+              "$ref": "#/definitions/LineEndSource"
+            },
+            "objectId": {
+              "type": "string"
+            },
+            "start": {
+              "$ref": "#/definitions/LineEndSource"
+            }
+          },
+          "required": [
+            "objectId"
           ],
           "additionalProperties": false
         },
@@ -174,7 +174,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them."
+      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame as `drawnFrame`, where it is drawn, which a growing text's file frame is not."
     },
     "AgentPoint": {
       "$ref": "#/definitions/PresentationPoint"
@@ -993,7 +993,7 @@
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
-      "description": "The frame a transform gives an object, where it is drawn: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
+      "description": "The frame a transform gives an object, where it is drawn, as slides.get's `drawnFrames` gives it: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
     },
     "AttachedLineEndSource": {
       "type": "object",
@@ -2918,7 +2918,7 @@
           "$ref": "#/definitions/Prop_font-weight"
         },
         "frame": {
-          "$ref": "#/definitions/PresentationDrawnTextFrame"
+          "$ref": "#/definitions/Prop_frame"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
@@ -3030,7 +3030,12 @@
         "frame",
         "type"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/TextFrameSides"
+        }
+      ]
     },
     "InsertVideo": {
       "type": "object",
@@ -8854,7 +8859,7 @@
           "$ref": "#/definitions/Prop_font-weight"
         },
         "frame": {
-          "$ref": "#/definitions/PresentationDrawnTextFrame"
+          "$ref": "#/definitions/Prop_frame"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
@@ -8968,7 +8973,12 @@
         "frame",
         "type"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "#/definitions/TextFrameSides"
+        }
+      ]
     },
     "PasteVideo": {
       "type": "object",
@@ -9222,10 +9232,6 @@
       ],
       "additionalProperties": false,
       "description": "A point a curve passes through; a corner keeps a sharp angle there instead of a smooth turn."
-    },
-    "PresentationDrawnTextFrame": {
-      "$ref": "#/definitions/PresentationFrame",
-      "description": "A text box's frame where it is drawn, as an insert or a paste gives it. One that grows to its words (auto-size height or both, on no path) is as tall as they are: a height given sizes nothing. One whose words give it its width (auto-size width or both, on no path, in one column) is as wide as they are: the width given sizes nothing, and the box grows from the point its alignment holds on the frame given."
     },
     "PresentationFrame": {
       "type": "object",
@@ -9625,6 +9631,94 @@
       ],
       "additionalProperties": false,
       "description": "A theme picture's file: without `scheme` one file every scheme shows; with it, that scheme's alone."
+    },
+    "TextFrameSides": {
+      "description": "The sides of a text's frame its words give it, by its auto-size, column count and text path: the frame holds no length of those, and every other.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "auto-size": {
+                "enum": [
+                  "both",
+                  "width"
+                ]
+              },
+              "column-count": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1
+              },
+              "text-path": false
+            },
+            "required": [
+              "auto-size"
+            ]
+          },
+          "then": {
+            "properties": {
+              "frame": {
+                "type": "object",
+                "properties": {
+                  "width": false
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "frame": {
+                "type": "object",
+                "properties": {
+                  "width": true
+                },
+                "required": [
+                  "width"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "auto-size": {
+                "enum": [
+                  "both",
+                  "height"
+                ]
+              },
+              "text-path": false
+            },
+            "required": [
+              "auto-size"
+            ]
+          },
+          "then": {
+            "properties": {
+              "frame": {
+                "type": "object",
+                "properties": {
+                  "height": false
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "frame": {
+                "type": "object",
+                "properties": {
+                  "height": true
+                },
+                "required": [
+                  "height"
+                ]
+              }
+            }
+          }
+        }
+      ]
     },
     "Prop_name": {
       "type": "string",
@@ -11632,6 +11726,41 @@
       ],
       "additionalProperties": false,
       "description": "Where a floor stands: its height above the slide's bottom edge, in canvas units."
+    },
+    "Prop_frame": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "canvas units"
+        },
+        "y": {
+          "type": "number",
+          "minimum": -65536,
+          "maximum": 65536,
+          "description": "canvas units"
+        },
+        "width": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "canvas units"
+        },
+        "height": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 65536,
+          "description": "canvas units"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false,
+      "description": "A frame as the files hold it: a table's without its height, and a text box's without each side its words give it, its x and y then naming the point that growth holds."
     },
     "Prop_rotation": {
       "type": "number",

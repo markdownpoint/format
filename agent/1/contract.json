@@ -3144,6 +3144,26 @@
         {
           "type": "object",
           "properties": {
+            "drawnFrame": {
+              "$ref": "#/definitions/AgentTransformFrame"
+            },
+            "objectId": {
+              "type": "string"
+            },
+            "rotation": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "drawnFrame",
+            "objectId",
+            "rotation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "end": {
               "$ref": "#/definitions/LineEndSource"
             },
@@ -3156,26 +3176,6 @@
           },
           "required": [
             "objectId"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "frame": {
-              "$ref": "#/definitions/AgentTransformFrame"
-            },
-            "objectId": {
-              "type": "string"
-            },
-            "rotation": {
-              "type": "number"
-            }
-          },
-          "required": [
-            "frame",
-            "objectId",
-            "rotation"
           ],
           "additionalProperties": false
         },
@@ -3237,7 +3237,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them."
+      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame as `drawnFrame`, where it is drawn, which a growing text's file frame is not."
     },
     "AgentOperationStatus": {
       "type": "string",
@@ -4156,6 +4156,51 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "drawnPoints": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentPoint"
+              }
+            },
+            "end": {
+              "type": "number"
+            },
+            "interpolation": {
+              "$ref": "#/definitions/PresentationAnimationInterpolation"
+            },
+            "objectId": {
+              "type": "string"
+            },
+            "orient": {
+              "type": "boolean"
+            },
+            "slideId": {
+              "type": "string"
+            },
+            "start": {
+              "type": "number"
+            },
+            "stepId": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "travel"
+            }
+          },
+          "required": [
+            "drawnPoints",
+            "end",
+            "objectId",
+            "slideId",
+            "stepId",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
             "edit": {
               "$ref": "#/definitions/AgentStepEditSource"
             },
@@ -4813,51 +4858,6 @@
               "required": [
                 "objectIds",
                 "slideId",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "end": {
-                  "type": "number"
-                },
-                "interpolation": {
-                  "$ref": "#/definitions/PresentationAnimationInterpolation"
-                },
-                "objectId": {
-                  "type": "string"
-                },
-                "orient": {
-                  "type": "boolean"
-                },
-                "points": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/AgentPoint"
-                  }
-                },
-                "slideId": {
-                  "type": "string"
-                },
-                "start": {
-                  "type": "number"
-                },
-                "stepId": {
-                  "type": "string"
-                },
-                "type": {
-                  "type": "string",
-                  "const": "travel"
-                }
-              },
-              "required": [
-                "end",
-                "objectId",
-                "points",
-                "slideId",
-                "stepId",
                 "type"
               ],
               "additionalProperties": false
@@ -6769,27 +6769,32 @@
               "properties": {
                 "x": {
                   "type": "number",
+                  "minimum": -65536,
+                  "maximum": 65536,
                   "description": "canvas units"
                 },
                 "y": {
                   "type": "number",
+                  "minimum": -65536,
+                  "maximum": 65536,
                   "description": "canvas units"
                 },
                 "width": {
                   "type": "number",
                   "minimum": 0.000001,
+                  "maximum": 65536,
                   "description": "canvas units"
                 },
                 "height": {
                   "type": "number",
                   "minimum": 0.000001,
+                  "maximum": 65536,
                   "description": "canvas units"
                 }
               },
               "required": [
                 "x",
-                "y",
-                "width"
+                "y"
               ],
               "additionalProperties": false
             },
@@ -7167,7 +7172,92 @@
             "type",
             "frame"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "auto-size": {
+                    "enum": [
+                      "both",
+                      "width"
+                    ]
+                  },
+                  "column-count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1
+                  },
+                  "text-path": false
+                },
+                "required": [
+                  "auto-size"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "frame": {
+                    "type": "object",
+                    "properties": {
+                      "width": false
+                    }
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "frame": {
+                    "type": "object",
+                    "properties": {
+                      "width": true
+                    },
+                    "required": [
+                      "width"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "auto-size": {
+                    "enum": [
+                      "both",
+                      "height"
+                    ]
+                  },
+                  "text-path": false
+                },
+                "required": [
+                  "auto-size"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "frame": {
+                    "type": "object",
+                    "properties": {
+                      "height": false
+                    }
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "frame": {
+                    "type": "object",
+                    "properties": {
+                      "height": true
+                    },
+                    "required": [
+                      "height"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
         },
         {
           "type": "object",
@@ -10083,7 +10173,7 @@
                 },
                 "additionalProperties": false
               },
-              "description": "The frame each text object takes when fitted to its text at this position, in its own parameters there, to write with transformObjects at the same position: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
+              "description": "The frame each text object takes when fitted to its text at this position, in its own parameters there, to write as transformObjects' `drawnFrame` at the same position: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
             },
             "height": {
               "type": "number"
@@ -10152,7 +10242,7 @@
                 },
                 "additionalProperties": false
               },
-              "description": "The frame each text object takes when fitted to its text at this position, in its own parameters there, to write with transformObjects at the same position: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
+              "description": "The frame each text object takes when fitted to its text at this position, in its own parameters there, to write as transformObjects' `drawnFrame` at the same position: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
             },
             "height": {
               "type": "number"
@@ -10265,6 +10355,13 @@
             "$ref": "#/definitions/PresentationCommentThread"
           }
         },
+        "drawnFrames": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/AgentFrame"
+          },
+          "description": "Where each object a transform moves by a frame is drawn as authored, whatever `moment` names, by id: the frame transformObjects' `drawnFrame` takes and gives back, in the same space, its turn and scale apart. A growing text box stands at the size its words take, a table at its rows' height, a group at the box its members give it, an object auto layout places where it places it. A travel's `drawnPoints` are where this frame's corner goes."
+        },
         "initial": {
           "type": "array",
           "items": {
@@ -10293,7 +10390,7 @@
           "items": {
             "$ref": "#/definitions/AgentSlideObject"
           },
-          "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it; the values at the `moment` are each target's `animationParameters` value."
+          "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it, a growing text's `frame` the point its growth holds; the values at the `moment` are each target's `animationParameters` value."
         },
         "playbackStepIds": {
           "type": "array",
@@ -10357,6 +10454,7 @@
         "animationParameters",
         "animationValueSchemas",
         "comments",
+        "drawnFrames",
         "initial",
         "issues",
         "moment",
@@ -11834,7 +11932,7 @@
     },
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
-      "description": "The frame a transform gives an object, where it is drawn: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
+      "description": "The frame a transform gives an object, where it is drawn, as slides.get's `drawnFrames` gives it: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
     },
     "AgentTransitionFramesRequest": {
       "type": "object",
@@ -12628,7 +12726,7 @@
         "contact": {
           "type": "number"
         },
-        "foot": {
+        "name": {
           "type": "string"
         },
         "node": {
@@ -12640,12 +12738,12 @@
       },
       "required": [
         "contact",
-        "foot",
+        "name",
         "node",
         "speed"
       ],
       "additionalProperties": false,
-      "description": "A foot of a walk: the joint by its glTF node index, which names it exactly, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader; how much of the Action it stands planted, and how fast it slides then."
+      "description": "A foot of a walk: the joint by its node index and name, as every node of the report is named; how much of the Action it stands planted, and how fast it slides then."
     },
     "GlbNodeName": {
       "type": "object",
@@ -14609,7 +14707,7 @@
           "type": "number"
         },
         "frame": {
-          "$ref": "#/definitions/PresentationDrawnTextFrame"
+          "$ref": "#/definitions/PresentationStoredFrame"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -17120,7 +17218,7 @@
           "type": "number"
         },
         "frame": {
-          "$ref": "#/definitions/PresentationDrawnTextFrame"
+          "$ref": "#/definitions/PresentationStoredFrame"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -18845,10 +18943,6 @@
       ],
       "description": "A default text style as the .mdpoint file spells it: `none`, for a new text box with no style, or its style under `text-style`, as an object's, and its color."
     },
-    "PresentationDrawnTextFrame": {
-      "$ref": "#/definitions/PresentationFrame",
-      "description": "A text box's frame where it is drawn, as an insert or a paste gives it. One that grows to its words (auto-size height or both, on no path) is as tall as they are: a height given sizes nothing. One whose words give it its width (auto-size width or both, on no path, in one column) is as wide as they are: the width given sizes nothing, and the box grows from the point its alignment holds on the frame given."
-    },
     "PresentationDropShadow": {
       "type": "object",
       "properties": {
@@ -20243,6 +20337,29 @@
         "after",
         "with"
       ]
+    },
+    "PresentationStoredFrame": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "description": "A frame as the files hold it: a table's without its height, and a text box's without each side its words give it, its x and y then naming the point that growth holds."
     },
     "PresentationTableFrame": {
       "type": "object",
