@@ -2111,6 +2111,7 @@
         },
         {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "algorithm": {
               "type": "string"
@@ -2132,7 +2133,7 @@
                   "const": "bundled"
                 }
               ],
-              "description": "A file's issue: the folder its `path` is in, the presentation's or its theme's, since each may hold a file of that path."
+              "description": "A file's issue: the folder the file it is about is in, the presentation's or its theme's, since each may hold a file of that path."
             },
             "id": {
               "type": "string"
@@ -2179,8 +2180,7 @@
             "message",
             "severity",
             "source"
-          ],
-          "additionalProperties": false
+          ]
         },
         {
           "type": "object",

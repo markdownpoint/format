@@ -90,14 +90,18 @@ presentation with a default in its place, `skip-object` leaves the object out,
 `refuse-slide` refuses the slide and `refuse-presentation` the whole presentation.
 Where an issue stands depends on its `source`:
 
-- `json`: `path` selects the value in the `.mdpoint` file, keys joined by dots
-  and a list's item by its index in brackets, as in `slides.intro.objects[2]`.
+- `json`: `path` selects the value in the `.mdpoint` file, one key after
+  another: a key of ASCII letters, digits, `_` and `-` that starts with a letter
+  or `_` follows a dot, any other key stands in brackets, quoted as JSON quotes
+  a string, and a list's item stands by its index in brackets, as in
+  `slides.intro.objects[2]` and `compositions.card.controls["Top left"].default`.
   An object stands by its id once its id reads, as in
   `slides.intro.objects.title.opacity`, and a step or a keyframe by its id once
   the slide is read, as in
-  `slides.intro.steps.reveal.curves.title.opacity.keyframes.fade.value`; a
-  composition stands under `compositions`. `slideId` names the slide or
-  composition that holds it, and `objectId` the object.
+  `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`,
+  where the curve's name is one key; a composition stands under
+  `compositions`. `slideId` names the slide or composition that holds it, and
+  `objectId` the object.
 - `markdown`: `location` names the file and its line, counted from 1, with the
   column when known.
 - `folder`: the two files disagree, or the folder can't be read. `path`
