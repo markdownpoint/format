@@ -72,7 +72,7 @@ when it fails, 2 on a usage error and 3 when MarkdownPoint is unavailable.
 | `stale-revision` | The presentation changed since the revision you sent. | Read it again; `revision` is where it is now. |
 | `validation-failed` | A proposal found errors. | Fix what `validation` lists. |
 | `unknown-target` | No such presentation, slide, step, object, theme, layout or proposal. | Read the state again for the ids. |
-| `conflict` | Another change got there first. | Read the state again, then retry. |
+| `conflict` | The presentation's files changed on disk as it saved them: another change got there first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read now. | Start it; after a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect: read the state before you retry a change. |
 | `too-large` | The request is more than one call takes: its size, a proposal's operations or a range's samples. | Send less at once, or lower `fps`. |
