@@ -286,7 +286,7 @@ A group with `auto-layout` places its members one after another, down or across.
 
 ## Pictures
 
-An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast` and `saturation` run from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture shows as shot. This one has more contrast and color:
+An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast`, `saturation` and `temperature` run from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture shows as shot. This one has more contrast and color:
 
 ```json
 {

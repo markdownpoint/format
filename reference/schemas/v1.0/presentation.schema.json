@@ -4034,7 +4034,7 @@
           "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph shows as its cue is reached. A step that holds only paragraphs' cues lasts as long as they take."
         },
         "from": {
-          "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
+          "description": "How each piece looks as it starts to enter: opacity, x and y, scale, rotation, and blur.",
           "type": "object",
           "properties": {
             "opacity": {
@@ -4163,7 +4163,7 @@
           "description": "What counts as one piece."
         },
         "to": {
-          "description": "How each piece looks as it finishes exiting: opacity, offset, scale, rotation, and blur.",
+          "description": "How each piece looks as it finishes exiting: opacity, x and y, scale, rotation, and blur.",
           "type": "object",
           "properties": {
             "opacity": {
@@ -4425,7 +4425,7 @@
               "description": "A linear gradient's direction, in degrees clockwise from up."
             },
             "line": {
-              "description": "A linear gradient's line, when it differs from the angle.",
+              "description": "Where a linear gradient's line lies, in the object's frame; the angle turns it about its middle. Left out, the line crosses the box the gradient fills through its center, as CSS's gradient line does.",
               "type": "object",
               "properties": {
                 "x": {
@@ -7016,7 +7016,7 @@
       "description": "text without NUL characters"
     },
     "repeater": {
-      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line attached inside the group.",
+      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line with no end attached to an object outside the group.",
       "type": "object",
       "properties": {
         "copies": {

@@ -64,7 +64,7 @@ My talk/
   slides.md              text, notes, sections and slide order
   presentation.mdpoint   objects, layout, styles and animation
   media/                 imported images, videos, audio and models
-  generated/             generated images, 3D text models and image generation records
+  generated/             generated images, 3D text models a program built, and image generation records
   themes/<key>/          master.json, layout files, fonts and images
   versions/              saved versions, one folder each
 ```
