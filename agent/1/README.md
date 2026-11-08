@@ -120,7 +120,10 @@ Where an issue stands depends on its `source`:
   MarkdownPoint keeps the models it builds from a text's letters on this
   computer; or `bundled`, the fonts MarkdownPoint ships. `slideId`, `objectId`
   and `property` name each use of it.
-- `slide`, `master` and `layout`: `slideId`, and `objectId` or `objectIds`.
+- `slide`: `slideId`, and `objectId` or `objectIds`.
+- `master`: `path`, the theme file, when it has one.
+- `render`, what drawing a slide finds: `slideId`, and `objectId` or
+  `objectIds`. A `render-failed` issue names neither.
 
 Each code an issue carries:
 
@@ -132,6 +135,7 @@ Each code an issue carries:
 | A name nothing defines | `unknown-animation-target`, `unknown-composition`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-object`, `unknown-role`, `unknown-scheme`, `unknown-text-style` |
 | What can't be read, resolved, matched or played | `camera-spring-unsettled`, `loops-misaligned`, `render-failed`, `repeat-shares-click`, `travel-in-loop`, `unattached-markdown`, `unbound-text`, `unclosed-code-block`, `unclosed-frontmatter`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale` |
 | Two parts that disagree, or something where it can't stand | `clashing-curves`, `clashing-keyframes`, `clashing-orient`, `file-spelling-mismatch`, `id-mismatch`, `marker-outside-slide`, `media-type-mismatch`, `merge-conflict`, `object-collision`, `slide-marker-mismatch`, `slide-outside-section` |
-| A file a theme, a newer version or another program wrote | `composition-in-theme`, `generation-in-theme`, `interrupted-layout-move`, `newer-format`, `newer-markdown-format`, `newer-minor-kept`, `newer-theme-master`, `rounded-number`, `text-model-in-theme` |
-| Objects a slide can't hold together | `3d-object-in-composition`, `aim-cycle`, `ambiguous-constraint-node`, `ambiguous-parent-node`, `auto-layout-held-animation`, `bound-value`, `color-needs-svg`, `composition-cycle`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `group-cycle`, `group-depth`, `group-order`, `ignored-key`, `key-not-for-light-type`, `link-letters-away`, `object-count-limit`, `override-type`, `own-camera`, `own-world`, `parent-cycle`, `parent-inverse-without-parent`, `parent-node-without-parent`, `path-delivery`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-json`, `tilt-with-3d` |
-| What a slide's layout shows | `image-enlarged`, `low-text-contrast`, `object-off-slide`, `object-overlap`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |
+| A file a theme, a newer version or another program wrote, or an interrupted move | `composition-in-theme`, `generation-in-theme`, `interrupted-layout-move`, `newer-format`, `newer-markdown-format`, `newer-minor-kept`, `newer-theme-master`, `rounded-number`, `text-model-in-theme` |
+| Objects a slide can't hold together | `3d-object-in-composition`, `aim-cycle`, `ambiguous-constraint-node`, `ambiguous-parent-node`, `composition-cycle`, `group-cycle`, `group-depth`, `group-order`, `object-count-limit`, `parent-cycle`, `tilt-with-3d` |
+| A key or a value its object can't take there | `auto-layout-held-animation`, `bound-value`, `color-needs-svg`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-key`, `key-not-for-light-type`, `link-letters-away`, `override-type`, `own-camera`, `own-world`, `parent-inverse-without-parent`, `parent-node-without-parent`, `path-delivery`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-json` |
+| What the rendered slide shows | `image-enlarged`, `low-text-contrast`, `object-off-slide`, `object-overlap`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |

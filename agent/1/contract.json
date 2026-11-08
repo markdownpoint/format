@@ -9119,7 +9119,7 @@
         },
         "source": {
           "type": "string",
-          "const": "layout"
+          "const": "render"
         }
       },
       "required": [
@@ -10792,9 +10792,9 @@
         "file",
         "folder",
         "json",
-        "layout",
         "markdown",
         "master",
+        "render",
         "slide",
         "theme"
       ],
