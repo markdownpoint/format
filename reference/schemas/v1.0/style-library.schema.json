@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://markdownpoint.com/format/schemas/v1.0/image-styles.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/v1.0/style-library.schema.json",
   "description": "Styles from the style library, to take to another computer.",
   "type": "object",
   "properties": {
@@ -10,7 +10,7 @@
       "description": "The format version, its major and minor in quotes: \"1.0\". MarkdownPoint 1.x opens any version 1.x file. A newer major needs a newer MarkdownPoint."
     },
     "type": {
-      "const": "image-styles",
+      "const": "style-library",
       "description": "What the file is."
     },
     "styles": {
