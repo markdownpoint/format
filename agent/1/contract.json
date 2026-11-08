@@ -1874,82 +1874,82 @@
         {
           "type": "object",
           "properties": {
-            "action": {
-              "type": "string",
-              "const": "export"
-            },
-            "id": {
-              "$ref": "#/definitions/AgentMintedId"
-            },
-            "output": {
-              "type": "string",
-              "description": "Absolute path of a new .json file outside any presentation folder."
-            }
-          },
-          "required": [
-            "action",
-            "output"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "import"
-            },
-            "path": {
-              "type": "string",
-              "description": "Absolute path of a styles file."
-            }
-          },
-          "required": [
-            "action",
-            "path"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "save"
-            },
             "definition": {
               "$ref": "#/definitions/RestyleSource",
               "description": "A style definition as images.styles.list lists them."
             },
             "id": {
               "$ref": "#/definitions/AgentMintedId"
+            },
+            "type": {
+              "type": "string",
+              "const": "save"
             }
           },
           "required": [
-            "action",
-            "definition"
+            "definition",
+            "type"
           ],
           "additionalProperties": false
         },
         {
           "type": "object",
           "properties": {
-            "action": {
+            "id": {
+              "$ref": "#/definitions/AgentMintedId"
+            },
+            "output": {
+              "type": "string",
+              "description": "Absolute path of a new .json file outside any presentation folder."
+            },
+            "type": {
+              "type": "string",
+              "const": "export"
+            }
+          },
+          "required": [
+            "output",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/AgentMintedId",
+              "description": "A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone."
+            },
+            "type": {
               "type": "string",
               "enum": [
                 "delete",
                 "duplicate",
                 "preview"
               ]
-            },
-            "id": {
-              "$ref": "#/definitions/AgentMintedId",
-              "description": "A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone."
             }
           },
           "required": [
-            "action",
-            "id"
+            "id",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Absolute path of a styles file."
+            },
+            "type": {
+              "type": "string",
+              "const": "import"
+            }
+          },
+          "required": [
+            "path",
+            "type"
           ],
           "additionalProperties": false
         }
@@ -3224,30 +3224,30 @@
         {
           "type": "object",
           "properties": {
-            "action": {
-              "$ref": "#/definitions/AgentPresentAction"
+            "slideId": {
+              "$ref": "#/definitions/AgentSlideId",
+              "description": "The slide to enter at Start, by its id as the show captured it."
+            },
+            "type": {
+              "type": "string",
+              "const": "goToSlide"
             }
           },
           "required": [
-            "action"
+            "slideId",
+            "type"
           ],
           "additionalProperties": false
         },
         {
           "type": "object",
           "properties": {
-            "action": {
-              "type": "string",
-              "const": "slide"
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId",
-              "description": "The slide to enter at Start, by its id as the show captured it."
+            "type": {
+              "$ref": "#/definitions/AgentPresentAction"
             }
           },
           "required": [
-            "action",
-            "slideId"
+            "type"
           ],
           "additionalProperties": false
         }
@@ -9360,132 +9360,6 @@
         {
           "type": "object",
           "properties": {
-            "action": {
-              "type": "string",
-              "const": "create"
-            },
-            "name": {
-              "type": "string",
-              "description": "The theme's name for create and rename; the layout's name for saveSlide."
-            }
-          },
-          "required": [
-            "action",
-            "name"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "delete"
-            },
-            "theme": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "action",
-            "theme"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "export"
-            },
-            "output": {
-              "type": "string",
-              "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files."
-            },
-            "theme": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "action",
-            "output",
-            "theme"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "install"
-            },
-            "path": {
-              "type": "string",
-              "description": "Absolute path of a .mdptheme file."
-            }
-          },
-          "required": [
-            "action",
-            "path"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "rename"
-            },
-            "name": {
-              "type": "string"
-            },
-            "theme": {
-              "type": "string",
-              "description": "A theme's key or name from themes.list."
-            }
-          },
-          "required": [
-            "action",
-            "name",
-            "theme"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "const": "saveSlide"
-            },
-            "name": {
-              "type": "string"
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId",
-              "description": "The slide to save."
-            }
-          },
-          "required": [
-            "action",
-            "name",
-            "slideId"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "string",
-              "enum": [
-                "duplicateLayout",
-                "moveLayout"
-              ]
-            },
             "from": {
               "type": "string",
               "description": "The theme key or name the layout is in."
@@ -9497,13 +9371,139 @@
             "to": {
               "type": "string",
               "description": "The theme key or name it goes to."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "duplicateLayout",
+                "moveLayout"
+              ]
             }
           },
           "required": [
-            "action",
             "from",
             "layout",
-            "to"
+            "to",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "slideId": {
+              "$ref": "#/definitions/AgentSlideId",
+              "description": "The slide to save."
+            },
+            "type": {
+              "type": "string",
+              "const": "saveSlide"
+            }
+          },
+          "required": [
+            "name",
+            "slideId",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "theme": {
+              "type": "string",
+              "description": "A theme's key or name from themes.list."
+            },
+            "type": {
+              "type": "string",
+              "const": "rename"
+            }
+          },
+          "required": [
+            "name",
+            "theme",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The theme's name for create and rename; the layout's name for saveSlide."
+            },
+            "type": {
+              "type": "string",
+              "const": "create"
+            }
+          },
+          "required": [
+            "name",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "output": {
+              "type": "string",
+              "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files."
+            },
+            "theme": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "export"
+            }
+          },
+          "required": [
+            "output",
+            "theme",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string",
+              "description": "Absolute path of a .mdptheme file."
+            },
+            "type": {
+              "type": "string",
+              "const": "install"
+            }
+          },
+          "required": [
+            "path",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "theme": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "const": "delete"
+            }
+          },
+          "required": [
+            "theme",
+            "type"
           ],
           "additionalProperties": false
         }
@@ -9562,9 +9562,6 @@
     "AgentThemePromoteRequest": {
       "type": "object",
       "properties": {
-        "action": {
-          "$ref": "#/definitions/AgentThemePromotionAction"
-        },
         "objectId": {
           "$ref": "#/definitions/AgentObjectId"
         },
@@ -9573,13 +9570,16 @@
         },
         "slideId": {
           "$ref": "#/definitions/AgentSlideId"
+        },
+        "type": {
+          "$ref": "#/definitions/AgentThemePromotionAction"
         }
       },
       "required": [
-        "action",
         "objectId",
         "revision",
-        "slideId"
+        "slideId",
+        "type"
       ],
       "additionalProperties": false
     },

@@ -12787,15 +12787,6 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "action": {
-            "type": "string",
-            "enum": [
-              "addArtwork",
-              "addPlaceholder",
-              "applyLayout",
-              "applyMaster"
-            ]
-          },
           "objectId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -12810,16 +12801,25 @@
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "A slide's stable id, as presentations.get and slides.get list it."
           },
+          "type": {
+            "type": "string",
+            "enum": [
+              "addArtwork",
+              "addPlaceholder",
+              "applyLayout",
+              "applyMaster"
+            ]
+          },
           "presentation": {
             "type": "string",
             "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
-          "action",
           "objectId",
           "revision",
-          "slideId"
+          "slideId",
+          "type"
         ],
         "additionalProperties": false
       },
@@ -12872,40 +12872,6 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "action": {
-            "type": "string",
-            "enum": [
-              "create",
-              "delete",
-              "export",
-              "install",
-              "rename",
-              "saveSlide",
-              "duplicateLayout",
-              "moveLayout"
-            ]
-          },
-          "name": {
-            "type": "string",
-            "description": "The theme's name for create and rename; the layout's name for saveSlide. Required by create, rename and saveSlide."
-          },
-          "theme": {
-            "type": "string",
-            "description": "A theme's key or name from themes.list. Required by delete, export and rename."
-          },
-          "output": {
-            "type": "string",
-            "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files. Required by export."
-          },
-          "path": {
-            "type": "string",
-            "description": "Absolute path of a .mdptheme file. Required by install."
-          },
-          "slideId": {
-            "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The slide to save. Required by saveSlide."
-          },
           "from": {
             "type": "string",
             "description": "The theme key or name the layout is in. Required by duplicateLayout and moveLayout."
@@ -12918,144 +12884,178 @@
             "type": "string",
             "description": "The theme key or name it goes to. Required by duplicateLayout and moveLayout."
           },
+          "type": {
+            "type": "string",
+            "enum": [
+              "duplicateLayout",
+              "moveLayout",
+              "saveSlide",
+              "rename",
+              "create",
+              "export",
+              "install",
+              "delete"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "The theme's name for create and rename; the layout's name for saveSlide. Required by saveSlide, rename and create."
+          },
+          "slideId": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The slide to save. Required by saveSlide."
+          },
+          "theme": {
+            "type": "string",
+            "description": "A theme's key or name from themes.list. Required by rename, export and delete."
+          },
+          "output": {
+            "type": "string",
+            "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files. Required by export."
+          },
+          "path": {
+            "type": "string",
+            "description": "Absolute path of a .mdptheme file. Required by install."
+          },
           "presentation": {
             "type": "string",
             "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
-          "action"
+          "type"
         ],
         "additionalProperties": false,
         "if": {
           "properties": {
-            "action": {
+            "type": {
               "enum": [
-                "create"
+                "duplicateLayout",
+                "moveLayout"
               ]
             }
           },
           "required": [
-            "action"
+            "type"
           ]
         },
         "then": {
           "required": [
-            "name"
+            "from",
+            "layout",
+            "to"
           ]
         },
         "else": {
           "if": {
             "properties": {
-              "action": {
+              "type": {
                 "enum": [
-                  "delete"
+                  "saveSlide"
                 ]
               }
             },
             "required": [
-              "action"
+              "type"
             ]
           },
           "then": {
             "required": [
-              "theme"
+              "name",
+              "slideId"
             ]
           },
           "else": {
             "if": {
               "properties": {
-                "action": {
+                "type": {
                   "enum": [
-                    "export"
+                    "rename"
                   ]
                 }
               },
               "required": [
-                "action"
+                "type"
               ]
             },
             "then": {
               "required": [
-                "output",
+                "name",
                 "theme"
               ]
             },
             "else": {
               "if": {
                 "properties": {
-                  "action": {
+                  "type": {
                     "enum": [
-                      "install"
+                      "create"
                     ]
                   }
                 },
                 "required": [
-                  "action"
+                  "type"
                 ]
               },
               "then": {
                 "required": [
-                  "path"
+                  "name"
                 ]
               },
               "else": {
                 "if": {
                   "properties": {
-                    "action": {
+                    "type": {
                       "enum": [
-                        "rename"
+                        "export"
                       ]
                     }
                   },
                   "required": [
-                    "action"
+                    "type"
                   ]
                 },
                 "then": {
                   "required": [
-                    "name",
+                    "output",
                     "theme"
                   ]
                 },
                 "else": {
                   "if": {
                     "properties": {
-                      "action": {
+                      "type": {
                         "enum": [
-                          "saveSlide"
+                          "install"
                         ]
                       }
                     },
                     "required": [
-                      "action"
+                      "type"
                     ]
                   },
                   "then": {
                     "required": [
-                      "name",
-                      "slideId"
+                      "path"
                     ]
                   },
                   "else": {
                     "if": {
                       "properties": {
-                        "action": {
+                        "type": {
                           "enum": [
-                            "duplicateLayout",
-                            "moveLayout"
+                            "delete"
                           ]
                         }
                       },
                       "required": [
-                        "action"
+                        "type"
                       ]
                     },
                     "then": {
                       "required": [
-                        "from",
-                        "layout",
-                        "to"
+                        "theme"
                       ]
                     }
                   }
@@ -13782,30 +13782,6 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "action": {
-            "type": "string",
-            "enum": [
-              "export",
-              "import",
-              "save",
-              "delete",
-              "duplicate",
-              "preview"
-            ]
-          },
-          "id": {
-            "type": "string",
-            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
-            "description": "A lowercase UUID the app minted. A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone. Required by delete, duplicate and preview."
-          },
-          "output": {
-            "type": "string",
-            "description": "Absolute path of a new .json file outside any presentation folder. Required by export."
-          },
-          "path": {
-            "type": "string",
-            "description": "Absolute path of a styles file. Required by import."
-          },
           "definition": {
             "type": "object",
             "properties": {
@@ -13835,83 +13811,107 @@
             ],
             "additionalProperties": false,
             "description": "A style definition as images.styles.list lists them. Required by save."
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
+            "description": "A lowercase UUID the app minted. A style id from images.styles.list: the style to duplicate, delete or preview, the one save writes over, or the one export writes alone. Required by delete, duplicate and preview."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "save",
+              "export",
+              "delete",
+              "duplicate",
+              "preview",
+              "import"
+            ]
+          },
+          "output": {
+            "type": "string",
+            "description": "Absolute path of a new .json file outside any presentation folder. Required by export."
+          },
+          "path": {
+            "type": "string",
+            "description": "Absolute path of a styles file. Required by import."
           }
         },
         "required": [
-          "action"
+          "type"
         ],
         "additionalProperties": false,
         "if": {
           "properties": {
-            "action": {
+            "type": {
               "enum": [
-                "export"
+                "save"
               ]
             }
           },
           "required": [
-            "action"
+            "type"
           ]
         },
         "then": {
           "required": [
-            "output"
+            "definition"
           ]
         },
         "else": {
           "if": {
             "properties": {
-              "action": {
+              "type": {
                 "enum": [
-                  "import"
+                  "export"
                 ]
               }
             },
             "required": [
-              "action"
+              "type"
             ]
           },
           "then": {
             "required": [
-              "path"
+              "output"
             ]
           },
           "else": {
             "if": {
               "properties": {
-                "action": {
+                "type": {
                   "enum": [
-                    "save"
+                    "delete",
+                    "duplicate",
+                    "preview"
                   ]
                 }
               },
               "required": [
-                "action"
+                "type"
               ]
             },
             "then": {
               "required": [
-                "definition"
+                "id"
               ]
             },
             "else": {
               "if": {
                 "properties": {
-                  "action": {
+                  "type": {
                     "enum": [
-                      "delete",
-                      "duplicate",
-                      "preview"
+                      "import"
                     ]
                   }
                 },
                 "required": [
-                  "action"
+                  "type"
                 ]
               },
               "then": {
                 "required": [
-                  "id"
+                  "path"
                 ]
               }
             }
@@ -14361,27 +14361,27 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Control the selected presentation’s running show as its own navigation does. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; slide enters the slide slideId names at Start, a captured stable slide ID. While the screen is black or white, a navigation action first shows the slide again where it was. Commands do not edit the presentation.",
+      "description": "Control the selected presentation’s running show as its own navigation does. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; goToSlide enters the slide slideId names at Start, a captured stable slide ID. While the screen is black or white, a navigation action first shows the slide again where it was. Commands do not edit the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "action": {
+          "slideId": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The slide to enter at Start, by its id as the show captured it. Required by goToSlide."
+          },
+          "type": {
             "type": "string",
             "enum": [
+              "goToSlide",
               "nextSlide",
               "nextStep",
               "nextStepInstant",
               "previousSlide",
               "previousStep",
               "toggleBlackScreen",
-              "toggleNotes",
-              "slide"
+              "toggleNotes"
             ]
-          },
-          "slideId": {
-            "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The slide to enter at Start, by its id as the show captured it. Required by slide."
           },
           "presentation": {
             "type": "string",
@@ -14389,19 +14389,19 @@
           }
         },
         "required": [
-          "action"
+          "type"
         ],
         "additionalProperties": false,
         "if": {
           "properties": {
-            "action": {
+            "type": {
               "enum": [
-                "slide"
+                "goToSlide"
               ]
             }
           },
           "required": [
-            "action"
+            "type"
           ]
         },
         "then": {
