@@ -1482,7 +1482,7 @@
         "foot": {
           "type": "string"
         },
-        "model": {
+        "modelId": {
           "type": "string"
         },
         "node": {
@@ -1501,7 +1501,7 @@
       "required": [
         "bodySpeed",
         "foot",
-        "model",
+        "modelId",
         "node",
         "plantedSamples",
         "plantedSpeed"
@@ -4513,7 +4513,7 @@
           "items": {
             "type": "object",
             "properties": {
-              "operation": {
+              "operationIndex": {
                 "type": "number"
               },
               "summary": {
@@ -4521,7 +4521,7 @@
               }
             },
             "required": [
-              "operation",
+              "operationIndex",
               "summary"
             ],
             "additionalProperties": false
@@ -4576,7 +4576,7 @@
         "objectId": {
           "type": "string"
         },
-        "operation": {
+        "operationIndex": {
           "type": "number",
           "description": "Index into the proposal's operations when the issue belongs to one."
         },
@@ -8777,14 +8777,14 @@
     "AgentSlideWait": {
       "type": "object",
       "properties": {
-        "after": {
+        "afterStepId": {
           "type": [
             "null",
             "string"
           ],
           "description": "The step that leads the click it follows; null for the wait as the slide has appeared."
         },
-        "before": {
+        "beforeStepId": {
           "type": [
             "null",
             "string"
@@ -8842,8 +8842,8 @@
         }
       },
       "required": [
-        "after",
-        "before",
+        "afterStepId",
+        "beforeStepId",
         "motion",
         "samples",
         "slideAge"
@@ -9085,7 +9085,7 @@
         "shadowed": {
           "type": "number"
         },
-        "text": {
+        "textId": {
           "type": "string"
         }
       },
@@ -9093,7 +9093,7 @@
         "boundsOverlap",
         "covered",
         "shadowed",
-        "text"
+        "textId"
       ],
       "additionalProperties": false,
       "description": "How much of a text's box a model's bounds overlap, how much of the text the model covers, and how much of its box the model's shadow does, 0 to 1. A model covers flat words where its silhouette lies over their box, in front or behind, and 3D words, which their own model draws, where it draws in front of their letters."
@@ -9202,7 +9202,7 @@
         "covered": {
           "type": "number"
         },
-        "model": {
+        "modelId": {
           "type": [
             "null",
             "string"
@@ -9222,7 +9222,7 @@
         "shadow": {
           "type": "object",
           "properties": {
-            "model": {
+            "modelId": {
               "type": [
                 "null",
                 "string"
@@ -9250,14 +9250,14 @@
             }
           },
           "required": [
-            "model",
+            "modelId",
             "over",
             "shadowed",
             "time"
           ],
           "additionalProperties": false
         },
-        "text": {
+        "textId": {
           "type": "string"
         },
         "time": {
@@ -9269,10 +9269,10 @@
       },
       "required": [
         "covered",
-        "model",
+        "modelId",
         "over",
         "shadow",
-        "text",
+        "textId",
         "time"
       ],
       "additionalProperties": false,
@@ -9803,7 +9803,7 @@
         "covered": {
           "type": "number"
         },
-        "model": {
+        "modelId": {
           "type": [
             "null",
             "string"
@@ -9812,7 +9812,7 @@
         "shadow": {
           "type": "object",
           "properties": {
-            "model": {
+            "modelId": {
               "type": [
                 "null",
                 "string"
@@ -9835,14 +9835,14 @@
             }
           },
           "required": [
-            "model",
+            "modelId",
             "shadowed",
             "time",
             "waitIndex"
           ],
           "additionalProperties": false
         },
-        "text": {
+        "textId": {
           "type": "string"
         },
         "time": {
@@ -9860,9 +9860,9 @@
       },
       "required": [
         "covered",
-        "model",
+        "modelId",
         "shadow",
-        "text",
+        "textId",
         "time",
         "waitIndex"
       ],
@@ -9878,7 +9878,7 @@
         "certain": {
           "type": "boolean"
         },
-        "model": {
+        "modelId": {
           "type": "string"
         },
         "speed": {
@@ -9889,7 +9889,7 @@
       "required": [
         "action",
         "certain",
-        "model",
+        "modelId",
         "speed"
       ],
       "additionalProperties": false,
