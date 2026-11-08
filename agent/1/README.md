@@ -83,9 +83,9 @@ when it fails, 2 on a usage error and 3 when MarkdownPoint is unavailable.
 
 `MARKDOWNPOINT_CALL_TIMEOUT_MS` sets one deadline, in milliseconds, for every
 call the CLI makes; without it, each method keeps its own. The CLI reaches the
-app on `--socket`, then `MARKDOWNPOINT_SOCKET`, then the socket the app records
-in its state folder, `MARKDOWNPOINT_STATE_DIR` when set. `mdpoint --help` lists
-them.
+app's endpoint, a socket on a Mac and a named pipe on Windows: `--endpoint`,
+then `MARKDOWNPOINT_ENDPOINT`, then the endpoint the app records in its state
+folder, `MARKDOWNPOINT_STATE_DIR` when set. `mdpoint --help` lists them.
 
 ### Issues
 
