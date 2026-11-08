@@ -6582,11 +6582,11 @@
                 "properties": {
                   "end": {
                     "type": "number",
-                    "description": "Original endpoint in step seconds; must be at or after time and does not extend the step."
+                    "description": "When it would have ended, in step seconds, at or after the keyframe's time; it does not extend the step."
                   },
                   "value": {
                     "$ref": "#/definitions/PresentationAnimationValueSource",
-                    "description": "Original interpolation endpoint, admitted against the same target as value."
+                    "description": "Where the move was going."
                   }
                 },
                 "required": [
@@ -6594,7 +6594,7 @@
                   "value"
                 ],
                 "additionalProperties": false,
-                "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
+                "description": "The longer move this keyframe interrupts: up to this keyframe, the motion follows that move's curve."
               },
               "oscillate": {
                 "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -7491,7 +7491,7 @@
               "curves",
               "id"
             ],
-            "description": "A step as its file writes it: `staggered`, `unanchored` and `unplaced` belong to derived steps alone."
+            "description": "A step as its file writes it."
           },
           "PresentationStepStart": {
             "type": "string",

@@ -876,13 +876,13 @@
                         "properties": {
                           "end": {
                             "type": "number",
-                            "description": "Original endpoint in step seconds; must be at or after time and does not extend the step.",
+                            "description": "When it would have ended, in step seconds, at or after the keyframe's time; it does not extend the step.",
                             "minimum": 0,
                             "maximum": 4294967296
                           },
                           "value": {
                             "$ref": "#/definitions/PresentationAnimationValueSource",
-                            "description": "Original interpolation endpoint, admitted against the same target as value."
+                            "description": "Where the move was going."
                           }
                         },
                         "required": [
@@ -890,7 +890,7 @@
                           "value"
                         ],
                         "additionalProperties": false,
-                        "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
+                        "description": "The longer move this keyframe interrupts: up to this keyframe, the motion follows that move's curve."
                       },
                       "oscillate": {
                         "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -931,7 +931,7 @@
                   }
                 ]
               },
-              "description": "Shared keyframe/cue ID namespace. An existing ID replaces the whole event; outer null deletes it.",
+              "description": "By id, one set for the step's keyframes and cues: an id it holds is replaced whole, and null deletes it.",
               "propertyNames": {
                 "type": "string",
                 "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -1633,7 +1633,7 @@
     },
     "AgentEnterEffect": {
       "$ref": "#/definitions/EnterEffect",
-      "description": "The Animate tab's effects, as core names them."
+      "description": "The Animate tab's effects, each by its name, as an object's `enter` and `exit` name theirs in the file."
     },
     "AgentExitEffect": {
       "$ref": "#/definitions/ExitEffect"
@@ -1716,7 +1716,7 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "Authored degrees. Animation keyframes allow explicit turns."
+              "description": "How far it is turned, in degrees clockwise."
             }
           },
           "required": [
@@ -1953,6 +1953,7 @@
         },
         {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "beforeObjectId": {
               "$ref": "#/definitions/AgentObjectId"
@@ -1975,7 +1976,7 @@
                 }
               ]
             },
-            "parentNode": {
+            "parent-node": {
               "type": "string"
             },
             "slideId": {
@@ -1990,8 +1991,7 @@
             "parent",
             "slideId",
             "type"
-          ],
-          "additionalProperties": false
+          ]
         },
         {
           "type": "object",
@@ -2323,6 +2323,38 @@
           ]
         },
         {
+          "type": "object",
+          "properties": {
+            "mode": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "enum": [
+                "after",
+                "with",
+                null
+              ]
+            },
+            "objectIds": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentObjectId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "type": {
+              "const": "start"
+            }
+          },
+          "required": [
+            "mode",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
           "anyOf": [
             {
               "type": "object",
@@ -2472,35 +2504,6 @@
             {
               "type": "object",
               "properties": {
-                "mode": {
-                  "type": "string",
-                  "enum": [
-                    "after",
-                    "click",
-                    "with"
-                  ]
-                },
-                "objectIds": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/AgentObjectId"
-                  },
-                  "minItems": 1,
-                  "uniqueItems": true
-                },
-                "type": {
-                  "const": "start"
-                }
-              },
-              "required": [
-                "mode",
-                "type"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
                 "objectId": {
                   "$ref": "#/definitions/AgentObjectId"
                 },
@@ -2597,7 +2600,7 @@
           "description": "The Animate tab's and the timeline's timing edits, each as the app makes it."
         }
       ],
-      "description": "A timing edit with its fields in the file's words: a keyframe's `exponential-scale` and an oscillation's `wave-shape`."
+      "description": "A timing edit with its fields in the file's words: a click as the file leaves a step's `start` out, a keyframe's `exponential-scale` and an oscillation's `wave-shape`."
     },
     "AgentStepId": {
       "type": "string",
@@ -11265,13 +11268,13 @@
           "properties": {
             "end": {
               "type": "number",
-              "description": "Original endpoint in step seconds; must be at or after time and does not extend the step.",
+              "description": "When it would have ended, in step seconds, at or after the keyframe's time; it does not extend the step.",
               "minimum": 0,
               "maximum": 4294967296
             },
             "value": {
               "$ref": "#/definitions/PresentationAnimationValueSource",
-              "description": "Original interpolation endpoint, admitted against the same target as value."
+              "description": "Where the move was going."
             }
           },
           "required": [
@@ -11279,7 +11282,7 @@
             "value"
           ],
           "additionalProperties": false,
-          "description": "Preserve an interpolation prefix before this keyframe; at time, value applies immediately."
+          "description": "The longer move this keyframe interrupts: up to this keyframe, the motion follows that move's curve."
         },
         "oscillate": {
           "$ref": "#/definitions/PresentationAnimationOscillationSource",
@@ -16958,7 +16961,7 @@
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
-      "description": "Authored degrees. Animation keyframes allow explicit turns."
+      "description": "How far it is turned, in degrees clockwise."
     },
     "AgentSlideId": {
       "type": "string",
