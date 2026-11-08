@@ -10863,13 +10863,6 @@
       "additionalProperties": false,
       "description": "A grid as the file writes it: its columns, with a gutter and margin of 0 when left out, and its baseline from its start at its increment."
     },
-    "MasterGuidePositionSource": {
-      "type": [
-        "number",
-        "string"
-      ],
-      "description": "A guide's position as the file writes it: canvas units, or a percentage such as \"50%\"."
-    },
     "MasterGuideSource": {
       "anyOf": [
         {
@@ -10886,7 +10879,7 @@
               "type": "string"
             },
             "x": {
-              "$ref": "#/definitions/MasterGuidePositionSource"
+              "type": "number"
             }
           },
           "required": [
@@ -10908,7 +10901,7 @@
               "type": "string"
             },
             "y": {
-              "$ref": "#/definitions/MasterGuidePositionSource"
+              "type": "number"
             }
           },
           "required": [

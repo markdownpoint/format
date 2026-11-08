@@ -173,7 +173,7 @@ The master also sets a column grid, a baseline grid and two guides. MarkdownPoin
 
 ```json
 [
-  {"id": "center", "x": "50%", "name": "Center", "locked": true},
+  {"id": "center", "x": 960, "name": "Center", "locked": true},
   {"id": "footer-line", "y": 960, "name": "Footer line"}
 ]
 ```

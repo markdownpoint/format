@@ -379,20 +379,12 @@
             "description": "The guide's id, unique among the master's guides."
           },
           "x": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/guide-position"
-              }
-            ],
-            "description": "A vertical guide's position across: any number of canvas units, or a percentage of the slide from 0% to 100%, such as \"50%\"."
+            "type": "number",
+            "description": "A vertical guide's position across, from the slide's left edge."
           },
           "y": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/guide-position"
-              }
-            ],
-            "description": "A horizontal guide's position down: any number of canvas units, or a percentage of the slide from 0% to 100%, such as \"50%\"."
+            "type": "number",
+            "description": "A horizontal guide's position down, from the slide's top edge."
           },
           "name": {
             "type": "string",
@@ -4611,19 +4603,6 @@
             "stops"
           ],
           "additionalProperties": false
-        }
-      ]
-    },
-    "guide-position": {
-      "anyOf": [
-        {
-          "type": "number",
-          "description": "canvas units"
-        },
-        {
-          "type": "string",
-          "pattern": "^(?:-(?:0+(?:\\.(?:0{0,6}|0{6}(?:[0-4][0-9]*|50*)))?|\\.(?:0{1,6}|0{6}(?:[0-4][0-9]*|50*)))|0*(?:[0-9]{1,2}(?:\\.[0-9]*)?|\\.[0-9]+)|0*100(?:\\.(?:0{0,6}|0{6}(?:[0-4][0-9]*|50*)))?)%(?![\\s\\S])",
-          "description": "a percentage from 0% to 100%"
         }
       ]
     },
