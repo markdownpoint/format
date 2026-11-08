@@ -53,13 +53,13 @@
             2160,
             720
           ],
-          "description": "Lines on the movie's shorter side: a landscape movie's height, a portrait movie's width; 2160 is 4K."
+          "description": "Lines asked for on the movie's shorter side, 2160 for 4K. The longer side keeps the slide's shape within 3840 pixels, in even pixels: the answer's `width` and `height` give the size made."
         },
         "slideDelay": {
           "type": "number",
           "description": "Seconds a slide holds once its last step and its sound have ended, before the next slide. A slide whose transition starts by itself holds for that transition's own delay instead, and one that scrolls out goes on as its last step ends.",
           "minimum": 0,
-          "maximum": 3600
+          "maximum": 4294967296
         },
         "slides": {
           "type": "object",
@@ -82,7 +82,7 @@
           "type": "number",
           "description": "Seconds the movie waits before each step that waits for a click, the first one too, from when what plays before it ends.",
           "minimum": 0,
-          "maximum": 3600
+          "maximum": 4294967296
         },
         "transparent": {
           "type": "boolean",
