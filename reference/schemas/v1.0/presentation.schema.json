@@ -7522,7 +7522,7 @@
                             "type": "number",
                             "minimum": -8589934592,
                             "maximum": 8589934592,
-                            "description": "Where in its cycle the wave starts, 360 degrees to a cycle. A noise wave starts that far along its noise. Left out, it's 0."
+                            "description": "Where in its cycle the wave starts, 360 degrees to a cycle, as the introduction gives each wave and its noise. Left out, it's 0."
                           },
                           "wave-shape": {
                             "enum": [
@@ -7532,7 +7532,7 @@
                               "sawtooth",
                               "noise"
                             ],
-                            "description": "The wave's shape. Left out, it's sine."
+                            "description": "The wave's shape, each as the introduction gives it. Left out, it's sine."
                           },
                           "seed": {
                             "type": "integer",
