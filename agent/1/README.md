@@ -25,10 +25,12 @@ time. From MarkdownPoint 1.0 it only grows: a new method, field or value joins
 `/1`, and a rename, a removal or a changed meaning comes as `/2`. Methods are
 grouped by what they act on, in plural collections such as `presentations`,
 `slides` and `themes`, beside two action groups, `present` and `history`. The
-names the contract gives are camelCase (`slides.get`, `insertSlide`, `noChange`,
-`slideId`), MCP's tools are their methods in snake case (`slides_get`), and the
-CLI spells a value on its command line in kebab-case (`toggle-black-screen` for
-`toggleBlackScreen`). Its codes are kebab-case (`stale-revision`,
+names the contract gives its own facts are camelCase (`slides.get`,
+`insertSlide`, `noChange`, `slideId`), while a field that carries a file key's
+value is spelled as the file spells it (`text-styles`, `unit-scale`,
+`aspect-ratio`). MCP's tools are their methods in snake case (`slides_get`), and
+the CLI spells a value on its command line in kebab-case (`toggle-black-screen`
+for `toggleBlackScreen`). Its codes are kebab-case (`stale-revision`,
 `text-overflow`), as the file's keys and values are, so one fact can carry
 both: a status's `noChange` is an issue's `no-change`. Order means nothing in the contract's schemas: most fields,
 branches and values are listed alphabetically, the same on every build, so

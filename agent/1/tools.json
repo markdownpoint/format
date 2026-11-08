@@ -674,7 +674,7 @@
                   "type": "string"
                 }
               },
-              "textStyles": {
+              "text-styles": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -686,7 +686,7 @@
               "layouts",
               "master",
               "schemes",
-              "textStyles"
+              "text-styles"
             ],
             "additionalProperties": false,
             "description": "Accepted theme at this revision."
@@ -13405,7 +13405,7 @@
                   "regenerate"
                 ]
               },
-              "aspectRatio": {
+              "aspect-ratio": {
                 "type": "string"
               },
               "model": {
@@ -13435,7 +13435,7 @@
             },
             "required": [
               "action",
-              "aspectRatio",
+              "aspect-ratio",
               "model",
               "provider",
               "requiresProvider",
