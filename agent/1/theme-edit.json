@@ -760,6 +760,32 @@
             {
               "type": "object",
               "properties": {
+                "default-step-duration": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 4294967296,
+                      "description": "seconds"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "type": {
+                  "const": "setDefaultStepDuration"
+                }
+              },
+              "required": [
+                "default-step-duration",
+                "type"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
                 "family": {
                   "type": "string"
                 },
@@ -899,35 +925,9 @@
                 "value"
               ],
               "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "step-duration": {
-                  "anyOf": [
-                    {
-                      "type": "number",
-                      "minimum": 0.000001,
-                      "maximum": 4294967296,
-                      "description": "seconds"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                },
-                "type": {
-                  "const": "setStepDuration"
-                }
-              },
-              "required": [
-                "step-duration",
-                "type"
-              ],
-              "additionalProperties": false
             }
           ],
-          "description": "The master's settings the file names otherwise than the panes: a grid and guides as the file writes them, and the step duration."
+          "description": "The master's settings the file names otherwise than the panes: a grid and guides as the file writes them, and the default step duration."
         }
       ],
       "description": "A master or layout edit, as the canvas, the Master pane and the Layout pane make it, plus making and deleting layouts. A theme's name is its master's, so the master's own `setName` is not among them."
@@ -1516,7 +1516,7 @@
         "temperature": {
           "$ref": "#/definitions/SignedFraction"
         },
-        "transparent": {
+        "transparent-background": {
           "$ref": "#/definitions/Boolean"
         },
         "type": {
@@ -4879,7 +4879,7 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "transparent"
+              "const": "transparent-background"
             },
             "value": {
               "anyOf": [
@@ -6910,7 +6910,7 @@
         "text-style",
         "time-remap",
         "tracking",
-        "transparent",
+        "transparent-background",
         "trim",
         "use-as-mask",
         "value-labels",
@@ -7464,7 +7464,7 @@
         "temperature": {
           "$ref": "#/definitions/SignedFraction"
         },
-        "transparent": {
+        "transparent-background": {
           "$ref": "#/definitions/Boolean"
         },
         "type": {
@@ -10960,7 +10960,7 @@
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
           "description": "text that isn’t blank"
         },
-        "transparent": {
+        "transparent-background": {
           "type": "boolean"
         }
       },

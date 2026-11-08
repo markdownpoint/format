@@ -475,11 +475,11 @@
       },
       "additionalProperties": false
     },
-    "step-duration": {
+    "default-step-duration": {
       "type": "number",
       "minimum": 0.000001,
       "maximum": 4294967296,
-      "description": "The default length of a fade or move in a newly added step. Left out, it's 0.5."
+      "description": "The default length of a newly added step: the length its fades and moves take and its min-duration, and the length a by-paragraph delivery starts with. Left out, it's 0.5."
     },
     "layout-order": {
       "type": "array",
@@ -1377,7 +1377,7 @@
               "constrain-proportions": {
                 "type": "boolean"
               },
-              "transparent": {
+              "transparent-background": {
                 "type": "boolean"
               },
               "prompt": {
@@ -1409,7 +1409,7 @@
                     "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                     "description": "How the style changes an image, as an edit prompt that isn't blank."
                   },
-                  "transparent": {
+                  "transparent-background": {
                     "type": "boolean",
                     "description": "Whether images in the style have transparent backgrounds."
                   }

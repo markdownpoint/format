@@ -122,4 +122,4 @@ The file gives this box no height. It grows to fit its words.
 Outlined
 
 <!-- notes -->
-The first box sets auto-size to height, so its frame has no height. The figures set tabular: every digit is as wide, so the columns line up. The outlined word's letters take the background's color. Its text-stroke is the accent color, 3 units wide.
+The first box sets auto-size to height, so its frame has no height. The figures set tabular: every digit is as wide, so the columns line up. The outlined word's letters take the background's color. Its text-stroke is the accent color, 3 canvas units wide.

@@ -324,7 +324,7 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
-A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `generation` names its image generation record:
+A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it asks for a `transparent-background`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `generation` names its image generation record:
 
 ```json
 {
@@ -337,7 +337,7 @@ A generated picture starts as a request. An image object or a slide's `backgroun
   "stroke-weight": 4,
   "stroke-style": "dashed",
   "alt": "A red paper boat",
-  "transparent": true,
+  "transparent-background": true,
   "prompt": "A red paper boat on calm water",
   "image-style": "Flat illustration",
   "generation": {"id": "b0bebb75-dc72-4d54-965e-64824ba62d02"}
@@ -361,7 +361,7 @@ The image generation record, generated/<id>.json, holds what was asked and the p
     "model": "gpt-image-2.5-sunburst",
     "parameters": {
       "aspect-ratio": "190:107",
-      "transparent": true,
+      "transparent-background": true,
       "size": "2048",
       "quality": "medium"
     }
@@ -397,7 +397,7 @@ The hills carry a restyle, and the background is still a request:
 {
   "prompt": "Paper leaves cut out along the slide's lower edge",
   "image-style": "Paper cutout",
-  "transparent": true
+  "transparent-background": true
 }
 ```
 

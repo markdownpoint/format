@@ -16,7 +16,7 @@
     "model": "gpt-image-2.5-sunburst",
     "parameters": {
       "aspect-ratio": "190:107",
-      "transparent": true,
+      "transparent-background": true,
       "size": "2048",
       "quality": "medium"
     }

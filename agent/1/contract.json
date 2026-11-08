@@ -1772,7 +1772,7 @@
             "token": {
               "type": "string"
             },
-            "transparent": {
+            "transparent-background": {
               "type": "boolean"
             },
             "variants": {
@@ -1790,7 +1790,7 @@
             "requiresProvider",
             "status",
             "token",
-            "transparent",
+            "transparent-background",
             "variants"
           ],
           "additionalProperties": false
@@ -4041,7 +4041,7 @@
             "image-style": {
               "$ref": "#/definitions/image-style-or-none"
             },
-            "transparent": {
+            "transparent-background": {
               "type": "boolean"
             },
             "restyle": {
@@ -4062,7 +4062,7 @@
                   "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                   "description": "text that isn’t blank"
                 },
-                "transparent": {
+                "transparent-background": {
                   "type": "boolean"
                 }
               },
@@ -5803,7 +5803,7 @@
             "constrain-proportions": {
               "type": "boolean"
             },
-            "transparent": {
+            "transparent-background": {
               "type": "boolean"
             },
             "prompt": {
@@ -5834,7 +5834,7 @@
                   "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                   "description": "text that isn’t blank"
                 },
-                "transparent": {
+                "transparent-background": {
                   "type": "boolean"
                 }
               },
@@ -8537,6 +8537,10 @@
             "$ref": "#/definitions/PresentationCommentThread"
           }
         },
+        "default-step-duration": {
+          "type": "number",
+          "description": "The master's default-step-duration, or the format's default, in seconds: the length a new step's fades and moves take and its min-duration, and the length a by-paragraph delivery starts with."
+        },
         "drawnEnds": {
           "type": "object",
           "additionalProperties": {
@@ -8662,10 +8666,6 @@
         "slideId": {
           "type": "string"
         },
-        "step-duration": {
-          "type": "number",
-          "description": "How long a step's fade or move takes, in seconds: the master's step-duration, or the format's default."
-        },
         "steps": {
           "type": "array",
           "items": {
@@ -8691,6 +8691,7 @@
         "animationParameters",
         "animationValueSchemas",
         "comments",
+        "default-step-duration",
         "drawnEnds",
         "drawnFrames",
         "initial",
@@ -8701,7 +8702,6 @@
         "provenance",
         "revision",
         "slideId",
-        "step-duration",
         "steps",
         "trimStops"
       ],
@@ -10034,6 +10034,13 @@
           ],
           "additionalProperties": false
         },
+        "default-step-duration": {
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "The default length of a new step: the length its fades and moves take and its min-duration, and the length a by-paragraph delivery starts with; null takes the format's default."
+        },
         "files": {
           "type": "object",
           "additionalProperties": {
@@ -10112,13 +10119,6 @@
           "$ref": "#/definitions/SlideSize",
           "description": "The slide size in canvas units, as the file's `size`."
         },
-        "step-duration": {
-          "type": [
-            "null",
-            "number"
-          ],
-          "description": "How long a slide step's fade or move takes; null takes the format's default."
-        },
         "text-styles": {
           "type": "array",
           "items": {
@@ -10131,6 +10131,7 @@
       },
       "required": [
         "brand",
+        "default-step-duration",
         "files",
         "fonts",
         "grid",
@@ -10141,11 +10142,10 @@
         "objects",
         "schemes",
         "size",
-        "step-duration",
         "text-styles",
         "unit-scale"
       ],
-      "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `step-duration`."
+      "description": "The master as the file names its settings, for the Agent: its `layout-order` and `text-styles`, its guides and grid as the file writes them, and its `default-step-duration`."
     },
     "FillSource": {
       "anyOf": [
@@ -12625,7 +12625,7 @@
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
           "description": "text that isn’t blank"
         },
-        "transparent": {
+        "transparent-background": {
           "type": "boolean"
         }
       },

@@ -3886,7 +3886,7 @@
         "temperature": {
           "$ref": "#/definitions/SignedFraction"
         },
-        "transparent": {
+        "transparent-background": {
           "$ref": "#/definitions/Boolean"
         },
         "type": {
@@ -7083,7 +7083,7 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "transparent"
+              "const": "transparent-background"
             },
             "value": {
               "anyOf": [
@@ -9114,7 +9114,7 @@
         "text-style",
         "time-remap",
         "tracking",
-        "transparent",
+        "transparent-background",
         "trim",
         "use-as-mask",
         "value-labels",
@@ -9678,7 +9678,7 @@
         "temperature": {
           "$ref": "#/definitions/SignedFraction"
         },
-        "transparent": {
+        "transparent-background": {
           "$ref": "#/definitions/Boolean"
         },
         "type": {
@@ -12160,7 +12160,7 @@
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
           "description": "nonempty text without NUL characters, or \"none\""
         },
-        "transparent": {
+        "transparent-background": {
           "type": "boolean"
         },
         "restyle": {
@@ -12181,7 +12181,7 @@
               "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
               "description": "text that isn’t blank"
             },
-            "transparent": {
+            "transparent-background": {
               "type": "boolean"
             }
           },
@@ -13007,7 +13007,7 @@
                       "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                       "description": "nonempty text without NUL characters, or \"none\""
                     },
-                    "transparent": {
+                    "transparent-background": {
                       "type": "boolean"
                     },
                     "restyle": {
@@ -13028,7 +13028,7 @@
                           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
                           "description": "text that isn’t blank"
                         },
-                        "transparent": {
+                        "transparent-background": {
                           "type": "boolean"
                         }
                       },
@@ -16291,7 +16291,7 @@
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
           "description": "text that isn’t blank"
         },
-        "transparent": {
+        "transparent-background": {
           "type": "boolean"
         }
       },
