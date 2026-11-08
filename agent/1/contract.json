@@ -2312,12 +2312,12 @@
         "models": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/AgentModelFile"
           },
           "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as bird."
         }
       },
@@ -2589,7 +2589,7 @@
           "description": "Action ids from models_actions, in the order the Actions should come."
         },
         "file": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelFile",
           "description": "A model models_rig made, or one models_animate made from it."
         },
         "looping": {
@@ -2600,7 +2600,7 @@
           "description": "Names of the Actions that loop, closed on their cycle, as models_actions names them."
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The animated model's file name; the model's when left out."
         }
       },
@@ -2678,6 +2678,11 @@
       "additionalProperties": false,
       "description": "The saved model, what import changed in the build's GLB, what the model does, and its sheet."
     },
+    "AgentModelFile": {
+      "type": "string",
+      "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
+      "description": "A model of the presentation, by its file's path: a media/ or generated/ path ending in .glb."
+    },
     "AgentModelFromFileRequest": {
       "type": "object",
       "properties": {
@@ -2686,11 +2691,11 @@
           "description": "A figure to rig, in a T-pose."
         },
         "file": {
-          "type": "string",
-          "description": "A picture of the presentation in place of picture, such as media/rocket-1a2b3c4d.png."
+          "$ref": "#/definitions/AgentModelImage",
+          "description": "An image of the presentation in place of pictureId, such as media/rocket-1a2b3c4d.png."
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as rocket."
         }
       },
@@ -2699,7 +2704,7 @@
         "name"
       ],
       "additionalProperties": false,
-      "description": "A model from a picture of the presentation."
+      "description": "A model from an image of the presentation."
     },
     "AgentModelFromPictureRequest": {
       "type": "object",
@@ -2709,7 +2714,7 @@
           "description": "A figure to rig, in a T-pose."
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as rocket."
         },
         "pictureId": {
@@ -2735,11 +2740,16 @@
       ],
       "description": "A model Meshy makes from a picture, saved as media/<name>-<hash>.glb: `pictureId` from models_picture, or `file`, an image of the presentation. A character's comes in a T-pose, ready for models_rig."
     },
+    "AgentModelImage": {
+      "type": "string",
+      "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[wW][eE][bB][pP])(?![\\s\\S])",
+      "description": "An image of the presentation Meshy makes a model from: a PNG, JPEG or WebP in media/ or generated/."
+    },
     "AgentModelInspectRequest": {
       "type": "object",
       "properties": {
         "file": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelFile",
           "description": "The model's path, such as media/bird-1a2b3c4d.glb."
         }
       },
@@ -2960,6 +2970,11 @@
       "additionalProperties": false,
       "description": "A model Meshy made, saved: what cleaning and import changed, what it does, the credits it cost and its sheet."
     },
+    "AgentModelName": {
+      "type": "string",
+      "pattern": "^[^/\\\\\\0.][^/\\\\\\0]{0,99}(?![\\s\\S])",
+      "description": "A model's file name, without a folder or extension."
+    },
     "AgentModelPictureRequest": {
       "type": "object",
       "properties": {
@@ -3024,7 +3039,7 @@
       "type": "object",
       "properties": {
         "file": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelFile",
           "description": "The model to rig, such as media/figure-1a2b3c4d.glb."
         },
         "height": {
@@ -3033,7 +3048,7 @@
           "exclusiveMinimum": 0
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The rigged model's file name; the model's with -rigged when left out."
         }
       },
@@ -3048,17 +3063,17 @@
       "type": "object",
       "properties": {
         "data": {
-          "description": "Any JSON the build reads, such as sizes or colors. The model's file keeps it."
+          "description": "Any JSON the build reads, such as sizes or colors. No file keeps it."
         },
         "models": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/AgentModelFile"
           },
           "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as bird."
         },
         "source": {
@@ -9160,12 +9175,12 @@
         "models": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/AgentModelFile"
           },
           "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
         },
         "name": {
-          "type": "string",
+          "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as bird."
         },
         "source": {

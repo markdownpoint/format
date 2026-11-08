@@ -11297,7 +11297,7 @@
         "type": "object",
         "properties": {
           "data": {
-            "description": "With for and no source, the letters' depth and bevel, in ems of the text's size. Any JSON the build reads, such as sizes or colors. The model's file keeps it. With for, a record, to which data.words adds the text's letters."
+            "description": "With for and no source, the letters' depth and bevel, in ems of the text's size. Any JSON the build reads, such as sizes or colors. No file keeps it. With for, a record, to which data.words adds the text's letters."
           },
           "for": {
             "type": "object",
@@ -11323,12 +11323,15 @@
           "models": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
+              "description": "A model of the presentation, by its file's path: a media/ or generated/ path ending in .glb."
             },
             "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
           },
           "name": {
             "type": "string",
+            "pattern": "^[^/\\\\\\0.][^/\\\\\\0]{0,99}(?![\\s\\S])",
             "description": "The model's file name without extension, such as bird."
           },
           "source": {
@@ -11458,10 +11461,12 @@
           },
           "file": {
             "type": "string",
-            "description": "A picture of the presentation in place of picture, such as media/rocket-1a2b3c4d.png."
+            "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[wW][eE][bB][pP])(?![\\s\\S])",
+            "description": "An image of the presentation in place of pictureId, such as media/rocket-1a2b3c4d.png."
           },
           "name": {
             "type": "string",
+            "pattern": "^[^/\\\\\\0.][^/\\\\\\0]{0,99}(?![\\s\\S])",
             "description": "The model's file name without extension, such as rocket."
           },
           "pictureId": {
@@ -11494,6 +11499,7 @@
         "properties": {
           "file": {
             "type": "string",
+            "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
             "description": "The model to rig, such as media/figure-1a2b3c4d.glb."
           },
           "height": {
@@ -11503,6 +11509,7 @@
           },
           "name": {
             "type": "string",
+            "pattern": "^[^/\\\\\\0.][^/\\\\\\0]{0,99}(?![\\s\\S])",
             "description": "The rigged model's file name; the model's with -rigged when left out."
           },
           "presentation": {
@@ -11544,6 +11551,7 @@
           },
           "file": {
             "type": "string",
+            "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
             "description": "A model models_rig made, or one models_animate made from it."
           },
           "looping": {
@@ -11555,6 +11563,7 @@
           },
           "name": {
             "type": "string",
+            "pattern": "^[^/\\\\\\0.][^/\\\\\\0]{0,99}(?![\\s\\S])",
             "description": "The animated model's file name; the model's when left out."
           },
           "presentation": {
@@ -11584,6 +11593,7 @@
         "properties": {
           "file": {
             "type": "string",
+            "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
             "description": "The model's path, such as media/bird-1a2b3c4d.glb."
           },
           "presentation": {
