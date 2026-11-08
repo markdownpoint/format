@@ -518,7 +518,7 @@
                 "$ref": "#/definitions/object-id"
               },
               "frame": {
-                "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+                "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
                 "type": "object",
                 "properties": {
                   "x": {
@@ -989,7 +989,7 @@
                 "$ref": "#/definitions/object-id"
               },
               "frame": {
-                "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+                "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
                 "type": "object",
                 "properties": {
                   "x": {
@@ -1003,18 +1003,11 @@
                     "minimum": -65536,
                     "maximum": 65536,
                     "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
-                  },
-                  "width": {
-                    "type": "number",
-                    "minimum": 0.000001,
-                    "maximum": 65536,
-                    "description": "The width."
                   }
                 },
                 "required": [
                   "x",
-                  "y",
-                  "width"
+                  "y"
                 ],
                 "additionalProperties": false
               },
@@ -4475,7 +4468,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has no height: the table is as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
       "type": "object",
       "properties": {
         "x": {

@@ -13,8 +13,7 @@
           "type": "table",
           "frame": {
             "x": 120,
-            "y": 340,
-            "width": 760
+            "y": 340
           },
           "text-style": "body",
           "column-widths": [380,380],
@@ -79,8 +78,7 @@
           "type": "table",
           "frame": {
             "x": 120,
-            "y": 380,
-            "width": 1680
+            "y": 380
           },
           "inset": 24,
           "text-style": "body",

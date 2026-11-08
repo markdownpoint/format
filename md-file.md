@@ -273,7 +273,7 @@ Its position, columns, row heights and style are in the .mdpoint file. A row is 
   {
     "id": "prices",
     "type": "table",
-    "frame": {"x": 120, "y": 380, "width": 1680},
+    "frame": {"x": 120, "y": 380},
     "inset": 24,
     "text-style": "body",
     "column-widths": [840, 420, 420],

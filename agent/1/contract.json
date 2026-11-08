@@ -5435,18 +5435,11 @@
                   "minimum": -65536,
                   "maximum": 65536,
                   "description": "canvas units"
-                },
-                "width": {
-                  "type": "number",
-                  "minimum": 0.000001,
-                  "maximum": 65536,
-                  "description": "canvas units"
                 }
               },
               "required": [
                 "x",
-                "y",
-                "width"
+                "y"
               ],
               "additionalProperties": false
             },

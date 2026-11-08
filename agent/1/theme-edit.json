@@ -9488,21 +9488,14 @@
           "minimum": -65536,
           "maximum": 65536,
           "description": "canvas units"
-        },
-        "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
-          "description": "canvas units"
         }
       },
       "required": [
         "x",
-        "y",
-        "width"
+        "y"
       ],
       "additionalProperties": false,
-      "description": "A table's frame as the files hold it: its height is its rows', and never stored."
+      "description": "A table's frame as the files hold it: where it stands. Its width is its columns' and its height its rows', never stored."
     },
     "PresentationTransformFrame": {
       "type": "object",
@@ -9522,7 +9515,6 @@
         "width": {
           "type": "number",
           "minimum": 0.000001,
-          "maximum": 65536,
           "description": "canvas units"
         },
         "height": {
@@ -9537,7 +9529,7 @@
         "width"
       ],
       "additionalProperties": false,
-      "description": "The frame a transform gives an object: every side, but a table's height only where the edit sizes the table, as a move leaves its rows as they are."
+      "description": "The frame a transform gives an object: every side, but a table's height only where the edit sizes the table, as a move leaves its rows as they are. A table's width and height size its columns and its rows."
     },
     "RenderFontRole": {
       "type": "string",

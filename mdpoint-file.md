@@ -206,7 +206,7 @@ The table's first column is its header, and its first row is a row like the othe
   {
     "id": "specs",
     "type": "table",
-    "frame": {"x": 120, "y": 340, "width": 760},
+    "frame": {"x": 120, "y": 340},
     "text-style": "body",
     "column-widths": [380, 380],
     "header-row": false,
