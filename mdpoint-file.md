@@ -492,7 +492,7 @@ The camera stands on the master. A slide changes it in `overrides`. Its `positio
       "type": "position",
       "target": "mug",
       "axes": ["x"],
-      "offset": false,
+      "relative-to-target": false,
       "strength": 0.25
     }
   ],

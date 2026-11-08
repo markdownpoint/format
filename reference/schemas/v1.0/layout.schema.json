@@ -2008,9 +2008,9 @@
                               "maxItems": 3,
                               "description": "The slide's axes the camera follows on, of x, y, and z. Left out, all three."
                             },
-                            "offset": {
+                            "relative-to-target": {
                               "type": "boolean",
-                              "description": "Whether the camera adds its own position from the slide's center at z 0 to the target's point, as Blender's Copy Location Offset does. Left out, it's true. False puts it at the target's point."
+                              "description": "Whether the camera's position counts from the target's point instead of the slide's center at z 0, as Blender's Copy Location Offset adds it. Left out, it's true. False puts it at the target's point."
                             },
                             "strength": {
                               "type": "number",

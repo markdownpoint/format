@@ -9,7 +9,7 @@
       "scheme": "dark",
       "overrides": {
         "camera": {
-          "constraints": [{"id":"follow","type":"position","target":"mug","axes":["x"],"offset":false,"strength":0.25}],
+          "constraints": [{"id":"follow","type":"position","target":"mug","axes":["x"],"relative-to-target":false,"strength":0.25}],
           "motion-blur": {"frame-position":"start"}
         }
       },

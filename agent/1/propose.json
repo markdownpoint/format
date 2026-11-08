@@ -7553,7 +7553,7 @@
                             "minItems": 1,
                             "maxItems": 3
                           },
-                          "offset": {
+                          "relative-to-target": {
                             "type": "boolean"
                           },
                           "strength": {
