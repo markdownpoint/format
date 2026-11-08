@@ -74,6 +74,24 @@
         {
           "type": "object",
           "properties": {
+            "drawnEnd": {
+              "$ref": "#/definitions/LineEndSource"
+            },
+            "drawnStart": {
+              "$ref": "#/definitions/LineEndSource"
+            },
+            "objectId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "objectId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "drawnFrame": {
               "$ref": "#/definitions/AgentTransformFrame"
             },
@@ -91,24 +109,6 @@
             "drawnFrame",
             "objectId",
             "rotation"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "end": {
-              "$ref": "#/definitions/LineEndSource"
-            },
-            "objectId": {
-              "type": "string"
-            },
-            "start": {
-              "$ref": "#/definitions/LineEndSource"
-            }
-          },
-          "required": [
-            "objectId"
           ],
           "additionalProperties": false
         },
@@ -174,7 +174,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame as `drawnFrame`, where it is drawn, which a growing text's file frame is not."
+      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame and a line's ends where they are drawn, `drawnFrame`, `drawnStart` and `drawnEnd`, which the file's frame and ends are not for a growing text or an object auto layout places."
     },
     "AgentPoint": {
       "$ref": "#/definitions/PresentationPoint"

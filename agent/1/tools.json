@@ -2109,7 +2109,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read one slide at authored Base or an exact moment of its motion: its objects as the .mdpoint file spells them, a growing text’s frame the point its growth holds, each with its words as text when it holds any (exactly what setText takes), drawnFrames: where each framed object is drawn, the frame transformObjects takes as its drawnFrame, which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
+      "description": "Read one slide at authored Base or an exact moment of its motion: its objects as the .mdpoint file spells them, each with its words as text when it holds any (exactly what setText takes), drawnFrames and drawnEnds: where each is drawn, as transformObjects takes it, which theme level owns each, authored initial values/steps, playbackStepIds in presenter advance order, parameter targets with current values and interpolation, and revision. Dormant steps remain authored for repair but do not consume advances. Slide ids come from presentations_get and slides_get results and the .mdpoint file, never ordinals. A read never starts media.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -2206,6 +2206,26 @@
               "$ref": "#/definitions/PresentationCommentThread"
             }
           },
+          "drawnEnds": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "end": {
+                  "$ref": "#/definitions/PresentationPoint"
+                },
+                "start": {
+                  "$ref": "#/definitions/PresentationPoint"
+                }
+              },
+              "required": [
+                "end",
+                "start"
+              ],
+              "additionalProperties": false
+            },
+            "description": "Where each line's ends are drawn as authored, whatever `moment` names, by id: a free end where auto layout places it, an end on an object where it meets that object."
+          },
           "drawnFrames": {
             "type": "object",
             "additionalProperties": {
@@ -2241,7 +2261,7 @@
             "items": {
               "$ref": "#/definitions/AgentSlideObject"
             },
-            "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it, a growing text's `frame` the point its growth holds; the values at the `moment` are each target's `animationParameters` value."
+            "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it, a growing text's `frame` the point its growth holds, and an object auto layout places where its file stores it; the values at the `moment` are each target's `animationParameters` value."
           },
           "playbackStepIds": {
             "type": "array",
@@ -2304,6 +2324,7 @@
           "animationParameters",
           "animationValueSchemas",
           "comments",
+          "drawnEnds",
           "drawnFrames",
           "initial",
           "issues",
@@ -7271,6 +7292,22 @@
             },
             "additionalProperties": false,
             "description": "A 3D object's orientation in quaternion mode, whole, its w with x, y and z: a quaternion of length 1."
+          },
+          "PresentationPoint": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
           },
           "PresentationStepCueSource": {
             "anyOf": [

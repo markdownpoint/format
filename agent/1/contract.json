@@ -3144,6 +3144,24 @@
         {
           "type": "object",
           "properties": {
+            "drawnEnd": {
+              "$ref": "#/definitions/LineEndSource"
+            },
+            "drawnStart": {
+              "$ref": "#/definitions/LineEndSource"
+            },
+            "objectId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "objectId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "drawnFrame": {
               "$ref": "#/definitions/AgentTransformFrame"
             },
@@ -3158,24 +3176,6 @@
             "drawnFrame",
             "objectId",
             "rotation"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "end": {
-              "$ref": "#/definitions/LineEndSource"
-            },
-            "objectId": {
-              "type": "string"
-            },
-            "start": {
-              "$ref": "#/definitions/LineEndSource"
-            }
-          },
-          "required": [
-            "objectId"
           ],
           "additionalProperties": false
         },
@@ -3237,7 +3237,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame as `drawnFrame`, where it is drawn, which a growing text's file frame is not."
+      "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame and a line's ends where they are drawn, `drawnFrame`, `drawnStart` and `drawnEnd`, which the file's frame and ends are not for a growing text or an object auto layout places."
     },
     "AgentOperationStatus": {
       "type": "string",
@@ -10358,6 +10358,26 @@
             "$ref": "#/definitions/PresentationCommentThread"
           }
         },
+        "drawnEnds": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "end": {
+                "$ref": "#/definitions/PresentationPoint"
+              },
+              "start": {
+                "$ref": "#/definitions/PresentationPoint"
+              }
+            },
+            "required": [
+              "end",
+              "start"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Where each line's ends are drawn as authored, whatever `moment` names, by id: a free end where auto layout places it, an end on an object where it meets that object."
+        },
         "drawnFrames": {
           "type": "object",
           "additionalProperties": {
@@ -10393,7 +10413,7 @@
           "items": {
             "$ref": "#/definitions/AgentSlideObject"
           },
-          "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it, a growing text's `frame` the point its growth holds; the values at the `moment` are each target's `animationParameters` value."
+          "description": "The slide's objects as authored, before any animation, whatever `moment` names: groups and each object's parent included, with the ids an edit names, each as the .mdpoint file spells it, a growing text's `frame` the point its growth holds, and an object auto layout places where its file stores it; the values at the `moment` are each target's `animationParameters` value."
         },
         "playbackStepIds": {
           "type": "array",
@@ -10457,6 +10477,7 @@
         "animationParameters",
         "animationValueSchemas",
         "comments",
+        "drawnEnds",
         "drawnFrames",
         "initial",
         "issues",
