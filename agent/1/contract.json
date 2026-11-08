@@ -10175,7 +10175,7 @@
       "properties": {
         "bounds": {
           "$ref": "#/definitions/GlbBounds",
-          "description": "The box around every vertex over the whole Action; left out for a model with no vertices, as the report's own is."
+          "description": "The box around every vertex at the Action's sampled poses, 30 a second and more coarsely past ten minutes; left out for a model with no vertices, as the report's own is."
         },
         "duration": {
           "type": "number",
@@ -10203,7 +10203,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Its lowest point and when, against a floor at y = 0; left out for a model with no vertices."
+          "description": "Its lowest sampled point and when, against a floor at y = 0; left out for a model with no vertices."
         },
         "name": {
           "type": "string",
@@ -10250,7 +10250,7 @@
               "type": "null"
             }
           ],
-          "description": "The range of the morph weights it plays, or null when it has none."
+          "description": "The range of the morph weights at its sampled poses, or null when it has none."
         }
       },
       "required": [

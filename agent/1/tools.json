@@ -537,7 +537,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Current diagnostics, revision, slide IDs, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: show-presentation, skip-object, refuse-slide or refuse-presentation. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fittedFrames give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
+      "description": "Current issues, revision, slide ids, the presentation’s own properties as updatePresentationProperties sets them (footer, date, locale, default transition, soundtrack, self-playing) the slides and sections in order (outline), and the accepted theme catalog: layout keys and their placeholders, schemes and text styles. Use those keys when inserting or changing slides. Each issue has a severity: error or warning. Its disposition says what the app does about it: show-presentation, skip-object, refuse-slide or refuse-presentation. Warnings with code text-overflow name each object whose words run past its frame on a slide as its steps leave it, where they still show (slides_render’s fittedFrames give the frame that holds them); text-hidden names each object some of whose words the slide’s edge, the end of their path or their table cell hides, which an export asks about; and text-overflow-unchecked says that could not be measured. It reads the files first: when they cannot be taken in, as after a hand edit the parser refuses, `stalled` gives the reason and the parser errors, and the rest describes the presentation as last read.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11011,7 +11011,7 @@
             "properties": {
               "bounds": {
                 "$ref": "#/definitions/GlbBounds",
-                "description": "The box around every vertex over the whole Action; left out for a model with no vertices, as the report's own is."
+                "description": "The box around every vertex at the Action's sampled poses, 30 a second and more coarsely past ten minutes; left out for a model with no vertices, as the report's own is."
               },
               "duration": {
                 "type": "number",
@@ -11039,7 +11039,7 @@
                   "y"
                 ],
                 "additionalProperties": false,
-                "description": "Its lowest point and when, against a floor at y = 0; left out for a model with no vertices."
+                "description": "Its lowest sampled point and when, against a floor at y = 0; left out for a model with no vertices."
               },
               "name": {
                 "type": "string",
@@ -11086,7 +11086,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The range of the morph weights it plays, or null when it has none."
+                "description": "The range of the morph weights at its sampled poses, or null when it has none."
               }
             },
             "required": [
@@ -11679,7 +11679,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in the model’s own coordinates, meters for an ordinary model and ems for a text model, unscaled by the text’s size or the slide, and whether it stands on y = 0; each Action’s length, reach, lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale and nodes that cast no shadow, each by its node index with its name; the color roles its materials name; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
+      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in the model’s own coordinates, meters for an ordinary model and ems for a text model, unscaled by the text’s size or the slide, and whether it stands on y = 0; each Action’s length, sampled reach and lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale and nodes that cast no shadow, each by its node index with its name; the color roles its materials name; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11833,7 +11833,7 @@
             "properties": {
               "bounds": {
                 "$ref": "#/definitions/GlbBounds",
-                "description": "The box around every vertex over the whole Action; left out for a model with no vertices, as the report's own is."
+                "description": "The box around every vertex at the Action's sampled poses, 30 a second and more coarsely past ten minutes; left out for a model with no vertices, as the report's own is."
               },
               "duration": {
                 "type": "number",
@@ -11861,7 +11861,7 @@
                   "y"
                 ],
                 "additionalProperties": false,
-                "description": "Its lowest point and when, against a floor at y = 0; left out for a model with no vertices."
+                "description": "Its lowest sampled point and when, against a floor at y = 0; left out for a model with no vertices."
               },
               "name": {
                 "type": "string",
@@ -11908,7 +11908,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The range of the morph weights it plays, or null when it has none."
+                "description": "The range of the morph weights at its sampled poses, or null when it has none."
               }
             },
             "required": [
