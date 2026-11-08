@@ -40,7 +40,7 @@
           "$ref": "#/definitions/background"
         }
       ],
-      "description": "The background every slide shows. A slide's own background replaces only the keys it sets."
+      "description": "The background every slide shows, unless the slide sets its own."
     },
     "transition": {
       "allOf": [
@@ -212,7 +212,7 @@
                 "$ref": "#/definitions/background"
               }
             ],
-            "description": "The slide's own background."
+            "description": "The slide's own background, shown in place of the presentation's whole: a key it leaves out takes its default, and an empty one is plain."
           },
           "skipped": {
             "type": "boolean",
@@ -3626,17 +3626,9 @@
           "description": "The color or gradient behind everything."
         },
         "image": {
-          "anyOf": [
-            {
-              "const": "none"
-            },
-            {
-              "type": "string",
-              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
-              "description": "a file path in the presentation’s folder"
-            }
-          ],
-          "description": "An image over the fill, as a presentation's file path, or `none` for no image. Left out, a slide takes the presentation's."
+          "type": "string",
+          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
+          "description": "An image over the fill, as a presentation's file path."
         },
         "crop": {
           "allOf": [
@@ -3666,7 +3658,7 @@
               "$ref": "#/definitions/image-style-or-none"
             }
           ],
-          "description": "The style of a generated background image, as text, or `none` for no style. Left out on a slide, it's the presentation's background's, then `background-image-style`."
+          "description": "The style of a generated background image, as text, or `none` for no style. Left out, it's the presentation's `background-image-style`."
         },
         "transparent": {
           "type": "boolean",
@@ -3678,7 +3670,7 @@
               "$ref": "#/definitions/restyle"
             }
           ],
-          "description": "A library style applied over the image, which goes with it: a slide showing the presentation's image shows its restyle."
+          "description": "A library style applied over the image, which MarkdownPoint draws from the image as first made."
         },
         "generation": {
           "allOf": [
@@ -3686,7 +3678,7 @@
               "$ref": "#/definitions/generation"
             }
           ],
-          "description": "Which image generation record made the background image, and for a restyle the image it was applied to. It goes with the image as its restyle does."
+          "description": "Which image generation record made the background image, and for a restyle the image it was applied to."
         },
         "drop-shadow": {
           "allOf": [
