@@ -1568,6 +1568,11 @@
                     "maximum": 1
                   }
                 },
+                "dependencies": {
+                  "generation": [
+                    "image"
+                  ]
+                },
                 "additionalProperties": false
               },
               "soundtrack": {

@@ -3719,6 +3719,11 @@
           "description": "How far the image's colors fade to gray. 0 leaves them unchanged."
         }
       },
+      "dependencies": {
+        "generation": [
+          "image"
+        ]
+      },
       "additionalProperties": false
     },
     "color": {
@@ -7641,6 +7646,11 @@
               "required": [
                 "keyframes"
               ],
+              "dependencies": {
+                "loop-keyframe": [
+                  "loop"
+                ]
+              },
               "additionalProperties": false
             },
             "description": "The step's animation, by object and parameter, such as card.opacity."

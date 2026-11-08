@@ -12351,6 +12351,11 @@
           "maximum": 1
         }
       },
+      "dependencies": {
+        "generation": [
+          "image"
+        ]
+      },
       "additionalProperties": false,
       "description": "A background as the file spells it."
     },
@@ -13197,6 +13202,11 @@
                       "minimum": 0,
                       "maximum": 1
                     }
+                  },
+                  "dependencies": {
+                    "generation": [
+                      "image"
+                    ]
                   },
                   "additionalProperties": false,
                   "description": "A background as the file spells it."
