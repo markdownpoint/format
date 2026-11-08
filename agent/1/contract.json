@@ -9111,7 +9111,7 @@
         },
         "disposition": {
           "type": "string",
-          "const": "fallback"
+          "const": "show-presentation"
         },
         "message": {
           "type": "string"
@@ -10777,9 +10777,9 @@
     "IssueDisposition": {
       "type": "string",
       "enum": [
-        "fallback",
         "refuse-presentation",
         "refuse-slide",
+        "show-presentation",
         "skip-object"
       ]
     },

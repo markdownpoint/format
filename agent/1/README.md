@@ -89,7 +89,7 @@ them.
 
 An issue is what `validate` and `presentation get` find in the files: `severity`
 (`error` or `warning`), `source`, `code`, `message` in English and
-`disposition`, what MarkdownPoint does about it. `fallback` shows the
+`disposition`, what MarkdownPoint does about it. `show-presentation` shows the
 presentation, and what can't be used shows a default, or nothing, as each
 message says; `skip-object` leaves the object out, `refuse-slide` refuses the
 slide and `refuse-presentation` the whole presentation.
