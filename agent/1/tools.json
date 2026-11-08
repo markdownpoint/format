@@ -2289,7 +2289,7 @@
                         "theme"
                       ]
                     },
-                    "generation.original": {
+                    "generation.original.file": {
                       "type": "string",
                       "enum": [
                         "presentation",
