@@ -97,7 +97,7 @@ Where an issue stands depends on its `source`:
   another: a key of ASCII letters, digits, `_` and `-` that starts with a letter
   or `_` follows a dot, any other key stands in brackets, quoted as JSON quotes
   a string, and a list's item stands by its index in brackets, as in
-  `slides.intro.objects[2]` and `compositions.card.controls["Top left"].default`.
+  `slides.intro.objects[2]` and `slides.intro.initial["title.opacity"]`.
   An object stands by its id once its id reads, as in
   `slides.intro.objects.title.opacity`, and a step or a keyframe by its id once
   the slide is read, as in

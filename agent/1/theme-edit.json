@@ -10146,10 +10146,10 @@
       },
       "additionalProperties": {
         "type": "string",
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "an id, such as \"title-card\""
       },
-      "description": "Property name to control name; `text` and `file` name the object's content."
+      "description": "Property name to control id; `text` and `file` name the object's content."
     },
     "Prop_enter": {
       "type": "object",
@@ -11236,8 +11236,8 @@
     "Prop_controls": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
         "anyOf": [
@@ -11251,7 +11251,8 @@
             "type": "boolean"
           }
         ]
-      }
+      },
+      "description": "An instance's values, by control id."
     },
     "Prop_chart.align": {
       "enum": [

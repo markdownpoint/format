@@ -3119,20 +3119,26 @@
           "controls": {
             "type": "object",
             "propertyNames": {
-              "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-              "description": "one line with one space between words, none at the start or end, and no \"-->\""
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
-              "description": "One control a composition offers its instances. Its name is the author's words: one line, one space between words and none at the start or end, no control character, and no `-->`. The app writes it in Unicode's composed form (NFC). No two of a composition's controls, and no two of an instance's values, have names that are a canonical caseless match, as Unicode defines it, with the full case folding (statuses C and F) of Unicode 17.0.0's CaseFolding.txt: Σ and ς are one name, and so are ß and SS, and a letter with its accent composed or written apart. A binding, an instance's value and a marker name their control exactly as it is written. Its default matches its type: a number, true or false, a color, one of its options, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind. A property a choice control sets reads the name its option spells: the words in lowercase, with a hyphen for each run of spaces, so \"Top left\" spells top-left. No two options spell one name, as Left and left would.",
+              "description": "One control a composition offers its instances, by an id unique among its controls. A binding, an instance's value and a marker name the control by its id, which a rename keeps. Its default matches its type: a number, true or false, a color, one of its options, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind. A property a choice control sets reads the name its option spells: the words in lowercase, with a hyphen for each run of spaces, so \"Top left\" spells top-left. No two options spell one name, as Left and left would.",
               "anyOf": [
                 {
                   "type": "object",
                   "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                    },
                     "type": {
                       "const": "text"
                     }
                   },
                   "required": [
+                    "name",
                     "type"
                   ],
                   "additionalProperties": false
@@ -3140,6 +3146,11 @@
                 {
                   "type": "object",
                   "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                    },
                     "type": {
                       "const": "number"
                     },
@@ -3157,6 +3168,7 @@
                     }
                   },
                   "required": [
+                    "name",
                     "type",
                     "default"
                   ],
@@ -3173,6 +3185,11 @@
                 {
                   "type": "object",
                   "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                    },
                     "type": {
                       "const": "color"
                     },
@@ -3186,6 +3203,7 @@
                     }
                   },
                   "required": [
+                    "name",
                     "type",
                     "default"
                   ],
@@ -3194,6 +3212,11 @@
                 {
                   "type": "object",
                   "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                    },
                     "type": {
                       "const": "boolean"
                     },
@@ -3203,6 +3226,7 @@
                     }
                   },
                   "required": [
+                    "name",
                     "type",
                     "default"
                   ],
@@ -3211,6 +3235,11 @@
                 {
                   "type": "object",
                   "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                    },
                     "type": {
                       "const": "choice"
                     },
@@ -3230,6 +3259,7 @@
                     }
                   },
                   "required": [
+                    "name",
                     "type",
                     "default",
                     "options"
@@ -3239,6 +3269,11 @@
                 {
                   "type": "object",
                   "properties": {
+                    "name": {
+                      "type": "string",
+                      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
+                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                    },
                     "type": {
                       "const": "media"
                     },
@@ -3248,6 +3283,7 @@
                     }
                   },
                   "required": [
+                    "name",
                     "type",
                     "default"
                   ],
@@ -3255,7 +3291,7 @@
                 }
               ]
             },
-            "description": "What each instance can set, by control name."
+            "description": "What each instance can set, by control id."
           },
           "objects": {
             "type": "array",
@@ -3739,15 +3775,15 @@
       },
       "additionalProperties": {
         "type": "string",
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "an id, such as \"title-card\""
       }
     },
     "composition-control-values": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?!.*-->)[^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\u0000-\\u001f\\u007f-\\u009f \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-        "description": "one line with one space between words, none at the start or end, and no \"-->\""
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
         "anyOf": [
