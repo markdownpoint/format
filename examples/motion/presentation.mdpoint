@@ -100,7 +100,7 @@
         {
           "id": "turn",
           "name": "Turn the square",
-          "duration": 1.6,
+          "min-duration": 1.6,
           "curves": {
             "square.rotation": {
               "keyframes": [
@@ -316,7 +316,7 @@
         {
           "id": "race",
           "name": "Race the curves",
-          "duration": 2.4,
+          "min-duration": 2.4,
           "curves": {
             "dot-anticipate-overshoot.translation.x": {
               "keyframes": [
@@ -504,7 +504,7 @@
         {
           "id": "move",
           "name": "Move the shapes",
-          "duration": 3,
+          "min-duration": 3,
           "curves": {
             "card.translation.x": {
               "keyframes": [
@@ -790,7 +790,7 @@
         {
           "id": "race",
           "name": "Race the curves",
-          "duration": 3,
+          "min-duration": 3,
           "curves": {
             "dot-bounce.translation.x": {
               "keyframes": [
@@ -875,7 +875,7 @@
         {
           "id": "enter",
           "name": "Enter the words",
-          "duration": 2.5,
+          "min-duration": 2.5,
           "curves": {
             "bar.wipe.progress": {
               "keyframes": [
@@ -892,7 +892,7 @@
         {
           "id": "return",
           "name": "Bring the caption back",
-          "duration": 2,
+          "min-duration": 2,
           "curves": {
             "caption.exit.progress": {
               "keyframes": [
@@ -938,7 +938,7 @@
       "steps": [
         {
           "id": "cross",
-          "duration": 2,
+          "min-duration": 2,
           "curves": {
             "dot.frame.x": {
               "keyframes": [

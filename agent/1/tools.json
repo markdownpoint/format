@@ -7426,15 +7426,15 @@
                   "$ref": "#/definitions/PresentationAnimationCurveSource"
                 }
               },
-              "duration": {
-                "type": "number",
-                "description": "Minimum seconds for this step; admitted later events extend its endpoint."
-              },
               "id": {
                 "type": "string"
               },
               "loop-from": {
                 "type": "number"
+              },
+              "min-duration": {
+                "type": "number",
+                "description": "The least seconds the step lasts; left out or 0, it lasts as long as what it holds."
               },
               "name": {
                 "type": "string"
@@ -7450,7 +7450,6 @@
             },
             "required": [
               "curves",
-              "duration",
               "id"
             ],
             "description": "A step as its file writes it: `staggered`, `unanchored` and `unplaced` belong to derived steps alone."

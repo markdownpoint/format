@@ -87,7 +87,7 @@
         {
           "id": "arrive",
           "start": "after",
-          "duration": 0.5,
+          "min-duration": 0.5,
           "curves": {
             "mug.position.x": {
               "keyframes": [

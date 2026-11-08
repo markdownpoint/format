@@ -74,7 +74,7 @@
         {
           "id": "fade-in",
           "name": "Fade in the card",
-          "duration": 0.6,
+          "min-duration": 0.6,
           "curves": {
             "card.opacity": {
               "keyframes": [

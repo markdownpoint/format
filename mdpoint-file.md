@@ -74,7 +74,7 @@ The slide's objects and motion are in the .mdpoint file:
         {
           "id": "fade-in",
           "name": "Fade in the card",
-          "duration": 0.6,
+          "min-duration": 0.6,
           "curves": {
             "card.opacity": {
               "keyframes": [
@@ -531,7 +531,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
   {
     "id": "race",
     "name": "Race the curves",
-    "duration": 3,
+    "min-duration": 3,
     "curves": {
       "dot-bounce.translation.x": {
         "keyframes": [

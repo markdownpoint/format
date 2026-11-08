@@ -855,11 +855,6 @@
                 ]
               }
             },
-            "duration": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296
-            },
             "keyframes": {
               "type": "object",
               "additionalProperties": {
@@ -997,6 +992,12 @@
                 ]
               },
               "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No keyframe's edit changes it."
+            },
+            "min-duration": {
+              "type": "number",
+              "description": "The least seconds the step lasts; a later keyframe, cue or entering paragraph extends it.",
+              "minimum": 0,
+              "maximum": 4294967296
             },
             "name": {
               "type": [
@@ -14017,14 +14018,14 @@
             "$ref": "#/definitions/PresentationAnimationCurveSource"
           }
         },
-        "duration": {
+        "loop-from": {
           "type": "number",
-          "description": "Minimum seconds for this step; left out or 0, it lasts as long as what it holds.",
           "minimum": 0,
           "maximum": 4294967296
         },
-        "loop-from": {
+        "min-duration": {
           "type": "number",
+          "description": "The least seconds the step lasts; left out or 0, it lasts as long as what it holds.",
           "minimum": 0,
           "maximum": 4294967296
         },
