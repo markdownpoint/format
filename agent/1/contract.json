@@ -10630,6 +10630,7 @@
         "group-order",
         "id-mismatch",
         "ignored-key",
+        "ignored-override",
         "ignored-text-block",
         "image-enlarged",
         "interrupted-layout-move",
