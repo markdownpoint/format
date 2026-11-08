@@ -1920,7 +1920,48 @@
           "$ref": "#/definitions/PresentationCommentOperation"
         },
         {
-          "$ref": "#/definitions/PresentationNavigationOperation"
+          "type": "object",
+          "properties": {
+            "afterSlideId": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSlideId"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The slide of the destination section they go right after; null puts them first."
+            },
+            "sectionId": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSectionId"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "slideIds": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentSlideId"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "type": {
+              "const": "moveSlides"
+            }
+          },
+          "required": [
+            "afterSlideId",
+            "sectionId",
+            "slideIds",
+            "type"
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
@@ -2023,6 +2064,34 @@
         },
         {
           "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "firstSlideId": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/AgentSlideId"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The slide the new section starts at, which moves into it with the slides after it in its section; null adds an empty section at the end."
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "const": "insertSection"
+            }
+          },
+          "required": [
+            "firstSlideId",
+            "name",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
           "properties": {
             "groupId": {
               "$ref": "#/definitions/AgentObjectId"
@@ -2073,6 +2142,26 @@
           "required": [
             "layout",
             "slideIds",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "sectionId": {
+              "$ref": "#/definitions/AgentSectionId"
+            },
+            "type": {
+              "const": "renameSection"
+            }
+          },
+          "required": [
+            "name",
+            "sectionId",
             "type"
           ],
           "additionalProperties": false
@@ -2155,6 +2244,46 @@
         {
           "type": "object",
           "properties": {
+            "order": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentSectionId"
+              },
+              "uniqueItems": true
+            },
+            "type": {
+              "const": "reorderSections"
+            }
+          },
+          "required": [
+            "order",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "sectionId": {
+              "$ref": "#/definitions/AgentSectionId"
+            },
+            "type": {
+              "const": "deleteSection"
+            },
+            "withSlides": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "sectionId",
+            "type",
+            "withSlides"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
             "slideIds": {
               "type": "array",
               "items": {
@@ -2231,6 +2360,18 @@
           },
           "required": [
             "targets",
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "deleteAllSections"
+            }
+          },
+          "required": [
             "type"
           ],
           "additionalProperties": false
@@ -12449,152 +12590,6 @@
         }
       ],
       "description": "An object to insert, in the file's words. A path is drawn either through `d` or through `points`."
-    },
-    "PresentationNavigationOperation": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "beforeSlideId": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/AgentSlideId"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "name": {
-              "type": "string"
-            },
-            "type": {
-              "const": "insertSection"
-            }
-          },
-          "required": [
-            "beforeSlideId",
-            "name",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "beforeSlideId": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/AgentSlideId"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "sectionId": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/AgentSectionId"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "slideIds": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AgentSlideId"
-              },
-              "minItems": 1,
-              "uniqueItems": true
-            },
-            "type": {
-              "const": "moveSlides"
-            }
-          },
-          "required": [
-            "beforeSlideId",
-            "sectionId",
-            "slideIds",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "sectionId": {
-              "$ref": "#/definitions/AgentSectionId"
-            },
-            "type": {
-              "const": "renameSection"
-            }
-          },
-          "required": [
-            "name",
-            "sectionId",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "order": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/AgentSectionId"
-              },
-              "uniqueItems": true
-            },
-            "type": {
-              "const": "reorderSections"
-            }
-          },
-          "required": [
-            "order",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "sectionId": {
-              "$ref": "#/definitions/AgentSectionId"
-            },
-            "type": {
-              "const": "deleteSection"
-            },
-            "withSlides": {
-              "type": "boolean"
-            }
-          },
-          "required": [
-            "sectionId",
-            "type",
-            "withSlides"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
-              "const": "deleteAllSections"
-            }
-          },
-          "required": [
-            "type"
-          ],
-          "additionalProperties": false
-        }
-      ]
     },
     "PresentationOrientation": {
       "type": "object",
