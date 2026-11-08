@@ -4268,7 +4268,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order. The same seed always gives the same order."
+          "description": "The seed for a random order. The same seed always gives the same order, by the rule the introduction gives."
         },
         "spread": {
           "type": "number",
@@ -4397,7 +4397,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order. The same seed always gives the same order."
+          "description": "The seed for a random order. The same seed always gives the same order, by the rule the introduction gives."
         },
         "spread": {
           "type": "number",
@@ -4971,7 +4971,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The random seed. The same seed always gives the same variation."
+          "description": "The random seed. The same seed always gives the same variation, by the rule the introduction gives."
         }
       },
       "required": [

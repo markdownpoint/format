@@ -4070,7 +4070,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order. The same seed always gives the same order."
+          "description": "The seed for a random order. The same seed always gives the same order, by the rule the introduction gives."
         },
         "spread": {
           "type": "number",
@@ -4199,7 +4199,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order. The same seed always gives the same order."
+          "description": "The seed for a random order. The same seed always gives the same order, by the rule the introduction gives."
         },
         "spread": {
           "type": "number",
@@ -7044,7 +7044,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The random seed. The same seed always gives the same variation."
+          "description": "The random seed. The same seed always gives the same variation, by the rule the introduction gives."
         }
       },
       "required": [
@@ -7509,13 +7509,13 @@
                           "frequency": {
                             "type": "number",
                             "minimum": 0.000001,
-                            "description": "How many full cycles each second."
+                            "description": "How many full cycles each second. A noise wave's cycle is one stretch of its noise, as the introduction gives it."
                           },
                           "phase": {
                             "type": "number",
                             "minimum": -8589934592,
                             "maximum": 8589934592,
-                            "description": "Where in its cycle the wave starts. Left out, it's 0."
+                            "description": "Where in its cycle the wave starts, 360 degrees to a cycle. A noise wave starts that far along its noise. Left out, it's 0."
                           },
                           "wave-shape": {
                             "enum": [
@@ -7531,7 +7531,7 @@
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 4294967294,
-                            "description": "The noise seed. The same seed always gives the same noise. Left out, it's 0."
+                            "description": "The noise seed. The same seed always gives the same noise, by the rule the introduction gives. Left out, it's 0."
                           }
                         },
                         "required": [
