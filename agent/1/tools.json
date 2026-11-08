@@ -649,9 +649,9 @@
                   "size": {
                     "$ref": "#/definitions/SlideSize"
                   },
-                  "unitScale": {
+                  "unit-scale": {
                     "type": "number",
-                    "description": "The meters a canvas unit stands for, the master's `unit-scale`, 0.001 when it leaves it out: one meter of a model's GLB spans `1 / unitScale` canvas units."
+                    "description": "The meters a canvas unit stands for, the master's `unit-scale`, 0.001 when it leaves it out: one meter of a model's GLB spans `1 / unit-scale` canvas units."
                   }
                 },
                 "required": [
@@ -659,7 +659,7 @@
                   "key",
                   "name",
                   "size",
-                  "unitScale"
+                  "unit-scale"
                 ],
                 "additionalProperties": false,
                 "description": "The theme's key, its folder's name, and its master's id, a lowercase UUID."
@@ -2295,7 +2295,7 @@
           "slideId": {
             "type": "string"
           },
-          "stepDuration": {
+          "step-duration": {
             "type": "number",
             "description": "How long a step's fade or move takes, in seconds: the master's step-duration, or the format's default."
           },
@@ -2334,7 +2334,7 @@
           "provenance",
           "revision",
           "slideId",
-          "stepDuration",
+          "step-duration",
           "steps",
           "trimStops"
         ],
@@ -7052,7 +7052,7 @@
             "properties": {
               "id": {
                 "type": "string",
-                "description": "Who they are, by one of `COMMENT_AUTHOR_ID`'s schemes; absent when the writer knows none."
+                "description": "Who they are: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id; absent when the writer knows none."
               },
               "name": {
                 "type": "string",
@@ -12627,7 +12627,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setText; setPlaceholder makes a layout’s text or picture a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
+      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setText, naming no slideId, since layout names the document; setPlaceholder makes a layout’s text or picture a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14819,7 +14819,8 @@
             "type": "array",
             "items": {
               "$ref": "#/definitions/AgentPresentationOperation"
-            }
+            },
+            "description": "The operations as they were sent."
           },
           "state": {
             "$ref": "#/definitions/AgentProposalState"
@@ -15470,7 +15471,8 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/definitions/AgentPresentationOperation"
-                }
+                },
+                "description": "The operations as they were sent."
               },
               "state": {
                 "$ref": "#/definitions/AgentProposalState"
@@ -15632,7 +15634,8 @@
             "type": "array",
             "items": {
               "$ref": "#/definitions/AgentPresentationOperation"
-            }
+            },
+            "description": "The operations as they were sent."
           },
           "state": {
             "$ref": "#/definitions/AgentProposalState"

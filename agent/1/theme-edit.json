@@ -315,9 +315,6 @@
                 "type": "string"
               }
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "replicateObjects"
             }
@@ -325,14 +322,12 @@
           "required": [
             "arrangement",
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "beforeObjectId": {
               "type": "string"
@@ -352,18 +347,15 @@
                 "string"
               ]
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "pasteObjects"
             }
           },
           "required": [
             "objects",
-            "slideId",
             "type"
-          ]
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
@@ -386,9 +378,6 @@
             "parentNode": {
               "type": "string"
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "reparentObjects"
             }
@@ -396,7 +385,6 @@
           "required": [
             "objectIds",
             "parent",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -416,9 +404,6 @@
             "objectId": {
               "type": "string"
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "updateObjectProperties"
             }
@@ -426,7 +411,6 @@
           "required": [
             "changes",
             "objectId",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -443,23 +427,18 @@
                 "type": "string"
               }
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "duplicateObjects"
             }
           },
           "required": [
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
         },
         {
           "type": "object",
-          "additionalProperties": false,
           "properties": {
             "file": {
               "type": [
@@ -471,9 +450,6 @@
             "objectId": {
               "type": "string"
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "replaceMedia"
             }
@@ -481,9 +457,9 @@
           "required": [
             "file",
             "objectId",
-            "slideId",
             "type"
-          ]
+          ],
+          "additionalProperties": false
         },
         {
           "type": "object",
@@ -497,16 +473,12 @@
                 "type": "string"
               }
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "groupObjects"
             }
           },
           "required": [
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -526,9 +498,6 @@
                 "type": "string"
               }
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "setObjectFlags"
             },
@@ -538,7 +507,6 @@
           },
           "required": [
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -548,9 +516,6 @@
           "properties": {
             "moment": {
               "$ref": "#/definitions/AgentMoment"
-            },
-            "slideId": {
-              "type": "string"
             },
             "transforms": {
               "type": "array",
@@ -563,7 +528,6 @@
             }
           },
           "required": [
-            "slideId",
             "transforms",
             "type"
           ],
@@ -581,9 +545,6 @@
             "objectId": {
               "type": "string"
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "setObjectName"
             }
@@ -591,7 +552,6 @@
           "required": [
             "name",
             "objectId",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -605,16 +565,12 @@
             "objectId": {
               "type": "string"
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "insertObject"
             }
           },
           "required": [
             "object",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -623,9 +579,6 @@
           "type": "object",
           "properties": {
             "objectId": {
-              "type": "string"
-            },
-            "slideId": {
               "type": "string"
             },
             "type": {
@@ -637,7 +590,6 @@
           },
           "required": [
             "objectId",
-            "slideId",
             "type",
             "value"
           ],
@@ -658,16 +610,12 @@
                 "$ref": "#/definitions/ObjectPropertySourceKey"
               }
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "revertObjects"
             }
           },
           "required": [
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -680,9 +628,6 @@
               "items": {
                 "type": "string"
               }
-            },
-            "slideId": {
-              "type": "string"
             },
             "type": {
               "const": "deleteObjects"
@@ -690,7 +635,6 @@
           },
           "required": [
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
@@ -704,22 +648,18 @@
                 "type": "string"
               }
             },
-            "slideId": {
-              "type": "string"
-            },
             "type": {
               "const": "ungroupObjects"
             }
           },
           "required": [
             "objectIds",
-            "slideId",
             "type"
           ],
           "additionalProperties": false
         }
       ],
-      "description": "An edit of the master's or a layout's objects, as on a slide: the master or the layout is edited as one slide, whose `slideId` any value names. A picture names a file of the presentation, which the theme takes a copy of."
+      "description": "An edit of the master's or a layout's objects, as on a slide, naming no slide: the request's `layout` names the document it edits. A picture names a file of the presentation, which the theme takes a copy of."
     },
     "AgentThemeOperation": {
       "anyOf": [
