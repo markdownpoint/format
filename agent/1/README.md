@@ -26,9 +26,11 @@ time. From MarkdownPoint 1.0 it only grows: a new method, field or value joins
 grouped by what they act on, in plural collections such as `presentations`,
 `slides` and `themes`, beside two action groups, `present` and `history`. The
 names the contract gives are camelCase (`slides.get`, `insertSlide`, `noChange`,
-`slideId`), and MCP's tools are their methods in snake case (`slides_get`). Its
-codes are kebab-case (`stale-revision`, `text-overflow`), as the file's keys
-and values are. Order means nothing in the contract's schemas: most fields,
+`slideId`), MCP's tools are their methods in snake case (`slides_get`), and the
+CLI spells a value on its command line in kebab-case (`toggle-black-screen` for
+`toggleBlackScreen`). Its codes are kebab-case (`stale-revision`,
+`text-overflow`), as the file's keys and values are, so one fact can carry
+both: a status's `noChange` is an issue's `no-change`. Order means nothing in the contract's schemas: most fields,
 branches and values are listed alphabetically, the same on every build, so
 `type` is seldom an operation's first field.
 
@@ -86,8 +88,9 @@ them.
 An issue is what `validate` and `presentation get` find in the files: `severity`
 (`error` or `warning`), `source`, `code`, `message` in English and
 `disposition`, what MarkdownPoint does about it. `fallback` shows the
-presentation with a default in its place, `skip-object` leaves the object out,
-`refuse-slide` refuses the slide and `refuse-presentation` the whole presentation.
+presentation, and what can't be used shows a default, or nothing, as each
+message says; `skip-object` leaves the object out, `refuse-slide` refuses the
+slide and `refuse-presentation` the whole presentation.
 Where an issue stands depends on its `source`:
 
 - `json`: `path` selects the value in the `.mdpoint` file, one key after
@@ -103,15 +106,18 @@ Where an issue stands depends on its `source`:
   `compositions`. `slideId` names the slide or composition that holds it, and
   `objectId` the object.
 - `markdown`: `location` names the file and its line, counted from 1, with the
-  column when known.
+  column when known, and `path` the frontmatter key or the section the issue is
+  about, as `frontmatter.footer` or `sections.intro`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
   selects the record in the `.mdpoint` file, as for `json`, and `location`
   names the line of the `.md` file, each when the issue has one.
 - `theme`: `slideId` when only the slides that name the layout or scheme are
   refused.
-- `file`: `path` is the file's path as the presentation, or its theme's
-  folder when `fileScope` is `theme`, names it; `slideId`, `objectId` and
-  `property` name each use of it.
+- `file`: `path` is the file's path in the folder `fileScope` names:
+  `presentation`, the presentation's; `theme`, its theme's; `cache`, where
+  MarkdownPoint keeps the models it builds from a text's letters on this
+  computer; or `bundled`, the fonts MarkdownPoint ships. `slideId`, `objectId`
+  and `property` name each use of it.
 - `slide`, `master` and `layout`: `slideId`, and `objectId` or `objectIds`.
 
 Each code an issue carries:

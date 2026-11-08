@@ -9,7 +9,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "List the document windows open in MarkdownPoint as { windows }: each one’s presentation folder, null for a window with no presentation, and which is focused. A tool that acts on a presentation takes one of these folders as \"presentation\". Omit it to use the focused one, or the only one open when none is focused. presentations_open, presentations_create, capabilities and schema need no open presentation.",
+      "description": "List the document windows open in MarkdownPoint as { windows }: each one’s presentation folder, null for a window with no presentation, and which is focused. A tool that acts on a presentation takes one of these folders as \"presentation\". Omit it to use the focused one, or the only one open when none is focused. A tool that takes no \"presentation\" needs none open.",
       "inputSchema": {
         "type": "object",
         "properties": {},
@@ -10726,21 +10726,21 @@
     },
     {
       "name": "images_editor_open",
-      "title": "Edit a picture in the image editor",
+      "title": "Edit an image in the image editor",
       "annotations": {
         "readOnlyHint": false,
         "destructiveHint": true,
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Open a local picture object in the external image editor the author chose in the app. Generated pictures are copied into media/ and bound only after launch; stale edits refuse that binding. Uses the same checks and Undo behavior as the Media tab. Shared presentations and theme artwork refuse external editing. Returns the resulting file and whether it was copied.",
+      "description": "Open a local image object in the external image editor the author chose in the app. Generated images are copied into media/ and bound only after launch; stale edits refuse that binding. Uses the same checks and Undo behavior as the Media tab. Shared presentations and theme artwork refuse external editing. Returns the resulting file and whether it was copied.",
       "inputSchema": {
         "type": "object",
         "properties": {
           "objectId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "A picture object on that slide."
+            "description": "An image object on that slide."
           },
           "slideId": {
             "type": "string",
@@ -10808,7 +10808,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Copy a picture, video, audio file or 3D model into the presentation’s folder, as the app’s media picker does, and return the file’s path in the presentation, which insertObject and replaceMedia take. A picture also returns its size, its pixels as saved: a PNG, JPEG or WebP longer than 4096 pixels on a side is saved at 4096 on its long side, in its own type, and reducedFrom gives the pixels it had. An animated one, one too large to reduce and every other type are saved whole. Give path for a file on this machine, or name (with the media’s extension) and data (its bytes in base64) when the file is not reachable. A movie takes its first frame as its poster; when that frame cannot be read it is still imported and warnings says so. A model (.glb, or a .gltf by path with its files beside it) becomes one self-contained GLB: compressed geometry and KTX2 textures decoded, its own cameras and lights removed, its Actions named apart; changes says what changed and report what the model does, as models_inspect gives it. Shared presentations publish the file before it is returned.",
+      "description": "Copy an image, video, audio file or 3D model into the presentation’s folder, as the app’s media picker does, and return the file’s path in the presentation, which insertObject and replaceMedia take. An image also returns its size, its pixels as saved: a PNG, JPEG or WebP longer than 4096 pixels on a side is saved at 4096 on its long side, in its own type, and reducedFrom gives the pixels it had. An animated one, one too large to reduce and every other type are saved whole. Give path for a file on this machine, or name (with the media’s extension) and data (its bytes in base64) when the file is not reachable. A movie takes its first frame as its poster; when that frame cannot be read it is still imported and warnings says so. A model (.glb, or a .gltf by path with its files beside it) becomes one self-contained GLB: compressed geometry and KTX2 textures decoded, its own cameras and lights removed, its Actions named apart; changes says what changed and report what the model does, as models_inspect gives it. Shared presentations publish the file before it is returned.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -12168,7 +12168,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read the presentation’s theme as Edit theme edits it: the master (size, fonts, brand colors, schemes, text styles, grid, guides, step duration, its pictures) and each layout (name, scheme, placeholders, objects, its pictures), authored values only, with the themeRevision that themes_edit and a theme Undo need. Read-only. A slide in slides_get shows the master’s and its layout’s objects under the ids themes_edit names them by.",
+      "description": "Read the presentation’s theme as Edit theme edits it: the master (size, fonts, brand colors, schemes, text styles, grid, guides, step duration, its images) and each layout (name, scheme, placeholders, objects, its pictures), authored values only, with the themeRevision that themes_edit and a theme Undo need. Read-only. A slide in slides_get shows the master’s and its layout’s objects under the ids themes_edit names them by.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -12661,7 +12661,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setText, naming no slideId, since layout names the document; setPlaceholder makes a layout’s text or picture a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
+      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setText, naming no slideId, since layout names the document; setPlaceholder makes a layout’s text or image a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -13706,7 +13706,7 @@
           "styles"
         ],
         "additionalProperties": false,
-        "description": "The style library, as the Restyle popup lists it; set one's `definition` as a picture's `restyle`.",
+        "description": "The style library, as the Restyle popup lists it; set one's `definition` as an image's `restyle`.",
         "definitions": {
           "RestyleSource": {
             "type": "object",

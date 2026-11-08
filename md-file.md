@@ -84,7 +84,7 @@ You can add your own keys for information used by your tools or workflow. Markdo
 
 ## Sections
 
-`<!-- section: id -->` starts a section. An id is lowercase letters, digits and single hyphens, and starts with a letter: `intro`, `q3-numbers`. Under the marker goes one line, `# Name`: a level-1 heading with the section's name. MarkdownPoint drops any formatting in it. The line takes no comment, not even a paragraph id. Nothing else goes in a section's block. Sections are optional. Once there is one, every slide must be in a section.
+`<!-- section: id -->` starts a section. An id is lowercase letters, digits and single hyphens, starts with a letter and ends with a letter or digit: `intro`, `q3-numbers`. Under the marker goes one line, `# Name`: a level-1 heading with the section's name. MarkdownPoint drops any formatting in it. The line takes no comment, not even a paragraph id. Nothing else goes in a section's block. Sections are optional. Once there is one, every slide must be in a section.
 
 ## Slides
 
@@ -315,7 +315,7 @@ One comment is not a note: a paragraph id, which the next section describes.
 
 ### Paragraph ids
 
-A step in [the .mdpoint file](mdpoint-file.md) names a paragraph by its id to bring it in on a click. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. A heading and a list item take one the same way. An id is lowercase letters, digits and single hyphens, and starts with a letter, as a section's is. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes it after one space, as shown.
+A step in [the .mdpoint file](mdpoint-file.md) names a paragraph by its id to bring it in on a click. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. A heading and a list item take one the same way. An id is lowercase letters, digits and single hyphens, starts with a letter and ends with a letter or digit, as a section's is. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes it after one space, as shown.
 
 MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is new. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. When a merge joins two versions of a paragraph with its id at the end of each, MarkdownPoint reads the one id. It writes the id once when you next edit that text block or run `mdpoint format`. Keep each id at the end of its paragraph, and give a new paragraph none: MarkdownPoint gives it one.
 
@@ -351,7 +351,7 @@ A table's column widths and row heights in the .mdpoint file follow the table's 
 
 To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Run `mdpoint validate` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate`.
 
-Each issue includes a `severity` of `error` or `warning`, a `code` and a `message`. Most include the affected key's `path`. The `disposition` describes how MarkdownPoint handles the problem: `fallback`, `skip-object`, `refuse-slide` or `refuse-presentation`. The command exits with status 1 if any issue is an error.
+Each issue includes a `severity` of `error` or `warning`, a `code` and a `message`. Most include a `path`: the key in `presentation.mdpoint`, one key after another, as `slides.intro.objects.title.opacity`; the frontmatter key or the section in `slides.md`, as `frontmatter.footer` or `sections.intro`; or, for a missing or unreadable file, the file's own path. The `disposition` describes how MarkdownPoint handles the problem: `fallback`, `skip-object`, `refuse-slide` or `refuse-presentation`. The command exits with status 1 if any issue is an error.
 
 ## Saving and formatting
 

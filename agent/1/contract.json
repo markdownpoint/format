@@ -1656,7 +1656,7 @@
       "properties": {
         "objectId": {
           "$ref": "#/definitions/AgentObjectId",
-          "description": "A picture object on that slide."
+          "description": "An image object on that slide."
         },
         "slideId": {
           "$ref": "#/definitions/AgentSlideId"
@@ -2029,7 +2029,7 @@
         "styles"
       ],
       "additionalProperties": false,
-      "description": "The style library, as the Restyle popup lists it; set one's `definition` as a picture's `restyle`."
+      "description": "The style library, as the Restyle popup lists it; set one's `definition` as an image's `restyle`."
     },
     "AgentImageSuggestPromptRequest": {
       "type": "object",
@@ -2413,7 +2413,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A picture, video or audio file copied into the presentation's folder, as the media picker or a drop copies one: from a file on this machine by its absolute path, or from its bytes (base64) under a file name whose extension names its kind."
+      "description": "An image, video or audio file copied into the presentation's folder, as the media picker or a drop copies one: from a file on this machine by its absolute path, or from its bytes (base64) under a file name whose extension names its kind."
     },
     "AgentMediaImportResult": {
       "anyOf": [
