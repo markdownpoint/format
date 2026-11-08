@@ -8823,7 +8823,17 @@
         "required": [
           "slideId"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "required": [
+            "stepId"
+          ]
+        },
+        "else": {
+          "required": [
+            "transition"
+          ]
+        }
       }
     },
     {
@@ -9577,7 +9587,17 @@
         "required": [
           "slideId"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "required": [
+            "waits"
+          ]
+        },
+        "else": {
+          "required": [
+            "stepId"
+          ]
+        }
       },
       "outputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -10860,7 +10880,18 @@
             "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "required": [
+            "data",
+            "name"
+          ]
+        },
+        "else": {
+          "required": [
+            "path"
+          ]
+        }
       },
       "outputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -11348,7 +11379,51 @@
         "required": [
           "name"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "required": [
+            "for",
+            "source"
+          ]
+        },
+        "then": {
+          "properties": {
+            "data": {
+              "type": "object",
+              "additionalProperties": {}
+            }
+          }
+        },
+        "else": {
+          "if": {
+            "required": [
+              "for"
+            ]
+          },
+          "then": {
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "bevel": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "depth": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "else": {
+            "required": [
+              "source"
+            ]
+          }
+        }
       }
     },
     {
@@ -11483,7 +11558,17 @@
         "required": [
           "name"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "required": [
+            "file"
+          ]
+        },
+        "else": {
+          "required": [
+            "pictureId"
+          ]
+        }
       }
     },
     {
