@@ -3628,7 +3628,7 @@
           "$ref": "#/definitions/Prop_model.scale"
         },
         "shape": {
-          "$ref": "#/definitions/Prop_light.shape"
+          "$ref": "#/definitions/Prop_shape"
         },
         "size-x": {
           "$ref": "#/definitions/LightSize"
@@ -4638,8 +4638,8 @@
         "scale": {
           "$ref": "#/definitions/Prop_text.scale"
         },
-        "shape": {
-          "$ref": "#/definitions/Prop_shape.shape"
+        "shape-type": {
+          "$ref": "#/definitions/Prop_shape-type"
         },
         "stroke": {
           "$ref": "#/definitions/Color"
@@ -4704,7 +4704,7 @@
       "anyOf": [
         {
           "required": [
-            "shape"
+            "shape-type"
           ]
         },
         {
@@ -4714,7 +4714,7 @@
           "properties": {
             "bind": {
               "required": [
-                "shape"
+                "shape-type"
               ]
             }
           }
@@ -6933,15 +6933,28 @@
           "type": "object",
           "properties": {
             "property": {
+              "const": "shape-type"
+            },
+            "value": {
+              "$ref": "#/definitions/Prop_shape-type"
+            }
+          },
+          "required": [
+            "property",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "property": {
               "const": "shape"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_shape.shape"
-                },
-                {
-                  "$ref": "#/definitions/Prop_light.shape"
+                  "$ref": "#/definitions/Prop_shape"
                 },
                 {
                   "type": "null"
@@ -8749,6 +8762,7 @@
         "scale-mode",
         "shadow-color",
         "shape",
+        "shape-type",
         "size-x",
         "size-y",
         "spread",
@@ -9398,7 +9412,7 @@
           "$ref": "#/definitions/Prop_model.scale"
         },
         "shape": {
-          "$ref": "#/definitions/Prop_light.shape"
+          "$ref": "#/definitions/Prop_shape"
         },
         "size-x": {
           "$ref": "#/definitions/LightSize"
@@ -10393,8 +10407,8 @@
         "scale": {
           "$ref": "#/definitions/Prop_text.scale"
         },
-        "shape": {
-          "$ref": "#/definitions/Prop_shape.shape"
+        "shape-type": {
+          "$ref": "#/definitions/Prop_shape-type"
         },
         "stroke": {
           "$ref": "#/definitions/Color"
@@ -10459,7 +10473,7 @@
       "anyOf": [
         {
           "required": [
-            "shape"
+            "shape-type"
           ]
         },
         {
@@ -10469,7 +10483,7 @@
           "properties": {
             "bind": {
               "required": [
-                "shape"
+                "shape-type"
               ]
             }
           }
@@ -11431,6 +11445,7 @@
             "temperature",
             "corner-radius",
             "mask",
+            "shape-type",
             "shape",
             "icon",
             "direction",
@@ -16364,7 +16379,7 @@
       "minimum": 0,
       "description": "seconds"
     },
-    "Prop_shape.shape": {
+    "Prop_shape-type": {
       "enum": [
         "rectangle",
         "ellipse",
@@ -16862,7 +16877,7 @@
       "maximum": 1000000000000000000,
       "description": "canvas units"
     },
-    "Prop_light.shape": {
+    "Prop_shape": {
       "enum": [
         "rectangle",
         "disk"

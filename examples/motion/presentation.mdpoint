@@ -23,7 +23,7 @@
         {
           "id": "square",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "frame": {
             "x": 860,
             "y": 300,
@@ -73,7 +73,7 @@
         {
           "id": "square",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "frame": {
             "x": 860,
             "y": 300,
@@ -147,7 +147,7 @@
         {
           "id": "dot-linear",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 252,
@@ -171,7 +171,7 @@
         {
           "id": "dot-smooth",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 352,
@@ -195,7 +195,7 @@
         {
           "id": "dot-ease-in-out",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 452,
@@ -219,7 +219,7 @@
         {
           "id": "dot-anticipate",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 552,
@@ -243,7 +243,7 @@
         {
           "id": "dot-anticipate-overshoot",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 652,
@@ -267,7 +267,7 @@
         {
           "id": "dot-bounce",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 752,
@@ -291,7 +291,7 @@
         {
           "id": "dot-elastic",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 640,
             "y": 852,
@@ -429,7 +429,7 @@
         {
           "id": "card",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "frame": {
             "x": 700,
             "y": 250,
@@ -442,7 +442,7 @@
         {
           "id": "wave",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 700,
             "y": 455,
@@ -454,7 +454,7 @@
         {
           "id": "noise",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 900,
             "y": 455,
@@ -466,7 +466,7 @@
         {
           "id": "zoom",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 700,
             "y": 600,
@@ -479,7 +479,7 @@
         {
           "id": "turn",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 700,
             "y": 815,
@@ -693,7 +693,7 @@
         {
           "id": "dot-overshoot",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 940,
             "y": 302,
@@ -717,7 +717,7 @@
         {
           "id": "dot-bounce",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 940,
             "y": 452,
@@ -741,7 +741,7 @@
         {
           "id": "dot-elastic",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 940,
             "y": 602,
@@ -765,7 +765,7 @@
         {
           "id": "dot-spring",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 940,
             "y": 752,
@@ -835,7 +835,7 @@
         {
           "id": "bar",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "frame": {
             "x": 120,
             "y": 220,
@@ -912,7 +912,7 @@
         {
           "id": "track",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "frame": {
             "x": 20,
             "y": 50,
@@ -926,7 +926,7 @@
         {
           "id": "dot",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {
             "x": 20,
             "y": 20,

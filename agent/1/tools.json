@@ -3999,7 +3999,7 @@
                   "constrain-proportions": {
                     "type": "boolean"
                   },
-                  "shape": {
+                  "shape-type": {
                     "enum": [
                       "rectangle",
                       "ellipse",
@@ -6844,6 +6844,9 @@
                 "const": "shape"
               },
               {
+                "const": "shape-type"
+              },
+              {
                 "const": "size-x"
               },
               {
@@ -9227,6 +9230,9 @@
               },
               {
                 "const": "shape"
+              },
+              {
+                "const": "shape-type"
               },
               {
                 "const": "size-x"

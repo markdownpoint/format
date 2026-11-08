@@ -43,14 +43,14 @@ The slide's objects and motion are in the .mdpoint file:
         {
           "id": "card",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "frame": {"x": 120, "y": 360, "width": 720, "height": 420},
           "corner-radius": 32
         },
         {
           "id": "dot",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "frame": {"x": 1320, "y": 420, "width": 300, "height": 300},
           "fill": "text"
         },
@@ -257,7 +257,7 @@ A group with `auto-layout` places its members one after another, down or across.
   {
     "id": "left",
     "type": "shape",
-    "shape": "ellipse",
+    "shape-type": "ellipse",
     "parent": "row",
     "frame": {"x": 0, "y": 0, "width": 360, "height": 360},
     "fill": "text"
@@ -265,7 +265,7 @@ A group with `auto-layout` places its members one after another, down or across.
   {
     "id": "middle",
     "type": "shape",
-    "shape": "rectangle",
+    "shape-type": "rectangle",
     "parent": "row",
     "frame": {"x": 0, "y": 0, "width": 480, "height": 240},
     "constrain-proportions": false,
@@ -274,7 +274,7 @@ A group with `auto-layout` places its members one after another, down or across.
   {
     "id": "right",
     "type": "shape",
-    "shape": "rectangle",
+    "shape-type": "rectangle",
     "parent": "row",
     "frame": {"x": 0, "y": 0, "width": 360, "height": 360},
     "fill": "text"

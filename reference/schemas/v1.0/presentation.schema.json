@@ -1536,7 +1536,7 @@
                         }
                       ]
                     },
-                    "shape": {
+                    "shape-type": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -1553,12 +1553,6 @@
                             "double-arrow",
                             "star",
                             "speech-bubble"
-                          ]
-                        },
-                        {
-                          "enum": [
-                            "rectangle",
-                            "disk"
                           ]
                         }
                       ]
@@ -2270,6 +2264,19 @@
                         },
                         {
                           "type": "boolean"
+                        }
+                      ]
+                    },
+                    "shape": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "enum": [
+                            "rectangle",
+                            "disk"
+                          ]
                         }
                       ]
                     },
@@ -5938,7 +5945,7 @@
         "constrain-proportions": {
           "type": "boolean"
         },
-        "shape": {
+        "shape-type": {
           "enum": [
             "rectangle",
             "ellipse",

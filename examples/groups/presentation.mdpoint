@@ -29,7 +29,7 @@
         {
           "id": "left",
           "type": "shape",
-          "shape": "ellipse",
+          "shape-type": "ellipse",
           "parent": "row",
           "frame": {
             "x": 0,
@@ -43,7 +43,7 @@
         {
           "id": "middle",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "parent": "row",
           "frame": {
             "x": 0,
@@ -58,7 +58,7 @@
         {
           "id": "right",
           "type": "shape",
-          "shape": "rectangle",
+          "shape-type": "rectangle",
           "parent": "row",
           "frame": {
             "x": 0,
