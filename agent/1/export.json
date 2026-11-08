@@ -42,7 +42,7 @@
           "type": "string",
           "enum": [
             "h264",
-            "prores-4444"
+            "prores4444"
           ],
           "description": "H.264 in an MP4, or Apple ProRes 4444 in a QuickTime movie; H.264 when omitted. The container follows from it."
         },
@@ -55,7 +55,7 @@
           ],
           "description": "Lines asked for on the movie's shorter side, 2160 for 4K. The longer side keeps the slide's shape within 3840 pixels, in even pixels: the answer's `width` and `height` give the size made."
         },
-        "slideDelay": {
+        "slide-delay": {
           "type": "number",
           "description": "Seconds a slide holds once its last step and its sound have ended, before the next slide. A slide whose transition starts by itself holds for that transition's own delay instead, and one that scrolls out goes on as its last step ends.",
           "minimum": 0,
@@ -78,7 +78,7 @@
           "additionalProperties": false,
           "description": "Slides by the numbers the author knows them by, skipped slides left out; every shown slide when omitted."
         },
-        "stepDelay": {
+        "step-delay": {
           "type": "number",
           "description": "Seconds the movie waits before each step that waits for a click, the first one too, from when what plays before it ends.",
           "minimum": 0,
@@ -91,8 +91,8 @@
       },
       "required": [
         "resolution",
-        "slideDelay",
-        "stepDelay"
+        "slide-delay",
+        "step-delay"
       ],
       "additionalProperties": false
     },

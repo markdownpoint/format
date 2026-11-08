@@ -9819,9 +9819,9 @@
                 },
                 "description": "Each moment measured, `time` seconds into the wait: how much of each object draws, 0 to 1, its opacity and its groups', 0 while hidden; and each model and 3D text's measures, as `slides_measure` gives them for a step."
               },
-              "slideAge": {
+              "slideTime": {
                 "type": "number",
-                "description": "Seconds since the slide began to appear, as it settles."
+                "description": "The time on the slide's clock as it settles: seconds since the slide began to appear."
               }
             },
             "required": [
@@ -9829,7 +9829,7 @@
               "beforeStepId",
               "motion",
               "samples",
-              "slideAge"
+              "slideTime"
             ],
             "additionalProperties": false,
             "description": "Where a show holds the slide until the next click, or after its last: once the click's steps, their \"with\" and \"after\" members, its Actions and the camera's drift have all ended. Measured as it settles, and over one period while it loops: the period of the 3D's loop, or of the 2D's while the 3D stands still, held or at rest. Where both loop at lengths of their own, the period is the 3D's, the 2D measured on its own clock."
@@ -10355,7 +10355,7 @@
                 "type": "string",
                 "enum": [
                   "h264",
-                  "prores-4444"
+                  "prores4444"
                 ],
                 "description": "H.264 in an MP4, or Apple ProRes 4444 in a QuickTime movie; H.264 when omitted. The container follows from it."
               },
@@ -10368,7 +10368,7 @@
                 ],
                 "description": "Lines asked for on the movie's shorter side, 2160 for 4K. The longer side keeps the slide's shape within 3840 pixels, in even pixels: the answer's `width` and `height` give the size made."
               },
-              "slideDelay": {
+              "slide-delay": {
                 "type": "number",
                 "description": "Seconds a slide holds once its last step and its sound have ended, before the next slide. A slide whose transition starts by itself holds for that transition's own delay instead, and one that scrolls out goes on as its last step ends.",
                 "minimum": 0,
@@ -10397,7 +10397,7 @@
                 "additionalProperties": false,
                 "description": "Slides by the numbers the author knows them by, skipped slides left out; every shown slide when omitted."
               },
-              "stepDelay": {
+              "step-delay": {
                 "type": "number",
                 "description": "Seconds the movie waits before each step that waits for a click, the first one too, from when what plays before it ends.",
                 "minimum": 0,
@@ -10410,8 +10410,8 @@
             },
             "required": [
               "resolution",
-              "slideDelay",
-              "stepDelay"
+              "slide-delay",
+              "step-delay"
             ],
             "additionalProperties": false,
             "description": "Movie format only; omit to use the app’s default export settings."
@@ -11158,13 +11158,6 @@
                 "$ref": "#/definitions/GlbBounds",
                 "description": "The exact box around every vertex at rest."
               },
-              "castShadowOff": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/GlbNodeName"
-                },
-                "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
-              },
               "colorRoles": {
                 "type": "array",
                 "items": {
@@ -11214,18 +11207,25 @@
               },
               "onFloor": {
                 "type": "boolean"
+              },
+              "shadowless": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/GlbNodeName"
+                },
+                "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
               }
             },
             "required": [
               "actions",
-              "castShadowOff",
               "colorRoles",
               "extensions",
               "height",
               "hiddenAtRest",
               "joints",
               "nodes",
-              "onFloor"
+              "onFloor",
+              "shadowless"
             ],
             "additionalProperties": false
           },
@@ -11700,13 +11700,6 @@
             "$ref": "#/definitions/GlbBounds",
             "description": "The exact box around every vertex at rest."
           },
-          "castShadowOff": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/GlbNodeName"
-            },
-            "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
-          },
           "colorRoles": {
             "type": "array",
             "items": {
@@ -11790,18 +11783,25 @@
           },
           "onFloor": {
             "type": "boolean"
+          },
+          "shadowless": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/GlbNodeName"
+            },
+            "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
           }
         },
         "required": [
           "actions",
-          "castShadowOff",
           "colorRoles",
           "extensions",
           "height",
           "hiddenAtRest",
           "joints",
           "nodes",
-          "onFloor"
+          "onFloor",
+          "shadowless"
         ],
         "description": "What a model does. For letters the app built: the text they came from, and their depth and bevel.",
         "definitions": {
@@ -14135,8 +14135,8 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "frameProbe": {
-                "$ref": "#/definitions/AgentFrameProbe"
+              "frameTiming": {
+                "$ref": "#/definitions/AgentFrameTiming"
               },
               "notesVisible": {
                 "type": "boolean"
@@ -14188,7 +14188,7 @@
         ],
         "type": "object",
         "definitions": {
-          "AgentFrameProbe": {
+          "AgentFrameTiming": {
             "type": "object",
             "properties": {
               "dropped": {
@@ -14227,7 +14227,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in milliseconds."
+                "description": "The time from one frame to the next, in seconds."
               },
               "paint": {
                 "anyOf": [
@@ -14251,7 +14251,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in milliseconds."
+                "description": "How long each frame took to paint, in seconds."
               }
             },
             "required": [
@@ -14310,8 +14310,8 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "frameProbe": {
-                "$ref": "#/definitions/AgentFrameProbe"
+              "frameTiming": {
+                "$ref": "#/definitions/AgentFrameTiming"
               },
               "notesVisible": {
                 "type": "boolean"
@@ -14363,7 +14363,7 @@
         ],
         "type": "object",
         "definitions": {
-          "AgentFrameProbe": {
+          "AgentFrameTiming": {
             "type": "object",
             "properties": {
               "dropped": {
@@ -14402,7 +14402,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in milliseconds."
+                "description": "The time from one frame to the next, in seconds."
               },
               "paint": {
                 "anyOf": [
@@ -14426,7 +14426,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in milliseconds."
+                "description": "How long each frame took to paint, in seconds."
               }
             },
             "required": [
@@ -14523,8 +14523,8 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "frameProbe": {
-                "$ref": "#/definitions/AgentFrameProbe"
+              "frameTiming": {
+                "$ref": "#/definitions/AgentFrameTiming"
               },
               "notesVisible": {
                 "type": "boolean"
@@ -14576,7 +14576,7 @@
         ],
         "type": "object",
         "definitions": {
-          "AgentFrameProbe": {
+          "AgentFrameTiming": {
             "type": "object",
             "properties": {
               "dropped": {
@@ -14615,7 +14615,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in milliseconds."
+                "description": "The time from one frame to the next, in seconds."
               },
               "paint": {
                 "anyOf": [
@@ -14639,7 +14639,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in milliseconds."
+                "description": "How long each frame took to paint, in seconds."
               }
             },
             "required": [
@@ -14698,8 +14698,8 @@
               "audienceDisplayId": {
                 "type": "number"
               },
-              "frameProbe": {
-                "$ref": "#/definitions/AgentFrameProbe"
+              "frameTiming": {
+                "$ref": "#/definitions/AgentFrameTiming"
               },
               "notesVisible": {
                 "type": "boolean"
@@ -14751,7 +14751,7 @@
         ],
         "type": "object",
         "definitions": {
-          "AgentFrameProbe": {
+          "AgentFrameTiming": {
             "type": "object",
             "properties": {
               "dropped": {
@@ -14790,7 +14790,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in milliseconds."
+                "description": "The time from one frame to the next, in seconds."
               },
               "paint": {
                 "anyOf": [
@@ -14814,7 +14814,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in milliseconds."
+                "description": "How long each frame took to paint, in seconds."
               }
             },
             "required": [
