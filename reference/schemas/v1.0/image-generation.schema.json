@@ -302,7 +302,7 @@
     "stable-id": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "a stable id, such as \"title-card\""
+      "description": "an id, such as \"title-card\""
     }
   }
 }
