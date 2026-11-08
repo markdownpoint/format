@@ -154,7 +154,15 @@
           "$ref": "#/definitions/image-style-or-none"
         }
       ],
-      "description": "The style a generated image object is made in when it sets none of its own, as text, or `none` for no style. Left out, it's none. A background takes its own instead."
+      "description": "The style a generated image object is made in when it sets none of its own, as text, or `none` for no style. Left out, it's none. A background's picture takes `background-image-style` instead."
+    },
+    "background-image-style": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/image-style-or-none"
+        }
+      ],
+      "description": "The style a generated background image is made in when its background sets none of its own, as text, or `none` for no style. Left out, it's MarkdownPoint's own."
     },
     "swatches": {
       "type": "array",
@@ -3622,7 +3630,7 @@
               "$ref": "#/definitions/image-style-or-none"
             }
           ],
-          "description": "The style of a generated background image, as text, or `none` for no style. Left out on a slide, it's the presentation's background's `image-style`, and left out there, MarkdownPoint's own."
+          "description": "The style of a generated background image, as text, or `none` for no style. Left out on a slide, it's the presentation's background's, then `background-image-style`."
         },
         "transparent": {
           "type": "boolean",

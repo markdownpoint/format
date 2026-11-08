@@ -13151,6 +13151,31 @@
           "type": "object",
           "properties": {
             "property": {
+              "const": "background-image-style"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+                  "description": "nonempty text without NUL characters, or \"none\""
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "property",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "property": {
               "const": "countdown"
             },
             "value": {

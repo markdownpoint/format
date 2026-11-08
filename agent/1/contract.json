@@ -4273,6 +4273,9 @@
         "image-style": {
           "$ref": "#/definitions/image-style-or-none"
         },
+        "background-image-style": {
+          "$ref": "#/definitions/image-style-or-none"
+        },
         "swatches": {
           "type": "array",
           "items": {
