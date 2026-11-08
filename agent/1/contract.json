@@ -2628,7 +2628,7 @@
     "AgentModelBuildResult": {
       "type": "object",
       "properties": {
-        "builtFrom": {
+        "built-from": {
           "type": "string",
           "description": "With for: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these."
         },
