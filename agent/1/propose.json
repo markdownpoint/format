@@ -11878,6 +11878,11 @@
                   "maximum": 780.352997,
                   "description": "canvas units"
                 },
+                "spread": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
                 "offset": {
                   "type": "object",
                   "properties": {
@@ -12282,6 +12287,11 @@
               "minimum": 0,
               "maximum": 780.352997,
               "description": "canvas units"
+            },
+            "spread": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
             },
             "offset": {
               "type": "object",
@@ -13034,6 +13044,11 @@
                               "minimum": 0,
                               "maximum": 780.352997,
                               "description": "canvas units"
+                            },
+                            "spread": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
                             },
                             "offset": {
                               "type": "object",
@@ -16042,6 +16057,11 @@
               "minimum": 0,
               "maximum": 780.352997,
               "description": "canvas units"
+            },
+            "spread": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
             },
             "offset": {
               "type": "object",

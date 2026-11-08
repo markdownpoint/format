@@ -710,7 +710,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
+                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -718,6 +718,12 @@
                             "minimum": 0,
                             "maximum": 780.352997,
                             "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+                          },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
                           },
                           "offset": {
                             "type": "object",
@@ -2935,7 +2941,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
+                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -2943,6 +2949,12 @@
                             "minimum": 0,
                             "maximum": 780.352997,
                             "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+                          },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
                           },
                           "offset": {
                             "type": "object",
@@ -3260,7 +3272,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
+                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -3268,6 +3280,12 @@
                             "minimum": 0,
                             "maximum": 780.352997,
                             "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+                          },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
                           },
                           "offset": {
                             "type": "object",
@@ -3603,7 +3621,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
+                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -3611,6 +3629,12 @@
                             "minimum": 0,
                             "maximum": 780.352997,
                             "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+                          },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
                           },
                           "offset": {
                             "type": "object",
@@ -3855,7 +3879,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
+                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -3863,6 +3887,12 @@
                             "minimum": 0,
                             "maximum": 780.352997,
                             "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+                          },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
                           },
                           "offset": {
                             "type": "object",
@@ -4059,7 +4089,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: the object's shape blurred by a Gaussian whose standard deviation is its size / √6. Its size isn't a blur radius.",
+                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -4067,6 +4097,12 @@
                             "minimum": 0,
                             "maximum": 780.352997,
                             "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+                          },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
                           },
                           "offset": {
                             "type": "object",
@@ -5673,7 +5709,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "The share of the size by which the letters grow solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
+              "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
             },
             "offset": {
               "type": "object",

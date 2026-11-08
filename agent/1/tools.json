@@ -1496,6 +1496,11 @@
                             "maximum": 780.352997,
                             "description": "canvas units"
                           },
+                          "spread": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
                           "offset": {
                             "type": "object",
                             "properties": {
@@ -7222,7 +7227,7 @@
               },
               "spread": {
                 "type": "number",
-                "description": "The share of the size, 0–1, by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread: at 1 the shadow stands solid all the way out. A text's alone; none where left out."
+                "description": "The share of the size, 0–1, by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread: at 1 the shadow stands solid all the way out. None where left out."
               }
             },
             "required": [
@@ -7586,6 +7591,11 @@
                     "minimum": 0,
                     "maximum": 780.352997,
                     "description": "canvas units"
+                  },
+                  "spread": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
                   },
                   "offset": {
                     "type": "object",
@@ -9407,7 +9417,7 @@
               },
               "spread": {
                 "type": "number",
-                "description": "The share of the size, 0–1, by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread: at 1 the shadow stands solid all the way out. A text's alone; none where left out."
+                "description": "The share of the size, 0–1, by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread: at 1 the shadow stands solid all the way out. None where left out."
               }
             },
             "required": [
