@@ -108,7 +108,7 @@ Copies of one shape==.==
 Eight copies turn in a ring, each a little later than the one before.
 
 <!-- notes -->
-One square makes eight copies with `repeater`, each turned 45 degrees about a point below it and a little smaller. The last copy fades to `end-opacity` 0.2. Each copy turns, scales and waits a little at random (`rotation-randomness`, `scale-randomness`, `stagger-randomness`), from `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before. The slide leaves with a carry-over that matches words, so the words the two headings share move to their places on the next slide.
+With `repeater`, one square makes eight squares in all: itself, unchanged, and seven copies, each turned 45 degrees about a point below it and a little smaller. The last copy fades to `end-opacity` 0.2. Each copy turns, scales and waits a little at random (`rotation-randomness`, `scale-randomness`, `stagger-randomness`), from `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before. The slide leaves with a carry-over that matches words, so the words the two headings share move to their places on the next slide.
 
 <!-- slide: arrival -->
 
