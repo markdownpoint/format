@@ -237,7 +237,7 @@
             "items": {
               "$ref": "#/definitions/PresentationAnimationInterpolationName"
             },
-            "description": "The named interpolations; a keyframe may instead carry four cubic-bezier numbers [x1, y1, x2, y2] with x within 0–1."
+            "description": "The named interpolations; a keyframe may instead carry a curve with its settings, a cubic Bézier's { curve: \"cubic-bezier\", x1, y1, x2, y2 } with each x within 0–1 among them."
           },
           "limits": {
             "$ref": "#/definitions/AgentLimits"
@@ -6415,15 +6415,6 @@
             "additionalProperties": false,
             "description": "Blender's Back with its Back setting: how far anticipate winds up, overshoot swings past its keyframe, or both."
           },
-          "PresentationAnimationBezier": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "minItems": 4,
-            "maxItems": 4,
-            "description": "A cubic Bézier interpolation as CSS spells it: two control points with time on x within 0–1 and value on y, which may overshoot."
-          },
           "PresentationAnimationBounceInterpolation": {
             "type": "object",
             "properties": {
@@ -6440,6 +6431,35 @@
             ],
             "additionalProperties": false,
             "description": "A bounce at a bounciness, Blender's Rigid Body word for a rebound's share of the speed it lands with; Blender's Bounce at 0.5."
+          },
+          "PresentationAnimationCubicBezier": {
+            "type": "object",
+            "properties": {
+              "curve": {
+                "const": "cubic-bezier"
+              },
+              "x1": {
+                "type": "number"
+              },
+              "x2": {
+                "type": "number"
+              },
+              "y1": {
+                "type": "number"
+              },
+              "y2": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "curve",
+              "x1",
+              "x2",
+              "y1",
+              "y2"
+            ],
+            "additionalProperties": false,
+            "description": "A cubic Bézier as the files hold it: its handles at (x1, y1) and (x2, y2), named as CSS's cubic-bezier() names its four numbers."
           },
           "PresentationAnimationCueSource": {
             "type": "object",
@@ -6544,7 +6564,7 @@
           "PresentationAnimationInterpolation": {
             "anyOf": [
               {
-                "$ref": "#/definitions/PresentationAnimationBezier"
+                "$ref": "#/definitions/PresentationAnimationCubicBezier"
               },
               {
                 "$ref": "#/definitions/PresentationAnimationCurveInterpolation"
@@ -8091,29 +8111,6 @@
                 ]
               },
               {
-                "type": "array",
-                "items": [
-                  {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 1
-                  },
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 1
-                  },
-                  {
-                    "type": "number"
-                  }
-                ],
-                "minItems": 4,
-                "maxItems": 4
-              },
-              {
                 "anyOf": [
                   {
                     "$ref": "#/definitions/back-curve"
@@ -8166,6 +8163,38 @@
                     "required": [
                       "curve",
                       "amount"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "curve": {
+                        "const": "cubic-bezier"
+                      },
+                      "x1": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "y1": {
+                        "type": "number"
+                      },
+                      "x2": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "y2": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "curve",
+                      "x1",
+                      "y1",
+                      "x2",
+                      "y2"
                     ],
                     "additionalProperties": false
                   }

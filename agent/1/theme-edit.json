@@ -10228,29 +10228,6 @@
               ]
             },
             {
-              "type": "array",
-              "items": [
-                {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                {
-                  "type": "number"
-                }
-              ],
-              "minItems": 4,
-              "maxItems": 4
-            },
-            {
               "anyOf": [
                 {
                   "type": "object",
@@ -10320,6 +10297,38 @@
                   "required": [
                     "curve",
                     "amount"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "curve": {
+                      "const": "cubic-bezier"
+                    },
+                    "x1": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y1": {
+                      "type": "number"
+                    },
+                    "x2": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y2": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "curve",
+                    "x1",
+                    "y1",
+                    "x2",
+                    "y2"
                   ],
                   "additionalProperties": false
                 }
@@ -10456,29 +10465,6 @@
               ]
             },
             {
-              "type": "array",
-              "items": [
-                {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 1
-                },
-                {
-                  "type": "number"
-                }
-              ],
-              "minItems": 4,
-              "maxItems": 4
-            },
-            {
               "anyOf": [
                 {
                   "type": "object",
@@ -10548,6 +10534,38 @@
                   "required": [
                     "curve",
                     "amount"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "curve": {
+                      "const": "cubic-bezier"
+                    },
+                    "x1": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y1": {
+                      "type": "number"
+                    },
+                    "x2": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    "y2": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "curve",
+                    "x1",
+                    "y1",
+                    "x2",
+                    "y2"
                   ],
                   "additionalProperties": false
                 }
