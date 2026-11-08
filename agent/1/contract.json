@@ -4029,7 +4029,7 @@
                       },
                       "path": {
                         "$ref": "#/definitions/PresentationAnimationPath",
-                        "description": "On a path pair's x keyframe, `frame.x` or `translation.x`: the move into it, with the pair's y keyframe there, bends along this path."
+                        "description": "On a point keyframe, `frame.xy`, `translation.xy` or `position.xyz`: the move into it bends along this path."
                       },
                       "start": {
                         "type": "number",
@@ -15084,6 +15084,7 @@
         "bound-value",
         "clashing-curves",
         "clashing-keyframes",
+        "clashing-orient",
         "color-needs-svg",
         "composition-cycle",
         "derived-budget",
@@ -15241,7 +15242,6 @@
         "unknown-role",
         "unknown-scheme",
         "unknown-text-style",
-        "unpaired-motion-path",
         "unreadable-collaborator-value",
         "unreadable-files",
         "unreadable-themes",
@@ -17911,7 +17911,7 @@
         },
         "path": {
           "$ref": "#/definitions/PresentationAnimationPath",
-          "description": "On a path pair's x keyframe, `frame.x` or `translation.x`: the move into it, with the pair's y keyframe there, bends along this path."
+          "description": "On a point keyframe, `frame.xy`, `translation.xy` or `position.xyz`: the move into it bends along this path."
         },
         "start": {
           "type": "number",

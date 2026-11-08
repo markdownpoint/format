@@ -7477,7 +7477,7 @@
                         "additionalProperties": false
                       },
                       "path": {
-                        "description": "A curved motion path for the move into the keyframe. It goes on a point keyframe, or on an x keyframe and also drives the matching y keyframe.",
+                        "description": "A curved motion path for the move into the keyframe. It goes on a point keyframe.",
                         "type": "object",
                         "properties": {
                           "geometry": {
