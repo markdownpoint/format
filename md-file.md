@@ -2,7 +2,7 @@
 
 `slides.md` holds the words, speaker notes, sections and slide order. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
 
-The objects' positions, styles and motion are in [the .mdpoint file](mdpoint-file.md). A text block's ID matches the ID of its object.
+The objects' positions, styles and motion are in [the .mdpoint file](mdpoint-file.md). A text block's id matches the id of its object.
 
 This is the whole file of a presentation with three slides:
 
@@ -63,11 +63,11 @@ When you add or delete a slide, the plugin updates both presentation files. When
 
 ## Slide and text markers
 
-Comment markers separate slides and text blocks. Each marker gives the ID of its slide or object. A heading or horizontal rule does not start a slide.
+Comment markers separate slides and text blocks. Each marker gives the id of its slide or object. A heading or horizontal rule does not start a slide.
 
 Each marker stands on a line of its own. Spaces or tabs before or after it, any number, don't change it. Between code fences, a line that looks like a marker is code.
 
-The IDs in the markers connect the two files. Keep a slide's ID when changing its title or moving it. If you change the ID, update it in both files.
+The ids in the markers connect the two files. Keep a slide's id when changing its title or moving it. If you change the id, update it in both files.
 
 ## Frontmatter
 
@@ -114,9 +114,9 @@ Blank lines separate paragraphs, however many there are. An empty paragraph is a
 
 ## Compositions
 
-A composition is a reusable scene, such as a card with an animated counter. `<!-- composition: id -->` starts its block. Use the ID of its entry under `compositions` in the .mdpoint file. Compositions do not belong to sections or appear as slides. MarkdownPoint adds new compositions after the existing ones, or after the slides if there are none. You can move a composition block elsewhere in the file.
+A composition is a reusable scene, such as a card with an animated counter. `<!-- composition: id -->` starts its block. Use the id of its entry under `compositions` in the .mdpoint file. Compositions do not belong to sections or appear as slides. MarkdownPoint adds new compositions after the existing ones, or after the slides if there are none. You can move a composition block elsewhere in the file.
 
-Under the marker, `<!-- text: id -->` holds the words of one of the composition's own objects, as on a slide. `<!-- control: id -->`, with the control's ID under `controls` in the .mdpoint file, holds a text control's default words, which an instance shows when it sets none. An instance sets its own on the slide that holds it, under `<!-- text: instance.control -->`, with the instance's ID and the control's ID:
+Under the marker, `<!-- text: id -->` holds the words of one of the composition's own objects, as on a slide. `<!-- control: id -->`, with the control's id under `controls` in the .mdpoint file, holds a text control's default words, which an instance shows when it sets none. An instance sets its own on the slide that holds it, under `<!-- text: instance.control -->`, with the instance's id and the control's id:
 
 ```markdown
 <!-- slide: metrics -->

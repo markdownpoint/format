@@ -2215,7 +2215,7 @@
                                     },
                                     "minItems": 1,
                                     "maxItems": 3,
-                                    "description": "The slide's axes the camera follows on, of x, y, and z. Left out, all three."
+                                    "description": "The 3D space's axes the camera follows on, of x, y, and z. Left out, all three."
                                   },
                                   "relative-to-target": {
                                     "type": "boolean",
@@ -3950,7 +3950,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 780.352997,
-              "description": "How far it reaches, in canvas units: up to 102.878569 on a slide whose shorter side is 1080 or less, and more in proportion to a larger slide's shorter side, as 205.757138 at 3840 × 2160."
+              "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
             },
             "spread": {
               "type": "number",

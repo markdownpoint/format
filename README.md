@@ -19,7 +19,7 @@ Keep the presentation's whole folder in your vault and open `slides.md` in Obsid
 
 ## Slides and objects
 
-Each slide has an ID. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same ID. Text blocks use the IDs of their objects. To move a slide, move its whole block in `slides.md`. Its ID stays the same.
+Each slide has an id. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same id. Text blocks use the ids of their objects. To move a slide, move its whole block in `slides.md`. Its id stays the same.
 
 Objects use the selected theme's fonts, color schemes, text styles and layouts. A slide can add objects and override properties inherited from its layout.
 

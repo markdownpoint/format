@@ -99,7 +99,7 @@ When rounding to six decimal places changes a number in the file, MarkdownPoint 
 
 ## Slides
 
-The keys in `slides` match the slide IDs in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. A scheme or override value the slide states stays, even one that equals the inherited value, so a later theme change leaves it as it is. Only a reset removes it. The slide then follows changes to that value in the theme.
+The keys in `slides` match the slide ids in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. A scheme or override value the slide states stays, even one that equals the inherited value, so a later theme change leaves it as it is. Only a reset removes it. The slide then follows changes to that value in the theme.
 
 ## Presentation settings
 
@@ -129,7 +129,7 @@ Settings for the whole presentation stand beside `slides`:
 
 `objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size: 1920 by 1080 here.
 
-Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's ID in the marker.
+Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's id in the marker.
 
 The dot's fill, `text`, is a role in the slide's color scheme, so the dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
@@ -286,7 +286,7 @@ A group with `auto-layout` places its members one after another, down or across.
 
 ## Pictures
 
-An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast` and `saturation` run from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture shows as shot:
+An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast` and `saturation` run from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture shows as shot. This one has more contrast and color:
 
 ```json
 {
@@ -506,7 +506,7 @@ A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to
 
 ## Steps
 
-`initial` sets a parameter's value at the start of the slide, as `object.parameter`. Here the card starts hidden.
+`initial` sets a parameter's value at the start of the slide, as `object.parameter`. Here the card starts at an `opacity` of 0.
 
 `steps` lists the slide's animation steps in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `with` and `after` both start it when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
