@@ -1192,8 +1192,7 @@
                     "type": "null"
                   },
                   {
-                    "type": "string",
-                    "description": "text without NUL characters"
+                    "$ref": "#/definitions/prompt"
                   }
                 ]
               },
@@ -3068,8 +3067,7 @@
                     "type": "boolean"
                   },
                   "prompt": {
-                    "type": "string",
-                    "description": "text without NUL characters"
+                    "$ref": "#/definitions/prompt"
                   },
                   "image-style": {
                     "$ref": "#/definitions/image-style-or-none"
@@ -5364,7 +5362,7 @@
           }
         ]
       },
-      "description": "The layout's objects, back to front. Its own objects are written out, and a master object appears as its id."
+      "description": "The layout's objects, back to front. Its own objects are written out, and a master object appears as its id. A master object it doesn't name stands behind them all."
     },
     "text": {
       "type": "object",
@@ -6386,6 +6384,11 @@
       },
       "minItems": 16,
       "maxItems": 16
+    },
+    "prompt": {
+      "type": "string",
+      "pattern": "^[^\\u0000]*(?![\\s\\S])",
+      "description": "text without NUL characters"
     },
     "repeater": {
       "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line attached inside the group.",

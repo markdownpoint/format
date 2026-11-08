@@ -1403,8 +1403,7 @@
                           "type": "null"
                         },
                         {
-                          "type": "string",
-                          "description": "text without NUL characters"
+                          "$ref": "#/definitions/prompt"
                         }
                       ]
                     },
@@ -3036,7 +3035,7 @@
                 }
               ]
             },
-            "description": "The slide's objects, back to front. Its own objects are written out, and a layout object appears as its id."
+            "description": "The slide's objects, back to front. Its own are written out, and one from its layout or master appears as its id. One it inherits and doesn't name stands behind them all."
           },
           "initial": {
             "allOf": [
@@ -3588,7 +3587,8 @@
             },
             {
               "type": "string",
-              "description": "a normalized relative path"
+              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
+              "description": "a normalized relative file path"
             }
           ],
           "description": "An image over the fill, as a presentation's file path, or `none` for no image. Left out, a slide takes the presentation's."
@@ -3608,7 +3608,11 @@
           "description": "How opaque the image is."
         },
         "prompt": {
-          "type": "string",
+          "allOf": [
+            {
+              "$ref": "#/definitions/prompt"
+            }
+          ],
           "description": "The prompt for a generated background image."
         },
         "image-style": {
@@ -4658,7 +4662,7 @@
           "properties": {
             "file": {
               "type": "string",
-              "pattern": "\\.(?:[gG][lL][bB])(?![\\s\\S])",
+              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
               "description": "The GLB a program built from the words, as a presentation's file path."
             },
             "built-from": {
@@ -5379,8 +5383,7 @@
           "type": "boolean"
         },
         "prompt": {
-          "type": "string",
-          "description": "text without NUL characters"
+          "$ref": "#/definitions/prompt"
         },
         "image-style": {
           "$ref": "#/definitions/image-style-or-none"
@@ -6940,6 +6943,11 @@
       "minItems": 16,
       "maxItems": 16
     },
+    "prompt": {
+      "type": "string",
+      "pattern": "^[^\\u0000]*(?![\\s\\S])",
+      "description": "text without NUL characters"
+    },
     "repeater": {
       "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line attached inside the group.",
       "type": "object",
@@ -7836,7 +7844,7 @@
     },
     "supported-image": {
       "type": "string",
-      "pattern": "\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+      "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
       "description": "a supported image"
     },
     "table-frame": {

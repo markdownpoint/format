@@ -1397,6 +1397,7 @@
               },
               "prompt": {
                 "type": "string",
+                "pattern": "^[^\\u0000]*(?![\\s\\S])",
                 "description": "text without NUL characters"
               },
               "image-style": {
@@ -3977,7 +3978,7 @@
           }
         ]
       },
-      "description": "The master's objects, back to front. Every slide shows them behind its own. The camera and the World are among them, at their defaults when the file leaves them out."
+      "description": "The master's objects, back to front, behind a layout's and a slide's own, except one they place by id. The camera and the World are among them, at their defaults when the file leaves them out."
     },
     "text": {
       "type": "object",

@@ -22,7 +22,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Master
 
-`master.json` contains the theme settings. Its `objects` appear behind the objects added to each slide. Basic's master includes a footer and a hidden slide number, both filled by fields:
+`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide places one among its own objects by listing its id in its `objects`. Basic's master includes a footer and a hidden slide number, both filled by fields:
 
 ```json
 {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
