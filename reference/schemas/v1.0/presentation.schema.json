@@ -3635,7 +3635,7 @@
               "$ref": "#/definitions/image-result"
             }
           ],
-          "description": "Which generation record made the background image, and for a restyle the image it was applied to. It goes with the image as its restyle does."
+          "description": "Which image generation record made the background image, and for a restyle the image it was applied to. It goes with the image as its restyle does."
         },
         "drop-shadow": {
           "allOf": [
@@ -4426,7 +4426,7 @@
               "$ref": "#/definitions/uuid"
             }
           ],
-          "description": "The id of the generation record that made the image shown, the lowercase UUID its file `generated/<id>.json` is named by."
+          "description": "The id of the image generation record that made the image shown, the lowercase UUID its file `generated/<id>.json` is named by."
         },
         "original": {
           "description": "The image a restyle was applied to, there only when `record` is a restyle's.",
@@ -4443,7 +4443,7 @@
                   "$ref": "#/definitions/uuid"
                 }
               ],
-              "description": "The id of its own generation record, when it was generated. Left out, it wasn't."
+              "description": "The id of its own image generation record, when it was generated. Left out, it wasn't."
             }
           },
           "required": [

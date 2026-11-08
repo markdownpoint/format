@@ -180,7 +180,7 @@ The master also sets a column grid, a baseline grid and two guides. MarkdownPoin
 
 `unit-scale` is how many meters one canvas unit stands for in 3D. Studio's 0.01 makes a canvas unit a centimeter. `save` in `master.json` and in a layout is a save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing, to tell the file apart from an older copy with the same content. Other tools keep it as it is.
 
-A theme travels as a `.mdptheme` file. It's a ZIP archive of one folder, which takes the theme's key as its name. The folder holds the theme's files and a `manifest.json` that lists each one with its size and SHA-256 digest. “Export Theme…” saves one, and “Install Theme…” adds one to a presentation. The [manifest reference](reference/v1.md#manifest) lists its keys.
+A theme travels as a `.mdptheme` file. It's a ZIP archive of one folder, which takes the theme's key as its name. The folder holds the theme's files and a `manifest.json` that lists each one with its size and SHA-256 digest. “Export Theme…” saves one, and “Install Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
 
 ## Changing a theme by hand
 

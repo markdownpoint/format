@@ -324,7 +324,7 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
-A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `image-result` names its record:
+A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `image-result` names its image generation record:
 
 ```json
 {
@@ -344,7 +344,7 @@ A generated picture starts as a request. An image object or a slide's `backgroun
 }
 ```
 
-The record, generated/<id>.json, holds what was asked and the picture that came of it:
+The image generation record, generated/<id>.json, holds what was asked and the picture that came of it:
 
 ```json
 {
@@ -512,7 +512,7 @@ A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to
 
 `curves` lists animated parameters as `object.parameter`. A parameter's curve holds its keyframes in `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `duration` lasts as long as its keyframes, its cues and the paragraphs they bring in.
 
-Four settings can repeat motion while a slide is visible: a curve's `loop`, an `oscillate` wave, a step's `loop-from` and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
+Five settings can repeat motion while a slide is visible: a step's `repeat` and `loop-from`, a curve's `loop`, an `oscillate` wave and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
 
 ## Motion
 
