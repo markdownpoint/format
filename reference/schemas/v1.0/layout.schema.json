@@ -2858,7 +2858,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -3170,7 +3170,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -4636,7 +4636,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -4808,7 +4808,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same kind. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
