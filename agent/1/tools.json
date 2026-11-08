@@ -10887,6 +10887,20 @@
         },
         "additionalProperties": false,
         "if": {
+          "anyOf": [
+            {
+              "required": [
+                "data"
+              ]
+            },
+            {
+              "required": [
+                "name"
+              ]
+            }
+          ]
+        },
+        "then": {
           "required": [
             "data",
             "name"
@@ -11330,33 +11344,12 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. source is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh), which splits a mesh by the pieces no edge joins, for an Action to turn or move each: the mesh keeps its largest piece and its origin, and each other piece becomes a mesh beside it, its origin at its own bounds center, which separate returns. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The source runs only while it builds. No file keeps it. To change a model you built, build it again from new source. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To make a text object’s words 3D, give for: { slideId, objectId }: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column. Without source, the app’s letter builder makes them at data’s depth and bevel, in ems (0.2 and 0.02 when left out). The model’s file keeps those and for, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
+      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. source is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh), which splits a mesh by the pieces no edge joins, for an Action to turn or move each: the mesh keeps its largest piece and its origin, and each other piece becomes a mesh beside it, its origin at its own bounds center, which separate returns. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The source runs only while it builds. No file keeps it. To change a model you built, build it again from new source. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To build a text object’s words, give slideId and textId: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. Plain 3D letters need no build: a text’s model { extrusion: { depth, bevel } }, which MarkdownPoint builds. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
       "inputSchema": {
         "type": "object",
         "properties": {
           "data": {
-            "description": "With for and no source, the letters' depth and bevel, in ems of the text's size. Any JSON the build reads, such as sizes or colors. No file keeps it. With for, a record, to which data.words adds the text's letters."
-          },
-          "for": {
-            "type": "object",
-            "properties": {
-              "objectId": {
-                "type": "string",
-                "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                "description": "An object's id on its slide, as `slides.get` lists it."
-              },
-              "slideId": {
-                "type": "string",
-                "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                "description": "A slide's stable id, as presentations.get and slides.get list it."
-              }
-            },
-            "required": [
-              "objectId",
-              "slideId"
-            ],
-            "additionalProperties": false,
-            "description": "A text object whose words a build makes 3D: data.words holds its letters, as its page lays them out at rest."
+            "description": "Any JSON the build reads, such as sizes or colors. No file keeps it. A record, to which data.words adds the text's letters, as its page lays them out at rest."
           },
           "models": {
             "type": "array",
@@ -11376,22 +11369,45 @@
             "type": "string",
             "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
           },
+          "slideId": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The slide the text is on."
+          },
+          "textId": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The text object whose words the build makes 3D."
+          },
           "presentation": {
             "type": "string",
             "description": "The presentation folder to target (from windows_list). Omit to use the focused window, or the only open presentation when none is focused."
           }
         },
         "required": [
-          "name"
+          "name",
+          "source"
         ],
         "additionalProperties": false,
         "if": {
-          "required": [
-            "for",
-            "source"
+          "anyOf": [
+            {
+              "required": [
+                "slideId"
+              ]
+            },
+            {
+              "required": [
+                "textId"
+              ]
+            }
           ]
         },
         "then": {
+          "required": [
+            "slideId",
+            "textId"
+          ],
           "properties": {
             "data": {
               "type": "object",
@@ -11399,36 +11415,7 @@
             }
           }
         },
-        "else": {
-          "if": {
-            "required": [
-              "for"
-            ]
-          },
-          "then": {
-            "properties": {
-              "data": {
-                "type": "object",
-                "properties": {
-                  "bevel": {
-                    "type": "number",
-                    "minimum": 0
-                  },
-                  "depth": {
-                    "type": "number",
-                    "minimum": 0
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          },
-          "else": {
-            "required": [
-              "source"
-            ]
-          }
-        }
+        "else": {}
       }
     },
     {
@@ -11625,7 +11612,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Have Meshy play one to ten actions from models_actions on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. looping names the Actions to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
+      "description": "Have Meshy play one to ten actions from models_actions on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. looping gives the ids of those to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11649,9 +11636,11 @@
           "looping": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "integer",
+              "minimum": 0,
+              "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
             },
-            "description": "Names of the Actions that loop, closed on their cycle, as models_actions names them."
+            "description": "The ids of the Actions that loop, each one of `actions`, closed on their cycle."
           },
           "name": {
             "type": "string",
@@ -11679,7 +11668,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in the model’s own coordinates, meters for an ordinary model and ems for a text model, unscaled by the text’s size or the slide, and whether it stands on y = 0; each Action’s length, sampled reach and lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale and nodes that cast no shadow, each by its node index with its name; the color roles its materials name; and, when the app’s letter builder made it, its for, depth and bevel. Read-only.",
+      "description": "What a 3D model of the presentation does, measured from every vertex as the slide draws it: its rest bounds and height in the model’s own coordinates, meters for an ordinary model and ems for a text model, unscaled by the text’s size or the slide, and whether it stands on y = 0; each Action’s length, sampled reach and lowest point, loop seam, morph weights and, for a walk in place, its stride (distance per loop, as a clip’s stride takes it); parts hidden by scale and nodes that cast no shadow, each by its node index with its name; and the color roles its materials name. Read-only.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11701,7 +11690,6 @@
       "outputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
-        "additionalProperties": false,
         "properties": {
           "actions": {
             "type": "array",
@@ -11720,45 +11708,11 @@
             },
             "description": "The color roles its materials name."
           },
-          "data": {
-            "type": "object",
-            "properties": {
-              "bevel": {
-                "type": "number",
-                "description": "How far their edges bevel, 0.02 when left out.",
-                "minimum": 0
-              },
-              "depth": {
-                "type": "number",
-                "description": "How deep the letters extrude, 0.2 when left out.",
-                "minimum": 0
-              }
-            },
-            "additionalProperties": false,
-            "description": "The letters' depth and bevel, in ems of the text's size."
-          },
           "extensions": {
             "type": "array",
             "items": {
               "type": "string"
             }
-          },
-          "for": {
-            "type": "object",
-            "properties": {
-              "objectId": {
-                "$ref": "#/definitions/AgentObjectId"
-              },
-              "slideId": {
-                "$ref": "#/definitions/AgentSlideId"
-              }
-            },
-            "required": [
-              "objectId",
-              "slideId"
-            ],
-            "additionalProperties": false,
-            "description": "The text object whose words the app's letter builder made the letters from."
           },
           "height": {
             "type": "number",
@@ -11816,18 +11770,8 @@
           "onFloor",
           "shadowless"
         ],
-        "description": "What a model does. For letters the app built: the text they came from, and their depth and bevel.",
+        "additionalProperties": false,
         "definitions": {
-          "AgentObjectId": {
-            "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "An object's id on its slide, as `slides.get` lists it."
-          },
-          "AgentSlideId": {
-            "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "A slide's stable id, as presentations.get and slides.get list it."
-          },
           "GlbActionReport": {
             "type": "object",
             "properties": {

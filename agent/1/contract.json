@@ -377,7 +377,7 @@
               "$ref": "#/definitions/AgentModelInspectRequest"
             },
             "result": {
-              "$ref": "#/definitions/AgentModelInspectResult"
+              "$ref": "#/definitions/GlbReport"
             }
           },
           "required": [
@@ -2271,62 +2271,6 @@
       "additionalProperties": false,
       "description": "A letter of a text where its slide draws it at rest, in canvas units: what a model sits on, lands on or points at."
     },
-    "AgentLetterBuildRequest": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "properties": {
-            "bevel": {
-              "type": "number",
-              "description": "How far their edges bevel, 0.02 when left out.",
-              "minimum": 0
-            },
-            "depth": {
-              "type": "number",
-              "description": "How deep the letters extrude, 0.2 when left out.",
-              "minimum": 0
-            }
-          },
-          "additionalProperties": false,
-          "description": "With for and no source, the letters' depth and bevel, in ems of the text's size."
-        },
-        "for": {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "$ref": "#/definitions/AgentObjectId"
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId"
-            }
-          },
-          "required": [
-            "objectId",
-            "slideId"
-          ],
-          "additionalProperties": false,
-          "description": "A text object whose words a build makes 3D: data.words holds its letters, as its page lays them out at rest."
-        },
-        "models": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AgentModelFile"
-          },
-          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
-        },
-        "name": {
-          "$ref": "#/definitions/AgentModelName",
-          "description": "The model's file name without extension, such as bird."
-        }
-      },
-      "required": [
-        "for",
-        "name"
-      ],
-      "additionalProperties": false,
-      "description": "A text's words the app's letter builder makes 3D: kit.text(data.words, { depth, bevel })."
-    },
     "AgentLimits": {
       "type": "object",
       "properties": {
@@ -2594,9 +2538,9 @@
         "looping": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/AgentMeshyActionId"
           },
-          "description": "Names of the Actions that loop, closed on their cycle, as models_actions names them."
+          "description": "The ids of the Actions that loop, each one of `actions`, closed on their cycle."
         },
         "name": {
           "$ref": "#/definitions/AgentModelName",
@@ -2608,13 +2552,10 @@
         "file"
       ],
       "additionalProperties": false,
-      "description": "Actions of Meshy's library, by id, on a model Meshy rigged; `looping` names the Actions to close on their cycle."
+      "description": "Actions of Meshy's library, by id, on a model Meshy rigged; `looping` names, by id, the Actions to close on their cycle."
     },
     "AgentModelBuildRequest": {
       "anyOf": [
-        {
-          "$ref": "#/definitions/AgentLetterBuildRequest"
-        },
         {
           "$ref": "#/definitions/AgentModelSourceBuildRequest"
         },
@@ -2622,14 +2563,14 @@
           "$ref": "#/definitions/AgentTextSourceBuildRequest"
         }
       ],
-      "description": "A model to build in the build window, saved as media/<name>-<hash>.glb: from source, or a text's words, from source or by the app's letter builder, saved as generated/<name>-<hash>.glb."
+      "description": "A model its source builds in the build window, saved as media/<name>-<hash>.glb, or from a text's words, saved as generated/<name>-<hash>.glb. Plain 3D letters are a text's own `model: { extrusion }`, which MarkdownPoint builds."
     },
     "AgentModelBuildResult": {
       "type": "object",
       "properties": {
         "built-from": {
           "type": "string",
-          "description": "With for: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these."
+          "description": "With textId: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these."
         },
         "changes": {
           "type": "array",
@@ -2757,125 +2698,6 @@
       ],
       "additionalProperties": false,
       "description": "A model of the presentation, by its file's path."
-    },
-    "AgentModelInspectResult": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "actions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GlbActionReport"
-          }
-        },
-        "bounds": {
-          "$ref": "#/definitions/GlbBounds",
-          "description": "The exact box around every vertex at rest."
-        },
-        "colorRoles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "The color roles its materials name."
-        },
-        "data": {
-          "type": "object",
-          "properties": {
-            "bevel": {
-              "type": "number",
-              "description": "How far their edges bevel, 0.02 when left out.",
-              "minimum": 0
-            },
-            "depth": {
-              "type": "number",
-              "description": "How deep the letters extrude, 0.2 when left out.",
-              "minimum": 0
-            }
-          },
-          "additionalProperties": false,
-          "description": "The letters' depth and bevel, in ems of the text's size."
-        },
-        "extensions": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "for": {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "$ref": "#/definitions/AgentObjectId"
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId"
-            }
-          },
-          "required": [
-            "objectId",
-            "slideId"
-          ],
-          "additionalProperties": false,
-          "description": "The text object whose words the app's letter builder made the letters from."
-        },
-        "height": {
-          "type": "number",
-          "description": "The rest height, and whether the model stands on y = 0 within a hundredth of it."
-        },
-        "hiddenAtRest": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "node": {
-                "type": "number"
-              },
-              "scale": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "name",
-              "node",
-              "scale"
-            ]
-          },
-          "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
-        },
-        "joints": {
-          "type": "number"
-        },
-        "nodes": {
-          "type": "number"
-        },
-        "onFloor": {
-          "type": "boolean"
-        },
-        "shadowless": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GlbNodeName"
-          },
-          "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
-        }
-      },
-      "required": [
-        "actions",
-        "colorRoles",
-        "extensions",
-        "height",
-        "hiddenAtRest",
-        "joints",
-        "nodes",
-        "onFloor",
-        "shadowless"
-      ],
-      "description": "What a model does. For letters the app built: the text they came from, and their depth and bevel."
     },
     "AgentModelMeasure": {
       "type": "object",
@@ -9165,24 +8987,7 @@
         "data": {
           "type": "object",
           "additionalProperties": {},
-          "description": "With for, a record, to which data.words adds the text's letters."
-        },
-        "for": {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "$ref": "#/definitions/AgentObjectId"
-            },
-            "slideId": {
-              "$ref": "#/definitions/AgentSlideId"
-            }
-          },
-          "required": [
-            "objectId",
-            "slideId"
-          ],
-          "additionalProperties": false,
-          "description": "A text object whose words a build makes 3D: data.words holds its letters, as its page lays them out at rest."
+          "description": "A record, to which data.words adds the text's letters, as its page lays them out at rest."
         },
         "models": {
           "type": "array",
@@ -9195,15 +9000,24 @@
           "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as bird."
         },
+        "slideId": {
+          "$ref": "#/definitions/AgentSlideId",
+          "description": "The slide the text is on."
+        },
         "source": {
           "type": "string",
           "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+        },
+        "textId": {
+          "$ref": "#/definitions/AgentObjectId",
+          "description": "The text object whose words the build makes 3D."
         }
       },
       "required": [
-        "for",
         "name",
-        "source"
+        "slideId",
+        "source",
+        "textId"
       ],
       "additionalProperties": false,
       "description": "A text's words its source makes 3D."
