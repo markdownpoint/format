@@ -383,7 +383,7 @@
           "type": "text",
           "frame": {
             "x": 120,
-            "y": 270,
+            "y": 250,
             "width": 520,
             "height": 64
           },
@@ -395,7 +395,7 @@
           "type": "text",
           "frame": {
             "x": 120,
-            "y": 450,
+            "y": 400,
             "width": 520,
             "height": 64
           },
@@ -407,7 +407,7 @@
           "type": "text",
           "frame": {
             "x": 120,
-            "y": 630,
+            "y": 550,
             "width": 520,
             "height": 64
           },
@@ -419,7 +419,19 @@
           "type": "text",
           "frame": {
             "x": 120,
-            "y": 810,
+            "y": 700,
+            "width": 520,
+            "height": 64
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "label-path",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 850,
             "width": 520,
             "height": 64
           },
@@ -432,7 +444,7 @@
           "shape-type": "rectangle",
           "frame": {
             "x": 700,
-            "y": 250,
+            "y": 230,
             "width": 160,
             "height": 110
           },
@@ -445,7 +457,7 @@
           "shape-type": "ellipse",
           "frame": {
             "x": 700,
-            "y": 455,
+            "y": 405,
             "width": 60,
             "height": 60
           }
@@ -457,7 +469,7 @@
           "shape-type": "ellipse",
           "frame": {
             "x": 900,
-            "y": 455,
+            "y": 405,
             "width": 60,
             "height": 60
           }
@@ -469,7 +481,7 @@
           "shape-type": "ellipse",
           "frame": {
             "x": 700,
-            "y": 600,
+            "y": 520,
             "width": 120,
             "height": 120
           },
@@ -482,7 +494,19 @@
           "shape-type": "ellipse",
           "frame": {
             "x": 700,
-            "y": 815,
+            "y": 705,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "arc",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 700,
+            "y": 855,
             "width": 60,
             "height": 60
           }
@@ -506,6 +530,11 @@
           "name": "Move the shapes",
           "min-duration": 3,
           "curves": {
+            "arc.frame.xy": {
+              "keyframes": [
+                {"id":"arc-bends","time":2.2,"value":{"x":1500,"y":855},"interpolation":"ease-in-out","path":{"geometry":"M0 0 C0.3333 -0.12 0.6667 -0.12 1 0"}}
+              ]
+            },
             "card.translation.x": {
               "keyframes": [
                 {"id":"card-slides-in","time":0.5,"value":300,"interpolation":"ease-out"},

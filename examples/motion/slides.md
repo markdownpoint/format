@@ -75,11 +75,14 @@ An even zoom
 <!-- text: label-turn -->
 A turn back
 
+<!-- text: label-path -->
+A curved path
+
 <!-- text: caption -->
-The card loops, the dots bob, the oval zooms evenly and the last dot turns back halfway.
+The card loops, the dots bob, the oval zooms evenly, a dot turns back halfway and the last one arcs over.
 
 <!-- notes -->
-The card slides in past its resting position, settles, and then swings right and back, looping until the three-second step ends. Its curve's `loop` replays the keyframes from its `loop-keyframe`, `card-settles`, to the last, so the slide-in plays once. The two dots bob on waves from `oscillate`, a triangle wave that starts a quarter of the way into its cycle and a noise wave from seed 7. The oval starts at `scale` 0.5 by 0.25 and grows fourfold, `exponential-scale` keeping the zoom even. The last dot heads for the far side, but its keyframe cuts that longer move off halfway, the move its `interrupted` names, and it turns back. The slide leaves through the accent color, its transition's `color`.
+The card slides in past its resting position, settles, and then swings right and back, looping until the three-second step ends. Its curve's `loop` replays the keyframes from its `loop-keyframe`, `card-settles`, to the last, so the slide-in plays once. The two dots bob on waves from `oscillate`, a triangle wave that starts a quarter of the way into its cycle and a noise wave from seed 7. The oval starts at `scale` 0.5 by 0.25 and grows fourfold, `exponential-scale` keeping the zoom even. The fourth dot heads for the far side, but its keyframe cuts that move off halfway, and the dot turns back: `interrupted` names the move it cut off. The last dot arcs over to the right: its curve keys `frame.xy`, both coordinates as one point, and its keyframe's `path` bends the move along a curve drawn in the move's own frame, from its start at 0 0 to its end at 1 0. The slide leaves through the accent color, its transition's `color`.
 
 <!-- slide: words -->
 

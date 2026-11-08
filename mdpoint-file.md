@@ -516,7 +516,7 @@ Five settings can repeat motion while a slide is visible: a step's `repeat` and 
 
 ## Motion
 
-The [motion example](examples/motion) includes a repeater, named curves and springs, loops, waves, an interrupted move, a composition at four moments, text animations and transitions. Each slide's speaker notes identify the relevant properties.
+The [motion example](examples/motion) includes a repeater, named curves and springs, loops, waves, an interrupted move, a curved path, a composition at four moments, text animations and transitions. Each slide's speaker notes identify the relevant properties.
 
 <img src="images/motion-curves.png" alt="The curves slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-settings.png" alt="The settings slide, as MarkdownPoint draws it" width="49%">
 
