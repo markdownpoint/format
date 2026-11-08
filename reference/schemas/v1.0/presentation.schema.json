@@ -3251,7 +3251,7 @@
                       "type": "array",
                       "items": {
                         "type": "string",
-                        "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f])?(?![\\s\\S])",
+                        "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f])?(?![\\s\\S])",
                         "description": "one line with no spaces at the start or end and no comma"
                       },
                       "minItems": 1,
@@ -3354,7 +3354,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "Its steps, played back to back. They take no cues and no `loop-from`. Every pass counted, they last at most 4294967296 seconds."
+            "description": "Its steps, played back to back. They take no cues and no `loop-from`. Every pass counted, they last at most 4,294,967,296 seconds."
           }
         },
         "required": [
@@ -3755,7 +3755,7 @@
         },
         "name": {
           "type": "string",
-          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f][^\\u0000-\\u001f\\u007f]*(?![\\s\\S])",
+          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
           "description": "The author's name, as the thread shows it, as text that isn't blank, without control characters."
         }
       },
@@ -8005,7 +8005,7 @@
     },
     "text": {
       "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f][^\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f]*(?![\\s\\S])"
+      "pattern": "^(?:(?![\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f-\\u009f][^\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f-\\u009f]*(?![\\s\\S])"
     },
     "text-frame": {
       "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
