@@ -196,7 +196,7 @@
           "transparent": true,
           "prompt": "A red paper boat on calm water",
           "image-style": "Flat illustration",
-          "image-result": {"record":"b0bebb75-dc72-4d54-965e-64824ba62d02"}
+          "generation": {"id":"b0bebb75-dc72-4d54-965e-64824ba62d02"}
         },
 
         {

@@ -1450,10 +1450,10 @@
                     ],
                     "additionalProperties": false
                   },
-                  "image-result": {
+                  "generation": {
                     "type": "object",
                     "properties": {
-                      "record": {
+                      "id": {
                         "$ref": "#/definitions/uuid"
                       },
                       "original": {
@@ -1464,8 +1464,17 @@
                             "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                             "description": "the path of an image"
                           },
-                          "record": {
-                            "$ref": "#/definitions/uuid"
+                          "generation": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "$ref": "#/definitions/uuid"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ],
+                            "additionalProperties": false
                           }
                         },
                         "required": [
@@ -1475,7 +1484,7 @@
                       }
                     },
                     "required": [
-                      "record"
+                      "id"
                     ],
                     "additionalProperties": false
                   },
@@ -1765,13 +1774,13 @@
               "effect-size-limit",
               "extra-table-lengths",
               "file-spelling-mismatch",
+              "generation-in-theme",
               "group-cycle",
               "group-depth",
               "group-order",
               "id-mismatch",
               "ignored-key",
               "image-enlarged",
-              "image-result-in-theme",
               "interrupted-layout-move",
               "invalid-3d-parent",
               "invalid-binding",
@@ -1787,9 +1796,9 @@
               "invalid-format",
               "invalid-frame",
               "invalid-frontmatter",
+              "invalid-generation",
               "invalid-group-parent",
               "invalid-icon",
-              "invalid-image-result",
               "invalid-image-style",
               "invalid-initial",
               "invalid-json",
@@ -2287,7 +2296,7 @@
                         "theme"
                       ]
                     },
-                    "image-result.original": {
+                    "generation.original": {
                       "type": "string",
                       "enum": [
                         "presentation",
@@ -2931,7 +2940,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "letters": {
+                          "extrusion": {
                             "type": "object",
                             "properties": {
                               "depth": {
@@ -2949,7 +2958,7 @@
                           }
                         },
                         "required": [
-                          "letters"
+                          "extrusion"
                         ],
                         "additionalProperties": false
                       },
@@ -3503,10 +3512,10 @@
                     ],
                     "additionalProperties": false
                   },
-                  "image-result": {
+                  "generation": {
                     "type": "object",
                     "properties": {
-                      "record": {
+                      "id": {
                         "$ref": "#/definitions/uuid"
                       },
                       "original": {
@@ -3517,8 +3526,17 @@
                             "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                             "description": "the path of an image"
                           },
-                          "record": {
-                            "$ref": "#/definitions/uuid"
+                          "generation": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "$ref": "#/definitions/uuid"
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ],
+                            "additionalProperties": false
                           }
                         },
                         "required": [
@@ -3528,7 +3546,7 @@
                       }
                     },
                     "required": [
-                      "record"
+                      "id"
                     ],
                     "additionalProperties": false
                   },
@@ -6169,13 +6187,13 @@
               "effect-size-limit",
               "extra-table-lengths",
               "file-spelling-mismatch",
+              "generation-in-theme",
               "group-cycle",
               "group-depth",
               "group-order",
               "id-mismatch",
               "ignored-key",
               "image-enlarged",
-              "image-result-in-theme",
               "interrupted-layout-move",
               "invalid-3d-parent",
               "invalid-binding",
@@ -6191,9 +6209,9 @@
               "invalid-format",
               "invalid-frame",
               "invalid-frontmatter",
+              "invalid-generation",
               "invalid-group-parent",
               "invalid-icon",
-              "invalid-image-result",
               "invalid-image-style",
               "invalid-initial",
               "invalid-json",
@@ -13657,7 +13675,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "List this machine’s style library, as an image’s Restyle popup does, each style with its definition; set a definition as an image’s restyle with updateObjectProperties, or a slide background’s with updateSlideProperties, then images_prepare with restyled to generate it. To take the restyle off a slide that shows the presentation’s restyled background, set the slide’s image and image-result to the ones it shows and leave out restyle: the slide shows the original. Read-only; needs no open presentation.",
+      "description": "List this machine’s style library, as an image’s Restyle popup does, each style with its definition; set a definition as an image’s restyle with updateObjectProperties, or a slide background’s with updateSlideProperties, then images_prepare with restyled to generate it. To take the restyle off a slide that shows the presentation’s restyled background, set the slide’s image and generation to the ones it shows and leave out restyle: the slide shows the original. Read-only; needs no open presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {},

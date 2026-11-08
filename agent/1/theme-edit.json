@@ -1452,14 +1452,14 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
+        "generation": {
+          "$ref": "#/definitions/Prop_generation"
+        },
         "grayscale": {
           "$ref": "#/definitions/Fraction"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
-        },
-        "image-result": {
-          "$ref": "#/definitions/Prop_image-result"
         },
         "image-style": {
           "$ref": "#/definitions/Prop_image-style"
@@ -4982,12 +4982,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "image-result"
+              "const": "generation"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_image-result"
+                  "$ref": "#/definitions/Prop_generation"
                 },
                 {
                   "type": "null"
@@ -6838,6 +6838,7 @@
         "font-family",
         "font-size",
         "font-weight",
+        "generation",
         "geometry",
         "grayscale",
         "gridlines",
@@ -6846,7 +6847,6 @@
         "height",
         "icon",
         "ignore-auto-layout",
-        "image-result",
         "image-style",
         "inset",
         "inset-bottom",
@@ -7398,14 +7398,14 @@
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
         },
+        "generation": {
+          "$ref": "#/definitions/Prop_generation"
+        },
         "grayscale": {
           "$ref": "#/definitions/Fraction"
         },
         "ignore-auto-layout": {
           "$ref": "#/definitions/Boolean"
-        },
-        "image-result": {
-          "$ref": "#/definitions/Prop_image-result"
         },
         "image-style": {
           "$ref": "#/definitions/Prop_image-style"
@@ -10093,7 +10093,7 @@
         {
           "type": "object",
           "properties": {
-            "letters": {
+            "extrusion": {
               "type": "object",
               "properties": {
                 "depth": {
@@ -10111,7 +10111,7 @@
             }
           },
           "required": [
-            "letters"
+            "extrusion"
           ],
           "additionalProperties": false
         },
@@ -10952,10 +10952,10 @@
       ],
       "additionalProperties": false
     },
-    "Prop_image-result": {
+    "Prop_generation": {
       "type": "object",
       "properties": {
-        "record": {
+        "id": {
           "type": "string",
           "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
         },
@@ -10967,9 +10967,18 @@
               "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
               "description": "the path of an image"
             },
-            "record": {
-              "type": "string",
-              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+            "generation": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "additionalProperties": false
             }
           },
           "required": [
@@ -10979,7 +10988,7 @@
         }
       },
       "required": [
-        "record"
+        "id"
       ],
       "additionalProperties": false
     },

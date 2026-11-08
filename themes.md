@@ -5,7 +5,7 @@ A theme contains the fonts, colors, text styles and layouts used by its slides. 
 A theme is stored under `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. Most examples use Basic, MarkdownPoint's default theme.
 
 ```
-themes/basic/
+themes/<key>/
   master.json             size, fonts, color schemes, text styles and what every slide shows
   title.json              one file per layout, named by the layout's key
   content-with-header.json

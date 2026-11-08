@@ -4065,10 +4065,10 @@
               ],
               "additionalProperties": false
             },
-            "image-result": {
+            "generation": {
               "type": "object",
               "properties": {
-                "record": {
+                "id": {
                   "$ref": "#/definitions/uuid"
                 },
                 "original": {
@@ -4079,8 +4079,17 @@
                       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                       "description": "the path of an image"
                     },
-                    "record": {
-                      "$ref": "#/definitions/uuid"
+                    "generation": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/uuid"
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -4090,7 +4099,7 @@
                 }
               },
               "required": [
-                "record"
+                "id"
               ],
               "additionalProperties": false
             },
@@ -5256,7 +5265,7 @@
                 {
                   "type": "object",
                   "properties": {
-                    "letters": {
+                    "extrusion": {
                       "type": "object",
                       "properties": {
                         "depth": {
@@ -5274,7 +5283,7 @@
                     }
                   },
                   "required": [
-                    "letters"
+                    "extrusion"
                   ],
                   "additionalProperties": false
                 },
@@ -5828,10 +5837,10 @@
               ],
               "additionalProperties": false
             },
-            "image-result": {
+            "generation": {
               "type": "object",
               "properties": {
-                "record": {
+                "id": {
                   "$ref": "#/definitions/uuid"
                 },
                 "original": {
@@ -5842,8 +5851,17 @@
                       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                       "description": "the path of an image"
                     },
-                    "record": {
-                      "$ref": "#/definitions/uuid"
+                    "generation": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/uuid"
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -5853,7 +5871,7 @@
                 }
               },
               "required": [
-                "record"
+                "id"
               ],
               "additionalProperties": false
             },
@@ -8590,7 +8608,7 @@
                       "theme"
                     ]
                   },
-                  "image-result.original": {
+                  "generation.original": {
                     "type": "string",
                     "enum": [
                       "presentation",
@@ -10598,13 +10616,13 @@
         "effect-size-limit",
         "extra-table-lengths",
         "file-spelling-mismatch",
+        "generation-in-theme",
         "group-cycle",
         "group-depth",
         "group-order",
         "id-mismatch",
         "ignored-key",
         "image-enlarged",
-        "image-result-in-theme",
         "interrupted-layout-move",
         "invalid-3d-parent",
         "invalid-binding",
@@ -10620,9 +10638,9 @@
         "invalid-format",
         "invalid-frame",
         "invalid-frontmatter",
+        "invalid-generation",
         "invalid-group-parent",
         "invalid-icon",
-        "invalid-image-result",
         "invalid-image-style",
         "invalid-initial",
         "invalid-json",

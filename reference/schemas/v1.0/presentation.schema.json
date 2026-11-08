@@ -1429,13 +1429,13 @@
                         }
                       ]
                     },
-                    "image-result": {
+                    "generation": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/image-result"
+                          "$ref": "#/definitions/generation"
                         }
                       ]
                     },
@@ -3680,10 +3680,10 @@
           ],
           "description": "A library style applied over the image, which goes with it: a slide showing the presentation's image shows its restyle."
         },
-        "image-result": {
+        "generation": {
           "allOf": [
             {
-              "$ref": "#/definitions/image-result"
+              "$ref": "#/definitions/generation"
             }
           ],
           "description": "Which image generation record made the background image, and for a restyle the image it was applied to. It goes with the image as its restyle does."
@@ -4363,6 +4363,57 @@
       ],
       "additionalProperties": false
     },
+    "generation": {
+      "description": "How a generated or restyled image was made: the image shown is the one its image generation record made.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/uuid"
+            }
+          ],
+          "description": "The id of the image generation record that made the image shown, the lowercase UUID its file `generated/<id>.json` is named by."
+        },
+        "original": {
+          "description": "The image a restyle was applied to, there only when the record is a restyle's.",
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string",
+              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+              "description": "Its file path, as a presentation's file path, ending in an image's extension."
+            },
+            "generation": {
+              "description": "How it was made, when it was generated. Left out, it wasn't.",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/uuid"
+                    }
+                  ],
+                  "description": "The id of the image generation record that made it, the lowercase UUID its file `generated/<id>.json` is named by."
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
     "gradient": {
       "description": "A linear or radial gradient.",
       "anyOf": [
@@ -4472,47 +4523,6 @@
           "additionalProperties": false
         }
       ]
-    },
-    "image-result": {
-      "description": "How a generated or restyled image was made: the image shown is the one its record made.",
-      "type": "object",
-      "properties": {
-        "record": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/uuid"
-            }
-          ],
-          "description": "The id of the image generation record that made the image shown, the lowercase UUID its file `generated/<id>.json` is named by."
-        },
-        "original": {
-          "description": "The image a restyle was applied to, there only when `record` is a restyle's.",
-          "type": "object",
-          "properties": {
-            "file": {
-              "type": "string",
-              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-              "description": "Its file path, as a presentation's file path, ending in an image's extension."
-            },
-            "record": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/uuid"
-                }
-              ],
-              "description": "The id of its own image generation record, when it was generated. Left out, it wasn't."
-            }
-          },
-          "required": [
-            "file"
-          ],
-          "additionalProperties": false
-        }
-      },
-      "required": [
-        "record"
-      ],
-      "additionalProperties": false
     },
     "image-style-or-none": {
       "type": "string",
@@ -4681,10 +4691,10 @@
     "model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
+          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
           "type": "object",
           "properties": {
-            "letters": {
+            "extrusion": {
               "description": "The depth and bevel MarkdownPoint builds the words' letters to, in ems. An empty record builds them to its defaults.",
               "type": "object",
               "properties": {
@@ -4703,12 +4713,12 @@
             }
           },
           "required": [
-            "letters"
+            "extrusion"
           ],
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms: its `letters`, which MarkdownPoint builds into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
+          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
           "type": "object",
           "properties": {
             "file": {
@@ -5442,8 +5452,8 @@
         "restyle": {
           "$ref": "#/definitions/restyle"
         },
-        "image-result": {
-          "$ref": "#/definitions/image-result"
+        "generation": {
+          "$ref": "#/definitions/generation"
         },
         "anchor-point": {
           "$ref": "#/definitions/anchor-point"

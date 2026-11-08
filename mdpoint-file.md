@@ -324,7 +324,7 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
-A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `image-result` names its image generation record:
+A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it's `transparent`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `generation` names its image generation record:
 
 ```json
 {
@@ -340,7 +340,7 @@ A generated picture starts as a request. An image object or a slide's `backgroun
   "transparent": true,
   "prompt": "A red paper boat on calm water",
   "image-style": "Flat illustration",
-  "image-result": {"record": "b0bebb75-dc72-4d54-965e-64824ba62d02"}
+  "generation": {"id": "b0bebb75-dc72-4d54-965e-64824ba62d02"}
 }
 ```
 
@@ -510,7 +510,7 @@ A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to
 
 `steps` lists the slide's animation steps in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `with` and `after` both start it when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
-`curves` lists animated parameters as `object.parameter`. A parameter's curve holds its keyframes in `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `duration` lasts as long as its keyframes, its cues and the paragraphs they bring in.
+`curves` lists animated parameters as `object.parameter`. A parameter's curve holds its keyframes in `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `min-duration`, or with 0, lasts as long as its keyframes, its cues and the paragraphs they bring in.
 
 Five settings can repeat motion while a slide is visible: a step's `repeat` and `loop-from`, a curve's `loop`, an `oscillate` wave and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
 
