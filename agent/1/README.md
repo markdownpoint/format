@@ -30,7 +30,9 @@ names the contract gives its own facts are camelCase (`slides.get`,
 value is spelled as the file spells it (`text-styles`, `unit-scale`,
 `aspect-ratio`). MCP's tools are their methods in snake case (`slides_get`), and
 the CLI spells a value on its command line in kebab-case (`toggle-black-screen`
-for `toggleBlackScreen`). Its codes are kebab-case (`stale-revision`,
+for `toggleBlackScreen`), while a method or an operation name passes as the
+contract spells it (`mdpoint schema insertSteps`, `mdpoint call presentations.get`).
+Its codes are kebab-case (`stale-revision`,
 `text-overflow`), as the file's keys and values are, so one fact can carry
 both: a status's `noChange` is an issue's `no-change`. Order means nothing in the contract's schemas: most fields,
 branches and values are listed alphabetically, the same on every build, so

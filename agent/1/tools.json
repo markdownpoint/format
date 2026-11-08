@@ -11491,7 +11491,7 @@
     },
     {
       "name": "models_picture",
-      "title": "Generate an image for a 3D model with Meshy",
+      "title": "Generate a picture for a 3D model with Meshy",
       "annotations": {
         "readOnlyHint": false,
         "destructiveHint": false,
@@ -15177,7 +15177,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Accept a pending proposal: all operations land as one undo step, exactly like a hand edit or the app’s Accept. Fails with stale-revision if the presentation changed since the proposal, and with validation-failed, its validation attached, if the change can’t be made now. Returns { id, revision, ids, skipped }. revision is the new revision. ids holds the ids of the sections, comments, slides, objects and steps it created or deleted, and skipped the locked objects it left as they were. The change is live at once. The app saves the files about two seconds later. presentations_close saves them at once.",
+      "description": "Accept a pending proposal: all operations land as one undo step, exactly like a hand edit or the app’s Accept. Fails with stale-revision if the presentation changed since the proposal, and with validation-failed, its validation attached, if the change can’t be made now. Returns { id, revision, ids, locked }. revision is the new revision. ids holds the ids of the sections, comments, slides, objects and steps it created or deleted, and locked the locked objects it left as they were. The change is live at once. The app saves the files about two seconds later. presentations_close saves them at once.",
       "inputSchema": {
         "type": "object",
         "properties": {

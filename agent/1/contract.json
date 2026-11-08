@@ -8355,7 +8355,7 @@
                 },
                 "additionalProperties": false
               },
-              "description": "The frame each text object takes when fitted to its text at this position, in its own parameters there, to write as transformObjects' `drawnFrame` at the same position: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
+              "description": "The frame each text object takes when fitted to its text at this moment, in its own parameters there, to write as transformObjects' `drawnFrame` at the same moment: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
             },
             "height": {
               "type": "number"
@@ -8375,7 +8375,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Objects whose text does not fit their frames at this position, taller or wider than the box, as the canvas marks them."
+              "description": "Objects whose text does not fit their frames at this moment, taller or wider than the box, as the canvas marks them."
             },
             "revision": {
               "$ref": "#/definitions/AgentRevision"
@@ -8388,7 +8388,7 @@
               "additionalProperties": {
                 "$ref": "#/definitions/AgentFrame"
               },
-              "description": "Where each object's words stand on the slide at this position, in canvas units: the axis-aligned box around its lines' boxes as the slide draws them, after every turn, scale and move of the object and its groups. Objects with no words are left out."
+              "description": "Where each object's words stand on the slide at this moment, in canvas units: the axis-aligned box around its lines' boxes as the slide draws them, after every turn, scale and move of the object and its groups. Objects with no words are left out."
             },
             "width": {
               "type": "number"
@@ -8424,7 +8424,7 @@
                 },
                 "additionalProperties": false
               },
-              "description": "The frame each text object takes when fitted to its text at this position, in its own parameters there, to write as transformObjects' `drawnFrame` at the same position: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
+              "description": "The frame each text object takes when fitted to its text at this moment, in its own parameters there, to write as transformObjects' `drawnFrame` at the same moment: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
             },
             "height": {
               "type": "number"
@@ -8461,7 +8461,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Objects whose text does not fit their frames at this position, taller or wider than the box, as the canvas marks them."
+              "description": "Objects whose text does not fit their frames at this moment, taller or wider than the box, as the canvas marks them."
             },
             "revision": {
               "$ref": "#/definitions/AgentRevision"
@@ -8474,7 +8474,7 @@
               "additionalProperties": {
                 "$ref": "#/definitions/AgentFrame"
               },
-              "description": "Where each object's words stand on the slide at this position, in canvas units: the axis-aligned box around its lines' boxes as the slide draws them, after every turn, scale and move of the object and its groups. Objects with no words are left out."
+              "description": "Where each object's words stand on the slide at this moment, in canvas units: the axis-aligned box around its lines' boxes as the slide draws them, after every turn, scale and move of the object and its groups. Objects with no words are left out."
             },
             "width": {
               "type": "number"
