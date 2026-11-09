@@ -91,7 +91,7 @@ Each version has a folder named by the time it was saved, in UTC, and a random t
 
 “Delete Theme” won't remove a theme used by a saved version. “File › Clean Up…” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
 
-A folder in `versions/` with any other name isn't a version. A copy that Finder or File Explorer makes of a version's folder is one. Version history doesn't list it, and “Delete Theme” and Clean Up don't keep the theme or files it uses.
+A folder in `versions/` with any other name, such as a copy Finder or File Explorer makes of a version's folder, isn't a version. Version history doesn't list it, and “Delete Theme” and Clean Up don't keep the theme or files it uses. Nothing under a presentation's `versions/` opens as a presentation of its own.
 
 While a version is still arriving through a sync service, no theme can be deleted and Clean Up deletes nothing.
 

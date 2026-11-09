@@ -7398,7 +7398,7 @@
                 "keyframes": {
                   "type": "array",
                   "items": {
-                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A color moves in sRGB, a role as the slide's scheme colors it. Its opacity moves straight, and its red, green, and blue each weigh by the opacity at either end, as premultiplied alpha blends them, so a color fading out to a transparent one keeps its own color as it fades. Each frame's color is rounded to 8 bits per channel.",
+                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A color moves in sRGB, a role as the slide's scheme colors it. Its opacity moves straight, and its red, green, and blue each weigh by the opacity at either end, as premultiplied alpha blends them, so a color fading out to a transparent one keeps its own color as it fades. Each frame's color is rounded to 8 bits per channel. A keyframe's `null` clears its property, so its text style or default shows.",
                     "type": "object",
                     "properties": {
                       "id": {
@@ -7427,7 +7427,7 @@
                             "$ref": "#/definitions/parameter-value"
                           }
                         ],
-                        "description": "The value, written as the property is. `null` clears a property an object may leave out, so its text style or default shows."
+                        "description": "The value, written as the property is. `null` clears a whole property, but never a part of one, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon` or `geometry`."
                       },
                       "interpolation": {
                         "anyOf": [
@@ -7580,7 +7580,7 @@
                         "properties": {
                           "geometry": {
                             "type": "string",
-                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8,192 points, in at most 1,048,576 characters."
+                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0, with y a quarter turn clockwise from x, as SVG's. It is one open contour of 2 to 8,192 points, in at most 1,048,576 characters."
                           },
                           "orient": {
                             "type": "boolean",

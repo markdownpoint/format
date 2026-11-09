@@ -11952,7 +11952,7 @@
         "geometry"
       ],
       "additionalProperties": false,
-      "description": "A path in chord space: the start is (0, 0), the end (1, 0), and one unit across is a chord length right of travel."
+      "description": "A path in the move's own frame: the start is 0 0, the end 1 0, and y a quarter turn clockwise from x, as SVG's."
     },
     "PresentationAnimationPoint": {
       "type": "object",
