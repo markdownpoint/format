@@ -287,7 +287,7 @@
           ],
           "additionalProperties": false
         },
-        "models.actions": {
+        "models.actions.list": {
           "type": "object",
           "properties": {
             "scope": {
@@ -1012,7 +1012,7 @@
         "images.styles.list",
         "images.suggestPrompt",
         "media.import",
-        "models.actions",
+        "models.actions.list",
         "models.animate",
         "models.build",
         "models.generate",
@@ -1485,13 +1485,10 @@
           "type": "number"
         },
         "foot": {
-          "type": "string"
+          "$ref": "#/definitions/GlbNodeName"
         },
         "modelId": {
           "type": "string"
-        },
-        "node": {
-          "type": "number"
         },
         "plantedSamples": {
           "type": "number"
@@ -1507,12 +1504,11 @@
         "bodySpeed",
         "foot",
         "modelId",
-        "node",
         "plantedSamples",
         "plantedSpeed"
       ],
       "additionalProperties": false,
-      "description": "How fast a walking model's planted foot slides across the floor against how fast its body travels, canvas units a second. The foot is a joint of the model's file, `node` its glTF node index, which tells two feet named alike apart, and `foot` its name as the file spells it, or \"(node N)\" for an unnamed one."
+      "description": "How fast a walking model's planted foot slides across the floor against how fast its body travels, canvas units a second. The foot is a joint of the model's file, by its glTF node index, which tells two feet named alike apart, and its name."
     },
     "AgentFrame": {
       "$ref": "#/definitions/PresentationFrame",
@@ -2175,65 +2171,6 @@
             "severity",
             "source"
           ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "code": {
-              "type": "string",
-              "enum": [
-                "aim-cycle",
-                "ambiguous-constraint-node",
-                "ambiguous-parent-node",
-                "color-needs-svg",
-                "drift-with-scroll",
-                "extra-table-lengths",
-                "invalid-3d-parent",
-                "invalid-table",
-                "link-letters-away",
-                "missing-key",
-                "missing-text",
-                "parent-cycle",
-                "unknown-action",
-                "unknown-constraint-target",
-                "unknown-parent-node",
-                "unknown-role",
-                "unknown-scheme",
-                "unknown-text-style",
-                "unresolved-field"
-              ]
-            },
-            "disposition": {
-              "$ref": "#/definitions/IssueDisposition"
-            },
-            "message": {
-              "type": "string"
-            },
-            "objectId": {
-              "type": "string"
-            },
-            "property": {
-              "type": "string"
-            },
-            "severity": {
-              "type": "string",
-              "enum": [
-                "error",
-                "warning"
-              ]
-            },
-            "slideId": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "code",
-            "disposition",
-            "message",
-            "severity",
-            "slideId"
-          ],
-          "additionalProperties": false
         }
       ],
       "description": "A problem with the presentation as the contract gives it: its English, where it stands and what the app does about it."
@@ -2481,7 +2418,7 @@
     "AgentMeshyActionId": {
       "type": "integer",
       "minimum": 0,
-      "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
+      "description": "An action of Meshy's library, by the whole-number id models_actions_list lists it by."
     },
     "AgentMeshyActions": {
       "type": "array",
@@ -2548,7 +2485,7 @@
       "properties": {
         "actions": {
           "$ref": "#/definitions/AgentMeshyActions",
-          "description": "Action ids from models_actions, in the order the Actions should come."
+          "description": "Action ids from models_actions_list, in the order the Actions should come."
         },
         "file": {
           "$ref": "#/definitions/AgentModelFile",
@@ -2576,20 +2513,20 @@
     "AgentModelBuildRequest": {
       "anyOf": [
         {
-          "$ref": "#/definitions/AgentModelSourceBuildRequest"
+          "$ref": "#/definitions/AgentModuleBuildRequest"
         },
         {
-          "$ref": "#/definitions/AgentTextSourceBuildRequest"
+          "$ref": "#/definitions/AgentTextBuildRequest"
         }
       ],
-      "description": "A model its source builds in the build window, saved as media/<name>-<hash>.glb, or from a text's words, saved as generated/<name>-<hash>.glb. Plain 3D letters are a text's own `model: { extrusion }`, which MarkdownPoint builds."
+      "description": "A model its module builds in the build window, saved as media/<name>-<hash>.glb, or from a text's words, saved as generated/<name>-<hash>.glb. Plain 3D letters are a text's own `model: { extrusion }`, which MarkdownPoint builds."
     },
     "AgentModelBuildResult": {
       "type": "object",
       "properties": {
         "built-from": {
           "type": "string",
-          "description": "With textId: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these: the fingerprint of their record, by the rule the format reference gives."
+          "description": "With objectId: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these: the fingerprint of their record, by the rule the format reference gives."
         },
         "changes": {
           "type": "array",
@@ -2900,7 +2837,7 @@
       "additionalProperties": false,
       "description": "A model of the presentation for Meshy to rig, a humanoid facing +Z, `height` meters tall."
     },
-    "AgentModelSourceBuildRequest": {
+    "AgentModuleBuildRequest": {
       "type": "object",
       "properties": {
         "data": {
@@ -2913,21 +2850,21 @@
           },
           "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
         },
+        "module": {
+          "$ref": "#/definitions/AgentNonblankText",
+          "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+        },
         "name": {
           "$ref": "#/definitions/AgentModelName",
           "description": "The model's file name without extension, such as bird."
-        },
-        "source": {
-          "$ref": "#/definitions/AgentNonblankText",
-          "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
         }
       },
       "required": [
-        "name",
-        "source"
+        "module",
+        "name"
       ],
       "additionalProperties": false,
-      "description": "A model its source builds."
+      "description": "A model its module builds."
     },
     "AgentMoment": {
       "type": "object",
@@ -3215,7 +3152,7 @@
       "properties": {
         "presentation": {
           "$ref": "#/definitions/AgentAbsolutePath",
-          "description": "Absolute folder of a presentation a window shows."
+          "description": "A presentation a window shows, by its absolute folder or a file in it, as presentations_open takes it; a deleted folder by its window's path."
         }
       },
       "required": [
@@ -8939,6 +8876,47 @@
       "type": "number",
       "description": "Seconds within a step, as the step's own times read them."
     },
+    "AgentTextBuildRequest": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": {},
+          "description": "A record, to which data.words adds the text's letters, as its page lays them out at rest."
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AgentModelFile"
+          },
+          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
+        },
+        "module": {
+          "$ref": "#/definitions/AgentNonblankText",
+          "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+        },
+        "name": {
+          "$ref": "#/definitions/AgentModelName",
+          "description": "The model's file name without extension, such as bird."
+        },
+        "objectId": {
+          "$ref": "#/definitions/AgentObjectId",
+          "description": "The text object whose words the build makes 3D."
+        },
+        "slideId": {
+          "$ref": "#/definitions/AgentSlideId",
+          "description": "The slide the text is on."
+        }
+      },
+      "required": [
+        "module",
+        "name",
+        "objectId",
+        "slideId"
+      ],
+      "additionalProperties": false,
+      "description": "A text's words its module makes 3D."
+    },
     "AgentTextCover": {
       "type": "object",
       "properties": {
@@ -9012,47 +8990,6 @@
       ],
       "additionalProperties": false,
       "description": "A presentations.get warning about words that run past their frame, where they still show; about words something hides, the slide's edge, the end of their path or their table cell, which an export asks about; or that this could not be measured."
-    },
-    "AgentTextSourceBuildRequest": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": {},
-          "description": "A record, to which data.words adds the text's letters, as its page lays them out at rest."
-        },
-        "models": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AgentModelFile"
-          },
-          "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
-        },
-        "name": {
-          "$ref": "#/definitions/AgentModelName",
-          "description": "The model's file name without extension, such as bird."
-        },
-        "slideId": {
-          "$ref": "#/definitions/AgentSlideId",
-          "description": "The slide the text is on."
-        },
-        "source": {
-          "$ref": "#/definitions/AgentNonblankText",
-          "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
-        },
-        "textId": {
-          "$ref": "#/definitions/AgentObjectId",
-          "description": "The text object whose words the build makes 3D."
-        }
-      },
-      "required": [
-        "name",
-        "slideId",
-        "source",
-        "textId"
-      ],
-      "additionalProperties": false,
-      "description": "A text's words its source makes 3D."
     },
     "AgentTextSummary": {
       "type": "object",
@@ -9620,8 +9557,8 @@
           "description": "Frames a second it samples, 30 when omitted."
         },
         "from": {
-          "$ref": "#/definitions/AgentStepSeconds",
-          "description": "Seconds within the step where the range starts. Defaults to 0."
+          "$ref": "#/definitions/AgentTransitionSeconds",
+          "description": "Seconds into the transition where the range starts. Defaults to 0."
         },
         "longestEdge": {
           "$ref": "#/definitions/AgentLongestEdge",
@@ -9635,8 +9572,8 @@
           "$ref": "#/definitions/AgentSlideId"
         },
         "to": {
-          "$ref": "#/definitions/AgentStepSeconds",
-          "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+          "$ref": "#/definitions/AgentTransitionSeconds",
+          "description": "Seconds into the transition where the range ends, inclusive. Defaults to the transition's duration."
         },
         "transition": {
           "type": "boolean",
@@ -9650,6 +9587,12 @@
       ],
       "additionalProperties": false,
       "description": "Frames of the slide's transition into the next shown slide, in place of a step's."
+    },
+    "AgentTransitionSeconds": {
+      "minimum": 0,
+      "maximum": 4294967296,
+      "type": "number",
+      "description": "Seconds within a transition, 0 at its start."
     },
     "AgentWaitHold": {
       "$ref": "#/definitions/PresentationWaitHold",

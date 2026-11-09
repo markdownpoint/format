@@ -345,9 +345,9 @@ A layout's placeholder keeps its id. Giving it a name in MarkdownPoint changes o
 
 A table's column widths and row heights in the .mdpoint file follow the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same place. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
-## Checking the files
+## Validating the files
 
-`mdpoint` checks a presentation folder without running the app. It reports file errors, including missing images, models and fonts.
+`mdpoint` validates a presentation folder without running the app. It reports file errors, including missing images, models and fonts.
 
 To install it, open MarkdownPoint's Settings, choose “Coding agents” and click “Install” under “Command line”. Run `mdpoint validate` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate`.
 

@@ -177,7 +177,7 @@
           "presentation": {
             "type": "string",
             "pattern": "^(?:\\/|[A-Za-z]:[\\\\/]|\\\\\\\\)[^\\u0000]*(?![\\s\\S])",
-            "description": "Absolute folder of a presentation a window shows."
+            "description": "A presentation a window shows, by its absolute folder or a file in it, as presentations_open takes it; a deleted folder by its window's path."
           }
         },
         "required": [
@@ -774,65 +774,6 @@
                   "severity",
                   "source"
                 ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "code": {
-                    "type": "string",
-                    "enum": [
-                      "aim-cycle",
-                      "ambiguous-constraint-node",
-                      "ambiguous-parent-node",
-                      "color-needs-svg",
-                      "drift-with-scroll",
-                      "extra-table-lengths",
-                      "invalid-3d-parent",
-                      "invalid-table",
-                      "link-letters-away",
-                      "missing-key",
-                      "missing-text",
-                      "parent-cycle",
-                      "unknown-action",
-                      "unknown-constraint-target",
-                      "unknown-parent-node",
-                      "unknown-role",
-                      "unknown-scheme",
-                      "unknown-text-style",
-                      "unresolved-field"
-                    ]
-                  },
-                  "disposition": {
-                    "$ref": "#/definitions/IssueDisposition"
-                  },
-                  "message": {
-                    "type": "string"
-                  },
-                  "objectId": {
-                    "type": "string"
-                  },
-                  "property": {
-                    "type": "string"
-                  },
-                  "severity": {
-                    "type": "string",
-                    "enum": [
-                      "error",
-                      "warning"
-                    ]
-                  },
-                  "slideId": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "code",
-                  "disposition",
-                  "message",
-                  "severity",
-                  "slideId"
-                ],
-                "additionalProperties": false
               }
             ],
             "description": "A problem with the presentation as the contract gives it: its English, where it stands and what the app does about it."
@@ -2487,65 +2428,6 @@
                   "severity",
                   "source"
                 ]
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "code": {
-                    "type": "string",
-                    "enum": [
-                      "aim-cycle",
-                      "ambiguous-constraint-node",
-                      "ambiguous-parent-node",
-                      "color-needs-svg",
-                      "drift-with-scroll",
-                      "extra-table-lengths",
-                      "invalid-3d-parent",
-                      "invalid-table",
-                      "link-letters-away",
-                      "missing-key",
-                      "missing-text",
-                      "parent-cycle",
-                      "unknown-action",
-                      "unknown-constraint-target",
-                      "unknown-parent-node",
-                      "unknown-role",
-                      "unknown-scheme",
-                      "unknown-text-style",
-                      "unresolved-field"
-                    ]
-                  },
-                  "disposition": {
-                    "$ref": "#/definitions/IssueDisposition"
-                  },
-                  "message": {
-                    "type": "string"
-                  },
-                  "objectId": {
-                    "type": "string"
-                  },
-                  "property": {
-                    "type": "string"
-                  },
-                  "severity": {
-                    "type": "string",
-                    "enum": [
-                      "error",
-                      "warning"
-                    ]
-                  },
-                  "slideId": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "code",
-                  "disposition",
-                  "message",
-                  "severity",
-                  "slideId"
-                ],
-                "additionalProperties": false
               }
             ],
             "description": "A problem with the presentation as the contract gives it: its English, where it stands and what the app does about it."
@@ -8782,7 +8664,7 @@
             "minimum": 0,
             "maximum": 4294967296,
             "type": "number",
-            "description": "Seconds within the step where the range starts. Defaults to 0."
+            "description": "Seconds within the step where the range starts. Defaults to 0. Seconds into the transition where the range starts. Defaults to 0."
           },
           "longestEdge": {
             "type": "integer",
@@ -8809,7 +8691,7 @@
             "minimum": 0,
             "maximum": 4294967296,
             "type": "number",
-            "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass."
+            "description": "Seconds within the step where the range ends, inclusive. Defaults to the end of the step's last pass. Seconds into the transition where the range ends, inclusive. Defaults to the transition's duration."
           },
           "view": {
             "type": "string",
@@ -9631,13 +9513,10 @@
                 "type": "number"
               },
               "foot": {
-                "type": "string"
+                "$ref": "#/definitions/GlbNodeName"
               },
               "modelId": {
                 "type": "string"
-              },
-              "node": {
-                "type": "number"
               },
               "plantedSamples": {
                 "type": "number"
@@ -9653,12 +9532,11 @@
               "bodySpeed",
               "foot",
               "modelId",
-              "node",
               "plantedSamples",
               "plantedSpeed"
             ],
             "additionalProperties": false,
-            "description": "How fast a walking model's planted foot slides across the floor against how fast its body travels, canvas units a second. The foot is a joint of the model's file, `node` its glTF node index, which tells two feet named alike apart, and `foot` its name as the file spells it, or \"(node N)\" for an unnamed one."
+            "description": "How fast a walking model's planted foot slides across the floor against how fast its body travels, canvas units a second. The foot is a joint of the model's file, by its glTF node index, which tells two feet named alike apart, and its name."
           },
           "AgentFrame": {
             "$ref": "#/definitions/PresentationFrame",
@@ -10094,6 +9972,23 @@
             ],
             "additionalProperties": false,
             "description": "The speed an in-place walk travels at this model's size, at which its planted feet hold."
+          },
+          "GlbNodeName": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "node": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "name",
+              "node"
+            ],
+            "additionalProperties": false,
+            "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
           },
           "PresentationFrame": {
             "type": "object",
@@ -11415,7 +11310,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. source is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh), which splits a mesh by the pieces no edge joins, for an Action to turn or move each: the mesh keeps its largest piece and its origin, and each other piece becomes a mesh beside it, its origin at its own bounds center, which separate returns. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The source runs only while it builds. No file keeps it. To change a model you built, build it again from new source. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To build a text object’s words, give slideId and textId: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. Plain 3D letters need no build: a text’s model { extrusion: { depth, bevel } }, which MarkdownPoint builds. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
+      "description": "Build a 3D model from code and save it as media/<name>-<hash>.glb, a file a model object can show. module is an ES module whose default export build(kit, data) returns { model, actions }: a three.js Object3D in glTF meters, +Y up, facing +Z, its origin where it stands (a character’s feet), and its AnimationClips. kit holds THREE, GLTFExporter, GLTFLoader, SVGLoader, FontLoader, TextGeometry, ConvexGeometry, ParametricGeometry, RoundedBoxGeometry, BufferGeometryUtils, SkeletonUtils, SimplifyModifier, TessellateModifier and MeshSurfaceSampler; model(file), which loads a model of the presentation named in models; and separate(mesh), which splits a mesh by the pieces no edge joins, for an Action to turn or move each: the mesh keeps its largest piece and its origin, and each other piece becomes a mesh beside it, its origin at its own bounds center, which separate returns. A material named color:<role> takes the slide’s color of that role. userData { markdownpoint: { \"cast-shadow\": false } } on an object, or { markdownpoint: { loop: true } } on an AnimationClip, which becomes an Action, become its extras. It runs in a sandbox with no network or files, for at most 60 s. The model is imported as a file is: lights and cameras removed, Actions named apart. The module runs only while it builds. No file keeps it. To change a model you built, build it again from a new module. Returns the file, changes, the report models_inspect gives, and a sheet: the saved model from eight sides, top and side, and each Action at four times. To build a text object’s words, give slideId and objectId: data.words then holds its letters as its slide lays them out, which kit.text(data.words, { depth, bevel }) extrudes into { model, letters }, one node per letter, one model unit an em of the text’s size, the origin on its first baseline at the left of its column, saved as generated/<name>-<hash>.glb: a text’s model is MarkdownPoint’s, not one of the author’s media. Plain 3D letters need no build: a text’s model { extrusion: { depth, bevel } }, which MarkdownPoint builds. The answer adds built-from: set the text’s model to { file: the answer’s file, \"built-from\": its built-from } with updateObjectProperties, and the slide draws the model while the words are the ones built; once the words or font change, it draws them flat until you build it again.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11431,25 +11326,25 @@
             },
             "description": "The presentation's models the build loads with kit.model, by file path, such as a model models_animate gave actions."
           },
+          "module": {
+            "type": "string",
+            "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
+            "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+          },
           "name": {
             "type": "string",
             "pattern": "^[^/\\\\\\0.][^/\\\\\\0]{0,99}(?![\\s\\S])",
             "description": "The model's file name without extension, such as bird."
           },
-          "source": {
+          "objectId": {
             "type": "string",
-            "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
-            "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "description": "The text object whose words the build makes 3D."
           },
           "slideId": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide the text is on."
-          },
-          "textId": {
-            "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The text object whose words the build makes 3D."
           },
           "presentation": {
             "type": "string",
@@ -11457,28 +11352,28 @@
           }
         },
         "required": [
-          "name",
-          "source"
+          "module",
+          "name"
         ],
         "additionalProperties": false,
         "if": {
           "anyOf": [
             {
               "required": [
-                "slideId"
+                "objectId"
               ]
             },
             {
               "required": [
-                "textId"
+                "slideId"
               ]
             }
           ]
         },
         "then": {
           "required": [
-            "slideId",
-            "textId"
+            "objectId",
+            "slideId"
           ],
           "properties": {
             "data": {
@@ -11491,7 +11386,7 @@
       }
     },
     {
-      "name": "models_actions",
+      "name": "models_actions_list",
       "title": "List Meshy’s actions",
       "annotations": {
         "readOnlyHint": true,
@@ -11686,7 +11581,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Have Meshy play one to ten actions from models_actions on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. looping gives the ids of those to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
+      "description": "Have Meshy play one to ten actions from models_actions_list on a model it rigged, 3 credits each, added to the model as an Action each in the order asked. The model keeps its textures and earlier Actions, such as Walk and Run; an Action of a name it has replaces that one. looping gives the ids of those to close on their own cycle, which a clip then loops; every new Action is stood on y = 0. Uses the Meshy key in Settings > AI; credits says what it cost. Saved as media/<name>-<hash>.glb with a sheet, keeping its skeleton for more actions.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -11695,12 +11590,12 @@
             "items": {
               "type": "integer",
               "minimum": 0,
-              "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
+              "description": "An action of Meshy's library, by the whole-number id models_actions_list lists it by."
             },
             "minItems": 1,
             "maxItems": 10,
             "uniqueItems": true,
-            "description": "Action ids from models_actions, in the order the Actions should come."
+            "description": "Action ids from models_actions_list, in the order the Actions should come."
           },
           "file": {
             "type": "string",
@@ -11712,7 +11607,7 @@
             "items": {
               "type": "integer",
               "minimum": 0,
-              "description": "An action of Meshy's library, by the whole-number id models_actions lists it by."
+              "description": "An action of Meshy's library, by the whole-number id models_actions_list lists it by."
             },
             "description": "The ids of the Actions that loop, each one of `actions`, closed on their cycle."
           },
