@@ -288,7 +288,20 @@
         "additionalProperties": false,
         "description": "The app's contract, the same whichever presentation is open, or none.",
         "definitions": {
-          "AgentAppMethod": {},
+          "AgentAppMethod": {
+            "type": "string",
+            "enum": [
+              "capabilities",
+              "schema",
+              "windows.list",
+              "presentations.open",
+              "presentations.create",
+              "presentations.close",
+              "images.editor.get",
+              "images.styles.list",
+              "images.styles.edit"
+            ]
+          },
           "AgentLimits": {
             "type": "object",
             "properties": {
@@ -396,7 +409,51 @@
               "updateStep"
             ]
           },
-          "AgentPresentationMethod": {},
+          "AgentPresentationMethod": {
+            "type": "string",
+            "enum": [
+              "presentations.get",
+              "slides.get",
+              "slides.render",
+              "slides.frames",
+              "slides.trace",
+              "slides.measure",
+              "slides.letters",
+              "exports.run",
+              "exports.cancel",
+              "images.editor.open",
+              "media.import",
+              "models.inspect",
+              "models.build",
+              "models.actions.list",
+              "models.picture",
+              "models.generate",
+              "models.rig",
+              "models.animate",
+              "images.prepare",
+              "images.generate",
+              "images.select",
+              "images.suggestPrompt",
+              "themes.list",
+              "themes.use",
+              "themes.get",
+              "themes.edit",
+              "themes.promote",
+              "themes.manage",
+              "slides.resize",
+              "history.undo",
+              "history.redo",
+              "present.start",
+              "present.get",
+              "present.control",
+              "present.stop",
+              "proposals.create",
+              "proposals.list",
+              "proposals.get",
+              "proposals.accept",
+              "proposals.reject"
+            ]
+          },
           "PresentationAnimationInterpolationName": {
             "type": "string",
             "enum": [
@@ -10299,7 +10356,7 @@
                 "minimum": 0,
                 "maximum": 4294967296
               },
-              "transparent": {
+              "transparent-background": {
                 "type": "boolean",
                 "description": "Leave slide backgrounds transparent; ProRes 4444 only."
               }
@@ -10312,14 +10369,14 @@
             "additionalProperties": false,
             "if": {
               "properties": {
-                "transparent": {
+                "transparent-background": {
                   "enum": [
                     true
                   ]
                 }
               },
               "required": [
-                "transparent"
+                "transparent-background"
               ]
             },
             "then": {
@@ -11588,7 +11645,8 @@
               "minimum": 0,
               "description": "An action of Meshy's library, by the whole-number id models_actions_list lists it by."
             },
-            "description": "The ids of the Actions that loop, each one of `actions`, closed on their cycle."
+            "description": "The ids of the Actions that loop, each one of `actions`, closed on their cycle.",
+            "uniqueItems": true
           },
           "name": {
             "type": "string",

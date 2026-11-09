@@ -89,7 +89,7 @@
           "minimum": 0,
           "maximum": 4294967296
         },
-        "transparent": {
+        "transparent-background": {
           "type": "boolean",
           "description": "Leave slide backgrounds transparent; ProRes 4444 only."
         }
@@ -102,12 +102,12 @@
       "additionalProperties": false,
       "if": {
         "properties": {
-          "transparent": {
+          "transparent-background": {
             "const": true
           }
         },
         "required": [
-          "transparent"
+          "transparent-background"
         ]
       },
       "then": {
