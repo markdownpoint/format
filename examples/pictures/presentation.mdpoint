@@ -210,7 +210,7 @@
             "height": 428
           },
           "alt": "Green hills under a low sun",
-          "restyle": {"name":"Chalk","reference-prompt":"A harbor at dawn","prompt":"Redraw it in white chalk on a blackboard"}
+          "restyle": {"name":"Chalk","prompt":"Redraw it in white chalk on a blackboard"}
         },
 
         {

@@ -1874,7 +1874,7 @@
           "type": "object",
           "properties": {
             "definition": {
-              "$ref": "#/definitions/RestyleSource",
+              "$ref": "#/definitions/LibraryStyleSource",
               "description": "A style definition as images.styles.list lists them."
             },
             "id": {
@@ -1973,7 +1973,7 @@
             "type": "object",
             "properties": {
               "definition": {
-                "$ref": "#/definitions/RestyleSource"
+                "$ref": "#/definitions/LibraryStyleSource"
               },
               "id": {
                 "type": "string"
@@ -2006,7 +2006,7 @@
             "type": "object",
             "properties": {
               "definition": {
-                "$ref": "#/definitions/RestyleSource"
+                "$ref": "#/definitions/LibraryStyleSource"
               },
               "id": {
                 "type": "string"
@@ -2028,7 +2028,7 @@
         "styles"
       ],
       "additionalProperties": false,
-      "description": "The style library, as the Restyle popup lists it; set one's `definition` as an image's `restyle`."
+      "description": "The style library, as the Restyle popup lists it: to use a style, set its definition's `name`, `prompt` and `transparent-background` as an image's `restyle`."
     },
     "AgentImageSuggestPromptRequest": {
       "type": "object",
@@ -3840,11 +3840,6 @@
                   "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
                   "description": "one line that isn’t blank"
                 },
-                "reference-prompt": {
-                  "type": "string",
-                  "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                  "description": "text that isn’t blank"
-                },
                 "prompt": {
                   "type": "string",
                   "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
@@ -3856,7 +3851,6 @@
               },
               "required": [
                 "name",
-                "reference-prompt",
                 "prompt"
               ],
               "additionalProperties": false
@@ -5618,11 +5612,6 @@
                   "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
                   "description": "one line that isn’t blank"
                 },
-                "reference-prompt": {
-                  "type": "string",
-                  "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                  "description": "text that isn’t blank"
-                },
                 "prompt": {
                   "type": "string",
                   "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
@@ -5634,7 +5623,6 @@
               },
               "required": [
                 "name",
-                "reference-prompt",
                 "prompt"
               ],
               "additionalProperties": false
@@ -10623,6 +10611,35 @@
       ],
       "description": "What raised an issue, which says how the issue names where it stands."
     },
+    "LibraryStyleSource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
+          "description": "one line that isn’t blank"
+        },
+        "reference-prompt": {
+          "type": "string",
+          "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+          "description": "text that isn’t blank"
+        },
+        "prompt": {
+          "type": "string",
+          "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+          "description": "text that isn’t blank"
+        },
+        "transparent-background": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "reference-prompt",
+        "prompt"
+      ],
+      "additionalProperties": false
+    },
     "MasterAuthoredFont": {
       "type": "object",
       "properties": {
@@ -12412,35 +12429,6 @@
         "theme"
       ],
       "description": "Whose folder a file is in: the presentation's, its theme's, or the cache where MarkdownPoint keeps the models it builds from a text's letters on this computer."
-    },
-    "RestyleSource": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
-          "description": "one line that isn’t blank"
-        },
-        "reference-prompt": {
-          "type": "string",
-          "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "text that isn’t blank"
-        },
-        "prompt": {
-          "type": "string",
-          "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "text that isn’t blank"
-        },
-        "transparent-background": {
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "name",
-        "reference-prompt",
-        "prompt"
-      ],
-      "additionalProperties": false
     },
     "SlideSize": {
       "type": "object",

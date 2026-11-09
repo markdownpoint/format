@@ -16,7 +16,7 @@
     "styles": {
       "type": "array",
       "items": {
-        "description": "A library style, applied over an image or a background's image.",
+        "description": "One style of the style library: the restyle it copies onto an image, and the prompt for its example image.",
         "type": "object",
         "properties": {
           "name": {
@@ -47,7 +47,7 @@
         "additionalProperties": false
       },
       "minItems": 1,
-      "description": "The styles, at least one, each a restyle record."
+      "description": "The styles, at least one, each a library style."
     }
   },
   "required": [

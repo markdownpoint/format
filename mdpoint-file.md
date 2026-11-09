@@ -385,11 +385,7 @@ The hills carry a restyle, and the background is still a request:
   "file": "media/hills.png",
   "frame": {"x": 1040, "y": 340, "width": 760, "height": 428},
   "alt": "Green hills under a low sun",
-  "restyle": {
-    "name": "Chalk",
-    "reference-prompt": "A harbor at dawn",
-    "prompt": "Redraw it in white chalk on a blackboard"
-  }
+  "restyle": {"name": "Chalk", "prompt": "Redraw it in white chalk on a blackboard"}
 }
 ```
 

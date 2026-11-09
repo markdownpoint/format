@@ -1385,18 +1385,13 @@
                 "description": "nonempty text without NUL characters, or \"none\""
               },
               "restyle": {
-                "description": "A library style, applied over an image or a background's image.",
+                "description": "A style applied over an image or a background's image. Choosing a library style copies its `name`, `prompt`, and `transparent-background` here.",
                 "type": "object",
                 "properties": {
                   "name": {
                     "type": "string",
                     "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
                     "description": "The style's name, on one line that isn't blank."
-                  },
-                  "reference-prompt": {
-                    "type": "string",
-                    "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                    "description": "The prompt for the style's example image, as text that isn't blank."
                   },
                   "prompt": {
                     "type": "string",
@@ -1410,7 +1405,6 @@
                 },
                 "required": [
                   "name",
-                  "reference-prompt",
                   "prompt"
                 ],
                 "additionalProperties": false
