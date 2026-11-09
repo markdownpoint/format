@@ -2320,7 +2320,7 @@
                         },
                         {
                           "type": "number",
-                          "minimum": 1,
+                          "minimum": 0.000001,
                           "maximum": 1000000000000000000,
                           "description": "canvas units"
                         }
@@ -2333,7 +2333,7 @@
                         },
                         {
                           "type": "number",
-                          "minimum": 1,
+                          "minimum": 0.000001,
                           "maximum": 1000000000000000000,
                           "description": "canvas units"
                         }
@@ -2835,13 +2835,13 @@
                             },
                             "size-x": {
                               "type": "number",
-                              "minimum": 1,
+                              "minimum": 0.000001,
                               "maximum": 1000000000000000000,
                               "description": "canvas units"
                             },
                             "size-y": {
                               "type": "number",
-                              "minimum": 1,
+                              "minimum": 0.000001,
                               "maximum": 1000000000000000000,
                               "description": "canvas units"
                             }
