@@ -2802,37 +2802,6 @@
         },
         {
           "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "loop": {
-              "anyOf": [
-                {
-                  "$ref": "#/definitions/PresentationAnimationLoop"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "objectId": {
-              "$ref": "#/definitions/AgentObjectId"
-            },
-            "parameter": {
-              "$ref": "#/definitions/PresentationAnimationParameterSource"
-            },
-            "type": {
-              "const": "loop"
-            }
-          },
-          "required": [
-            "loop",
-            "objectId",
-            "parameter",
-            "type"
-          ]
-        },
-        {
-          "type": "object",
           "properties": {
             "mode": {
               "type": [
