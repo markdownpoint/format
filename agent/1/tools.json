@@ -12919,7 +12919,7 @@
         "idempotentHint": false,
         "openWorldHint": false
       },
-      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mdptheme file at output; install adds a .mdptheme file’s theme; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
+      "description": "The theme chooser’s commands and Save slide as layout. create makes a new theme as a copy of the one in use; rename and delete name a theme by key or name; duplicateLayout and moveLayout take a layout of one theme, by its key, into another; export writes the theme as a .mdptheme file at output; import adds a .mdptheme file’s theme to this presentation; saveSlide makes a slide as it is now a layout of the theme in use. Returns the theme it changed and, for a layout copied, moved or saved, its key in that theme as layout.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -12947,7 +12947,7 @@
               "rename",
               "create",
               "export",
-              "install",
+              "import",
               "delete"
             ]
           },
@@ -12969,7 +12969,7 @@
           "path": {
             "type": "string",
             "pattern": "^(?:\\/|[A-Za-z]:[\\\\/]|\\\\\\\\)[^\\u0000]*(?![\\s\\S])",
-            "description": "Absolute path of a .mdptheme file. Required by install."
+            "description": "Absolute path of a .mdptheme file. Required by import."
           },
           "presentation": {
             "type": "string",
@@ -13080,7 +13080,7 @@
                     "properties": {
                       "type": {
                         "enum": [
-                          "install"
+                          "import"
                         ]
                       }
                     },
@@ -13158,7 +13158,7 @@
                 "type": "null"
               }
             ],
-            "description": "The theme created, renamed, installed or given the layout; the one exported. By its key and name."
+            "description": "The theme created, renamed, imported or given the layout; the one exported. By its key and name."
           }
         },
         "required": [

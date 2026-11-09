@@ -9291,7 +9291,7 @@
             },
             "type": {
               "type": "string",
-              "const": "install"
+              "const": "import"
             }
           },
           "required": [
@@ -9318,7 +9318,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "The theme chooser's own commands, and Save slide as layout. A new theme starts as a copy of the one in use; a layout is copied or moved into another theme by its key from `themes.list`; export writes a .mdptheme file and install adds one, from paths where the app would ask with a dialog."
+      "description": "The theme chooser's own commands, and Save slide as layout. A new theme starts as a copy of the one in use; a layout is copied or moved into another theme by its key from `themes.list`; export writes a .mdptheme file and import adds one to this presentation, from paths where the app would ask with a dialog."
     },
     "AgentThemeManageResult": {
       "type": "object",
@@ -9360,7 +9360,7 @@
               "type": "null"
             }
           ],
-          "description": "The theme created, renamed, installed or given the layout; the one exported. By its key and name."
+          "description": "The theme created, renamed, imported or given the layout; the one exported. By its key and name."
         }
       },
       "required": [
