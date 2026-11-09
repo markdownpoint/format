@@ -2353,7 +2353,7 @@
                 "enum": [
                   "straight",
                   "curved",
-                  "bent"
+                  "elbow"
                 ]
               },
               "bend": {
@@ -3656,7 +3656,7 @@
                   "shape": {
                     "enum": [
                       "rectangle",
-                      "disk"
+                      "disc"
                     ]
                   },
                   "point-of-interest": {
