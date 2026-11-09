@@ -488,7 +488,7 @@
         "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "uniqueItems": true,
-      "description": "The order the layouts appear in the layout chooser, by key, each once."
+      "description": "The order the layouts appear in the layout chooser, by key, each once. Layouts it doesn't list follow, sorted by key."
     },
     "objects": {
       "type": "array",

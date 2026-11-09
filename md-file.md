@@ -106,7 +106,7 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 `<!-- text: id -->` starts an object's text. It runs to the next marker. Here `eyebrow`, `title` and `body` are placeholders from the slide's layout. For any other object, the id is its id in the .mdpoint file. A shape, a table or a chart takes its text the same way.
 
-Blank lines separate paragraphs, however many there are. An empty paragraph is a line that holds only `<br>`, which spaces or tabs may follow, with a blank line on each side. Two `<br>` lines with nothing else are one empty line with a line break. Blank lines right after a marker or before the next one only separate, so a Markdown formatter that adds or removes blank lines doesn't change the slide.
+Blank lines separate paragraphs, however many there are. An empty paragraph is a line that holds only `<br>`, which spaces or tabs may follow, with a blank line on each side. Two `<br>` lines with nothing else are one empty line with a line break. Blank lines right after a marker or before the next one only separate, so a Markdown formatter that adds or removes blank lines doesn't change the slide. In a code block the words leave open, which runs to the file's end, its blank lines are its code, all but the last.
 
 ## Speaker notes
 
