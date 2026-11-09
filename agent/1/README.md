@@ -9,8 +9,8 @@ serves, the operation names it accepts, its limits and its interpolations.
 The app answers it with any number of presentations open, or none. Its
 `methods` are `{ app, presentation }`: the methods the app answers on its
 own, with no presentation open, and the methods it answers for a
-presentation. `schema` gives the request contracts, one operation at a time,
-so an agent never needs the whole proposal schema in its context. `mdpoint
+presentation. `schema` gives the request contracts one operation at a time.
+An agent never needs the whole proposal schema in its context. `mdpoint
 schema <operation> --fields` (MCP `detail: "fields"`) lists the operation's
 fields instead of its schema: each field's type, whether every request needs
 it, and the values it accepts. `--json` prints one compact line for machines.
@@ -28,12 +28,12 @@ their methods in snake case (`slides_get`). On the CLI's command line, a
 value is written in kebab-case (`toggle-black-screen` for
 `toggleBlackScreen`), but a method or an operation name is written as the
 contract spells it (`mdpoint schema insertSteps`, `mdpoint call
-presentations.get`). The contract's codes are kebab-case (`stale-revision`,
-`text-overflow`), like the file's keys and values, so one fact can have both
-spellings: a status's `noChange` is an issue's `no-change`. Order has no
+presentations.get`). The contract's codes and the file's keys and values are kebab-case
+(`stale-revision`, `text-overflow`). One fact can then have both spellings: a
+status's `noChange` is an issue's `no-change`. Order has no
 meaning in the contract's schemas. Most fields, branches and values are listed
-alphabetically, the same on every build, so `type` is rarely an operation's
-first field.
+alphabetically, the same on every build. `type` is rarely an operation's first
+field.
 
 A CLI request goes to the presentation that `--presentation` names, by its
 folder or by a file in it. Without `--presentation`, the request goes to the
@@ -69,23 +69,23 @@ unavailable.
 | Code | What happened | What to do |
 |---|---|---|
 | `usage` | The command line is wrong (CLI only). | Read the command's `--help`. |
-| `refused` | The app or the command won't do what was asked, because of what the request contains or what it asks of this presentation, theme or file. | Read the message, then change the request. |
+| `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the revision you sent. | Read it again. `revision` is its current revision. |
-| `validation-failed` | Errors stop the request: the proposal's, which `validation` lists, or the presentation's own, which `presentations.get` lists. | Fix those errors. |
+| `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal or Meshy Action. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
-| `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect, so read the state before you retry a change. |
+| `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size, a proposal's operations or a range's samples. | Send less at once, or lower `fps`. |
 | `busy` | Something that can't run at the same time is in progress, such as accepting that proposal or another movie export. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
 `MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout, in seconds, for every call the
 CLI makes. Without it, each method uses its own timeout. The CLI connects to
-the app's endpoint, which is a socket on a Mac and a named pipe on Windows. It
+the app's endpoint: a socket on a Mac and a named pipe on Windows. It
 looks for the endpoint in `--endpoint`, then `MARKDOWNPOINT_ENDPOINT`, then in
-the app's state folder, where the app records it. The state folder is
+the app's state folder. The app records it there. The state folder is
 `MARKDOWNPOINT_STATE_DIR` when that is set. `mdpoint --help` lists them.
 
 ### Issues
@@ -93,8 +93,8 @@ the app's state folder, where the app records it. The state folder is
 An issue is a problem that `validate` and `presentation get` find in the
 files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
 `message` in English and a `disposition`: what MarkdownPoint does about it.
-With `show-presentation`, the presentation is shown, and whatever can't be
-used shows a default, or nothing, as each message says. `skip-object` leaves
+With `show-presentation`, the presentation is shown. Whatever can't be used
+shows a default or nothing. Each message says which. `skip-object` leaves
 the object out, `refuse-slide` refuses the slide and `refuse-presentation`
 refuses the whole presentation. The fields that locate an issue depend on its
 `source`:
@@ -107,25 +107,25 @@ refuses the whole presentation. The fields that locate an issue depend on its
   an object's id can be read, the object is named by its id, as in
   `slides.intro.objects.title.opacity`. Once the slide is read, a step or a
   keyframe is named by its id, as in
-  `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`,
-  where the curve's name is one key. A composition is under `compositions`.
+  `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`.
+  In it, the curve's name is one key. A composition is under `compositions`.
   `slideId` names the slide that contains the value, `compositionId` names the
   composition, and `objectId` names the object.
 - `markdown`: `location` names the file and the line, counted from 1, with the
   column when it's known. `path` names the frontmatter key or the section the
   issue is about, such as `frontmatter.footer` or `sections.intro`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
-  selects the record in the `.mdpoint` file, as for `json`, and `location`
-  names the line in the `.md` file. Each one is there only when the issue has
+  selects the record in the `.mdpoint` file. It is written as for `json`.
+  `location` names the line in the `.md` file. Each one is there only when the issue has
   one.
 - `theme`: when only the slides that use a layout or scheme are refused,
   `slideId` names the slide, and `path` names its `layout` or `scheme` in the
-  `.mdpoint` file, as for `json`. `objectId` is added when the issue is about
+  `.mdpoint` file. It is written as for `json`. `objectId` is added when the issue is about
   one of the layout's objects. An issue about the whole theme, such as a
   missing theme that the presentation names, has none of these fields.
 - `file`: `path` is the file's path in the folder that `fileScope` names.
   `presentation` is the presentation's folder, and `theme` is its theme's.
-  `cache` is the folder on this computer where MarkdownPoint keeps the models
+  `cache` is the folder on this computer where MarkdownPoint saves the models
   it builds from a text's letters. `bundled` is the fonts that ship with
   MarkdownPoint. `slideId`, `objectId` and `property` name each place where
   the file is used. An issue about a theme's own file, its `master.json` or a

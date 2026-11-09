@@ -49,7 +49,7 @@ Two files, one deck==.==
 The words are Markdown==.==
 ```
 
-<img src="images/first-deck-title.png" alt="The title slide, as MarkdownPoint draws it" width="32%"> <img src="images/first-deck-points.png" alt="The points slide, as MarkdownPoint draws it" width="32%"> <img src="images/first-deck-close.png" alt="The close slide, as MarkdownPoint draws it" width="32%">
+<img src="images/first-deck-title.png" alt="The title slide drawn by MarkdownPoint" width="32%"> <img src="images/first-deck-points.png" alt="The points slide drawn by MarkdownPoint" width="32%"> <img src="images/first-deck-close.png" alt="The close slide drawn by MarkdownPoint" width="32%">
 
 ## Writing in Obsidian
 
@@ -76,19 +76,19 @@ Start the file with frontmatter between two `---` lines. MarkdownPoint uses the 
 - `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
 - `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
 - `footer`: the footer text.
-- `save-id`: a save stamp, which is the id of a save. MarkdownPoint writes it while the presentation is shared for editing. It tells the files apart from an older copy with the same content. Other tools leave it unchanged.
+- `save-id`: the id of the save that wrote the files. MarkdownPoint writes it while the presentation is shared for editing. The .mdpoint file has the same id. An older copy of this file with the same words has a different one. Other tools leave it unchanged.
 
-Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*` or `- `. YAML reads some of these values as something other than text, and MarkdownPoint refuses them without quotes. MarkdownPoint always writes the footer in double quotes.
+Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*` or `- `. Without quotes, some of these values aren't text in YAML. MarkdownPoint refuses them. MarkdownPoint always writes the footer in double quotes.
 
 You can add your own keys for information used by your tools or workflow. MarkdownPoint ignores them and saves them as written.
 
 ## Sections
 
-`<!-- section: id -->` starts a section. An id uses lowercase letters, digits and single hyphens. It starts with a letter and ends with a letter or digit, such as `intro` or `q3-numbers`. The marker is followed by one line, `# Name`, which is a level-1 heading with the section's name. MarkdownPoint removes any formatting from the heading. The heading can't have a comment, not even a paragraph id. A section's block contains nothing else. Sections are optional, but once there is one, every slide must be in a section.
+`<!-- section: id -->` starts a section. An id uses lowercase letters, digits and single hyphens. It starts with a letter and ends with a letter or digit, such as `intro` or `q3-numbers`. The next line is a level-1 heading with the section's name: `# Name`. MarkdownPoint removes any formatting from the heading. The heading can't have a comment, not even a paragraph id. A section's block contains nothing else. Sections are optional, but once there is one, every slide must be in a section.
 
 ## Slides
 
-`<!-- slide: id -->` starts a slide. Only a marker starts a slide. A slide continues until the next slide, section or composition marker, or the end of the file. Slides appear in the order they're listed. To move a slide, move its lines. The .mdpoint file doesn't change. In git, a moved slide shows as lines deleted in one place and added in another, so merging the move with an edit to that slide's words gives a conflict over the whole slide.
+`<!-- slide: id -->` starts a slide. Only a marker starts a slide. A slide continues until the next slide, section or composition marker, or the end of the file. Slides appear in the order they're listed. To move a slide, move its lines. The .mdpoint file doesn't change. In git, a moved slide shows as lines deleted in one place and added in another. Merging the move with an edit to that slide's words gives a conflict over the whole slide.
 
 Each slide also has an entry in [the .mdpoint file](mdpoint-file.md) under the same id. The order of entries there doesn't matter. `layout` is the theme layout the slide uses.
 
@@ -106,17 +106,17 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 `<!-- text: id -->` starts an object's text. The text continues until the next marker. Here `eyebrow`, `title` and `body` are placeholders from the slide's layout. For any other object, the id is its id in the .mdpoint file. Shapes, tables and charts get their text the same way.
 
-Paragraphs are separated by one or more blank lines. An empty paragraph is a line with only `<br>`, optionally followed by spaces or tabs, with a blank line before and after it. Two `<br>` lines in a row, with nothing else, are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators, so a Markdown formatter that adds or removes them doesn't change the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
+Paragraphs are separated by one or more blank lines. An empty paragraph is a line with only `<br>`, optionally followed by spaces or tabs, with a blank line before and after it. Two `<br>` lines in a row, with nothing else, are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators. A Markdown formatter can add or remove them without changing the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
 
 ## Speaker notes
 
-`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks. A paragraph id in speaker notes is read as it is in slide text and is never shown. No step can name it. MarkdownPoint doesn't give ids to paragraphs in notes, and it keeps notes as written, so it doesn't warn about a repeated or misspelled id in them.
+`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks. A paragraph id in speaker notes is read as it is in slide text and is never shown. No step can name it. MarkdownPoint doesn't give ids to paragraphs in notes. It saves notes as written and doesn't warn about a repeated or misspelled id in them.
 
 ## Compositions
 
 A composition is a reusable scene, such as a card with an animated counter. `<!-- composition: id -->` starts its block. Use the id of its entry under `compositions` in the .mdpoint file. Compositions don't belong to sections and don't appear as slides. MarkdownPoint adds new compositions after the existing ones, or after the slides if there are none. You can move a composition block elsewhere in the file.
 
-Under the composition's marker, `<!-- text: id -->` starts the words of one of the composition's own objects, as on a slide. `<!-- control: id -->` starts a text control's default words. Its id is the control's id under `controls` in the .mdpoint file. An instance shows the default words unless it sets its own. It sets them on its slide, under `<!-- text: instance.control -->`, with the instance's id and the control's id:
+Under the composition's marker, `<!-- text: id -->` starts the words of one of the composition's own objects. A slide uses the same marker. `<!-- control: id -->` starts a text control's default words. Its id is the control's id under `controls` in the .mdpoint file. An instance shows the default words unless it sets its own. It sets them on its slide, under `<!-- text: instance.control -->`, with the instance's id and the control's id:
 
 ```markdown
 <!-- slide: metrics -->
@@ -162,7 +162,7 @@ A rule runs across its text box.
 Neither comment above shows on the slide.
 ```
 
-![The rules slide, as MarkdownPoint draws it](images/words-rules.png)
+![The rules slide drawn by MarkdownPoint](images/words-rules.png)
 
 ## Markdown
 
@@ -182,7 +182,7 @@ Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
 [A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 ```
 
-![The marks slide, as MarkdownPoint draws it](images/words-marks.png)
+![The marks slide drawn by MarkdownPoint](images/words-marks.png)
 
 `==highlighted==` and `[colored]{color=accent}` text are MarkdownPoint additions. A color is either a role from the slide's color scheme, such as `accent`, or a hex color: `[text]{color="#2F7D4F"}`.
 
@@ -207,11 +207,11 @@ Lists==.==
 2. Second
 ```
 
-![The lists slide, as MarkdownPoint draws it](images/words-lists.png)
+![The lists slide drawn by MarkdownPoint](images/words-lists.png)
 
 To nest an item under the one above, indent it to where that item's text starts: two spaces under `- `, three under `1. `. A numbered list can start at any number with up to nine digits.
 
-An empty item contains `<br>`, as an empty paragraph does: `- <br>`. An empty item with a list nested under it is just its marker. With a `<br>` line there, GitHub and other apps that read CommonMark would include the nested list in that line. A nested numbered list that starts at a number other than 1 needs a blank line before it.
+An empty item contains `<br>`: `- <br>`. An empty item with a list nested under it is just its marker. With a `<br>` line there, GitHub and other apps that read CommonMark would include the nested list in that line. A nested numbered list that starts at a number other than 1 needs a blank line before it.
 
 To start another list immediately after one, change the list marker. MarkdownPoint uses `*` after `-`, or `1)` after `1.`.
 
@@ -227,7 +227,7 @@ Fields==.==
 This is slide {{slide-number}} of {{slide-count}}, in section {{section-number}}, {{section-name}}.
 ```
 
-![The fields slide, as MarkdownPoint draws it](images/words-fields.png)
+![The fields slide drawn by MarkdownPoint](images/words-fields.png)
 
 A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/v1.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. The `footer` field shows the footer set in the frontmatter.
 
@@ -247,7 +247,7 @@ const deck = "slides.md"
 ```
 ````
 
-![The quote slide, as MarkdownPoint draws it](images/words-quote.png)
+![The quote slide drawn by MarkdownPoint](images/words-quote.png)
 
 ### Tables
 
@@ -283,7 +283,7 @@ Its position, columns, row heights and style are in the .mdpoint file. A row gro
 ]
 ```
 
-![The table slide, as MarkdownPoint draws it](images/words-table.png)
+![The table slide drawn by MarkdownPoint](images/words-table.png)
 
 ### Code blocks
 
@@ -293,17 +293,17 @@ A code block is written between two fences. A fence is three or more backticks o
 
 A character reference is read as the character it names. `&amp;` is `&`, and `&copy;` and `&#169;` are both `©`. In code, a reference shows as written. Anywhere else, put a backslash before the `&` to keep the reference as written: `\&amp;`. MarkdownPoint writes that backslash when you type a reference in the app.
 
-In a list item, a tab is read as spaces, so MarkdownPoint writes a tab there as `&#9;`. A tab or four spaces at the start of a paragraph would start a code block, and spaces after a list item's marker would belong to the marker. In those places, MarkdownPoint writes the first tab or space as `&#9;` or `&#32;`.
+In a list item, a tab is read as spaces. MarkdownPoint writes a tab there as `&#9;`. A tab or four spaces at the start of a paragraph would start a code block, and spaces after a list item's marker would belong to the marker. In those places, MarkdownPoint writes the first tab or space as `&#9;` or `&#32;`.
 
 ### Where it differs from CommonMark
 
-Bold and italic follow CommonMark, with one difference. In CommonMark, a run of `*` between punctuation and a letter can open toward the letter but can't close. In MarkdownPoint, such a run can both open and close. So `**C++**17` is read as a bold “C++” followed by “17”, and `**Note:**This` as a bold “Note:” followed by “This”. CommonMark shows the asterisks in both as written.
+Bold and italic follow CommonMark, with one difference. In CommonMark, a run of `*` between punctuation and a letter can open toward the letter but can't close. In MarkdownPoint, such a run can both open and close. So `**C++**17` is read as a bold “C++” followed by “17”, and `**Note:**This` as a bold “Note:” followed by “This”. In CommonMark, the asterisks in both stay as written.
 
-The same rule applies to Chinese and Japanese, which are written without spaces. In `これは**「重要」**です`, “「重要」” is bold. This matches the [CJK-friendly amendment](https://github.com/tats-u/markdown-cjk-friendly) to CommonMark.
+The same rule applies to Chinese and Japanese. Both are written without spaces between words. In `これは**「重要」**です`, “「重要」” is bold. This matches the [CJK-friendly amendment](https://github.com/tats-u/markdown-cjk-friendly) to CommonMark.
 
-The rule changes how one rare case is read. `*(*foo*)*` is read as italic parentheses around a plain “foo”, while CommonMark nests one italic inside the other. A run of `_` is read as in CommonMark.
+The rule changes how one rare case is read. `*(*foo*)*` is read as italic parentheses around a plain “foo”. In CommonMark, it is one italic inside another. A run of `_` is read as in CommonMark.
 
-The style can change anywhere in a word. `**Mark**down` is read back as a bold “Mark” followed by “down”. When asterisks inside one word can't express the changes, MarkdownPoint writes each run that changes in a group, which is a span with no attributes. A word that is bold, then bold italic, then italic is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A group adds no formatting of its own.
+The style can change anywhere in a word. `**Mark**down` is read back as a bold “Mark” followed by “down”. When asterisks inside one word can't express the changes, MarkdownPoint puts each run in a group: a span with no attributes. A word that is bold, then bold italic, then italic is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A group adds no formatting of its own.
 
 ### Unsupported Markdown
 
@@ -339,9 +339,9 @@ A comment line counts as an incorrectly written marker when it contains a marker
 
 MarkdownPoint then shows the file, the line and the problem, and it won't open the presentation. If the presentation is already open, MarkdownPoint waits for the fix and never overwrites your file.
 
-Inside a code block, a merge conflict's lines are part of the code, so a slide can show them. A real conflict there stays on the slide until you resolve it.
+Inside a code block, a merge conflict's lines are part of the code. A slide can show them. A real conflict there stays on the slide until you resolve it.
 
-A layout's placeholder keeps its id. Naming it in MarkdownPoint changes only its label, so no slide's text blocks or overrides change. If you change a placeholder's id by hand in the layout file, also change the text blocks and overrides of every slide that uses that layout to the new id. MarkdownPoint doesn't show a block that names no object, and warns about it.
+A layout's placeholder keeps its id. Renaming it in MarkdownPoint changes only its label. The slides' text blocks and overrides stay the same. If you change a placeholder's id by hand in the layout file, also change the text blocks and overrides of every slide that uses that layout to the new id. MarkdownPoint doesn't show a block that names no object, and warns about it.
 
 A table's column widths and row heights in the .mdpoint file are listed in the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same position. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 

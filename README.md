@@ -7,7 +7,7 @@ Each presentation is a folder with two main files:
 - `slides.md` contains the text, speaker notes, sections and slide order.
 - `presentation.mdpoint` contains the layout, objects and animation as JSON.
 
-Themes and media are stored in subfolders. You can edit the presentation in MarkdownPoint, in a text editor or with an AI agent.
+Themes and media are in subfolders. You can edit the presentation in MarkdownPoint, in a text editor or with an AI agent.
 
 ## Write in Obsidian
 
@@ -27,7 +27,7 @@ Text and image objects use a 2D frame for position and size. A 3D model has a po
 
 ## A small presentation
 
-![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
+![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
 
 The slide's Markdown is:
 
@@ -75,7 +75,7 @@ MarkdownPoint applies the orientation stored in a picture's file. A JPEG uses th
 
 When you place a PNG, JPEG or WebP picture with a side longer than 4096 pixels, MarkdownPoint scales it to 4096 pixels on that side and saves it in `media/` in the same file type. The saved picture keeps the original's EXIF and XMP, with its size, orientation and color space set to match the saved pixels. A saved WebP has its pixels in the orientation the original stored them in, and the original's orientation tag. The EXIF thumbnail and a JPEG's extended XMP are left out. MarkdownPoint saves an animated PNG or WebP, a picture of more than 268,435,456 pixels and a file over 402 MB at full size. Other file types, and files you copy into `media/` yourself, are left as they are.
 
-Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. The two files must have those names, in any letter case. The folders `media`, `generated`, `themes` and `versions` are always lowercase. Mac and Windows disks ignore letter case, so MarkdownPoint still finds the files in a folder spelled another way, such as `Media`, and warns about it. On other disks those files are missing. The presentation names every other file exactly as its folder lists it. MarkdownPoint won't open a folder that contains duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
+Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. The two files must have those names, in any letter case. The folders `media`, `generated`, `themes` and `versions` are always lowercase. Mac and Windows disks ignore letter case by default. On such a disk, MarkdownPoint still finds the files in a folder named `Media` or `MEDIA` and warns about it. On a disk that tells capitals apart, those files are missing. The presentation names every other file exactly as its folder lists it. MarkdownPoint won't open a folder that contains duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
 
 MarkdownPoint doesn't copy unrelated files in the folder. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name can't start with a dot, contain `#`, `?`, `/`, `\`, `:`, `*`, `"`, `<`, `>` or `|`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint hides a file or folder whose name starts with a dot. It lists a file with one of the other names but can't use it until you rename it.
 

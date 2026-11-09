@@ -2,7 +2,7 @@
 
 A theme contains the fonts, colors, text styles and layouts used by its slides. The slide text is in `slides.md`.
 
-A theme is stored under `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. Most examples use Basic, MarkdownPoint's default theme.
+A theme is in `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. Most examples use Basic, MarkdownPoint's default theme.
 
 ```
 themes/<key>/
@@ -120,7 +120,7 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 
 The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing during a presentation. Use `overrides` to change a master object's properties in this layout. Set its override entry to `null` to remove the object.
 
-![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
+![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
 
 ## A theme of its own
 
@@ -149,7 +149,7 @@ A text style's `marks` set how bold, italic, highlighted, struck-through and cod
 }
 ```
 
-The master's mark has a file for each scheme, so a dark slide shows the dark scheme's file:
+The master's mark has a file for each scheme. A dark slide shows the dark scheme's file:
 
 ```json
 [
@@ -163,7 +163,7 @@ The master's mark has a file for each scheme, so a dark slide shows the dark sch
 ]
 ```
 
-<img src="images/own-theme-light.png" alt="The light slide, as MarkdownPoint draws it" width="49%"> <img src="images/own-theme-dark.png" alt="The dark slide, as MarkdownPoint draws it" width="49%">
+<img src="images/own-theme-light.png" alt="The light slide drawn by MarkdownPoint" width="49%"> <img src="images/own-theme-dark.png" alt="The dark slide drawn by MarkdownPoint" width="49%">
 
 The master also sets a column grid, a baseline grid and two guides. MarkdownPoint shows them while you edit, but never on a slide:
 
@@ -178,7 +178,7 @@ The master also sets a column grid, a baseline grid and two guides. MarkdownPoin
 ]
 ```
 
-`unit-scale` is how many meters one canvas unit represents in 3D. Studio's value of 0.01 makes a canvas unit one centimeter. `save-id` in `master.json` and in a layout is a save stamp, which is the id of a save. MarkdownPoint writes it while the presentation is shared for editing. It tells the file apart from an older copy with the same content. Other tools leave it unchanged.
+`unit-scale` is how many meters one canvas unit represents in 3D. Studio's value of 0.01 makes a canvas unit one centimeter. `save-id` in `master.json` and in a layout is the file's save stamp: the id of the save that wrote it. MarkdownPoint writes it while the presentation is shared for editing. An older copy of the file with the same content has a different one. Other tools leave it unchanged.
 
 A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder, named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
 

@@ -4,7 +4,7 @@
 
 The presentation's name is its folder's name. Rename the folder to rename the presentation.
 
-![The shapes slide, as MarkdownPoint draws it](images/objects-shapes.png)
+![The shapes slide drawn by MarkdownPoint](images/objects-shapes.png)
 
 This slide's text is in the .md file:
 
@@ -99,7 +99,7 @@ When rounding to six decimal places changes a number in the file, MarkdownPoint 
 
 ## Slides
 
-The keys in `slides` match the slide ids in the .md file, and the .md file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme. If it's omitted, the slide uses its layout's scheme. A scheme or override value set on the slide is kept, even if it equals the inherited value, so a later change to the theme doesn't affect it. Only a reset removes it. The slide then follows changes to that value in the theme.
+The keys in `slides` match the slide ids in the .md file, and the .md file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme. If it's omitted, the slide uses its layout's scheme. A scheme or override value set on the slide stays even when it equals the inherited value. A later change to the theme doesn't change it. Only a reset removes it. The slide then follows changes to that value in the theme.
 
 ## Presentation settings
 
@@ -131,7 +131,7 @@ Settings for the whole presentation are next to `slides`:
 
 Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's id in the marker.
 
-The dot's fill, `text`, is a role in the slide's color scheme, so the dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
+The dot's fill is `text`, a role in the slide's color scheme. The dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
 Omitted keys use their defaults. The card has no fill specified and uses `accent`, the default for shapes. The [object reference](reference/v1.md#object) lists the required keys, allowed values and defaults for each object type.
 
@@ -166,7 +166,7 @@ A text box can grow to fit its words, give every digit the same width and outlin
 ]
 ```
 
-![The type slide, as MarkdownPoint draws it](images/words-type.png)
+![The type slide drawn by MarkdownPoint](images/words-type.png)
 
 `auto-size` names the sides that grow, here the height. The frame then has no height, and the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` is its thickness in canvas units.
 
@@ -230,9 +230,9 @@ The table's first column is its header (`header-column`), and its first row is a
 ]
 ```
 
-![The data slide, as MarkdownPoint draws it](images/words-data.png)
+![The data slide drawn by MarkdownPoint](images/words-data.png)
 
-Here the table's first column is its header, instead of its first row. `colors` sets the color of each series in the chart, or of each category in a pie or donut chart. A counter with `roll` rolls its digits into place. Here its `progress` stops short of 1, so the counter shows its unused leading zeros at `leading-zero-opacity`.
+Here the table's first column is its header, instead of its first row. `colors` sets the color of each series in the chart, or of each category in a pie or donut chart. A counter with `roll` rolls its digits into place. Here its `progress` is below 1. The counter then shows its unused leading zeros at `leading-zero-opacity`.
 
 A group with `auto-layout` places its members one after another, down or across, and ignores their own positions:
 
@@ -282,7 +282,7 @@ A group with `auto-layout` places its members one after another, down or across,
 ]
 ```
 
-![The row slide, as MarkdownPoint draws it](images/groups-row.png)
+![The row slide drawn by MarkdownPoint](images/groups-row.png)
 
 ## Pictures
 
@@ -300,7 +300,7 @@ An image object shows a picture from the presentation's `media` folder. `exposur
 }
 ```
 
-![The adjust slide, as MarkdownPoint draws it](images/pictures-adjust.png)
+![The adjust slide drawn by MarkdownPoint](images/pictures-adjust.png)
 
 A slide's `background` can be a picture too. The picture covers the slide. `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
 
@@ -322,7 +322,7 @@ A picture with transparency casts its `drop-shadow` in its own shape:
 }
 ```
 
-<img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
+<img src="images/pictures-faded.png" alt="The faded slide drawn by MarkdownPoint" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide drawn by MarkdownPoint" width="49%">
 
 A generated picture starts as a request. The image object or the slide's `background` contains its `prompt`, its `image-style` and whether it asks for a `transparent-background`. `restyle` contains the style applied to a picture: its name, its prompt and whether it keeps a transparent background. These are copied from the style library when the author chooses a style there. MarkdownPoint saves each picture in `generated/` when the author generates it. The boat has been generated. Its `file` is its picture, and `generation` names its image generation record:
 
@@ -397,7 +397,7 @@ The hills have a restyle, and the background is still a request:
 }
 ```
 
-![The generate slide, as MarkdownPoint draws it](images/pictures-generate.png)
+![The generate slide drawn by MarkdownPoint](images/pictures-generate.png)
 
 ## Audio and video
 
@@ -429,7 +429,7 @@ A video's or an audio object's `fade-in` and `fade-out` are in seconds:
 }
 ```
 
-![The play slide, as MarkdownPoint draws it](images/sound-and-video-play.png)
+![The play slide drawn by MarkdownPoint](images/sound-and-video-play.png)
 
 `soundtrack` plays one audio file through the whole presentation, with its own fades:
 
@@ -487,7 +487,7 @@ The camera is defined on the master, and a slide changes it in `overrides`. Its 
 }
 ```
 
-![The constraints slide, as MarkdownPoint draws it](images/space-constraints.png)
+![The constraints slide drawn by MarkdownPoint](images/space-constraints.png)
 
 A rotation in degrees applies the heading around y, then the pitch around the object's own x, then the bank around its own z. With `rotation-mode` set to `quaternion`, a rotation is written as w, x, y and z.
 
@@ -505,11 +505,11 @@ Five settings can repeat motion while a slide is visible: a step's `repeat-count
 
 The [motion example](examples/motion) includes a repeater, named curves and springs, loops, waves, an interrupted move, a curved path, a composition at four moments, text animations and transitions. Each slide's speaker notes identify the relevant properties.
 
-<img src="images/motion-curves.png" alt="The curves slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-settings.png" alt="The settings slide, as MarkdownPoint draws it" width="49%">
+<img src="images/motion-curves.png" alt="The curves slide drawn by MarkdownPoint" width="49%"> <img src="images/motion-settings.png" alt="The settings slide drawn by MarkdownPoint" width="49%">
 
-<img src="images/motion-keyframes.png" alt="The keyframes slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-words.png" alt="The words slide, as MarkdownPoint draws it" width="49%">
+<img src="images/motion-keyframes.png" alt="The keyframes slide drawn by MarkdownPoint" width="49%"> <img src="images/motion-words.png" alt="The words slide drawn by MarkdownPoint" width="49%">
 
-<img src="images/motion-copies.png" alt="The copies slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide, as MarkdownPoint draws it" width="49%">
+<img src="images/motion-copies.png" alt="The copies slide drawn by MarkdownPoint" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide drawn by MarkdownPoint" width="49%">
 
 Set a keyframe's `interpolation` to a curve name. To give the curve settings, use a record with the curve's name in `type`:
 
@@ -577,7 +577,7 @@ A composition is a reusable animated scene, defined under `compositions`. Each i
 }
 ```
 
-![The moments slide, as MarkdownPoint draws it](images/motion-moments.png)
+![The moments slide drawn by MarkdownPoint](images/motion-moments.png)
 
 ## Keys MarkdownPoint doesn't read
 
