@@ -1,6 +1,6 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server speak `markdownpoint/agent/1` to the running app, and the app's own Agent uses the same methods. The app describes the contract itself: `mdpoint capabilities` lists its methods, operations and limits, `mdpoint schema <operation>` gives one operation's schema, and `mdpoint mcp` serves its tools to an MCP client, each with its input and output schemas.
+The `mdpoint` command and its MCP server speak `markdownpoint/agent/1` to the running app, and the app's own Agent uses the same methods. The app describes the contract itself: `mdpoint capabilities` lists its methods, operations and limits, `mdpoint schema <operation>` gives one operation's schema, and `mdpoint mcp` serves its tools to an MCP client, each with its input schema, and from MCP 2025-06-18 an output schema for each tool whose answer holds no picture.
 
 ## The contract
 
@@ -63,11 +63,11 @@ when it fails, 2 on a usage error and 3 when MarkdownPoint is unavailable.
 | Code | What happened | What to do |
 |---|---|---|
 | `usage` | The command line is wrong (the CLI only). | Read the command's `--help`. |
-| `refused` | The app, or the command, won't do it as asked. | Read the message; change the request. |
+| `refused` | The app, or the command, won't do it as asked: what the request holds, or what it asks of this presentation, theme or file. | Read the message; change the request. |
 | `unknown-method` | This MarkdownPoint serves no method of that name: it is older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation changed since the revision you sent. | Read it again; `revision` is where it is now. |
-| `validation-failed` | A proposal found errors. | Fix what `validation` lists. |
-| `unknown-target` | No such presentation, slide, step, object, theme, layout or proposal. | Read the state again for the ids. |
+| `validation-failed` | The presentation has errors that stop it: a proposal's, which `validation` lists, or its own, which `presentations.get` lists. | Fix those errors. |
+| `unknown-target` | No such presentation, or no window shows it; no such slide, step, object, theme, layout, proposal or Meshy Action. | Read the state again for the ids. |
 | `conflict` | The presentation's files changed on disk as it saved them: another change got there first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read now. | Start it; after a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect: read the state before you retry a change. |
@@ -75,7 +75,7 @@ when it fails, 2 on a usage error and 3 when MarkdownPoint is unavailable.
 | `busy` | Something that can't run beside it is under way, such as accepting that proposal or another movie export. | Try again once it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
-`MARKDOWNPOINT_CALL_TIMEOUT_MS` sets one deadline, in milliseconds, for every
+`MARKDOWNPOINT_CALL_TIMEOUT` sets one deadline, in seconds, for every
 call the CLI makes; without it, each method keeps its own. The CLI reaches the
 app's endpoint, a socket on a Mac and a named pipe on Windows: `--endpoint`,
 then `MARKDOWNPOINT_ENDPOINT`, then the endpoint the app records in its state
