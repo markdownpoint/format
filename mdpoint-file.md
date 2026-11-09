@@ -324,7 +324,7 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
-A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it asks for a `transparent-background`. `restyle` names a library style applied over a picture. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `generation` names its image generation record:
+A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it asks for a `transparent-background`. `restyle` holds the style applied over a picture: its name, its prompt and whether it keeps a transparent background, copied from the style library when the author chooses a style there. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `generation` names its image generation record:
 
 ```json
 {

@@ -2130,7 +2130,7 @@
                           "items": {
                             "anyOf": [
                               {
-                                "description": "A constraint that moves the slide's camera with an object, as Cinema 4D's Position constraint does. Only the camera takes it. With a spring, the camera follows the way a keyframe's spring moves: it trails a sudden move, catches up, and settles as the object stops. Keys other than id, type, and target may be left out.",
+                                "description": "A constraint that moves the slide's camera with an object, as Cinema 4D's Position constraint does. Only the camera takes it. With a spring, the camera follows the way a keyframe's spring moves: it trails a sudden move, catches up, and settles as the object stops. A spring still moving 10 seconds after what it follows has stopped stands where it got to, short of its target, until a click moves what it follows again. Keys other than id, type, and target may be left out.",
                                 "type": "object",
                                 "properties": {
                                   "id": {
@@ -4029,7 +4029,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1. Delivered by paragraph, a paragraph no cue names stands from the start. A text with a `text-path` stands on one line, with no paragraph to deliver apart: a reader warns of delivery by paragraph there, and the text enters all at once.",
+      "description": "Text that enters piece by piece. A piece is, by `based-on`, a paragraph, with the bullets nested under it; a word, as Unicode's word boundaries split the text in the presentation's `locale`, with the punctuation that touches it, the earlier word taking what touches two, so “Hello, world! (yes) e-mail” is five pieces; or a character, one grapheme cluster, counted as typed, before `case`. A space counts only with `spaces`, and a line break never does. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1. Delivered by paragraph, a paragraph no cue names stands from the start. A text with a `text-path` stands on one line, with no paragraph to deliver apart: a reader warns of delivery by paragraph there, and the text enters all at once.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4168,7 +4168,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. A piece is, by `based-on`, a paragraph, with the bullets nested under it; a word, as Unicode's word boundaries split the text in the presentation's `locale`, with the punctuation that touches it, the earlier word taking what touches two, so “Hello, world! (yes) e-mail” is five pieces; or a character, one grapheme cluster, counted as typed, before `case`. A space counts only with `spaces`, and a line break never does. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -7271,7 +7271,7 @@
                 "keyframes": {
                   "type": "array",
                   "items": {
-                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A color moves in sRGB, a role as the slide's scheme colors it. Its opacity moves straight, and its red, green, and blue each weigh by the opacity at either end, as premultiplied alpha blends them, so a color fading out to a transparent one keeps its own color as it fades. Each frame's color is rounded to 8 bits per channel. A keyframe's `null` clears its property, so its text style or default shows.",
+                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A color moves in sRGB, a role as the slide's scheme colors it. Its opacity moves straight, and its red, green, and blue each weigh by the opacity at either end, as premultiplied alpha blends them, so a color fading out to a transparent one keeps its own color as it fades. Each frame's color is rounded to 8 bits per channel. A gradient moves into one of its own type with as many stops, a radial one into one of the same `shape`, and a linear one with a `line` into another with one: each stop into the stop at its place, and its angle, line, or center into theirs. Any other two paints, a color and a gradient among them, keep the first until the keyframe. A keyframe of path data, a `geometry`, `mask`, or `text-path`, moves each point to the point at its place when the two paths' contours, paired in order, have as many points and are closed alike. Any other two paths still morph, MarkdownPoint pairing their points itself. A keyframe's `null` clears its property, so its text style or default shows.",
                     "type": "object",
                     "properties": {
                       "id": {
