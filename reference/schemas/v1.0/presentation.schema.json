@@ -2500,7 +2500,7 @@
                       "$ref": "#/definitions/objects-line"
                     },
                     {
-                      "$ref": "#/definitions/objects-composition"
+                      "$ref": "#/definitions/objects-instance"
                     },
                     {
                       "$ref": "#/definitions/objects-chart"
@@ -3138,17 +3138,21 @@
             "description": "The color scheme it is drawn in on its own canvas, where it is edited. Left out, it uses the light scheme. Each instance takes the scheme of the slide it stands on."
           },
           "controls": {
-            "type": "object",
-            "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-              "description": "an id, such as \"title-card\""
-            },
-            "additionalProperties": {
-              "description": "One control a composition offers its instances, by an id unique among its controls. A binding, an instance's value and a marker name the control by its id, which a rename keeps. Its default matches its type: a number, true or false, a color, one of its options, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind. A property a choice control sets reads the name its option spells: the words in lowercase, with a hyphen for each run of spaces, so \"Top left\" spells top-left. No two options spell one name, as Left and left would.",
+            "type": "array",
+            "items": {
+              "description": "One control a composition offers its instances, in the order the Inspector shows them. A binding, an instance's value and a marker name the control by its id, which a rename keeps. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind.",
               "anyOf": [
                 {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/stable-id"
+                        }
+                      ],
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                    },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
@@ -3159,6 +3163,7 @@
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "type"
                   ],
@@ -3167,6 +3172,14 @@
                 {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/stable-id"
+                        }
+                      ],
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                    },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
@@ -3189,6 +3202,7 @@
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "type",
                     "default"
@@ -3206,6 +3220,14 @@
                 {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/stable-id"
+                        }
+                      ],
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                    },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
@@ -3224,6 +3246,7 @@
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "type",
                     "default"
@@ -3233,6 +3256,14 @@
                 {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/stable-id"
+                        }
+                      ],
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                    },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
@@ -3247,6 +3278,7 @@
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "type",
                     "default"
@@ -3256,6 +3288,14 @@
                 {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/stable-id"
+                        }
+                      ],
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                    },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
@@ -3271,15 +3311,32 @@
                     "options": {
                       "type": "array",
                       "items": {
-                        "type": "string",
-                        "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f])?(?![\\s\\S])",
-                        "description": "one line with no spaces at the start or end and no comma"
+                        "description": "One option of a choice control, in the order its pop-up shows them.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                            "description": "What the choice's default, an instance's value and a property the choice sets read, unique among its options. A rename keeps it."
+                          },
+                          "name": {
+                            "type": "string",
+                            "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f])?(?![\\s\\S])",
+                            "description": "The words the author sees, on one line with no space at either end and no comma: \",\", \"，\" or \"、\". A rename changes only the name."
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "additionalProperties": false
                       },
                       "minItems": 1,
-                      "description": "A choice control's options, one or more, each words on one line with no space at either end and no comma: \",\", \"，\" or \"、\"."
+                      "description": "A choice control's options, one or more, in the order its pop-up shows them. Its default is one of their ids."
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "type",
                     "default",
@@ -3290,6 +3347,14 @@
                 {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/definitions/stable-id"
+                        }
+                      ],
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                    },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
@@ -3304,6 +3369,7 @@
                     }
                   },
                   "required": [
+                    "id",
                     "name",
                     "type",
                     "default"
@@ -3343,7 +3409,7 @@
                   "$ref": "#/definitions/objects-line"
                 },
                 {
-                  "$ref": "#/definitions/objects-composition"
+                  "$ref": "#/definitions/objects-instance"
                 },
                 {
                   "$ref": "#/definitions/objects-chart"
@@ -5004,91 +5070,6 @@
       ],
       "additionalProperties": false
     },
-    "objects-composition": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "composition"
-        },
-        "name": {
-          "$ref": "#/definitions/one-line"
-        },
-        "parent": {
-          "$ref": "#/definitions/object-id"
-        },
-        "frame": {
-          "$ref": "#/definitions/frame"
-        },
-        "rotation": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "degrees"
-        },
-        "opacity": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "visible": {
-          "type": "boolean"
-        },
-        "link": {
-          "type": "string"
-        },
-        "blur": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1896.296296,
-          "description": "canvas units"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -33554431.984375,
-          "maximum": 33554431.984375,
-          "description": "canvas units"
-        },
-        "ignore-auto-layout": {
-          "type": "boolean"
-        },
-        "anchor-point": {
-          "$ref": "#/definitions/anchor-point"
-        },
-        "repeater": {
-          "$ref": "#/definitions/repeater"
-        },
-        "composition": {
-          "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-          "description": "a composition’s id"
-        },
-        "controls": {
-          "$ref": "#/definitions/composition-control-values"
-        },
-        "time-remap": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
-          "description": "seconds"
-        },
-        "bind": {
-          "$ref": "#/definitions/composition-bindings"
-        }
-      },
-      "required": [
-        "id",
-        "type",
-        "frame",
-        "composition"
-      ],
-      "additionalProperties": false
-    },
     "objects-group": {
       "type": "object",
       "properties": {
@@ -5513,6 +5494,91 @@
         "id",
         "type",
         "frame"
+      ],
+      "additionalProperties": false
+    },
+    "objects-instance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/object-id"
+        },
+        "type": {
+          "const": "instance"
+        },
+        "name": {
+          "$ref": "#/definitions/one-line"
+        },
+        "parent": {
+          "$ref": "#/definitions/object-id"
+        },
+        "frame": {
+          "$ref": "#/definitions/frame"
+        },
+        "rotation": {
+          "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
+          "description": "degrees"
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "link": {
+          "type": "string"
+        },
+        "blur": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1896.296296,
+          "description": "canvas units"
+        },
+        "z": {
+          "type": "number",
+          "minimum": -33554431.984375,
+          "maximum": 33554431.984375,
+          "description": "canvas units"
+        },
+        "ignore-auto-layout": {
+          "type": "boolean"
+        },
+        "anchor-point": {
+          "$ref": "#/definitions/anchor-point"
+        },
+        "repeater": {
+          "$ref": "#/definitions/repeater"
+        },
+        "composition": {
+          "type": "string",
+          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "description": "a composition’s id"
+        },
+        "controls": {
+          "$ref": "#/definitions/composition-control-values"
+        },
+        "time-remap": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4294967296,
+          "description": "seconds"
+        },
+        "bind": {
+          "$ref": "#/definitions/composition-bindings"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "frame",
+        "composition"
       ],
       "additionalProperties": false
     },

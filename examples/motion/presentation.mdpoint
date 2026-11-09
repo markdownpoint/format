@@ -593,7 +593,7 @@
 
         {
           "id": "early",
-          "type": "composition",
+          "type": "instance",
           "composition": "sweep",
           "frame": {
             "x": 120,
@@ -606,7 +606,7 @@
 
         {
           "id": "middle",
-          "type": "composition",
+          "type": "instance",
           "composition": "sweep",
           "frame": {
             "x": 1000,
@@ -619,7 +619,7 @@
 
         {
           "id": "late",
-          "type": "composition",
+          "type": "instance",
           "composition": "sweep",
           "frame": {
             "x": 120,
@@ -632,7 +632,7 @@
 
         {
           "id": "end",
-          "type": "composition",
+          "type": "instance",
           "composition": "sweep",
           "frame": {
             "x": 1000,

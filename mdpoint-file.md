@@ -583,7 +583,7 @@ A composition is a reusable animated scene, kept under `compositions`. Each inst
 ```json
 {
   "id": "early",
-  "type": "composition",
+  "type": "instance",
   "composition": "sweep",
   "frame": {"x": 120, "y": 320, "width": 800, "height": 240},
   "time-remap": 0.5

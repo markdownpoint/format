@@ -1705,7 +1705,6 @@
               "clashing-orient",
               "color-needs-svg",
               "composition-cycle",
-              "composition-in-theme",
               "drift-with-scroll",
               "duplicate-notes",
               "duplicate-object-id",
@@ -1726,6 +1725,7 @@
               "ignored-override",
               "ignored-text-block",
               "image-enlarged",
+              "instance-in-theme",
               "interrupted-layout-move",
               "invalid-3d-parent",
               "invalid-animation",
@@ -1952,11 +1952,11 @@
               "audio",
               "camera",
               "chart",
-              "composition",
               "floor",
               "group",
               "icon",
               "image",
+              "instance",
               "light",
               "line",
               "model",
@@ -4401,7 +4401,7 @@
                     "$ref": "#/definitions/object-id"
                   },
                   "type": {
-                    "const": "composition"
+                    "const": "instance"
                   },
                   "name": {
                     "$ref": "#/definitions/one-line"
@@ -6065,7 +6065,6 @@
               "clashing-orient",
               "color-needs-svg",
               "composition-cycle",
-              "composition-in-theme",
               "drift-with-scroll",
               "duplicate-notes",
               "duplicate-object-id",
@@ -6086,6 +6085,7 @@
               "ignored-override",
               "ignored-text-block",
               "image-enlarged",
+              "instance-in-theme",
               "interrupted-layout-move",
               "invalid-3d-parent",
               "invalid-animation",
