@@ -2669,7 +2669,8 @@
                   "hue",
                   "saturation",
                   "color",
-                  "luminosity"
+                  "luminosity",
+                  "pass-through"
                 ]
               },
               "wipe": {

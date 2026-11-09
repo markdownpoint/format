@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "intent": {
-      "type": "string",
+      "$ref": "#/definitions/AgentNonblankText",
       "description": "What the change does, in a few words the author reads in the app, such as \"Bars rise one by one\"."
     },
     "operations": {
@@ -317,7 +317,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PresentationStepInputSource"
-              }
+              },
+              "minItems": 1
             },
             "type": {
               "const": "insertSteps"
@@ -623,7 +624,8 @@
               "minimum": 0
             },
             "rate": {
-              "type": "number"
+              "type": "number",
+              "exclusiveMinimum": 0
             },
             "slideId": {
               "$ref": "#/definitions/AgentSlideId"
@@ -663,7 +665,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PresentationPasteObjectSource"
-              }
+              },
+              "minItems": 1
             },
             "parent": {
               "anyOf": [
@@ -696,7 +699,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/AgentTweenChangeSource"
-              }
+              },
+              "minItems": 1
             },
             "end": {
               "type": "number",
@@ -750,7 +754,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ObjectPropertyChangeSource"
-              }
+              },
+              "minItems": 1
             },
             "moment": {
               "$ref": "#/definitions/AgentMoment"
@@ -780,7 +785,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PresentationPropertyChangeSource"
-              }
+              },
+              "minItems": 1
             },
             "type": {
               "const": "updatePresentationProperties"
@@ -799,7 +805,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/SlidePropertyChangeSource"
-              }
+              },
+              "minItems": 1
             },
             "slideId": {
               "$ref": "#/definitions/AgentSlideId"
@@ -991,7 +998,8 @@
                   }
                 ]
               },
-              "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No keyframe's edit changes it."
+              "description": "Each named curve's loop whole, its word and the keyframe it loops from; null takes it off. No keyframe's edit changes it.",
+              "minItems": 1
             },
             "min-duration": {
               "type": "number",
@@ -1005,7 +1013,7 @@
                 "string"
               ]
             },
-            "repeat": {
+            "repeat-count": {
               "type": [
                 "integer",
                 "null"
@@ -1049,7 +1057,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/AgentPoint"
-              }
+              },
+              "minItems": 2
             },
             "end": {
               "type": "number",
@@ -1213,7 +1222,9 @@
               "items": {
                 "$ref": "#/definitions/PresentationAnimationParameterSource"
               },
-              "description": "With `moment` and `objectIds`: the parameters whose keyframes go."
+              "description": "With `moment` and `objectIds`: the parameters whose keyframes go.",
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
               "$ref": "#/definitions/AgentSlideId"
@@ -1361,7 +1372,9 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PresentationAnimationParameterSource"
-              }
+              },
+              "minItems": 1,
+              "uniqueItems": true
             },
             "slideId": {
               "$ref": "#/definitions/AgentSlideId"
@@ -1391,7 +1404,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/AgentObjectTransformSource"
-              }
+              },
+              "minItems": 1
             },
             "type": {
               "const": "transformObjects"
@@ -1493,7 +1507,8 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/ObjectPropertySourceKey"
-              }
+              },
+              "minItems": 1
             },
             "slideId": {
               "$ref": "#/definitions/AgentSlideId"
@@ -1668,7 +1683,8 @@
                     "additionalProperties": false
                   }
                 ]
-              }
+              },
+              "minItems": 1
             }
           },
           "required": [
@@ -1735,6 +1751,11 @@
         }
       }
     },
+    "AgentNonblankText": {
+      "type": "string",
+      "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
+      "description": "Text that isn't blank."
+    },
     "AgentObjectTransformSource": {
       "anyOf": [
         {
@@ -1753,7 +1774,19 @@
           "required": [
             "objectId"
           ],
-          "additionalProperties": false
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "drawnStart"
+              ]
+            },
+            {
+              "required": [
+                "drawnEnd"
+              ]
+            }
+          ]
         },
         {
           "type": "object",
@@ -1847,6 +1880,7 @@
     },
     "AgentRevision": {
       "type": "string",
+      "minLength": 1,
       "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
     },
     "AgentSpaceTransform": {
@@ -2829,7 +2863,8 @@
                       "time"
                     ],
                     "additionalProperties": false
-                  }
+                  },
+                  "minItems": 1
                 },
                 "type": {
                   "const": "moveKeyframes"
@@ -3649,7 +3684,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_group.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -3712,7 +3747,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -3816,7 +3851,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -4318,7 +4353,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -4550,7 +4585,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -4644,7 +4679,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -4689,7 +4724,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/PathThroughPoint"
-          }
+          },
+          "minItems": 2
         },
         "repeater": {
           "$ref": "#/definitions/Prop_repeater"
@@ -4897,7 +4933,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -5097,7 +5133,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -5218,7 +5254,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -5392,7 +5428,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -5862,7 +5898,10 @@
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_blend-mode"
+                  "$ref": "#/definitions/Prop_text.blend-mode"
+                },
+                {
+                  "$ref": "#/definitions/Prop_group.blend-mode"
                 },
                 {
                   "type": "null"
@@ -9022,7 +9061,19 @@
           ],
           "additionalProperties": false
         }
-      ]
+      ],
+      "if": {
+        "required": [
+          "clear"
+        ]
+      },
+      "then": {
+        "properties": {
+          "value": {
+            "type": "null"
+          }
+        }
+      }
     },
     "ObjectPropertySourceKey": {
       "type": "string",
@@ -9435,7 +9486,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_group.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -9500,7 +9551,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -9606,7 +9657,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -10134,7 +10185,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -10400,7 +10451,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -10674,7 +10725,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -10876,7 +10927,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -10999,7 +11050,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -11175,7 +11226,7 @@
           "$ref": "#/definitions/Prop_bind"
         },
         "blend-mode": {
-          "$ref": "#/definitions/Prop_blend-mode"
+          "$ref": "#/definitions/Prop_text.blend-mode"
         },
         "blur": {
           "$ref": "#/definitions/Prop_blur"
@@ -12143,8 +12194,8 @@
         },
         "image": {
           "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
-          "description": "a file path in the presentation’s folder"
+          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+          "description": "a supported image"
         },
         "crop": {
           "type": "object",
@@ -12995,8 +13046,8 @@
                     },
                     "image": {
                       "type": "string",
-                      "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
-                      "description": "a file path in the presentation’s folder"
+                      "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                      "description": "a supported image"
                     },
                     "crop": {
                       "type": "object",
@@ -14161,7 +14212,7 @@
         "name": {
           "type": "string"
         },
-        "repeat": {
+        "repeat-count": {
           "type": "integer",
           "description": "Play the step this many times before it completes; omitted plays once.",
           "minimum": 2,
@@ -15070,7 +15121,7 @@
       "maximum": 33554431.984375,
       "description": "canvas units"
     },
-    "Prop_blend-mode": {
+    "Prop_text.blend-mode": {
       "enum": [
         "normal",
         "multiply",
@@ -16694,6 +16745,27 @@
           }
         ]
       }
+    },
+    "Prop_group.blend-mode": {
+      "enum": [
+        "normal",
+        "multiply",
+        "screen",
+        "overlay",
+        "darken",
+        "lighten",
+        "color-dodge",
+        "color-burn",
+        "hard-light",
+        "soft-light",
+        "difference",
+        "exclusion",
+        "hue",
+        "saturation",
+        "color",
+        "luminosity",
+        "pass-through"
+      ]
     },
     "Tilt": {
       "type": "number",

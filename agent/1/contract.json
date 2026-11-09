@@ -1068,6 +1068,11 @@
   ],
   "additionalProperties": false,
   "definitions": {
+    "AgentAbsolutePath": {
+      "type": "string",
+      "pattern": "^(?:\\/|[A-Za-z]:[\\\\/]|\\\\\\\\)[^\\u0000]*(?![\\s\\S])",
+      "description": "An absolute path on this machine."
+    },
     "AgentAcceptResult": {
       "type": "object",
       "properties": {
@@ -1596,7 +1601,8 @@
         },
         "themeRevision": {
           "type": "string",
-          "description": "Needed when the step is a theme edit: `themeRevision` from `themes.get` or `themes.edit`."
+          "description": "Needed when the step is a theme edit: `themeRevision` from `themes.get` or `themes.edit`.",
+          "minLength": 1
         }
       },
       "required": [
@@ -1899,7 +1905,7 @@
               "$ref": "#/definitions/AgentMintedId"
             },
             "output": {
-              "type": "string",
+              "$ref": "#/definitions/AgentJsonPath",
               "description": "Absolute path of a new .json file outside any presentation folder."
             },
             "type": {
@@ -1939,7 +1945,7 @@
           "type": "object",
           "properties": {
             "path": {
-              "type": "string",
+              "$ref": "#/definitions/AgentAbsolutePath",
               "description": "Absolute path of a styles file."
             },
             "type": {
@@ -2235,6 +2241,11 @@
       ],
       "description": "A problem with the presentation as the contract gives it: its English, where it stands and what the app does about it."
     },
+    "AgentJsonPath": {
+      "type": "string",
+      "pattern": "^(?:\\/|[A-Za-z]:[\\\\/]|\\\\\\\\)[^\\u0000]*\\.[jJ][sS][oO][nN](?![\\s\\S])",
+      "description": "An absolute path of a JSON file the app writes."
+    },
     "AgentLetter": {
       "type": "object",
       "properties": {
@@ -2315,17 +2326,23 @@
       "maximum": 3840,
       "description": "The longest edge of a rendered picture in pixels, the slide's aspect ratio kept, up to capabilities' limits.longestEdge."
     },
+    "AgentMediaData": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9+/]*={0,2}(?![\\s\\S])",
+      "description": "A file's bytes in base64."
+    },
     "AgentMediaImportRequest": {
       "anyOf": [
         {
           "type": "object",
           "properties": {
             "data": {
-              "type": "string",
+              "$ref": "#/definitions/AgentMediaData",
               "description": "The file's bytes in base64, with name."
             },
             "name": {
-              "type": "string",
+              "$ref": "#/definitions/AgentMediaName",
               "description": "File name with the media's extension, such as photo.png, with data in place of path."
             }
           },
@@ -2339,7 +2356,7 @@
           "type": "object",
           "properties": {
             "path": {
-              "type": "string",
+              "$ref": "#/definitions/AgentAbsolutePath",
               "description": "Absolute path of the media file on this machine; or name and data in its place."
             }
           },
@@ -2459,6 +2476,11 @@
       ],
       "description": "The file's path in the presentation, as an object names it, and the object type it makes; `warnings` says what the import kept without, such as a movie's poster."
     },
+    "AgentMediaName": {
+      "type": "string",
+      "pattern": "^[^/\\\\\\u0000]+\\.[A-Za-z0-9]+(?![\\s\\S])",
+      "description": "A media file's name, its extension naming its kind."
+    },
     "AgentMeshyActionId": {
       "type": "integer",
       "minimum": 0,
@@ -2570,7 +2592,7 @@
       "properties": {
         "built-from": {
           "type": "string",
-          "description": "With textId: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these."
+          "description": "With textId: the value the text's model carries as its `built-from`, in `model: { file, \"built-from\" }`, to show while its words are these: the fingerprint of their record, by the rule the format reference gives."
         },
         "changes": {
           "type": "array",
@@ -2659,7 +2681,8 @@
         },
         "pictureId": {
           "type": "string",
-          "description": "The pictureId models_picture returned."
+          "description": "The pictureId models_picture returned.",
+          "minLength": 1
         }
       },
       "required": [
@@ -2804,7 +2827,7 @@
           "description": "A person or creature to rig: one figure in a T-pose."
         },
         "prompt": {
-          "type": "string",
+          "$ref": "#/definitions/AgentNonblankText",
           "description": "What the picture shows, worded as the \"Make models with Meshy\" section of the MarkdownPoint skill says. Settings > Coding agents installs the skill."
         }
       },
@@ -2898,7 +2921,7 @@
           "description": "The model's file name without extension, such as bird."
         },
         "source": {
-          "type": "string",
+          "$ref": "#/definitions/AgentNonblankText",
           "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
         }
       },
@@ -2960,6 +2983,11 @@
         "not": {}
       },
       "description": "What a method that takes nothing takes: no params, or an empty record."
+    },
+    "AgentNonblankText": {
+      "type": "string",
+      "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
+      "description": "Text that isn't blank."
     },
     "AgentObjectId": {
       "type": "string",
@@ -3042,6 +3070,11 @@
         "updateSlideProperties",
         "updateStep"
       ]
+    },
+    "AgentPngPath": {
+      "type": "string",
+      "pattern": "^(?:\\/|[A-Za-z]:[\\\\/]|\\\\\\\\)[^\\u0000]*\\.[pP][nN][gG](?![\\s\\S])",
+      "description": "An absolute path of a PNG file the app writes."
     },
     "AgentPresentAction": {
       "type": "string",
@@ -3184,7 +3217,7 @@
       "type": "object",
       "properties": {
         "presentation": {
-          "type": "string",
+          "$ref": "#/definitions/AgentAbsolutePath",
           "description": "Absolute folder of a presentation a window shows."
         }
       },
@@ -3210,11 +3243,11 @@
       "type": "object",
       "properties": {
         "presentation": {
-          "type": "string",
+          "$ref": "#/definitions/AgentAbsolutePath",
           "description": "Absolute folder to create; its parent must exist and the folder must not."
         },
         "theme": {
-          "type": "string",
+          "$ref": "#/definitions/AgentNonblankText",
           "description": "A bundled theme's name or key; the default theme when omitted."
         }
       },
@@ -3258,7 +3291,7 @@
       "type": "object",
       "properties": {
         "presentation": {
-          "type": "string",
+          "$ref": "#/definitions/AgentAbsolutePath",
           "description": "An existing presentation, by its absolute folder or a file in it such as its presentation.mdpoint."
         }
       },
@@ -3816,8 +3849,8 @@
             },
             "image": {
               "type": "string",
-              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
-              "description": "a file path in the presentation’s folder"
+              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+              "description": "a supported image"
             },
             "crop": {
               "type": "object",
@@ -4484,6 +4517,7 @@
     },
     "AgentRevision": {
       "type": "string",
+      "minLength": 1,
       "description": "An opaque revision from presentations.get, slides.get or an accept, naming the presentation as you last saw it; the one value that guards a change."
     },
     "AgentSampleRate": {
@@ -7001,7 +7035,8 @@
                 "hue",
                 "saturation",
                 "color",
-                "luminosity"
+                "luminosity",
+                "pass-through"
               ]
             },
             "wipe": {
@@ -8140,7 +8175,7 @@
           "description": "Omitted is authored Base."
         },
         "output": {
-          "type": "string",
+          "$ref": "#/definitions/AgentPngPath",
           "description": "Absolute path of a new .png file outside any presentation folder, which the app writes instead of returning the image inline; the result then names it in files and carries no image."
         },
         "slideId": {
@@ -8811,7 +8846,7 @@
           "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
         },
         "output": {
-          "type": "string",
+          "$ref": "#/definitions/AgentAbsolutePath",
           "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
         },
         "slideId": {
@@ -9005,7 +9040,7 @@
           "description": "The slide the text is on."
         },
         "source": {
-          "type": "string",
+          "$ref": "#/definitions/AgentNonblankText",
           "description": "The build: an ES module with a default export build(kit, data). No file keeps it."
         },
         "textId": {
@@ -9202,15 +9237,15 @@
           "type": "object",
           "properties": {
             "from": {
-              "type": "string",
+              "$ref": "#/definitions/AgentNonblankText",
               "description": "The theme key or name the layout is in."
             },
             "layout": {
-              "type": "string",
+              "$ref": "#/definitions/AgentNonblankText",
               "description": "The layout's key in from, as themes.list gives it."
             },
             "to": {
-              "type": "string",
+              "$ref": "#/definitions/AgentNonblankText",
               "description": "The theme key or name it goes to."
             },
             "type": {
@@ -9233,7 +9268,7 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "$ref": "#/definitions/AgentNonblankText"
             },
             "slideId": {
               "$ref": "#/definitions/AgentSlideId",
@@ -9255,10 +9290,10 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "$ref": "#/definitions/AgentNonblankText"
             },
             "theme": {
-              "type": "string",
+              "$ref": "#/definitions/AgentNonblankText",
               "description": "A theme's key or name from themes.list."
             },
             "type": {
@@ -9277,7 +9312,7 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string",
+              "$ref": "#/definitions/AgentNonblankText",
               "description": "The theme's name for create and rename; the layout's name for saveSlide."
             },
             "type": {
@@ -9295,11 +9330,11 @@
           "type": "object",
           "properties": {
             "output": {
-              "type": "string",
+              "$ref": "#/definitions/AgentAbsolutePath",
               "description": "Absolute path of a new .mdptheme file outside any presentation folder; the result names it in files."
             },
             "theme": {
-              "type": "string"
+              "$ref": "#/definitions/AgentNonblankText"
             },
             "type": {
               "type": "string",
@@ -9317,7 +9352,7 @@
           "type": "object",
           "properties": {
             "path": {
-              "type": "string",
+              "$ref": "#/definitions/AgentAbsolutePath",
               "description": "Absolute path of a .mdptheme file."
             },
             "type": {
@@ -9335,7 +9370,7 @@
           "type": "object",
           "properties": {
             "theme": {
-              "type": "string"
+              "$ref": "#/definitions/AgentNonblankText"
             },
             "type": {
               "type": "string",
@@ -9523,7 +9558,7 @@
           "description": "Required when the theme's slide size differs: fit keeps everything on the slide, fill covers it."
         },
         "theme": {
-          "type": "string",
+          "$ref": "#/definitions/AgentNonblankText",
           "description": "A theme's key or name from `themes.list`."
         }
       },
@@ -9596,7 +9631,7 @@
           "description": "Maximum frame edge in pixels, preserving the slide's aspect ratio. Defaults to 512."
         },
         "output": {
-          "type": "string",
+          "$ref": "#/definitions/AgentAbsolutePath",
           "description": "A new or empty folder outside any presentation folder, which the frames are written into as frame-0001.png onward beside sheet.png; the result names them in files. Omitted, only the sheet returns."
         },
         "slideId": {
@@ -12311,7 +12346,7 @@
         "name": {
           "type": "string"
         },
-        "repeat": {
+        "repeat-count": {
           "type": "number",
           "description": "Play the step this many times before it completes; omitted plays once."
         },
@@ -13633,7 +13668,7 @@
         },
         "params": {},
         "presentation": {
-          "type": "string",
+          "$ref": "#/definitions/AgentAbsolutePath",
           "description": "The presentation's absolute folder; omitted means the focused presentation, or the only open one when no window is focused."
         }
       },

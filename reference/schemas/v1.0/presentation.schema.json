@@ -539,6 +539,27 @@
                             "color",
                             "luminosity"
                           ]
+                        },
+                        {
+                          "enum": [
+                            "normal",
+                            "multiply",
+                            "screen",
+                            "overlay",
+                            "darken",
+                            "lighten",
+                            "color-dodge",
+                            "color-burn",
+                            "hard-light",
+                            "soft-light",
+                            "difference",
+                            "exclusion",
+                            "hue",
+                            "saturation",
+                            "color",
+                            "luminosity",
+                            "pass-through"
+                          ]
                         }
                       ]
                     },
@@ -3627,7 +3648,7 @@
         },
         "image": {
           "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*(?![\\s\\S])",
+          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
           "description": "An image over the fill, as a presentation's file path."
         },
         "crop": {
@@ -4735,7 +4756,7 @@
             "built-from": {
               "type": "string",
               "pattern": "^text-model-[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
-              "description": "The fingerprint of what the GLB was built from, compared whole: `text-model-`, its rule's number, `:sha256:`, and 64 lowercase hex digits. A rule this reader doesn't know reads as out of sync."
+              "description": "The fingerprint of what the GLB was built from, compared whole, by the rule the introduction gives. A rule this reader doesn't know reads as out of sync."
             }
           },
           "required": [
@@ -5129,7 +5150,8 @@
             "hue",
             "saturation",
             "color",
-            "luminosity"
+            "luminosity",
+            "pass-through"
           ]
         },
         "wipe": {
@@ -7351,7 +7373,7 @@
             "maximum": 4294967296,
             "description": "The least time the step lasts, in seconds. A later keyframe, cue, or entering paragraph extends it, and left out or 0, the step lasts as long as what it holds."
           },
-          "repeat": {
+          "repeat-count": {
             "type": "integer",
             "minimum": 2,
             "maximum": 64,
