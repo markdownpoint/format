@@ -3552,7 +3552,7 @@
   "additionalProperties": false,
   "definitions": {
     "anchor-point": {
-      "description": "The point an object turns and scales about when it is animated or given an initial value, and the point a group tilts about.",
+      "description": "The point an object turns and scales about when it is animated or has an initial value. A group also tilts about it.",
       "type": "object",
       "properties": {
         "x": {
@@ -3567,7 +3567,7 @@
       "additionalProperties": false
     },
     "auto-layout": {
-      "description": "How a group places its members one after another. Keys left out default to direction vertical, gap 0, align start, and reference point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
+      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
       "type": "object",
       "properties": {
         "direction": {
@@ -3597,7 +3597,7 @@
             "center",
             "end"
           ],
-          "description": "Which point of the members' box along the layout's direction stays at the position as they grow or shrink: its start, its middle, or its end."
+          "description": "Which point of the members' box stays at the position as the members grow or shrink: its start, middle, or end along the layout's direction."
         },
         "position": {
           "type": "object",
@@ -3620,7 +3620,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "The slide point, as {x, y}, where the members' box stands: its top-left corner in the group's turn, or its middle or end along the layout's direction by the reference point."
+          "description": "Where the members' box is on the slide, as {x, y}. Depending on `reference-point`, it is the box's top-left corner in the group's rotation, or its middle or end along the layout's direction."
         }
       },
       "required": [
@@ -3953,7 +3953,7 @@
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets, and a background covers the slide. Above 1 it zooms in. Below 1 it zooms out."
+          "description": "How far it is zoomed. At 1, an image fits its frame as its `scale-mode` sets, and a background covers the slide. Above 1, it is zoomed in. Below 1, it is zoomed out."
         },
         "focal-point": {
           "type": "object",
@@ -3972,7 +3972,7 @@
             }
           },
           "additionalProperties": false,
-          "description": "The point it keeps in view, {x, y}, each a fraction of the image across and down."
+          "description": "The point that stays in view, as {x, y}. Each is a fraction of the image, across and down."
         }
       },
       "additionalProperties": false
@@ -3983,7 +3983,7 @@
           "const": "none"
         },
         {
-          "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
+          "description": "A drop shadow. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
@@ -3996,7 +3996,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
+              "description": "The fraction of the size that is solid. The rest of the size is blurred. At 1, the shadow is solid all the way out. Photoshop's Spread works the same way."
             },
             "offset": {
               "type": "object",
@@ -4019,7 +4019,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls, as {x, y} across and down in the object's own axes, turning and scaling with it and its groups but not mirrored by a flip. A background's is in the slide's axes."
+              "description": "How far it falls, as {x, y} across and down in the object's own axes. It turns and scales with the object and its groups. A flip doesn't mirror it. A background's offset is in the slide's axes."
             },
             "color": {
               "allOf": [
@@ -4027,7 +4027,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. Only `opacity` sets how opaque the shadow is."
             },
             "opacity": {
               "type": "number",
@@ -4047,7 +4047,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece, a piece a paragraph, a word, or a character, as `based-on` picks. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4060,13 +4060,13 @@
         },
         "delivery": {
           "const": "by-paragraph",
-          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It takes based-on `paragraph`, no seed, and order, spread, pause, and progress only at their defaults."
+          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
         },
         "duration": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 4294967296,
-          "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph shows as its cue is reached. A step that holds only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
           "description": "How each piece looks as it starts to enter: opacity, x and y, scale, rotation, and blur.",
@@ -4094,7 +4094,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 511,
-              "description": "Its scale, where 1 is its own size."
+              "description": "Its scale. At 1, it is its own size."
             },
             "rotation": {
               "type": "number",
@@ -4106,7 +4106,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred it is, its radius in ems. On the slide, it blurs no wider than the slide's widest blur, as `blur` says."
+              "description": "How blurred it is, by its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
           "additionalProperties": false
@@ -4120,7 +4120,7 @@
           "description": "How each piece moves into place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
-          "description": "The fade of each piece, as `{ length }`, a share of its travel. It follows the piece's interpolation.",
+          "description": "The fade of each piece, as `{ length }`: the fraction of the piece's entrance the fade lasts. The fade follows the piece's interpolation.",
           "type": "object",
           "properties": {
             "length": {
@@ -4137,7 +4137,7 @@
         },
         "spaces": {
           "type": "boolean",
-          "description": "Whether each space counts as a piece and takes a turn. Only based-on `character` takes it."
+          "description": "Whether each space counts as a piece and gets a turn. It applies only with based-on `character`."
         },
         "order": {
           "enum": [
@@ -4147,7 +4147,7 @@
             "ends-to-center",
             "random"
           ],
-          "description": "The order the pieces enter in."
+          "description": "The order the pieces enter in. With a seed, it must be `random`."
         },
         "seed": {
           "type": "integer",
@@ -4158,12 +4158,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many move at once."
+          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "How many intervals the text holds between turns, once the pieces before have arrived."
+          "description": "How many intervals the text waits between turns, after the pieces before have arrived."
         },
         "progress": {
           "type": "number",
@@ -4186,7 +4186,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece, its pieces counted and timed as an entrance's. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4223,7 +4223,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 511,
-              "description": "Its scale, where 1 is its own size."
+              "description": "Its scale. At 1, it is its own size."
             },
             "rotation": {
               "type": "number",
@@ -4235,7 +4235,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred it is, its radius in ems. On the slide, it blurs no wider than the slide's widest blur, as `blur` says."
+              "description": "How blurred it is, by its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
           "additionalProperties": false
@@ -4249,7 +4249,7 @@
           "description": "How each piece moves out of place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
-          "description": "The fade of each piece, as `{ length }`, a share of its travel. It follows the piece's interpolation.",
+          "description": "The fade of each piece, as `{ length }`: the fraction of the piece's exit the fade lasts. The fade follows the piece's interpolation.",
           "type": "object",
           "properties": {
             "length": {
@@ -4266,7 +4266,7 @@
         },
         "spaces": {
           "type": "boolean",
-          "description": "Whether each space counts as a piece and takes a turn. Only based-on `character` takes it."
+          "description": "Whether each space counts as a piece and gets a turn. It applies only with based-on `character`."
         },
         "order": {
           "enum": [
@@ -4276,7 +4276,7 @@
             "ends-to-center",
             "random"
           ],
-          "description": "The order the pieces exit in."
+          "description": "The order the pieces exit in. With a seed, it must be `random`."
         },
         "seed": {
           "type": "integer",
@@ -4287,12 +4287,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many move at once."
+          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "How many intervals the text holds between turns, once the pieces before have left."
+          "description": "How many intervals the text waits between turns, after the pieces before have left."
         },
         "progress": {
           "type": "number",
@@ -4359,20 +4359,20 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y, and a text box's leaves out each side that grows to fit its text.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the left edge is, across. On a text box that grows to fit its text, it's the point the text grows from."
+          "description": "How far across the left edge is. On a text box that grows to fit its text, it is the x of the point the text grows from."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
+          "description": "How far down the top edge is. On a text box that grows to fit its text, it is the y of the point the text grows from."
         },
         "width": {
           "type": "number",
@@ -4396,7 +4396,7 @@
       "additionalProperties": false
     },
     "generation": {
-      "description": "How a generated or restyled image was made: the image shown is the one its image generation record made.",
+      "description": "How a generated or restyled image was made. The image shown is the one its image generation record made.",
       "type": "object",
       "properties": {
         "id": {
@@ -4405,19 +4405,19 @@
               "$ref": "#/definitions/uuid"
             }
           ],
-          "description": "The id of the image generation record that made the image shown, the lowercase UUID its file `generated/<id>.json` is named by."
+          "description": "The id of the image generation record that made the image shown. It is the lowercase UUID in the record's file name, `generated/<id>.json`."
         },
         "original": {
-          "description": "The image a restyle was applied to, there only when the record is a restyle's.",
+          "description": "The image a restyle was applied to. It is present only when the record is for a restyle.",
           "type": "object",
           "properties": {
             "file": {
               "type": "string",
               "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-              "description": "Its file path, as a presentation's file path, ending in an image's extension."
+              "description": "Its file, as a presentation's file path. The path ends in an image's extension."
             },
             "generation": {
-              "description": "How it was made, when it was generated. Left out, it wasn't.",
+              "description": "How it was made, if it was generated. Without it, the image wasn't generated.",
               "type": "object",
               "properties": {
                 "id": {
@@ -4426,7 +4426,7 @@
                       "$ref": "#/definitions/uuid"
                     }
                   ],
-                  "description": "The id of the image generation record that made it, the lowercase UUID its file `generated/<id>.json` is named by."
+                  "description": "The id of the image generation record that made it. It is the lowercase UUID in the record's file name, `generated/<id>.json`."
                 }
               },
               "required": [
@@ -4460,20 +4460,20 @@
               "description": "A linear gradient's direction, in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line lies, in the object's frame; the angle turns it about its middle. Left out, the line crosses the box the gradient fills through its center, as CSS's gradient line does.",
+              "description": "Where a linear gradient's line is, in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. CSS places it the same way.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "Its middle's x, as a fraction of the frame's width."
+                  "description": "The x of its middle, as a fraction of the frame's width."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -511,
                   "maximum": 511,
-                  "description": "Its middle's y, as a fraction of the frame's height."
+                  "description": "The y of its middle, as a fraction of the frame's height."
                 },
                 "length": {
                   "type": "number",
@@ -4495,7 +4495,7 @@
                   "$ref": "#/definitions/stops"
                 }
               ],
-              "description": "The gradient's colors, two or more, each with its position."
+              "description": "The gradient's two or more colors, each with its position."
             }
           },
           "required": [
@@ -4512,20 +4512,20 @@
               "const": "radial"
             },
             "center": {
-              "description": "Where a radial gradient centers, as {x, y}.",
+              "description": "The center of a radial gradient, as {x, y}.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its x, as a fraction of the box's width: 0 is the left edge, 1 the right."
+                  "description": "Its x, as a fraction of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its y, as a fraction of the box's height: 0 is the top edge, 1 the bottom."
+                  "description": "Its y, as a fraction of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 }
               },
               "required": [
@@ -4536,7 +4536,7 @@
             },
             "shape": {
               "const": "circle",
-              "description": "`circle` keeps a radial gradient round in any box. Left out, the gradient reaches the box's corners."
+              "description": "With `circle`, a radial gradient is round in any box. Without it, the gradient reaches the box's corners."
             },
             "stops": {
               "allOf": [
@@ -4544,7 +4544,7 @@
                   "$ref": "#/definitions/stops"
                 }
               ],
-              "description": "The gradient's colors, two or more, each with its position."
+              "description": "The gradient's two or more colors, each with its position."
             }
           },
           "required": [
@@ -4697,7 +4697,7 @@
             "bottom",
             "left"
           ],
-          "description": "Which side of the object it attaches to, or the nearest."
+          "description": "Which side of the object it attaches to. With `auto`, it attaches to the nearest side."
         },
         "last-position": {
           "type": "object",
@@ -4720,7 +4720,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Where the end was when last drawn, as {x, y}. It's used when the object it attaches to isn't on the slide."
+          "description": "Where the end was when it was last drawn, as {x, y}. It is used when the object it attaches to isn't on the slide."
         }
       },
       "required": [
@@ -6925,14 +6925,14 @@
       "description": "text without NUL characters"
     },
     "repeater": {
-      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center.",
+      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
       "type": "object",
       "properties": {
         "copies": {
           "type": "integer",
           "minimum": 2,
           "maximum": 513,
-          "description": "How many there are, the original included."
+          "description": "How many copies there are. The original counts as one."
         },
         "position": {
           "type": "object",
@@ -6957,13 +6957,13 @@
           "type": "number",
           "minimum": -16777216,
           "maximum": 16777216,
-          "description": "How far each copy turns from the one before, clockwise."
+          "description": "How far each copy is turned clockwise from the one before."
         },
         "scale": {
           "type": "number",
           "minimum": 0.01,
           "maximum": 33554431,
-          "description": "How much each copy scales from the one before, where 1 keeps its size."
+          "description": "How much each copy is scaled from the one before. At 1, each copy is the same size as the one before."
         },
         "anchor-point": {
           "type": "object",
@@ -6978,7 +6978,7 @@
             }
           },
           "additionalProperties": false,
-          "description": "The point the copies turn and scale about, {x, y}, each a fraction of the frame across and down."
+          "description": "The point the copies turn and scale about, as {x, y}. Each is a fraction of the frame, across and down."
         },
         "stagger": {
           "type": "number",
@@ -6990,7 +6990,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "The last copy's opacity, as a fraction of the object's own. The copies between fade toward it."
+          "description": "The last copy's opacity, as a fraction of the object's opacity. The copies between fade toward it."
         },
         "position-randomness": {
           "type": "number",
@@ -7029,7 +7029,7 @@
       "additionalProperties": false
     },
     "restyle": {
-      "description": "A style applied over an image or a background's image, as a library style holds one.",
+      "description": "A style applied over an image or a background's image. It has every key of a library style except `reference-prompt`.",
       "type": "object",
       "properties": {
         "name": {
@@ -7822,7 +7822,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 1,
-            "description": "Where the color sits along the gradient, 0 to 1. Left out, the ends sit at 0 and 1, and the stops between spread evenly. A stop never stands before the one ahead of it."
+            "description": "Where the color is along the gradient, from 0 to 1. Without it, the first stop is at 0, the last is at 1, and the stops between are spread evenly. A stop is never before the previous one."
           }
         },
         "required": [
@@ -7838,20 +7838,20 @@
       "description": "a supported image"
     },
     "table-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y, and a text box's leaves out each side that grows to fit its text.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the left edge is, across. On a text box that grows to fit its text, it's the point the text grows from."
+          "description": "How far across the left edge is. On a text box that grows to fit its text, it is the x of the point the text grows from."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
+          "description": "How far down the top edge is. On a text box that grows to fit its text, it is the y of the point the text grows from."
         }
       },
       "required": [
@@ -7922,20 +7922,20 @@
           "const": "none"
         },
         {
-          "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
+          "description": "A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, the letters grow solid by size × spread. Then they are blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
               "type": "number",
               "minimum": 0,
               "maximum": 33554431,
-              "description": "How far past the letters the shadow reaches, as Photoshop's Size."
+              "description": "How far past the letters the shadow reaches. Photoshop's Size works the same way."
             },
             "spread": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
+              "description": "The fraction of the size that is solid. The rest of the size is blurred. At 1, the shadow is solid all the way out. Photoshop's Spread works the same way."
             },
             "offset": {
               "type": "object",
@@ -7958,7 +7958,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the letters, as {x, y} across and down in the text's own axes, turning and scaling with it and its groups."
+              "description": "How far the shadow falls from the letters, as {x, y} across and down in the text's own axes. It turns and scales with the text and its groups."
             },
             "color": {
               "allOf": [
@@ -7966,7 +7966,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. Only `opacity` sets how opaque the shadow is."
             },
             "opacity": {
               "type": "number",
@@ -7986,20 +7986,20 @@
       ]
     },
     "text-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y, and a text box's leaves out each side that grows to fit its text.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the left edge is, across. On a text box that grows to fit its text, it's the point the text grows from."
+          "description": "How far across the left edge is. On a text box that grows to fit its text, it is the x of the point the text grows from."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "Where the top edge is, down. On a text box that grows to fit its text, it's the point the text grows from."
+          "description": "How far down the top edge is. On a text box that grows to fit its text, it is the y of the point the text grows from."
         },
         "width": {
           "type": "number",
@@ -8084,12 +8084,12 @@
         "start": {
           "type": "number",
           "minimum": 0,
-          "description": "Where it starts, in seconds into the file or the Action. Left out, it's 0."
+          "description": "Where it starts, in seconds into the file or the Action. The default is 0."
         },
         "end": {
           "type": "number",
           "minimum": 0,
-          "description": "Where it ends, in seconds into the file or the Action. It must come after start. Left out, it plays to the end."
+          "description": "Where it ends, in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
         }
       },
       "additionalProperties": false
@@ -8555,7 +8555,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How much of the object shows: 0 none, 1 all."
+          "description": "How much of the object shows. At 0, none of it shows. At 1, all of it shows."
         },
         "angle": {
           "type": "number",
