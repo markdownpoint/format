@@ -115,15 +115,18 @@ Where an issue stands depends on its `source`:
 - `folder`: the two files disagree, or the folder can't be read. `path`
   selects the record in the `.mdpoint` file, as for `json`, and `location`
   names the line of the `.md` file, each when the issue has one.
-- `theme`: `slideId` when only the slides that name the layout or scheme are
-  refused.
+- `theme`: when only the slides that name a layout or scheme are refused,
+  `slideId` names the slide and `path` its `layout` or `scheme` in the
+  `.mdpoint` file, as for `json`, with `objectId` when the issue is about one of
+  the layout's objects. An issue about the whole theme, such as a theme the
+  presentation names that isn't there, names none of them.
 - `file`: `path` is the file's path in the folder `fileScope` names:
   `presentation`, the presentation's; `theme`, its theme's; `cache`, where
   MarkdownPoint keeps the models it builds from a text's letters on this
   computer; or `bundled`, the fonts MarkdownPoint ships. `slideId`, `objectId`
-  and `property` name each use of it.
+  and `property` name each use of it. An issue about a theme's own file, its
+  `master.json` or a layout's file, names none of them.
 - `slide`: `slideId`, and `objectId` or `objectIds`.
-- `master`: `path`, the theme file, when it has one.
 - `render`, what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue names neither.
 
