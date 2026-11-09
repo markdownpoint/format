@@ -8045,9 +8045,6 @@
                   }
                 ]
               }
-            },
-            "placeholder": {
-              "type": "boolean"
             }
           },
           "required": [
@@ -8083,9 +8080,6 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1e+22
-            },
-            "placeholder": {
-              "type": "boolean"
             }
           },
           "required": [
@@ -10526,13 +10520,13 @@
         "missing-key",
         "missing-line-end",
         "missing-marker-line-break",
-        "missing-master",
         "missing-media",
         "missing-poster",
         "missing-slide",
         "missing-slide-marker",
         "missing-text",
         "missing-text-block",
+        "missing-theme-master",
         "newer-format",
         "newer-markdown-format",
         "newer-minor-kept",

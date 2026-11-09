@@ -868,9 +868,6 @@
                   "dashed",
                   "dotted"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -1167,9 +1164,6 @@
                   "horizontal",
                   "all"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -1445,9 +1439,6 @@
                   "dashed",
                   "dotted"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -1681,9 +1672,6 @@
                   "dashed",
                   "dotted"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2013,9 +2001,6 @@
                   "dashed",
                   "dotted"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2153,9 +2138,6 @@
                   "dashed",
                   "dotted"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2279,9 +2261,6 @@
                 "minimum": 0,
                 "maximum": 33554431.984375,
                 "description": "icon units"
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2421,9 +2400,6 @@
                   "none",
                   "arrow"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2596,9 +2572,6 @@
               },
               "bind": {
                 "$ref": "#/definitions/composition-bindings"
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2764,9 +2737,6 @@
               },
               "bind": {
                 "$ref": "#/definitions/composition-bindings"
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2868,9 +2838,6 @@
               },
               "media-trim": {
                 "$ref": "#/definitions/time-trim"
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -2934,9 +2901,6 @@
                   "dashed",
                   "dotted"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -3184,9 +3148,6 @@
                     }
                   ]
                 }
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -3420,9 +3381,6 @@
                     }
                   ]
                 }
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -3497,9 +3455,6 @@
                   "intensity": {
                     "type": "number",
                     "minimum": 0
-                  },
-                  "placeholder": {
-                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -3591,9 +3546,6 @@
                     "minimum": 0,
                     "maximum": 1000000000000000000,
                     "description": "canvas units"
-                  },
-                  "placeholder": {
-                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -3671,9 +3623,6 @@
                     "minimum": 0,
                     "maximum": 1000000000000000000,
                     "description": "canvas units"
-                  },
-                  "placeholder": {
-                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -3766,9 +3715,6 @@
                     "minimum": 1,
                     "maximum": 1000000000000000000,
                     "description": "canvas units"
-                  },
-                  "placeholder": {
-                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -3858,9 +3804,6 @@
                   "y",
                   "z"
                 ]
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -3921,9 +3864,6 @@
               },
               "shadow-color": {
                 "$ref": "#/definitions/color"
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
@@ -3951,9 +3891,6 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1e+22
-              },
-              "placeholder": {
-                "type": "boolean"
               }
             },
             "required": [
