@@ -3444,25 +3444,12 @@
             "description": "What it says. It isn't blank and has no control characters except line breaks and tabs."
           },
           "position": {
-            "type": "object",
-            "properties": {
-              "x": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1
-              },
-              "y": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1
+            "allOf": [
+              {
+                "$ref": "#/definitions/slide-point"
               }
-            },
-            "required": [
-              "x",
-              "y"
             ],
-            "additionalProperties": false,
-            "description": "Where it is pinned, as {x, y} fractions of the slide or composition."
+            "description": "Where it is pinned, as {x, y} in canvas units on the slide or composition. A change of slide size moves it with the slide's objects."
           },
           "resolved": {
             "type": "boolean",
