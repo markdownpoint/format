@@ -109,8 +109,8 @@ refuses the whole presentation. The fields that locate an issue depend on its
   keyframe is named by its id, as in
   `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`,
   where the curve's name is one key. A composition is under `compositions`.
-  `slideId` names the slide or composition that contains the value, and
-  `objectId` names the object.
+  `slideId` names the slide that contains the value, `compositionId` names the
+  composition, and `objectId` names the object.
 - `markdown`: `location` names the file and the line, counted from 1, with the
   column when it's known. `path` names the frontmatter key or the section the
   issue is about, such as `frontmatter.footer` or `sections.intro`.
