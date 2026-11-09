@@ -623,6 +623,9 @@
     "AgentThemeOperation": {
       "anyOf": [
         {
+          "$ref": "#/definitions/AgentThemeObjectOperation"
+        },
+        {
           "$ref": "#/definitions/LayoutSettingOperation"
         },
         {
@@ -662,22 +665,6 @@
           },
           "required": [
             "keys",
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "operation": {
-              "$ref": "#/definitions/AgentThemeObjectOperation"
-            },
-            "type": {
-              "const": "objects"
-            }
-          },
-          "required": [
-            "operation",
             "type"
           ],
           "additionalProperties": false
@@ -817,7 +804,7 @@
             {
               "type": "object",
               "properties": {
-                "keys": {
+                "layout-order": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -828,7 +815,7 @@
                 }
               },
               "required": [
-                "keys",
+                "layout-order",
                 "type"
               ],
               "additionalProperties": false
@@ -885,7 +872,7 @@
               "additionalProperties": false
             }
           ],
-          "description": "The master's settings the file names otherwise than the panes: a grid and guides as the file writes them, and the default step duration."
+          "description": "The master's settings the file names otherwise than the panes: the layout order, a grid and guides as the file writes them, and the default step duration."
         }
       ],
       "description": "A master or layout edit, as the canvas, the Master pane and the Layout pane make it, plus making and deleting layouts. A theme's name is its master's, so the master's own `setName` is not among them."
@@ -9672,16 +9659,17 @@
           "type": "string"
         },
         "type": {
-          "const": "setFile"
+          "const": "setSchemeFile"
         }
       },
       "required": [
         "file",
         "objectId",
+        "scheme",
         "type"
       ],
       "additionalProperties": false,
-      "description": "A theme picture's file: without `scheme` one file every scheme shows; with it, that scheme's alone."
+      "description": "A theme picture's file in one scheme; `replaceMedia` sets the file every scheme shows."
     },
     "TextFrameSides": {
       "description": "The sides of a text's frame its words give it, by its auto-size, column count and text path: the frame holds no length of those, and every other.",

@@ -12412,12 +12412,12 @@
                 },
                 "description": "Its own pictures by object id: one file, or one per scheme."
               },
-              "key": {
-                "type": "string"
-              },
               "name": {
-                "type": "string",
-                "description": "The name the chooser shows: the file's, or one spelled from the key."
+                "type": [
+                  "null",
+                  "string"
+                ],
+                "description": "The name the file gives it; null where its key spells it."
               },
               "objects": {
                 "type": "array",
@@ -12445,7 +12445,6 @@
             },
             "required": [
               "files",
-              "key",
               "name",
               "objects",
               "placeholders",
@@ -12453,7 +12452,7 @@
               "type"
             ],
             "additionalProperties": false,
-            "description": "A layout as its pane and inspector show it."
+            "description": "A layout's authored values, as its pane and inspector edit them, beside the key that names it."
           },
           "EditableLayoutPlaceholder": {
             "type": "object",
@@ -12830,7 +12829,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. An objects operation edits the document’s objects with a slide operation, such as insertObject, transformObjects or setText, naming no slideId, since layout names the document; setPlaceholder makes a layout’s text or image a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
+      "description": "Edit the master or one layout as Edit theme does, and create or delete layouts: the operations apply in order to one file as one Undo step. The document’s objects take the slide’s object operations, such as insertObject, transformObjects or setText, in the same list, naming no slideId, since layout names the document, or its absence the master; setPlaceholder makes a layout’s text or image a placeholder slides fill by its id. Read exact fields with schema selector themes.edit. A picture names a file of the presentation, which the theme takes a copy of. Every slide using the theme updates at once. Returns the new themeRevision.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -12847,13 +12846,27 @@
                 "type": {
                   "type": "string",
                   "enum": [
+                    "replicateObjects",
+                    "reparentObjects",
+                    "pasteObjects",
+                    "updateObjectProperties",
+                    "replaceMedia",
+                    "groupObjects",
+                    "setObjectFlags",
+                    "setObjectName",
+                    "insertObject",
+                    "setText",
+                    "duplicateObjects",
+                    "resetObjects",
+                    "deleteObjects",
+                    "ungroupObjects",
+                    "transformObjects",
                     "setName",
                     "setPlaceholder",
                     "setScheme",
-                    "setFile",
+                    "setSchemeFile",
                     "createLayout",
                     "deleteLayouts",
-                    "objects",
                     "setSchemeColor",
                     "setDefaultStepDuration",
                     "setFontFamily",
@@ -13015,15 +13028,15 @@
       "inputSchema": {
         "type": "object",
         "properties": {
-          "from": {
-            "type": "string",
-            "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
-            "description": "The theme key or name the layout is in. Required by duplicateLayout and moveLayout."
-          },
           "layout": {
             "type": "string",
             "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
-            "description": "The layout's key in from, as themes.list gives it. Required by duplicateLayout and moveLayout."
+            "description": "The layout's key in theme, as themes.list gives it. Required by duplicateLayout and moveLayout."
+          },
+          "theme": {
+            "type": "string",
+            "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
+            "description": "The theme key or name the layout is in. A theme's key or name from themes.list. Text that isn't blank. Required by duplicateLayout, moveLayout, rename, export and delete."
           },
           "to": {
             "type": "string",
@@ -13052,11 +13065,6 @@
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The slide to save. Required by saveSlide."
-          },
-          "theme": {
-            "type": "string",
-            "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff][\\s\\S]*(?![\\s\\S])",
-            "description": "A theme's key or name from themes.list. Text that isn't blank. Required by rename, export and delete."
           },
           "output": {
             "type": "string",
@@ -13092,8 +13100,8 @@
         },
         "then": {
           "required": [
-            "from",
             "layout",
+            "theme",
             "to"
           ]
         },

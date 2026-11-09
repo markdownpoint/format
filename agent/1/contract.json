@@ -3073,18 +3073,6 @@
       "pattern": "^(?:\\/|[A-Za-z]:[\\\\/]|\\\\\\\\)[^\\u0000]*\\.[pP][nN][gG](?![\\s\\S])",
       "description": "An absolute path of a PNG file the app writes."
     },
-    "AgentPresentAction": {
-      "type": "string",
-      "enum": [
-        "nextSlide",
-        "nextStep",
-        "nextStepInstant",
-        "previousSlide",
-        "previousStep",
-        "toggleBlackScreen",
-        "toggleNotes"
-      ]
-    },
     "AgentPresentControlRequest": {
       "anyOf": [
         {
@@ -3109,7 +3097,7 @@
           "type": "object",
           "properties": {
             "type": {
-              "$ref": "#/definitions/AgentPresentAction"
+              "$ref": "#/definitions/AgentPresentControlType"
             }
           },
           "required": [
@@ -3117,6 +3105,18 @@
           ],
           "additionalProperties": false
         }
+      ]
+    },
+    "AgentPresentControlType": {
+      "type": "string",
+      "enum": [
+        "nextSlide",
+        "nextStep",
+        "nextStepInstant",
+        "previousSlide",
+        "previousStep",
+        "toggleBlackScreen",
+        "toggleNotes"
       ]
     },
     "AgentPresentStartRequest": {
@@ -9233,13 +9233,13 @@
         {
           "type": "object",
           "properties": {
-            "from": {
-              "$ref": "#/definitions/AgentNonblankText",
-              "description": "The theme key or name the layout is in."
-            },
             "layout": {
               "$ref": "#/definitions/AgentNonblankText",
-              "description": "The layout's key in from, as themes.list gives it."
+              "description": "The layout's key in theme, as themes.list gives it."
+            },
+            "theme": {
+              "$ref": "#/definitions/AgentNonblankText",
+              "description": "The theme key or name the layout is in."
             },
             "to": {
               "$ref": "#/definitions/AgentNonblankText",
@@ -9254,8 +9254,8 @@
             }
           },
           "required": [
-            "from",
             "layout",
+            "theme",
             "to",
             "type"
           ],
@@ -9445,7 +9445,7 @@
           "$ref": "#/definitions/AgentSlideId"
         },
         "type": {
-          "$ref": "#/definitions/AgentThemePromotionAction"
+          "$ref": "#/definitions/AgentThemePromotionType"
         }
       },
       "required": [
@@ -9476,7 +9476,7 @@
       ],
       "additionalProperties": false
     },
-    "AgentThemePromotionAction": {
+    "AgentThemePromotionType": {
       "type": "string",
       "enum": [
         "addArtwork",
@@ -9806,12 +9806,12 @@
           },
           "description": "Its own pictures by object id: one file, or one per scheme."
         },
-        "key": {
-          "type": "string"
-        },
         "name": {
-          "type": "string",
-          "description": "The name the chooser shows: the file's, or one spelled from the key."
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The name the file gives it; null where its key spells it."
         },
         "objects": {
           "type": "array",
@@ -9840,7 +9840,6 @@
       },
       "required": [
         "files",
-        "key",
         "name",
         "objects",
         "placeholders",
@@ -9848,7 +9847,7 @@
         "type"
       ],
       "additionalProperties": false,
-      "description": "A layout as its pane and inspector show it."
+      "description": "A layout's authored values, as its pane and inspector edit them, beside the key that names it."
     },
     "EditableLayoutPlaceholder": {
       "type": "object",
