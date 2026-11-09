@@ -7558,7 +7558,7 @@
                         "properties": {
                           "geometry": {
                             "type": "string",
-                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8192 points, in at most 1048576 characters."
+                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8,192 points, in at most 1,048,576 characters."
                           },
                           "orient": {
                             "type": "boolean",

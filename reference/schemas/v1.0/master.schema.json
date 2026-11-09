@@ -64,7 +64,7 @@
       "type": "number",
       "minimum": 1e-18,
       "maximum": 1000000000000000000,
-      "description": "How many meters one canvas unit stands for, as 3ds Max's System Unit Scale. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1000 canvas units. Left out, it's 0.001."
+      "description": "How many meters one canvas unit stands for, as 3ds Max's System Unit Scale. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1,000 canvas units. Left out, it's 0.001."
     },
     "fonts": {
       "description": "The font family for each font role.",
