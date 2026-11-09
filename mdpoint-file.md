@@ -1,8 +1,8 @@
 # The .mdpoint file
 
-`presentation.mdpoint` is JSON. It selects the theme and records each slide's layout, objects, properties and motion. The presentation's text and slide order are in [slides.md](md-file.md).
+`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, properties and motion. The presentation's text and slide order are in [slides.md](md-file.md).
 
-The presentation's name is its folder's. Rename the folder to rename the presentation.
+The presentation's name is its folder's name. Rename the folder to rename the presentation.
 
 ![The shapes slide, as MarkdownPoint draws it](images/objects-shapes.png)
 
@@ -89,21 +89,21 @@ The slide's objects and motion are in the .mdpoint file:
 }
 ```
 
-Saved JSON gives a line of its own to each object property and to each key inside a `frame` or a `transition`. A blank line separates one object or override from the next. A line-based merge such as Git's then keeps most separate edits apart. Edits to the same or touching lines still conflict. A move and a resize of the same object change touching lines. The examples on this page use a more compact layout.
+Saved JSON has each object property, and each key inside a `frame` or a `transition`, on a line of its own. A blank line separates one object or override from the next. A line-based merge, such as Git's, can then keep most separate edits apart. Edits to the same or adjacent lines still conflict, and a move and a resize of the same object change adjacent lines. The examples on this page use a more compact layout.
 
 A merge conflict that git leaves in the file is an error. MarkdownPoint shows the line where it starts and won't open the presentation until you resolve it.
 
-Saves preserve formatting in unchanged parts of the file. Edited parts use MarkdownPoint's standard format: a fixed key order, omitted defaults and most numbers rounded to six decimal places. Text-only saves leave the .mdpoint file unchanged. Save a Copy and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
+Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
 
-When rounding to six decimal places changes a number in the file, MarkdownPoint warns once as it opens the presentation.
+When rounding to six decimal places changes a number in the file, MarkdownPoint warns once when it opens the presentation.
 
 ## Slides
 
-The keys in `slides` match the slide ids in the .md file. The Markdown file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme; if omitted, the slide uses its layout's scheme. A scheme or override value the slide states stays, even one that equals the inherited value, so a later theme change leaves it as it is. Only a reset removes it. The slide then follows changes to that value in the theme.
+The keys in `slides` match the slide ids in the .md file, and the .md file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme. If it's omitted, the slide uses its layout's scheme. A scheme or override value set on the slide is kept, even if it equals the inherited value, so a later change to the theme doesn't affect it. Only a reset removes it. The slide then follows changes to that value in the theme.
 
 ## Presentation settings
 
-Settings for the whole presentation stand beside `slides`:
+Settings for the whole presentation are next to `slides`:
 
 ```json
 {
@@ -123,11 +123,11 @@ Settings for the whole presentation stand beside `slides`:
 }
 ```
 
-`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box takes `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own is made in `image-style`, and a background in `background-image-style`. Left out, either is none.
+`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box uses `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own uses the style in `image-style`, and a generated background uses `background-image-style`. When either is omitted, no style is used.
 
 ## Objects
 
-`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size: 1920 by 1080 here.
+`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, measured from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size, here 1920 by 1080.
 
 Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's id in the marker.
 
@@ -135,7 +135,7 @@ The dot's fill, `text`, is a role in the slide's color scheme, so the dot change
 
 Omitted keys use their defaults. The card has no fill specified and uses `accent`, the default for shapes. The [object reference](reference/v1.md#object) lists the required keys, allowed values and defaults for each object type.
 
-A text box can grow to fit its words, give every digit one width and outline its letters:
+A text box can grow to fit its words, give every digit the same width and outline its letters:
 
 ```json
 [
@@ -168,7 +168,7 @@ A text box can grow to fit its words, give every digit one width and outline its
 
 ![The type slide, as MarkdownPoint draws it](images/words-type.png)
 
-`auto-size` names the sides that grow, here the height, so the frame holds no height: the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its thickness in canvas units.
+`auto-size` names the sides that grow, here the height. The frame then has no height, and the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` is its thickness in canvas units.
 
 A chart draws the Markdown table in its text block:
 
@@ -232,9 +232,9 @@ The table's first column is its header (`header-column`), and its first row is a
 
 ![The data slide, as MarkdownPoint draws it](images/words-data.png)
 
-Here the table's first column is its header, in place of its first row. `colors` sets the color of each of the chart's series, or of each category on a pie or a donut. A counter with `roll` turns its digits into place. Stopped short of 1, its `progress` shows the unused leading zeros at `leading-zero-opacity`.
+Here the table's first column is its header, instead of its first row. `colors` sets the color of each series in the chart, or of each category in a pie or donut chart. A counter with `roll` rolls its digits into place. Here its `progress` stops short of 1, so the counter shows its unused leading zeros at `leading-zero-opacity`.
 
-A group with `auto-layout` places its members one after another, down or across. Their own positions are ignored:
+A group with `auto-layout` places its members one after another, down or across, and ignores their own positions:
 
 ```json
 [
@@ -286,7 +286,7 @@ A group with `auto-layout` places its members one after another, down or across.
 
 ## Pictures
 
-An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast`, `saturation` and `temperature` run from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture shows as shot. This one has more contrast and color:
+An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast`, `saturation` and `temperature` range from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture is shown as shot. This one has more contrast and color:
 
 ```json
 {
@@ -302,7 +302,7 @@ An image object shows a picture from the presentation's `media` folder. `exposur
 
 ![The adjust slide, as MarkdownPoint draws it](images/pictures-adjust.png)
 
-A slide's `background` can be a picture too. It covers the slide. `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
+A slide's `background` can be a picture too. The picture covers the slide. `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
 
 ```json
 {
@@ -313,7 +313,7 @@ A slide's `background` can be a picture too. It covers the slide. `crop` zooms i
 }
 ```
 
-A picture with transparency casts its `drop-shadow` from its shape:
+A picture with transparency casts its `drop-shadow` in its own shape:
 
 ```json
 {
@@ -324,7 +324,7 @@ A picture with transparency casts its `drop-shadow` from its shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide, as MarkdownPoint draws it" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide, as MarkdownPoint draws it" width="49%">
 
-A generated picture starts as a request. An image object or a slide's `background` holds its `prompt`, its `image-style` and whether it asks for a `transparent-background`. `restyle` holds the style applied over a picture: its name, its prompt and whether it keeps a transparent background, copied from the style library when the author chooses a style there. MarkdownPoint makes each picture when the author generates it, under generated/. The boat has been generated: `file` is its picture, and `generation` names its image generation record:
+A generated picture starts as a request. The image object or the slide's `background` contains its `prompt`, its `image-style` and whether it asks for a `transparent-background`. `restyle` contains the style applied to a picture: its name, its prompt and whether it keeps a transparent background. These are copied from the style library when the author chooses a style there. MarkdownPoint saves each picture in `generated/` when the author generates it. The boat has been generated. Its `file` is its picture, and `generation` names its image generation record:
 
 ```json
 {
@@ -344,7 +344,7 @@ A generated picture starts as a request. An image object or a slide's `backgroun
 }
 ```
 
-The image generation record, generated/<id>.json, holds what was asked and the picture that came of it:
+The image generation record, `generated/<id>.json`, contains the request and the picture it produced:
 
 ```json
 {
@@ -376,7 +376,7 @@ The image generation record, generated/<id>.json, holds what was asked and the p
 }
 ```
 
-The hills carry a restyle, and the background is still a request:
+The hills have a restyle, and the background is still a request:
 
 ```json
 {
@@ -401,7 +401,7 @@ The hills carry a restyle, and the background is still a request:
 
 ## Audio and video
 
-A video or an audio object waits for a click to play. With `start-on-click` set to false, it starts when its slide appears. `media-trim` plays part of its file, from `start` to `end` in seconds:
+A video or audio object plays on a click. With `start-on-click` set to false, it starts when its slide appears. `media-trim` plays part of the file, from `start` to `end`, in seconds:
 
 ```json
 {
@@ -431,7 +431,7 @@ A video's or an audio object's `fade-in` and `fade-out` are in seconds:
 
 ![The play slide, as MarkdownPoint draws it](images/sound-and-video-play.png)
 
-`soundtrack` plays one audio file under the whole presentation, with fades of its own:
+`soundtrack` plays one audio file through the whole presentation, with its own fades:
 
 ```json
 {"file": "media/chord.m4a", "fade-in": 2, "fade-out": 3}
@@ -439,7 +439,7 @@ A video's or an audio object's `fade-in` and `fade-out` are in seconds:
 
 ## 3D
 
-Models, lights and the camera stand in a 3D space. A constraint keeps one of them to a rule as things move. `aim` turns a model, or the node of it that `node` names, toward a target. `squash-and-stretch` keeps a model's volume while a step scales it:
+Models, lights and the camera are placed in a 3D space. A constraint applies a rule to one of them as things move. `aim` turns a model, or the node of it named by `node`, toward a target. `squash-and-stretch` preserves a model's volume while a step scales it:
 
 ```json
 [{"id": "look", "type": "aim", "node": "shade", "target": "mug", "axis": "-y", "strength": 0.5}]
@@ -469,7 +469,7 @@ Models, lights and the camera stand in a 3D space. A constraint keeps one of the
 }
 ```
 
-The camera stands on the master. A slide changes it in `overrides`. Its `position` constraint follows an object, and its `motion-blur` blurs the 3D layer in movies:
+The camera is defined on the master, and a slide changes it in `overrides`. Its `position` constraint follows an object, and its `motion-blur` blurs the 3D layer in movies:
 
 ```json
 {
@@ -489,17 +489,17 @@ The camera stands on the master. A slide changes it in `overrides`. Its `positio
 
 ![The constraints slide, as MarkdownPoint draws it](images/space-constraints.png)
 
-A rotation in degrees turns its heading about y, then its pitch about its own x, then its bank about its own z. With `rotation-mode` set to `quaternion`, it's written as w, x, y and z.
+A rotation in degrees applies the heading around y, then the pitch around the object's own x, then the bank around its own z. With `rotation-mode` set to `quaternion`, a rotation is written as w, x, y and z.
 
 ## Steps
 
-`initial` sets a parameter's value at the start of the slide, as `object.parameter`. Here the card starts at an `opacity` of 0.
+`initial` sets a parameter's value at the start of the slide. The parameter is written as `object.parameter`. Here the card starts at an `opacity` of 0.
 
 `steps` lists the slide's animation steps in playback order. A step normally starts on a click. Set `start` to `with` or `after` to start it with or after the previous step. On the first step, `with` and `after` both start it when the slide's transition ends. During a scroll transition, the next slide's first step plays as the slide moves in, regardless of its `start` setting.
 
-`curves` lists animated parameters as `object.parameter`. A parameter's curve holds its keyframes in `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step without a `min-duration`, or with 0, lasts as long as its keyframes, its cues and the paragraphs they bring in.
+`curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its keyframes, its cues and the paragraphs they bring in.
 
-Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop-from`, a curve's `loop`, an `oscillate` wave and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) does not repeat and requires a `duration`.
+Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop-from`, a curve's `loop`, an `oscillate` wave and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) doesn't repeat and requires a `duration`.
 
 ## Motion
 
@@ -511,7 +511,7 @@ The [motion example](examples/motion) includes a repeater, named curves and spri
 
 <img src="images/motion-copies.png" alt="The copies slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide, as MarkdownPoint draws it" width="49%">
 
-Set a keyframe's `interpolation` to a curve name. To supply settings, use a record with the name in `type`:
+Set a keyframe's `interpolation` to a curve name. To give the curve settings, use a record with the curve's name in `type`:
 
 ```json
 [
@@ -565,7 +565,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
 ]
 ```
 
-A composition is a reusable animated scene, kept under `compositions`. Each instance on a slide shows one moment of it, given by its `time-remap` in seconds. Left out, the instance shows the last moment:
+A composition is a reusable animated scene, defined under `compositions`. Each instance on a slide shows one moment of it, set by its `time-remap` in seconds. Without `time-remap`, the instance shows the last moment:
 
 ```json
 {
@@ -581,6 +581,6 @@ A composition is a reusable animated scene, kept under `compositions`. Each inst
 
 ## Keys MarkdownPoint doesn't read
 
-An unknown JSON key or value is an error in a file using the current format version. In a file from a later minor version, such as 1.3, MarkdownPoint preserves the new keys and values when saving.
+An unknown JSON key or value is an error in a file that uses the current format version. In a file from a later minor version, such as 1.3, MarkdownPoint preserves the new keys and values when saving.
 
-To keep your own data with a presentation, write it in the .md file's [frontmatter](md-file.md#frontmatter). MarkdownPoint keeps keys there that it doesn't read.
+To keep your own data with a presentation, write it in the .md file's [frontmatter](md-file.md#frontmatter). MarkdownPoint preserves the keys there that it doesn't read.

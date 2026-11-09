@@ -22,7 +22,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Master
 
-`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide places one among its own objects by listing its id in its `objects`. Basic's master includes a footer and a hidden slide number, both filled by fields:
+`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a hidden slide number, both filled in by fields:
 
 ```json
 {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
@@ -32,7 +32,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 A scheme's `colors` set a color for each role. A role names how the color is used: `background`, `text` or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
 
-Every theme has a `light` and a `dark` scheme and can add more, such as Basic's butter. Each scheme states its `appearance`, light or dark, beside its colors, and the `light` and `dark` schemes state the one they're named for:
+Every theme has a `light` and a `dark` scheme and can add more, such as Basic's butter. Each scheme sets its `appearance`, light or dark, next to its colors. The `light` and `dark` schemes have the appearance they're named for:
 
 ```json
 {
@@ -52,7 +52,7 @@ Every theme has a `light` and a `dark` scheme and can add more, such as Basic's 
 
 ## Text styles
 
-A text object uses a named text style from the theme. Define every style used by the theme's layouts and slides; no style names are built in. Basic's `title` style is:
+A text object uses a named text style from the theme. Define every style that the theme's layouts and slides use. No style names are built in. Basic's `title` style is:
 
 ```json
 {
@@ -67,7 +67,7 @@ A text object uses a named text style from the theme. Define every style used by
 
 Set `font-family` to `display`, `body` or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color and spacing.
 
-The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled and generic families, such as `serif` or `system-ui`, need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family's name as `fonts` gives it. A theme can also carry its own copy of a bundled family, and its slides then draw that copy. MarkdownPoint stores these in the theme's `fonts` folder. The reference says how to read a face out of its `.eot` file.
+The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled and generic families, such as `serif` or `system-ui`, need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
 
 ## Layouts
 
@@ -116,15 +116,15 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 }
 ```
 
-`"placeholder": true` makes a layout's text or image a placeholder, which each slide fills with its own by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
+`"placeholder": true` makes a layout's text or image a placeholder. Each slide fills it with its own text or image, matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
 
-The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing during a presentation. Use `overrides` to change a master object's properties on this layout. Set its override entry to `null` to remove the object.
+The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing during a presentation. Use `overrides` to change a master object's properties in this layout. Set its override entry to `null` to remove the object.
 
 ![The title slide, as MarkdownPoint draws it](images/first-deck-title.png)
 
 ## A theme of its own
 
-The [own-theme example](examples/own-theme) carries Studio, a theme of its own, under `themes/studio/`. Its titles use Instrument Serif, a font under the SIL Open Font License. The theme holds one `.eot` file per face in its `fonts` folder, with the license beside them:
+The [own-theme example](examples/own-theme) has its own theme, Studio, under `themes/studio/`. Its titles use Instrument Serif, a font under the SIL Open Font License. The theme's `fonts` folder contains one `.eot` file per face, with the license next to them:
 
 ```json
 {
@@ -135,7 +135,7 @@ The [own-theme example](examples/own-theme) carries Studio, a theme of its own, 
 }
 ```
 
-A text style's `marks` set how bold, italic, highlighted, struck-through and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `inset-bottom` keeps space under the last line:
+A text style's `marks` set how bold, italic, highlighted, struck-through and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `inset-bottom` leaves space under the last line:
 
 ```json
 {
@@ -165,7 +165,7 @@ The master's mark has a file for each scheme, so a dark slide shows the dark sch
 
 <img src="images/own-theme-light.png" alt="The light slide, as MarkdownPoint draws it" width="49%"> <img src="images/own-theme-dark.png" alt="The dark slide, as MarkdownPoint draws it" width="49%">
 
-The master also sets a column grid, a baseline grid and two guides. MarkdownPoint shows them while you edit, never on a slide:
+The master also sets a column grid, a baseline grid and two guides. MarkdownPoint shows them while you edit, but never on a slide:
 
 ```json
 {"columns": {"count": 12, "gutter": 24, "margin": 120}, "baseline": {"start": 120, "increment": 24}}
@@ -178,16 +178,16 @@ The master also sets a column grid, a baseline grid and two guides. MarkdownPoin
 ]
 ```
 
-`unit-scale` is how many meters one canvas unit stands for in 3D. Studio's 0.01 makes a canvas unit a centimeter. `save-id` in `master.json` and in a layout is a save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing, to tell the file apart from an older copy with the same content. Other tools keep it as it is.
+`unit-scale` is how many meters one canvas unit represents in 3D. Studio's value of 0.01 makes a canvas unit one centimeter. `save-id` in `master.json` and in a layout is a save stamp, which is the id of a save. MarkdownPoint writes it while the presentation is shared for editing. It tells the file apart from an older copy with the same content. Other tools leave it unchanged.
 
-A theme travels as a `.mdptheme` file. It's a ZIP archive of one folder, which takes the theme's key as its name. The folder holds the theme's files and a `manifest.json` that lists each one with its size and SHA-256 digest. “Export Theme…” saves one, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
+A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder, named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
 
 ## Changing a theme by hand
 
-The presentation can contain several themes. If the new theme is missing a layout used by your slides, MarkdownPoint copies that layout into it when you switch. The previous theme stays in the folder.
+A presentation can contain several themes. If the new theme is missing a layout used by your slides, MarkdownPoint copies that layout into it when you switch. The previous theme stays in the folder.
 
 A change to master.json affects every slide. A change to a layout affects every slide that uses it.
 
-MarkdownPoint picks up theme changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide on it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows it. A merge conflict that git leaves in a theme file is such a problem, named with the line where it starts.
+MarkdownPoint picks up theme changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide that uses it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows that message. A merge conflict that git leaves in a theme file is one of these problems, and the issue names the line where the conflict starts.
 
 The reference lists every key of [master.json](reference/v1.md#master) and [a layout](reference/v1.md#layout).

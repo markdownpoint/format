@@ -19,7 +19,7 @@ Keep the presentation's whole folder in your vault and open `slides.md` in Obsid
 
 ## Slides and objects
 
-Each slide has an id. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same id. Text blocks use the ids of their objects. To move a slide, move its whole block in `slides.md`. Its id stays the same.
+Each slide has an id. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same id. Text blocks use the ids of their objects. To move a slide, move its whole block in `slides.md`. Its id doesn't change.
 
 Objects use the selected theme's fonts, color schemes, text styles and layouts. A slide can add objects and override properties inherited from its layout.
 
@@ -64,44 +64,44 @@ My talk/
   slides.md              text, notes, sections and slide order
   presentation.mdpoint   objects, layout, styles and animation
   media/                 imported images, videos, audio and models
-  generated/             generated images, 3D text models a program built, and image generation records
+  generated/             generated images, 3D text models built by a program, and image generation records
   themes/<key>/          master.json, layout files, fonts and images
   versions/              saved versions, one folder each
 ```
 
 Media and theme resources use relative paths. Move the whole folder when moving a presentation. Rename the folder to rename the presentation.
 
-MarkdownPoint turns a picture by the orientation its file states. A JPEG takes the orientation of its first Exif segment that holds anything. A PNG takes the orientation of an `eXIf` chunk of any size before its image data, if the chunk's CRC holds. An AVIF takes its rotation (`irot`) and then its mirror (`imir`). A WebP and every other picture are drawn as stored. A picture's width and height in the presentation are its size as turned. A tool that draws a presentation turns each picture by this rule alone.
+MarkdownPoint applies the orientation stored in a picture's file. A JPEG uses the orientation in its first Exif segment that isn't empty. A PNG uses the orientation in an `eXIf` chunk of any size before its image data, if the chunk's CRC is correct. An AVIF is rotated by its `irot` property and then mirrored by its `imir` property. A WebP and every other picture are drawn as stored. A picture's width and height in the presentation are its size after the orientation is applied. A tool that draws a presentation orients each picture by this rule and no other.
 
-When you place a PNG, JPEG or WebP picture longer than 4096 pixels on a side, MarkdownPoint saves it in `media/` at 4096 pixels on that side, in the same type. The saved picture keeps the original's EXIF and XMP, with its size, orientation and color space set to match the saved pixels. A saved WebP keeps its pixels as the original stored them, and the original's orientation tag. The EXIF thumbnail and a JPEG's extended XMP are left out. An animated PNG or WebP is saved whole. So is one of more than 268,435,456 pixels, or a file over 402 MB. Other types, and a file you copy into `media/` yourself, stay as they are.
+When you place a PNG, JPEG or WebP picture with a side longer than 4096 pixels, MarkdownPoint scales it to 4096 pixels on that side and saves it in `media/` in the same file type. The saved picture keeps the original's EXIF and XMP, with its size, orientation and color space set to match the saved pixels. A saved WebP has its pixels in the orientation the original stored them in, and the original's orientation tag. The EXIF thumbnail and a JPEG's extended XMP are left out. MarkdownPoint saves an animated PNG or WebP, a picture of more than 268,435,456 pixels and a file over 402 MB at full size. Other file types, and files you copy into `media/` yourself, are left as they are.
 
-Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. Those two names are fixed in any letter case. The folders `media`, `generated`, `themes` and `versions` are always lowercase. Files in a folder spelled another way, such as `Media`, draw with a warning on Mac and Windows disks, which find it as `media`, and are missing on other disks. Every other file is named in the presentation as its folder lists it. MarkdownPoint won't open a folder containing duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
+Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. The two files must have those names, in any letter case. The folders `media`, `generated`, `themes` and `versions` are always lowercase. Mac and Windows disks ignore letter case, so MarkdownPoint still finds the files in a folder spelled another way, such as `Media`, and warns about it. On other disks those files are missing. The presentation names every other file exactly as its folder lists it. MarkdownPoint won't open a folder that contains duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
 
-Unrelated files in the folder are not copied by MarkdownPoint. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name can't start with a dot, contain `#`, `?`, `/`, `\`, `:`, `*`, `"`, `<`, `>` or `|`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint hides a file or folder whose name starts with a dot. It lists a file named in one of the other ways, but can't use it until you rename it.
+MarkdownPoint doesn't copy unrelated files in the folder. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name can't start with a dot, contain `#`, `?`, `/`, `\`, `:`, `*`, `"`, `<`, `>` or `|`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint hides a file or folder whose name starts with a dot. It lists a file with one of the other names but can't use it until you rename it.
 
-Files and folders whose names start with `.markdownpoint` are MarkdownPoint's own, in the presentation's folder or beside it. They are never part of the presentation. Each example's `.gitignore` keeps them out of git with the line `.markdownpoint*`.
+Files and folders whose names start with `.markdownpoint`, in the presentation's folder or next to it, belong to MarkdownPoint. They are never part of the presentation. Each example's `.gitignore` excludes them from git with the line `.markdownpoint*`.
 
-To start a presentation by hand, copy an example's whole folder. Its `themes` folder holds the example's theme. `mdpoint presentation create <folder>` makes a new presentation with Basic, and opens it when MarkdownPoint is running.
+To start a presentation by hand, copy an example's whole folder. The example's theme is in its `themes` folder. `mdpoint presentation create <folder>` creates a new presentation with Basic and opens it if MarkdownPoint is running.
 
 ## Saved versions
 
 “File › Save Version…” saves a copy of the slides, text, objects and settings. The version uses the presentation's media and the theme named in its saved file. Changes to those resources also affect the saved version.
 
-Each version has a folder named by the time it was saved, in UTC, and a random tail, such as `versions/2026-10-30T16.20.05Z-k3pz/`. That name holds the version's time, and Version history lists the newest first. The folder holds copies of `presentation.mdpoint` and `slides.md`, and a `version.json` with the version's number and optional name. Two computers that save versions while apart keep both, even in the same second or with the same number. MarkdownPoint never opens a version's folder as a presentation of its own: open the presentation and choose the version in its Version history.
+Each version is saved in a folder named with the time it was saved, in UTC, followed by a random suffix, such as `versions/2026-10-30T16.20.05Z-k3pz/`. The folder's name gives the version's time. Version history lists the newest version first. The folder contains copies of `presentation.mdpoint` and `slides.md`, and a `version.json` with the version's number and optional name. When two computers save versions while they aren't syncing, all the versions are kept, even ones saved in the same second or with the same number. MarkdownPoint never opens a version's folder as a presentation of its own. To open a version, open the presentation and choose the version in its Version history.
 
-“Delete Theme” won't remove a theme used by a saved version. “File › Clean Up…” also preserves files used by versions. Deleting a file directly from the Media list removes it even if a version uses it. That version will show the file as missing.
+“Delete Theme” won't remove a theme used by a saved version. “File › Clean Up…” also keeps files that versions use. Deleting a file directly from the Media list removes it even if a version uses it. That version then shows the file as missing.
 
-A folder in `versions/` with any other name, such as a copy Finder or File Explorer makes of a version's folder, isn't a version. Version history doesn't list it, and “Delete Theme” and Clean Up don't keep the theme or files it uses. Nothing under a presentation's `versions/` opens as a presentation of its own.
+A folder in `versions/` with a name of any other form, such as a copy of a version's folder made in Finder or File Explorer, isn't a version. Version history doesn't list it, and “Delete Theme” and Clean Up don't keep the theme or files it uses. MarkdownPoint never opens anything under a presentation's `versions/` as a presentation of its own.
 
-While a version is still arriving through a sync service, no theme can be deleted and Clean Up deletes nothing.
+While a sync service is still downloading a version, no theme can be deleted and Clean Up deletes nothing.
 
 Include `versions/` in git if you want to keep the saved versions with the presentation.
 
 ## Format versions
 
-Every file states its format version as a major and a minor in quotes: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes matter, since 1.10 and 1.1 are the same number.
+Every file states its format version, a major and a minor number, in quotes: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes are needed because 1.10 and 1.1 are the same number.
 
-MarkdownPoint 1.x opens any version 1.x file. Later minor versions can add data that an earlier reader skips. When opening such a file, MarkdownPoint shows a notice and keeps the unknown data through saves: a key, a word or an object it doesn't know stays as long as the record or the entry around it does, except in a list of values, which a save that changes it writes whole; in the .md file an unknown word form stays as written until its block is edited or the file is formatted, when it is written as words; and a slide two people duplicate before their copies sync keeps it in one copy. The reference states the rule in full. Saving does not lower the file's version number. A version 2.0 file requires MarkdownPoint 2.
+MarkdownPoint 1.x opens any version 1.x file. A later minor version can add data that an earlier reader skips. When MarkdownPoint opens such a file, it shows a notice and keeps the unknown data when it saves. An unknown key, word or object stays as long as the record or entry that contains it does. A list of values is the exception. A save that changes the list writes the whole list again, and the unknown data in it is lost. In the .md file, an unknown Markdown form stays as written until its block is edited or the file is formatted. It is then written as plain words. If two people duplicate a slide before their copies sync, the unknown data stays in only one of the copies. The reference gives the full rule. Saving never lowers the file's version number. A version 2.0 file requires MarkdownPoint 2.
 
 The format is not final. Version 1.0 may still change before release.
 
