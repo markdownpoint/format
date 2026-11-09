@@ -1986,14 +1986,14 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's motion blur. Only the 3D layer blurs, and only in exported movies and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
+                          "description": "The camera's motion blur. Only the 3D layer is blurred. It is blurred only in exported movies and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
                           "type": "object",
                           "properties": {
                             "shutter": {
                               "type": "number",
                               "minimum": 0,
                               "maximum": 4294967296,
-                              "description": "How long the shutter stays open, in frames of the movie. 0 draws no blur. Left out, it's 0.5. A step can animate it."
+                              "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. A step can animate it."
                             },
                             "frame-position": {
                               "enum": [
@@ -2001,13 +2001,13 @@
                                 "center",
                                 "end"
                               ],
-                              "description": "Where the frame's moment falls in the shutter's opening. Left out, it's center."
+                              "description": "Where the frame's moment falls in the shutter's opening. The default is center."
                             },
                             "samples": {
                               "type": "integer",
                               "minimum": 1,
                               "maximum": 256,
-                              "description": "How many moments the 3D layer is drawn at while the shutter is open, then averaged, as Cinema 4D's Sub-Frame Motion Blur Samples. Left out, it's 32."
+                              "description": "How many moments the 3D layer is drawn at while the shutter is open. The drawings are then averaged. Cinema 4D's Sub-Frame Motion Blur Samples work the same way. The default is 32."
                             }
                           },
                           "additionalProperties": false
@@ -2020,21 +2020,21 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's render effects, as Cinema 4D's Render Settings add Global Illumination and Ambient Occlusion: a fast estimate of light bouncing between surfaces and of the World's light closed off where they meet. It shows wherever the 3D layer does. Only surfaces in view bounce light, and a shadow catcher bounces none. An override replaces the whole record.",
+                          "description": "The camera's render effects: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. Cinema 4D's Render Settings call them Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {
                               "type": "boolean",
-                              "description": "Whether lit surfaces bounce their light onto what stands near them. Left out, it's false."
+                              "description": "Whether lit surfaces bounce their light onto what is near them. The default is false."
                             },
                             "ambient-occlusion": {
                               "type": "boolean",
-                              "description": "Whether the World's light darkens where surfaces close in on each other, and a shadow catcher darkens where an object stands on it. Left out, it's false."
+                              "description": "Whether the World's light darkens where surfaces close in on each other. A shadow catcher then also darkens where an object rests on it. The default is false."
                             },
                             "distance": {
                               "type": "number",
                               "minimum": 0.000001,
-                              "description": "How far bounced light and shading reach from a surface. Left out, it's 400."
+                              "description": "How far bounced light and shading reach from a surface. The default is 400."
                             }
                           },
                           "additionalProperties": false
@@ -2047,7 +2047,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's drift: on the slide's own clock, which starts as its transition in begins and runs on through its steps, waits and transition out, the camera and its target move together from `from` toward the camera's set position, standing `from` × (1 − t ÷ `duration`)² away from it t seconds after the start, so they slow steadily to rest. Stills and the editor show the set position, and a slide a scroll transition enters or leaves has no drift.",
+                          "description": "The camera's drift. The camera and its target move together from `from` toward the camera's set position, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, the camera and its target are `from` × (1 − t ÷ `duration`)² away from the set position. They slow steadily to rest. Stills and the editor show the set position. A slide that a scroll transition enters or leaves has no drift.",
                           "type": "object",
                           "properties": {
                             "from": {
@@ -2127,7 +2127,7 @@
                           "items": {
                             "anyOf": [
                               {
-                                "description": "A constraint that moves the slide's camera with an object, as Cinema 4D's Position constraint does. Only the camera takes it. With a spring, the camera follows the way a keyframe's spring moves: it trails a sudden move, catches up, and settles as the object stops. A spring still moving 10 seconds after what it follows has stopped stands where it got to, short of its target, until a click moves what it follows again. Keys other than id, type, and target may be left out.",
+                                "description": "A constraint that moves the slide's camera with an object. Cinema 4D's Position constraint works the same way. Only the camera can have it. With a spring, the camera follows the way a keyframe's spring moves. It trails a sudden move, catches up, and settles as the object stops. If the spring is still moving 10 seconds after what it follows has stopped, the camera halts where it got to, short of its target. It stays there until a click moves what it follows again. Every key except `id`, `type`, and `target` can be left out.",
                                 "type": "object",
                                 "properties": {
                                   "id": {
@@ -2136,7 +2136,7 @@
                                         "$ref": "#/definitions/constraint-id"
                                       }
                                     ],
-                                    "description": "The constraint's id, such as follow, unique among the camera's constraints. A step animates its strength as constraints.follow.strength."
+                                    "description": "The constraint's id, such as follow. It is unique among the camera's constraints. A step animates its strength as `constraints.follow.strength`."
                                   },
                                   "type": {
                                     "const": "position"
@@ -2152,7 +2152,7 @@
                                         "$ref": "#/definitions/model-node-name"
                                       }
                                     ],
-                                    "description": "The name of a node in the target's model, such as ball. The camera follows it where the model's Action moves it. Left out, the camera follows the target's origin."
+                                    "description": "The name of a node in the target's model, such as ball. The camera follows the node as the model's Action moves it. Without it, the camera follows the target's origin."
                                   },
                                   "axes": {
                                     "type": "array",
@@ -2165,20 +2165,20 @@
                                     },
                                     "minItems": 1,
                                     "maxItems": 3,
-                                    "description": "The 3D space's axes the camera follows on, of x, y, and z. Left out, all three."
+                                    "description": "The 3D space's axes the camera follows on, from x, y, and z. Without it, the camera follows on all three."
                                   },
                                   "relative-to-target": {
                                     "type": "boolean",
-                                    "description": "Whether the camera's position counts from the target's point instead of the slide's center at z 0, as Blender's Copy Location Offset adds it. Left out, it's true. False puts it at the target's point."
+                                    "description": "Whether the camera's position counts from the target's point, not from the slide's center at z 0. With false, the camera is at the target's point. The default is true."
                                   },
                                   "strength": {
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1,
-                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. Left out, it's 1. A step can animate it."
+                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. The default is 1. A step can animate it."
                                   },
                                   "spring": {
-                                    "description": "The spring the camera follows on, written as a keyframe's `spring` interpolation is: its `amount` and `response`. Left out, the camera follows exactly.",
+                                    "description": "The spring the camera follows on. It has the `amount` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
                                     "type": "object",
                                     "properties": {
                                       "amount": {
@@ -3841,7 +3841,7 @@
       "items": {
         "anyOf": [
           {
-            "description": "A constraint that turns a model, or one of its nodes, toward a target, as Cinema 4D's Aim constraint does. Keys other than id, type, and target may be left out.",
+            "description": "A constraint that turns a model, or one of its nodes, toward a target. Cinema 4D's Aim constraint works the same way. Every key except `id`, `type`, and `target` can be left out.",
             "type": "object",
             "properties": {
               "id": {
@@ -3850,7 +3850,7 @@
                     "$ref": "#/definitions/constraint-id"
                   }
                 ],
-                "description": "The constraint's id, such as look, unique among the model's constraints. A step animates its strength as constraints.look.strength."
+                "description": "The constraint's id, such as look. It is unique among the model's constraints. A step animates its strength as `constraints.look.strength`."
               },
               "type": {
                 "const": "aim"
@@ -3861,12 +3861,12 @@
                     "$ref": "#/definitions/model-node-name"
                   }
                 ],
-                "description": "The name of the model's node that turns, such as Head. Left out, the whole model turns."
+                "description": "The name of the model's node that turns, such as Head. Without it, the whole model turns."
               },
               "target": {
                 "type": "string",
                 "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                "description": "The id of the model or light whose origin it turns toward, or `camera` to turn toward the camera."
+                "description": "The id of the model or light whose origin it turns toward. With `camera`, it turns toward the camera."
               },
               "axis": {
                 "enum": [
@@ -3877,13 +3877,13 @@
                   "-y",
                   "-z"
                 ],
-                "description": "The axis of the model or node that points at the target, in its GLB's axes: y is up, and a model faces along +z. Left out, it's y."
+                "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is y."
               },
               "strength": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It acts on the result of the constraints before it. Left out, it's 1. A step can animate it."
+                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. A step can animate it."
               }
             },
             "required": [
@@ -3894,7 +3894,7 @@
             "additionalProperties": false
           },
           {
-            "description": "A constraint that keeps a model's volume as it scales, in the model's Local space. Volume is measured at the model's scale before animation. Keys other than id and type may be left out.",
+            "description": "A constraint that keeps a model's volume as the model scales, in the model's Local space. The volume is measured at the model's scale before animation. Every key except `id` and `type` can be left out.",
             "type": "object",
             "properties": {
               "id": {
@@ -3903,7 +3903,7 @@
                     "$ref": "#/definitions/constraint-id"
                   }
                 ],
-                "description": "The constraint's id, such as squash, unique among the model's constraints. A step animates its strength as constraints.squash.strength."
+                "description": "The constraint's id, such as squash. It is unique among the model's constraints. A step animates its strength as `constraints.squash.strength`."
               },
               "type": {
                 "const": "squash-and-stretch"
@@ -3914,7 +3914,7 @@
                   "uniform",
                   "single-axis"
                 ],
-                "description": "When the volume is kept. `strict` keeps it under any scale. `uniform` keeps it while the model scales evenly. `single-axis` keeps it while the free axis alone scales. Left out, it's strict."
+                "description": "When the volume is kept: with `strict`, under any scale; with `uniform`, while the model scales evenly; with `single-axis`, while only the free axis scales. The default is strict."
               },
               "free-axis": {
                 "enum": [
@@ -3922,18 +3922,18 @@
                   "y",
                   "z"
                 ],
-                "description": "The axis whose scale is animated. The other two follow to keep the volume. Left out, it's y."
+                "description": "The axis whose scale is animated. The other two follow to keep the volume. The default is y."
               },
               "volume": {
                 "type": "number",
                 "minimum": 0.000001,
-                "description": "The volume to keep, as a multiple of the model's volume before animation. Left out, it's 1."
+                "description": "The volume to keep, as a multiple of the model's volume before animation. The default is 1."
               },
               "strength": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. Left out, it's 1. A step can animate it."
+                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. A step can animate it."
               }
             },
             "required": [
@@ -4343,7 +4343,7 @@
       "additionalProperties": false
     },
     "floor-position": {
-      "description": "A floor's height in the 3D space: a floor lies level without end, as Cinema 4D's Floor does, so it takes y alone. Left out, the floor lies on the slide's bottom edge.",
+      "description": "A floor's height in the 3D space. A floor is level and goes on without end. Cinema 4D's Floor works the same way. So a floor's position has only y. Without a position, the floor is at the slide's bottom edge.",
       "type": "object",
       "properties": {
         "y": {
@@ -7094,7 +7094,7 @@
       "additionalProperties": false
     },
     "space-euler": {
-      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer, in degrees or, in quaternion mode, as a quaternion.",
+      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode.",
       "type": "object",
       "properties": {
         "x": {
@@ -7124,7 +7124,7 @@
       "additionalProperties": false
     },
     "space-position": {
-      "description": "A point in the 3D space, in canvas units: x runs right from the slide's left edge, y up from its bottom edge, and z toward the viewer, with the slide at z 0, right-handed as glTF and three.js define it. A parented object's position is in its parent's space.",
+      "description": "A point in the 3D space, in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. A parented object's position is in its parent's space.",
       "type": "object",
       "properties": {
         "x": {
@@ -7154,7 +7154,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer, in degrees or, in quaternion mode, as a quaternion.",
+      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode.",
       "type": "object",
       "properties": {
         "w": {
@@ -7191,7 +7191,7 @@
       "additionalProperties": false
     },
     "space-scale": {
-      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors it along that axis. A light's scale also scales the objects parented to it, and an area light's surface.",
+      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. A light's scale also scales the objects parented to it. An area light's scale also scales its surface.",
       "type": "object",
       "properties": {
         "x": {
@@ -7228,7 +7228,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Its times, and its keyframes' and cues', are in seconds, rounded to six decimal places.",
+        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Its times, and the times of its keyframes and cues, are in seconds, rounded to six decimal places.",
         "type": "object",
         "properties": {
           "id": {
@@ -7252,25 +7252,25 @@
               "with",
               "after"
             ],
-            "description": "When the step starts: with the previous step, or after it ends. On the first step, either starts it when the slide's transition ends, except under a scroll. Left out, it waits for a click."
+            "description": "When the step starts: with the previous step, or after it ends. With either, a first step starts when the slide's transition ends, except under a scroll. Without it, the step waits for a click."
           },
           "min-duration": {
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "The least time the step lasts, in seconds. A later keyframe, cue, or entering paragraph extends it, and left out or 0, the step lasts as long as what it holds."
+            "description": "The least time the step lasts, in seconds. A later keyframe, cue, or entering paragraph makes it longer. Without it, or at 0, the step lasts as long as what is in it."
           },
           "repeat-count": {
             "type": "integer",
             "minimum": 2,
             "maximum": 64,
-            "description": "How many times the step plays before it completes. Left out, it plays once."
+            "description": "How many times the step plays before it completes. Without it, the step plays once."
           },
           "loop-from": {
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "Seconds into the step that it loops back to while waiting for the next click: before the later of its `min-duration` and its keyframe and cue times, not counting a paragraph's entrance."
+            "description": "The time it loops back to while waiting for the next click, in seconds into the step. It is before the later of its `min-duration` and its keyframe and cue times, other than a paragraph's entrance."
           },
           "curves": {
             "type": "object",
@@ -7279,13 +7279,13 @@
               "description": "a property name"
             },
             "additionalProperties": {
-              "description": "One property's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point: `frame.xy` and `translation.xy` hold {x, y}, and `position.xyz` holds {x, y, z}, each keyframe holding every part. A step keys a position as a point or by its parts, not both: a step that keys both reads with a warning, and the point plays. An initial value sets each part on its own.",
+              "description": "One property's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation.xy` have {x, y}, and `position.xyz` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
               "type": "object",
               "properties": {
                 "keyframes": {
                   "type": "array",
                   "items": {
-                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A keyframe's `null` clears its property, so its text style or default shows.",
+                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears its whole property. The property's text style or default then shows. It can't clear a part of a property, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
                     "type": "object",
                     "properties": {
                       "id": {
@@ -7300,7 +7300,7 @@
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "When the move into the keyframe begins, in seconds into the step. It must come before time. Left out, it begins at the previous keyframe."
+                        "description": "When the move into the keyframe begins, in seconds into the step. It must come before `time`. Without it, the move begins at the previous keyframe."
                       },
                       "time": {
                         "type": "number",
@@ -7314,7 +7314,7 @@
                             "$ref": "#/definitions/parameter-value"
                           }
                         ],
-                        "description": "The value, written as the property is. `null` clears a whole property, but never a part of one, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon` or `geometry`."
+                        "description": "The value, written as the property is. It can be `null` to clear the whole property."
                       },
                       "interpolation": {
                         "anyOf": [
@@ -7434,7 +7434,7 @@
                             ]
                           }
                         ],
-                        "description": "How the value reaches the keyframe: gradually on a curve, or at once with hold. It's a named curve, a named curve with its settings, a cubic Bézier, or a spring. Left out, linear."
+                        "description": "How the value reaches the keyframe: gradually on a curve, or at once with hold. It is a named curve, a named curve with its settings, a cubic Bézier, or a spring. The default is linear."
                       },
                       "interrupted": {
                         "description": "The longer move this keyframe interrupts. Up to this keyframe, the motion follows that move's curve.",
@@ -7462,12 +7462,12 @@
                         "additionalProperties": false
                       },
                       "path": {
-                        "description": "A curved motion path for the move into the keyframe. It goes on a point keyframe.",
+                        "description": "A curved motion path for the move into the keyframe. Only a point keyframe can have it.",
                         "type": "object",
                         "properties": {
                           "geometry": {
                             "type": "string",
-                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8,192 points, in at most 1,048,576 characters."
+                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8,192 points. It has at most 1,048,576 characters."
                           },
                           "orient": {
                             "type": "boolean",
@@ -7481,7 +7481,7 @@
                       },
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether a scale move changes by a steady ratio, so a zoom looks even; from, to, or across 0, it moves at an even pace. Only `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale` take it."
+                        "description": "Whether a scale move changes by a steady ratio. A zoom then looks even. From, to, or across 0, it moves at an even pace. Only `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale` use it."
                       },
                       "oscillate": {
                         "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",
@@ -7500,7 +7500,7 @@
                             "type": "number",
                             "minimum": -8589934592,
                             "maximum": 8589934592,
-                            "description": "Where in its cycle the wave starts, 360 degrees to a cycle. Left out, it's 0."
+                            "description": "Where in its cycle the wave starts. A cycle is 360 degrees. The default is 0."
                           },
                           "wave-shape": {
                             "enum": [
@@ -7510,13 +7510,13 @@
                               "sawtooth",
                               "noise"
                             ],
-                            "description": "The wave's shape. Left out, it's sine."
+                            "description": "The wave's shape. With a seed, it must be `noise`. The default is sine."
                           },
                           "seed": {
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 4294967294,
-                            "description": "The noise seed: the same seed gives the same noise. Left out, it's 0."
+                            "description": "The noise seed. The same seed gives the same noise. The default is 0."
                           }
                         },
                         "required": [
@@ -7541,7 +7541,7 @@
                     "repeat",
                     "ping-pong"
                   ],
-                  "description": "How it loops after its last keyframe until the step ends: `repeat` replays from `loop-keyframe` to the last, and `ping-pong` plays that back and forth. Left out, it plays once."
+                  "description": "How it loops after its last keyframe until the step ends. With `repeat`, it replays from `loop-keyframe` to the last. With `ping-pong`, it plays that back and forth. Without it, it plays once."
                 },
                 "loop-keyframe": {
                   "allOf": [
@@ -7549,7 +7549,7 @@
                       "$ref": "#/definitions/stable-id"
                     }
                   ],
-                  "description": "The id of the keyframe the loop starts at, where its move begins if it has a `start`. Left out, or naming no keyframe of the curve, it is the first. It needs `loop`."
+                  "description": "The id of the keyframe the loop starts at. If the keyframe has a `start`, the loop begins with its move. Without it, or if it names no keyframe of the curve, the first is used. It needs `loop`."
                 }
               },
               "required": [
@@ -7567,7 +7567,7 @@
           "cues": {
             "type": "array",
             "items": {
-              "description": "An event at a set time in a step. A clip plays an Action of a model's or a 3D text's GLB `file`; a text built from an `extrusion` has none, so a clip on it plays nothing, with a warning.",
+              "description": "An event at a set time in a step. A clip plays an Action of the GLB `file` of a model or a 3D text. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
               "anyOf": [
                 {
                   "type": "object",
@@ -7600,7 +7600,7 @@
                     "paragraph": {
                       "type": "string",
                       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                      "description": "The id of the paragraph that appears, as `<!-- id: … -->` ends its last line; a reader warns of an id no paragraph of the text carries."
+                      "description": "The id of the paragraph that appears. The id is in the `<!-- id: … -->` that ends the paragraph's last line. A reader warns of an id that no paragraph of the text has."
                     }
                   },
                   "required": [
@@ -7754,11 +7754,11 @@
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the Action that a clip plays; an unnamed one is Animation 1, Animation 2, and on, in file order."
+                      "description": "The name of the Action that a clip plays. An unnamed Action is Animation 1, Animation 2, and so on, in file order."
                     },
                     "loop": {
                       "const": "repeat",
-                      "description": "`repeat` plays the Action again from its start each time it ends. Left out, it plays once."
+                      "description": "With `repeat`, the Action plays again from its start each time it ends. Without it, the Action plays once."
                     },
                     "clip-trim": {
                       "allOf": [
@@ -7776,12 +7776,12 @@
                     "blend-in": {
                       "type": "number",
                       "minimum": 0,
-                      "description": "How long the clip takes to blend in fully over the model's current motion. Left out, it is fully blended in from its start."
+                      "description": "How long the clip takes to blend in fully over the model's current motion. Without it, the clip is fully blended in from its start."
                     },
                     "clip-scale": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How much longer a clip's Action plays than its file says, as Maya's Clip Scale: 2 is half speed, 0.5 double. Left out, it's 1. A model's clip with a stride ignores it."
+                      "description": "How much longer a clip's Action plays than its file says. 2 is half speed, and 0.5 is double. Maya's Clip Scale works the same way. The default is 1. A model's clip with a `stride` ignores it."
                     }
                   },
                   "required": [
@@ -8023,11 +8023,11 @@
     "text-model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
+          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "extrusion": {
-              "description": "The depth and bevel MarkdownPoint builds the words' letters to, in ems. An empty record builds them to its defaults.",
+              "description": "The depth and bevel MarkdownPoint builds the words' letters to, in ems. With an empty record, the letters are built to the defaults.",
               "type": "object",
               "properties": {
                 "depth": {
@@ -8038,7 +8038,7 @@
                 "bevel": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "How far the letters' edges are rounded, in ems. 0 leaves them sharp."
+                  "description": "How far the letters' edges are rounded, in ems. At 0, they are sharp."
                 }
               },
               "additionalProperties": false
@@ -8050,7 +8050,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
+          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "file": {
@@ -8061,7 +8061,7 @@
             "built-from": {
               "type": "string",
               "pattern": "^text-model-[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
-              "description": "The fingerprint of what the GLB was built from, by the rule the reference gives. A rule this reader doesn't know reads as out of sync."
+              "description": "The fingerprint of what the GLB was built from, by the rule the reference gives. A reader that doesn't know the rule treats the model as out of sync."
             }
           },
           "required": [
