@@ -21,7 +21,7 @@
       ],
       "description": "The presentation's id, which the .md file repeats; a copy made outside MarkdownPoint keeps it, and with it its view link, until MarkdownPoint gives the copy one of its own."
     },
-    "save": {
+    "save-id": {
       "allOf": [
         {
           "$ref": "#/definitions/uuid"
@@ -1553,7 +1553,7 @@
                         }
                       ]
                     },
-                    "poster-frame": {
+                    "poster-time": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -3683,7 +3683,7 @@
     "back-curve": {
       "type": "object",
       "properties": {
-        "curve": {
+        "type": {
           "enum": [
             "anticipate",
             "overshoot",
@@ -3696,7 +3696,7 @@
         }
       },
       "required": [
-        "curve"
+        "type"
       ],
       "additionalProperties": false
     },
@@ -4648,7 +4648,7 @@
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "elastic"
                 },
                 "amplitude": {
@@ -4657,14 +4657,14 @@
                 }
               },
               "required": [
-                "curve"
+                "type"
               ],
               "additionalProperties": false
             },
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "bounce"
                 },
                 "bounciness": {
@@ -4674,14 +4674,14 @@
                 }
               },
               "required": [
-                "curve"
+                "type"
               ],
               "additionalProperties": false
             },
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "spring"
                 },
                 "amount": {
@@ -4691,7 +4691,7 @@
                 }
               },
               "required": [
-                "curve",
+                "type",
                 "amount"
               ],
               "additionalProperties": false
@@ -4699,7 +4699,7 @@
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "cubic-bezier"
                 },
                 "x1": {
@@ -4720,7 +4720,7 @@
                 }
               },
               "required": [
-                "curve",
+                "type",
                 "x1",
                 "y1",
                 "x2",
@@ -6953,7 +6953,7 @@
         "poster": {
           "$ref": "#/definitions/supported-image"
         },
-        "poster-frame": {
+        "poster-time": {
           "type": "number",
           "minimum": 0,
           "description": "seconds"
@@ -7514,7 +7514,7 @@
                               {
                                 "type": "object",
                                 "properties": {
-                                  "curve": {
+                                  "type": {
                                     "const": "elastic"
                                   },
                                   "amplitude": {
@@ -7528,14 +7528,14 @@
                                   }
                                 },
                                 "required": [
-                                  "curve"
+                                  "type"
                                 ],
                                 "additionalProperties": false
                               },
                               {
                                 "type": "object",
                                 "properties": {
-                                  "curve": {
+                                  "type": {
                                     "const": "bounce"
                                   },
                                   "bounciness": {
@@ -7545,14 +7545,14 @@
                                   }
                                 },
                                 "required": [
-                                  "curve"
+                                  "type"
                                 ],
                                 "additionalProperties": false
                               },
                               {
                                 "type": "object",
                                 "properties": {
-                                  "curve": {
+                                  "type": {
                                     "const": "spring"
                                   },
                                   "amount": {
@@ -7567,7 +7567,7 @@
                                   }
                                 },
                                 "required": [
-                                  "curve",
+                                  "type",
                                   "amount"
                                 ],
                                 "additionalProperties": false
@@ -7575,7 +7575,7 @@
                               {
                                 "type": "object",
                                 "properties": {
-                                  "curve": {
+                                  "type": {
                                     "const": "cubic-bezier"
                                   },
                                   "x1": {
@@ -7596,7 +7596,7 @@
                                   }
                                 },
                                 "required": [
-                                  "curve",
+                                  "type",
                                   "x1",
                                   "y1",
                                   "x2",

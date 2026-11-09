@@ -1327,7 +1327,7 @@
                   }
                 ]
               },
-              "poster-frame": {
+              "poster-time": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -3406,7 +3406,7 @@
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                     "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
-                  "poster-frame": {
+                  "poster-time": {
                     "type": "number",
                     "minimum": 0,
                     "description": "seconds"
@@ -5383,7 +5383,7 @@
       },
       "description": "The words of the layout's own text, table, chart, and shape objects, by object id. Another id is an error. A placeholder's words are its sample text."
     },
-    "save": {
+    "save-id": {
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
       "description": "A save stamp: the id of a save. MarkdownPoint writes it while the presentation is shared for editing, to tell this file apart from an older copy with the same content. Other tools keep it as it is."
@@ -5475,7 +5475,7 @@
     "back-curve": {
       "type": "object",
       "properties": {
-        "curve": {
+        "type": {
           "enum": [
             "anticipate",
             "overshoot",
@@ -5488,7 +5488,7 @@
         }
       },
       "required": [
-        "curve"
+        "type"
       ],
       "additionalProperties": false
     },
@@ -6226,7 +6226,7 @@
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "elastic"
                 },
                 "amplitude": {
@@ -6235,14 +6235,14 @@
                 }
               },
               "required": [
-                "curve"
+                "type"
               ],
               "additionalProperties": false
             },
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "bounce"
                 },
                 "bounciness": {
@@ -6252,14 +6252,14 @@
                 }
               },
               "required": [
-                "curve"
+                "type"
               ],
               "additionalProperties": false
             },
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "spring"
                 },
                 "amount": {
@@ -6269,7 +6269,7 @@
                 }
               },
               "required": [
-                "curve",
+                "type",
                 "amount"
               ],
               "additionalProperties": false
@@ -6277,7 +6277,7 @@
             {
               "type": "object",
               "properties": {
-                "curve": {
+                "type": {
                   "const": "cubic-bezier"
                 },
                 "x1": {
@@ -6298,7 +6298,7 @@
                 }
               },
               "required": [
-                "curve",
+                "type",
                 "x1",
                 "y1",
                 "x2",

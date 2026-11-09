@@ -241,7 +241,7 @@
             "items": {
               "$ref": "#/definitions/PresentationAnimationInterpolationName"
             },
-            "description": "The named interpolations; a keyframe may instead carry a curve with its settings, a cubic Bézier's { curve: \"cubic-bezier\", x1, y1, x2, y2 } with each x within 0–1 among them."
+            "description": "The named interpolations; a keyframe may instead carry a curve with its settings, a cubic Bézier's { type: \"cubic-bezier\", x1, y1, x2, y2 } with each x within 0–1 among them."
           },
           "limits": {
             "$ref": "#/definitions/AgentLimits"
@@ -3671,7 +3671,7 @@
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                     "description": "a supported image"
                   },
-                  "poster-frame": {
+                  "poster-time": {
                     "type": "number",
                     "minimum": 0,
                     "description": "seconds"
@@ -6321,7 +6321,7 @@
               "back": {
                 "type": "number"
               },
-              "curve": {
+              "type": {
                 "type": "string",
                 "enum": [
                   "anticipate",
@@ -6332,7 +6332,7 @@
             },
             "required": [
               "back",
-              "curve"
+              "type"
             ],
             "additionalProperties": false,
             "description": "Blender's Back with its Back setting: how far anticipate winds up, overshoot swings past its keyframe, or both."
@@ -6343,13 +6343,13 @@
               "bounciness": {
                 "type": "number"
               },
-              "curve": {
+              "type": {
                 "const": "bounce"
               }
             },
             "required": [
               "bounciness",
-              "curve"
+              "type"
             ],
             "additionalProperties": false,
             "description": "A bounce at a bounciness, Blender's Rigid Body word for a rebound's share of the speed it lands with; Blender's Bounce at 0.5."
@@ -6357,7 +6357,7 @@
           "PresentationAnimationCubicBezier": {
             "type": "object",
             "properties": {
-              "curve": {
+              "type": {
                 "const": "cubic-bezier"
               },
               "x1": {
@@ -6374,7 +6374,7 @@
               }
             },
             "required": [
-              "curve",
+              "type",
               "x1",
               "x2",
               "y1",
@@ -6454,15 +6454,15 @@
               "amplitude": {
                 "type": "number"
               },
-              "curve": {
-                "const": "elastic"
-              },
               "period": {
                 "type": "number"
+              },
+              "type": {
+                "const": "elastic"
               }
             },
             "required": [
-              "curve"
+              "type"
             ],
             "additionalProperties": false,
             "description": "Blender's Elastic ringing into its keyframe: its ring as a multiple of the move, and its length in seconds, or 0.3 of the move."
@@ -6949,16 +6949,16 @@
               "amount": {
                 "type": "number"
               },
-              "curve": {
-                "const": "spring"
-              },
               "response": {
                 "type": "number"
+              },
+              "type": {
+                "const": "spring"
               }
             },
             "required": [
               "amount",
-              "curve"
+              "type"
             ],
             "additionalProperties": false,
             "description": "A spring landing on its keyframe: `amount` sets how far it swings past, from 0, which settles with no overshoot, to 1, and `response` its period in seconds as SwiftUI's does, or it fits the keyframe."
@@ -7494,7 +7494,7 @@
           "back-curve": {
             "type": "object",
             "properties": {
-              "curve": {
+              "type": {
                 "enum": [
                   "anticipate",
                   "overshoot",
@@ -7507,7 +7507,7 @@
               }
             },
             "required": [
-              "curve"
+              "type"
             ],
             "additionalProperties": false
           },
@@ -8040,7 +8040,7 @@
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "elastic"
                       },
                       "amplitude": {
@@ -8049,14 +8049,14 @@
                       }
                     },
                     "required": [
-                      "curve"
+                      "type"
                     ],
                     "additionalProperties": false
                   },
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "bounce"
                       },
                       "bounciness": {
@@ -8066,14 +8066,14 @@
                       }
                     },
                     "required": [
-                      "curve"
+                      "type"
                     ],
                     "additionalProperties": false
                   },
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "spring"
                       },
                       "amount": {
@@ -8083,7 +8083,7 @@
                       }
                     },
                     "required": [
-                      "curve",
+                      "type",
                       "amount"
                     ],
                     "additionalProperties": false
@@ -8091,7 +8091,7 @@
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "cubic-bezier"
                       },
                       "x1": {
@@ -8112,7 +8112,7 @@
                       }
                     },
                     "required": [
-                      "curve",
+                      "type",
                       "x1",
                       "y1",
                       "x2",
@@ -13481,7 +13481,7 @@
                               "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                               "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                             },
-                            "poster-frame": {
+                            "poster-time": {
                               "type": "number",
                               "minimum": 0,
                               "description": "seconds"
@@ -17395,7 +17395,7 @@
                             }
                           ]
                         },
-                        "poster-frame": {
+                        "poster-time": {
                           "anyOf": [
                             {
                               "type": "null"
@@ -19793,7 +19793,7 @@
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
                           "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                         },
-                        "poster-frame": {
+                        "poster-time": {
                           "type": "number",
                           "minimum": 0,
                           "description": "seconds"
@@ -22254,7 +22254,7 @@
           "back-curve": {
             "type": "object",
             "properties": {
-              "curve": {
+              "type": {
                 "enum": [
                   "anticipate",
                   "overshoot",
@@ -22267,7 +22267,7 @@
               }
             },
             "required": [
-              "curve"
+              "type"
             ],
             "additionalProperties": false
           },
@@ -22800,7 +22800,7 @@
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "elastic"
                       },
                       "amplitude": {
@@ -22809,14 +22809,14 @@
                       }
                     },
                     "required": [
-                      "curve"
+                      "type"
                     ],
                     "additionalProperties": false
                   },
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "bounce"
                       },
                       "bounciness": {
@@ -22826,14 +22826,14 @@
                       }
                     },
                     "required": [
-                      "curve"
+                      "type"
                     ],
                     "additionalProperties": false
                   },
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "spring"
                       },
                       "amount": {
@@ -22843,7 +22843,7 @@
                       }
                     },
                     "required": [
-                      "curve",
+                      "type",
                       "amount"
                     ],
                     "additionalProperties": false
@@ -22851,7 +22851,7 @@
                   {
                     "type": "object",
                     "properties": {
-                      "curve": {
+                      "type": {
                         "const": "cubic-bezier"
                       },
                       "x1": {
@@ -22872,7 +22872,7 @@
                       }
                     },
                     "required": [
-                      "curve",
+                      "type",
                       "x1",
                       "y1",
                       "x2",

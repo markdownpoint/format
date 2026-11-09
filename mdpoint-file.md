@@ -511,7 +511,7 @@ The [motion example](examples/motion) includes a repeater, named curves and spri
 
 <img src="images/motion-copies.png" alt="The copies slide, as MarkdownPoint draws it" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide, as MarkdownPoint draws it" width="49%">
 
-Set a keyframe's `interpolation` to a curve name. To supply settings, use a record with the name in `curve`:
+Set a keyframe's `interpolation` to a curve name. To supply settings, use a record with the name in `type`:
 
 ```json
 [
@@ -526,7 +526,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
             "id": "bounce-arrives",
             "time": 2,
             "value": 540,
-            "interpolation": {"curve": "bounce", "bounciness": 0.8}
+            "interpolation": {"type": "bounce", "bounciness": 0.8}
           }
         ]
       },
@@ -536,7 +536,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
             "id": "elastic-arrives",
             "time": 2,
             "value": 540,
-            "interpolation": {"curve": "elastic", "amplitude": 1.5, "period": 0.5}
+            "interpolation": {"type": "elastic", "amplitude": 1.5, "period": 0.5}
           }
         ]
       },
@@ -546,7 +546,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
             "id": "overshoot-arrives",
             "time": 2,
             "value": 540,
-            "interpolation": {"curve": "overshoot", "back": 3}
+            "interpolation": {"type": "overshoot", "back": 3}
           }
         ]
       },
@@ -556,7 +556,7 @@ Set a keyframe's `interpolation` to a curve name. To supply settings, use a reco
             "id": "spring-arrives",
             "time": 2,
             "value": 540,
-            "interpolation": {"curve": "spring", "amount": 0.4, "response": 0.6}
+            "interpolation": {"type": "spring", "amount": 0.4, "response": 0.6}
           }
         ]
       }

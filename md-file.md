@@ -76,7 +76,7 @@ Start the file with frontmatter between two `---` lines. MarkdownPoint uses the 
 - `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
 - `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
 - `footer`: the footer text.
-- `save`: a save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing, and it tells the files apart from an older copy with the same content. Other tools keep it as it is.
+- `save-id`: a save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing, and it tells the files apart from an older copy with the same content. Other tools keep it as it is.
 
 Put `footer` in double quotes if it contains a space followed by `#`; otherwise, the `#` starts a comment. Quote it, too, if it contains a colon followed by a space or starts with punctuation, such as `[`, `*` or `- `. YAML reads some such values as something other than text, and MarkdownPoint refuses those unquoted. MarkdownPoint always writes the footer in double quotes.
 

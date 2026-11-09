@@ -56,7 +56,7 @@ spring, amount 0.4, response 0.6
 Settings change how far a curve pulls back, swings past or bounces.
 
 <!-- notes -->
-A curve with settings is a record that names its `curve`. `back` sets how far overshoot swings past, `bounciness` how high a bounce rebounds, `amplitude` and `period` an elastic's swing, and `amount` and `response` a spring's.
+A curve with settings is a record that names its curve in `type`. `back` sets how far overshoot swings past, `bounciness` how high a bounce rebounds, `amplitude` and `period` an elastic's swing, and `amount` and `response` a spring's.
 
 <!-- slide: keyframes -->
 

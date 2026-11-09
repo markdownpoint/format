@@ -823,22 +823,22 @@
           "curves": {
             "dot-bounce.translation.x": {
               "keyframes": [
-                {"id":"bounce-arrives","time":2,"value":540,"interpolation":{"curve":"bounce","bounciness":0.8}}
+                {"id":"bounce-arrives","time":2,"value":540,"interpolation":{"type":"bounce","bounciness":0.8}}
               ]
             },
             "dot-elastic.translation.x": {
               "keyframes": [
-                {"id":"elastic-arrives","time":2,"value":540,"interpolation":{"curve":"elastic","amplitude":1.5,"period":0.5}}
+                {"id":"elastic-arrives","time":2,"value":540,"interpolation":{"type":"elastic","amplitude":1.5,"period":0.5}}
               ]
             },
             "dot-overshoot.translation.x": {
               "keyframes": [
-                {"id":"overshoot-arrives","time":2,"value":540,"interpolation":{"curve":"overshoot","back":3}}
+                {"id":"overshoot-arrives","time":2,"value":540,"interpolation":{"type":"overshoot","back":3}}
               ]
             },
             "dot-spring.translation.x": {
               "keyframes": [
-                {"id":"spring-arrives","time":2,"value":540,"interpolation":{"curve":"spring","amount":0.4,"response":0.6}}
+                {"id":"spring-arrives","time":2,"value":540,"interpolation":{"type":"spring","amount":0.4,"response":0.6}}
               ]
             }
           }

@@ -3052,8 +3052,8 @@
         "poster": {
           "$ref": "#/definitions/Prop_video.poster"
         },
-        "poster-frame": {
-          "$ref": "#/definitions/Prop_poster-frame"
+        "poster-time": {
+          "$ref": "#/definitions/Prop_poster-time"
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
@@ -4841,12 +4841,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "poster-frame"
+              "const": "poster-time"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_poster-frame"
+                  "$ref": "#/definitions/Prop_poster-time"
                 },
                 {
                   "type": "null"
@@ -6483,7 +6483,7 @@
                 "restyle",
                 "generation",
                 "poster",
-                "poster-frame",
+                "poster-time",
                 "shape",
                 "direction",
                 "point-count",
@@ -6645,7 +6645,7 @@
         "path-offset",
         "point-count",
         "poster",
-        "poster-frame",
+        "poster-time",
         "progress",
         "prompt",
         "radius",
@@ -8771,8 +8771,8 @@
         "poster": {
           "$ref": "#/definitions/Prop_video.poster"
         },
-        "poster-frame": {
-          "$ref": "#/definitions/Prop_poster-frame"
+        "poster-time": {
+          "$ref": "#/definitions/Prop_poster-time"
         },
         "rotation": {
           "$ref": "#/definitions/Prop_rotation"
@@ -10103,7 +10103,7 @@
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "enum": [
                         "anticipate",
                         "overshoot",
@@ -10116,14 +10116,14 @@
                     }
                   },
                   "required": [
-                    "curve"
+                    "type"
                   ],
                   "additionalProperties": false
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "elastic"
                     },
                     "amplitude": {
@@ -10132,14 +10132,14 @@
                     }
                   },
                   "required": [
-                    "curve"
+                    "type"
                   ],
                   "additionalProperties": false
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "bounce"
                     },
                     "bounciness": {
@@ -10149,14 +10149,14 @@
                     }
                   },
                   "required": [
-                    "curve"
+                    "type"
                   ],
                   "additionalProperties": false
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "spring"
                     },
                     "amount": {
@@ -10166,7 +10166,7 @@
                     }
                   },
                   "required": [
-                    "curve",
+                    "type",
                     "amount"
                   ],
                   "additionalProperties": false
@@ -10174,7 +10174,7 @@
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "cubic-bezier"
                     },
                     "x1": {
@@ -10195,7 +10195,7 @@
                     }
                   },
                   "required": [
-                    "curve",
+                    "type",
                     "x1",
                     "y1",
                     "x2",
@@ -10340,7 +10340,7 @@
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "enum": [
                         "anticipate",
                         "overshoot",
@@ -10353,14 +10353,14 @@
                     }
                   },
                   "required": [
-                    "curve"
+                    "type"
                   ],
                   "additionalProperties": false
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "elastic"
                     },
                     "amplitude": {
@@ -10369,14 +10369,14 @@
                     }
                   },
                   "required": [
-                    "curve"
+                    "type"
                   ],
                   "additionalProperties": false
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "bounce"
                     },
                     "bounciness": {
@@ -10386,14 +10386,14 @@
                     }
                   },
                   "required": [
-                    "curve"
+                    "type"
                   ],
                   "additionalProperties": false
                 },
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "spring"
                     },
                     "amount": {
@@ -10403,7 +10403,7 @@
                     }
                   },
                   "required": [
-                    "curve",
+                    "type",
                     "amount"
                   ],
                   "additionalProperties": false
@@ -10411,7 +10411,7 @@
                 {
                   "type": "object",
                   "properties": {
-                    "curve": {
+                    "type": {
                       "const": "cubic-bezier"
                     },
                     "x1": {
@@ -10432,7 +10432,7 @@
                     }
                   },
                   "required": [
-                    "curve",
+                    "type",
                     "x1",
                     "y1",
                     "x2",
@@ -11008,7 +11008,7 @@
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
       "description": "a supported image"
     },
-    "Prop_poster-frame": {
+    "Prop_poster-time": {
       "type": "number",
       "minimum": 0,
       "description": "seconds"
