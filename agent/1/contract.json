@@ -4458,7 +4458,7 @@
       "type": "number",
       "minimum": 1,
       "maximum": 60,
-      "description": "The rate a range is sampled at.; frames a second"
+      "description": "The rate a range is sampled at, in frames a second."
     },
     "AgentSchemaRequest": {
       "type": "object",
@@ -4495,7 +4495,7 @@
       "type": "integer",
       "minimum": 1,
       "maximum": 8192,
-      "description": "A slide's width or height in canvas units, as its theme's master.json holds it.; canvas units"
+      "description": "A slide's width or height in canvas units, as its theme's master.json holds it."
     },
     "AgentSlideFramesRequest": {
       "anyOf": [

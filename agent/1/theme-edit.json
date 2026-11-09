@@ -406,7 +406,8 @@
           "type": "object",
           "properties": {
             "groupId": {
-              "type": "string"
+              "type": "string",
+              "description": "The new group's id, unique on its slide, so the next proposal addresses it without reading it back; minted when omitted."
             },
             "objectIds": {
               "type": "array",
@@ -479,7 +480,8 @@
               "$ref": "#/definitions/PresentationInsertObjectSource"
             },
             "objectId": {
-              "type": "string"
+              "type": "string",
+              "description": "The new object's id, unique on its slide, so later operations of the batch and the next proposal address it without reading it back; minted when omitted."
             },
             "type": {
               "const": "insertObject"
@@ -3350,7 +3352,6 @@
       "description": "A text style's value as the master file holds it: a size, weight, measure or spacing as a number (`44`, `1.05`), a font role, case or bullet as its word, and a color as a role or a hex color."
     },
     "ObjectPropertyChangeSource": {
-      "description": "One property and its value; null restores its default, or with clear: true clears what an inherited object inherits. Every number keeps the millionth.",
       "anyOf": [
         {
           "type": "object",
@@ -3367,9 +3368,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3393,9 +3391,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3419,9 +3414,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3445,9 +3437,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3471,9 +3460,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3497,9 +3483,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3523,9 +3506,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3549,9 +3529,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3575,9 +3552,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3601,9 +3575,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3630,9 +3601,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3656,9 +3624,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3682,9 +3647,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3708,9 +3670,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3734,9 +3693,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3760,9 +3716,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3786,9 +3739,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3812,9 +3762,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3838,9 +3785,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3867,9 +3811,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3896,9 +3837,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3922,9 +3860,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3948,9 +3883,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -3974,9 +3906,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4000,9 +3929,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4026,9 +3952,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4052,9 +3975,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4078,9 +3998,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4104,9 +4021,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4130,9 +4044,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4156,9 +4067,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4182,9 +4090,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4208,9 +4113,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4234,9 +4136,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4260,9 +4159,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4286,9 +4182,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4312,9 +4205,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4338,9 +4228,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4367,9 +4254,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4393,9 +4277,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4419,9 +4300,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4445,9 +4323,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4471,9 +4346,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4497,9 +4369,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4523,9 +4392,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4549,9 +4415,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4575,9 +4438,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4601,9 +4461,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4627,9 +4484,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4653,9 +4507,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4679,9 +4530,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4705,9 +4553,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4731,9 +4576,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4757,9 +4599,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4783,9 +4622,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4809,9 +4645,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4835,9 +4668,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4861,9 +4691,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4887,9 +4714,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4913,9 +4737,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4939,9 +4760,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4965,9 +4783,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -4991,9 +4806,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5017,9 +4829,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5043,9 +4852,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5085,9 +4891,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5127,9 +4930,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5153,9 +4953,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5179,9 +4976,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5205,9 +4999,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5231,9 +5022,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5260,9 +5048,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5307,9 +5092,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5347,9 +5129,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5403,9 +5182,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5429,9 +5205,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5455,9 +5228,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5557,9 +5327,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5583,9 +5350,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5609,9 +5373,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5635,9 +5396,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5661,9 +5419,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5687,9 +5442,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5713,9 +5465,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5739,9 +5488,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5765,9 +5511,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5791,9 +5534,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5817,9 +5557,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5843,9 +5580,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5869,9 +5603,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5895,9 +5626,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5921,9 +5649,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5964,9 +5689,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -5990,9 +5712,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6016,9 +5735,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6042,9 +5758,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6068,9 +5781,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6094,9 +5804,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6120,9 +5827,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6146,9 +5850,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6172,9 +5873,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6198,9 +5896,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6224,9 +5919,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6250,9 +5942,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6276,9 +5965,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6302,9 +5988,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6328,9 +6011,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6354,9 +6034,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6380,9 +6057,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6406,9 +6080,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6432,9 +6103,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6461,9 +6129,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6487,9 +6152,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6513,9 +6175,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6539,9 +6198,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6565,9 +6221,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6591,9 +6244,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6617,9 +6267,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6643,9 +6290,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6669,9 +6313,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6695,9 +6336,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6721,9 +6359,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6747,9 +6382,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6773,9 +6405,6 @@
                   "type": "null"
                 }
               ]
-            },
-            "clear": {
-              "const": true
             }
           },
           "required": [
@@ -6783,20 +6412,151 @@
             "value"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "property": {
+              "type": "string",
+              "enum": [
+                "start-on-click",
+                "loop",
+                "volume",
+                "fade-in",
+                "fade-out",
+                "media-trim",
+                "link",
+                "opacity",
+                "blur",
+                "z",
+                "blend-mode",
+                "wipe",
+                "text-style",
+                "font-family",
+                "italic",
+                "tabular",
+                "kerning",
+                "font-size",
+                "font-weight",
+                "color",
+                "align",
+                "text-direction",
+                "vertical-align",
+                "auto-size",
+                "min-height",
+                "column-count",
+                "column-gutter",
+                "text-path",
+                "path-offset",
+                "paragraph-spacing",
+                "inset-top",
+                "inset-bottom",
+                "list-indent",
+                "bullet-style",
+                "sub-bullet-style",
+                "line-height",
+                "tracking",
+                "case",
+                "drop-shadow",
+                "text-stroke",
+                "text-stroke-weight",
+                "inset",
+                "scale-mode",
+                "crop",
+                "flip",
+                "grayscale",
+                "exposure",
+                "contrast",
+                "saturation",
+                "temperature",
+                "corner-radius",
+                "mask",
+                "alt",
+                "parent-node",
+                "parent-inverse",
+                "decorative",
+                "ignore-auto-layout",
+                "constrain-proportions",
+                "transparent-background",
+                "prompt",
+                "image-style",
+                "restyle",
+                "generation",
+                "poster",
+                "poster-frame",
+                "shape",
+                "direction",
+                "point-count",
+                "anchor-point",
+                "rotation-x",
+                "rotation-y",
+                "focal-length",
+                "motion-blur",
+                "render-effects",
+                "drift",
+                "target",
+                "cast-shadow",
+                "constraints",
+                "light-type",
+                "intensity",
+                "cone-angle",
+                "falloff-angle",
+                "radius",
+                "size-x",
+                "size-y",
+                "shadow-color",
+                "width",
+                "height",
+                "orientation",
+                "model",
+                "auto-layout",
+                "tail",
+                "fill-rule",
+                "use-as-mask",
+                "repeater",
+                "composition",
+                "controls",
+                "time-remap",
+                "chart-type",
+                "progress",
+                "spread",
+                "roll",
+                "value-labels",
+                "legend",
+                "colors",
+                "leading-zero-opacity",
+                "bind",
+                "enter",
+                "exit",
+                "trim",
+                "fill",
+                "stroke",
+                "stroke-weight",
+                "stroke-style",
+                "column-widths",
+                "min-row-heights",
+                "header-row",
+                "header-column",
+                "alternating-fills",
+                "gridlines",
+                "connection",
+                "bend",
+                "cap-start",
+                "cap-end"
+              ]
+            },
+            "clear": {
+              "const": true
+            }
+          },
+          "required": [
+            "property",
+            "clear"
+          ],
+          "additionalProperties": false
         }
       ],
-      "if": {
-        "required": [
-          "clear"
-        ]
-      },
-      "then": {
-        "properties": {
-          "value": {
-            "type": "null"
-          }
-        }
-      }
+      "description": "One property and its value, null restoring its default; or one property and clear: true, which clears what an inherited object inherits. Every number keeps the millionth."
     },
     "ObjectPropertySourceKey": {
       "type": "string",
@@ -9446,7 +9206,7 @@
             "type": {
               "const": "ring"
             },
-            "count": {
+            "copies": {
               "type": "integer",
               "minimum": 2,
               "maximum": 513,
@@ -9461,7 +9221,7 @@
           },
           "required": [
             "type",
-            "count"
+            "copies"
           ],
           "additionalProperties": false
         }
