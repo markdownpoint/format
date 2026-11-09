@@ -11118,7 +11118,7 @@
       "type": "number",
       "minimum": -181,
       "maximum": 181,
-      "description": "lengths of the line"
+      "description": "end-to-end distances"
     },
     "LineCap": {
       "enum": [

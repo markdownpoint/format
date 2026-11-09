@@ -229,7 +229,7 @@ This is slide {{slide-number}} of {{slide-count}}, in section {{section-number}}
 
 ![The fields slide, as MarkdownPoint draws it](images/words-fields.png)
 
-A field shows a value MarkdownPoint fills in, such as the slide number. The [reference](reference/v1.md#markdown) lists every field and how it counts. Slide numbers count the shown slides alone: of the slides A, B, skipped, and C, C shows `{{slide-number}} of {{slide-count}}` as 2 of 2. The `footer` field shows the footer set in the frontmatter.
+A field shows a value MarkdownPoint fills in, such as the slide number. The [reference](reference/v1.md#markdown) lists every field and how it counts. Slide numbers count the shown slides alone: of the slides A, B, and C, with B skipped, C shows `{{slide-number}} of {{slide-count}}` as 2 of 2. The `footer` field shows the footer set in the frontmatter.
 
 ### Quotes and inline code
 
