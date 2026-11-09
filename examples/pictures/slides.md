@@ -26,7 +26,7 @@ grayscale 1
 A faded background==.==
 
 <!-- notes -->
-The background zooms in 1.6 times on the sun, turns gray and stands at 0.3 opacity over the scheme's color.
+The background's `crop` zooms in 1.6 times (`scale`) on the sun (`focal-point`). It turns gray (`grayscale`) and stands at 0.3 `opacity` over the scheme's color.
 
 <!-- slide: cutout -->
 

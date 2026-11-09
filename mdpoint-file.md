@@ -198,7 +198,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header, and its first row is a row like the others. The chart's colors give its two series the text and accent colors. The counter rolls its digits. Its progress of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity.
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). Its `progress` of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity (`leading-zero-opacity`).
 ```
 
 ```json

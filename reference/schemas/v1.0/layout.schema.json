@@ -1555,7 +1555,7 @@
                   {
                     "type": "number",
                     "minimum": 1,
-                    "description": "pieces"
+                    "description": "intervals"
                   }
                 ]
               },
@@ -4080,7 +4080,7 @@
                   "spread": {
                     "type": "number",
                     "minimum": 1,
-                    "description": "pieces"
+                    "description": "intervals"
                   },
                   "roll": {
                     "type": "boolean"
@@ -5448,12 +5448,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "How many pieces are in motion at once."
+          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many move at once."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "A pause between paragraphs, as long as this many pieces take to enter."
+          "description": "How many intervals the text holds between turns, once the pieces before have arrived."
         },
         "progress": {
           "type": "number",
@@ -5476,7 +5476,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece, its pieces counted as an entrance counts them. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece, its pieces counted and timed as an entrance's. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -5577,12 +5577,12 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "How many pieces are in motion at once."
+          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many move at once."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "A pause between paragraphs, as long as this many pieces take to exit."
+          "description": "How many intervals the text holds between turns, once the pieces before have left."
         },
         "progress": {
           "type": "number",

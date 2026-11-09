@@ -85,7 +85,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header, and its first row is a row like the others. The chart's colors give its two series the text and accent colors. The counter rolls its digits. Its progress of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity.
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). Its `progress` of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity (`leading-zero-opacity`).
 
 <!-- slide: rules -->
 
@@ -122,4 +122,4 @@ The file gives this box no height. It grows to fit its words.
 Outlined
 
 <!-- notes -->
-The first box sets auto-size to height, so its frame has no height. The figures set tabular: every digit is as wide, so the columns line up. The outlined word's letters take the background's color. Its text-stroke is the accent color, 3 canvas units wide.
+The first box sets `auto-size` to height, so its frame has no height. The figures set `tabular`: every digit is as wide, so the columns line up. The outlined word's letters take the background's color. Its `text-stroke` is the accent color, and its `text-stroke-weight` makes it 3 canvas units wide.

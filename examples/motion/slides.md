@@ -90,7 +90,7 @@ The card slides in past its resting position, settles, and then swings right and
 Words in pieces==.==
 
 <!-- text: body -->
-These letters arrive one at a time, in a shuffled order.
+These letters arrive six at a time, in a shuffled order.
 
 This paragraph waits a moment before its turn.
 
@@ -100,7 +100,7 @@ These letters start with their exit already played.
 The second click plays it backward.
 
 <!-- notes -->
-The bar is revealed behind a wipe as its `progress` runs from 0 to 1. The body's letters enter one at a time in a random order from `seed` 7, sliding in from the left, with each space taking a turn (`spaces`) and a `pause` between paragraphs. Its `progress` starts at 0 and the first click runs it to 1. The caption starts with its exit at `progress` 1, gone. The second click runs the exit back to 0, so its letters turn and sharpen into place.
+The bar is revealed behind a wipe as its `progress` runs from 0 to 1. The body's letters enter six at a time (`spread`) in a random `order` from `seed` 7, sliding in from the left (`from`), with each space taking a turn (`spaces`). Its paragraphs take turns, each in its own shuffled order, with a `pause` between them. Its `progress` starts at 0 and the first click runs it to 1. The caption starts with its exit at `progress` 1, gone. The second click runs the exit back to 0, so its letters turn and sharpen into place.
 
 <!-- slide: copies -->
 
@@ -111,7 +111,7 @@ Copies of one shape==.==
 Eight copies turn in a ring, each a little later than the one before.
 
 <!-- notes -->
-With `repeater`, one square makes eight squares in all: itself, unchanged, and seven copies, each turned 45 degrees about a point below it and a little smaller. The last copy fades to `end-opacity` 0.2. Each copy turns, scales and waits a little at random (`rotation-randomness`, `scale-randomness`, `stagger-randomness`), from `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before. The slide leaves with a carry-over that matches words, so the words the two headings share move to their places on the next slide.
+With `repeater`, one square makes eight squares in all (`copies`): itself, unchanged, and seven copies, each turned 45 degrees (`rotation`) about a point below it (`anchor-point`) and a little smaller (`scale`). The last copy fades to `end-opacity` 0.2. Each copy turns, scales and waits a little at random (`rotation-randomness`, `scale-randomness`, `stagger-randomness`), from `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before (`stagger`). The slide leaves with a carry-over that matches words, so the words the two headings share move to their places on the next slide.
 
 <!-- slide: arrival -->
 
@@ -122,7 +122,7 @@ Eight copies of one shape==.==
 The words both headings share carry over from the slide before.
 
 <!-- notes -->
-The previous slide's carry-over matches the two headings word by word: "of one shape" moves to its place in this heading, "Copies" fades out and "Eight copies" fades in. The square has the same id on both slides and stands where the click left it, turned 90 degrees, so its copies stay still while the words move.
+The previous slide's transition, `effect` `carry-over` with `match` `word`, matches the two headings word by word: "of one shape" moves to its place in this heading, "Copies" fades out and "Eight copies" fades in. The square has the same id on both slides and stands where the click left it, turned 90 degrees, so its copies stay still while the words move.
 
 <!-- slide: moments -->
 
