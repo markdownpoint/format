@@ -391,10 +391,10 @@
               "setNotes",
               "setObjectFlags",
               "setObjectName",
+              "setParameterValue",
               "setSectionName",
               "setSlideLayout",
               "setText",
-              "setValues",
               "showFromStart",
               "transformObjects",
               "travel",
@@ -546,10 +546,10 @@
                   "setNotes",
                   "setObjectFlags",
                   "setObjectName",
+                  "setParameterValue",
                   "setSectionName",
                   "setSlideLayout",
                   "setText",
-                  "setValues",
                   "showFromStart",
                   "transformObjects",
                   "travel",
@@ -8585,7 +8585,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Render one slide through the app renderer at authored Base or an exact moment of its motion. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, the moment as MarkdownPoint spells it, its width and height in pixels, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, its height as Fit box to text fits it and its width with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write as transformObjects’ drawnFrame at the same moment, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
+      "description": "Render one slide through the app renderer at authored Base or an exact moment of its motion. Base is the slide as authored, before any animation; Start applies initial values. Returns a PNG image plus revision, the moment as MarkdownPoint spells it, its width and height in pixels, and overflowing: the objects whose text does not fit their frames there, as the canvas marks them, fittedFrames: the frame each text object takes fitted to its text there, in its own parameters, byHeight as Fit box to text fits it and byWidth with every paragraph on one line as a side handle fits it, its letters kept where they stand, to write as transformObjects’ drawnFrame at the same moment, and textBounds: where each object's words stand there in canvas units, the union of its lines' boxes. It never starts media or changes the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -25484,7 +25484,7 @@
                     "insertRevealStep",
                     "insertPlayStep",
                     "showFromStart",
-                    "setValues",
+                    "setParameterValue",
                     "insertObject",
                     "pasteObjects",
                     "deleteObjects",
@@ -25522,7 +25522,7 @@
                 "type"
               ]
             },
-            "description": "Batch compatible edits as one Undo step, or send one standalone operation. Every number keeps the millionth. Batch the batchable types (setText, insertTableRow, insertTableColumn, deleteTableRow, deleteTableColumn, setNotes, transformObjects, updateSlideProperties, updatePresentationProperties, applyBackgroundToAllSlides, setObjectFlags, setObjectName, updateObjectProperties, updateReplica, resetObjects, replaceMedia, replaceWebVideo, updateStep, updateInitial, insertSteps, deleteSteps, applyEffect, tween, travel, typewriter, oscillate, insertKeyframes, deleteKeyframes, editStep, pasteAnimation, insertRevealStep, insertPlayStep, showFromStart, setValues, insertObject, pasteObjects, deleteObjects, insertSlide, reorderSlides) as one Undo step; every other type goes alone. Read each type's exact fields with schema."
+            "description": "Batch compatible edits as one Undo step, or send one standalone operation. Every number keeps the millionth. Batch the batchable types (setText, insertTableRow, insertTableColumn, deleteTableRow, deleteTableColumn, setNotes, transformObjects, updateSlideProperties, updatePresentationProperties, applyBackgroundToAllSlides, setObjectFlags, setObjectName, updateObjectProperties, updateReplica, resetObjects, replaceMedia, replaceWebVideo, updateStep, updateInitial, insertSteps, deleteSteps, applyEffect, tween, travel, typewriter, oscillate, insertKeyframes, deleteKeyframes, editStep, pasteAnimation, insertRevealStep, insertPlayStep, showFromStart, setParameterValue, insertObject, pasteObjects, deleteObjects, insertSlide, reorderSlides) as one Undo step; every other type goes alone. Read each type's exact fields with schema."
           },
           "revision": {
             "type": "string",
@@ -25674,7 +25674,7 @@
                   "insertRevealStep",
                   "insertPlayStep",
                   "showFromStart",
-                  "setValues",
+                  "setParameterValue",
                   "insertObject",
                   "pasteObjects",
                   "deleteObjects",
@@ -26152,7 +26152,7 @@
                   "insertRevealStep",
                   "insertPlayStep",
                   "showFromStart",
-                  "setValues",
+                  "setParameterValue",
                   "insertObject",
                   "pasteObjects",
                   "deleteObjects",
@@ -26487,7 +26487,7 @@
                   "insertRevealStep",
                   "insertPlayStep",
                   "showFromStart",
-                  "setValues",
+                  "setParameterValue",
                   "insertObject",
                   "pasteObjects",
                   "deleteObjects",

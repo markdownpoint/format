@@ -3001,10 +3001,10 @@
         "setNotes",
         "setObjectFlags",
         "setObjectName",
+        "setParameterValue",
         "setSectionName",
         "setSlideLayout",
         "setText",
-        "setValues",
         "showFromStart",
         "transformObjects",
         "travel",
@@ -8181,16 +8181,16 @@
               "additionalProperties": {
                 "type": "object",
                 "properties": {
-                  "height": {
+                  "byHeight": {
                     "$ref": "#/definitions/AgentFrame"
                   },
-                  "width": {
+                  "byWidth": {
                     "$ref": "#/definitions/AgentFrame"
                   }
                 },
                 "additionalProperties": false
               },
-              "description": "The frame each text object takes when fitted to its text at this moment, in its own parameters there, to write as transformObjects' `drawnFrame` at the same moment: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
+              "description": "The frame each text object takes when fitted to its text at this moment, in its own parameters there, to write as transformObjects' `drawnFrame` at the same moment: `byHeight` as Fit box to text and the bottom handle fit it, the top kept; `byWidth` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `byHeight` frame, the height its words take, which no file holds. Text in columns has no `byWidth`; objects with no text are left out."
             },
             "height": {
               "type": "number"
@@ -8250,16 +8250,16 @@
               "additionalProperties": {
                 "type": "object",
                 "properties": {
-                  "height": {
+                  "byHeight": {
                     "$ref": "#/definitions/AgentFrame"
                   },
-                  "width": {
+                  "byWidth": {
                     "$ref": "#/definitions/AgentFrame"
                   }
                 },
                 "additionalProperties": false
               },
-              "description": "The frame each text object takes when fitted to its text at this moment, in its own parameters there, to write as transformObjects' `drawnFrame` at the same moment: `height` as Fit box to text and the bottom handle fit it, the top kept; `width` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `height`, the height its words take, which no file holds. Text in columns has no `width`; objects with no text are left out."
+              "description": "The frame each text object takes when fitted to its text at this moment, in its own parameters there, to write as transformObjects' `drawnFrame` at the same moment: `byHeight` as Fit box to text and the bottom handle fit it, the top kept; `byWidth` as a side handle fits it, every paragraph on one line, the point its alignment holds kept. Its letters stay where they stand whatever its turn, scale and anchor. A box that grows to its words already stands at its `byHeight` frame, the height its words take, which no file holds. Text in columns has no `byWidth`; objects with no text are left out."
             },
             "height": {
               "type": "number"

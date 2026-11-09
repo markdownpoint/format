@@ -1227,6 +1227,55 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "end": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4294967296
+            },
+            "interpolation": {
+              "$ref": "#/definitions/PresentationAnimationInterpolation"
+            },
+            "objectId": {
+              "$ref": "#/definitions/AgentObjectId"
+            },
+            "orient": {
+              "type": "boolean"
+            },
+            "positions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AgentTravelPosition"
+              },
+              "minItems": 2
+            },
+            "slideId": {
+              "$ref": "#/definitions/AgentSlideId"
+            },
+            "start": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4294967296
+            },
+            "stepId": {
+              "$ref": "#/definitions/AgentStepId"
+            },
+            "type": {
+              "const": "travel"
+            }
+          },
+          "required": [
+            "end",
+            "objectId",
+            "positions",
+            "slideId",
+            "stepId",
+            "type"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
             "file": {
               "type": [
                 "null",
@@ -1380,7 +1429,7 @@
               "$ref": "#/definitions/AgentSlideId"
             },
             "type": {
-              "const": "setValues"
+              "const": "setParameterValue"
             },
             "value": {
               "$ref": "#/definitions/PresentationAnimationValueSource"
@@ -3050,6 +3099,29 @@
     "AgentTransformFrame": {
       "$ref": "#/definitions/PresentationTransformFrame",
       "description": "The frame a transform gives an object, where it is drawn, as slides.get's `drawnFrames` gives it: every side, but a table's height only where the edit sizes the table. A text box that grows to its words may leave its height out, as a height sizes nothing there; a width its words give it sizes nothing either."
+    },
+    "AgentTravelPosition": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "canvas units"
+        },
+        "y": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "canvas units"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false,
+      "description": "Where a 3D object's origin stands on its way, as its `position` spells x and y: canvas units in the 3D space, x right from the slide's left edge and y up from its bottom edge."
     },
     "AgentTweenChangeSource": {
       "type": "object",
@@ -14236,7 +14308,7 @@
       "properties": {
         "before": {
           "type": "string",
-          "description": "The text's whole Markdown, or the notes' when objectId is null, as slides.get gives it; a text changed since refuses the replacement. Each replacement's block, from and to select inside it."
+          "description": "The text's whole Markdown, or the notes' when objectId is null, as slides.get gives it: only a guard, so a text changed since refuses the replacement. The ranges count the block's words as they read, never this Markdown."
         },
         "objectId": {
           "anyOf": [
@@ -14942,16 +15014,19 @@
         },
         "from": {
           "type": "integer",
+          "description": "The offset of its first character in the block's words as they read, from 0, in UTF-16 code units.",
           "minimum": 0,
           "maximum": 9007199254740991
         },
         "to": {
           "type": "integer",
+          "description": "The offset just past its last character, after `from`: the character at `to` stays.",
           "minimum": 0,
           "maximum": 9007199254740991
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "description": "Plain words in the range's place, taking its first character's marks and link; a backslash ending a line breaks the line there."
         }
       },
       "required": [
