@@ -61,7 +61,7 @@
         },
         "loop": {
           "const": "repeat",
-          "description": "`repeat` plays it again from the start when it ends. Without a loop, it plays once."
+          "description": "With `repeat`, it plays again from the start when it ends. Without a loop, it plays once."
         },
         "volume": {
           "type": "number",
@@ -105,7 +105,7 @@
         },
         "loop": {
           "const": "repeat",
-          "description": "`repeat` starts it over after the last slide. Without a loop, it stops there."
+          "description": "With `repeat`, it starts over after the last slide. Without a loop, it stops there."
         }
       },
       "required": [
@@ -230,7 +230,7 @@
             "type": "object",
             "propertyNames": {
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-              "description": "an object’s id"
+              "description": "an object's id"
             },
             "additionalProperties": {
               "anyOf": [
@@ -783,7 +783,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object’s frame"
+                          "description": "SVG path data where 0 to 1 spans the object's frame"
                         }
                       ]
                     },
@@ -1179,22 +1179,22 @@
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                          "description": "a file path in the presentation’s folder"
+                          "description": "a file path in the presentation's folder"
                         },
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                          "description": "a file path in the presentation’s folder"
+                          "description": "a file path in the presentation's folder"
                         },
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                          "description": "a file path in the presentation’s folder"
+                          "description": "a file path in the presentation's folder"
                         },
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                          "description": "a file path in the presentation’s folder"
+                          "description": "a file path in the presentation's folder"
                         }
                       ]
                     },
@@ -1315,7 +1315,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object’s frame"
+                          "description": "SVG path data where 0 to 1 spans the object's frame"
                         }
                       ]
                     },
@@ -1478,7 +1478,7 @@
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                          "description": "a file path in the presentation’s folder"
+                          "description": "a file path in the presentation's folder"
                         }
                       ]
                     },
@@ -1570,7 +1570,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object’s frame"
+                          "description": "SVG path data where 0 to 1 spans the object's frame"
                         }
                       ]
                     },
@@ -1604,7 +1604,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "a bundled Lucide icon’s name"
+                          "description": "a bundled Lucide icon's name"
                         }
                       ]
                     },
@@ -1993,7 +1993,7 @@
                               "type": "number",
                               "minimum": 0,
                               "maximum": 4294967296,
-                              "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. A step can animate it."
+                              "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                             },
                             "frame-position": {
                               "enum": [
@@ -2175,7 +2175,7 @@
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1,
-                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. The default is 1. A step can animate it."
+                                    "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. The default is 1. It can be animated."
                                   },
                                   "spring": {
                                     "description": "The spring the camera follows on. It has the `amount` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
@@ -2393,7 +2393,7 @@
                 }
               ]
             },
-            "description": "Changes, by id, to what the slide inherits from its layout and master. They're kept even when they match what's inherited. `null` removes an object, except the camera and the World."
+            "description": "Changes, by id, to what the slide inherits from its layout and master. They're kept even if they match what's inherited. An object set to `null` is removed. The camera and the World can't be removed."
           },
           "objects": {
             "type": "array",
@@ -2461,7 +2461,7 @@
                         "file": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                          "description": "a file path in the presentation’s folder"
+                          "description": "a file path in the presentation's folder"
                         },
                         "position": {
                           "$ref": "#/definitions/space-position"
@@ -3870,7 +3870,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. A step can animate it."
+                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
               }
             },
             "required": [
@@ -3920,7 +3920,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. A step can animate it."
+                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. It can be animated."
               }
             },
             "required": [
@@ -4014,7 +4014,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. Only `opacity` sets how opaque the shadow is."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
             },
             "opacity": {
               "type": "number",
@@ -4156,7 +4156,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the text has entered. Steps animate it."
+          "description": "How far the text has entered. It is animated by steps."
         }
       },
       "required": [
@@ -4285,7 +4285,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the text has exited. Steps animate it."
+          "description": "How far the text has exited. It is animated by steps."
         }
       },
       "required": [
@@ -4719,17 +4719,17 @@
     "model-node-name": {
       "type": "string",
       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-      "description": "the name of one of the model’s nodes"
+      "description": "the name of one of the model's nodes"
     },
     "nonblank-line": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn’t blank and has no control characters"
+      "description": "one line that isn't blank and has no control characters"
     },
     "object-id": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "an object’s id"
+      "description": "an object's id"
     },
     "objects-audio": {
       "type": "object",
@@ -4746,7 +4746,7 @@
         "file": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-          "description": "a file path in the presentation’s folder"
+          "description": "a file path in the presentation's folder"
         },
         "icon-position": {
           "$ref": "#/definitions/slide-point"
@@ -5155,7 +5155,7 @@
         },
         "icon": {
           "type": "string",
-          "description": "a bundled Lucide icon’s name"
+          "description": "a bundled Lucide icon's name"
         },
         "anchor-point": {
           "$ref": "#/definitions/anchor-point"
@@ -5221,7 +5221,7 @@
         "file": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "a file path in the presentation’s folder"
+          "description": "a file path in the presentation's folder"
         },
         "link": {
           "type": "string"
@@ -5316,7 +5316,7 @@
         },
         "mask": {
           "type": "string",
-          "description": "SVG path data where 0 to 1 spans the object’s frame"
+          "description": "SVG path data where 0 to 1 spans the object's frame"
         },
         "alt": {
           "$ref": "#/definitions/nonblank-line"
@@ -5440,7 +5440,7 @@
         "composition": {
           "type": "string",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-          "description": "a composition’s id"
+          "description": "a composition's id"
         },
         "control-values": {
           "$ref": "#/definitions/composition-control-values"
@@ -5693,7 +5693,7 @@
         },
         "geometry": {
           "type": "string",
-          "description": "SVG path data where 0 to 1 spans the object’s frame"
+          "description": "SVG path data where 0 to 1 spans the object's frame"
         },
         "fill-rule": {
           "enum": [
@@ -6407,7 +6407,7 @@
         },
         "text-path": {
           "type": "string",
-          "description": "SVG path data where 0 to 1 spans the object’s frame"
+          "description": "SVG path data where 0 to 1 spans the object's frame"
         },
         "path-offset": {
           "type": "number",
@@ -6655,7 +6655,7 @@
         "file": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-          "description": "a file path in the presentation’s folder"
+          "description": "a file path in the presentation's folder"
         },
         "start-on-click": {
           "type": "boolean"
@@ -6819,7 +6819,7 @@
         "poster": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "a file path in the presentation’s folder"
+          "description": "a file path in the presentation's folder"
         },
         "alt": {
           "$ref": "#/definitions/nonblank-line"
@@ -7497,7 +7497,7 @@
                       },
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether a scale move changes by a steady ratio. A zoom then looks even. From, to, or across 0, it moves at an even pace. Only `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale` use it."
+                        "description": "Whether a scale move changes by a steady ratio. A zoom then looks even. From, to, or across 0, it moves at an even pace. It applies only to `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale`."
                       },
                       "oscillate": {
                         "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",
@@ -7787,7 +7787,7 @@
                     "stride": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel. A 3D text's clip ignores it."
+                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel. It doesn't apply to a 3D text's clip."
                     },
                     "blend-in": {
                       "type": "number",
@@ -7797,7 +7797,7 @@
                     "clip-scale": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How much longer a clip's Action plays than its file says. 2 is half speed, and 0.5 is double. Maya's Clip Scale works the same way. The default is 1. A model's clip with a `stride` ignores it."
+                      "description": "How much longer a clip's Action plays than its file says. 2 is half speed, and 0.5 is double. Maya's Clip Scale works the same way. The default is 1. It isn't used by a model's clip with a `stride`."
                     }
                   },
                   "required": [
@@ -7953,7 +7953,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. Only `opacity` sets how opaque the shadow is."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
             },
             "opacity": {
               "type": "number",
@@ -8092,7 +8092,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8125,7 +8125,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8176,7 +8176,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8219,7 +8219,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8271,7 +8271,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8314,7 +8314,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8357,7 +8357,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8400,7 +8400,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8434,7 +8434,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",
@@ -8476,7 +8476,7 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
               "type": "number",

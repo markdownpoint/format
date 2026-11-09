@@ -672,7 +672,7 @@
               },
               "text-path": {
                 "type": "string",
-                "description": "SVG path data where 0 to 1 spans the object’s frame"
+                "description": "SVG path data where 0 to 1 spans the object's frame"
               },
               "path-offset": {
                 "type": "number",
@@ -787,7 +787,7 @@
                             "$ref": "#/definitions/opaque-color"
                           }
                         ],
-                        "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. Only `opacity` sets how opaque the shadow is."
+                        "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
                       },
                       "opacity": {
                         "type": "number",
@@ -1196,7 +1196,7 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP]|[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                    "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
@@ -1335,7 +1335,7 @@
               },
               "mask": {
                 "type": "string",
-                "description": "SVG path data where 0 to 1 spans the object’s frame"
+                "description": "SVG path data where 0 to 1 spans the object's frame"
               },
               "alt": {
                 "$ref": "#/definitions/nonblank-line"
@@ -1466,7 +1466,7 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                    "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
@@ -1503,7 +1503,7 @@
                     "additionalProperties": {
                       "type": "string",
                       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                      "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                      "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                     }
                   }
                 ]
@@ -1617,7 +1617,7 @@
               "poster": {
                 "type": "string",
                 "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
               },
               "poster-time": {
                 "type": "number",
@@ -2073,7 +2073,7 @@
               },
               "geometry": {
                 "type": "string",
-                "description": "SVG path data where 0 to 1 spans the object’s frame"
+                "description": "SVG path data where 0 to 1 spans the object's frame"
               },
               "fill-rule": {
                 "enum": [
@@ -2218,7 +2218,7 @@
               },
               "icon": {
                 "type": "string",
-                "description": "a bundled Lucide icon’s name"
+                "description": "a bundled Lucide icon's name"
               },
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
@@ -2735,7 +2735,7 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                    "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
@@ -2772,7 +2772,7 @@
                     "additionalProperties": {
                       "type": "string",
                       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                      "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                      "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                     }
                   }
                 ]
@@ -2840,7 +2840,7 @@
               "poster": {
                 "type": "string",
                 "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
               },
               "alt": {
                 "$ref": "#/definitions/nonblank-line"
@@ -2955,7 +2955,7 @@
                     "type": "number",
                     "minimum": 0,
                     "maximum": 4294967296,
-                    "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. A step can animate it."
+                    "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                   },
                   "frame-position": {
                     "enum": [
@@ -3085,7 +3085,7 @@
                           "type": "number",
                           "minimum": 0,
                           "maximum": 1,
-                          "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. The default is 1. A step can animate it."
+                          "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. The default is 1. It can be animated."
                         },
                         "spring": {
                           "description": "The spring the camera follows on. It has the `amount` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
@@ -3155,7 +3155,7 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                    "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
@@ -3192,7 +3192,7 @@
                     "additionalProperties": {
                       "type": "string",
                       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                      "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+                      "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                     }
                   }
                 ]
@@ -3289,7 +3289,7 @@
                           "type": "number",
                           "minimum": 0,
                           "maximum": 1,
-                          "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. A step can animate it."
+                          "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
                         }
                       },
                       "required": [
@@ -3339,7 +3339,7 @@
                           "type": "number",
                           "minimum": 0,
                           "maximum": 1,
-                          "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. A step can animate it."
+                          "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. It can be animated."
                         }
                       },
                       "required": [
@@ -3876,7 +3876,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "an object’s id"
+        "description": "an object's id"
       },
       "additionalProperties": {
         "type": "string"
@@ -4040,7 +4040,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. Only `opacity` sets how opaque the shadow is."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
             },
             "opacity": {
               "type": "number",
@@ -4182,7 +4182,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the text has entered. Steps animate it."
+          "description": "How far the text has entered. It is animated by steps."
         }
       },
       "required": [
@@ -4311,7 +4311,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the text has exited. Steps animate it."
+          "description": "How far the text has exited. It is animated by steps."
         }
       },
       "required": [
@@ -4712,17 +4712,17 @@
     "model-node-name": {
       "type": "string",
       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-      "description": "the name of one of the model’s nodes"
+      "description": "the name of one of the model's nodes"
     },
     "nonblank-line": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn’t blank and has no control characters"
+      "description": "one line that isn't blank and has no control characters"
     },
     "object-id": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "an object’s id"
+      "description": "an object's id"
     },
     "opaque-color": {
       "type": "string",
@@ -5179,7 +5179,7 @@
     "theme-file-path": {
       "type": "string",
       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-      "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
+      "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
     },
     "time-trim": {
       "description": "The part of a video or audio file, or of a clip's Action, that plays.",

@@ -1,12 +1,12 @@
 # Themes
 
-A theme contains the fonts, colors, text styles and layouts used by its slides. The slide text is in `slides.md`.
+A theme contains the fonts, colors, text styles, and layouts used by its slides. The slide text is in `slides.md`.
 
 A theme is in `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. Most examples use Basic, MarkdownPoint's default theme.
 
 ```
 themes/<key>/
-  master.json             size, fonts, color schemes, text styles and what every slide shows
+  master.json             size, fonts, color schemes, text styles, and what every slide shows
   title.json              one file per layout, named by the layout's key
   content-with-header.json
   ...
@@ -14,7 +14,7 @@ themes/<key>/
   media/                  the theme's own images
 ```
 
-## Master, layouts and slides
+## Master, layouts, and slides
 
 The master applies to every slide. Layouts define the objects and placeholders for each kind of slide. A slide selects a layout and can add objects or override properties.
 
@@ -30,7 +30,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Color schemes
 
-A scheme's `colors` set a color for each role. A role names how the color is used: `background`, `text` or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
+A scheme's `colors` set a color for each role. A role names how the color is used: `background`, `text`, or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
 
 Every theme has a `light` and a `dark` scheme and can add more, such as Basic's butter. Each scheme sets its `appearance`, light or dark, next to its colors. The `light` and `dark` schemes have the appearance they're named for:
 
@@ -48,7 +48,7 @@ Every theme has a `light` and a `dark` scheme and can add more, such as Basic's 
 }
 ```
 
-`{brand.ember}` refers to the `ember` color under `brand.colors`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `stroke` and `link`. It can add roles of its own. The [scheme colors reference](reference/v1.md#scheme-colors) says what each role colors.
+`{brand.ember}` refers to the `ember` color under `brand.colors`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `stroke`, and `link`. It can add roles of its own. The [scheme colors reference](reference/v1.md#scheme-colors) says what each role colors.
 
 ## Text styles
 
@@ -65,7 +65,7 @@ A text object uses a named text style from the theme. Define every style that th
 }
 ```
 
-Set `font-family` to `display`, `body` or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color and spacing.
+Set `font-family` to `display`, `body`, or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color, and spacing.
 
 The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled and generic families, such as `serif` or `system-ui`, need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
 
@@ -116,7 +116,7 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 }
 ```
 
-`"placeholder": true` makes a layout's text or image a placeholder. Each slide fills it with its own text or image, matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->` and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
+`"placeholder": true` makes a layout's text or image a placeholder. Each slide fills it with its own text or image, matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
 
 The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing during a presentation. Use `overrides` to change a master object's properties in this layout. Set its override entry to `null` to remove the object.
 
@@ -135,7 +135,7 @@ The [own-theme example](examples/own-theme) has its own theme, Studio, under `th
 }
 ```
 
-A text style's `marks` set how bold, italic, highlighted, struck-through and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `inset-bottom` leaves space under the last line:
+A text style's `marks` set how bold, italic, highlighted, struck-through, and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `inset-bottom` leaves space under the last line:
 
 ```json
 {
@@ -165,7 +165,7 @@ The master's mark has a file for each scheme. A dark slide shows the dark scheme
 
 <img src="images/own-theme-light.png" alt="The light slide drawn by MarkdownPoint" width="49%"> <img src="images/own-theme-dark.png" alt="The dark slide drawn by MarkdownPoint" width="49%">
 
-The master also sets a column grid, a baseline grid and two guides. MarkdownPoint shows them while you edit, but never on a slide:
+The master also sets a column grid, a baseline grid, and two guides. MarkdownPoint shows them while you edit, but never on a slide:
 
 ```json
 {"columns": {"count": 12, "gutter": 24, "margin": 120}, "baseline": {"start": 120, "increment": 24}}

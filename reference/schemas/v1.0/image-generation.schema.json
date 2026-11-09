@@ -53,7 +53,7 @@
                   "$ref": "#/definitions/stable-id"
                 }
               ],
-              "description": "The id of the slide whose background it is, or that the image object is on."
+              "description": "The id of the slide with the background, or of the slide the image object is on."
             }
           },
           "required": [
@@ -74,7 +74,7 @@
                   "$ref": "#/definitions/stable-id"
                 }
               ],
-              "description": "The id of the slide whose background it is, or that the image object is on."
+              "description": "The id of the slide with the background, or of the slide the image object is on."
             },
             "composition": {
               "allOf": [
@@ -291,7 +291,7 @@
     "nonblank-line": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn’t blank and has no control characters"
+      "description": "one line that isn't blank and has no control characters"
     },
     "request-text": {
       "type": "string",
