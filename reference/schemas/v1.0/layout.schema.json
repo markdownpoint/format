@@ -1841,7 +1841,7 @@
                     "type": "null"
                   },
                   {
-                    "description": "The camera's drift. The camera and its target move together from `from` toward the camera's set position, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, the camera and its target are `from` × (1 − t ÷ `duration`)² away from the set position. They slow steadily to rest. Stills and the editor show the set position. A slide that a scroll transition enters or leaves has no drift.",
+                    "description": "The camera's drift. The camera and its target move together from `from` toward the camera's set position, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, while t is less than `duration`, the camera and its target are `from` × (1 − t ÷ `duration`)² away from the set position. They slow steadily and reach the set position when t is `duration`. After that, they are at the set position. Stills and the editor show the set position. A slide has no drift when a scroll transition enters or leaves it.",
                     "type": "object",
                     "properties": {
                       "from": {
@@ -5607,7 +5607,7 @@
       ]
     },
     "flat-scale": {
-      "description": "A flat object's scale along its own axes, about its frame's center. Text breaks into lines first, then stretches with the scale.",
+      "description": "A flat object's scale along its own axes. The object scales about its frame's center. An animated or initial change of its scale is about its `anchor-point`. Text breaks into lines first, then stretches with the scale.",
       "type": "object",
       "properties": {
         "x": {
@@ -5653,13 +5653,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. On a text box that grows to fit its text, it is the x of the point the text grows from."
+          "description": "How far across the left edge is."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. On a text box that grows to fit its text, it is the y of the point the text grows from."
+          "description": "How far down the top edge is."
         },
         "width": {
           "type": "number",
@@ -5696,7 +5696,7 @@
               "description": "A linear gradient's direction, in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is, in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. CSS places it the same way.",
+              "description": "Where a linear gradient's line is, in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. It is the same in CSS.",
               "type": "object",
               "properties": {
                 "x": {
@@ -6325,13 +6325,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. On a text box that grows to fit its text, it is the x of the point the text grows from."
+          "description": "How far across the left edge is."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. On a text box that grows to fit its text, it is the y of the point the text grows from."
+          "description": "How far down the top edge is."
         }
       },
       "required": [
@@ -6469,13 +6469,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. On a text box that grows to fit its text, it is the x of the point the text grows from."
+          "description": "How far across the left edge is."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. On a text box that grows to fit its text, it is the y of the point the text grows from."
+          "description": "How far down the top edge is."
         },
         "width": {
           "type": "number",
