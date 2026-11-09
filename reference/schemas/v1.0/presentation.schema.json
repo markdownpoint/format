@@ -1652,8 +1652,8 @@
                         },
                         {
                           "enum": [
-                            "non-zero",
-                            "even-odd"
+                            "nonzero",
+                            "evenodd"
                           ]
                         }
                       ]
@@ -5816,8 +5816,8 @@
         },
         "fill-rule": {
           "enum": [
-            "non-zero",
-            "even-odd"
+            "nonzero",
+            "evenodd"
           ]
         },
         "use-as-mask": {
