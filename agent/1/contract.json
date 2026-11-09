@@ -6684,7 +6684,7 @@
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
               "description": "a composition’s id"
             },
-            "controls": {
+            "control-values": {
               "type": "object",
               "propertyNames": {
                 "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
@@ -7259,7 +7259,7 @@
                       "type": {
                         "const": "aim"
                       },
-                      "owner-node": {
+                      "node": {
                         "$ref": "#/definitions/model-node-name"
                       },
                       "target": {

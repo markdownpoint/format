@@ -1766,7 +1766,7 @@
                         }
                       ]
                     },
-                    "controls": {
+                    "control-values": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -3907,7 +3907,7 @@
               "type": {
                 "const": "aim"
               },
-              "owner-node": {
+              "node": {
                 "allOf": [
                   {
                     "$ref": "#/definitions/model-node-name"
@@ -5561,7 +5561,7 @@
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "description": "a composition’s id"
         },
-        "controls": {
+        "control-values": {
           "$ref": "#/definitions/composition-control-values"
         },
         "time-remap": {

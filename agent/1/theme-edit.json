@@ -897,7 +897,7 @@
         "type": {
           "const": "aim"
         },
-        "owner-node": {
+        "node": {
           "type": "string",
           "pattern": "^[\\s\\S]+(?![\\s\\S])",
           "description": "the name of one of the model’s nodes"
@@ -1483,8 +1483,8 @@
         "composition": {
           "$ref": "#/definitions/Prop_composition"
         },
-        "controls": {
-          "$ref": "#/definitions/Prop_controls"
+        "control-values": {
+          "$ref": "#/definitions/Prop_control-values"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -5770,12 +5770,12 @@
           "type": "object",
           "properties": {
             "property": {
-              "const": "controls"
+              "const": "control-values"
             },
             "value": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/Prop_controls"
+                  "$ref": "#/definitions/Prop_control-values"
                 },
                 {
                   "type": "null"
@@ -6515,7 +6515,7 @@
                 "use-as-mask",
                 "repeater",
                 "composition",
-                "controls",
+                "control-values",
                 "time-remap",
                 "chart-type",
                 "progress",
@@ -6588,7 +6588,7 @@
         "constrain-proportions",
         "constraints",
         "contrast",
-        "controls",
+        "control-values",
         "corner-radius",
         "crop",
         "decorative",
@@ -7203,8 +7203,8 @@
         "composition": {
           "$ref": "#/definitions/Prop_composition"
         },
-        "controls": {
-          "$ref": "#/definitions/Prop_controls"
+        "control-values": {
+          "$ref": "#/definitions/Prop_control-values"
         },
         "frame": {
           "$ref": "#/definitions/PresentationFrame"
@@ -8897,7 +8897,7 @@
         "type": {
           "const": "aim"
         },
-        "owner-node": {
+        "node": {
           "type": "string",
           "pattern": "^[\\s\\S]+(?![\\s\\S])",
           "description": "the name of one of the model’s nodes"
@@ -11125,7 +11125,7 @@
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "a composition’s id"
     },
-    "Prop_controls": {
+    "Prop_control-values": {
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",

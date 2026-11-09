@@ -38,7 +38,7 @@
           "file": "media/house-bedside-lamp-42da7f4e.glb",
           "name": "Lamp",
           "position": {"x":640,"y":160,"z":0},
-          "constraints": [{"id":"look","type":"aim","owner-node":"shade","target":"mug","axis":"-y","strength":0.5}],
+          "constraints": [{"id":"look","type":"aim","node":"shade","target":"mug","axis":"-y","strength":0.5}],
           "alt": "A bedside lamp whose shade turns toward a mug"
         },
 

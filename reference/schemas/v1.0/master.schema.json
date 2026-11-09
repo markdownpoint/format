@@ -3263,7 +3263,7 @@
                         "type": {
                           "const": "aim"
                         },
-                        "owner-node": {
+                        "node": {
                           "allOf": [
                             {
                               "$ref": "#/definitions/model-node-name"

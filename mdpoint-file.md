@@ -439,19 +439,10 @@ An audio object's `fade-in` and `fade-out` are in seconds:
 
 ## 3D
 
-Models, lights and the camera stand in a 3D space. A constraint ties one of them to another. `aim` turns a model, or the node of it that `owner-node` names, toward a target. `squash-and-stretch` keeps a model's volume while a step scales it:
+Models, lights and the camera stand in a 3D space. A constraint ties one of them to another. `aim` turns a model, or the node of it that `node` names, toward a target. `squash-and-stretch` keeps a model's volume while a step scales it:
 
 ```json
-[
-  {
-    "id": "look",
-    "type": "aim",
-    "owner-node": "shade",
-    "target": "mug",
-    "axis": "-y",
-    "strength": 0.5
-  }
-]
+[{"id": "look", "type": "aim", "node": "shade", "target": "mug", "axis": "-y", "strength": 0.5}]
 ```
 
 ```json
