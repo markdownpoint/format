@@ -21,7 +21,7 @@ or value is added to `/1`, and a rename, a removal or a change of meaning
 comes in `/2`. Methods are grouped by what they act on, in plural collections
 such as `presentations`, `slides` and `themes`. There are also two action
 groups, `present` and `history`. The contract names its own facts in
-camelCase (`slides.get`, `insertSlide`, `noChange`, `slideId`). A field that
+camelCase (`slides.get`, `insertSlide`, `nextStep`, `slideId`). A field that
 contains a file key's value is spelled as the file spells the key
 (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's tools are named after
 their methods in snake case (`slides_get`). A CLI command is its method's
@@ -33,8 +33,7 @@ value is written in kebab-case (`toggle-black-screen` for
 `toggleBlackScreen`), but a method or an operation name is written as the
 contract spells it (`mdpoint schema insertSteps`, `mdpoint call
 presentations.get`). The contract's codes and the file's keys and values are kebab-case
-(`stale-revision`, `text-overflow`). One fact can then have both spellings: a
-status's `noChange` is an issue's `no-change`. Order has no
+(`stale-revision`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches and values are listed
 alphabetically, the same on every build. `type` is rarely an operation's first
 field.
