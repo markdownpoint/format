@@ -19504,7 +19504,7 @@
       "properties": {
         "bounds": {
           "$ref": "#/definitions/GlbBounds",
-          "description": "The box around every vertex at the Action's sampled poses, 30 a second and more coarsely past ten minutes; left out for a model with no vertices, as the report's own is."
+          "description": "The box around every vertex at the Action's sampled poses, in the model's units, 30 a second and more coarsely past ten minutes; left out for a model with no vertices, as the report's own is."
         },
         "duration": {
           "type": "number",
@@ -19532,7 +19532,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Its lowest sampled point and when, against a floor at y = 0; left out for a model with no vertices."
+          "description": "Its lowest sampled point, in the model's units, and when, in seconds, against a floor at y = 0; left out for a model with no vertices."
         },
         "name": {
           "type": "string",
@@ -19540,7 +19540,7 @@
         },
         "seam": {
           "type": "number",
-          "description": "How far any vertex is between the Action's first frame and its last: what a loop jumps by."
+          "description": "How far any vertex is between the Action's first frame and its last, in the model's units: what a loop jumps by."
         },
         "start": {
           "type": "number",
@@ -19632,7 +19632,7 @@
         "speed"
       ],
       "additionalProperties": false,
-      "description": "A foot of a walk: the joint by its node index and name, as every node of the report is named; how much of the Action it stands planted, and how fast it slides then."
+      "description": "A foot of a walk: the joint by its node index and name, as every node of the report is named; how much of the Action it stands planted, and how fast it slides then, in the model's units a second."
     },
     "GlbNodeName": {
       "type": "object",
@@ -19662,7 +19662,7 @@
         },
         "bounds": {
           "$ref": "#/definitions/GlbBounds",
-          "description": "The exact box around every vertex at rest."
+          "description": "The exact box around every vertex at rest, in the model's units."
         },
         "castsNoShadows": {
           "type": "array",
@@ -19686,7 +19686,7 @@
         },
         "height": {
           "type": "number",
-          "description": "The rest height, from the lowest vertex to the highest."
+          "description": "The rest height, from the lowest vertex to the highest, in the model's units."
         },
         "hiddenAtRest": {
           "type": "array",
@@ -19752,7 +19752,8 @@
         "nodes",
         "onFloor"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "description": "What a model holds and does. Its lengths are in the model's units: meters, or for a text model ems of the text's size, before the slide scales it."
     },
     "GlbStride": {
       "anyOf": [
@@ -20524,7 +20525,7 @@
         "target"
       ],
       "additionalProperties": false,
-      "description": "A curve as the file spells it: its keyframes, its loop's word and the keyframe that loop starts from, the first when it names none."
+      "description": "A curve in the API's shape, its names and values as the file writes them: an entry of a step's list naming its `target`, where the file keys a curve by its object and parameter, with its keyframes, its loop's word and the keyframe that loop starts from, the first when it names none."
     },
     "PresentationAnimationElasticInterpolation": {
       "type": "object",
@@ -21877,14 +21878,14 @@
         },
         "start": {
           "$ref": "#/definitions/PresentationStepStart",
-          "description": "Plays without a click of its own: with the step before it, or after that step ends, as PowerPoint's With Previous and After Previous do. Its times then count from that start. On the first step it plays after the transition. Omitted, the step waits for a click."
+          "description": "Plays without a click of its own: with the step before it, or after that step ends, as PowerPoint's With Previous and After Previous do. Its times then count from that start. On the first step, either starts it when the slide's transition ends, except under a scroll, which plays it with the scroll. Omitted, the step waits for a click."
         }
       },
       "required": [
         "curves",
         "id"
       ],
-      "description": "A step as its file writes it."
+      "description": "A step in the API's shape, its names and values as its file writes them: its curves listed, each naming its `target`, where the file keys them by object and parameter, and each cue's fields under `cue`, where the file writes them beside its `id` and `time`."
     },
     "PresentationStepStart": {
       "type": "string",
