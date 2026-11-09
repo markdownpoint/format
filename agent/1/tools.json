@@ -1695,8 +1695,6 @@
             "enum": [
               "3d-object-in-composition",
               "aim-cycle",
-              "ambiguous-constraint-node",
-              "ambiguous-parent-node",
               "auto-layout-held-animation",
               "bound-value",
               "camera-spring-unsettled",
@@ -6049,8 +6047,6 @@
             "enum": [
               "3d-object-in-composition",
               "aim-cycle",
-              "ambiguous-constraint-node",
-              "ambiguous-parent-node",
               "auto-layout-held-animation",
               "bound-value",
               "camera-spring-unsettled",
@@ -9530,7 +9526,7 @@
               "plantedSpeed"
             ],
             "additionalProperties": false,
-            "description": "How fast a walking model's planted foot slides across the floor against how fast its body travels, canvas units a second. The foot is a joint of the model's file, by its glTF node index, which tells two feet named alike apart, and its name."
+            "description": "How fast a walking model's planted foot slides across the floor against how fast its body travels, canvas units a second. The foot is a joint of the model's file, by its glTF node index and its name, the one a key such as `parent-node` names it by."
           },
           "AgentFrame": {
             "$ref": "#/definitions/PresentationFrame",
@@ -9982,7 +9978,7 @@
               "node"
             ],
             "additionalProperties": false,
-            "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
+            "description": "A node of the model's file: its glTF node index, from 0, and its name, the one a key such as `parent-node` names it by: the file's own, or for an unnamed node \"Node\" and its index plus 1, and for a name an earlier node has, that name and \" 2\", \" 3\" and on."
           },
           "PresentationFrame": {
             "type": "object",
@@ -11112,7 +11108,7 @@
               "node"
             ],
             "additionalProperties": false,
-            "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
+            "description": "A node of the model's file: its glTF node index, from 0, and its name, the one a key such as `parent-node` names it by: the file's own, or for an unnamed node \"Node\" and its index plus 1, and for a name an earlier node has, that name and \" 2\", \" 3\" and on."
           },
           "GlbReport": {
             "type": "object",
@@ -11149,7 +11145,7 @@
               },
               "height": {
                 "type": "number",
-                "description": "The rest height, and whether the model stands on y = 0 within a hundredth of it."
+                "description": "The rest height, from the lowest vertex to the highest."
               },
               "hiddenAtRest": {
                 "type": "array",
@@ -11200,7 +11196,8 @@
                 "type": "number"
               },
               "onFloor": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "Whether the model stands on y = 0, within a hundredth of its rest height."
               }
             },
             "required": [
@@ -11686,7 +11683,7 @@
           },
           "height": {
             "type": "number",
-            "description": "The rest height, and whether the model stands on y = 0 within a hundredth of it."
+            "description": "The rest height, from the lowest vertex to the highest."
           },
           "hiddenAtRest": {
             "type": "array",
@@ -11737,7 +11734,8 @@
             "type": "number"
           },
           "onFloor": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether the model stands on y = 0, within a hundredth of its rest height."
           }
         },
         "required": [
@@ -11903,7 +11901,7 @@
               "node"
             ],
             "additionalProperties": false,
-            "description": "A node of the model's file: its glTF node index, which names it exactly, two parts named alike or unnamed among them, and its name as the file spells it, or \"(node N)\" for an unnamed one, for a reader."
+            "description": "A node of the model's file: its glTF node index, from 0, and its name, the one a key such as `parent-node` names it by: the file's own, or for an unnamed node \"Node\" and its index plus 1, and for a name an earlier node has, that name and \" 2\", \" 3\" and on."
           },
           "GlbStride": {
             "anyOf": [
