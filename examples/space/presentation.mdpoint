@@ -72,7 +72,7 @@
           "light-type": "area",
           "name": "Key",
           "position": {"x":300,"y":1400,"z":1600},
-          "target": {"x":960,"y":300,"z":0},
+          "point-of-interest": {"x":960,"y":300,"z":0},
           "color": "#FFF1E0",
           "intensity": 30,
           "cast-shadow": true,

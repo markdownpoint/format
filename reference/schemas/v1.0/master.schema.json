@@ -2995,7 +2995,7 @@
                 "additionalProperties": false
               },
               "drift": {
-                "description": "The camera's drift. The camera and its target move together from `from` toward the camera's set position, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, while t is less than `duration`, the camera and its target are `from` × (1 − t ÷ `duration`)² away from the set position. They slow steadily and reach the set position when t is `duration`. After that, they are at the set position. Stills and the editor show the set position. A slide has no drift when a scroll transition enters or leaves it.",
+                "description": "The camera's drift. The camera and its point of interest move together from `from` toward the camera's set position, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, while t is less than `duration`, the camera and its point of interest are `from` × (1 − t ÷ `duration`)² away from the set position. They slow steadily and reach the set position when t is `duration`. After that, they are at the set position. Stills and the editor show the set position. A slide has no drift when a scroll transition enters or leaves it.",
                 "type": "object",
                 "properties": {
                   "from": {
@@ -3029,8 +3029,8 @@
                 ],
                 "additionalProperties": false
               },
-              "target": {
-                "$ref": "#/definitions/target"
+              "point-of-interest": {
+                "$ref": "#/definitions/point-of-interest"
               },
               "constraints": {
                 "type": "array",
@@ -3412,8 +3412,8 @@
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
                   },
-                  "target": {
-                    "$ref": "#/definitions/target"
+                  "point-of-interest": {
+                    "$ref": "#/definitions/point-of-interest"
                   },
                   "cast-shadow": {
                     "type": "boolean"
@@ -3484,8 +3484,8 @@
                   "parent-inverse": {
                     "$ref": "#/definitions/parent-inverse"
                   },
-                  "target": {
-                    "$ref": "#/definitions/target"
+                  "point-of-interest": {
+                    "$ref": "#/definitions/point-of-interest"
                   },
                   "cast-shadow": {
                     "type": "boolean"
@@ -3659,8 +3659,8 @@
                       "disk"
                     ]
                   },
-                  "target": {
-                    "$ref": "#/definitions/target"
+                  "point-of-interest": {
+                    "$ref": "#/definitions/point-of-interest"
                   },
                   "cast-shadow": {
                     "type": "boolean"
@@ -4747,6 +4747,35 @@
       "minItems": 16,
       "maxItems": 16
     },
+    "point-of-interest": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "canvas units"
+        },
+        "y": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "canvas units"
+        },
+        "z": {
+          "type": "number",
+          "minimum": -1000000000000000000,
+          "maximum": 1000000000000000000,
+          "description": "canvas units"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "additionalProperties": false
+    },
     "repeater": {
       "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
       "type": "object",
@@ -5141,35 +5170,6 @@
         "additionalProperties": false
       },
       "minItems": 2
-    },
-    "target": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "additionalProperties": false
     },
     "text-style-name": {
       "type": "string",
