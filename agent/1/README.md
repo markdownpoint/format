@@ -24,7 +24,11 @@ groups, `present` and `history`. The contract names its own facts in
 camelCase (`slides.get`, `insertSlide`, `noChange`, `slideId`). A field that
 contains a file key's value is spelled as the file spells the key
 (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's tools are named after
-their methods in snake case (`slides_get`). On the CLI's command line, a
+their methods in snake case (`slides_get`). A CLI command is its method's
+names in kebab-case, with each collection in the singular: `mdpoint
+presentation get` for `presentations.get`, `mdpoint image suggest-prompt` for
+`images.suggestPrompt`. A request's `type` is an operand: `mdpoint present
+control next-slide`. On the CLI's command line, a
 value is written in kebab-case (`toggle-black-screen` for
 `toggleBlackScreen`), but a method or an operation name is written as the
 contract spells it (`mdpoint schema insertSteps`, `mdpoint call
