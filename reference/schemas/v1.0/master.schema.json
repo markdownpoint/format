@@ -24,15 +24,15 @@
     "name": {
       "allOf": [
         {
-          "$ref": "#/definitions/nonblank-line-with-controls"
+          "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The theme's name, on one line that isn't blank. Left out, it's the theme's key with spaces for its hyphens and a capital first letter."
+      "description": "The theme's name, on one line that isn't blank and has no control characters. Left out, it's the theme's key with spaces for its hyphens and a capital first letter."
     },
     "category": {
       "allOf": [
         {
-          "$ref": "#/definitions/nonblank-line-with-controls"
+          "$ref": "#/definitions/nonblank-line"
         }
       ],
       "description": "The category the theme is listed under: basic, business, education, community, or personal. A category draws nothing, so another word only warns, and the theme is listed under Other."
@@ -1364,9 +1364,12 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string",
-                    "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
-                    "description": "The style's name, on one line that isn't blank."
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/nonblank-line"
+                      }
+                    ],
+                    "description": "The style's name, on one line that isn't blank and has no control characters."
                   },
                   "prompt": {
                     "type": "string",
@@ -2837,9 +2840,7 @@
                 "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
               },
               "alt": {
-                "type": "string",
-                "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-                "description": "one line that isn’t blank"
+                "$ref": "#/definitions/nonblank-line"
               },
               "frame": {
                 "$ref": "#/definitions/frame"
@@ -4710,10 +4711,10 @@
       "pattern": "^[\\s\\S]+(?![\\s\\S])",
       "description": "the name of one of the model’s nodes"
     },
-    "nonblank-line-with-controls": {
+    "nonblank-line": {
       "type": "string",
-      "pattern": "^(?:(?![\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\r\\n][^\\r\\n]*(?![\\s\\S])",
-      "description": "one line that isn’t blank"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
+      "description": "one line that isn’t blank and has no control characters"
     },
     "object-id": {
       "type": "string",
