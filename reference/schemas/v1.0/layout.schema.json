@@ -43,7 +43,7 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   }
                 ]
               },
@@ -723,76 +723,10 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/drop-shadow"
+                    "$ref": "#/definitions/text-drop-shadow"
                   },
                   {
-                    "anyOf": [
-                      {
-                        "const": "none"
-                      },
-                      {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 780.352997,
-                            "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
-                          },
-                          "spread": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
-                          },
-                          "offset": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false,
-                            "description": "How far it falls from the object, as {x, y} across and down."
-                          },
-                          "color": {
-                            "allOf": [
-                              {
-                                "$ref": "#/definitions/opaque-color"
-                              }
-                            ],
-                            "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
-                          },
-                          "opacity": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "How opaque it is."
-                          }
-                        },
-                        "required": [
-                          "size",
-                          "offset",
-                          "color",
-                          "opacity"
-                        ],
-                        "additionalProperties": false
-                      }
-                    ]
+                    "$ref": "#/definitions/drop-shadow"
                   }
                 ]
               },
@@ -1178,9 +1112,7 @@
                     "type": "null"
                   },
                   {
-                    "type": "string",
-                    "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                    "description": "one line"
+                    "$ref": "#/definitions/one-line"
                   },
                   {
                     "$ref": "#/definitions/nonblank-line"
@@ -2276,7 +2208,7 @@
                     "const": "text"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -2498,7 +2430,7 @@
                     ]
                   },
                   "drop-shadow": {
-                    "$ref": "#/definitions/drop-shadow"
+                    "$ref": "#/definitions/text-drop-shadow"
                   },
                   "text-stroke": {
                     "$ref": "#/definitions/color"
@@ -2649,7 +2581,7 @@
                     "const": "table"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -2840,7 +2772,7 @@
                     "const": "image"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -2961,73 +2893,7 @@
                     "$ref": "#/definitions/color"
                   },
                   "drop-shadow": {
-                    "anyOf": [
-                      {
-                        "const": "none"
-                      },
-                      {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 780.352997,
-                            "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
-                          },
-                          "spread": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
-                          },
-                          "offset": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false,
-                            "description": "How far it falls from the object, as {x, y} across and down."
-                          },
-                          "color": {
-                            "allOf": [
-                              {
-                                "$ref": "#/definitions/opaque-color"
-                              }
-                            ],
-                            "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
-                          },
-                          "opacity": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "How opaque it is."
-                          }
-                        },
-                        "required": [
-                          "size",
-                          "offset",
-                          "color",
-                          "opacity"
-                        ],
-                        "additionalProperties": false
-                      }
-                    ]
+                    "$ref": "#/definitions/drop-shadow"
                   },
                   "scale-mode": {
                     "enum": [
@@ -3081,9 +2947,7 @@
                     "description": "SVG path data where 0 to 1 spans the object’s frame"
                   },
                   "alt": {
-                    "type": "string",
-                    "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                    "description": "one line"
+                    "$ref": "#/definitions/one-line"
                   },
                   "decorative": {
                     "type": "boolean"
@@ -3152,7 +3016,7 @@
                     "const": "video"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3292,73 +3156,7 @@
                     "$ref": "#/definitions/wipe"
                   },
                   "drop-shadow": {
-                    "anyOf": [
-                      {
-                        "const": "none"
-                      },
-                      {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 780.352997,
-                            "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
-                          },
-                          "spread": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
-                          },
-                          "offset": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false,
-                            "description": "How far it falls from the object, as {x, y} across and down."
-                          },
-                          "color": {
-                            "allOf": [
-                              {
-                                "$ref": "#/definitions/opaque-color"
-                              }
-                            ],
-                            "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
-                          },
-                          "opacity": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "How opaque it is."
-                          }
-                        },
-                        "required": [
-                          "size",
-                          "offset",
-                          "color",
-                          "opacity"
-                        ],
-                        "additionalProperties": false
-                      }
-                    ]
+                    "$ref": "#/definitions/drop-shadow"
                   },
                   "scale-mode": {
                     "enum": [
@@ -3388,9 +3186,7 @@
                     "description": "canvas units"
                   },
                   "alt": {
-                    "type": "string",
-                    "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                    "description": "one line"
+                    "$ref": "#/definitions/one-line"
                   },
                   "decorative": {
                     "type": "boolean"
@@ -3451,7 +3247,7 @@
                     "const": "shape"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3638,73 +3434,7 @@
                     ]
                   },
                   "drop-shadow": {
-                    "anyOf": [
-                      {
-                        "const": "none"
-                      },
-                      {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 780.352997,
-                            "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
-                          },
-                          "spread": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
-                          },
-                          "offset": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false,
-                            "description": "How far it falls from the object, as {x, y} across and down."
-                          },
-                          "color": {
-                            "allOf": [
-                              {
-                                "$ref": "#/definitions/opaque-color"
-                              }
-                            ],
-                            "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
-                          },
-                          "opacity": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "How opaque it is."
-                          }
-                        },
-                        "required": [
-                          "size",
-                          "offset",
-                          "color",
-                          "opacity"
-                        ],
-                        "additionalProperties": false
-                      }
-                    ]
+                    "$ref": "#/definitions/drop-shadow"
                   },
                   "text-stroke": {
                     "$ref": "#/definitions/color"
@@ -3826,7 +3556,7 @@
                     "const": "path"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3893,73 +3623,7 @@
                     "$ref": "#/definitions/wipe"
                   },
                   "drop-shadow": {
-                    "anyOf": [
-                      {
-                        "const": "none"
-                      },
-                      {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 780.352997,
-                            "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
-                          },
-                          "spread": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
-                          },
-                          "offset": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false,
-                            "description": "How far it falls from the object, as {x, y} across and down."
-                          },
-                          "color": {
-                            "allOf": [
-                              {
-                                "$ref": "#/definitions/opaque-color"
-                              }
-                            ],
-                            "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
-                          },
-                          "opacity": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "How opaque it is."
-                          }
-                        },
-                        "required": [
-                          "size",
-                          "offset",
-                          "color",
-                          "opacity"
-                        ],
-                        "additionalProperties": false
-                      }
-                    ]
+                    "$ref": "#/definitions/drop-shadow"
                   },
                   "ignore-auto-layout": {
                     "type": "boolean"
@@ -4030,7 +3694,7 @@
                     "const": "icon"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4100,73 +3764,7 @@
                     "$ref": "#/definitions/color"
                   },
                   "drop-shadow": {
-                    "anyOf": [
-                      {
-                        "const": "none"
-                      },
-                      {
-                        "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
-                        "type": "object",
-                        "properties": {
-                          "size": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 780.352997,
-                            "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
-                          },
-                          "spread": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
-                          },
-                          "offset": {
-                            "type": "object",
-                            "properties": {
-                              "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              },
-                              "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
-                              }
-                            },
-                            "required": [
-                              "x",
-                              "y"
-                            ],
-                            "additionalProperties": false,
-                            "description": "How far it falls from the object, as {x, y} across and down."
-                          },
-                          "color": {
-                            "allOf": [
-                              {
-                                "$ref": "#/definitions/opaque-color"
-                              }
-                            ],
-                            "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
-                          },
-                          "opacity": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 1,
-                            "description": "How opaque it is."
-                          }
-                        },
-                        "required": [
-                          "size",
-                          "offset",
-                          "color",
-                          "opacity"
-                        ],
-                        "additionalProperties": false
-                      }
-                    ]
+                    "$ref": "#/definitions/drop-shadow"
                   },
                   "flip": {
                     "enum": [
@@ -4218,7 +3816,7 @@
                     "const": "line"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4358,7 +3956,7 @@
                     "const": "chart"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4519,7 +4117,7 @@
                     "const": "group"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4624,7 +4222,7 @@
                     "const": "audio"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "file": {
                     "anyOf": [
@@ -4727,7 +4325,7 @@
                     "const": "web-video"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "url": {
                     "$ref": "#/definitions/url"
@@ -4787,7 +4385,7 @@
                     "const": "model"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4870,9 +4468,7 @@
                     "maximum": 1
                   },
                   "alt": {
-                    "type": "string",
-                    "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                    "description": "one line"
+                    "$ref": "#/definitions/one-line"
                   },
                   "parent-node": {
                     "$ref": "#/definitions/model-node-name"
@@ -4918,7 +4514,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/one-line"
+                        "$ref": "#/definitions/object-name"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -4990,7 +4586,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/one-line"
+                        "$ref": "#/definitions/object-name"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -5082,7 +4678,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/one-line"
+                        "$ref": "#/definitions/object-name"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -5159,7 +4755,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/one-line"
+                        "$ref": "#/definitions/object-name"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -5253,7 +4849,7 @@
                     "const": "shadow-catcher"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -5340,7 +4936,7 @@
                     "const": "floor"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "position": {
                     "$ref": "#/definitions/floor-position"
@@ -5674,14 +5270,14 @@
           "const": "none"
         },
         {
-          "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
+          "description": "A drop shadow, as Photoshop's Drop Shadow sets one: what the object paints grows solid by size × spread, then blurs by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
               "type": "number",
               "minimum": 0,
-              "maximum": 33554431,
-              "description": "How far past the letters the shadow reaches, as Photoshop's Size."
+              "maximum": 780.352997,
+              "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
             },
             "spread": {
               "type": "number",
@@ -5694,15 +5290,15 @@
               "properties": {
                 "x": {
                   "type": "number",
-                  "minimum": -33554431,
-                  "maximum": 33554431,
-                  "description": "em"
+                  "minimum": -33554431.984375,
+                  "maximum": 33554431.984375,
+                  "description": "canvas units"
                 },
                 "y": {
                   "type": "number",
-                  "minimum": -33554431,
-                  "maximum": 33554431,
-                  "description": "em"
+                  "minimum": -33554431.984375,
+                  "maximum": 33554431.984375,
+                  "description": "canvas units"
                 }
               },
               "required": [
@@ -5710,7 +5306,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the letters, as {x, y} across and down."
+              "description": "How far it falls from the object, as {x, y} across and down."
             },
             "color": {
               "allOf": [
@@ -6374,9 +5970,14 @@
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "an object’s id"
     },
-    "one-line": {
+    "object-name": {
       "type": "string",
       "pattern": "^(?:[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*|[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?)(?![\\s\\S])",
+      "description": "one line"
+    },
+    "one-line": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]*(?![\\s\\S])",
       "description": "one line"
     },
     "opaque-color": {
@@ -6797,6 +6398,75 @@
         "z"
       ],
       "additionalProperties": false
+    },
+    "text-drop-shadow": {
+      "anyOf": [
+        {
+          "const": "none"
+        },
+        {
+          "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 33554431,
+              "description": "How far past the letters the shadow reaches, as Photoshop's Size."
+            },
+            "spread": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "The share of the size by which what casts the shadow grows solid before the rest of the size blurs, as Photoshop's Spread, where 1 stands solid all the way out."
+            },
+            "offset": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ],
+              "additionalProperties": false,
+              "description": "How far it falls from the letters, as {x, y} across and down."
+            },
+            "color": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/opaque-color"
+                }
+              ],
+              "description": "Its color: a color role or a hex color written #RGB or #RRGGBB. The color carries no opacity, not even a role's: `opacity` alone sets how opaque the shadow is."
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "How opaque it is."
+            }
+          },
+          "required": [
+            "size",
+            "offset",
+            "color",
+            "opacity"
+          ],
+          "additionalProperties": false
+        }
+      ]
     },
     "text-frame": {
       "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",

@@ -153,7 +153,7 @@
         "model": {
           "allOf": [
             {
-              "$ref": "#/definitions/one-line"
+              "$ref": "#/definitions/nonempty-line"
             }
           ],
           "description": "The image model's name, on one line, not empty."
@@ -174,7 +174,7 @@
             "size": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/one-line"
+                  "$ref": "#/definitions/nonempty-line"
                 }
               ],
               "description": "The size asked for, in the model's own words, on one line, not empty."
@@ -182,7 +182,7 @@
             "quality": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/one-line"
+                  "$ref": "#/definitions/nonempty-line"
                 }
               ],
               "description": "The quality asked for, in the model's own words, on one line, not empty. Left out, none was."
@@ -285,7 +285,7 @@
   ],
   "additionalProperties": false,
   "definitions": {
-    "one-line": {
+    "nonempty-line": {
       "type": "string",
       "pattern": "^[^\\r\\n]+(?![\\s\\S])",
       "description": "one line"

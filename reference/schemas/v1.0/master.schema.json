@@ -24,7 +24,7 @@
     "name": {
       "allOf": [
         {
-          "$ref": "#/definitions/nonblank-line"
+          "$ref": "#/definitions/nonblank-line-with-controls"
         }
       ],
       "description": "The theme's name, on one line that isn't blank. Left out, it's the theme's key with spaces for its hyphens and a capital first letter."
@@ -32,7 +32,7 @@
     "category": {
       "allOf": [
         {
-          "$ref": "#/definitions/nonblank-line"
+          "$ref": "#/definitions/nonblank-line-with-controls"
         }
       ],
       "description": "The category the theme is listed under: basic, business, education, community, or personal. A category draws nothing, so another word only warns, and the theme is listed under Other."
@@ -481,7 +481,7 @@
                 "const": "text"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -949,7 +949,7 @@
                 "const": "table"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -1160,7 +1160,7 @@
                 "const": "image"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -1335,9 +1335,7 @@
                 "description": "SVG path data where 0 to 1 spans the object’s frame"
               },
               "alt": {
-                "type": "string",
-                "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                "description": "one line"
+                "$ref": "#/definitions/one-line"
               },
               "decorative": {
                 "type": "boolean"
@@ -1429,7 +1427,7 @@
                 "const": "video"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -1599,9 +1597,7 @@
                 "description": "canvas units"
               },
               "alt": {
-                "type": "string",
-                "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                "description": "one line"
+                "$ref": "#/definitions/one-line"
               },
               "decorative": {
                 "type": "boolean"
@@ -1662,7 +1658,7 @@
                 "const": "shape"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -1991,7 +1987,7 @@
                 "const": "path"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -2129,7 +2125,7 @@
                 "const": "icon"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -2251,7 +2247,7 @@
                 "const": "line"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -2391,7 +2387,7 @@
                 "const": "chart"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -2562,7 +2558,7 @@
                 "const": "group"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -2726,7 +2722,7 @@
                 "const": "audio"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "file": {
                 "anyOf": [
@@ -2829,7 +2825,7 @@
                 "const": "web-video"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "url": {
                 "type": "string",
@@ -2892,7 +2888,7 @@
                 "const": "camera"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -3145,7 +3141,7 @@
                 "const": "model"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -3228,9 +3224,7 @@
                 "maximum": 1
               },
               "alt": {
-                "type": "string",
-                "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-                "description": "one line"
+                "$ref": "#/definitions/one-line"
               },
               "parent-node": {
                 "$ref": "#/definitions/model-node-name"
@@ -3382,7 +3376,7 @@
                     "const": "light"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3454,7 +3448,7 @@
                     "const": "light"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3546,7 +3540,7 @@
                     "const": "light"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3623,7 +3617,7 @@
                     "const": "light"
                   },
                   "name": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/object-name"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3717,7 +3711,7 @@
                 "const": "shadow-catcher"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "parent": {
                 "$ref": "#/definitions/object-id"
@@ -3804,7 +3798,7 @@
                 "const": "floor"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "position": {
                 "description": "A floor's height in the 3D space. It takes y alone: a floor lies level and stretches without end, as Cinema 4D's Floor does, so it moves only up and down. Left out, the floor lies on the slide's bottom edge.",
@@ -3853,7 +3847,7 @@
                 "const": "world"
               },
               "name": {
-                "$ref": "#/definitions/one-line"
+                "$ref": "#/definitions/object-name"
               },
               "color": {
                 "$ref": "#/definitions/color"
@@ -4716,7 +4710,7 @@
       "pattern": "^[\\s\\S]+(?![\\s\\S])",
       "description": "the name of one of the model’s nodes"
     },
-    "nonblank-line": {
+    "nonblank-line-with-controls": {
       "type": "string",
       "pattern": "^(?:(?![\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\r\\n][^\\r\\n]*(?![\\s\\S])",
       "description": "one line that isn’t blank"
@@ -4726,9 +4720,14 @@
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "an object’s id"
     },
-    "one-line": {
+    "object-name": {
       "type": "string",
       "pattern": "^(?:[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*|[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?)(?![\\s\\S])",
+      "description": "one line"
+    },
+    "one-line": {
+      "type": "string",
+      "pattern": "^[^\\r\\n]*(?![\\s\\S])",
       "description": "one line"
     },
     "opaque-color": {
