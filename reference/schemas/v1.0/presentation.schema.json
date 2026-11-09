@@ -1,13 +1,13 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/v1.0/presentation.schema.json",
-  "description": "The presentation: its theme, slides, and settings. Its `locale` writes the date field and reads its own charts' cells; a theme's charts read theirs as en-US. Where MarkdownPoint can't write dates in the locale, it warns and writes them in en-US. Changing `locale` in MarkdownPoint respells the presentation's chart cells, and an edit of the file alone doesn't. It also says where words break into pieces as they animate, and which forms Chinese, Japanese, and Korean characters take.",
+  "description": "The presentation: its theme, slides, and settings.",
   "type": "object",
   "properties": {
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format version, its major and minor in quotes: \"1.0\". MarkdownPoint 1.x opens any version 1.x file. A newer major needs a newer MarkdownPoint."
+      "description": "The format version, its major and minor in quotes: \"1.0\"."
     },
     "type": {
       "const": "presentation",
@@ -19,7 +19,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The presentation's id, which the .md file repeats; a copy made outside MarkdownPoint keeps it, and with it its view link, until MarkdownPoint gives the copy one of its own."
+      "description": "The presentation's id, which the .md file repeats."
     },
     "save-id": {
       "allOf": [
@@ -27,7 +27,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "A save stamp: the id of a save. MarkdownPoint writes it while the presentation is shared for editing, to tell this file apart from an older copy with the same content. Other tools keep it as it is."
+      "description": "A save stamp: the id of a save, which MarkdownPoint writes while the presentation is shared for editing. Other tools keep it as it is."
     },
     "theme": {
       "type": "string",
@@ -181,7 +181,7 @@
     "locale": {
       "type": "string",
       "pattern": "^(?![\\s\\S]*-[Pp][Oo][Ss][Ii][Xx](?![^-]))(?:[A-Za-z]{2,3}|[A-Za-z]{5,8})(?:-[A-Za-z]{4})?(?:-(?:[A-Za-z]{2}|[0-9]{3}))?(?:-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(?![\\s\\S])",
-      "description": "The presentation's language and region, as a BCP 47 language tag, such as fr-CA, which MarkdownPoint writes canonical. Dates are written and its own chart cells read by it. Left out, it is en-US."
+      "description": "The presentation's language and region, as a BCP 47 language tag such as fr-CA: it writes the date field, reads the chart cells, and splits words to animate. Left out, it's en-US."
     },
     "slides": {
       "type": "object",
@@ -204,7 +204,7 @@
                 "$ref": "#/definitions/scheme-name"
               }
             ],
-            "description": "The slide's color scheme. Left out, it uses its layout's. One the theme lacks stays as written, and the slide shows its layout's, or light, until the theme has it again."
+            "description": "The slide's color scheme. Left out, or one the theme lacks, it's its layout's."
           },
           "background": {
             "allOf": [
@@ -2010,7 +2010,7 @@
                               "type": "integer",
                               "minimum": 1,
                               "maximum": 256,
-                              "description": "How many moments the 3D layer is drawn at while the shutter is open, then averaged, as Cinema 4D's Sub-Frame Motion Blur Samples. More give smoother streaks but take longer. Left out, it's 32."
+                              "description": "How many moments the 3D layer is drawn at while the shutter is open, then averaged, as Cinema 4D's Sub-Frame Motion Blur Samples. Left out, it's 32."
                             }
                           },
                           "additionalProperties": false
@@ -2023,7 +2023,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's render effects, as Cinema 4D's Render Settings add Global Illumination and Ambient Occlusion: a fast estimate of light bouncing between surfaces and of the World's light closed off where they meet. It shows wherever the 3D layer does: in the editor, presentations, exports, and movies. Only surfaces in view bounce light, and a shadow catcher bounces none. An override replaces the whole record. Each key may be left out.",
+                          "description": "The camera's render effects, as Cinema 4D's Render Settings add Global Illumination and Ambient Occlusion: a fast estimate of light bouncing between surfaces and of the World's light closed off where they meet. It shows wherever the 3D layer does. Only surfaces in view bounce light, and a shadow catcher bounces none. An override replaces the whole record.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {
@@ -2050,7 +2050,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's drift: a slow move that comes to rest on the camera's set position. It runs on the slide's own clock. It starts when the slide's transition in begins and runs through the slide's steps, waits, and transition out. A blank screen pauses it. The camera and its target move together from `from` toward the set position. At t seconds they stand `from` × (1 − t ÷ `duration`)² away from it. So they start at full speed, slow steadily, and come to rest when `duration` ends. The editor, PDFs, and still exports show the set position. A slide that a scroll transition enters or leaves shows no drift, with a warning, since two drifting cameras would meet at the seam.",
+                          "description": "The camera's drift: from the moment the slide's transition in begins, the camera and its target move together from `from` toward the camera's set position, standing `from` × (1 − t ÷ `duration`)² away from it t seconds later, so they slow steadily to rest. Stills and the editor show the set position, and a slide a scroll transition enters or leaves has no drift.",
                           "type": "object",
                           "properties": {
                             "from": {
@@ -2075,7 +2075,7 @@
                             "duration": {
                               "type": "number",
                               "minimum": 0.000001,
-                              "description": "How many seconds after the slide begins to appear the camera comes to rest. A drift plays once, so it must end."
+                              "description": "How many seconds after the slide begins to appear the camera comes to rest."
                             }
                           },
                           "required": [
@@ -3073,7 +3073,7 @@
           "controls": {
             "type": "array",
             "items": {
-              "description": "One control a composition offers its instances, in the order the Inspector shows them. A binding, an instance's value and a marker name the control by its id, which a rename keeps. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind.",
+              "description": "One control a composition offers its instances, in the order they're shown. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind.",
               "anyOf": [
                 {
                   "type": "object",
@@ -3084,12 +3084,12 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
                     },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. Two controls may share one."
                     },
                     "type": {
                       "const": "text"
@@ -3111,12 +3111,12 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
                     },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. Two controls may share one."
                     },
                     "type": {
                       "const": "number"
@@ -3159,12 +3159,12 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
                     },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. Two controls may share one."
                     },
                     "type": {
                       "const": "color"
@@ -3195,12 +3195,12 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
                     },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. Two controls may share one."
                     },
                     "type": {
                       "const": "boolean"
@@ -3227,12 +3227,12 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
                     },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. Two controls may share one."
                     },
                     "type": {
                       "const": "choice"
@@ -3250,12 +3250,12 @@
                           "id": {
                             "type": "string",
                             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                            "description": "What the choice's default, an instance's value and a property the choice sets read, unique among its options. A rename keeps it."
+                            "description": "What the choice's default, an instance's value and a property the choice sets read, unique among its options."
                           },
                           "name": {
                             "type": "string",
                             "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f])?(?![\\s\\S])",
-                            "description": "The words the author sees, on one line with no space at either end and no comma: \",\", \"，\" or \"、\". A rename changes only the name."
+                            "description": "The words the author sees, on one line with no space at either end and no comma: \",\", \"，\" or \"、\"."
                           }
                         },
                         "required": [
@@ -3286,12 +3286,12 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls. A rename keeps it."
+                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
                     },
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. Two controls may share one."
                     },
                     "type": {
                       "const": "media"
@@ -3391,7 +3391,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A comment thread pinned to a slide or a composition, stored under an id unique among the presentation's threads. A thread stays when its slide or composition is deleted.",
+        "description": "A comment thread pinned to a slide or a composition, stored under an id unique among the presentation's threads.",
         "type": "object",
         "properties": {
           "slide": {
@@ -3495,7 +3495,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "The replies, by id, each with an author, a created time, and text, written in the order they were made, then by id, so a new reply adds lines at the end. Left out, there are none."
+            "description": "The replies, by id, each with an author, a created time, and text."
           }
         },
         "required": [
@@ -3524,7 +3524,7 @@
           }
         ]
       },
-      "description": "Comment threads, by id, written in the order they were made, then by id. Each names the slide or composition it is pinned to."
+      "description": "Comment threads, by id, each pinned to a slide or a composition."
     }
   },
   "required": [
@@ -3712,25 +3712,25 @@
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "How much lighter or darker the image is, from −1 to 1. 0 leaves it unchanged."
+          "description": "How much lighter or darker the image is. 0 leaves it unchanged."
         },
         "contrast": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "How much more or less contrast the image has, from −1 to 1. 0 leaves it unchanged."
+          "description": "How much more or less contrast the image has. 0 leaves it unchanged."
         },
         "saturation": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "How much more or less saturated the image's colors are, from −1 to 1. 0 leaves them unchanged."
+          "description": "How much more or less saturated the image's colors are. 0 leaves them unchanged."
         },
         "temperature": {
           "type": "number",
           "minimum": -1,
           "maximum": 1,
-          "description": "How much warmer or cooler the image's colors are, from −1 to 1. 0 leaves them unchanged."
+          "description": "How much warmer or cooler the image's colors are. 0 leaves them unchanged."
         },
         "grayscale": {
           "type": "number",
@@ -3957,7 +3957,7 @@
             }
           },
           "additionalProperties": false,
-          "description": "The point it keeps in view, {x, y}, each a fraction of the image across and down. A step animates crop.focal-point.x and .y."
+          "description": "The point it keeps in view, {x, y}, each a fraction of the image across and down."
         }
       },
       "additionalProperties": false
@@ -4032,7 +4032,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. A piece is, by `based-on`, a paragraph, with the bullets nested under it; a word, as Unicode's word boundaries split the text in the presentation's `locale`, with the punctuation that touches it, the earlier word taking what touches two, so “Hello, world! (yes) e-mail” is five pieces; or a character, one grapheme cluster, counted as typed, before `case`. A space counts only with `spaces`, and a line break never does. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1. Delivered by paragraph, a paragraph no cue names stands from the start. A text with a `text-path` stands on one line, with no paragraph to deliver apart: a reader warns of delivery by paragraph there, and the text enters all at once.",
+      "description": "Text that enters piece by piece, a piece a paragraph, a word, or a character, as `based-on` picks. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4138,7 +4138,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order. The same seed always gives the same order, by the rule the introduction gives."
+          "description": "The seed for a random order: the same seed gives the same order."
         },
         "spread": {
           "type": "number",
@@ -4171,7 +4171,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. A piece is, by `based-on`, a paragraph, with the bullets nested under it; a word, as Unicode's word boundaries split the text in the presentation's `locale`, with the punctuation that touches it, the earlier word taking what touches two, so “Hello, world! (yes) e-mail” is five pieces; or a character, one grapheme cluster, counted as typed, before `case`. A space counts only with `spaces`, and a line break never does. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece, its pieces counted as an entrance counts them. Keys left out default to interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4267,7 +4267,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order. The same seed always gives the same order, by the rule the introduction gives."
+          "description": "The seed for a random order: the same seed gives the same order."
         },
         "spread": {
           "type": "number",
@@ -4328,7 +4328,7 @@
       "additionalProperties": false
     },
     "floor-position": {
-      "description": "A floor's height in the 3D space. It takes y alone: a floor lies level and stretches without end, as Cinema 4D's Floor does, so it moves only up and down. Left out, the floor lies on the slide's bottom edge.",
+      "description": "A floor's height in the 3D space: a floor lies level without end, as Cinema 4D's Floor does, so it takes y alone. Left out, the floor lies on the slide's bottom edge.",
       "type": "object",
       "properties": {
         "y": {
@@ -4344,7 +4344,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y, and a text box's leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -4666,7 +4666,7 @@
       ]
     },
     "line-end": {
-      "description": "A line end attached to an object. Its last position reaches further than a point, since an object at the edge of the canvas can have its side past a point's range.",
+      "description": "A line end attached to an object.",
       "type": "object",
       "properties": {
         "object": {
@@ -6920,7 +6920,7 @@
       "description": "text without NUL characters"
     },
     "repeater": {
-      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. A turned object's copies run along its own axes: their position, anchor point and position randomness turn with its rotation. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center. A shape with text can't repeat. A group repeats only when each member can, or is a line with no end attached to an object outside the group.",
+      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. Keys left out default to 0, except `scale` and `end-opacity`, which are 1, and `anchor-point`, the frame's center.",
       "type": "object",
       "properties": {
         "copies": {
@@ -6946,7 +6946,7 @@
             }
           },
           "additionalProperties": false,
-          "description": "How far each copy moves from the one before, as {x, y} across and down. A step animates them as repeater.position.x and repeater.position.y."
+          "description": "How far each copy moves from the one before, as {x, y} across and down."
         },
         "rotation": {
           "type": "number",
@@ -7015,7 +7015,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The random seed. The same seed always gives the same variation, by the rule the introduction gives."
+          "description": "The random seed: the same seed gives the same copies."
         }
       },
       "required": [
@@ -7024,7 +7024,7 @@
       "additionalProperties": false
     },
     "restyle": {
-      "description": "A style applied over an image or a background's image. Choosing a library style copies its `name`, `prompt`, and `transparent-background` here.",
+      "description": "A style applied over an image or a background's image, as a library style holds one.",
       "type": "object",
       "properties": {
         "name": {
@@ -7089,7 +7089,7 @@
       "additionalProperties": false
     },
     "space-euler": {
-      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, each part divided by the quaternion's length as written, then read to six decimal places. A quaternion whose length as written is 0 is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, read the same way, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down, along their own −Z. Convert theirs as a model's, then turn it −90° about its own x, as Blender's glTF exporter does. As a quaternion, that's (w, x, z, −y) times (0.707107, −0.707107, 0, 0), with the second on the right. In degrees, when Blender's Y is 0, as it is for a level horizon, x is Blender's X minus 90, y is Blender's Z, and z is 0.",
+      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer, in degrees or, in quaternion mode, as a quaternion.",
       "type": "object",
       "properties": {
         "x": {
@@ -7119,7 +7119,7 @@
       "additionalProperties": false
     },
     "space-position": {
-      "description": "A point in the 3D space, in canvas units. x runs right from the slide's left edge, y up from its bottom edge, and z toward the viewer, and the slide lies at z 0. The space is right-handed, as glTF and three.js define it. A parented model's, light's, shadow catcher's or camera's position and target are in its parent's space, through its parent-inverse where it has one, and a parented shadow catcher's width and height too. A parented object's world is its parent's world, or that of the parent's node its parent-node names, times its parent-inverse, times its own position, rotation, and scale, each matrix acting on a column of x, y, z, and 1 to its right: `world = parent × parent-inverse × local`, as Blender's Parent Inverse composes them. Its own constraints apply after. A parented camera turns with its parent, never scales with it, and a target camera banks with it. The camera's position may leave out any part. Left out, its x and y center it on the slide, and its z puts it where the slide shows at full size. A target gives all three parts, the camera's too.",
+      "description": "A point in the 3D space, in canvas units: x runs right from the slide's left edge, y up from its bottom edge, and z toward the viewer, with the slide at z 0, right-handed as glTF and three.js define it. A parented object's position is in its parent's space.",
       "type": "object",
       "properties": {
         "x": {
@@ -7149,7 +7149,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. In degrees it turns in Cinema 4D's HPB order: heading about y, then pitch about its own x, then bank about its own z, as three.js's YXZ Euler composes them. Each turns counterclockwise looking along its axis toward the origin: a positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A group's rotation-x and a flat object's rotation, clockwise, turn the other way, in the slide's axes, where y points down, and its rotation-y the same way. At zero rotation, a model faces the viewer, as its glTF file faces +z, and a light shines and the camera looks along its own −z, into the slide. Its own y then points up. In quaternion mode it holds w, x, y, and z, the same turn as glTF's quaternion with w first, each part divided by the quaternion's length as written, then read to six decimal places. A quaternion whose length as written is 0 is refused. Its keyframes then turn it whole: each keyframe of `<object>.rotation` is such an orientation, read the same way, and the turn between two keyframes goes the shorter way round at its interpolation's pace. In degrees, rotation.x, rotation.y, and rotation.z animate each turn on its own, so a keyframe can spin it more than once. Blender's axes differ, with z up. For a model exported from Blender to glTF with +Y up, write Blender's quaternion (w, x, y, z) as (w, x, z, −y). To copy degrees, first set Blender's rotation mode to YXZ. Then x here is Blender's X, y is Blender's Z, and z is Blender's −Y. At zero rotation, Blender's camera and lights point down, along their own −Z. Convert theirs as a model's, then turn it −90° about its own x, as Blender's glTF exporter does. As a quaternion, that's (w, x, z, −y) times (0.707107, −0.707107, 0, 0), with the second on the right. In degrees, when Blender's Y is 0, as it is for a level horizon, x is Blender's X minus 90, y is Blender's Z, and z is 0.",
+      "description": "A 3D object's turn about its origin, in the 3D space's axes: x right, y up, and z toward the viewer, in degrees or, in quaternion mode, as a quaternion.",
       "type": "object",
       "properties": {
         "w": {
@@ -7223,7 +7223,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Every time in a step, and in its keyframes and cues, is in seconds, rounded to six decimal places. Sums of times and the times shown are rounded the same way. A step has no delay of its own: a keyframe's start delays its move. A first step that starts by itself plays after the slide's transition. A scroll plays the next slide's first step with it, whatever its start. A click plays when any of its steps does. A step that holds keyframes or cues, each keyframe naming an object the slide lacks or a hidden one (its own `visible` or a group's above it is false) and each cue such an object or a video, web video or audio that doesn't start on click, takes no click of its own and stays in the file. A step with no keyframes and no cues is a pause and takes its click. A step that repeats plays alone on its click, and a file that breaks that reads with a warning, without the repeat. A step after one that loops while waiting starts when that step's first pass ends, and the loop plays on under it.",
+        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Its times, and its keyframes' and cues', are in seconds, rounded to six decimal places.",
         "type": "object",
         "properties": {
           "id": {
@@ -7274,13 +7274,13 @@
               "description": "a property name"
             },
             "additionalProperties": {
-              "description": "One property's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point: `frame.xy` and `translation.xy` hold {x, y}, and `position.xyz` holds {x, y, z}, each keyframe holding every part, as a move along a motion path is keyed. A step keys a position as a point or by its parts, not both: a step that keys both reads with a warning, and the point plays. An initial value sets each part on its own.",
+              "description": "One property's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point: `frame.xy` and `translation.xy` hold {x, y}, and `position.xyz` holds {x, y, z}, each keyframe holding every part. A step keys a position as a point or by its parts, not both: a step that keys both reads with a warning, and the point plays. An initial value sets each part on its own.",
               "type": "object",
               "properties": {
                 "keyframes": {
                   "type": "array",
                   "items": {
-                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A color moves in sRGB, a role as the slide's scheme colors it. Its opacity moves straight, and its red, green, and blue each weigh by the opacity at either end, as premultiplied alpha blends them, so a color fading out to a transparent one keeps its own color as it fades. Each frame's color is rounded to 8 bits per channel. A gradient moves into one of its own type with as many stops, a radial one into one of the same `shape`, and a linear one with a `line` into another with one: each stop into the stop at its place, and its angle, line, or center into theirs. Any other two paints, a color and a gradient among them, keep the first until the keyframe. A keyframe of path data, a `geometry`, `mask`, or `text-path`, moves each point to the point at its place when the two paths' contours, paired in order, have as many points and are closed alike. Any other two paths still morph, MarkdownPoint pairing their points itself. A keyframe's `null` clears its property, so its text style or default shows.",
+                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time read with a warning, and the later id plays. A keyframe's `null` clears its property, so its text style or default shows.",
                     "type": "object",
                     "properties": {
                       "id": {
@@ -7462,7 +7462,7 @@
                         "properties": {
                           "geometry": {
                             "type": "string",
-                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0, with y a quarter turn clockwise from x, as SVG's. It is one open contour of 2 to 8,192 points, in at most 1,048,576 characters."
+                            "description": "The path, as SVG path data from the move's start, 0 0, to its end, 1 0. It is one open contour of 2 to 8,192 points, in at most 1,048,576 characters."
                           },
                           "orient": {
                             "type": "boolean",
@@ -7489,13 +7489,13 @@
                           "frequency": {
                             "type": "number",
                             "minimum": 0.000001,
-                            "description": "How many full cycles each second. A noise wave's cycle is one stretch of its noise, as the introduction gives it."
+                            "description": "How many full cycles each second."
                           },
                           "phase": {
                             "type": "number",
                             "minimum": -8589934592,
                             "maximum": 8589934592,
-                            "description": "Where in its cycle the wave starts, 360 degrees to a cycle, as the introduction gives each wave and its noise. Left out, it's 0."
+                            "description": "Where in its cycle the wave starts, 360 degrees to a cycle. Left out, it's 0."
                           },
                           "wave-shape": {
                             "enum": [
@@ -7505,13 +7505,13 @@
                               "sawtooth",
                               "noise"
                             ],
-                            "description": "The wave's shape, each as the introduction gives it. Left out, it's sine."
+                            "description": "The wave's shape. Left out, it's sine."
                           },
                           "seed": {
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 4294967294,
-                            "description": "The noise seed. The same seed always gives the same noise, by the rule the introduction gives. Left out, it's 0."
+                            "description": "The noise seed: the same seed gives the same noise. Left out, it's 0."
                           }
                         },
                         "required": [
@@ -7562,7 +7562,7 @@
           "cues": {
             "type": "array",
             "items": {
-              "description": "An event at a set time in a step. A clip plays an Action in its object's GLB, a model's or a 3D text's GLB `file`; the letters MarkdownPoint builds from an `extrusion` have none, so a clip on such a text plays nothing, with a warning. A clip names its Action as every reader names the file's animations, in file order: a name the file gives, not empty, is kept and matched exactly, and every such name is reserved first, wherever it stands in the file; an animation with no name, or an empty one, is Animation and its number in the file, from 1, as Animation 1; an animation whose name an earlier one has, or whose generated name is reserved or already given, takes the first of name 2, name 3 and on not yet taken, a space before the number. So Walk, Walk, Walk 2 read as Walk, Walk 3, Walk 2, and an unnamed first animation beside a given Animation 1 reads as Animation 1 2.",
+              "description": "An event at a set time in a step. A clip plays an Action of a model's or a 3D text's GLB `file`; a text built from an `extrusion` has none, so a clip on it plays nothing, with a warning.",
               "anyOf": [
                 {
                   "type": "object",
@@ -7749,7 +7749,7 @@
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the Action that a clip plays. An unnamed Action is Animation and its number in the file, Animation 1; a name the file repeats or gives another Action takes 2, 3 in file order."
+                      "description": "The name of the Action that a clip plays; an unnamed one is Animation 1, Animation 2, and on, in file order."
                     },
                     "loop": {
                       "const": "repeat",
@@ -7766,7 +7766,7 @@
                     "stride": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel, so planted feet don't slide. A 3D text's clip ignores it."
+                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel. A 3D text's clip ignores it."
                     },
                     "blend-in": {
                       "type": "number",
@@ -7833,7 +7833,7 @@
       "description": "a supported image"
     },
     "table-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y, and a text box's leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -7917,7 +7917,7 @@
           "const": "none"
         },
         {
-          "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size so that it keeps its look at every size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
+          "description": "A text's drop shadow, as Photoshop's Drop Shadow sets one, its lengths in ems of the text's font size. The letters grow solid by size × spread, then blur by a Gaussian whose standard deviation is size × (1 − spread) / √6. Its size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
@@ -7981,7 +7981,7 @@
       ]
     },
     "text-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y: the table is as wide as its columns and as tall as its rows. A text box's frame leaves out each side that grows to fit its text: its width when `auto-size` grows the width, unless the text follows a path or has more than one column, and its height when `auto-size` grows the height, unless the text follows a path. Its x and y then place the box with no length along those sides. The text grows from that box's center, and the box turns and scales about it: the point its alignment holds at mid-height when the width grows (the left edge, the middle, or the right edge, and a justified text's start side), the middle of its top edge when the height grows, and the point its alignment holds on its top edge when both grow. So `auto-size`, `align`, `text-direction`, `column-count`, `text-path`, `rotation`, and `scale` decide which point x and y name. An override that changes one of them on a box that grows, or that it makes grow, gives each of x and y that would name another point for any size of its text. Each one it leaves out keeps what the box inherits.",
+      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only its x and y, and a text box's leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -8018,7 +8018,7 @@
     "text-model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
+          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
           "type": "object",
           "properties": {
             "extrusion": {
@@ -8045,7 +8045,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
+          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
           "type": "object",
           "properties": {
             "file": {
@@ -8056,7 +8056,7 @@
             "built-from": {
               "type": "string",
               "pattern": "^text-model-[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
-              "description": "The fingerprint of what the GLB was built from, compared whole, by the rule the introduction gives. A rule this reader doesn't know reads as out of sync."
+              "description": "The fingerprint of what the GLB was built from, by the rule the reference gives. A rule this reader doesn't know reads as out of sync."
             }
           },
           "required": [
@@ -8090,7 +8090,7 @@
       "additionalProperties": false
     },
     "transition": {
-      "description": "A slide transition. A scroll moves both slides along one strip. Each slide's 3D objects keep their index in its stacking order and are clipped at its edge. A model or 3D text with the same id on both slides crosses between them whole. Neither slide's camera drifts during a scroll. During any other transition, both cameras drift. Keys left out default to interpolation ease-in-out, match object, direction left, color black, and delay 0.",
+      "description": "A slide transition. Keys left out default to interpolation ease-in-out, match object, direction left, color black, and delay 0.",
       "anyOf": [
         {
           "type": "object",
