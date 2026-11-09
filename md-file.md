@@ -110,7 +110,7 @@ Blank lines separate paragraphs, however many there are. An empty paragraph is a
 
 ## Speaker notes
 
-`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks. A paragraph id in notes reads as it does in slide text, but no step can name it, and MarkdownPoint gives notes paragraphs none.
+`<!-- notes -->` starts the slide's speaker notes. Only the presenter sees them. Notes use the same Markdown as slide text and can appear anywhere among the slide's blocks. A paragraph id in speaker notes reads as it does in slide text and is never shown, but no step can name it, MarkdownPoint gives notes paragraphs none, and notes are kept as written: a repeated or misspelled id there isn't warned of.
 
 ## Compositions
 

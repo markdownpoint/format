@@ -3104,7 +3104,7 @@
           "name": {
             "type": "string",
             "pattern": "^(?:(?![\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\r\\n][^\\r\\n]*(?![\\s\\S])",
-            "description": "The composition's name, on one line."
+            "description": "The composition's name, on one line that isn't blank."
           },
           "size": {
             "description": "Its size, in canvas units.",
@@ -3152,7 +3152,7 @@
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
                     },
                     "type": {
                       "const": "text"
@@ -3170,7 +3170,7 @@
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
                     },
                     "type": {
                       "const": "number"
@@ -3209,7 +3209,7 @@
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
                     },
                     "type": {
                       "const": "color"
@@ -3236,7 +3236,7 @@
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
                     },
                     "type": {
                       "const": "boolean"
@@ -3259,7 +3259,7 @@
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
                     },
                     "type": {
                       "const": "choice"
@@ -3293,7 +3293,7 @@
                     "name": {
                       "type": "string",
                       "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-                      "description": "The name the author sees, on one line and not empty. A rename changes only the name, and two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank, with no space at either end. A rename changes only the name, and two controls may share one."
                     },
                     "type": {
                       "const": "media"
@@ -7148,7 +7148,7 @@
         "name": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000\\r\\n])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000\\r\\n][^\\u0000\\r\\n]*(?![\\s\\S])",
-          "description": "The style's name, on one line."
+          "description": "The style's name, on one line that isn't blank."
         },
         "reference-prompt": {
           "type": "string",
@@ -7358,7 +7358,7 @@
           "name": {
             "type": "string",
             "pattern": "^(?:(?![\\r\\n\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\r\\n\\u0000][^\\r\\n\\u0000]*(?![\\s\\S])",
-            "description": "The step's name in the Animate list, on one line."
+            "description": "The step's name in the Animate list, on one line that isn't blank."
           },
           "start": {
             "enum": [

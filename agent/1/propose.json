@@ -11585,7 +11585,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID, unique together with keyframes in this step.",
+          "description": "Caller-minted stable id, unique together with keyframes in this step.",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "examples": [
             "event-a1b2"
@@ -11777,7 +11777,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID; new keyframes/cues share one unique namespace within the step. Reusing an ID replaces the whole event.",
+          "description": "Caller-minted stable id; new keyframes/cues share one unique namespace within the step. Reusing an id replaces the whole event.",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
           "examples": [
             "event-a1b2"

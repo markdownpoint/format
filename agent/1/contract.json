@@ -10901,7 +10901,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID, unique together with keyframes in this step."
+          "description": "Caller-minted stable id, unique together with keyframes in this step."
         },
         "time": {
           "type": "number",
@@ -11032,7 +11032,7 @@
         },
         "id": {
           "type": "string",
-          "description": "Caller-minted stable ID; new keyframes/cues share one unique namespace within the step. Reusing an ID replaces the whole event."
+          "description": "Caller-minted stable id; new keyframes/cues share one unique namespace within the step. Reusing an id replaces the whole event."
         },
         "interpolation": {
           "$ref": "#/definitions/PresentationAnimationInterpolation",
