@@ -16,7 +16,7 @@
     "styles": {
       "type": "array",
       "items": {
-        "description": "One style of the style library: the restyle it copies onto an image, and the prompt for its example image.",
+        "description": "One style of the style library. It has the restyle that is copied onto an image, and the prompt for the style's example image.",
         "type": "object",
         "properties": {
           "name": {
@@ -27,12 +27,12 @@
           "reference-prompt": {
             "type": "string",
             "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-            "description": "The prompt for the style's example image, as text that isn't blank."
+            "description": "The prompt for the style's example image. It isn't blank."
           },
           "prompt": {
             "type": "string",
             "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-            "description": "How the style changes an image, as an edit prompt that isn't blank."
+            "description": "How the style changes an image, as an edit prompt. It isn't blank."
           },
           "transparent-background": {
             "type": "boolean",
@@ -47,7 +47,7 @@
         "additionalProperties": false
       },
       "minItems": 1,
-      "description": "The styles, at least one, each a library style."
+      "description": "The styles. There is at least one, and each is a library style."
     }
   },
   "required": [

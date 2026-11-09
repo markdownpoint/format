@@ -3406,7 +3406,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A comment thread pinned to a slide or a composition, stored under an id unique among the presentation's threads.",
+        "description": "A comment thread pinned to a slide or a composition. Its id is unique among the presentation's threads.",
         "type": "object",
         "properties": {
           "slide": {
@@ -3441,7 +3441,7 @@
                 "$ref": "#/definitions/text"
               }
             ],
-            "description": "What it says, as text that isn't blank, without control characters but line breaks and tabs."
+            "description": "What it says. It isn't blank and has no control characters except line breaks and tabs."
           },
           "position": {
             "type": "object",
@@ -3466,7 +3466,7 @@
           },
           "resolved": {
             "type": "boolean",
-            "description": "Whether the thread is resolved. Left out, it isn't."
+            "description": "Whether the thread is resolved. The default is false."
           },
           "replies": {
             "type": "object",
@@ -3475,7 +3475,7 @@
               "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
-              "description": "One reply in a comment thread, stored under an id unique in its thread.",
+              "description": "One reply in a comment thread. Its id is unique in its thread.",
               "type": "object",
               "properties": {
                 "author": {
@@ -3500,7 +3500,7 @@
                       "$ref": "#/definitions/text"
                     }
                   ],
-                  "description": "What it says, as text that isn't blank, without control characters but line breaks and tabs."
+                  "description": "What it says. It isn't blank and has no control characters except line breaks and tabs."
                 }
               },
               "required": [
@@ -3780,7 +3780,7 @@
       }
     },
     "comment-author": {
-      "description": "Who wrote a comment. Its `id` takes one prefix per scheme: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id as Dropbox's API spells it, which starts with `dbid:`.",
+      "description": "Who wrote a comment. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a collaboration service member, it is `shared:` followed by 64 lowercase hexadecimal digits. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id starts with `dbid:`.",
       "type": "object",
       "properties": {
         "id": {
@@ -3791,7 +3791,7 @@
         "name": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-          "description": "The author's name, as the thread shows it, on one line that isn't blank and has no control characters."
+          "description": "The name the thread shows for the author. It is one line that isn't blank and has no control characters."
         }
       },
       "required": [
@@ -7043,7 +7043,7 @@
         "prompt": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "How the style changes an image, as an edit prompt that isn't blank."
+          "description": "How the style changes an image, as an edit prompt. It isn't blank."
         },
         "transparent-background": {
           "type": "boolean",

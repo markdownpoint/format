@@ -19,12 +19,12 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The layout's name in the layout chooser, on one line that isn't blank and has no control characters. Left out, it's the layout's key with spaces for its hyphens and a capital first letter."
+      "description": "The layout's name in the layout chooser, on one line that isn't blank and has no control characters. The default is the layout's key with spaces for its hyphens and a capital first letter."
     },
     "scheme": {
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "The color scheme slides on this layout use. Left out, or one the theme lacks, it's light."
+      "description": "The color scheme slides on this layout use. The default is light. Light is also used when the theme doesn't have the scheme."
     },
     "overrides": {
       "type": "object",
@@ -2187,7 +2187,7 @@
           }
         ]
       },
-      "description": "Changes to the master's objects on this layout, by id. `null` removes one, except the camera and the World."
+      "description": "Changes to the master's objects on this layout, by id. An object set to `null` is removed. The camera and the World can't be removed."
     },
     "objects": {
       "type": "array",
@@ -2808,7 +2808,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -3052,7 +3052,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -4232,7 +4232,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -4398,7 +4398,7 @@
                         "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                       },
                       {
-                        "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                        "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                         "type": "object",
                         "properties": {
                           "light": {
@@ -4966,7 +4966,7 @@
           }
         ]
       },
-      "description": "The layout's objects, back to front. Its own objects are written out, and a master object appears as its id. A master object it doesn't name stands behind them all."
+      "description": "The layout's objects, back to front. Its own objects are written out, and a master object appears as its id. A master object it doesn't name is behind them all."
     },
     "text": {
       "type": "object",
@@ -4977,12 +4977,12 @@
       "additionalProperties": {
         "type": "string"
       },
-      "description": "The words of the layout's own text, table, chart, and shape objects, by object id. Another id is an error. A placeholder's words are its sample text."
+      "description": "The words of the layout's own text, table, chart, and shape objects, by object id. Any other id is an error. A placeholder's words are its sample text."
     },
     "save-id": {
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
-      "description": "A save stamp: the id of a save, which MarkdownPoint writes while the presentation is shared for editing. Other tools keep it as it is."
+      "description": "A save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
     }
   },
   "required": [
@@ -6117,7 +6117,7 @@
         "prompt": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-          "description": "How the style changes an image, as an edit prompt that isn't blank."
+          "description": "How the style changes an image, as an edit prompt. It isn't blank."
         },
         "transparent-background": {
           "type": "boolean",

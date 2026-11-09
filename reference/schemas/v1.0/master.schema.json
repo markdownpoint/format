@@ -19,7 +19,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The theme's identity, a lowercase UUID. It stays the same when the theme is renamed, added under another key, or shared, and tells apart two themes of the same key."
+      "description": "The theme's identity, a lowercase UUID. It stays the same when the theme is renamed, added under another key, or shared. It tells apart two themes with the same key."
     },
     "name": {
       "allOf": [
@@ -27,7 +27,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The theme's name, on one line that isn't blank and has no control characters. Left out, it's the theme's key with spaces for its hyphens and a capital first letter."
+      "description": "The theme's name, on one line that isn't blank and has no control characters. The default is the theme's key with spaces for its hyphens and a capital first letter."
     },
     "category": {
       "allOf": [
@@ -35,10 +35,10 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The category the theme is listed under: basic, business, education, community, or personal. Another word lists it under Other."
+      "description": "The category the theme is listed under: basic, business, education, community, or personal. With any other word, it is listed under Other."
     },
     "size": {
-      "description": "The slide size. Left out, it's 1920 × 1080.",
+      "description": "The slide size. The default is 1920 × 1080.",
       "type": "object",
       "properties": {
         "width": {
@@ -64,7 +64,7 @@
       "type": "number",
       "minimum": 1e-18,
       "maximum": 1000000000000000000,
-      "description": "How many meters one canvas unit stands for, as 3ds Max's System Unit Scale. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1,000 canvas units. Left out, it's 0.001."
+      "description": "The length of one canvas unit, in meters. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1,000 canvas units. The default is 0.001."
     },
     "fonts": {
       "description": "The font family for each font role.",
@@ -104,7 +104,7 @@
         },
         "minItems": 1
       },
-      "description": "The theme's embedded fonts, by family name: a list of .eot files, one per face, for each family a font role uses. A generic family has none."
+      "description": "The theme's embedded fonts, by family name. Each is a list of .eot files, one per face, for a family a font role uses. A generic family has none."
     },
     "brand": {
       "description": "The brand's named colors, for use in schemes.",
@@ -165,7 +165,7 @@
         "pattern": "^(?!none(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "additionalProperties": {
-        "description": "One text style. Keys left out default to inset-top and inset-bottom 0, paragraph-spacing half the font size, and list-indent 1.25 times it. Bullets are disc, circle at the second level, and square below it.",
+        "description": "One text style. The defaults are 0 for `inset-top` and `inset-bottom`, half the font size for `paragraph-spacing`, and 1.25 times the font size for `list-indent`. Without `bullet-style` and `sub-bullet-style`, bullets are disc at the first level and circle at the second. Deeper levels are square.",
         "type": "object",
         "properties": {
           "font-family": {
@@ -191,7 +191,7 @@
               700,
               900
             ],
-            "description": "The font weight: 300 light, 400 regular, 500 medium, 600 semibold, 700 bold or 900 black."
+            "description": "The font weight: 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, or 900 black."
           },
           "color": {
             "allOf": [
@@ -220,7 +220,7 @@
               "lower",
               "title"
             ],
-            "description": "The letter case shown, while the text stays as typed. `title` capitalizes the first letter of each word."
+            "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
           },
           "inset-top": {
             "type": "number",
@@ -298,11 +298,11 @@
                       "lower",
                       "title"
                     ],
-                    "description": "The letter case shown, while the text stays as typed. `title` capitalizes the first letter of each word."
+                    "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
                   }
                 },
                 "additionalProperties": false,
-                "description": "How bold text looks. Bold is weight 700, or its text's weight where that's heavier. It holds over any mark or own weight inside it, so bold takes no font-weight. Left out, it's the text's font."
+                "description": "How bold text looks. Its weight is 700, or the text's weight if that is heavier. It wins over any mark or weight inside the bold. So bold has no `font-weight`. Without it, bold uses the text's font."
               },
               "italic": {
                 "allOf": [
@@ -318,7 +318,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How highlighted text looks: colored, on no background. By default it's the accent color at weight 600, never lighter than the text around it."
+                "description": "How highlighted text looks. It is colored, with no background. By default, it is the accent color at weight 600 and never lighter than the text around it."
               },
               "strikethrough": {
                 "allOf": [
@@ -334,7 +334,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How code looks. Left out, it's the mono font at 0.92 times the text's size."
+                "description": "How code looks. By default, it is the mono font at 0.92 times the text's size."
               }
             },
             "additionalProperties": false
@@ -342,12 +342,12 @@
         },
         "additionalProperties": false
       },
-      "description": "The theme's text styles, by name. No name is built in, and none can't be one."
+      "description": "The theme's text styles, by name. No name is built in, and `none` can't be a name."
     },
     "guides": {
       "type": "array",
       "items": {
-        "description": "One ruler guide. It has x or y, not both.",
+        "description": "One ruler guide. It has `x` or `y`, not both.",
         "type": "object",
         "properties": {
           "id": {
@@ -418,12 +418,12 @@
             "gutter": {
               "type": "number",
               "minimum": 0,
-              "description": "The space between columns. Left out, 0."
+              "description": "The space between columns. The default is 0."
             },
             "margin": {
               "type": "number",
               "minimum": 0,
-              "description": "The margin on the left and on the right. Left out, 0."
+              "description": "The margin on the left and on the right. The default is 0."
             }
           },
           "required": [
@@ -459,7 +459,7 @@
       "type": "number",
       "minimum": 0.000001,
       "maximum": 4294967296,
-      "description": "The default length of a newly added step: the length its fades and moves take and its min-duration, and the length a by-paragraph delivery starts with. Left out, it's 0.5."
+      "description": "The default length of a newly added step. Its fades and moves last this long, and so does its `min-duration`. A by-paragraph delivery starts with this length. The default is 0.5."
     },
     "layout-order": {
       "type": "array",
@@ -468,7 +468,7 @@
         "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "uniqueItems": true,
-      "description": "The order the layouts appear in the layout chooser, by key, each once. Layouts it doesn't list follow, sorted by key."
+      "description": "The order of the layouts in the layout chooser, by key, each listed once. Layouts it doesn't list come after them, sorted by key."
     },
     "objects": {
       "type": "array",
@@ -1199,7 +1199,7 @@
                     "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -1377,7 +1377,7 @@
                   "prompt": {
                     "type": "string",
                     "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                    "description": "How the style changes an image, as an edit prompt that isn't blank."
+                    "description": "How the style changes an image, as an edit prompt. It isn't blank."
                   },
                   "transparent-background": {
                     "type": "boolean",
@@ -1469,7 +1469,7 @@
                     "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -2738,7 +2738,7 @@
                     "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -3158,7 +3158,7 @@
                     "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme, so a dark scheme can use its own. An image, video, audio, or model object can take one in place of a single file. Every file in it is the same type. A placeholder takes one file, not a map.",
+                    "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -3870,7 +3870,7 @@
           }
         ]
       },
-      "description": "The master's objects, back to front, behind a layout's and a slide's own, except one they place by id. The camera and the World are among them, at their defaults when the file leaves them out."
+      "description": "The master's objects, back to front. They are behind a layout's and a slide's objects, except one placed by id. The camera and the World are among them, at their defaults if the file leaves them out."
     },
     "text": {
       "type": "object",
@@ -3889,7 +3889,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "A save stamp: the id of a save, which MarkdownPoint writes while the presentation is shared for editing. Other tools keep it as it is."
+      "description": "A save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
     }
   },
   "required": [
@@ -4661,7 +4661,7 @@
       "additionalProperties": false
     },
     "mark": {
-      "description": "How italic, highlighted, struck-through or code text looks. Bold takes the same keys but `font-weight`.",
+      "description": "How italic, highlighted, struck-through, or code text looks. Bold has the same keys except `font-weight`.",
       "type": "object",
       "properties": {
         "font-family": {
@@ -4704,7 +4704,7 @@
             "lower",
             "title"
           ],
-          "description": "The letter case shown, while the text stays as typed. `title` capitalizes the first letter of each word."
+          "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
         }
       },
       "additionalProperties": false
@@ -4862,7 +4862,7 @@
       ]
     },
     "scheme": {
-      "description": "One color scheme: whether it is light or dark, and its colors. Every theme has light and dark, and can add more.",
+      "description": "One color scheme: whether it is light or dark, and its colors. Every theme has light and dark, and it can have more.",
       "type": "object",
       "properties": {
         "appearance": {

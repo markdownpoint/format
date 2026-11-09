@@ -16,7 +16,7 @@
     "theme": {
       "type": "string",
       "pattern": "^(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "The key of the theme in the package, the name of its folder."
+      "description": "The key of the theme in the package. It is the name of the theme's folder."
     },
     "files": {
       "type": "array",
@@ -60,7 +60,7 @@
           "file"
         ]
       },
-      "description": "Each file of the theme, once, master.json included, with its size and digest."
+      "description": "Each file of the theme, including master.json, with its size and digest. Each file is listed once."
     }
   },
   "required": [

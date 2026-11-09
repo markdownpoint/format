@@ -16,7 +16,7 @@
     "created": {
       "type": "string",
       "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}Z(?![\\s\\S])",
-      "description": "When the image was made, in UTC, as YYYY-MM-DDTHH:mm:ss.sssZ. Left out, the time isn't known."
+      "description": "When the image was made, as a UTC timestamp to the millisecond, such as 2026-10-16T09:30:00.000Z. Without it, the time isn't known."
     },
     "name": {
       "allOf": [
@@ -24,7 +24,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The layer name an image object takes from it when it has none, on one line that isn't blank and has no control characters. Left out, one is made from the prompt."
+      "description": "The layer name an image object gets from the record when it has no name of its own. It is one line that isn't blank and has no control characters. Without it, the name is made from the prompt."
     },
     "target": {
       "description": "What the image was made for.",
@@ -125,7 +125,7 @@
             "markdownpoint/image-prompt/1",
             "none"
           ],
-          "description": "The version of the instructions MarkdownPoint wraps the prompt in, or `none` where the prompt was asked as written, as by another tool."
+          "description": "The version of the instructions MarkdownPoint wraps the prompt in. It is `none` when the prompt was asked as written, for example by another tool."
         },
         "prompt": {
           "allOf": [
@@ -133,7 +133,7 @@
               "$ref": "#/definitions/request-text"
             }
           ],
-          "description": "The words asked for, in Unicode NFC, each run of white space one space, none at either end. It isn't empty or `none`."
+          "description": "The words asked for, in Unicode NFC. Each run of white space is one space, and there is none at either end. It isn't empty or `none`."
         },
         "image-style": {
           "anyOf": [
@@ -144,7 +144,7 @@
               "const": "none"
             }
           ],
-          "description": "The style the image was made in, its words written the same way, or `none` for no style."
+          "description": "The style the image was made in. Its words are written the same way as the prompt's. It is `none` for no style."
         },
         "provider": {
           "enum": [
@@ -168,7 +168,7 @@
             "aspect-ratio": {
               "type": "string",
               "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
-              "description": "The proportions asked for, as width:height in whole numbers from 1 with no leading zero, such as 16:9."
+              "description": "The proportions asked for, as width:height, such as 16:9. Both are whole numbers from 1 with no leading zero."
             },
             "transparent-background": {
               "type": "boolean",
@@ -180,7 +180,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The size asked for, in the model's own words, on one line that isn't blank and has no control characters."
+              "description": "The size asked for, in the model's own words. It is one line that isn't blank and has no control characters."
             },
             "quality": {
               "allOf": [
@@ -188,7 +188,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The quality asked for, in the model's own words, on one line that isn't blank and has no control characters. Left out, none was."
+              "description": "The quality asked for, in the model's own words. It is one line that isn't blank and has no control characters. Without it, no quality was asked for."
             }
           },
           "required": [
@@ -199,13 +199,13 @@
           "additionalProperties": false
         },
         "original": {
-          "description": "The image a restyle was applied to. Left out, the image was made from the prompt alone.",
+          "description": "The image a restyle was applied to. Without it, the image was made from the prompt alone.",
           "type": "object",
           "properties": {
             "file": {
               "type": "string",
               "pattern": "^(?=(?:media|generated)\\/)(?![\\s\\S]*:)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))[\\s\\S]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-              "description": "Its file path when the image was sent, as a presentation's file path, ending in an image's extension. MarkdownPoint doesn't update it when the image is renamed or moved. Its digest names its bytes."
+              "description": "Its path when the image was sent, as a presentation's file path ending in an image's extension. MarkdownPoint doesn't update it when the image is renamed or moved. The digest identifies the image."
             },
             "sha256": {
               "allOf": [
@@ -240,7 +240,7 @@
         "file": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:generated\\/[^/]*|media\\/(?:[^/]*\\/)*[^/]*)\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG])(?![\\s\\S])",
-          "description": "Where it is, ending in .png, .jpg or .jpeg: directly under generated/, where it was first written, or anywhere under media/, where it was renamed or moved since."
+          "description": "Where it is, ending in .png, .jpg, or .jpeg. It is first written directly under generated/. After it is renamed or moved, it can be anywhere under media/."
         },
         "sha256": {
           "allOf": [

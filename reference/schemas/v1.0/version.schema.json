@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/v1.0/version.schema.json",
-  "description": "One saved version of the presentation: this file, beside copies of the presentation's two files as they were saved, in a folder of its own under versions/.",
+  "description": "One saved version of the presentation. It has a folder of its own under versions/, with this file and copies of the presentation's two files as they were saved.",
   "type": "object",
   "properties": {
     "markdownpoint": {
@@ -17,12 +17,12 @@
       "type": "integer",
       "minimum": 1,
       "maximum": 9007199254740991,
-      "description": "The number MarkdownPoint shows: one past the highest version's when it was saved."
+      "description": "The number MarkdownPoint shows. It is one more than the highest version number when this version was saved."
     },
     "name": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "The name the author gave it, on one line that isn't blank and has no control characters, or none when left out."
+      "description": "The name the author gave the version. It is one line that isn't blank and has no control characters. Without it, the version has no name."
     }
   },
   "required": [
