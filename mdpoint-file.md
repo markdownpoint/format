@@ -168,7 +168,7 @@ A text box can grow to fit its words, give every digit one width and outline its
 
 ![The type slide, as MarkdownPoint draws it](images/words-type.png)
 
-`auto-size` names the sides that grow, here the height, so the frame holds no height: the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its width in canvas units.
+`auto-size` names the sides that grow, here the height, so the frame holds no height: the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` its thickness in canvas units.
 
 A chart draws the Markdown table in its text block:
 
@@ -232,7 +232,7 @@ The table's first column is its header, and its first row is a row like the othe
 
 ![The data slide, as MarkdownPoint draws it](images/words-data.png)
 
-Here the table's first column is its header, in place of its first row. `colors` sets the color of each of the chart's series. A counter with `roll` turns its digits into place. Stopped short of 1, its `progress` shows the unused leading zeros at `leading-zero-opacity`.
+Here the table's first column is its header, in place of its first row. `colors` sets the color of each of the chart's series, or of each category on a pie or a donut. A counter with `roll` turns its digits into place. Stopped short of 1, its `progress` shows the unused leading zeros at `leading-zero-opacity`.
 
 A group with `auto-layout` places its members one after another, down or across. Their own positions are ignored:
 
@@ -414,7 +414,7 @@ A video or an audio object waits for a click to play. With `start-on-click` set 
 }
 ```
 
-An audio object's `fade-in` and `fade-out` are in seconds:
+A video's or an audio object's `fade-in` and `fade-out` are in seconds:
 
 ```json
 {
@@ -439,7 +439,7 @@ An audio object's `fade-in` and `fade-out` are in seconds:
 
 ## 3D
 
-Models, lights and the camera stand in a 3D space. A constraint ties one of them to another. `aim` turns a model, or the node of it that `node` names, toward a target. `squash-and-stretch` keeps a model's volume while a step scales it:
+Models, lights and the camera stand in a 3D space. A constraint keeps one of them to a rule as things move. `aim` turns a model, or the node of it that `node` names, toward a target. `squash-and-stretch` keeps a model's volume while a step scales it:
 
 ```json
 [{"id": "look", "type": "aim", "node": "shade", "target": "mug", "axis": "-y", "strength": 0.5}]
@@ -489,7 +489,7 @@ The camera stands on the master. A slide changes it in `overrides`. Its `positio
 
 ![The constraints slide, as MarkdownPoint draws it](images/space-constraints.png)
 
-A rotation in degrees turns about y, then x, then z. With `rotation-mode` set to `quaternion`, it's written as w, x, y and z.
+A rotation in degrees turns its heading about y, then its pitch about its own x, then its bank about its own z. With `rotation-mode` set to `quaternion`, it's written as w, x, y and z.
 
 ## Steps
 

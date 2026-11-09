@@ -776,7 +776,7 @@
                           "y"
                         ],
                         "additionalProperties": false,
-                        "description": "How far it falls from the letters, as {x, y} across and down."
+                        "description": "How far it falls from the letters, as {x, y} across and down in the text's own axes, turning and scaling with it and its groups."
                       },
                       "color": {
                         "allOf": [
@@ -3963,7 +3963,7 @@
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets. Above 1 it zooms in. Below 1 it zooms out."
+          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets, and a background covers the slide. Above 1 it zooms in. Below 1 it zooms out."
         },
         "focal-point": {
           "type": "object",
@@ -4029,7 +4029,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the object, as {x, y} across and down."
+              "description": "How far it falls, as {x, y} across and down in the object's own axes, turning and scaling with it and its groups but not mirrored by a flip. A background's is in the slide's axes."
             },
             "color": {
               "allOf": [

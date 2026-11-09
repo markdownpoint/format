@@ -73,13 +73,13 @@
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "How long it takes to rise from silence."
+          "description": "How long it takes to rise from silence, linearly, each time it starts."
         },
         "fade-out": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "How long it takes to fall to silence at the end."
+          "description": "How long it takes to fall to silence, linearly, before the file ends each time. Where the two fades overlap, the lower volume holds."
         }
       },
       "required": [
@@ -3648,7 +3648,7 @@
         "image": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "An image over the fill, as a presentation's file path."
+          "description": "An image over the fill, as a presentation's file path. It covers the slide, cropped as an image's `scale-mode` `fill` is."
         },
         "crop": {
           "allOf": [
@@ -3938,7 +3938,7 @@
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets. Above 1 it zooms in. Below 1 it zooms out."
+          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets, and a background covers the slide. Above 1 it zooms in. Below 1 it zooms out."
         },
         "focal-point": {
           "type": "object",
@@ -4004,7 +4004,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the object, as {x, y} across and down."
+              "description": "How far it falls, as {x, y} across and down in the object's own axes, turning and scaling with it and its groups but not mirrored by a flip. A background's is in the slide's axes."
             },
             "color": {
               "allOf": [
@@ -7476,7 +7476,7 @@
                       },
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether a scale move changes by a steady ratio over time, so a zoom looks even; from or to 0, or across it, it moves at an even pace. Only a scale parameter takes it."
+                        "description": "Whether a scale move changes by a steady ratio, so a zoom looks even; from, to, or across 0, it moves at an even pace. Only `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale` take it."
                       },
                       "oscillate": {
                         "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",
@@ -7953,7 +7953,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the letters, as {x, y} across and down."
+              "description": "How far it falls from the letters, as {x, y} across and down in the text's own axes, turning and scaling with it and its groups."
             },
             "color": {
               "allOf": [

@@ -968,23 +968,23 @@
                   },
                   {
                     "type": "string",
-                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                    "description": "a file path in the presentation’s folder"
+                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "type": "string",
-                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                    "description": "a file path in the presentation’s folder"
+                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
+                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "type": "string",
-                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                    "description": "a file path in the presentation’s folder"
+                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
+                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
                     "type": "string",
-                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                    "description": "a file path in the presentation’s folder"
+                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
+                    "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
                   }
                 ]
               },
@@ -5243,7 +5243,7 @@
           "type": "number",
           "minimum": 0.01,
           "maximum": 511,
-          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets. Above 1 it zooms in. Below 1 it zooms out."
+          "description": "How far it is zoomed. At 1 the image sits in its frame as its scale-mode sets, and a background covers the slide. Above 1 it zooms in. Below 1 it zooms out."
         },
         "focal-point": {
           "type": "object",
@@ -5309,7 +5309,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the object, as {x, y} across and down."
+              "description": "How far it falls, as {x, y} across and down in the object's own axes, turning and scaling with it and its groups but not mirrored by a flip. A background's is in the slide's axes."
             },
             "color": {
               "allOf": [
@@ -6447,7 +6447,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls from the letters, as {x, y} across and down."
+              "description": "How far it falls from the letters, as {x, y} across and down in the text's own axes, turning and scaling with it and its groups."
             },
             "color": {
               "allOf": [
