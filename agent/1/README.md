@@ -1,12 +1,6 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server speak `markdownpoint/agent/1` to the running app, and the app's own Agent uses the same methods. These files describe it, generated from the app's source:
-
-- [contract.json](contract.json): every method, where it is served, what it takes and what it answers, and the envelopes and the error, as JSON Schema.
-- [propose.json](propose.json): a proposal's request, with every operation's fields.
-- [theme-edit.json](theme-edit.json): a theme edit's request.
-- [export.json](export.json): an export's request.
-- [tools.json](tools.json): the tools `mdpoint mcp` lists, with their input and output schemas.
+The `mdpoint` command and its MCP server speak `markdownpoint/agent/1` to the running app, and the app's own Agent uses the same methods. The app describes the contract itself: `mdpoint capabilities` lists its methods, operations and limits, `mdpoint schema <operation>` gives one operation's schema, and `mdpoint mcp` serves its tools to an MCP client, each with its input and output schemas.
 
 ## The contract
 
