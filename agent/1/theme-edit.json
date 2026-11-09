@@ -29,6 +29,9 @@
     "AgentObjectTransformSource": {
       "anyOf": [
         {
+          "$ref": "#/definitions/AgentSpaceTransform"
+        },
+        {
           "type": "object",
           "properties": {
             "drawnEnd": {
@@ -76,8 +79,7 @@
           },
           "required": [
             "drawnFrame",
-            "objectId",
-            "rotation"
+            "objectId"
           ],
           "additionalProperties": false
         },
@@ -125,22 +127,6 @@
             "scale"
           ],
           "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "objectId": {
-              "type": "string"
-            },
-            "space": {
-              "$ref": "#/definitions/AgentSpaceTransform"
-            }
-          },
-          "required": [
-            "objectId",
-            "space"
-          ],
-          "additionalProperties": false
         }
       ],
       "description": "A transform as the file names an audio icon's position and a line's ends, an end on an object's `last-position` among them, and a framed object's frame and a line's ends where they are drawn, `drawnFrame`, `drawnStart` and `drawnEnd`, which the file's frame and ends are not for a growing text or an object auto layout places."
@@ -151,6 +137,9 @@
     "AgentSpaceTransform": {
       "type": "object",
       "properties": {
+        "objectId": {
+          "type": "string"
+        },
         "position": {
           "type": "object",
           "properties": {
@@ -262,8 +251,32 @@
           "additionalProperties": false
         }
       },
+      "required": [
+        "objectId"
+      ],
       "additionalProperties": false,
-      "description": "A 3D object's move: any parts of its position, its whole rotation in its rotation mode and any parts of a model's or a light's scale. The parts it leaves out stay as they are."
+      "description": "A 3D object's move: any parts of its position, its whole rotation in its rotation mode and any parts of a model's or a light's scale, at least one. The parts it leaves out stay as they are. A scale alone goes by its object's kind: a model's or a light's in the 3D space, any other object's along its own axes.",
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "position"
+              ]
+            },
+            {
+              "required": [
+                "rotation"
+              ]
+            },
+            {
+              "required": [
+                "scale"
+              ]
+            }
+          ]
+        }
+      ]
     },
     "AgentThemeObjectOperation": {
       "anyOf": [
