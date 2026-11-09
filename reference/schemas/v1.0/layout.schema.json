@@ -46,7 +46,7 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   }
                 ]
               },
@@ -1115,9 +1115,6 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/one-line"
-                  },
-                  {
                     "$ref": "#/definitions/nonblank-line"
                   }
                 ]
@@ -1844,7 +1841,7 @@
                     "type": "null"
                   },
                   {
-                    "description": "The camera's drift: from the moment the slide's transition in begins, the camera and its target move together from `from` toward the camera's set position, standing `from` × (1 − t ÷ `duration`)² away from it t seconds later, so they slow steadily to rest. Stills and the editor show the set position, and a slide a scroll transition enters or leaves has no drift.",
+                    "description": "The camera's drift: on the slide's own clock, which starts as its transition in begins and runs on through its steps, waits and transition out, the camera and its target move together from `from` toward the camera's set position, standing `from` × (1 − t ÷ `duration`)² away from it t seconds after the start, so they slow steadily to rest. Stills and the editor show the set position, and a slide a scroll transition enters or leaves has no drift.",
                     "type": "object",
                     "properties": {
                       "from": {
@@ -2211,7 +2208,7 @@
                     "const": "text"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -2584,7 +2581,7 @@
                     "const": "table"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -2775,7 +2772,7 @@
                     "const": "image"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -2950,7 +2947,7 @@
                     "description": "SVG path data where 0 to 1 spans the object’s frame"
                   },
                   "alt": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "decorative": {
                     "type": "boolean"
@@ -3019,7 +3016,7 @@
                     "const": "video"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3189,7 +3186,7 @@
                     "description": "canvas units"
                   },
                   "alt": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "decorative": {
                     "type": "boolean"
@@ -3250,7 +3247,7 @@
                     "const": "shape"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3559,7 +3556,7 @@
                     "const": "path"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3697,7 +3694,7 @@
                     "const": "icon"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3819,7 +3816,7 @@
                     "const": "line"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -3959,7 +3956,7 @@
                     "const": "chart"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4120,7 +4117,7 @@
                     "const": "group"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4225,7 +4222,7 @@
                     "const": "audio"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "file": {
                     "anyOf": [
@@ -4328,7 +4325,7 @@
                     "const": "web-video"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "url": {
                     "$ref": "#/definitions/url"
@@ -4388,7 +4385,7 @@
                     "const": "model"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4471,7 +4468,7 @@
                     "maximum": 1
                   },
                   "alt": {
-                    "$ref": "#/definitions/one-line"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent-node": {
                     "$ref": "#/definitions/model-node-name"
@@ -4517,7 +4514,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/object-name"
+                        "$ref": "#/definitions/nonblank-line"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -4589,7 +4586,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/object-name"
+                        "$ref": "#/definitions/nonblank-line"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -4681,7 +4678,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/object-name"
+                        "$ref": "#/definitions/nonblank-line"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -4758,7 +4755,7 @@
                         "const": "light"
                       },
                       "name": {
-                        "$ref": "#/definitions/object-name"
+                        "$ref": "#/definitions/nonblank-line"
                       },
                       "parent": {
                         "$ref": "#/definitions/object-id"
@@ -4852,7 +4849,7 @@
                     "const": "shadow-catcher"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "parent": {
                     "$ref": "#/definitions/object-id"
@@ -4939,7 +4936,7 @@
                     "const": "floor"
                   },
                   "name": {
-                    "$ref": "#/definitions/object-name"
+                    "$ref": "#/definitions/nonblank-line"
                   },
                   "position": {
                     "$ref": "#/definitions/floor-position"
@@ -5972,16 +5969,6 @@
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "an object’s id"
-    },
-    "object-name": {
-      "type": "string",
-      "pattern": "^(?:[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*|[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?)(?![\\s\\S])",
-      "description": "one line"
-    },
-    "one-line": {
-      "type": "string",
-      "pattern": "^[^\\r\\n]*(?![\\s\\S])",
-      "description": "one line"
     },
     "opaque-color": {
       "type": "string",

@@ -19,9 +19,12 @@
       "description": "When the image was made, in UTC, as YYYY-MM-DDTHH:mm:ss.sssZ. Left out, the time isn't known."
     },
     "name": {
-      "type": "string",
-      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff](?:[^\\r\\n]*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])?(?![\\s\\S])",
-      "description": "The layer name an image object takes from it when it has none, on one line that isn't blank, with no space at either end. Left out, one is made from the prompt."
+      "allOf": [
+        {
+          "$ref": "#/definitions/nonblank-line"
+        }
+      ],
+      "description": "The layer name an image object takes from it when it has none, on one line that isn't blank and has no control characters. Left out, one is made from the prompt."
     },
     "target": {
       "description": "What the image was made for.",
@@ -153,10 +156,10 @@
         "model": {
           "allOf": [
             {
-              "$ref": "#/definitions/nonempty-line"
+              "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "The image model's name, on one line, not empty."
+          "description": "The image model's name, on one line that isn't blank and has no control characters."
         },
         "parameters": {
           "description": "The settings the model was asked with.",
@@ -174,18 +177,18 @@
             "size": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/nonempty-line"
+                  "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The size asked for, in the model's own words, on one line, not empty."
+              "description": "The size asked for, in the model's own words, on one line that isn't blank and has no control characters."
             },
             "quality": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/nonempty-line"
+                  "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The quality asked for, in the model's own words, on one line, not empty. Left out, none was."
+              "description": "The quality asked for, in the model's own words, on one line that isn't blank and has no control characters. Left out, none was."
             }
           },
           "required": [
@@ -285,10 +288,10 @@
   ],
   "additionalProperties": false,
   "definitions": {
-    "nonempty-line": {
+    "nonblank-line": {
       "type": "string",
-      "pattern": "^[^\\r\\n]+(?![\\s\\S])",
-      "description": "one line"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
+      "description": "one line that isn’t blank and has no control characters"
     },
     "request-text": {
       "type": "string",
