@@ -17,7 +17,7 @@
     },
     "id": {
       "$ref": "#/definitions/AgentRequestId",
-      "description": "Fresh request identity. Movie cancellation matches this ID in the current window/session."
+      "description": "Fresh request identity. Movie cancellation matches this id in the current window/session."
     },
     "movie": {
       "$ref": "#/definitions/AgentMovieExportOptions",

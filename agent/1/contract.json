@@ -1226,17 +1226,17 @@
     "AgentExportCancelResult": {
       "type": "object",
       "properties": {
-        "canceled": {
-          "type": "boolean",
-          "description": "True means cancellation was requested for the matching active movie; its original awaited response reports the outcome."
-        },
         "id": {
           "type": "string"
+        },
+        "requested": {
+          "type": "boolean",
+          "description": "True means cancellation was requested for the matching active movie; its original awaited response reports the outcome."
         }
       },
       "required": [
-        "canceled",
-        "id"
+        "id",
+        "requested"
       ],
       "additionalProperties": false
     },
@@ -1557,7 +1557,7 @@
               "type": "null"
             }
           ],
-          "description": "The time from one frame to the next, in seconds."
+          "description": "The time from one frame to the next, in seconds: the mean, the 95th percentile and the longest."
         },
         "paint": {
           "anyOf": [
@@ -1581,7 +1581,7 @@
               "type": "null"
             }
           ],
-          "description": "How long each frame took to paint, in seconds."
+          "description": "How long each frame took to paint, in seconds: the mean and the longest."
         }
       },
       "required": [
@@ -1752,13 +1752,6 @@
         {
           "type": "object",
           "properties": {
-            "action": {
-              "type": "string",
-              "enum": [
-                "generate",
-                "regenerate"
-              ]
-            },
             "aspect-ratio": {
               "type": "string"
             },
@@ -1767,6 +1760,10 @@
             },
             "provider": {
               "type": "string"
+            },
+            "regenerates": {
+              "type": "boolean",
+              "description": "The image in use was made from these settings, so generating makes another take of it, kept among the variants."
             },
             "requiresProvider": {
               "type": "boolean"
@@ -1789,10 +1786,10 @@
             }
           },
           "required": [
-            "action",
             "aspect-ratio",
             "model",
             "provider",
+            "regenerates",
             "requiresProvider",
             "status",
             "token",
@@ -10184,6 +10181,13 @@
           "$ref": "#/definitions/GlbBounds",
           "description": "The exact box around every vertex at rest."
         },
+        "castsNoShadows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GlbNodeName"
+          },
+          "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadows, and still take the shadows cast on them."
+        },
         "colorRoles": {
           "type": "array",
           "items": {
@@ -10207,20 +10211,38 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+              "globalScale": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "z": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false,
+                "description": "The lengths of the node's axes in the model's global frame, unsigned, before the slide places the model."
+              },
               "name": {
                 "type": "string"
               },
               "node": {
                 "type": "number"
-              },
-              "scale": {
-                "type": "number"
               }
             },
             "required": [
+              "globalScale",
               "name",
-              "node",
-              "scale"
+              "node"
             ]
           },
           "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
@@ -10233,25 +10255,18 @@
         },
         "onFloor": {
           "type": "boolean"
-        },
-        "shadowless": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GlbNodeName"
-          },
-          "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
         }
       },
       "required": [
         "actions",
+        "castsNoShadows",
         "colorRoles",
         "extensions",
         "height",
         "hiddenAtRest",
         "joints",
         "nodes",
-        "onFloor",
-        "shadowless"
+        "onFloor"
       ],
       "additionalProperties": false
     },

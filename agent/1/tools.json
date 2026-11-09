@@ -10369,7 +10369,7 @@
           "id": {
             "type": "string",
             "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}(?![\\s\\S])",
-            "description": "Fresh request identity. Movie cancellation matches this ID in the current window/session."
+            "description": "Fresh request identity. Movie cancellation matches this id in the current window/session."
           },
           "movie": {
             "type": "object",
@@ -10735,7 +10735,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Cancel the active movie export identified by its caller UUID in the selected presentation. A true canceled result means cancellation was requested; the pending exports_run call reports whether it ultimately exported or canceled. Returns false if this request is no longer active. It does not cancel another presentation’s or another request’s export.",
+      "description": "Cancel the active movie export identified by its caller UUID in the selected presentation. A true requested result means cancellation was requested; the pending exports_run call reports whether it ultimately exported or canceled. Returns false if this request is no longer active. It does not cancel another presentation’s or another request’s export.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -10758,17 +10758,17 @@
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
-          "canceled": {
-            "type": "boolean",
-            "description": "True means cancellation was requested for the matching active movie; its original awaited response reports the outcome."
-          },
           "id": {
             "type": "string"
+          },
+          "requested": {
+            "type": "boolean",
+            "description": "True means cancellation was requested for the matching active movie; its original awaited response reports the outcome."
           }
         },
         "required": [
-          "canceled",
-          "id"
+          "id",
+          "requested"
         ],
         "additionalProperties": false,
         "definitions": {}
@@ -11238,6 +11238,13 @@
                 "$ref": "#/definitions/GlbBounds",
                 "description": "The exact box around every vertex at rest."
               },
+              "castsNoShadows": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/GlbNodeName"
+                },
+                "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadows, and still take the shadows cast on them."
+              },
               "colorRoles": {
                 "type": "array",
                 "items": {
@@ -11261,20 +11268,38 @@
                   "type": "object",
                   "additionalProperties": false,
                   "properties": {
+                    "globalScale": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "z": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "additionalProperties": false,
+                      "description": "The lengths of the node's axes in the model's global frame, unsigned, before the slide places the model."
+                    },
                     "name": {
                       "type": "string"
                     },
                     "node": {
                       "type": "number"
-                    },
-                    "scale": {
-                      "type": "number"
                     }
                   },
                   "required": [
+                    "globalScale",
                     "name",
-                    "node",
-                    "scale"
+                    "node"
                   ]
                 },
                 "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
@@ -11287,25 +11312,18 @@
               },
               "onFloor": {
                 "type": "boolean"
-              },
-              "shadowless": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/definitions/GlbNodeName"
-                },
-                "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
               }
             },
             "required": [
               "actions",
+              "castsNoShadows",
               "colorRoles",
               "extensions",
               "height",
               "hiddenAtRest",
               "joints",
               "nodes",
-              "onFloor",
-              "shadowless"
+              "onFloor"
             ],
             "additionalProperties": false
           },
@@ -11757,6 +11775,13 @@
             "$ref": "#/definitions/GlbBounds",
             "description": "The exact box around every vertex at rest."
           },
+          "castsNoShadows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/GlbNodeName"
+            },
+            "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadows, and still take the shadows cast on them."
+          },
           "colorRoles": {
             "type": "array",
             "items": {
@@ -11780,20 +11805,38 @@
               "type": "object",
               "additionalProperties": false,
               "properties": {
+                "globalScale": {
+                  "type": "object",
+                  "properties": {
+                    "x": {
+                      "type": "number"
+                    },
+                    "y": {
+                      "type": "number"
+                    },
+                    "z": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y",
+                    "z"
+                  ],
+                  "additionalProperties": false,
+                  "description": "The lengths of the node's axes in the model's global frame, unsigned, before the slide places the model."
+                },
                 "name": {
                   "type": "string"
                 },
                 "node": {
                   "type": "number"
-                },
-                "scale": {
-                  "type": "number"
                 }
               },
               "required": [
+                "globalScale",
                 "name",
-                "node",
-                "scale"
+                "node"
               ]
             },
             "description": "Parts at rest scaled to nothing, as glTF has no visibility of its own: only the topmost of them."
@@ -11806,25 +11849,18 @@
           },
           "onFloor": {
             "type": "boolean"
-          },
-          "shadowless": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/GlbNodeName"
-            },
-            "description": "The nodes whose extras.markdownpoint set `\"cast-shadow\": false`: they cast no shadow."
           }
         },
         "required": [
           "actions",
+          "castsNoShadows",
           "colorRoles",
           "extensions",
           "height",
           "hiddenAtRest",
           "joints",
           "nodes",
-          "onFloor",
-          "shadowless"
+          "onFloor"
         ],
         "additionalProperties": false,
         "definitions": {
@@ -12811,8 +12847,8 @@
                 "type": {
                   "type": "string",
                   "enum": [
-                    "setPlaceholder",
                     "setName",
+                    "setPlaceholder",
                     "setScheme",
                     "setFile",
                     "createLayout",
@@ -13519,13 +13555,6 @@
           {
             "type": "object",
             "properties": {
-              "action": {
-                "type": "string",
-                "enum": [
-                  "generate",
-                  "regenerate"
-                ]
-              },
               "aspect-ratio": {
                 "type": "string"
               },
@@ -13534,6 +13563,10 @@
               },
               "provider": {
                 "type": "string"
+              },
+              "regenerates": {
+                "type": "boolean",
+                "description": "The image in use was made from these settings, so generating makes another take of it, kept among the variants."
               },
               "requiresProvider": {
                 "type": "boolean"
@@ -13555,10 +13588,10 @@
               }
             },
             "required": [
-              "action",
               "aspect-ratio",
               "model",
               "provider",
+              "regenerates",
               "requiresProvider",
               "status",
               "token",
@@ -14263,7 +14296,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in seconds."
+                "description": "The time from one frame to the next, in seconds: the mean, the 95th percentile and the longest."
               },
               "paint": {
                 "anyOf": [
@@ -14287,7 +14320,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in seconds."
+                "description": "How long each frame took to paint, in seconds: the mean and the longest."
               }
             },
             "required": [
@@ -14311,7 +14344,7 @@
         "idempotentHint": true,
         "openWorldHint": false
       },
-      "description": "Read whether the selected presentation’s show is running: the slide and step IDs it captured, the seconds into the step, its screen (black, white or null) and whether its notes show, and its displays. Its time runs on the show’s clock and holds while the screen is black or white. A show the window started for a presentation it has since closed is refused.",
+      "description": "Read whether the selected presentation’s show is running: the slide and step ids it captured, the seconds into the step, its screen (black, white or null) and whether its notes show, and its displays. Its time runs on the show’s clock and holds while the screen is black or white. A show the window started for a presentation it has since closed is refused.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14438,7 +14471,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in seconds."
+                "description": "The time from one frame to the next, in seconds: the mean, the 95th percentile and the longest."
               },
               "paint": {
                 "anyOf": [
@@ -14462,7 +14495,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in seconds."
+                "description": "How long each frame took to paint, in seconds: the mean and the longest."
               }
             },
             "required": [
@@ -14486,7 +14519,7 @@
         "idempotentHint": false,
         "openWorldHint": true
       },
-      "description": "Control the selected presentation’s running show as its own navigation does. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; goToSlide enters the slide slideId names at Start, a captured stable slide ID. While the screen is black or white, a navigation action first shows the slide again where it was. Commands do not edit the presentation.",
+      "description": "Control the selected presentation’s running show as its own navigation does. nextStep enters and plays the next step; nextStepInstant enters its endpoint; previousStep steps back one; nextSlide and previousSlide enter the next or previous slide at Start; goToSlide enters the slide slideId names at Start, a captured stable slide id. While the screen is black or white, a navigation action first shows the slide again where it was. Commands do not edit the presentation.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -14651,7 +14684,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in seconds."
+                "description": "The time from one frame to the next, in seconds: the mean, the 95th percentile and the longest."
               },
               "paint": {
                 "anyOf": [
@@ -14675,7 +14708,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in seconds."
+                "description": "How long each frame took to paint, in seconds: the mean and the longest."
               }
             },
             "required": [
@@ -14826,7 +14859,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "The time from one frame to the next, in seconds."
+                "description": "The time from one frame to the next, in seconds: the mean, the 95th percentile and the longest."
               },
               "paint": {
                 "anyOf": [
@@ -14850,7 +14883,7 @@
                     "type": "null"
                   }
                 ],
-                "description": "How long each frame took to paint, in seconds."
+                "description": "How long each frame took to paint, in seconds: the mean and the longest."
               }
             },
             "required": [
