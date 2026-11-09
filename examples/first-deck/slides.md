@@ -27,8 +27,8 @@ Speaker notes go here. Only the presenter sees them.
 Two files, one deck==.==
 
 <!-- text: body -->
-- **slides.md** holds the words
-- **presentation.mdpoint** holds the layout, styles and steps
+- **slides.md** has the words
+- **presentation.mdpoint** has the layout, styles and steps
 - The theme is a folder in **themes**
 
 <!-- section: finish -->

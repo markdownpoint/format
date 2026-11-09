@@ -14,7 +14,7 @@ Marks, links and colors==.==
 <!-- text: body -->
 Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
 
-[A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} take the accent color.
+[A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 
 <!-- slide: lists -->
 
@@ -85,7 +85,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). Its `progress` of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity (`leading-zero-opacity`).
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
 
 <!-- slide: rules -->
 
@@ -109,7 +109,7 @@ Neither comment above shows on the slide.
 Text boxes==.==
 
 <!-- text: grows -->
-The file gives this box no height. It grows to fit its words.
+This box has no height in the file. It grows to fit its words.
 
 <!-- text: figures -->
 1,250.00
@@ -122,4 +122,4 @@ The file gives this box no height. It grows to fit its words.
 Outlined
 
 <!-- notes -->
-The first box sets `auto-size` to height, so its frame has no height. The figures set `tabular`: every digit is as wide, so the columns line up. The outlined word's letters take the background's color. Its `text-stroke` is the accent color, and its `text-stroke-weight` makes it 3 canvas units wide.
+The first box has `auto-size` set to height, so its frame has no height. The figures have `tabular` set, so every digit has the same width and the columns line up. The outlined word's letters have the background's color. Its `text-stroke` is the accent color, and its `text-stroke-weight` makes the stroke 3 canvas units wide.

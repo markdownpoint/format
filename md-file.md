@@ -36,8 +36,8 @@ Speaker notes go here. Only the presenter sees them.
 Two files, one deck==.==
 
 <!-- text: body -->
-- **slides.md** holds the words
-- **presentation.mdpoint** holds the layout, styles and steps
+- **slides.md** has the words
+- **presentation.mdpoint** has the layout, styles and steps
 - The theme is a folder in **themes**
 
 <!-- section: finish -->
@@ -179,7 +179,7 @@ Marks, links and colors==.==
 <!-- text: body -->
 Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
 
-[A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} take the accent color.
+[A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 ```
 
 ![The marks slide, as MarkdownPoint draws it](images/words-marks.png)

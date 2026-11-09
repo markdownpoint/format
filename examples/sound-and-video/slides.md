@@ -12,4 +12,4 @@ Sound and video==.==
 The video waits for a click, then plays from 1 to 5 seconds. The chord starts with the slide.
 
 <!-- notes -->
-The soundtrack fades in over 2 seconds and out over 3. The video's media-trim plays 1 to 5 seconds of its file. A video or an audio object waits for a click unless start-on-click is false, as the chord's is. The chord fades in over half a second and out over 1.5.
+The soundtrack fades in over 2 seconds and out over 3. The video's media-trim plays its file from second 1 to second 5. A video or audio object plays on a click unless start-on-click is false, as it is for the chord. The chord fades in over half a second and out over 1.5.

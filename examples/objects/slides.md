@@ -12,4 +12,4 @@ Objects and steps==.==
 The card fades in on the first click.
 
 <!-- notes -->
-Two texts, two shapes and a line with an arrow, drawn on the Blank layout. One step fades the card in.
+This slide has two texts, two shapes and a line with an arrow, on the Blank layout. One step fades the card in.

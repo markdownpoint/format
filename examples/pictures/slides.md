@@ -26,7 +26,7 @@ grayscale 1
 A faded background==.==
 
 <!-- notes -->
-The background's `crop` zooms in 1.6 times (`scale`) on the sun (`focal-point`). It turns gray (`grayscale`) and stands at 0.3 `opacity` over the scheme's color.
+The background's `crop` zooms in 1.6 times (`scale`) on the sun (`focal-point`). The background is gray (`grayscale`) and has an `opacity` of 0.3 over the scheme's color.
 
 <!-- slide: cutout -->
 
@@ -34,7 +34,7 @@ The background's `crop` zooms in 1.6 times (`scale`) on the sun (`focal-point`).
 A background with a shadow==.==
 
 <!-- notes -->
-The sun is a PNG with transparency. Its drop shadow follows the shape.
+The sun is a PNG with transparency. Its drop shadow follows its shape.
 
 <!-- slide: generate -->
 
@@ -48,4 +48,4 @@ prompt
 restyle Chalk
 
 <!-- notes -->
-The boat has been generated: its picture and its record are in generated/. The background holds only its prompt, its style and whether it's transparent, and the hills carry a restyle. MarkdownPoint makes each picture when the author generates it.
+The boat has been generated, and its picture and record are in generated/. MarkdownPoint saves each picture there when the author generates it. The background contains only its prompt, its style and whether it's transparent. The hills have a restyle.

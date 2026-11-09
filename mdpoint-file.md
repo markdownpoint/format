@@ -18,7 +18,7 @@ Objects and steps==.==
 The card fades in on the first click.
 
 <!-- notes -->
-Two texts, two shapes and a line with an arrow, drawn on the Blank layout. One step fades the card in.
+This slide has two texts, two shapes and a line with an arrow, on the Blank layout. One step fades the card in.
 ```
 
 The slide's objects and motion are in the .mdpoint file:
@@ -198,7 +198,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). Its `progress` of 0.5 stands it halfway, at 0640, with the unused leading zero at 0.4 opacity (`leading-zero-opacity`).
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
 ```
 
 ```json
