@@ -3766,13 +3766,13 @@
       }
     },
     "comment-author": {
-      "description": "Who wrote a comment.",
+      "description": "Who wrote a comment. Its `id` takes one prefix per scheme: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id as Dropbox's API spells it, which starts with `dbid:`.",
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
           "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
-          "description": "Who wrote it, if known: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id."
+          "description": "Who wrote it, if known, in one of the record's three schemes."
         },
         "name": {
           "type": "string",
@@ -4718,7 +4718,7 @@
     "model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
+          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
           "type": "object",
           "properties": {
             "extrusion": {
@@ -4745,7 +4745,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales.",
+          "description": "A text's 3D model, in one of two forms: an `extrusion`, from which MarkdownPoint builds the words' letters into a model in its own cache, never in the presentation's folder, or a GLB `file` a program built, with the `built-from` fingerprint of what it was built from. One unit of the model is one em of the text's size, and its origin stands on the first line's baseline at the left of the text's column. It moves, turns and scales with the text's frame, its depth by the square root of the text's two scales. A step's clips play the Actions of a GLB `file`, as they play a model's; an `extrusion` has none.",
           "type": "object",
           "properties": {
             "file": {
@@ -7680,7 +7680,7 @@
           "cues": {
             "type": "array",
             "items": {
-              "description": "An event at a set time in a step. A clip names the model's Action as every reader names the file's animations, in file order: a name the file gives, not empty, is kept and matched exactly, and every such name is reserved first, wherever it stands in the file; an animation with no name, or an empty one, is Animation and its number in the file, from 1, as Animation 1; an animation whose name an earlier one has, or whose generated name is reserved or already given, takes the first of name 2, name 3 and on not yet taken, a space before the number. So Walk, Walk, Walk 2 read as Walk, Walk 3, Walk 2, and an unnamed first animation beside a given Animation 1 reads as Animation 1 2.",
+              "description": "An event at a set time in a step. A clip plays an Action in its object's GLB, a model's or a 3D text's GLB `file`; the letters MarkdownPoint builds from an `extrusion` have none, so a clip on such a text plays nothing, with a warning. A clip names its Action as every reader names the file's animations, in file order: a name the file gives, not empty, is kept and matched exactly, and every such name is reserved first, wherever it stands in the file; an animation with no name, or an empty one, is Animation and its number in the file, from 1, as Animation 1; an animation whose name an earlier one has, or whose generated name is reserved or already given, takes the first of name 2, name 3 and on not yet taken, a space before the number. So Walk, Walk, Walk 2 read as Walk, Walk 3, Walk 2, and an unnamed first animation beside a given Animation 1 reads as Animation 1 2.",
               "anyOf": [
                 {
                   "type": "object",
@@ -7708,7 +7708,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on."
+                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
                     },
                     "paragraph": {
                       "type": "string",
@@ -7751,7 +7751,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on."
+                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
                     }
                   },
                   "required": [
@@ -7788,7 +7788,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on."
+                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
                     }
                   },
                   "required": [
@@ -7825,7 +7825,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on."
+                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
                     }
                   },
                   "required": [
@@ -7862,12 +7862,12 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on."
+                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
                     },
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the model's Action that a clip plays. An unnamed Action is Animation and its number in the file, Animation 1; a name the file repeats or gives another Action takes 2, 3 in file order."
+                      "description": "The name of the Action that a clip plays. An unnamed Action is Animation and its number in the file, Animation 1; a name the file repeats or gives another Action takes 2, 3 in file order."
                     },
                     "loop": {
                       "const": "repeat",
@@ -7884,7 +7884,7 @@
                     "stride": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel, so planted feet don't slide."
+                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel, so planted feet don't slide. A 3D text's clip ignores it."
                     },
                     "blend-in": {
                       "type": "number",
@@ -7894,7 +7894,7 @@
                     "clip-scale": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How much longer a clip's Action plays than its file says, as Maya's Clip Scale: 2 is half speed, 0.5 double. Left out, it's 1. A clip with a stride ignores it."
+                      "description": "How much longer a clip's Action plays than its file says, as Maya's Clip Scale: 2 is half speed, 0.5 double. Left out, it's 1. A model's clip with a stride ignores it."
                     }
                   },
                   "required": [
@@ -7908,7 +7908,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step: a paragraph appearing, an audio object, a video, or a web video starting, or a clip playing a model's Action."
+            "description": "Events at set times in the step: a paragraph appearing, an audio object, a video, or a web video starting, or a clip playing an Action of a model or a 3D text."
           }
         },
         "required": [
@@ -8070,7 +8070,7 @@
       "description": "a text style name"
     },
     "time-trim": {
-      "description": "The part of a video or audio file, or of a model's Action, that plays.",
+      "description": "The part of a video or audio file, or of a clip's Action, that plays.",
       "type": "object",
       "properties": {
         "start": {

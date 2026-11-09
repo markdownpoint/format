@@ -11702,7 +11702,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Who they are: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id; absent when the writer knows none."
+          "description": "Who they are: `local:` and a lowercase UUID for a computer's user, `shared:` and 64 lowercase hexadecimal digits for a collaboration service member, or `dropbox:` and a Dropbox account id as Dropbox's API spells it, which starts with `dbid:`; absent when the writer knows none."
         },
         "name": {
           "type": "string",
@@ -12553,7 +12553,7 @@
         "start"
       ],
       "additionalProperties": false,
-      "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or an audio object's file, or of a clip's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "anchor-point": {
       "type": "object",

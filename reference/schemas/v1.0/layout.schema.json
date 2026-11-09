@@ -6901,7 +6901,7 @@
       "description": "a file path in the theme’s folder, not hidden, not manifest.json, and not in previews or example"
     },
     "time-trim": {
-      "description": "The part of a video or audio file, or of a model's Action, that plays.",
+      "description": "The part of a video or audio file, or of a clip's Action, that plays.",
       "type": "object",
       "properties": {
         "start": {

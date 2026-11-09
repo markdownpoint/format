@@ -11259,7 +11259,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or an audio object's file, or of a clip's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "Prop_video.poster": {
       "type": "string",

@@ -12510,7 +12510,7 @@
         "id": {
           "type": "string",
           "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
-          "description": "\"local:\" and a lowercase UUID, \"shared:\" and 64 lowercase hexadecimal digits, or \"dropbox:\" and a Dropbox account id"
+          "description": "\"local:\" and a lowercase UUID, \"shared:\" and 64 lowercase hexadecimal digits, or \"dropbox:\" and a Dropbox account id that starts with \"dbid:\""
         },
         "name": {
           "type": "string",
@@ -15130,7 +15130,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or an audio object's file, or of a clip's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "PresentationAnimationInitialTargetSource": {
       "allOf": [
@@ -16732,7 +16732,7 @@
         }
       },
       "additionalProperties": false,
-      "description": "The span of a movie's or an audio object's file, or of a model's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
+      "description": "The span of a movie's or an audio object's file, or of a clip's Action, that plays, in seconds. Its end, when given, is after its start. A loop repeats it."
     },
     "Prop_video.poster": {
       "type": "string",
