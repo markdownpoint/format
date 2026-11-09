@@ -99,7 +99,7 @@ the object out, `refuse-slide` refuses the slide and `refuse-presentation`
 refuses the whole presentation. The fields that locate an issue depend on its
 `source`:
 
-- `json`: `path` selects the value in the `.mdpoint` file, one key after
+- `mdpoint`: `path` selects the value in the `.mdpoint` file, one key after
   another. A key of ASCII letters, digits, `_` and `-` that starts with a
   letter or `_` follows a dot. Any other key is in brackets, quoted as a JSON
   string, and a list item is its index in brackets, as in
@@ -111,16 +111,16 @@ refuses the whole presentation. The fields that locate an issue depend on its
   In it, the curve's name is one key. A composition is under `compositions`.
   `slideId` names the slide that contains the value, `compositionId` names the
   composition, and `objectId` names the object.
-- `markdown`: `location` names the file and the line, counted from 1, with the
+- `md`: `location` names the file and the line, counted from 1, with the
   column when it's known. `path` names the frontmatter key or the section the
   issue is about, such as `frontmatter.footer` or `sections.intro`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
-  selects the record in the `.mdpoint` file. It is written as for `json`.
+  selects the record in the `.mdpoint` file. It is written as for `mdpoint`.
   `location` names the line in the `.md` file. Each one is there only when the issue has
   one.
 - `theme`: when only the slides that use a layout or scheme are refused,
   `slideId` names the slide, and `path` names its `layout` or `scheme` in the
-  `.mdpoint` file. It is written as for `json`. `objectId` is added when the issue is about
+  `.mdpoint` file. It is written as for `mdpoint`. `objectId` is added when the issue is about
   one of the layout's objects. An issue about the whole theme, such as a
   missing theme that the presentation names, has none of these fields.
 - `file`: `path` is the file's path in the folder that `fileScope` names.
@@ -138,13 +138,13 @@ The codes an issue can have:
 
 | What | Codes |
 |---|---|
-| A file, a record or a value MarkdownPoint refuses | `invalid-3d-parent`, `invalid-animation`, `invalid-binding`, `invalid-color`, `invalid-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-compositions`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link-target`, `invalid-locale`, `invalid-markdown-format`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-point`, `invalid-poster`, `invalid-presentation-field`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-skipped`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
+| A file, a record or a value MarkdownPoint refuses | `invalid-3d-parent`, `invalid-animation`, `invalid-binding`, `invalid-color`, `invalid-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-compositions`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link-target`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-point`, `invalid-poster`, `invalid-presentation-field`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-skipped`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
 | Something needed that is missing | `missing-alt`, `missing-composition`, `missing-composition-marker`, `missing-control-block`, `missing-font`, `missing-frontmatter`, `missing-generation`, `missing-key`, `missing-marker-line-break`, `missing-media`, `missing-poster`, `missing-slide`, `missing-slide-marker`, `missing-text`, `missing-text-block`, `missing-theme-master` |
 | Something given twice | `duplicate-composition-id`, `duplicate-composition-marker`, `duplicate-control-block`, `duplicate-notes`, `duplicate-object-id`, `duplicate-paragraph-id`, `duplicate-section`, `duplicate-slide-marker`, `duplicate-text-block` |
 | A name that nothing defines | `unknown-action`, `unknown-animation-target`, `unknown-composition`, `unknown-constraint-target`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-link-slide`, `unknown-object`, `unknown-parent-node`, `unknown-role`, `unknown-scheme`, `unknown-text-style` |
 | Something that can't be read, resolved, matched or played | `camera-spring-unsettled`, `loops-misaligned`, `render-failed`, `repeat-shares-click`, `travel-in-loop`, `unattached-markdown`, `unclosed-code-block`, `unclosed-frontmatter`, `undrawn-line`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale` |
 | Two parts that disagree, or something in a place where it isn't allowed | `clashing-curves`, `clashing-keyframes`, `clashing-orient`, `file-spelling-mismatch`, `id-mismatch`, `inherited-id-collision`, `marker-outside-block`, `marker-type-mismatch`, `media-type-mismatch`, `merge-conflict`, `slide-outside-section` |
-| Content written by a theme, a newer version or another program, or left by an interrupted move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-format`, `newer-markdown-format`, `newer-minor-kept`, `newer-theme-master`, `rounded-number`, `text-model-in-theme` |
+| Content written by a theme, a newer version or another program, or left by an interrupted move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-format-version`, `newer-minor-kept`, `newer-theme-master`, `rounded-number`, `text-model-in-theme` |
 | Objects that a slide can't contain together | `3d-object-in-composition`, `aim-cycle`, `composition-cycle`, `group-cycle`, `group-depth`, `group-order`, `object-count-limit`, `parent-cycle`, `tilt-with-3d` |
-| A key or a value that its object can't have there | `auto-layout-held-animation`, `bound-value`, `color-needs-svg`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-key`, `ignored-override`, `ignored-text-block`, `key-not-for-light-type`, `link-letters-away`, `override-type`, `own-camera`, `own-world`, `parent-inverse-without-parent`, `parent-node-without-parent`, `path-delivery`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-json` |
+| A key or a value that its object can't have there | `auto-layout-held-animation`, `bound-value`, `color-needs-svg`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-key`, `ignored-override`, `ignored-text-block`, `key-not-for-light-type`, `link-letters-away`, `override-type`, `own-camera`, `own-world`, `parent-inverse-without-parent`, `parent-node-without-parent`, `path-delivery`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-mdpoint` |
 | What the rendered slide shows | `image-enlarged`, `low-text-contrast`, `object-off-slide`, `object-overlap`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |
