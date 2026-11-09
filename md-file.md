@@ -2,7 +2,7 @@
 
 `slides.md` contains the text, speaker notes, sections, and slide order. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
 
-The objects' positions, styles, and motion are in [the .mdpoint file](mdpoint-file.md). A text block's id matches the id of its object.
+The objects' positions, styles, and animation are in [the .mdpoint file](mdpoint-file.md). A text block's id matches the id of its object.
 
 This is the whole file of a presentation with three slides:
 
@@ -303,7 +303,7 @@ The same rule applies to Chinese and Japanese. Both are written without spaces b
 
 The rule changes how one rare case is read. `*(*foo*)*` is read as italic parentheses around a plain “foo”. In CommonMark, it is one italic inside another. A run of `_` is read as in CommonMark.
 
-The style can change anywhere in a word. `**Mark**down` is read back as a bold “Mark” followed by “down”. When asterisks inside one word can't express the changes, MarkdownPoint puts each run in a group: a span with no attributes. A word that is bold, then bold italic, then italic is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A group adds no formatting of its own.
+The style can change anywhere in a word. `**Mark**down` is read back as a bold “Mark” followed by “down”. When asterisks inside one word can't express the changes, MarkdownPoint puts each run in a span with no attributes. A word that is bold, then bold italic, then italic is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A span with no attributes adds no formatting of its own.
 
 ### Unsupported Markdown
 

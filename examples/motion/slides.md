@@ -33,7 +33,7 @@ elastic
 On a click, each dot crosses on its own curve.
 
 <!-- notes -->
-Seven dots cross the slide on one click. Each keyframe names its curve in `interpolation`. The top dot's keyframe names none. It moves at a constant speed (linear). Its transition's `direction` makes the slide leave with a push upward.
+Seven dots cross the slide on one click. Each keyframe names its interpolation. The top dot's keyframe names none. It moves at a constant speed (linear). With its transition's `direction` set to up, the slide leaves with a push upward.
 
 <!-- slide: settings -->
 
@@ -53,10 +53,10 @@ elastic, amplitude 1.5, period 0.5
 spring, amount 0.4, response 0.6
 
 <!-- text: caption -->
-Settings change how far a curve pulls back, swings past or bounces.
+Settings change how far a named curve pulls back, swings past or bounces.
 
 <!-- notes -->
-A curve with settings is a record with the curve's name in `type`. `back` sets how far an overshoot swings past the end, and `bounciness` sets how high a bounce rebounds. `amplitude` and `period` set an elastic curve's swing, and `amount` and `response` set a spring's.
+A named curve with settings is a record with its name in `type`. `back` sets how far an overshoot swings past the end, and `bounciness` sets how high a bounce rebounds. `amplitude` and `period` set an elastic curve's swing, and `amount` and `response` set a spring's.
 
 <!-- slide: keyframes -->
 
@@ -82,7 +82,7 @@ A curved path
 The card loops, the dots bob, the oval zooms evenly, a dot turns back halfway and the last one arcs over.
 
 <!-- notes -->
-The card slides in past its resting position, settles, and then swings right and back, looping until the three-second step ends. Its curve's `loop` replays the keyframes from its `loop-keyframe`, `card-settles`, to the last one. The slide-in plays once. The two dots bob on waves from `oscillate`. One is a triangle wave that starts a quarter of the way into its cycle, and the other is a noise wave from seed 7. The oval starts at a `scale` of 0.5 by 0.25 and grows fourfold. `exponential-scale` keeps the zoom even. The fourth dot heads for the far side, but its keyframe cuts that move off halfway, and the dot turns back. The keyframe's `interrupted` names the move it cuts off. The last dot arcs over to the right. Its curve animates `frame.xy`, both coordinates as one point. Its keyframe's `path` bends the move along a curve drawn in the move's own frame, from the start at 0 0 to the end at 1 0. Its transition's `color` makes the slide leave through the accent color.
+The card slides in past its resting position, settles, and then swings right and back, looping until the three-second step ends. With its curve's `loop`, the keyframes play again from its `loop-keyframe`, `card-settles`, to the last one. The slide-in plays once. The two dots bob on waves from `oscillate`. One is a triangle wave that starts a quarter of the way into its cycle, and the other is a noise wave from seed 7. The oval starts at a `scale` of 0.5 by 0.25 and grows fourfold. With `exponential-scale`, the zoom looks even. The fourth dot heads for the far side, but its keyframe cuts that move off halfway, and the dot turns back. The keyframe's `interrupted` names the move it cuts off. The last dot arcs over to the right. Its curve animates `frame.xy`, both coordinates as one point. With its keyframe's `path`, the move bends along a path in the move's own coordinates, from the start at 0 0 to the end at 1 0. The slide leaves through its transition's `color`, the accent color.
 
 <!-- slide: words -->
 
@@ -100,7 +100,7 @@ These letters start with their exit already played.
 The second click plays it backward.
 
 <!-- notes -->
-A wipe reveals the bar as its `progress` goes from 0 to 1. The body's letters enter six at a time (`spread`) in a random `order` from `seed` 7. They slide in from the left (`from`), and each space takes a turn too (`spaces`). The body's paragraphs take turns, each in its own shuffled order, with a `pause` between them. The body's `progress` starts at 0, and the first click runs it to 1. The caption's exit starts at a `progress` of 1. The caption is gone. The second click runs the exit back to 0. The caption's letters turn and sharpen into place.
+A wipe reveals the bar as its `progress` goes from 0 to 1. The body's letters enter six at a time (`spread`) in a random `order` from `seed` 7. They slide in from the left (`from`), and each space counts as a piece too (`spaces`). The body's paragraphs take turns, each in its own shuffled order, with a `pause` between them. The body's `progress` starts at 0, and the first click runs it to 1. The caption's exit starts at a `progress` of 1. The caption is gone. The second click runs the exit back to 0. The caption's letters turn and sharpen into place.
 
 <!-- slide: copies -->
 

@@ -24,7 +24,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The layer name an image object gets from the record when it has no name of its own. It is one line that isn't blank and has no control characters. Without it, the name is made from the prompt."
+      "description": "The name an image object gets from the record when it has no name of its own. It is one line that isn't blank and has no control characters. Without it, the name is made from the prompt."
     },
     "target": {
       "description": "What the image was made for.",

@@ -19,7 +19,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The layout's name in the layout chooser, on one line that isn't blank and has no control characters. The default is the layout's key with spaces for its hyphens and a capital first letter."
+      "description": "The layout's name, on one line that isn't blank and has no control characters. The default is the layout's key with spaces for its hyphens and a capital first letter."
     },
     "scheme": {
       "type": "string",
@@ -1780,7 +1780,7 @@
                     "type": "null"
                   },
                   {
-                    "description": "The camera's motion blur. Only the 3D layer is blurred. It is blurred only in exported movies and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
+                    "description": "The camera's motion blur. Only the 3D layer is blurred. It is blurred only in exported movies and the Agent's rendered frames.",
                     "type": "object",
                     "properties": {
                       "shutter": {
@@ -4982,7 +4982,7 @@
     "save-id": {
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
-      "description": "A save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
+      "description": "The id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
     }
   },
   "required": [
@@ -5181,7 +5181,7 @@
             "additionalProperties": false
           },
           {
-            "description": "A constraint that keeps a model's volume as the model scales, in the model's Local space. The volume is measured at the model's scale before animation. Every key except `id` and `type` can be left out.",
+            "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's scale before animation. Every key except `id` and `type` can be left out.",
             "type": "object",
             "properties": {
               "id": {
@@ -5404,7 +5404,7 @@
               "$ref": "#/definitions/interpolation"
             }
           ],
-          "description": "How each piece moves into place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
+          "description": "How each piece moves into place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
           "description": "The fade of each piece, as `{ length }`: the fraction of the piece's entrance the fade lasts. The fade follows the piece's interpolation.",
@@ -5424,7 +5424,7 @@
         },
         "spaces": {
           "type": "boolean",
-          "description": "Whether each space counts as a piece and gets a turn. It applies only with based-on `character`."
+          "description": "Whether each space counts as a piece. It applies only with based-on `character`."
         },
         "order": {
           "enum": [
@@ -5533,7 +5533,7 @@
               "$ref": "#/definitions/interpolation"
             }
           ],
-          "description": "How each piece moves out of place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
+          "description": "How each piece moves out of place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
           "description": "The fade of each piece, as `{ length }`: the fraction of the piece's exit the fade lasts. The fade follows the piece's interpolation.",
@@ -5553,7 +5553,7 @@
         },
         "spaces": {
           "type": "boolean",
-          "description": "Whether each space counts as a piece and gets a turn. It applies only with based-on `character`."
+          "description": "Whether each space counts as a piece. It applies only with based-on `character`."
         },
         "order": {
           "enum": [
@@ -6370,7 +6370,7 @@
       "additionalProperties": false
     },
     "tail": {
-      "description": "A speech bubble's pointer tip.",
+      "description": "The tip of a speech bubble's tail.",
       "type": "object",
       "properties": {
         "x": {

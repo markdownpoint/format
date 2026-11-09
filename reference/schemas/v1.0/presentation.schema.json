@@ -27,7 +27,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "A save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
+      "description": "The id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
     },
     "theme": {
       "type": "string",
@@ -88,7 +88,7 @@
       "additionalProperties": false
     },
     "self-playing": {
-      "description": "Settings for playing the presentation by itself, such as at a kiosk.",
+      "description": "With it, the presentation plays by itself, such as at a kiosk.",
       "type": "object",
       "properties": {
         "slide-delay": {
@@ -118,7 +118,7 @@
       "type": "integer",
       "minimum": 1,
       "maximum": 4294967296,
-      "description": "How long the talk should take, in seconds. The presenter's timer counts down from it."
+      "description": "How long the talk should take, in seconds. Without it, the talk has no set length."
     },
     "default-text-style": {
       "anyOf": [
@@ -1986,7 +1986,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's motion blur. Only the 3D layer is blurred. It is blurred only in exported movies and the Agent's rendered frames. The editor, presentations, and still exports stay sharp.",
+                          "description": "The camera's motion blur. Only the 3D layer is blurred. It is blurred only in exported movies and the Agent's rendered frames.",
                           "type": "object",
                           "properties": {
                             "shutter": {
@@ -3070,7 +3070,7 @@
           "controls": {
             "type": "array",
             "items": {
-              "description": "One control a composition offers its instances, in the order they're shown. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are all of one media kind. Its default and values are of that kind too.",
+              "description": "One control a composition offers its instances. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are all of one media kind. Its default and values are of that kind too.",
               "anyOf": [
                 {
                   "type": "object",
@@ -3326,7 +3326,7 @@
                 }
               ]
             },
-            "description": "The controls each instance can set, in the order the Inspector shows them."
+            "description": "The controls each instance can set, in the order they're shown."
           },
           "objects": {
             "type": "array",
@@ -3773,7 +3773,7 @@
         "id": {
           "type": "string",
           "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
-          "description": "Who wrote it, if known, in one of the record's three schemes."
+          "description": "Who wrote it, if known, in one of the record's three forms."
         },
         "name": {
           "type": "string",
@@ -3881,7 +3881,7 @@
             "additionalProperties": false
           },
           {
-            "description": "A constraint that keeps a model's volume as the model scales, in the model's Local space. The volume is measured at the model's scale before animation. Every key except `id` and `type` can be left out.",
+            "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's scale before animation. Every key except `id` and `type` can be left out.",
             "type": "object",
             "properties": {
               "id": {
@@ -4104,7 +4104,7 @@
               "$ref": "#/definitions/interpolation"
             }
           ],
-          "description": "How each piece moves into place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
+          "description": "How each piece moves into place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
           "description": "The fade of each piece, as `{ length }`: the fraction of the piece's entrance the fade lasts. The fade follows the piece's interpolation.",
@@ -4124,7 +4124,7 @@
         },
         "spaces": {
           "type": "boolean",
-          "description": "Whether each space counts as a piece and gets a turn. It applies only with based-on `character`."
+          "description": "Whether each space counts as a piece. It applies only with based-on `character`."
         },
         "order": {
           "enum": [
@@ -4233,7 +4233,7 @@
               "$ref": "#/definitions/interpolation"
             }
           ],
-          "description": "How each piece moves out of place: gradually on a curve, or at once with hold. A spring's response and an elastic's period don't apply here."
+          "description": "How each piece moves out of place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
         "fade": {
           "description": "The fade of each piece, as `{ length }`: the fraction of the piece's exit the fade lasts. The fade follows the piece's interpolation.",
@@ -4253,7 +4253,7 @@
         },
         "spaces": {
           "type": "boolean",
-          "description": "Whether each space counts as a piece and gets a turn. It applies only with based-on `character`."
+          "description": "Whether each space counts as a piece. It applies only with based-on `character`."
         },
         "order": {
           "enum": [
@@ -4383,7 +4383,7 @@
       "additionalProperties": false
     },
     "generation": {
-      "description": "How a generated or restyled image was made. The image shown is the result in its image generation record.",
+      "description": "How a generated or restyled image was made.",
       "type": "object",
       "properties": {
         "id": {
@@ -4392,7 +4392,7 @@
               "$ref": "#/definitions/uuid"
             }
           ],
-          "description": "The id of the image shown's image generation record. It is the lowercase UUID in the record's file name, `generated/<id>.json`."
+          "description": "The id of the image generation record that made the image. It is the lowercase UUID in the record's file name, `generated/<id>.json`."
         },
         "original": {
           "description": "The image a restyle was applied to. It is present only when the record is for a restyle.",
@@ -7261,7 +7261,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The step's name in the Animate list, on one line that isn't blank and has no control characters."
+            "description": "The step's name, on one line that isn't blank and has no control characters."
           },
           "start": {
             "enum": [
@@ -7295,13 +7295,13 @@
               "description": "a property name"
             },
             "additionalProperties": {
-              "description": "One property's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation.xy` have {x, y}, and `position.xyz` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
+              "description": "One parameter's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation.xy` have {x, y}, and `position.xyz` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
               "type": "object",
               "properties": {
                 "keyframes": {
                   "type": "array",
                   "items": {
-                    "description": "One keyframe: a value a property reaches at a time. Two keyframes of one property at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears its whole property. The property's text style or default then shows. It can't clear a part of a property, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a property, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
                     "type": "object",
                     "properties": {
                       "id": {
@@ -7322,7 +7322,7 @@
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "When the property reaches the value, in seconds into the step."
+                        "description": "When the parameter reaches the value, in seconds into the step."
                       },
                       "value": {
                         "allOf": [
@@ -7330,7 +7330,7 @@
                             "$ref": "#/definitions/parameter-value"
                           }
                         ],
-                        "description": "The value, written as the property is. It can be `null` to clear the whole property."
+                        "description": "The value, written as the parameter is. It can be `null` to clear the whole parameter."
                       },
                       "interpolation": {
                         "anyOf": [
@@ -7450,10 +7450,10 @@
                             ]
                           }
                         ],
-                        "description": "How the value reaches the keyframe: gradually on a curve, or at once with hold. It is a named curve, a named curve with its settings, a cubic Bézier, or a spring. The default is linear."
+                        "description": "How the value reaches the keyframe: gradually, or at once with hold. It is a named curve, a named curve with its settings, a cubic Bézier, or a spring. The default is linear."
                       },
                       "interrupted": {
-                        "description": "The longer move this keyframe interrupts. Up to this keyframe, the motion follows that move's curve.",
+                        "description": "The longer move this keyframe interrupts. Up to this keyframe, the motion follows that move's interpolation.",
                         "type": "object",
                         "properties": {
                           "value": {
@@ -7505,7 +7505,7 @@
                         "properties": {
                           "amplitude": {
                             "type": "number",
-                            "description": "How far the value swings either way, in the property's own unit."
+                            "description": "How far the value swings either way, in the parameter's own unit."
                           },
                           "frequency": {
                             "type": "number",
@@ -7877,7 +7877,7 @@
       "additionalProperties": false
     },
     "tail": {
-      "description": "A speech bubble's pointer tip.",
+      "description": "The tip of a speech bubble's tail.",
       "type": "object",
       "properties": {
         "x": {

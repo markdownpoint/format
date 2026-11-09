@@ -1,6 +1,6 @@
 # The .mdpoint file
 
-`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, properties, and motion. The presentation's text and slide order are in [slides.md](md-file.md).
+`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, properties, and animation. The presentation's text and slide order are in [slides.md](md-file.md).
 
 The presentation's name is its folder's name. Rename the folder to rename the presentation.
 
@@ -21,7 +21,7 @@ The card fades in on the first click.
 This slide has two texts, two shapes and a line with an arrow, on the Blank layout. One step fades the card in.
 ```
 
-The slide's objects and motion are in the .mdpoint file:
+The slide's objects and animation are in the .mdpoint file:
 
 ```json
 {
@@ -284,7 +284,7 @@ A group with `auto-layout` places its members one after another, down or across,
 
 ![The row slide drawn by MarkdownPoint](images/groups-row.png)
 
-## Pictures
+## Images
 
 An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast`, `saturation`, and `temperature` range from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture is shown as shot. This one has more contrast and color:
 
@@ -324,7 +324,7 @@ A picture with transparency casts its `drop-shadow` in its own shape:
 
 <img src="images/pictures-faded.png" alt="The faded slide drawn by MarkdownPoint" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide drawn by MarkdownPoint" width="49%">
 
-A generated picture starts as a request. The image object or the slide's `background` contains its `prompt`, its `image-style`, and whether it asks for a `transparent-background`. `restyle` contains the style applied to a picture: its name, its prompt, and whether it keeps a transparent background. These are copied from the style library when the author chooses a style there. MarkdownPoint saves each picture in `generated/` when the author generates it. The boat has been generated. Its `file` is its picture, and `generation` names its image generation record:
+A generated image starts as a request. The image object or the slide's `background` contains its `prompt`, its `image-style`, and whether it asks for a `transparent-background`. `restyle` contains the style applied to a picture: its name, its prompt, and whether its images have transparent backgrounds. These are copied from the style library when the author chooses a style there. MarkdownPoint saves each picture in `generated/` when the author generates it. The boat has been generated. Its `file` is its picture, and `generation` names its image generation record:
 
 ```json
 {
@@ -344,7 +344,7 @@ A generated picture starts as a request. The image object or the slide's `backgr
 }
 ```
 
-The image generation record, `generated/<id>.json`, contains the request and the picture it produced:
+The image generation record, `generated/<id>.json`, contains the request and the image it produced:
 
 ```json
 {
@@ -429,7 +429,7 @@ A video's or an audio object's `fade-in` and `fade-out` are in seconds:
 }
 ```
 
-![The play slide drawn by MarkdownPoint](images/sound-and-video-play.png)
+![The play slide drawn by MarkdownPoint](images/audio-and-video-play.png)
 
 With `soundtrack`, one audio file plays through the whole presentation, with its own fades:
 
@@ -511,7 +511,7 @@ The [motion example](examples/motion) includes a repeater, named curves and spri
 
 <img src="images/motion-copies.png" alt="The copies slide drawn by MarkdownPoint" width="49%"> <img src="images/motion-arrival.png" alt="The arrival slide drawn by MarkdownPoint" width="49%">
 
-Set a keyframe's `interpolation` to a curve name. To give the curve settings, use a record with the curve's name in `type`:
+Set a keyframe's `interpolation` to a named curve. To give it settings, use a record with its name in `type`:
 
 ```json
 [
