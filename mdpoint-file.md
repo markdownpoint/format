@@ -123,7 +123,7 @@ Settings for the whole presentation stand beside `slides`:
 }
 ```
 
-`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box takes `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own is made in `image-style`, and a background in `background-image-style`.
+`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box takes `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own is made in `image-style`, and a background in `background-image-style`. Left out, either is none.
 
 ## Objects
 

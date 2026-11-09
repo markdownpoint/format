@@ -162,7 +162,7 @@
           "$ref": "#/definitions/image-style-or-none"
         }
       ],
-      "description": "The style a generated background image is made in when its background sets none of its own, as text, or `none` for no style. Left out, it's MarkdownPoint's own."
+      "description": "The style a generated background image is made in when its background sets none of its own, as text, or `none` for no style. Left out, it's none."
     },
     "swatches": {
       "type": "array",

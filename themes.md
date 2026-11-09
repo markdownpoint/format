@@ -32,7 +32,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 A scheme's `colors` set a color for each role. A role names how the color is used: `background`, `text` or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
 
-Every theme has a `light` and a `dark` scheme. Another scheme, such as Basic's butter, states its `appearance`, light or dark, beside its colors:
+Every theme has a `light` and a `dark` scheme and can add more, such as Basic's butter. Each scheme states its `appearance`, light or dark, beside its colors, and the `light` and `dark` schemes state the one they're named for:
 
 ```json
 {
