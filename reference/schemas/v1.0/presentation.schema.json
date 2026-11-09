@@ -7,7 +7,7 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format version, its major and minor in quotes: \"1.0\"."
+      "description": "The format version, as a major and a minor number in quotes: \"1.0\"."
     },
     "type": {
       "const": "presentation",
@@ -19,7 +19,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The presentation's id, which the .md file repeats."
+      "description": "The presentation's id. The .md file has the same id."
     },
     "save-id": {
       "allOf": [
@@ -27,12 +27,12 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "A save stamp: the id of a save, which MarkdownPoint writes while the presentation is shared for editing. Other tools keep it as it is."
+      "description": "A save stamp, the id of a save. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
     },
     "theme": {
       "type": "string",
       "pattern": "^(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "The key of the presentation's theme, the name of its folder in themes. Its master sets the slide size and `unit-scale`."
+      "description": "The key of the presentation's theme. It's the name of the theme's folder in themes. The theme's master sets the slide size and `unit-scale`."
     },
     "background": {
       "allOf": [
@@ -48,7 +48,7 @@
           "$ref": "#/definitions/transition"
         }
       ],
-      "description": "The transition from every slide to the next, unless the slide sets its own. Left out, slides cross-dissolve over 0.5 seconds."
+      "description": "The transition from every slide to the next, unless the slide sets its own. Without it, slides cross-dissolve over 0.5 seconds."
     },
     "soundtrack": {
       "description": "Music that plays under the whole presentation.",
@@ -61,7 +61,7 @@
         },
         "loop": {
           "const": "repeat",
-          "description": "`repeat` plays it again from the start when it ends. Left out, it plays once."
+          "description": "`repeat` plays it again from the start when it ends. Without a loop, it plays once."
         },
         "volume": {
           "type": "number",
@@ -73,13 +73,13 @@
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "How long it takes to rise from silence, linearly, each time it starts."
+          "description": "How long it takes to rise linearly from silence each time it starts."
         },
         "fade-out": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "How long it takes to fall to silence, linearly, before the file ends each time. Where the two fades overlap, the lower volume holds."
+          "description": "How long it takes to fall linearly to silence before the file ends each time. Where the two fades overlap, the lower volume is used."
         }
       },
       "required": [
@@ -88,14 +88,14 @@
       "additionalProperties": false
     },
     "self-playing": {
-      "description": "Settings for playing the presentation on its own, as at a kiosk.",
+      "description": "Settings for playing the presentation by itself, such as at a kiosk.",
       "type": "object",
       "properties": {
         "slide-delay": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "How long each slide stays after its last step before the next one."
+          "description": "How long each slide stays after its last step before the next slide."
         },
         "step-delay": {
           "type": "number",
@@ -105,7 +105,7 @@
         },
         "loop": {
           "const": "repeat",
-          "description": "`repeat` starts it over after the last slide. Left out, it stops there."
+          "description": "`repeat` starts it over after the last slide. Without a loop, it stops there."
         }
       },
       "required": [
@@ -126,7 +126,7 @@
           "const": "none"
         },
         {
-          "description": "What a new text box starts with. Without this key, or with an empty record, a new text box takes the body style. `\"none\"` gives it none.",
+          "description": "What a new text box starts with. Without this key, or with an empty record, a new text box uses the body style. `\"none\"` gives it no style.",
           "type": "object",
           "properties": {
             "text-style": {
@@ -154,7 +154,7 @@
           "$ref": "#/definitions/image-style-or-none"
         }
       ],
-      "description": "The style a generated image object is made in when it sets none of its own, as text, or `none` for no style. Left out, it's none. A background's picture takes `background-image-style` instead."
+      "description": "The style generated image objects use when they don't set one. It's written as text, and `none`, the default, means no style. A background's picture uses `background-image-style` instead."
     },
     "background-image-style": {
       "allOf": [
@@ -162,7 +162,7 @@
           "$ref": "#/definitions/image-style-or-none"
         }
       ],
-      "description": "The style a generated background image is made in when its background sets none of its own, as text, or `none` for no style. Left out, it's none."
+      "description": "The style generated background images use when their background doesn't set one. It's written as text, and `none`, the default, means no style."
     },
     "swatches": {
       "type": "array",
@@ -181,7 +181,7 @@
     "locale": {
       "type": "string",
       "pattern": "^(?![\\s\\S]*-[Pp][Oo][Ss][Ii][Xx](?![^-]))(?:[A-Za-z]{2,3}|[A-Za-z]{5,8})(?:-[A-Za-z]{4})?(?:-(?:[A-Za-z]{2}|[0-9]{3}))?(?:-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(?![\\s\\S])",
-      "description": "The presentation's language and region, as a BCP 47 language tag such as fr-CA: it writes the date field, reads the chart cells, and splits words to animate. Left out, it's en-US."
+      "description": "The presentation's language and region, as a BCP 47 tag such as fr-CA. It sets how the date field is written, chart cells are read, and words are split to animate. The default is en-US."
     },
     "slides": {
       "type": "object",
@@ -204,7 +204,7 @@
                 "$ref": "#/definitions/scheme-name"
               }
             ],
-            "description": "The slide's color scheme. Left out, or one the theme lacks, it's its layout's."
+            "description": "The slide's color scheme. If it's left out or the theme doesn't have it, the slide uses its layout's scheme."
           },
           "background": {
             "allOf": [
@@ -212,7 +212,7 @@
                 "$ref": "#/definitions/background"
               }
             ],
-            "description": "The slide's own background, shown in place of the presentation's whole: a key it leaves out takes its default, and an empty one is plain."
+            "description": "The slide's own background. It replaces the presentation's whole background. A key it leaves out has its default, and an empty background is plain."
           },
           "skipped": {
             "type": "boolean",
@@ -2393,7 +2393,7 @@
                 }
               ]
             },
-            "description": "Changes, by id, to what the slide inherits from its layout and master, kept even when equal to it. `null` removes one, except the camera and the World."
+            "description": "Changes, by id, to what the slide inherits from its layout and master. They're kept even when they match what's inherited. `null` removes an object, except the camera and the World."
           },
           "objects": {
             "type": "array",
@@ -2992,7 +2992,7 @@
                 }
               ]
             },
-            "description": "The slide's objects, back to front. Its own are written out, and one from its layout or master appears as its id. One it inherits and doesn't name stands behind them all."
+            "description": "The slide's objects, back to front. Its own objects are written out, and one from its layout or master is listed by its id. An inherited object the list doesn't name is behind all of them."
           },
           "initial": {
             "allOf": [
@@ -3065,12 +3065,12 @@
                 "$ref": "#/definitions/scheme-name"
               }
             ],
-            "description": "The color scheme it is drawn in on its own canvas, where it is edited. Left out, it uses the light scheme. Each instance takes the scheme of the slide it stands on."
+            "description": "The color scheme it's drawn in on its own canvas, where it's edited. The default is the light scheme. Each instance uses the scheme of the slide it's on."
           },
           "controls": {
             "type": "array",
             "items": {
-              "description": "One control a composition offers its instances, in the order they're shown. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are of one media kind, and its default and values are of that kind.",
+              "description": "One control a composition offers its instances, in the order they're shown. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are all of one media kind. Its default and values are of that kind too.",
               "anyOf": [
                 {
                   "type": "object",
@@ -3081,7 +3081,7 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
+                      "description": "The id a binding, an instance's value, and a marker use for the control. It's unique among the composition's controls."
                     },
                     "name": {
                       "allOf": [
@@ -3089,7 +3089,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "text"
@@ -3111,7 +3111,7 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
+                      "description": "The id a binding, an instance's value, and a marker use for the control. It's unique among the composition's controls."
                     },
                     "name": {
                       "allOf": [
@@ -3119,14 +3119,14 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "number"
                     },
                     "default": {
                       "type": "number",
-                      "description": "The value used when an instance sets none. A number control's default lies from its min to its max. A text control's default text is in the .md file."
+                      "description": "The value used when an instance doesn't set one. A number control's default is from its min to its max. A text control's default text is in the .md file."
                     },
                     "min": {
                       "type": "number",
@@ -3162,7 +3162,7 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
+                      "description": "The id a binding, an instance's value, and a marker use for the control. It's unique among the composition's controls."
                     },
                     "name": {
                       "allOf": [
@@ -3170,7 +3170,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "color"
@@ -3181,7 +3181,7 @@
                           "$ref": "#/definitions/color"
                         }
                       ],
-                      "description": "The value used when an instance sets none. A number control's default lies from its min to its max. A text control's default text is in the .md file."
+                      "description": "The value used when an instance doesn't set one. A number control's default is from its min to its max. A text control's default text is in the .md file."
                     }
                   },
                   "required": [
@@ -3201,7 +3201,7 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
+                      "description": "The id a binding, an instance's value, and a marker use for the control. It's unique among the composition's controls."
                     },
                     "name": {
                       "allOf": [
@@ -3209,14 +3209,14 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "boolean"
                     },
                     "default": {
                       "type": "boolean",
-                      "description": "The value used when an instance sets none. A number control's default lies from its min to its max. A text control's default text is in the .md file."
+                      "description": "The value used when an instance doesn't set one. A number control's default is from its min to its max. A text control's default text is in the .md file."
                     }
                   },
                   "required": [
@@ -3236,7 +3236,7 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
+                      "description": "The id a binding, an instance's value, and a marker use for the control. It's unique among the composition's controls."
                     },
                     "name": {
                       "allOf": [
@@ -3244,14 +3244,14 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "choice"
                     },
                     "default": {
                       "type": "string",
-                      "description": "The value used when an instance sets none. A number control's default lies from its min to its max. A text control's default text is in the .md file."
+                      "description": "The value used when an instance doesn't set one. A number control's default is from its min to its max. A text control's default text is in the .md file."
                     },
                     "options": {
                       "type": "array",
@@ -3262,7 +3262,7 @@
                           "id": {
                             "type": "string",
                             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                            "description": "What the choice's default, an instance's value and a property the choice sets read, unique among its options."
+                            "description": "The id the control's default, an instance's value, and a property the choice sets use for the option. It's unique among the control's options."
                           },
                           "name": {
                             "type": "string",
@@ -3298,7 +3298,7 @@
                           "$ref": "#/definitions/stable-id"
                         }
                       ],
-                      "description": "What a binding, an instance's value and a marker name the control by, unique among the composition's controls."
+                      "description": "The id a binding, an instance's value, and a marker use for the control. It's unique among the composition's controls."
                     },
                     "name": {
                       "allOf": [
@@ -3306,14 +3306,14 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls may share one."
+                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "media"
                     },
                     "default": {
                       "type": "string",
-                      "description": "The value used when an instance sets none. A number control's default lies from its min to its max. A text control's default text is in the .md file."
+                      "description": "The value used when an instance doesn't set one. A number control's default is from its min to its max. A text control's default text is in the .md file."
                     }
                   },
                   "required": [
@@ -3373,7 +3373,7 @@
                 }
               ]
             },
-            "description": "Its objects, back to front. A composition can't hold a model, a light, a shadow catcher, a floor, a camera, the World, or a text with a `model`."
+            "description": "Its objects, back to front. A composition can't contain a model, a light, a shadow catcher, a floor, a camera, the World, or a text with a `model`."
           },
           "initial": {
             "allOf": [
@@ -3389,7 +3389,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "Its steps, played back to back. They take no cues and no `loop-from`. Every pass counted, they last at most 4,294,967,296 seconds."
+            "description": "Its steps, played back to back. They have no cues and no `loop-from`. With every pass counted, they last at most 4,294,967,296 seconds."
           }
         },
         "required": [
@@ -3539,7 +3539,7 @@
           }
         ]
       },
-      "description": "Comment threads, by id, each pinned to a slide or a composition."
+      "description": "Comment threads, by id. Each one is pinned to a slide or a composition."
     }
   },
   "required": [
@@ -3663,7 +3663,7 @@
         "image": {
           "type": "string",
           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "An image over the fill, as a presentation's file path. It covers the slide, cropped as an image's `scale-mode` `fill` is."
+          "description": "An image over the fill, as a presentation's file path. It covers the slide and is cropped as with an image's `scale-mode` `fill`."
         },
         "crop": {
           "allOf": [
@@ -3671,7 +3671,7 @@
               "$ref": "#/definitions/crop"
             }
           ],
-          "description": "How far the image is zoomed, and the point it keeps in view."
+          "description": "How far the image is zoomed, and which point stays in view."
         },
         "opacity": {
           "type": "number",
@@ -3693,7 +3693,7 @@
               "$ref": "#/definitions/image-style-or-none"
             }
           ],
-          "description": "The style of a generated background image, as text, or `none` for no style. Left out, it's the presentation's `background-image-style`."
+          "description": "The style of a generated background image, as text, or `none` for no style. The default is the presentation's `background-image-style`."
         },
         "transparent-background": {
           "type": "boolean",
@@ -3705,7 +3705,7 @@
               "$ref": "#/definitions/restyle"
             }
           ],
-          "description": "A style applied over the image, which MarkdownPoint draws from the image as first made."
+          "description": "A style applied over the image. MarkdownPoint draws it from the image as it was first made."
         },
         "generation": {
           "allOf": [
@@ -3713,7 +3713,7 @@
               "$ref": "#/definitions/generation"
             }
           ],
-          "description": "Which image generation record made the background image, and for a restyle the image it was applied to."
+          "description": "Which image generation record made the background image. For a restyle, it also names the image the restyle was applied to."
         },
         "drop-shadow": {
           "allOf": [
@@ -8095,7 +8095,7 @@
       "additionalProperties": false
     },
     "transition": {
-      "description": "A slide transition. Keys left out default to interpolation ease-in-out, match object, direction left, color black, and delay 0.",
+      "description": "A slide transition. The defaults are interpolation ease-in-out, match object, direction left, color black, and delay 0.",
       "anyOf": [
         {
           "type": "object",
@@ -8105,13 +8105,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8134,17 +8134,17 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8168,7 +8168,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "interpolation": {
               "enum": [
@@ -8177,7 +8177,7 @@
                 "ease-out",
                 "ease-in-out"
               ],
-              "description": "How the transition speeds up and slows down. Only `carry-over` and `scroll` take it."
+              "description": "How the transition speeds up and slows down. Only `carry-over` and `scroll` have it."
             },
             "match": {
               "enum": [
@@ -8189,13 +8189,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8219,7 +8219,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "direction": {
               "enum": [
@@ -8232,13 +8232,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8262,7 +8262,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "interpolation": {
               "enum": [
@@ -8271,7 +8271,7 @@
                 "ease-out",
                 "ease-in-out"
               ],
-              "description": "How the transition speeds up and slows down. Only `carry-over` and `scroll` take it."
+              "description": "How the transition speeds up and slows down. Only `carry-over` and `scroll` have it."
             },
             "direction": {
               "enum": [
@@ -8284,13 +8284,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8314,7 +8314,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "direction": {
               "enum": [
@@ -8327,13 +8327,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8357,7 +8357,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "direction": {
               "enum": [
@@ -8370,13 +8370,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8400,7 +8400,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "direction": {
               "enum": [
@@ -8413,13 +8413,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8443,17 +8443,17 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
@@ -8477,7 +8477,7 @@
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. With effect `none`, it's left out."
+              "description": "How long it takes. It's left out when the effect is `none`."
             },
             "color": {
               "allOf": [
@@ -8489,13 +8489,13 @@
             },
             "start": {
               "const": "automatically",
-              "description": "When it starts. Left out, it starts on a click. `automatically` starts it after the slide's last step."
+              "description": "When it starts. The default is a click. `automatically` starts it after the slide's last step."
             },
             "delay": {
               "type": "number",
               "minimum": 0,
               "maximum": 4294967296,
-              "description": "For a transition that starts by itself, how long it waits after the slide's last step ends."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
           "required": [
