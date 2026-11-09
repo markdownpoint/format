@@ -5277,7 +5277,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 780.352997,
-              "description": "How far it reaches, in canvas units, at most the widest the exported PDF draws as the canvas does: 102.878569 up to a shorter side of 1080, in proportion beyond, as 205.757138 at 3840 × 2160."
+              "description": "How far it reaches, in canvas units. It is at most 102.878569 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide, to 205.757138 at 3840 × 2160."
             },
             "spread": {
               "type": "number",
