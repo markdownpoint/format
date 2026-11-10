@@ -3391,7 +3391,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "Its steps, played back to back. They have no cues and no `loop-from`. With every pass counted, they last at most 4,294,967,296 seconds."
+            "description": "Its steps, played back to back. They have no cues and no `loop-start`. With every pass counted, they last at most 4,294,967,296 seconds."
           }
         },
         "required": [
@@ -7284,7 +7284,7 @@
             "maximum": 64,
             "description": "How many times the step plays before it completes. Without it, the step plays once."
           },
-          "loop-from": {
+          "loop-start": {
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,

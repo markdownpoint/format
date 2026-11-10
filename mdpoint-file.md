@@ -507,7 +507,7 @@ A rotation in degrees applies the heading around y, then the pitch around the ob
 
 `curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `start`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its keyframes, its cues, and the paragraphs they bring in.
 
-Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop-from`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) doesn't repeat and requires a `duration`.
+Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop-start`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) doesn't repeat and requires a `duration`.
 
 ## Motion
 
