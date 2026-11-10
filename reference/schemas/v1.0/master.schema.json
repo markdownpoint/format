@@ -19,7 +19,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The theme's identity, a lowercase UUID. It stays the same when the theme is renamed, added under another key, or shared. It tells apart two themes with the same key."
+      "description": "The theme's identity, a lowercase UUID. It stays the same when the theme is renamed, added under another key, or carried in a theme package. It tells apart two themes with the same key."
     },
     "name": {
       "allOf": [
