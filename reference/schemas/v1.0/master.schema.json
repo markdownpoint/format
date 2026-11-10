@@ -824,7 +824,7 @@
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "enter": {
@@ -1089,7 +1089,7 @@
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "fill": {
@@ -1396,7 +1396,7 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "stroke": {
@@ -1627,7 +1627,7 @@
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "stroke": {
@@ -1947,7 +1947,7 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "enter": {
@@ -2087,7 +2087,7 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "trim": {
@@ -2226,7 +2226,7 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "stroke-weight": {
@@ -2327,7 +2327,7 @@
               "ignore-auto-layout": {
                 "type": "boolean"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               },
               "trim": {
@@ -2543,7 +2543,7 @@
                 "minimum": 0,
                 "maximum": 1
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               }
             },
@@ -2715,7 +2715,7 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bind": {
+              "bindings": {
                 "$ref": "#/definitions/composition-bindings"
               }
             },

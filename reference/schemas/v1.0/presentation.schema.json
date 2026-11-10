@@ -988,7 +988,7 @@
                         }
                       ]
                     },
-                    "bind": {
+                    "bindings": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -4953,7 +4953,7 @@
           "minimum": 0,
           "maximum": 1
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         }
       },
@@ -5050,7 +5050,7 @@
         "repeater": {
           "$ref": "#/definitions/repeater"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         }
       },
@@ -5165,7 +5165,7 @@
         "repeater": {
           "$ref": "#/definitions/repeater"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "stroke-weight": {
@@ -5353,7 +5353,7 @@
         "repeater": {
           "$ref": "#/definitions/repeater"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "stroke": {
@@ -5453,7 +5453,7 @@
           "maximum": 4294967296,
           "description": "seconds"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         }
       },
@@ -5549,7 +5549,7 @@
         "ignore-auto-layout": {
           "type": "boolean"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "trim": {
@@ -5709,7 +5709,7 @@
         "repeater": {
           "$ref": "#/definitions/repeater"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "trim": {
@@ -6016,7 +6016,7 @@
         "repeater": {
           "$ref": "#/definitions/repeater"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "enter": {
@@ -6179,7 +6179,7 @@
         "anchor-point": {
           "$ref": "#/definitions/anchor-point"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "fill": {
@@ -6498,7 +6498,7 @@
         "model": {
           "$ref": "#/definitions/text-model"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "enter": {
@@ -6776,7 +6776,7 @@
         "anchor-point": {
           "$ref": "#/definitions/anchor-point"
         },
-        "bind": {
+        "bindings": {
           "$ref": "#/definitions/composition-bindings"
         },
         "stroke": {
