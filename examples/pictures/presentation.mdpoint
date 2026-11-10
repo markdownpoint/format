@@ -128,7 +128,7 @@
     "cutout": {
       "layout": "blank",
       "scheme": "sky",
-      "background": {"image":"media/sun.png","drop-shadow":{"size":48,"offset":{"x":0,"y":16},"color":"#000000","opacity":0.3}},
+      "background": {"image":{"file":"media/sun.png","drop-shadow":{"size":48,"offset":{"x":0,"y":16},"color":"#000000","opacity":0.3}}},
       "objects": [
         {
           "id": "heading",
@@ -146,7 +146,7 @@
     "faded": {
       "layout": "blank",
       "scheme": "light",
-      "background": {"image":"media/hills.png","crop":{"scale":1.6,"focal-point":{"x":0.7,"y":0.42}},"opacity":0.3,"grayscale":1},
+      "background": {"image":{"file":"media/hills.png","crop":{"scale":1.6,"focal-point":{"x":0.7,"y":0.42}},"opacity":0.3,"grayscale":1}},
       "objects": [
         {
           "id": "heading",
@@ -164,7 +164,7 @@
     "generate": {
       "layout": "blank",
       "scheme": "butter",
-      "background": {"prompt":"Paper leaves cut out along the slide's lower edge","image-style":"Paper cutout","transparent-background":true},
+      "background": {"image":{"prompt":"Paper leaves cut out along the slide's lower edge","image-style":"Paper cutout","transparent-background":true}},
       "objects": [
         {
           "id": "heading",

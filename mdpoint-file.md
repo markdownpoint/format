@@ -302,29 +302,33 @@ An image object shows a picture from the presentation's `media` folder. `exposur
 
 ![The adjust slide drawn by MarkdownPoint](images/pictures-adjust.png)
 
-A slide's `background` can be a picture too. The picture covers the slide. `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
+A slide's `background` can have an `image` too. The image covers the slide. Its `file` is the picture, `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
 
 ```json
 {
-  "image": "media/hills.png",
-  "crop": {"scale": 1.6, "focal-point": {"x": 0.7, "y": 0.42}},
-  "opacity": 0.3,
-  "grayscale": 1
+  "image": {
+    "file": "media/hills.png",
+    "crop": {"scale": 1.6, "focal-point": {"x": 0.7, "y": 0.42}},
+    "opacity": 0.3,
+    "grayscale": 1
+  }
 }
 ```
 
-A picture with transparency casts its `drop-shadow` in its own shape:
+An image with transparency casts its `drop-shadow` in its own shape:
 
 ```json
 {
-  "image": "media/sun.png",
-  "drop-shadow": {"size": 48, "offset": {"x": 0, "y": 16}, "color": "#000000", "opacity": 0.3}
+  "image": {
+    "file": "media/sun.png",
+    "drop-shadow": {"size": 48, "offset": {"x": 0, "y": 16}, "color": "#000000", "opacity": 0.3}
+  }
 }
 ```
 
 <img src="images/pictures-faded.png" alt="The faded slide drawn by MarkdownPoint" width="49%"> <img src="images/pictures-cutout.png" alt="The cutout slide drawn by MarkdownPoint" width="49%">
 
-A generated image starts as a request. The image object or the slide's `background` contains its `prompt`, its `image-style`, and whether it asks for a `transparent-background`. `restyle` contains the style applied to a picture: its name, its prompt, and whether its images have transparent backgrounds. These are copied from the style library when the author chooses a style there. MarkdownPoint saves each picture in `generated/` when the author generates it. The boat has been generated. Its `file` is its picture, and `generation` names its image generation record:
+A generated image starts as a request. The image object or the background's `image` contains its `prompt`, its `image-style`, and whether it asks for a `transparent-background`. `restyle` contains the style applied to a picture: its name, its prompt, and whether its images have transparent backgrounds. These are copied from the style library when the author chooses a style there. MarkdownPoint saves each picture in `generated/` when the author generates it. The boat has been generated. Its `file` is its picture, and `generation` names its image generation record:
 
 ```json
 {
@@ -376,7 +380,7 @@ The image generation record, `generated/<id>.json`, contains the request and the
 }
 ```
 
-The hills have a restyle, and the background is still a request:
+The hills have a restyle, and the background's image is still a request:
 
 ```json
 {
@@ -391,9 +395,11 @@ The hills have a restyle, and the background is still a request:
 
 ```json
 {
-  "prompt": "Paper leaves cut out along the slide's lower edge",
-  "image-style": "Paper cutout",
-  "transparent-background": true
+  "image": {
+    "prompt": "Paper leaves cut out along the slide's lower edge",
+    "image-style": "Paper cutout",
+    "transparent-background": true
+  }
 }
 ```
 
