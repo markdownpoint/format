@@ -35,7 +35,7 @@ Lists==.==
 Fields==.==
 
 <!-- text: body -->
-This is slide {{slide-number}} of {{slide-count}}, in section {{section-number}}, {{section-name}}.
+This is slide {{slide-number}} of {{slide-count}}. It is in section {{section-number}}: {{section-name}}.
 
 <!-- slide: quote -->
 
