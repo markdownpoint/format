@@ -360,32 +360,6 @@
                               "$ref": "#/definitions/space-quaternion"
                             }
                           ]
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "w": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592
-                            },
-                            "x": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592
-                            },
-                            "y": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592
-                            },
-                            "z": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592
-                            }
-                          },
-                          "additionalProperties": false
                         }
                       ]
                     },
