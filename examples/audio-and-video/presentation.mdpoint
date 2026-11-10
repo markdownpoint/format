@@ -32,6 +32,8 @@
             "height": 540
           },
           "alt": "A slow zoom on green hills under a low sun",
+          "audio-fade-in": 0.5,
+          "audio-fade-out": 0.5,
           "media-trim": {"start":1,"end":5}
         },
 

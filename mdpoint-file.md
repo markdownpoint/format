@@ -401,7 +401,7 @@ The hills have a restyle, and the background is still a request:
 
 ## Audio and video
 
-A video or audio object plays on a click. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of the file plays, from `start` to `end`, in seconds:
+A video or audio object plays on a click. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of the file plays, from `start` to `end`, in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
 
 ```json
 {
@@ -410,11 +410,13 @@ A video or audio object plays on a click. With `start-on-click` set to false, it
   "file": "media/hills.mp4",
   "frame": {"x": 120, "y": 330, "width": 960, "height": 540},
   "alt": "A slow zoom on green hills under a low sun",
+  "audio-fade-in": 0.5,
+  "audio-fade-out": 0.5,
   "media-trim": {"start": 1, "end": 5}
 }
 ```
 
-A video's or an audio object's `fade-in` and `fade-out` are in seconds:
+An audio object's `fade-in` and `fade-out` are in seconds:
 
 ```json
 {

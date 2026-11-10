@@ -1211,7 +1211,7 @@
                   }
                 ]
               },
-              "fade-in": {
+              "audio-fade-in": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -1224,7 +1224,7 @@
                   }
                 ]
               },
-              "fade-out": {
+              "audio-fade-out": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -1669,6 +1669,32 @@
                   },
                   {
                     "$ref": "#/definitions/slide-point"
+                  }
+                ]
+              },
+              "fade-in": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967296,
+                    "description": "seconds"
+                  }
+                ]
+              },
+              "fade-out": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4294967296,
+                    "description": "seconds"
                   }
                 ]
               },
@@ -3102,13 +3128,13 @@
                     "minimum": 0,
                     "maximum": 1
                   },
-                  "fade-in": {
+                  "audio-fade-in": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 4294967296,
                     "description": "seconds"
                   },
-                  "fade-out": {
+                  "audio-fade-out": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 4294967296,
