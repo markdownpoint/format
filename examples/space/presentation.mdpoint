@@ -86,7 +86,7 @@
       "steps": [
         {
           "id": "arrive",
-          "start": "after",
+          "start": "after-previous",
           "min-duration": 0.5,
           "curves": {
             "mug.position.x": {

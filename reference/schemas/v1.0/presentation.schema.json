@@ -7265,8 +7265,8 @@
           },
           "start": {
             "enum": [
-              "with",
-              "after"
+              "with-previous",
+              "after-previous"
             ],
             "description": "When the step starts: with the previous step, or after it ends. With either, a first step starts when the slide's transition ends, except under a scroll. Without it, the step waits for a click."
           },
