@@ -7567,13 +7567,16 @@
                       "$ref": "#/definitions/stable-id"
                     }
                   ],
-                  "description": "The id of the keyframe the loop starts at. If the keyframe has a `start`, the loop begins with its move. Without it, or if it names no keyframe of the curve, the first is used. It needs `loop`."
+                  "description": "The id of the keyframe the loop starts at. If the keyframe has a `start`, the loop begins with its move. If it names no keyframe of the curve, the first is used."
                 }
               },
               "required": [
                 "keyframes"
               ],
               "dependencies": {
+                "loop": [
+                  "loop-keyframe"
+                ],
                 "loop-keyframe": [
                   "loop"
                 ]
