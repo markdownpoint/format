@@ -76,8 +76,7 @@
           "color": "#FFF1E0",
           "intensity": 30,
           "cast-shadow": true,
-          "size-x": 1200,
-          "size-y": 1200
+          "size": {"x":1200,"y":1200}
         }
       ],
       "initial": {

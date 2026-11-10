@@ -2315,29 +2315,13 @@
                         }
                       ]
                     },
-                    "size-x": {
+                    "size": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "type": "number",
-                          "minimum": 0.000001,
-                          "maximum": 1000000000000000000,
-                          "description": "canvas units"
-                        }
-                      ]
-                    },
-                    "size-y": {
-                      "anyOf": [
-                        {
-                          "type": "null"
-                        },
-                        {
-                          "type": "number",
-                          "minimum": 0.000001,
-                          "maximum": 1000000000000000000,
-                          "description": "canvas units"
+                          "$ref": "#/definitions/area-size"
                         }
                       ]
                     },
@@ -2835,17 +2819,8 @@
                               "minimum": 0,
                               "description": "watts"
                             },
-                            "size-x": {
-                              "type": "number",
-                              "minimum": 0.000001,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            },
-                            "size-y": {
-                              "type": "number",
-                              "minimum": 0.000001,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
+                            "size": {
+                              "$ref": "#/definitions/area-size"
                             }
                           },
                           "required": [
@@ -3551,6 +3526,25 @@
         "y": {
           "type": "number",
           "description": "How far down the frame, as a fraction of its height."
+        }
+      },
+      "additionalProperties": false
+    },
+    "area-size": {
+      "description": "An area light's size along its own axes, in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1000000000000000000,
+          "description": "Its width, along its own x."
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1000000000000000000,
+          "description": "Its height, along its own y."
         }
       },
       "additionalProperties": false
