@@ -1973,13 +1973,13 @@
                             },
                             "relative-to-target": {
                               "type": "boolean",
-                              "description": "Whether the camera's position counts from the target's point, not from the slide's center at z 0. With false, the camera is at the target's point. The default is true."
+                              "description": "Whether the camera follows the target at an offset: its own offset from the slide's center at z 0, added to the target's point. With false, it is at the target's point. The default is true."
                             },
                             "strength": {
                               "type": "number",
                               "minimum": 0,
                               "maximum": 1,
-                              "description": "How far the camera moves to the target's point, from 0, not at all, to 1, fully. The default is 1. It can be animated."
+                              "description": "How far the camera moves to the point it follows, from 0, not at all, to 1, fully. The default is 1. It can be animated."
                             },
                             "spring": {
                               "description": "The spring the camera follows on. It has the `amount` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
