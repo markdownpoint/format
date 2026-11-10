@@ -884,7 +884,7 @@
             "height": 260
           },
           "text-style": "body",
-          "enter": {"based-on":"character","from":{"opacity":0,"x":-0.6},"spaces":true,"order":"random","seed":7,"spread":6,"pause":8,"progress":0}
+          "enter": {"based-on":"character","from":{"opacity":0,"offset":{"x":-0.6,"y":0}},"spaces":true,"order":"random","seed":7,"spread":6,"pause":8,"progress":0}
         },
 
         {

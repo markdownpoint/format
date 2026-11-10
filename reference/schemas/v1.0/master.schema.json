@@ -4060,7 +4060,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4082,7 +4082,7 @@
           "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
-          "description": "How each piece looks as it starts to enter: opacity, x and y, scale, rotation, and blur.",
+          "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
           "type": "object",
           "properties": {
             "opacity": {
@@ -4091,17 +4091,28 @@
               "maximum": 1,
               "description": "Its opacity."
             },
-            "x": {
-              "type": "number",
-              "minimum": -33554431,
-              "maximum": 33554431,
-              "description": "How far across it starts, in ems."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -33554431,
-              "maximum": 33554431,
-              "description": "How far down it starts, in ems."
+            "offset": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ],
+              "additionalProperties": false,
+              "description": "How far it starts from where it rests, as {x, y} across and down in ems."
             },
             "scale": {
               "type": "number",
@@ -4132,21 +4143,11 @@
           ],
           "description": "How each piece moves into place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
-        "fade": {
-          "description": "The fade of each piece, as `{ length }`: the fraction of the piece's entrance the fade lasts. The fade follows the piece's interpolation.",
-          "type": "object",
-          "properties": {
-            "length": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 1,
-              "description": "How much of the piece's entrance the fade lasts, as a fraction. The fade starts with the move."
-            }
-          },
-          "required": [
-            "length"
-          ],
-          "additionalProperties": false
+        "fade-length": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1,
+          "description": "How much of each piece's entrance its fade lasts, as a fraction. The fade starts with the move and follows the piece's interpolation."
         },
         "spaces": {
           "type": "boolean",
@@ -4199,7 +4200,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4211,7 +4212,7 @@
           "description": "What counts as one piece."
         },
         "to": {
-          "description": "How each piece looks as it finishes exiting: opacity, x and y, scale, rotation, and blur.",
+          "description": "How each piece looks as it finishes exiting: opacity, offset, scale, rotation, and blur.",
           "type": "object",
           "properties": {
             "opacity": {
@@ -4220,17 +4221,28 @@
               "maximum": 1,
               "description": "Its opacity."
             },
-            "x": {
-              "type": "number",
-              "minimum": -33554431,
-              "maximum": 33554431,
-              "description": "How far across it ends, in ems."
-            },
-            "y": {
-              "type": "number",
-              "minimum": -33554431,
-              "maximum": 33554431,
-              "description": "How far down it ends, in ems."
+            "offset": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                },
+                "y": {
+                  "type": "number",
+                  "minimum": -33554431,
+                  "maximum": 33554431,
+                  "description": "em"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ],
+              "additionalProperties": false,
+              "description": "How far it ends from where it rests, as {x, y} across and down in ems."
             },
             "scale": {
               "type": "number",
@@ -4261,21 +4273,11 @@
           ],
           "description": "How each piece moves out of place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
         },
-        "fade": {
-          "description": "The fade of each piece, as `{ length }`: the fraction of the piece's exit the fade lasts. The fade follows the piece's interpolation.",
-          "type": "object",
-          "properties": {
-            "length": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 1,
-              "description": "How much of the piece's exit the fade lasts, as a fraction. The fade ends with the move."
-            }
-          },
-          "required": [
-            "length"
-          ],
-          "additionalProperties": false
+        "fade-length": {
+          "type": "number",
+          "minimum": 0.000001,
+          "maximum": 1,
+          "description": "How much of each piece's exit its fade lasts, as a fraction. The fade ends with the move and follows the piece's interpolation."
         },
         "spaces": {
           "type": "boolean",
