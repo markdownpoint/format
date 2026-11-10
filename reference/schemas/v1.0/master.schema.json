@@ -824,9 +824,6 @@
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
               },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
-              },
               "enter": {
                 "$ref": "#/definitions/enter"
               },
@@ -1088,9 +1085,6 @@
               },
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
-              },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
               },
               "fill": {
                 "$ref": "#/definitions/fill"
@@ -1396,9 +1390,6 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
-              },
               "stroke": {
                 "$ref": "#/definitions/color"
               },
@@ -1626,9 +1617,6 @@
               },
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
-              },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
               },
               "stroke": {
                 "$ref": "#/definitions/color"
@@ -1947,9 +1935,6 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
-              },
               "enter": {
                 "$ref": "#/definitions/enter"
               },
@@ -2087,9 +2072,6 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
-              },
               "trim": {
                 "$ref": "#/definitions/trim"
               },
@@ -2226,9 +2208,6 @@
               "repeater": {
                 "$ref": "#/definitions/repeater"
               },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
-              },
               "stroke-weight": {
                 "type": "number",
                 "minimum": 0,
@@ -2326,9 +2305,6 @@
               },
               "ignore-auto-layout": {
                 "type": "boolean"
-              },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
               },
               "trim": {
                 "$ref": "#/definitions/trim"
@@ -2542,9 +2518,6 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1
-              },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
               }
             },
             "required": [
@@ -2714,9 +2687,6 @@
               },
               "repeater": {
                 "$ref": "#/definitions/repeater"
-              },
-              "bindings": {
-                "$ref": "#/definitions/composition-bindings"
               }
             },
             "required": [
@@ -3954,18 +3924,6 @@
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
       "description": "a color role or a hex color"
-    },
-    "composition-bindings": {
-      "type": "object",
-      "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?:\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z]))*(?![\\s\\S])",
-        "description": "a property name"
-      },
-      "additionalProperties": {
-        "type": "string",
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-        "description": "an id, such as \"title-card\""
-      }
     },
     "constraint-id": {
       "type": "string",

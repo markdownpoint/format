@@ -988,16 +988,6 @@
                         }
                       ]
                     },
-                    "bindings": {
-                      "anyOf": [
-                        {
-                          "type": "null"
-                        },
-                        {
-                          "$ref": "#/definitions/composition-bindings"
-                        }
-                      ]
-                    },
                     "enter": {
                       "anyOf": [
                         {
