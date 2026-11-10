@@ -3035,14 +3035,14 @@
                           "description": "How far the camera moves to the point it follows, from 0, not at all, to 1, fully. The default is 1. It can be animated."
                         },
                         "spring": {
-                          "description": "The spring the camera follows on. It has the `amount` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
+                          "description": "The spring the camera follows on. It has the `damping-ratio` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
                           "type": "object",
                           "properties": {
-                            "amount": {
+                            "damping-ratio": {
                               "type": "number",
-                              "minimum": 0,
+                              "minimum": 0.3,
                               "maximum": 1,
-                              "description": "How far the camera swings past where the target stops, from 0, not at all, to 1."
+                              "description": "How strongly the spring is damped. At 1, it is critically damped. Less damping swings further. Below 0.3, it would keep swinging past the target."
                             },
                             "response": {
                               "type": "number",
@@ -3051,7 +3051,7 @@
                             }
                           },
                           "required": [
-                            "amount",
+                            "damping-ratio",
                             "response"
                           ],
                           "additionalProperties": false
@@ -4518,15 +4518,15 @@
                 "type": {
                   "const": "spring"
                 },
-                "amount": {
+                "damping-ratio": {
                   "type": "number",
-                  "minimum": 0,
+                  "minimum": 0.3,
                   "maximum": 1
                 }
               },
               "required": [
                 "type",
-                "amount"
+                "damping-ratio"
               ],
               "additionalProperties": false
             },

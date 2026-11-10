@@ -50,13 +50,13 @@ bounce, bounciness 0.8
 elastic, amplitude 1.5, period 0.5
 
 <!-- text: label-spring -->
-spring, amount 0.4, response 0.6
+spring, damping-ratio 0.72, response 0.6
 
 <!-- text: caption -->
 Settings change how far a named curve pulls back, swings past or bounces.
 
 <!-- notes -->
-A named curve with settings is a record with its name in `type`. `back` sets how far an overshoot swings past the end, and `bounciness` sets how high a bounce rebounds. `amplitude` and `period` set an elastic curve's swing, and `amount` and `response` set a spring's.
+A named curve with settings is a record with its name in `type`. `back` sets how far an overshoot swings past the end, and `bounciness` sets how high a bounce rebounds. `amplitude` and `period` set an elastic curve's swing, and `damping-ratio` and `response` set a spring's.
 
 <!-- slide: keyframes -->
 

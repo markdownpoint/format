@@ -558,7 +558,7 @@ Set a keyframe's `interpolation` to a named curve. To give it settings, use a re
           "spring-arrives": {
             "time": 2,
             "value": 540,
-            "interpolation": {"type": "spring", "amount": 0.4, "response": 0.6}
+            "interpolation": {"type": "spring", "damping-ratio": 0.72, "response": 0.6}
           }
         }
       }
