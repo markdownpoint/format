@@ -7813,7 +7813,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step, in any order: they are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video or a web video, or plays a clip."
+            "description": "Events at set times in the step, in any order: they are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video or a web video, or plays a clip or an Action."
           }
         },
         "required": [
