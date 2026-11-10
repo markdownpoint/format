@@ -19,7 +19,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The layout's name, on one line that isn't blank and has no control characters. The default is the layout's key with spaces for its hyphens and a capital first letter."
+      "description": "The layout's name: one line that isn't blank and has no control characters. The default is the layout's key with spaces for its hyphens and a capital first letter."
     },
     "scheme": {
       "type": "string",
@@ -1798,7 +1798,7 @@
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
+                        "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                       },
                       "frame-position": {
                         "enum": [
@@ -1970,7 +1970,7 @@
                               },
                               "minItems": 1,
                               "maxItems": 3,
-                              "description": "The 3D space's axes the camera follows on, from x, y, and z. Without it, the camera follows on all three."
+                              "description": "The 3D space's axes the camera follows on: any of x, y, and z. Without it, the camera follows on all three."
                             },
                             "relative-to-target": {
                               "type": "boolean",
@@ -1980,7 +1980,7 @@
                               "type": "number",
                               "minimum": 0,
                               "maximum": 1,
-                              "description": "How far the camera moves to the point it follows, from 0, not at all, to 1, fully. The default is 1. It can be animated."
+                              "description": "How far the camera moves to the point it follows: 0 is not at all and 1 is fully. The default is 1. It can be animated."
                             },
                             "spring": {
                               "description": "The spring the camera follows on. It has the `damping-ratio` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
@@ -2182,7 +2182,7 @@
           }
         ]
       },
-      "description": "Changes to the master's objects on this layout, by id. An object set to `null` is removed. The camera and the World can't be removed."
+      "description": "Changes to the master's objects on this layout by id. An object set to `null` is removed. The camera and the World can't be removed."
     },
     "objects": {
       "type": "array",
@@ -4902,7 +4902,7 @@
       "additionalProperties": {
         "type": "string"
       },
-      "description": "The words of the layout's own text, table, chart, and shape objects, by object id. Any other id is an error. A placeholder's words are its sample text."
+      "description": "The words of the layout's own text, table, chart, and shape objects by object id. Any other id is an error. A placeholder's words are its sample text."
     },
     "save-id": {
       "type": "string",
@@ -4932,7 +4932,7 @@
       "additionalProperties": false
     },
     "area-size": {
-      "description": "An area light's size along its own axes, in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
+      "description": "An area light's size along its own axes in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
       "type": "object",
       "properties": {
         "x": {
@@ -5107,13 +5107,13 @@
                   "-y",
                   "-z"
                 ],
-                "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
+                "description": "The axis of the model or node that points at the target in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
               },
               "strength": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
+                "description": "How far it turns toward the target: 0 is not at all and 1 is fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
               }
             },
             "required": [
@@ -5144,7 +5144,7 @@
                   "uniform",
                   "single-axis"
                 ],
-                "description": "When the volume is kept: with `strict`, under any scale; with `uniform`, while the model scales evenly; with `single-axis`, while only the free axis scales. The default is strict."
+                "description": "When the volume is kept. `strict` keeps it under any scale. `uniform` keeps it while the model scales evenly. `single-axis` keeps it while only the free axis scales. The default is strict."
               },
               "free-axis": {
                 "enum": [
@@ -5163,7 +5163,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. It can be animated."
+                "description": "How strongly it keeps the volume: 0 is not at all and 1 is fully. The default is 1. It can be animated."
               }
             },
             "required": [
@@ -5220,7 +5220,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 780.352997,
-              "description": "How far it reaches, in canvas units. It is at most 102.878569 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide, to 205.757138 at 3840 × 2160."
+              "description": "How far it reaches in canvas units. It is at most 102.878569 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 205.757138 at 3840 × 2160."
             },
             "spread": {
               "type": "number",
@@ -5296,7 +5296,7 @@
           "type": "number",
           "minimum": 0.000001,
           "maximum": 4294967296,
-          "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
           "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
@@ -5341,13 +5341,13 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "How far it is turned, in degrees clockwise."
+              "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred it is, by its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
+              "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
           "additionalProperties": false
@@ -5471,13 +5471,13 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "How far it is turned, in degrees clockwise."
+              "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred it is, by its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
+              "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
           "additionalProperties": false
@@ -5582,7 +5582,7 @@
           "type": "number",
           "minimum": -1000000000000000000,
           "maximum": 1000000000000000000,
-          "description": "How far up from the slide's bottom edge, in canvas units."
+          "description": "How far up from the slide's bottom edge in canvas units."
         }
       },
       "required": [
@@ -5591,7 +5591,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -5638,10 +5638,10 @@
             },
             "angle": {
               "type": "number",
-              "description": "A linear gradient's direction, in degrees clockwise from up."
+              "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is, in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. It is the same in CSS.",
+              "description": "Where a linear gradient's line is in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. It is the same in CSS.",
               "type": "object",
               "properties": {
                 "x": {
@@ -5676,7 +5676,7 @@
                   "$ref": "#/definitions/stops"
                 }
               ],
-              "description": "The gradient's two or more colors, each with its position."
+              "description": "The gradient's two or more colors and their positions."
             }
           },
           "required": [
@@ -5725,7 +5725,7 @@
                   "$ref": "#/definitions/stops"
                 }
               ],
-              "description": "The gradient's two or more colors, each with its position."
+              "description": "The gradient's two or more colors and their positions."
             }
           },
           "required": [
@@ -5973,7 +5973,7 @@
       "description": "text without NUL characters"
     },
     "repeater": {
-      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
+      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
       "type": "object",
       "properties": {
         "copies": {
@@ -6086,7 +6086,7 @@
               "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "The style's name, on one line that isn't blank and has no control characters."
+          "description": "The style's name: one line that isn't blank and has no control characters."
         },
         "prompt": {
           "type": "string",
@@ -6167,7 +6167,7 @@
       "additionalProperties": false
     },
     "space-position": {
-      "description": "A point in the 3D space, in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. A parented object's position is in its parent's space.",
+      "description": "A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. A parented object's position is in its parent's space.",
       "type": "object",
       "properties": {
         "x": {
@@ -6204,7 +6204,7 @@
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "A quaternion's w, in quaternion mode only."
+          "description": "A quaternion's w. It is used in quaternion mode only."
         },
         "x": {
           "type": "number",
@@ -6281,7 +6281,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 1,
-            "description": "Where the color is along the gradient, from 0 to 1. Without it, the first stop is at 0, the last is at 1, and the stops between are spread evenly. A stop is never before the previous one."
+            "description": "Where the color is along the gradient from 0 to 1. Without it, the first stop is at 0, the last is at 1, and the stops between are spread evenly. A stop is never before the previous one."
           }
         },
         "required": [
@@ -6292,7 +6292,7 @@
       "minItems": 2
     },
     "table-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -6407,7 +6407,7 @@
       ]
     },
     "text-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -6452,7 +6452,7 @@
       "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
     },
     "tilt": {
-      "description": "How far a group tilts in depth, in degrees, about axes through its anchor point in the slide's plane.",
+      "description": "How far a group tilts in depth about axes through its anchor point in the slide's plane. It is in degrees.",
       "type": "object",
       "properties": {
         "x": {
@@ -6477,12 +6477,12 @@
         "start": {
           "type": "number",
           "minimum": 0,
-          "description": "Where it starts, in seconds into the file or the Action. The default is 0."
+          "description": "Where it starts in seconds into the file or the Action. The default is 0."
         },
         "end": {
           "type": "number",
           "minimum": 0,
-          "description": "Where it ends, in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
+          "description": "Where it ends in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
         }
       },
       "additionalProperties": false
@@ -6528,7 +6528,7 @@
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "Which way the edge travels, in degrees clockwise from up. The angle turns with the object."
+          "description": "Which way the edge travels in degrees clockwise from up. The angle turns with the object."
         },
         "feather": {
           "type": "number",

@@ -125,7 +125,7 @@
             "markdownpoint/image-prompt/1",
             "none"
           ],
-          "description": "The version of the instructions MarkdownPoint wraps the prompt in. It is `none` when the prompt was asked as written, for example by another tool."
+          "description": "The version of the instructions MarkdownPoint wraps the prompt in. It is `none` when the prompt was asked as written, such as by another tool."
         },
         "prompt": {
           "allOf": [
@@ -133,7 +133,7 @@
               "$ref": "#/definitions/request-text"
             }
           ],
-          "description": "The words asked for, in Unicode NFC. Each run of white space is one space, and there is none at either end. It isn't empty or `none`."
+          "description": "The words asked for in Unicode NFC. Each run of white space is one space, and there is none at either end. It isn't empty or `none`."
         },
         "image-style": {
           "anyOf": [
@@ -159,7 +159,7 @@
               "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "The image model's name, on one line that isn't blank and has no control characters."
+          "description": "The image model's name: one line that isn't blank and has no control characters."
         },
         "parameters": {
           "description": "The settings the model was asked with.",
@@ -180,7 +180,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The size asked for, in the model's own words. It is one line that isn't blank and has no control characters."
+              "description": "The size asked for in the model's own words. It is one line that isn't blank and has no control characters."
             },
             "quality": {
               "allOf": [
@@ -188,7 +188,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The quality asked for, in the model's own words. It is one line that isn't blank and has no control characters. Without it, no quality was asked for."
+              "description": "The quality asked for in the model's own words. It is one line that isn't blank and has no control characters. Without it, no quality was asked for."
             }
           },
           "required": [

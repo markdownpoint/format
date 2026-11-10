@@ -30,7 +30,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Color schemes
 
-A scheme's `colors` set a color for each role. A role names how the color is used: `background`, `text`, or `accent`, for example. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
+A scheme's `colors` set a color for each role. A role names how the color is used, such as `background`, `text`, or `accent`. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
 
 Every theme has a `light` and a `dark` scheme and can add more, such as Basic's butter. Each scheme sets its `appearance`, light or dark, next to its colors. The `light` and `dark` schemes have the appearance they're named for:
 

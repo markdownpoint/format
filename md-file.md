@@ -53,7 +53,7 @@ The words are Markdown==.==
 
 ## Writing in Obsidian
 
-Create the presentation in MarkdownPoint, in your Obsidian vault's folder or a folder inside it. Then choose “Open in Obsidian” in the File menu. Obsidian opens the presentation's `slides.md` in that vault. The command is dimmed when the presentation isn't in a vault or Obsidian isn't installed.
+Create the presentation in MarkdownPoint. Put it in your Obsidian vault's folder or a folder inside it. Then choose “Open in Obsidian” in the File menu. Obsidian opens the presentation's `slides.md` in that vault. The command is dimmed when the presentation isn't in a vault or Obsidian isn't installed.
 
 Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use the outline to add or move slides. Use Source mode to edit the Markdown and its markers directly. Keep `presentation.mdpoint`, the themes, and the media next to `slides.md`.
 
@@ -106,7 +106,7 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 `<!-- text: id -->` starts an object's text. The text continues until the next marker. Here `eyebrow`, `title`, and `body` are placeholders from the slide's layout. For any other object, the id is its id in the .mdpoint file. Shapes, tables, and charts get their text the same way.
 
-Paragraphs are separated by one or more blank lines. An empty paragraph is a line with only `<br>`, optionally followed by spaces or tabs, with a blank line before and after it. Two `<br>` lines in a row, with nothing else, are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators. A Markdown formatter can add or remove them without changing the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
+Paragraphs are separated by one or more blank lines. An empty paragraph is a line with only `<br>`, optionally followed by spaces or tabs. It has a blank line before and after it. Two `<br>` lines in a row with nothing else are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators. A Markdown formatter can add or remove them without changing the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
 
 ## Speaker notes
 
@@ -297,7 +297,7 @@ In a list item, a tab is read as spaces. MarkdownPoint writes a tab there as `&#
 
 ### Where it differs from CommonMark
 
-Bold and italic follow CommonMark, with one difference. In CommonMark, a run of `*` between punctuation and a letter can open toward the letter but can't close. In MarkdownPoint, such a run can both open and close. So `**C++**17` is read as a bold “C++” followed by “17”, and `**Note:**This` as a bold “Note:” followed by “This”. In CommonMark, the asterisks in both stay as written.
+Bold and italic follow CommonMark except in one way. In CommonMark, a run of `*` between punctuation and a letter can open toward the letter but can't close. In MarkdownPoint, such a run can both open and close. So `**C++**17` is read as a bold “C++” followed by “17”, and `**Note:**This` as a bold “Note:” followed by “This”. In CommonMark, the asterisks in both stay as written.
 
 The same rule applies to Chinese and Japanese. Both are written without spaces between words. In `これは**「重要」**です`, “「重要」” is bold. This matches the [CJK-friendly amendment](https://github.com/tats-u/markdown-cjk-friendly) to CommonMark.
 
@@ -315,7 +315,7 @@ One kind of comment isn't a note: a paragraph id, described in the next section.
 
 ### Paragraph ids
 
-To bring a paragraph in on a click, a step in [the .mdpoint file](mdpoint-file.md) names the paragraph by its id. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. Headings and list items get an id the same way. An id follows the same rules as a section's id: lowercase letters, digits, and single hyphens, starting with a letter and ending with a letter or digit. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes the comment after one space, as shown.
+To bring a paragraph in on a click, a step in [the .mdpoint file](mdpoint-file.md) names the paragraph by its id. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. Headings and list items get an id the same way. An id follows the same rules as a section's id: lowercase letters, digits, and single hyphens, starting with a letter and ending with a letter or digit. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes the comment after one space as shown.
 
 MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is a new paragraph. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. When a merge joins two versions of a paragraph with the id at the end of each, MarkdownPoint reads one id. It writes the id once the next time you edit that text block or run `mdpoint format`. Keep each id at the end of its paragraph, and don't give a new paragraph an id. MarkdownPoint gives it one.
 
@@ -332,10 +332,10 @@ MarkdownPoint can't read the file if it contains any of these, among other probl
 - `markdownpoint` without quotes, or with a major version other than 1
 - a slide marker without its entry in the .mdpoint file, or an entry without its marker
 - a code block that is never closed and contains a marker
-- a merge conflict that git left outside a code block, from its `<<<<<<<` line to its `>>>>>>>` line
+- a merge conflict that git left outside a code block: from its `<<<<<<<` line to its `>>>>>>>` line
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line
 
-A comment line counts as an incorrectly written marker when it contains a marker's word and at most one other word, in any letter case. A closing slash, or words after `-->`, don't change this.
+A comment line counts as an incorrectly written marker when it contains a marker's word in any letter case and at most one other word. A closing slash, or words after `-->`, don't change this.
 
 MarkdownPoint then shows the file, the line, and the problem, and it won't open the presentation. If the presentation is already open, MarkdownPoint waits for the fix and never overwrites your file.
 
@@ -347,11 +347,11 @@ A table's column widths and minimum row heights in the .mdpoint file are listed 
 
 ## Validating the files
 
-`mdpoint` validates a presentation folder without the app running. It reports file errors, including missing images, models, and fonts.
+`mdpoint` validates a presentation folder without the app running. It reports file errors such as missing images, models, and fonts.
 
 To install it, open MarkdownPoint's Settings, choose “Coding agents”, and click “Install” under “Command line”. Run `mdpoint validate` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate`.
 
-Each issue has a `severity` of `error` or `warning`, a `code`, and a `message`. Most issues also have a `path`. For `presentation.mdpoint`, the path is its chain of keys, such as `slides.intro.objects.title.opacity`. For `slides.md`, it is the frontmatter key or the section, such as `frontmatter.footer` or `sections.intro`. For an issue in a slide's words, it is the slide, the composition, the object, or the control in `presentation.mdpoint`, such as `slides.intro.objects.title`. An instance's text block is named by the instance's value for its control, as an operation names it, such as `slides.intro.objects.card.control-values.label`. An issue about a missing or unreadable file has no `path`. It names the file as `file` instead. An issue in `slides.md` also has a `location`, with the file and the line. [The Agent's README](agent/1/README.md#issues) lists every field. The `disposition` describes how MarkdownPoint handles the problem: `show-presentation`, `skip-object`, `refuse-slide`, or `refuse-presentation`. The command exits with status 1 if any issue is an error.
+Each issue has a `severity` of `error` or `warning`, a `code`, and a `message`. Most issues also have a `path`. For `presentation.mdpoint`, the path is its chain of keys, such as `slides.intro.objects.title.opacity`. For `slides.md`, it is the frontmatter key or the section, such as `frontmatter.footer` or `sections.intro`. For an issue in a slide's words, it is the slide, the composition, the object, or the control in `presentation.mdpoint`, such as `slides.intro.objects.title`. An instance's text block is named by the instance's value for its control, as an operation names it, such as `slides.intro.objects.card.control-values.label`. An issue about a missing or unreadable file has no `path`. It names the file as `file` instead. An issue in `slides.md` also has a `location`: the file and the line. [The Agent's README](agent/1/README.md#issues) lists every field. The `disposition` describes how MarkdownPoint handles the problem: `show-presentation`, `skip-object`, `refuse-slide`, or `refuse-presentation`. The command exits with status 1 if any issue is an error.
 
 ## Saving and formatting
 

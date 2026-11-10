@@ -60,7 +60,7 @@
           "file"
         ]
       },
-      "description": "Each file of the theme, including master.json, with its size and digest. Each file is listed once."
+      "description": "Each file of the theme with its size and digest. That includes master.json. Each file is listed once."
     }
   },
   "required": [

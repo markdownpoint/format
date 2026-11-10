@@ -118,7 +118,7 @@
       "type": "integer",
       "minimum": 1,
       "maximum": 4294967296,
-      "description": "How long the talk should take, in seconds. Without it, the talk has no set length."
+      "description": "How long the talk should take in seconds. Without it, the talk has no set length."
     },
     "default-text-style": {
       "description": "The text style and color of a new text box. Without a text style, a new text box has none. Text boxes already on the slides don't change.",
@@ -168,7 +168,7 @@
     "date": {
       "type": "string",
       "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)(?![\\s\\S])",
-      "description": "The date the date field shows. It is written YYYY-MM-DD. It must be a real calendar date, from year 0001 on."
+      "description": "The date the date field shows. It is written YYYY-MM-DD. It must be a real calendar date in year 0001 or later."
     },
     "locale": {
       "type": "string",
@@ -188,7 +188,7 @@
           "layout": {
             "type": "string",
             "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The theme layout the slide uses, by key."
+            "description": "The key of the theme layout the slide uses."
           },
           "scheme": {
             "allOf": [
@@ -1996,7 +1996,7 @@
                               "type": "number",
                               "minimum": 0,
                               "maximum": 4294967296,
-                              "description": "How long the shutter stays open, in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
+                              "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                             },
                             "frame-position": {
                               "enum": [
@@ -2168,7 +2168,7 @@
                                     },
                                     "minItems": 1,
                                     "maxItems": 3,
-                                    "description": "The 3D space's axes the camera follows on, from x, y, and z. Without it, the camera follows on all three."
+                                    "description": "The 3D space's axes the camera follows on: any of x, y, and z. Without it, the camera follows on all three."
                                   },
                                   "relative-to-target": {
                                     "type": "boolean",
@@ -2178,7 +2178,7 @@
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1,
-                                    "description": "How far the camera moves to the point it follows, from 0, not at all, to 1, fully. The default is 1. It can be animated."
+                                    "description": "How far the camera moves to the point it follows: 0 is not at all and 1 is fully. The default is 1. It can be animated."
                                   },
                                   "spring": {
                                     "description": "The spring the camera follows on. It has the `damping-ratio` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly.",
@@ -2380,7 +2380,7 @@
                 }
               ]
             },
-            "description": "Changes, by id, to what the slide inherits from its layout and master. They're kept even if they match what's inherited. An object set to `null` is removed. The camera and the World can't be removed."
+            "description": "Changes by id to what the slide inherits from its layout and master. They're kept even if they match what's inherited. An object set to `null` is removed. The camera and the World can't be removed."
           },
           "objects": {
             "type": "array",
@@ -2986,7 +2986,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "The slide's steps, in order."
+            "description": "The slide's steps in order."
           }
         },
         "required": [
@@ -2994,7 +2994,7 @@
         ],
         "additionalProperties": false
       },
-      "description": "The slides, by id. The .md file has their order and text."
+      "description": "The slides by id. The .md file has their order and text."
     },
     "compositions": {
       "type": "object",
@@ -3012,10 +3012,10 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The composition's name, on one line that isn't blank and has no control characters."
+            "description": "The composition's name: one line that isn't blank and has no control characters."
           },
           "size": {
-            "description": "Its size, in canvas units.",
+            "description": "Its size in canvas units.",
             "type": "object",
             "properties": {
               "width": {
@@ -3067,7 +3067,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "text"
@@ -3097,7 +3097,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "number"
@@ -3148,7 +3148,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "color"
@@ -3187,7 +3187,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "boolean"
@@ -3222,7 +3222,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "choice"
@@ -3234,7 +3234,7 @@
                     "options": {
                       "type": "array",
                       "items": {
-                        "description": "One option of a choice control, in the order its pop-up shows them.",
+                        "description": "One option of a choice control. The options are in the order its pop-up shows them.",
                         "type": "object",
                         "properties": {
                           "id": {
@@ -3255,7 +3255,7 @@
                         "additionalProperties": false
                       },
                       "minItems": 1,
-                      "description": "A choice control's options, one or more, in the order its pop-up shows them. Its default is one of their ids."
+                      "description": "A choice control's one or more options in the order its pop-up shows them. Its default is one of their ids."
                     }
                   },
                   "required": [
@@ -3284,7 +3284,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees, on one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
                     },
                     "type": {
                       "const": "media"
@@ -3304,7 +3304,7 @@
                 }
               ]
             },
-            "description": "The controls each instance can set, in the order they're shown."
+            "description": "The controls each instance can set in the order they're shown."
           },
           "objects": {
             "type": "array",
@@ -3375,7 +3375,7 @@
         ],
         "additionalProperties": false
       },
-      "description": "Reusable animated scenes, by id. Slides show them as instances."
+      "description": "Reusable animated scenes by id. Slides show them as instances."
     },
     "comments": {
       "type": "object",
@@ -3475,7 +3475,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "The replies, by id, each with an author, a created time, and text."
+            "description": "The replies by id. Each has an author, a created time, and text."
           }
         },
         "required": [
@@ -3504,7 +3504,7 @@
           }
         ]
       },
-      "description": "Comment threads, by id. Each one is pinned to a slide or a composition."
+      "description": "Comment threads by id. Each one is pinned to a slide or a composition."
     }
   },
   "required": [
@@ -3532,7 +3532,7 @@
       "additionalProperties": false
     },
     "area-size": {
-      "description": "An area light's size along its own axes, in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
+      "description": "An area light's size along its own axes in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
       "type": "object",
       "properties": {
         "x": {
@@ -3788,7 +3788,7 @@
         "id": {
           "type": "string",
           "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
-          "description": "Who wrote it, if known, in one of the record's three forms."
+          "description": "Who wrote it, if known. It is in one of the record's three forms."
         },
         "name": {
           "type": "string",
@@ -3879,13 +3879,13 @@
                   "-y",
                   "-z"
                 ],
-                "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
+                "description": "The axis of the model or node that points at the target in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
               },
               "strength": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How far it turns toward the target, from 0, not at all, to 1, fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
+                "description": "How far it turns toward the target: 0 is not at all and 1 is fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
               }
             },
             "required": [
@@ -3916,7 +3916,7 @@
                   "uniform",
                   "single-axis"
                 ],
-                "description": "When the volume is kept: with `strict`, under any scale; with `uniform`, while the model scales evenly; with `single-axis`, while only the free axis scales. The default is strict."
+                "description": "When the volume is kept. `strict` keeps it under any scale. `uniform` keeps it while the model scales evenly. `single-axis` keeps it while only the free axis scales. The default is strict."
               },
               "free-axis": {
                 "enum": [
@@ -3935,7 +3935,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How strongly it keeps the volume, from 0, not at all, to 1, fully. The default is 1. It can be animated."
+                "description": "How strongly it keeps the volume: 0 is not at all and 1 is fully. The default is 1. It can be animated."
               }
             },
             "required": [
@@ -3992,7 +3992,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 780.352997,
-              "description": "How far it reaches, in canvas units. It is at most 102.878569 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide, to 205.757138 at 3840 × 2160."
+              "description": "How far it reaches in canvas units. It is at most 102.878569 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 205.757138 at 3840 × 2160."
             },
             "spread": {
               "type": "number",
@@ -4068,7 +4068,7 @@
           "type": "number",
           "minimum": 0.000001,
           "maximum": 4294967296,
-          "description": "How long each paragraph takes to enter, in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
           "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
@@ -4113,13 +4113,13 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "How far it is turned, in degrees clockwise."
+              "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred it is, by its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
+              "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
           "additionalProperties": false
@@ -4243,13 +4243,13 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "How far it is turned, in degrees clockwise."
+              "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred it is, by its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
+              "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
           "additionalProperties": false
@@ -4354,7 +4354,7 @@
           "type": "number",
           "minimum": -1000000000000000000,
           "maximum": 1000000000000000000,
-          "description": "How far up from the slide's bottom edge, in canvas units."
+          "description": "How far up from the slide's bottom edge in canvas units."
         }
       },
       "required": [
@@ -4363,7 +4363,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -4461,10 +4461,10 @@
             },
             "angle": {
               "type": "number",
-              "description": "A linear gradient's direction, in degrees clockwise from up."
+              "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is, in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. It is the same in CSS.",
+              "description": "Where a linear gradient's line is in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. It is the same in CSS.",
               "type": "object",
               "properties": {
                 "x": {
@@ -4499,7 +4499,7 @@
                   "$ref": "#/definitions/stops"
                 }
               ],
-              "description": "The gradient's two or more colors, each with its position."
+              "description": "The gradient's two or more colors and their positions."
             }
           },
           "required": [
@@ -4548,7 +4548,7 @@
                   "$ref": "#/definitions/stops"
                 }
               ],
-              "description": "The gradient's two or more colors, each with its position."
+              "description": "The gradient's two or more colors and their positions."
             }
           },
           "required": [
@@ -6927,7 +6927,7 @@
       "description": "text without NUL characters"
     },
     "repeater": {
-      "description": "Copies of the object, each moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
+      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
       "type": "object",
       "properties": {
         "copies": {
@@ -7040,7 +7040,7 @@
               "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "The style's name, on one line that isn't blank and has no control characters."
+          "description": "The style's name: one line that isn't blank and has no control characters."
         },
         "prompt": {
           "type": "string",
@@ -7126,7 +7126,7 @@
       "additionalProperties": false
     },
     "space-position": {
-      "description": "A point in the 3D space, in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. A parented object's position is in its parent's space.",
+      "description": "A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. A parented object's position is in its parent's space.",
       "type": "object",
       "properties": {
         "x": {
@@ -7163,7 +7163,7 @@
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "A quaternion's w, in quaternion mode only."
+          "description": "A quaternion's w. It is used in quaternion mode only."
         },
         "x": {
           "type": "number",
@@ -7247,7 +7247,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The step's name, on one line that isn't blank and has no control characters."
+            "description": "The step's name: one line that isn't blank and has no control characters."
           },
           "start": {
             "enum": [
@@ -7260,7 +7260,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "The least time the step lasts, in seconds. A later keyframe, cue, or entering paragraph makes it longer. Without it, or at 0, the step lasts as long as what is in it."
+            "description": "The least time the step lasts in seconds. A later keyframe, cue, or entering paragraph makes it longer. Without it, or at 0, the step lasts as long as what is in it."
           },
           "repeat-count": {
             "type": "integer",
@@ -7272,7 +7272,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "The time it loops back to while waiting for the next click, in seconds into the step. It is before the later of its `min-duration` and its keyframe and cue times, other than a paragraph's entrance."
+            "description": "The time in seconds into the step that it loops back to while waiting for a click. It is before the later of its `min-duration` and its keyframe and cue times, other than a paragraph's entrance."
           },
           "curves": {
             "type": "object",
@@ -7305,7 +7305,7 @@
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "When the parameter reaches the value, in seconds into the step."
+                        "description": "When the parameter reaches the value. It is in seconds into the step."
                       },
                       "value": {
                         "allOf": [
@@ -7451,7 +7451,7 @@
                             "type": "number",
                             "minimum": 0,
                             "maximum": 4294967296,
-                            "description": "When it would have ended, in seconds into the step, at or after the keyframe's time."
+                            "description": "When it would have ended. It is in seconds into the step and at or after the keyframe's time."
                           }
                         },
                         "required": [
@@ -7480,7 +7480,7 @@
                       },
                       "exponential-scale": {
                         "type": "boolean",
-                        "description": "Whether a scale move changes by a steady ratio. A zoom then looks even. From, to, or across 0, it moves at an even pace. It applies only to `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale`."
+                        "description": "Whether a scale move changes by a steady ratio. A zoom then looks even. Its pace is even from or to 0, or across it. It applies only to `scale`, `scale.x`, `scale.y`, `scale.z`, and `crop.scale`."
                       },
                       "oscillate": {
                         "description": "A wave added to the value from this keyframe to the next, or to the step's end. On a looping curve, the wave plays again each time around.",
@@ -7488,7 +7488,7 @@
                         "properties": {
                           "amplitude": {
                             "type": "number",
-                            "description": "How far the value swings either way, in the parameter's own unit."
+                            "description": "How far the value swings either way in the parameter's own unit."
                           },
                           "frequency": {
                             "type": "number",
@@ -7580,7 +7580,7 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "When it happens, in seconds into the step."
+                      "description": "When it happens. It is in seconds into the step."
                     },
                     "type": {
                       "const": "paragraph"
@@ -7614,7 +7614,7 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "When it happens, in seconds into the step."
+                      "description": "When it happens. It is in seconds into the step."
                     },
                     "type": {
                       "const": "play"
@@ -7642,7 +7642,7 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 4294967296,
-                      "description": "When it happens, in seconds into the step."
+                      "description": "When it happens. It is in seconds into the step."
                     },
                     "type": {
                       "const": "clip"
@@ -7658,7 +7658,7 @@
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the Action that a clip plays. An unnamed Action is Animation 1, Animation 2, and so on, in file order."
+                      "description": "The name of the Action that a clip plays. Unnamed Actions are Animation 1, Animation 2, and so on in file order."
                     },
                     "loop": {
                       "const": "repeat",
@@ -7675,7 +7675,7 @@
                     "stride": {
                       "type": "number",
                       "minimum": 0.000001,
-                      "description": "How far the model travels per cycle of its Action, in the GLB's meters. The Action's timing then follows the model's travel. It doesn't apply to a 3D text's clip."
+                      "description": "How far the model travels per cycle of its Action in the GLB's meters. The Action's timing then follows the model's travel. It doesn't apply to a 3D text's clip."
                     },
                     "blend-in": {
                       "type": "number",
@@ -7698,7 +7698,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step, by id. They are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video, or a web video, or plays a clip."
+            "description": "Events at set times in the step by id. They are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video, or a web video, or plays a clip."
           }
         },
         "required": [
@@ -7725,7 +7725,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 1,
-            "description": "Where the color is along the gradient, from 0 to 1. Without it, the first stop is at 0, the last is at 1, and the stops between are spread evenly. A stop is never before the previous one."
+            "description": "Where the color is along the gradient from 0 to 1. Without it, the first stop is at 0, the last is at 1, and the stops between are spread evenly. A stop is never before the previous one."
           }
         },
         "required": [
@@ -7741,7 +7741,7 @@
       "description": "a supported image"
     },
     "table-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -7860,7 +7860,7 @@
       ]
     },
     "text-frame": {
-      "description": "An object's position and size, in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's frame has only x and y. A text box's frame leaves out each side that grows to fit its text.",
       "type": "object",
       "properties": {
         "x": {
@@ -7897,22 +7897,22 @@
     "text-model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
+          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "extrusion": {
-              "description": "The depth and bevel MarkdownPoint builds the words' letters to, in ems. With an empty record, the letters are built to the defaults.",
+              "description": "The depth and bevel MarkdownPoint builds the words' letters to in ems. With an empty record, the letters are built to the defaults.",
               "type": "object",
               "properties": {
                 "depth": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "How far the letters stand out from the slide, in ems."
+                  "description": "How far the letters stand out from the slide in ems."
                 },
                 "bevel": {
                   "type": "number",
                   "minimum": 0,
-                  "description": "How far the letters' edges are rounded, in ems. At 0, they are sharp."
+                  "description": "How far the letters' edges are rounded in ems. At 0, they are sharp."
                 }
               },
               "additionalProperties": false
@@ -7924,7 +7924,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
+          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "file": {
@@ -7935,7 +7935,7 @@
             "built-from": {
               "type": "string",
               "pattern": "^markdownpoint\\/text-model\\/[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
-              "description": "The fingerprint of what the GLB was built from, by the rule the reference gives. A reader that doesn't know the rule treats the model as out of sync."
+              "description": "The fingerprint of what the GLB was built from. The reference gives the rule. A reader that doesn't know the rule treats the model as out of sync."
             }
           },
           "required": [
@@ -7952,7 +7952,7 @@
       "description": "a text style name"
     },
     "tilt": {
-      "description": "How far a group tilts in depth, in degrees, about axes through its anchor point in the slide's plane.",
+      "description": "How far a group tilts in depth about axes through its anchor point in the slide's plane. It is in degrees.",
       "type": "object",
       "properties": {
         "x": {
@@ -7977,12 +7977,12 @@
         "start": {
           "type": "number",
           "minimum": 0,
-          "description": "Where it starts, in seconds into the file or the Action. The default is 0."
+          "description": "Where it starts in seconds into the file or the Action. The default is 0."
         },
         "end": {
           "type": "number",
           "minimum": 0,
-          "description": "Where it ends, in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
+          "description": "Where it ends in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
         }
       },
       "additionalProperties": false
@@ -8454,7 +8454,7 @@
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "Which way the edge travels, in degrees clockwise from up. The angle turns with the object."
+          "description": "Which way the edge travels in degrees clockwise from up. The angle turns with the object."
         },
         "feather": {
           "type": "number",

@@ -121,7 +121,7 @@ Settings for the whole presentation are next to `slides`:
 }
 ```
 
-`countdown` is how long the talk should take, in seconds. The presenter's timer counts down from it. A new text box uses `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own uses the style in `image-style`, and a generated background uses `background-image-style`. When either is omitted, no style is used.
+`countdown` is how long the talk should take in seconds. The presenter's timer counts down from it. A new text box uses `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own uses the style in `image-style`, and a generated background uses `background-image-style`. When either is omitted, no style is used.
 
 ## Objects
 
@@ -405,7 +405,7 @@ The hills have a restyle, and the background's image is still a request:
 
 ## Audio and video
 
-A video or audio object plays on a click. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of the file plays, from `start` to `end`, in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
+A video or audio object plays on a click. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of the file plays: from `start` to `end` in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
 
 ```json
 {

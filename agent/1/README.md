@@ -1,6 +1,6 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations, and limits, and `mdpoint schema <operation>` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client, each with an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
+The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations, and limits, and `mdpoint schema <operation>` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client. Each has an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
 
 ## The contract
 

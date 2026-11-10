@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/v1.0/version.schema.json",
-  "description": "One saved version of the presentation. It has a folder of its own under versions/, with this file and copies of the presentation's two files as they were saved. The `<time>` in its folder's name is when the version was saved, with its suffix.",
+  "description": "One saved version of the presentation. It has a folder of its own under `versions/`. The folder has this file and copies of the presentation's two files as they were saved. The `<time>` in its folder's name is when the version was saved. A suffix follows it.",
   "type": "object",
   "properties": {
     "markdownpoint": {
