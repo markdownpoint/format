@@ -162,7 +162,7 @@
       "type": "object",
       "properties": {},
       "propertyNames": {
-        "pattern": "^(?!none(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "additionalProperties": {
         "description": "One text style. The defaults are 0 for `inset-top` and `inset-bottom`, half the font size for `paragraph-spacing`, and 1.25 times the font size for `list-indent`. Without `bullet-style` and `sub-bullet-style`, bullets are disc at the first level and circle at the second. Deeper levels are square.",
@@ -342,7 +342,7 @@
         },
         "additionalProperties": false
       },
-      "description": "The theme's text styles, by name. No name is built in, and `none` can't be a name."
+      "description": "The theme's text styles, by name. No name is built in."
     },
     "guides": {
       "type": "array",

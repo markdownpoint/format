@@ -121,32 +121,24 @@
       "description": "How long the talk should take, in seconds. Without it, the talk has no set length."
     },
     "default-text-style": {
-      "anyOf": [
-        {
-          "const": "none"
+      "description": "The text style and color of a new text box. Without a text style, a new text box has none.",
+      "type": "object",
+      "properties": {
+        "text-style": {
+          "type": "string",
+          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "description": "The text style."
         },
-        {
-          "description": "What a new text box starts with. Without this key, or with an empty record, a new text box uses the body style. `\"none\"` gives it no style.",
-          "type": "object",
-          "properties": {
-            "text-style": {
-              "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-              "description": "The text style."
-            },
-            "color": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/color"
-                }
-              ],
-              "description": "The color: a color role or a hex color."
+        "color": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/color"
             }
-          },
-          "additionalProperties": false
+          ],
+          "description": "The color: a color role or a hex color."
         }
-      ],
-      "description": "The text style and color of a new text box, or none for no style."
+      },
+      "additionalProperties": false
     },
     "image-style": {
       "allOf": [
