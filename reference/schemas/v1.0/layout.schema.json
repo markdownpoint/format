@@ -5572,7 +5572,7 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text's alignment holds."
         },
         "y": {
           "type": "number",
@@ -6273,7 +6273,7 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text's alignment holds."
         },
         "y": {
           "type": "number",
@@ -6388,7 +6388,7 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text's alignment holds."
         },
         "y": {
           "type": "number",
