@@ -731,7 +731,7 @@
                         "type": "number",
                         "minimum": 0,
                         "maximum": 33554431,
-                        "description": "How far past what the text paints the shadow reaches. Photoshop's Size works the same way."
+                        "description": "How far the shadow reaches beyond the text's letters and outline. Photoshop's Size works the same way."
                       },
                       "spread": {
                         "type": "number",

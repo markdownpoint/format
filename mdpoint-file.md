@@ -1,6 +1,6 @@
 # The .mdpoint file
 
-`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, properties, and animation. The presentation's text and slide order are in [slides.md](md-file.md).
+`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, animation, and other keys. The presentation's text and slide order are in [slides.md](md-file.md).
 
 The presentation's name is its folder's name. Rename the folder to rename the presentation.
 
@@ -18,7 +18,7 @@ Objects and steps==.==
 The card fades in on the first click.
 
 <!-- notes -->
-This slide has two texts, two shapes and a line with an arrow, on the Blank layout. One step fades the card in.
+This slide has two texts, two shapes, and a line with an arrow. It uses the Blank layout. One step fades the card in.
 ```
 
 The slide's objects and animation are in the .mdpoint file:
@@ -87,7 +87,7 @@ The slide's objects and animation are in the .mdpoint file:
 }
 ```
 
-Saved JSON has each object property, and each key inside a `frame` or a `transition`, on a line of its own. A blank line separates one object or override from the next. A line-based merge, such as Git's, can then keep most separate edits apart. Edits to the same or adjacent lines still conflict, and a move and a resize of the same object change adjacent lines. The examples on this page use a more compact layout.
+Each key of an object, and each key inside a `frame` or a `transition`, is on a line of its own in saved JSON. A blank line separates one object or override from the next. A line-based merge, such as Git's, can then keep most separate edits apart. Edits to the same or adjacent lines still conflict, and a move and a resize of the same object change adjacent lines. The examples on this page use a more compact layout.
 
 A merge conflict that git leaves in the file is an error. MarkdownPoint shows the line where it starts and won't open the presentation until you resolve it.
 
@@ -300,7 +300,7 @@ An image object shows a picture from the presentation's `media` folder. `exposur
 
 ![The adjust slide drawn by MarkdownPoint](images/pictures-adjust.png)
 
-A slide's `background` can have an `image` too. The image covers the slide. Its `file` is the picture, `crop` zooms in on a point, and `opacity` lets the scheme's color show through:
+A slide's `background` can have an `image` too. The image covers the slide. Its `file` is the picture. With `crop`, it zooms in on a point. With an `opacity` below 1, the scheme's color shows through:
 
 ```json
 {
@@ -313,7 +313,7 @@ A slide's `background` can have an `image` too. The image covers the slide. Its 
 }
 ```
 
-An image with transparency casts its `drop-shadow` in its own shape. Its size and offset are in canvas units, and on a text they are in ems of its size:
+An image with transparency casts its `drop-shadow` in its own shape. Its size and offset are in canvas units. On a text, they are in ems of the text's font size:
 
 ```json
 {
@@ -445,7 +445,7 @@ With `soundtrack`, one audio file plays through the whole presentation, with its
 
 ## 3D
 
-Models, lights, and the camera are placed in a 3D space. A constraint applies a rule to one of them as things move. `aim` turns a model, or the node of it named by `node`, toward a target. `squash-and-stretch` preserves a model's volume while a step scales it:
+Models, lights, and the camera are placed in a 3D space. A constraint applies a rule to one of them as things move. An `aim` constraint turns a model, or its node named by `node`, toward a target. A `squash-and-stretch` constraint preserves a model's volume while a step scales it:
 
 ```json
 [{"id": "look", "type": "aim", "node": "shade", "target": "mug", "axis": "-y", "strength": 0.5}]
@@ -509,7 +509,7 @@ Five settings can repeat motion while a slide is visible: a step's `repeat-count
 
 ## Motion
 
-The [motion example](examples/motion) includes a repeater, named curves and springs, loops, waves, an interrupted move, a curved path, a composition at four moments, text animations, and transitions. Each slide's speaker notes identify the relevant properties.
+The [motion example](examples/motion) includes a repeater, named curves and springs, loops, waves, an interrupted move, a curved path, a composition at four moments, text animations, and transitions. Each slide's speaker notes identify the relevant keys.
 
 <img src="images/motion-curves.png" alt="The curves slide drawn by MarkdownPoint" width="49%"> <img src="images/motion-settings.png" alt="The settings slide drawn by MarkdownPoint" width="49%">
 

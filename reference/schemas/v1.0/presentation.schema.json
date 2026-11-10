@@ -3776,7 +3776,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?:\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z]))*(?![\\s\\S])",
-        "description": "a property name"
+        "description": "a key, or a part of a record such as \"tilt.x\""
       },
       "additionalProperties": {
         "type": "string",
@@ -4540,7 +4540,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
-        "description": "a property name"
+        "description": "an object's id, a dot, and a parameter, such as \"card.opacity\""
       },
       "additionalProperties": {
         "$ref": "#/definitions/parameter-value"
@@ -7249,7 +7249,7 @@
             "type": "object",
             "propertyNames": {
               "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
-              "description": "a property name"
+              "description": "an object's id, a dot, and a parameter, such as \"card.opacity\""
             },
             "additionalProperties": {
               "description": "One parameter's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation.xy` have {x, y}, and `position.xyz` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
@@ -7774,7 +7774,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 33554431,
-              "description": "How far past what the text paints the shadow reaches. Photoshop's Size works the same way."
+              "description": "How far the shadow reaches beyond the text's letters and outline. Photoshop's Size works the same way."
             },
             "spread": {
               "type": "number",

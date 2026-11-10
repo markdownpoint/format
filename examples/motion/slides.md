@@ -53,7 +53,7 @@ elastic, amplitude 1.5, period 0.5
 spring, damping-ratio 0.72, response 0.6
 
 <!-- text: caption -->
-Settings change how far a named curve pulls back, swings past or bounces.
+Settings change how far a named curve pulls back, swings past, or bounces.
 
 <!-- notes -->
 A named curve with settings is a record with its name in `type`. `back` sets how far an overshoot swings past the end, and `bounciness` sets how high a bounce rebounds. `amplitude` and `period` set an elastic curve's swing, and `damping-ratio` and `response` set a spring's.
@@ -111,7 +111,7 @@ Copies of one shape==.==
 Eight copies turn in a ring. Each starts a little later than the one before.
 
 <!-- notes -->
-With `repeater`, one square makes eight squares in all (`copies`): itself, unchanged, and seven copies. Each copy is turned 45 degrees (`rotation`) around a point below it (`anchor-point`) and is a little smaller (`scale`). The last copy fades to an `end-opacity` of 0.2. Each copy's turn, scale and delay vary a little at random (`rotation-randomness`, `scale-randomness`, `stagger-randomness`), from `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before (`stagger`). The slide leaves with a carry-over that matches words. The words shared by the two headings move to their places on the next slide.
+With `repeater`, one square makes eight squares in all (`copies`): itself, unchanged, and seven copies. Each copy is turned 45 degrees (`rotation`) around a point below it (`anchor-point`) and is a little smaller (`scale`). The last copy fades to an `end-opacity` of 0.2. Each copy's turn, scale, and delay vary a little at random (`rotation-randomness`, `scale-randomness`, and `stagger-randomness`). The randomness uses `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before (`stagger`). The slide leaves with a carry-over that matches words. The words shared by the two headings move to their places on the next slide.
 
 <!-- slide: arrival -->
 
@@ -122,7 +122,7 @@ Eight copies of one shape==.==
 The words shared by both headings carry over from the slide before.
 
 <!-- notes -->
-The previous slide's transition has its `effect` set to `carry-over` and its `match` set to `word`. It matches the two headings word by word. "of one shape" moves to its place in this heading, "Copies" fades out and "Eight copies" fades in. The square has the same id on both slides. It is where the click left it, turned 90 degrees. Its copies stay still while the words move.
+The previous slide's transition has its `effect` set to `carry-over` and its `match` set to `word`. It matches the two headings word by word. "of one shape" moves to its place in this heading, "Copies" fades out, and "Eight copies" fades in. The square has the same id on both slides. It is where the click left it, turned 90 degrees. Its copies stay still while the words move.
 
 <!-- slide: moments -->
 

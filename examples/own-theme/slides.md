@@ -12,7 +12,7 @@ A theme of its own
 The theme includes Instrument Serif for its titles. **Bold** words are in capitals with wider spacing. ~~Struck~~ words fade to the muted color.
 
 <!-- notes -->
-The theme also sets a 12-column grid, a baseline every 24 canvas units and two guides. MarkdownPoint shows them while you edit, but never on the slide.
+The theme also sets a 12-column grid, a baseline every 24 canvas units, and two guides. MarkdownPoint shows them while you edit, but never on the slide.
 
 <!-- slide: dark -->
 

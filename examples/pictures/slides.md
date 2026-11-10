@@ -48,4 +48,4 @@ prompt
 restyle Chalk
 
 <!-- notes -->
-The boat has been generated, and its picture and record are in generated/. MarkdownPoint saves each picture there when the author generates it. The background's image has only its prompt, its style and whether it's transparent. The hills have a restyle.
+The boat has been generated, and its picture and record are in generated/. MarkdownPoint saves each picture there when the author generates it. The background's image has only its prompt, its style, and whether it's transparent. The hills have a restyle.

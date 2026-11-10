@@ -1,6 +1,6 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations and limits, and `mdpoint schema <operation>` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client, each with an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
+The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations, and limits, and `mdpoint schema <operation>` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client, each with an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
 
 ## The contract
 
@@ -97,9 +97,9 @@ An issue is a problem that `validate` and `presentation get` find in the
 files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
 `message` in English, and a `disposition`: what MarkdownPoint does about it.
 With `show-presentation`, the presentation is shown. Whatever can't be used
-shows a default or nothing. Each message says which. `skip-object` leaves
-the object out, `refuse-slide` refuses the slide, and `refuse-presentation`
-refuses the whole presentation. The fields that locate an issue depend on its
+shows a default or nothing. Each message says which. With `skip-object`,
+the object is left out. With `refuse-slide`, the slide is refused. With
+`refuse-presentation`, the whole presentation is refused. The fields that locate an issue depend on its
 `source`:
 
 - `mdpoint`: `path` selects the value in the `.mdpoint` file, one key after

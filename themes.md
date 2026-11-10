@@ -16,7 +16,7 @@ themes/<key>/
 
 ## Master, layouts, and slides
 
-The master applies to every slide. Layouts define the objects and placeholders for each kind of slide. A slide selects a layout and can add objects or override properties.
+The master applies to every slide. Layouts define the objects and placeholders for each kind of slide. A slide selects a layout and can add objects or override keys of the layout's objects.
 
 For a title placeholder, the layout sets its position and text style. Each slide supplies the title text in its Markdown block.
 
@@ -116,9 +116,9 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 }
 ```
 
-`"placeholder": true` makes a layout's text or image a placeholder. Each slide fills it with its own text or image, matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
+A layout's text or image with `"placeholder": true` is a placeholder. Each slide fills it with its own text or image, matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
 
-The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing while presenting. Use `overrides` to change a master object's properties in this layout. Set its override entry to `null` to remove the object.
+The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
 
 ![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
 
@@ -135,7 +135,7 @@ The [own-theme example](examples/own-theme) has its own theme, Studio, under `th
 }
 ```
 
-A text style's `marks` set how bold, italic, highlighted, struck-through, and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `padding-bottom` leaves space under the last line:
+A text style's `marks` set how bold, italic, highlighted, struck-through, and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `padding-bottom` is the space under the last line:
 
 ```json
 {
@@ -178,7 +178,7 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 ]
 ```
 
-`unit-scale` is how many meters one canvas unit represents in 3D. Studio's value of 0.01 makes a canvas unit one centimeter. `save-id` in `master.json` and in a layout is the id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. An older copy of the file with the same content has a different one. Other tools leave it unchanged.
+`unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. An older copy of the file with the same content has a different one. Other tools leave it unchanged.
 
 A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder, named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
 

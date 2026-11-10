@@ -21,9 +21,9 @@ Keep the presentation's whole folder in your vault and open `slides.md` in Obsid
 
 Each slide has an id. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same id. Text blocks use the ids of their objects. To move a slide, move its whole block in `slides.md`. Its id doesn't change.
 
-Objects use the selected theme's fonts, color schemes, text styles, and layouts. A slide can add objects and override properties inherited from its layout.
+Objects use the selected theme's fonts, color schemes, text styles, and layouts. A slide can add objects and override keys of the objects it inherits from its layout.
 
-Text and image objects use a 2D frame for position and size. A 3D model has a position, rotation, and scale. Keyframes animate object properties over time. The [reference](reference/v1.md#objects) lists each property's units, defaults, and allowed values.
+Text and image objects use a 2D frame for position and size. A 3D model has a position, rotation, and scale. Keyframes animate an object's parameters over time. The [reference](reference/v1.md#objects) lists each key's units, defaults, and allowed values.
 
 ## A small presentation
 
@@ -52,7 +52,7 @@ The [complete presentation](examples/first-deck) includes the theme and JSON fil
 ## Guides
 
 - **[The .md file](md-file.md)**: write the words, arrange slides, and add speaker notes. Start here when editing a presentation by hand.
-- **[The .mdpoint file](mdpoint-file.md)**: place objects, set their properties, and animate them.
+- **[The .mdpoint file](mdpoint-file.md)**: place objects, set their keys, and animate them.
 - **[Themes](themes.md)**: share fonts, colors, text styles, and layouts across slides.
 - **[Reference, version 1](reference/v1.md)**: look up a key's exact meaning, values, units, and defaults.
 - **[Agent contract, version 1](agent/1/README.md)**: the methods, requests, and errors coding agents use with the running app.
@@ -73,7 +73,7 @@ Media and theme resources use relative paths. Move the whole folder when moving 
 
 MarkdownPoint applies the orientation an image's file states. A JPEG uses the orientation in its first Exif segment that isn't empty. A PNG uses the orientation in an `eXIf` chunk of any size before its image data, if the chunk's CRC is correct. An AVIF is rotated by its `irot` property and then mirrored by its `imir` property. A WebP and every other image are drawn with no orientation applied. A picture's width and height in the presentation are its size after the orientation is applied. A tool that draws a presentation orients each picture by this rule and no other.
 
-When you place a PNG, JPEG, or WebP image with a side longer than 4096 pixels, MarkdownPoint scales it to 4096 pixels on that side and saves it in `media/` in the same file type. The saved picture keeps the original's EXIF and XMP, with its size, orientation, and color space set to match the saved pixels. A saved WebP has its pixels in the original's orientation, and the original's orientation tag. The EXIF thumbnail and a JPEG's extended XMP are left out. MarkdownPoint saves an animated PNG or WebP, a picture of more than 268,435,456 pixels and a file over 402 MB at full size. Other file types, and files you copy into `media/` yourself, are left as they are.
+When you place a PNG, JPEG, or WebP image with a side longer than 4096 pixels, MarkdownPoint scales it to 4096 pixels on that side and saves it in `media/` in the same file type. The saved picture keeps the original's EXIF and XMP, with its size, orientation, and color space set to match the saved pixels. A saved WebP has its pixels in the original's orientation, and the original's orientation tag. The EXIF thumbnail and a JPEG's extended XMP are left out. MarkdownPoint saves an animated PNG or WebP, a picture of more than 268,435,456 pixels, and a file over 402 MB at full size. Other file types, and files you copy into `media/` yourself, are left as they are.
 
 Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. The two files must have those names, in any letter case. The folders `media`, `generated`, `themes`, and `versions` are always lowercase. Mac and Windows disks ignore letter case by default. On such a disk, MarkdownPoint still finds the files in a folder named `Media` or `MEDIA` and warns about it. On a disk that tells capitals apart, those files are missing. The presentation names every other file exactly as its folder lists it. MarkdownPoint won't open a folder that contains duplicate copies, such as `slides 2.md` or a sync service's conflicted copy. Resolve any duplicates before opening the presentation.
 
