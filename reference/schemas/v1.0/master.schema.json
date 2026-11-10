@@ -2631,17 +2631,24 @@
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
               },
-              "rotation-x": {
-                "type": "number",
-                "minimum": -8589934592,
-                "maximum": 8589934592,
-                "description": "degrees"
-              },
-              "rotation-y": {
-                "type": "number",
-                "minimum": -8589934592,
-                "maximum": 8589934592,
-                "description": "degrees"
+              "tilt": {
+                "description": "How far a group tilts in depth, in degrees, about axes through its anchor point in the slide's plane.",
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -8589934592,
+                    "maximum": 8589934592,
+                    "description": "A positive x turns its top away from the viewer, about the horizontal axis. CSS's `rotateX()` turns the same way. A 3D object turns the other way under a positive `rotation.x`."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -8589934592,
+                    "maximum": 8589934592,
+                    "description": "A positive y brings its left side forward, about the vertical axis. It turns after the group's rotation and before its x."
+                  }
+                },
+                "additionalProperties": false
               },
               "auto-layout": {
                 "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
@@ -3944,7 +3951,7 @@
     "composition-bindings": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?:\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z]))*(?![\\s\\S])",
         "description": "a property name"
       },
       "additionalProperties": {
