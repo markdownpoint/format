@@ -7,7 +7,7 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format version, as a major and a minor number in quotes: \"1.0\"."
+      "description": "The format version. It is a major and a minor number in quotes: \"1.0\"."
     },
     "type": {
       "const": "style-library",
@@ -32,7 +32,7 @@
           "prompt": {
             "type": "string",
             "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-            "description": "How the style changes an image, as an edit prompt. It isn't blank."
+            "description": "How the style changes an image: an edit prompt. It isn't blank."
           },
           "transparent-background": {
             "type": "boolean",

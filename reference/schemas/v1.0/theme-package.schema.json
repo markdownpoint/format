@@ -7,7 +7,7 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format version, as a major and a minor number in quotes: \"1.0\"."
+      "description": "The format version. It is a major and a minor number in quotes: \"1.0\"."
     },
     "type": {
       "const": "theme-package",
@@ -27,12 +27,12 @@
           "file": {
             "type": "string",
             "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S])",
-            "description": "Its path inside the package, as a theme's file path."
+            "description": "Its path inside the package. It is a file path in the theme's folder."
           },
           "sha256": {
             "type": "string",
             "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
-            "description": "Its SHA-256 digest, as 64 lowercase hexadecimal digits."
+            "description": "Its SHA-256 digest in 64 lowercase hexadecimal digits."
           },
           "bytes": {
             "type": "integer",

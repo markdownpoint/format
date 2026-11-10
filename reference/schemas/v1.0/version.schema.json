@@ -7,7 +7,7 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format version, as a major and a minor number in quotes: \"1.0\"."
+      "description": "The format version. It is a major and a minor number in quotes: \"1.0\"."
     },
     "type": {
       "const": "version",
