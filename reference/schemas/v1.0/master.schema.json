@@ -4026,7 +4026,7 @@
         },
         "delivery": {
           "const": "by-paragraph",
-          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
+          "description": "`by-paragraph`: each paragraph enters on the step whose paragraph cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
         },
         "duration": {
           "type": "number",

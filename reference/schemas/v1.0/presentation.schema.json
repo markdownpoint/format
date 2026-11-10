@@ -4033,7 +4033,7 @@
         },
         "delivery": {
           "const": "by-paragraph",
-          "description": "`by-paragraph`: each paragraph enters on the step whose text cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
+          "description": "`by-paragraph`: each paragraph enters on the step whose paragraph cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
         },
         "duration": {
           "type": "number",
@@ -7542,7 +7542,7 @@
               "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
-              "description": "An event at a set time in a step. Its id is unique in its step among its keyframes and cues. A clip plays an Action of the GLB `file` of a model or a 3D text. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
+              "description": "An event at a set time in a step. Its id is unique in its step among its keyframes and cues. A clip plays an Action of the GLB `file` of a model or a 3D text. Cinema 4D's Motion Clip works the same way. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
               "anyOf": [
                 {
                   "type": "object",
@@ -7554,7 +7554,7 @@
                       "description": "When it happens, in seconds into the step."
                     },
                     "type": {
-                      "const": "text"
+                      "const": "paragraph"
                     },
                     "object": {
                       "allOf": [
@@ -7588,63 +7588,7 @@
                       "description": "When it happens, in seconds into the step."
                     },
                     "type": {
-                      "const": "audio"
-                    },
-                    "object": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/object-id"
-                        }
-                      ],
-                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
-                    }
-                  },
-                  "required": [
-                    "time",
-                    "type",
-                    "object"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "time": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 4294967296,
-                      "description": "When it happens, in seconds into the step."
-                    },
-                    "type": {
-                      "const": "video"
-                    },
-                    "object": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/object-id"
-                        }
-                      ],
-                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
-                    }
-                  },
-                  "required": [
-                    "time",
-                    "type",
-                    "object"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "time": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 4294967296,
-                      "description": "When it happens, in seconds into the step."
-                    },
-                    "type": {
-                      "const": "web-video"
+                      "const": "play"
                     },
                     "object": {
                       "allOf": [
@@ -7725,7 +7669,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step, by id. They are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video or a web video, or plays a clip or an Action."
+            "description": "Events at set times in the step, by id. They are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video, or a web video, or plays a clip."
           }
         },
         "required": [
