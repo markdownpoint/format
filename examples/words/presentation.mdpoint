@@ -130,7 +130,7 @@
           "text-style": "display",
           "color": "background",
           "text-stroke": "accent",
-          "text-stroke-weight": 3
+          "text-stroke-weight": 0.023438
         }
       ]
     }

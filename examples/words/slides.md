@@ -122,4 +122,4 @@ This box has no height in the file. It grows to fit its words.
 Outlined
 
 <!-- notes -->
-The first box has `auto-size` set to height. Its frame has no height. The figures have `tabular` set. Every digit has the same width, and the columns line up. The outlined word's letters have the background's color. Its `text-stroke` is the accent color, and its `text-stroke-weight` is 3 canvas units.
+The first box has `auto-size` set to height. Its frame has no height. The figures have `tabular` set. Every digit has the same width, and the columns line up. The outlined word's letters have the background's color. Its `text-stroke` is the accent color, and its `text-stroke-weight` is 0.023438 em, 3 canvas units at the display style's 128.

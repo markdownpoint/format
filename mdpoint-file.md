@@ -161,14 +161,14 @@ A text box can grow to fit its words, give every digit the same width, and outli
     "text-style": "display",
     "color": "background",
     "text-stroke": "accent",
-    "text-stroke-weight": 3
+    "text-stroke-weight": 0.023438
   }
 ]
 ```
 
 ![The type slide drawn by MarkdownPoint](images/words-type.png)
 
-`auto-size` names the sides that grow, here the height. The frame then has no height, and the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` is its thickness in canvas units.
+`auto-size` names the sides that grow, here the height. The frame then has no height, and the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` is its thickness in ems of the font size.
 
 A chart draws the Markdown table in its text block:
 

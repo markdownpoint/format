@@ -812,8 +812,8 @@
               "text-stroke-weight": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 33554431.984375,
-                "description": "canvas units"
+                "maximum": 33554431,
+                "description": "em"
               },
               "ignore-auto-layout": {
                 "type": "boolean"
@@ -1847,8 +1847,8 @@
               "text-stroke-weight": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 33554431.984375,
-                "description": "canvas units"
+                "maximum": 33554431,
+                "description": "em"
               },
               "inset": {
                 "type": "number",
@@ -2457,8 +2457,8 @@
               "text-stroke-weight": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 33554431.984375,
-                "description": "canvas units"
+                "maximum": 33554431,
+                "description": "em"
               },
               "ignore-auto-layout": {
                 "type": "boolean"
