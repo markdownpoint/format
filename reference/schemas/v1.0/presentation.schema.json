@@ -7552,7 +7552,7 @@
                     "additionalProperties": false
                   },
                   "minItems": 1,
-                  "description": "The keyframes, one or more."
+                  "description": "The keyframes, one or more, in any order: they are read by their time, then by their id."
                 },
                 "loop": {
                   "enum": [
@@ -7813,7 +7813,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step: a paragraph appearing, an audio object, a video, or a web video starting, or a clip playing an Action of a model or a 3D text."
+            "description": "Events at set times in the step, in any order: they are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video or a web video, or plays a clip."
           }
         },
         "required": [
@@ -7911,14 +7911,14 @@
           "const": "none"
         },
         {
-          "description": "A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, the letters grow solid by size × spread. Then they are blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+          "description": "A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, what the text paints, its letters and its outline, grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
               "type": "number",
               "minimum": 0,
               "maximum": 33554431,
-              "description": "How far past the letters the shadow reaches. Photoshop's Size works the same way."
+              "description": "How far past what the text paints the shadow reaches. Photoshop's Size works the same way."
             },
             "spread": {
               "type": "number",
@@ -7947,7 +7947,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far the shadow falls from the letters, as {x, y} across and down in the text's own axes. It turns and scales with the text and its groups."
+              "description": "How far the shadow falls, as {x, y} across and down in the text's own axes. It turns and scales with the text and its groups."
             },
             "color": {
               "allOf": [
