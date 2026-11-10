@@ -135,7 +135,7 @@ The [own-theme example](examples/own-theme) has its own theme, Studio, under `th
 }
 ```
 
-A text style's `marks` set how bold, italic, highlighted, struck-through, and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `inset-bottom` leaves space under the last line:
+A text style's `marks` set how bold, italic, highlighted, struck-through, and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `padding-bottom` leaves space under the last line:
 
 ```json
 {
@@ -144,7 +144,7 @@ A text style's `marks` set how bold, italic, highlighted, struck-through, and co
   "font-weight": 400,
   "line-height": 1.4,
   "color": "text",
-  "inset-bottom": 24,
+  "padding-bottom": 24,
   "marks": {"bold": {"case": "upper", "tracking": 0.06}, "strikethrough": {"color": "muted"}}
 }
 ```

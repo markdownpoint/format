@@ -165,7 +165,7 @@
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "additionalProperties": {
-        "description": "One text style. The defaults are 0 for `inset-top` and `inset-bottom`, half the font size for `paragraph-spacing`, and 1.25 times the font size for `list-indent`. Without `bullet-styles`, the list levels are `disc`, `circle`, then `square`.",
+        "description": "One text style. The defaults are 0 for `padding-top` and `padding-bottom`, half the font size for `paragraph-spacing`, and 1.25 times the font size for `list-indent`. Without `bullet-styles`, the list levels are `disc`, `circle`, then `square`.",
         "type": "object",
         "properties": {
           "font-family": {
@@ -222,13 +222,13 @@
             ],
             "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
           },
-          "inset-top": {
+          "padding-top": {
             "type": "number",
             "minimum": 0,
             "maximum": 33554431.984375,
             "description": "The space between the text box's top and its first line."
           },
-          "inset-bottom": {
+          "padding-bottom": {
             "type": "number",
             "minimum": 0,
             "maximum": 33554431.984375,
@@ -677,13 +677,13 @@
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
-              "inset-top": {
+              "padding-top": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
-              "inset-bottom": {
+              "padding-bottom": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 33554431.984375,
@@ -1767,13 +1767,13 @@
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
-              "inset-top": {
+              "padding-top": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
-              "inset-bottom": {
+              "padding-bottom": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 33554431.984375,

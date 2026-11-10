@@ -51,7 +51,7 @@
       "font-weight": 400,
       "line-height": 1.4,
       "color": "text",
-      "inset-bottom": 24,
+      "padding-bottom": 24,
       "marks": {"bold":{"case":"upper","tracking":0.06},"strikethrough":{"color":"muted"}}
     }
   },
