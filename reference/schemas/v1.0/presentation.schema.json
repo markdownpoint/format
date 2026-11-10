@@ -4534,13 +4534,13 @@
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its x, as a fraction of the box's width. 0 is the left edge, and 1 is the right edge."
+                  "description": "Its x, as a fraction of the frame's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its y, as a fraction of the box's height. 0 is the top edge, and 1 is the bottom edge."
+                  "description": "Its y, as a fraction of the frame's height. 0 is the top edge, and 1 is the bottom edge."
                 }
               },
               "required": [
