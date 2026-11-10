@@ -315,7 +315,7 @@ A slide's `background` can have an `image` too. The image covers the slide. Its 
 }
 ```
 
-An image with transparency casts its `drop-shadow` in its own shape:
+An image with transparency casts its `drop-shadow` in its own shape. Its size and offset are in canvas units, and on a text they are in ems of its size:
 
 ```json
 {
