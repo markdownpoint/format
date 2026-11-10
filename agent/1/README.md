@@ -80,7 +80,7 @@ unavailable.
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
-| `too-large` | The request is too large for one call: its size, a proposal's operations or a range's samples. | Send less at once, or lower `fps`. |
+| `too-large` | The request is too large for one call: its size, a proposal's operations or a range's samples. | Send less at once, or lower `sampleRate`. |
 | `busy` | Something that can't run at the same time is in progress, such as accepting that proposal or another movie export. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
