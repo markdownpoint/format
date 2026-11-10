@@ -79,7 +79,7 @@ A turn back
 A curved path
 
 <!-- text: caption -->
-The card loops, the dots bob, the oval zooms evenly, a dot turns back halfway and the last one arcs over.
+The card loops, the dots bob, the oval zooms evenly, a dot turns back halfway, and the last one arcs over.
 
 <!-- notes -->
 The card slides in past its resting position, settles, and then swings right and back, looping until the three-second step ends. With its curve's `loop`, the keyframes play again from its `loop-keyframe`, `card-settles`, to the last one. The slide-in plays once. The two dots bob on waves from `oscillate`. One is a triangle wave that starts a quarter of the way into its cycle, and the other is a noise wave from seed 7. The oval starts at a `scale` of 0.5 by 0.25 and grows fourfold. With `exponential-scale`, the zoom looks even. The fourth dot heads for the far side, but its keyframe cuts that move off halfway, and the dot turns back. The keyframe's `interrupted` names the move it cuts off. The last dot arcs over to the right. Its curve animates `frame.xy`, both coordinates as one point. With its keyframe's `path`, the move bends along a path in the move's own coordinates, from the start at 0 0 to the end at 1 0. The slide leaves through its transition's `color`, the accent color.

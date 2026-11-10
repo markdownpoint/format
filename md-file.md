@@ -37,7 +37,7 @@ Two files, one deck==.==
 
 <!-- text: body -->
 - **slides.md** has the words
-- **presentation.mdpoint** has the layout, styles and steps
+- **presentation.mdpoint** has the layout, styles, and steps
 - The theme is a folder in **themes**
 
 <!-- section: finish -->
@@ -174,10 +174,10 @@ Text objects, tables, and speaker notes use Markdown. The [reference](reference/
 <!-- slide: marks -->
 
 <!-- text: title -->
-Marks, links and colors==.==
+Marks, links, and colors==.==
 
 <!-- text: body -->
-Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
+Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`.
 
 [A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 ```

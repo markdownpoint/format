@@ -9,10 +9,10 @@ id: 9d98709f-0aac-407e-b6d3-56da6b8494aa
 <!-- slide: marks -->
 
 <!-- text: title -->
-Marks, links and colors==.==
+Marks, links, and colors==.==
 
 <!-- text: body -->
-Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~ or `code`.
+Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`.
 
 [A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 
