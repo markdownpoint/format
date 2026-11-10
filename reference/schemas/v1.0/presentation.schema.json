@@ -843,31 +843,13 @@
                         }
                       ]
                     },
-                    "bullet-style": {
+                    "bullet-styles": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "enum": [
-                            "disc",
-                            "circle",
-                            "square"
-                          ]
-                        }
-                      ]
-                    },
-                    "sub-bullet-style": {
-                      "anyOf": [
-                        {
-                          "type": "null"
-                        },
-                        {
-                          "enum": [
-                            "disc",
-                            "circle",
-                            "square"
-                          ]
+                          "$ref": "#/definitions/bullet-styles"
                         }
                       ]
                     },
@@ -3741,6 +3723,17 @@
       },
       "additionalProperties": false
     },
+    "bullet-styles": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "disc",
+          "circle",
+          "square"
+        ]
+      },
+      "minItems": 1
+    },
     "color": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
@@ -5889,19 +5882,8 @@
           "maximum": 33554431.984375,
           "description": "canvas units"
         },
-        "bullet-style": {
-          "enum": [
-            "disc",
-            "circle",
-            "square"
-          ]
-        },
-        "sub-bullet-style": {
-          "enum": [
-            "disc",
-            "circle",
-            "square"
-          ]
+        "bullet-styles": {
+          "$ref": "#/definitions/bullet-styles"
         },
         "line-height": {
           "type": "number",
@@ -6424,19 +6406,8 @@
           "maximum": 33554431.984375,
           "description": "canvas units"
         },
-        "bullet-style": {
-          "enum": [
-            "disc",
-            "circle",
-            "square"
-          ]
-        },
-        "sub-bullet-style": {
-          "enum": [
-            "disc",
-            "circle",
-            "square"
-          ]
+        "bullet-styles": {
+          "$ref": "#/definitions/bullet-styles"
         },
         "line-height": {
           "type": "number",
@@ -8036,7 +8007,7 @@
             },
             "built-from": {
               "type": "string",
-              "pattern": "^text-model-[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
+              "pattern": "^markdownpoint\\/text-model\\/[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])",
               "description": "The fingerprint of what the GLB was built from, by the rule the reference gives. A reader that doesn't know the rule treats the model as out of sync."
             }
           },
