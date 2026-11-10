@@ -126,7 +126,8 @@ refuses the whole presentation. The fields that locate an issue depend on its
   `.mdpoint` file. It is written as for `mdpoint`. `objectId` is added when the issue is about
   one of the layout's objects. An issue about the whole theme, such as a
   missing theme that the presentation names, has none of these fields.
-- `file`: `path` is the file's path in the folder that `fileScope` names.
+- `file`: `file` is the file's path in the folder that `fileScope` names. The
+  issue has no `path`. A `path` is only ever a place inside a file.
   `presentation` is the presentation's folder, and `theme` is its theme's.
   `cache` is the folder on this computer where MarkdownPoint saves the models
   it builds from a text's letters. `bundled` is the fonts that ship with
