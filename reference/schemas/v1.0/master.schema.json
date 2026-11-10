@@ -1363,7 +1363,7 @@
                 "description": "nonempty text without NUL characters, or \"none\""
               },
               "restyle": {
-                "description": "A style applied over an image or a background's image. It has every key of a library style except `reference-prompt`.",
+                "description": "A style applied over an image or a background's image. It has every key of a library style except `reference-image-prompt`.",
                 "type": "object",
                 "properties": {
                   "name": {

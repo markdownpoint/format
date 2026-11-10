@@ -16,7 +16,7 @@
     "styles": {
       "type": "array",
       "items": {
-        "description": "One style of the style library. It has the restyle that is copied onto an image, and the prompt for the style's example image.",
+        "description": "One style of the style library. It has the restyle that is copied onto an image, and the prompt for the style's reference image.",
         "type": "object",
         "properties": {
           "name": {
@@ -24,10 +24,10 @@
             "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
             "description": "The style's name, on one line that isn't blank and has no control characters."
           },
-          "reference-prompt": {
+          "reference-image-prompt": {
             "type": "string",
             "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-            "description": "The prompt for the style's example image. It isn't blank."
+            "description": "The prompt for the style's reference image. It isn't blank."
           },
           "prompt": {
             "type": "string",
@@ -41,7 +41,7 @@
         },
         "required": [
           "name",
-          "reference-prompt",
+          "reference-image-prompt",
           "prompt"
         ],
         "additionalProperties": false
