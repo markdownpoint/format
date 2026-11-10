@@ -6,52 +6,57 @@ The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contrac
 
 `capabilities` is a compact index of the app's contract: the methods it
 serves, the operation names it accepts, its limits, and its interpolations.
-The app answers it with any number of presentations open, or none. Its
-`methods` are `{ app, presentation }`: the methods the app answers on its
-own, with no presentation open, and the methods it answers for a
-presentation. `schema` gives the request contracts one operation at a time.
-An agent never needs the whole proposal schema in its context. `mdpoint
-schema <operation> --fields` (MCP `detail: "fields"`) lists the operation's
+The app answers it with any number of presentations open, or none. Its `methods`
+are `{ app, presentation }`: the methods the app answers on its own with no
+presentation open, and the methods it answers for a presentation. `schema` gives
+the request contracts one operation at a time. An agent never needs the whole
+proposal schema in its context. `mdpoint
+schema <operation> --fields` (MCP
+`detail: "fields"`) lists the operation's
 fields instead of its schema: each field's type, whether every request needs
 it, and the values it accepts. `--json` prints one compact line for machines.
 
 The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
 or value is added to `/1`, and a rename, a removal, or a change of meaning
-comes in `/2`. Methods are grouped by what they act on, in plural collections
-such as `presentations`, `slides`, and `themes`. There are also two action
-groups, `present` and `history`. The contract names its own facts in
-camelCase (`slides.get`, `insertSlide`, `nextStep`, `slideId`). A field that
-contains a file key's value is spelled as the file spells the key
-(`text-styles`, `unit-scale`, `aspect-ratio`). MCP's tools are named after
-their methods in snake case (`slides_get`). A CLI command is its method's
-names in kebab-case, with each collection in the singular: `mdpoint
+comes in `/2`. Methods are grouped by what they act on into plural collections, such as
+`presentations`, `slides`, and `themes`. There are also two action groups, `present`
+and `history`. The contract names its own facts in camelCase (`slides.get`,
+`insertSlide`, `nextStep`, `slideId`). A field that contains a file key's value is
+spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
+tools are named after their methods in snake case (`slides_get`). A CLI command is its
+method's names in kebab-case, with each collection in the singular:
+`mdpoint
 presentation get` for `presentations.get`, `mdpoint image suggest-prompt` for
-`images.suggestPrompt`. A request's `type` is an operand: `mdpoint present
-control next-slide`. On the CLI's command line, a
-value is written in kebab-case (`toggle-black-screen` for
-`toggleBlackScreen`), but a method or an operation name is written as the
-contract spells it (`mdpoint schema insertSteps`, `mdpoint call
-presentations.get`). The contract's codes and the file's keys and values are kebab-case
+`images.suggestPrompt`. A request's `type` is an operand:
+`mdpoint present
+control next-slide`. On the CLI's command line, a value is written in
+kebab-case (`toggle-black-screen` for `toggleBlackScreen`), but a method or an
+operation name is written as the contract spells it (`mdpoint schema insertSteps`,
+`mdpoint call
+presentations.get`). The contract's codes and the file's keys and values
+are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically, the same on every build. `type` is rarely an operation's first
 field.
 
-A CLI request goes to the presentation that `--presentation` names, by its
-folder or by a file in it. Without `--presentation`, the request goes to the
+A CLI request goes to the presentation that `--presentation` names by its folder
+or by a file in it. Without `--presentation`, the request goes to the
 presentation in the current folder, if there is one, then to the focused
-presentation, then to the only open one. When several presentations are open
-and none is focused, pass `--presentation "/absolute/presentation/folder"`
-with a folder from `window list`. An MCP request names its presentation in
+presentation, then to the only open one. When several presentations are open and
+none is focused, pass `--presentation "/absolute/presentation/folder"` with a
+folder from `window list`. An MCP request names its presentation in
 `presentation`. Without it, the request goes to the focused presentation, then
 to the only open one. Configure an MCP client to run `mdpoint mcp` over stdio.
-The CLI and MCP use the same live app API, validation, and proposals. `mdpoint
-call` also accepts a method name and JSON parameters directly. MCP lists each
-tool with a title and hints. The hints say whether the tool only reads,
-whether it may remove or replace what is there, whether calling it again
-changes nothing more, and whether it reaches outside MarkdownPoint, to a paid
-service, an AI provider, another application, or the web. A tool whose result
+The CLI and MCP use the same live app API, validation, and proposals.
+`mdpoint
+call` also accepts a method name and JSON parameters directly. MCP
+lists each tool with a title and hints. The hints say whether the tool only
+reads, whether it may remove or replace what is there, whether calling it again
+changes nothing more, and whether it reaches outside MarkdownPoint. Outside
+means a paid service, an AI provider, another application, or the web. A tool
+whose result
 is plain data also has an output schema.
 
 ## Errors
@@ -84,8 +89,8 @@ unavailable.
 | `busy` | Something that can't run at the same time is in progress, such as accepting that proposal or another movie export. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
-`MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout, in seconds, for every call the
-CLI makes. Without it, each method uses its own timeout. The CLI connects to
+`MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout in seconds for every call the CLI
+makes. Without it, each method uses its own timeout. The CLI connects to
 the app's endpoint: a socket on a Mac and a named pipe on Windows. It
 looks for the endpoint in `--endpoint`, then `MARKDOWNPOINT_ENDPOINT`, then in
 the app's state folder. The app records it there. The state folder is
@@ -114,8 +119,9 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   In it, the curve's name is one key. A composition is under `compositions`.
   `slideId` names the slide that contains the value, `compositionId` names the
   composition, and `objectId` names the object.
-- `md`: `location` names the file and the line, counted from 1, with the
-  column when it's known. `path` names the frontmatter key or the section the
+- `md`: `location` names the file and the line, counted from 1. It also names
+  the column when it's known. `path` names the frontmatter key or the section
+  the
   issue is about, such as `frontmatter.footer` or `sections.intro`. For an
   issue in a slide's words, it names the slide, the composition, the object,
   or the control in the `.mdpoint` file, written as for `mdpoint`, such as
