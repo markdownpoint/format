@@ -3230,7 +3230,7 @@
                             "-y",
                             "-z"
                           ],
-                          "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is y."
+                          "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
                         },
                         "strength": {
                           "type": "number",

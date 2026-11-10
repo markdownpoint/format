@@ -764,7 +764,18 @@
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/anchor-point"
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "description": "of the frame"
+                      },
+                      "y": {
+                        "type": "number",
+                        "description": "of the frame"
+                      }
+                    },
+                    "additionalProperties": false
                   }
                 ]
               },
@@ -1296,6 +1307,24 @@
                 "anyOf": [
                   {
                     "type": "null"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": -510,
+                        "maximum": 510,
+                        "description": "of the frame"
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": -510,
+                        "maximum": 510,
+                        "description": "of the frame"
+                      }
+                    },
+                    "additionalProperties": false
                   },
                   {
                     "$ref": "#/definitions/tail"
@@ -5078,7 +5107,7 @@
                   "-y",
                   "-z"
                 ],
-                "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is y."
+                "description": "The axis of the model or node that points at the target, in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
               },
               "strength": {
                 "type": "number",
