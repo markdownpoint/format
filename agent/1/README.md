@@ -126,8 +126,9 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   issue in a slide's words, it names the slide, the composition, the object,
   or the control in the `.mdpoint` file, written as for `mdpoint`, such as
   `slides.intro.objects.title`. An instance's text block is named by the
-  instance's value for its control, as an operation names it, such as
-  `slides.intro.objects.card.control-values.label`.
+  instance's value for its control, such as
+  `slides.intro.objects.card.control-values.label`. An operation names it the
+  same way.
 - `folder`: the two files disagree, or the folder can't be read. `path`
   selects the record in the `.mdpoint` file. It is written as for `mdpoint`.
   `location` names the line in the `.md` file. Each one is there only when the issue has
