@@ -5,7 +5,7 @@ The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contrac
 ## The contract
 
 `capabilities` is a compact index of the app's contract: the methods it
-serves, the operation names it accepts, its limits and its interpolations.
+serves, the operation names it accepts, its limits, and its interpolations.
 The app answers it with any number of presentations open, or none. Its
 `methods` are `{ app, presentation }`: the methods the app answers on its
 own, with no presentation open, and the methods it answers for a
@@ -16,10 +16,10 @@ fields instead of its schema: each field's type, whether every request needs
 it, and the values it accepts. `--json` prints one compact line for machines.
 
 The contract is `markdownpoint/agent/1`, and the app serves one contract at a
-time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field
-or value is added to `/1`, and a rename, a removal or a change of meaning
+time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
+or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on, in plural collections
-such as `presentations`, `slides` and `themes`. There are also two action
+such as `presentations`, `slides`, and `themes`. There are also two action
 groups, `present` and `history`. The contract names its own facts in
 camelCase (`slides.get`, `insertSlide`, `nextStep`, `slideId`). A field that
 contains a file key's value is spelled as the file spells the key
@@ -34,7 +34,7 @@ value is written in kebab-case (`toggle-black-screen` for
 contract spells it (`mdpoint schema insertSteps`, `mdpoint call
 presentations.get`). The contract's codes and the file's keys and values are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
-meaning in the contract's schemas. Most fields, branches and values are listed
+meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically, the same on every build. `type` is rarely an operation's first
 field.
 
@@ -46,12 +46,12 @@ and none is focused, pass `--presentation "/absolute/presentation/folder"`
 with a folder from `window list`. An MCP request names its presentation in
 `presentation`. Without it, the request goes to the focused presentation, then
 to the only open one. Configure an MCP client to run `mdpoint mcp` over stdio.
-The CLI and MCP use the same live app API, validation and proposals. `mdpoint
+The CLI and MCP use the same live app API, validation, and proposals. `mdpoint
 call` also accepts a method name and JSON parameters directly. MCP lists each
 tool with a title and hints. The hints say whether the tool only reads,
 whether it may remove or replace what is there, whether calling it again
 changes nothing more, and whether it reaches outside MarkdownPoint, to a paid
-service, an AI provider, another application or the web. A tool whose result
+service, an AI provider, another application, or the web. A tool whose result
 is plain data also has an output schema.
 
 ## Errors
@@ -66,21 +66,21 @@ findings are its result, whether it passes or fails. `validate --json` prints
 prints `{ changed }` and exits 1 when anything would change. An error record
 means the check couldn't run. MCP's own errors are JSON-RPC errors: an unknown
 tool, or arguments that aren't an object. The command exits 0 when it
-succeeds, 1 when it fails, 2 on a usage error and 3 when MarkdownPoint is
+succeeds, 1 when it fails, 2 on a usage error, and 3 when MarkdownPoint is
 unavailable.
 
 | Code | What happened | What to do |
 |---|---|---|
 | `usage` | The command line is wrong (CLI only). | Read the command's `--help`. |
-| `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme or file. | Read the message, then change the request. |
+| `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the revision you sent. | Read it again. `revision` is its current revision. |
 | `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
-| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal or action of Meshy's library. | Read the state again to get the ids. |
+| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
-| `too-large` | The request is too large for one call: its size, a proposal's operations or a range's samples. | Send less at once, or lower `sampleRate`. |
+| `too-large` | The request is too large for one call: its size, a proposal's operations, or a range's samples. | Send less at once, or lower `sampleRate`. |
 | `busy` | Something that can't run at the same time is in progress, such as accepting that proposal or another movie export. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
@@ -95,15 +95,15 @@ the app's state folder. The app records it there. The state folder is
 
 An issue is a problem that `validate` and `presentation get` find in the
 files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
-`message` in English and a `disposition`: what MarkdownPoint does about it.
+`message` in English, and a `disposition`: what MarkdownPoint does about it.
 With `show-presentation`, the presentation is shown. Whatever can't be used
 shows a default or nothing. Each message says which. `skip-object` leaves
-the object out, `refuse-slide` refuses the slide and `refuse-presentation`
+the object out, `refuse-slide` refuses the slide, and `refuse-presentation`
 refuses the whole presentation. The fields that locate an issue depend on its
 `source`:
 
 - `mdpoint`: `path` selects the value in the `.mdpoint` file, one key after
-  another. A key of ASCII letters, digits, `_` and `-` that starts with a
+  another. A key of ASCII letters, digits, `_`, and `-` that starts with a
   letter or `_` follows a dot. Any other key is in brackets, quoted as a JSON
   string, and a list item is its index in brackets, as in
   `slides.intro.objects[2]` and `slides.intro.initial["title.opacity"]`. Once
@@ -130,7 +130,7 @@ refuses the whole presentation. The fields that locate an issue depend on its
   `presentation` is the presentation's folder, and `theme` is its theme's.
   `cache` is the folder on this computer where MarkdownPoint saves the models
   it builds from a text's letters. `bundled` is the fonts that ship with
-  MarkdownPoint. `slideId`, `objectId` and `property` name each place where
+  MarkdownPoint. `slideId`, `objectId`, and `property` name each place where
   the file is used. An issue about a theme's own file, its `master.json` or a
   layout's file, has none of these fields.
 - `slide`: `slideId`, and `objectId` or `objectIds`.
@@ -141,13 +141,13 @@ The codes an issue can have:
 
 | What | Codes |
 |---|---|
-| A file, a record or a value MarkdownPoint refuses | `invalid-3d-parent`, `invalid-animation`, `invalid-binding`, `invalid-color`, `invalid-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-compositions`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link-target`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-point`, `invalid-presentation-field`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-skipped`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
+| A file, a record, or a value MarkdownPoint refuses | `invalid-3d-parent`, `invalid-animation`, `invalid-binding`, `invalid-color`, `invalid-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-compositions`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link-target`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-point`, `invalid-presentation-field`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-skipped`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
 | Something needed that is missing | `missing-alt`, `missing-composition`, `missing-composition-marker`, `missing-control-block`, `missing-font`, `missing-frontmatter`, `missing-generation`, `missing-key`, `missing-marker-line-break`, `missing-media`, `missing-poster`, `missing-slide`, `missing-slide-marker`, `missing-text`, `missing-text-block`, `missing-theme-master` |
 | Something given twice | `duplicate-composition-id`, `duplicate-composition-marker`, `duplicate-control-block`, `duplicate-notes-block`, `duplicate-object-id`, `duplicate-paragraph-id`, `duplicate-section-marker`, `duplicate-slide-marker`, `duplicate-text-block` |
 | A name that nothing defines | `unknown-action`, `unknown-animation-target`, `unknown-color-role`, `unknown-composition`, `unknown-constraint-target`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-link-slide`, `unknown-object`, `unknown-parent-node`, `unknown-scheme`, `unknown-text-style` |
-| Something that can't be read, resolved, matched or played | `camera-spring-unsettled`, `loops-misaligned`, `render-failed`, `repeat-shares-click`, `travel-in-loop`, `unattached-markdown`, `unclosed-code-block`, `unclosed-frontmatter`, `undrawn-line`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale` |
+| Something that can't be read, resolved, matched, or played | `camera-spring-unsettled`, `loops-misaligned`, `render-failed`, `repeat-shares-click`, `travel-in-loop`, `unattached-markdown`, `unclosed-code-block`, `unclosed-frontmatter`, `undrawn-line`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale` |
 | Two parts that disagree, or something in a place where it isn't allowed | `clashing-curves`, `clashing-keyframes`, `clashing-orient`, `file-spelling-mismatch`, `id-mismatch`, `inherited-id-collision`, `marker-outside-block`, `marker-type-mismatch`, `media-type-mismatch`, `merge-conflict`, `slide-outside-section` |
-| Content written by a theme, a newer version or another program, or left by an interrupted layout move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-format-version`, `newer-minor-kept`, `newer-theme-master`, `rounded-number`, `text-model-in-theme` |
+| Content written by a theme, a newer version, or another program, or left by an interrupted layout move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-format-version`, `newer-minor-kept`, `newer-theme-master`, `rounded-number`, `text-model-in-theme` |
 | Objects that a slide can't contain together | `3d-object-in-composition`, `aim-cycle`, `composition-cycle`, `group-cycle`, `group-depth`, `group-order`, `object-count-limit`, `parent-cycle`, `tilt-with-3d` |
 | A key or a value that its object can't have there | `auto-layout-held-animation`, `bound-value`, `color-needs-svg`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-key`, `ignored-override`, `ignored-text-block`, `key-not-for-light-type`, `link-letters-away`, `override-type`, `own-camera`, `own-world`, `parent-inverse-without-parent`, `parent-node-without-parent`, `path-delivery`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-mdpoint` |
 | What the rendered slide shows | `image-enlarged`, `low-text-contrast`, `object-off-slide`, `object-overlap`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |
