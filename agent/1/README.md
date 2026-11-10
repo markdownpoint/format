@@ -116,7 +116,12 @@ refuses the whole presentation. The fields that locate an issue depend on its
   composition, and `objectId` names the object.
 - `md`: `location` names the file and the line, counted from 1, with the
   column when it's known. `path` names the frontmatter key or the section the
-  issue is about, such as `frontmatter.footer` or `sections.intro`.
+  issue is about, such as `frontmatter.footer` or `sections.intro`. For an
+  issue in a slide's words, it names the slide, the composition, the object,
+  or the control in the `.mdpoint` file, written as for `mdpoint`, such as
+  `slides.intro.objects.title`. An instance's text block is named by the
+  instance's value for its control, as an operation names it, such as
+  `slides.intro.objects.card.control-values.label`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
   selects the record in the `.mdpoint` file. It is written as for `mdpoint`.
   `location` names the line in the `.md` file. Each one is there only when the issue has
