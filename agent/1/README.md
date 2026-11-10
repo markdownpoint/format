@@ -25,9 +25,9 @@ and `history`. The contract names its own facts in camelCase (`slides.get`,
 `insertSlide`, `nextStep`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`slides_get`). A CLI command is its
-method's names in kebab-case, with each collection in the singular:
+method's names in kebab-case. Each collection is in the singular:
 `mdpoint
-presentation get` for `presentations.get`, `mdpoint image suggest-prompt` for
+presentation get` for `presentations.get` and `mdpoint image suggest-prompt` for
 `images.suggestPrompt`. A request's `type` is an operand:
 `mdpoint present
 control next-slide`. On the CLI's command line, a value is written in
@@ -38,7 +38,7 @@ presentations.get`). The contract's codes and the file's keys and values
 are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
-alphabetically, the same on every build. `type` is rarely an operation's first
+alphabetically. The order is the same on every build. `type` is rarely an operation's first
 field.
 
 A CLI request goes to the presentation that `--presentation` names by its folder
@@ -109,8 +109,8 @@ the object is left out. With `refuse-slide`, the slide is refused. With
 
 - `mdpoint`: `path` selects the value in the `.mdpoint` file, one key after
   another. A key of ASCII letters, digits, `_`, and `-` that starts with a
-  letter or `_` follows a dot. Any other key is in brackets, quoted as a JSON
-  string, and a list item is its index in brackets, as in
+  letter or `_` follows a dot. A list item is its index in brackets, and any other key is a JSON
+  string in brackets, as in
   `slides.intro.objects[2]` and `slides.intro.initial["title.opacity"]`. Once
   an object's id can be read, the object is named by its id, as in
   `slides.intro.objects.title.opacity`. Once the slide is read, a step or a

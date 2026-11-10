@@ -125,7 +125,7 @@ Settings for the whole presentation are next to `slides`:
 
 ## Objects
 
-`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units, measured from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size, here 1920 by 1080.
+`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units. They are measured from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size. Here it is 1920 by 1080.
 
 Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's id in the marker.
 
@@ -166,7 +166,7 @@ A text box can grow to fit its words, give every digit the same width, and outli
 
 ![The type slide drawn by MarkdownPoint](images/words-type.png)
 
-`auto-size` names the sides that grow, here the height. The frame then has no height, and the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` is its thickness in ems of the font size.
+`auto-size` names the sides that grow. Here it is the height. The frame then has no height, and the box is as tall as its words. With `tabular`, right-aligned figures line up. `text-stroke` is the color of a stroke around each letter, and `text-stroke-weight` is its thickness in ems of the font size.
 
 A chart draws the Markdown table in its text block:
 
@@ -437,7 +437,7 @@ An audio object's `fade-in` and `fade-out` are in seconds:
 
 ![The play slide drawn by MarkdownPoint](images/audio-and-video-play.png)
 
-With `soundtrack`, one audio file plays through the whole presentation, with its own fades:
+With `soundtrack`, one audio file plays through the whole presentation. It has its own fades:
 
 ```json
 {"file": "media/chord.m4a", "fade-in": 2, "fade-out": 3}
@@ -567,7 +567,7 @@ Set a keyframe's `interpolation` to a named curve. To give it settings, use a re
 ]
 ```
 
-A composition is a reusable animated scene, defined under `compositions`. Each instance on a slide shows one moment of it, set by its `time-remap` in seconds. Without `time-remap`, the instance shows the last moment:
+A composition is a reusable animated scene defined under `compositions`. Each instance on a slide shows one moment of it. Its `time-remap` sets that moment in seconds. Without `time-remap`, the instance shows the last moment:
 
 ```json
 {

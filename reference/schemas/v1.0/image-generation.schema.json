@@ -260,13 +260,13 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 65535,
-          "description": "Its width as drawn, turned by the orientation its file states."
+          "description": "Its width as drawn. The orientation its file states is applied first."
         },
         "height": {
           "type": "integer",
           "minimum": 1,
           "maximum": 65535,
-          "description": "Its height as drawn, turned by the orientation its file states."
+          "description": "Its height as drawn. The orientation its file states is applied first."
         }
       },
       "required": [

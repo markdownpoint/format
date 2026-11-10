@@ -7204,7 +7204,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times, and the times of its keyframes and cues, are in seconds, rounded to six decimal places.",
+        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places.",
         "type": "object",
         "properties": {
           "id": {
@@ -7287,7 +7287,7 @@
                             "$ref": "#/definitions/parameter-value"
                           }
                         ],
-                        "description": "The value, written as the parameter is. It can be `null` to clear the whole parameter."
+                        "description": "The value. It is written as the parameter is. It can be `null` to clear the whole parameter."
                       },
                       "interpolation": {
                         "anyOf": [

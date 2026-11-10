@@ -22,7 +22,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Master
 
-`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a hidden slide number, both filled in by fields:
+`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a hidden slide number. Both are filled in by fields:
 
 ```json
 {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
@@ -124,7 +124,7 @@ The layout's `text` contains sample text for the layout chooser and theme editor
 
 ## A theme of its own
 
-The [own-theme example](examples/own-theme) has its own theme, Studio, under `themes/studio/`. Its titles use Instrument Serif, a font under the SIL Open Font License. The theme's `fonts` folder contains one `.eot` file per face, with the license next to them:
+The [own-theme example](examples/own-theme) has its own theme, Studio, under `themes/studio/`. Its titles use Instrument Serif. The font is under the SIL Open Font License. The theme's `fonts` folder contains one `.eot` file per face. The license is next to them:
 
 ```json
 {
@@ -180,7 +180,7 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 
 `unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. An older copy of the file with the same content has a different one. Other tools leave it unchanged.
 
-A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder, named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
+A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
 
 ## Changing a theme by hand
 
