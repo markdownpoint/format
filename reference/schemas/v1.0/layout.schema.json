@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/v1.0/layout.schema.json",
-  "description": "One slide layout of a theme. Its key is its file name.",
+  "description": "One slide layout of a theme. Its key is its file name without the .json extension.",
   "type": "object",
   "properties": {
     "markdownpoint": {
@@ -1823,7 +1823,7 @@
                     "type": "null"
                   },
                   {
-                    "description": "The camera's drift. The camera and its point of interest start `offset` away from the camera's set position and move together toward it, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, while t is less than `duration`, the camera and its point of interest are `offset` × (1 − t ÷ `duration`)² away from the set position. They slow steadily and reach the set position when t is `duration`. After that, they are at the set position. Stills and the editor show the set position. A slide has no drift when a scroll transition enters or leaves it.",
+                    "description": "The camera's drift. The same offset is added to the camera's position and its point of interest. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it.",
                     "type": "object",
                     "properties": {
                       "offset": {

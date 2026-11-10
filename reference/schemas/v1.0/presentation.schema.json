@@ -173,7 +173,7 @@
     "locale": {
       "type": "string",
       "pattern": "^(?![\\s\\S]*-[Pp][Oo][Ss][Ii][Xx](?![^-]))(?:[A-Za-z]{2,3}|[A-Za-z]{5,8})(?:-[A-Za-z]{4})?(?:-(?:[A-Za-z]{2}|[0-9]{3}))?(?:-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(?![\\s\\S])",
-      "description": "The presentation's language and region, as a BCP 47 tag such as fr-CA. It sets how the date field is written, chart cells are read, and words are split to animate. The default is en-US."
+      "description": "The presentation's language tag, such as fr-CA. It sets how the date field is written, chart cells are read, and words are split to animate. The default is en-US."
     },
     "slides": {
       "type": "object",
@@ -2021,7 +2021,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's drift. The camera and its point of interest start `offset` away from the camera's set position and move together toward it, on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. At t seconds on that clock, while t is less than `duration`, the camera and its point of interest are `offset` × (1 − t ÷ `duration`)² away from the set position. They slow steadily and reach the set position when t is `duration`. After that, they are at the set position. Stills and the editor show the set position. A slide has no drift when a scroll transition enters or leaves it.",
+                          "description": "The camera's drift. The same offset is added to the camera's position and its point of interest. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it.",
                           "type": "object",
                           "properties": {
                             "offset": {
@@ -7263,14 +7263,14 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `start` at or before the previous keyframe is ignored. On the first keyframe, a `start` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `start` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
                     "type": "object",
                     "properties": {
                       "start": {
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
-                        "description": "When the move into the keyframe begins, in seconds into the step. It must come before `time`. Without it, the move begins at the previous keyframe."
+                        "description": "When the move into the keyframe begins. It is in seconds into the step. It must come before `time`. Without it, the move begins at the previous keyframe, or at 0 for the first keyframe."
                       },
                       "time": {
                         "type": "number",
@@ -7868,7 +7868,7 @@
     "text-model": {
       "anyOf": [
         {
-          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
+          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "extrusion": {
@@ -7895,7 +7895,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
+          "description": "A text's 3D model, in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline, at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "file": {
