@@ -7256,19 +7256,16 @@
               "type": "object",
               "properties": {
                 "keyframes": {
-                  "type": "array",
-                  "items": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
+                  "type": "object",
+                  "propertyNames": {
+                    "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                    "description": "an id, such as \"title-card\""
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": {
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
                     "type": "object",
                     "properties": {
-                      "id": {
-                        "allOf": [
-                          {
-                            "$ref": "#/definitions/stable-id"
-                          }
-                        ],
-                        "description": "The keyframe's id, unique in its step among its keyframes and cues."
-                      },
                       "start": {
                         "type": "number",
                         "minimum": 0,
@@ -7500,14 +7497,12 @@
                       }
                     },
                     "required": [
-                      "id",
                       "time",
                       "value"
                     ],
                     "additionalProperties": false
                   },
-                  "minItems": 1,
-                  "description": "The keyframes, one or more, in any order: they are read by their time, then by their id."
+                  "description": "The keyframes by id, one or more. They are read by their time, then by their id."
                 },
                 "loop": {
                   "enum": [
@@ -7541,21 +7536,17 @@
             "description": "The step's animation, by object and parameter, such as card.opacity."
           },
           "cues": {
-            "type": "array",
-            "items": {
-              "description": "An event at a set time in a step. A clip plays an Action of the GLB `file` of a model or a 3D text. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
+            "type": "object",
+            "propertyNames": {
+              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "description": "an id, such as \"title-card\""
+            },
+            "additionalProperties": {
+              "description": "An event at a set time in a step. Its id is unique in its step among its keyframes and cues. A clip plays an Action of the GLB `file` of a model or a 3D text. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
               "anyOf": [
                 {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/stable-id"
-                        }
-                      ],
-                      "description": "The cue's id, unique in its step among its keyframes and cues."
-                    },
                     "time": {
                       "type": "number",
                       "minimum": 0,
@@ -7580,7 +7571,6 @@
                     }
                   },
                   "required": [
-                    "id",
                     "time",
                     "type",
                     "object",
@@ -7591,14 +7581,6 @@
                 {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/stable-id"
-                        }
-                      ],
-                      "description": "The cue's id, unique in its step among its keyframes and cues."
-                    },
                     "time": {
                       "type": "number",
                       "minimum": 0,
@@ -7618,7 +7600,6 @@
                     }
                   },
                   "required": [
-                    "id",
                     "time",
                     "type",
                     "object"
@@ -7628,14 +7609,6 @@
                 {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/stable-id"
-                        }
-                      ],
-                      "description": "The cue's id, unique in its step among its keyframes and cues."
-                    },
                     "time": {
                       "type": "number",
                       "minimum": 0,
@@ -7655,7 +7628,6 @@
                     }
                   },
                   "required": [
-                    "id",
                     "time",
                     "type",
                     "object"
@@ -7665,14 +7637,6 @@
                 {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/stable-id"
-                        }
-                      ],
-                      "description": "The cue's id, unique in its step among its keyframes and cues."
-                    },
                     "time": {
                       "type": "number",
                       "minimum": 0,
@@ -7692,7 +7656,6 @@
                     }
                   },
                   "required": [
-                    "id",
                     "time",
                     "type",
                     "object"
@@ -7702,14 +7665,6 @@
                 {
                   "type": "object",
                   "properties": {
-                    "id": {
-                      "allOf": [
-                        {
-                          "$ref": "#/definitions/stable-id"
-                        }
-                      ],
-                      "description": "The cue's id, unique in its step among its keyframes and cues."
-                    },
                     "time": {
                       "type": "number",
                       "minimum": 0,
@@ -7761,7 +7716,6 @@
                     }
                   },
                   "required": [
-                    "id",
                     "time",
                     "type",
                     "object",
@@ -7771,7 +7725,7 @@
                 }
               ]
             },
-            "description": "Events at set times in the step, in any order: they are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video or a web video, or plays a clip or an Action."
+            "description": "Events at set times in the step, by id. They are read by their time, then by their id. Each shows a paragraph, starts an audio object, a video or a web video, or plays a clip or an Action."
           }
         },
         "required": [

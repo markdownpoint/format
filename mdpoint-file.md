@@ -77,9 +77,7 @@ The slide's objects and animation are in the .mdpoint file:
           "min-duration": 0.6,
           "curves": {
             "card.opacity": {
-              "keyframes": [
-                {"id": "card-shows", "time": 0.6, "value": 1, "interpolation": "ease-out"}
-              ]
+              "keyframes": {"card-shows": {"time": 0.6, "value": 1, "interpolation": "ease-out"}}
             }
           }
         }
@@ -529,44 +527,40 @@ Set a keyframe's `interpolation` to a named curve. To give it settings, use a re
     "min-duration": 3,
     "curves": {
       "dot-bounce.translation.x": {
-        "keyframes": [
-          {
-            "id": "bounce-arrives",
+        "keyframes": {
+          "bounce-arrives": {
             "time": 2,
             "value": 540,
             "interpolation": {"type": "bounce", "bounciness": 0.8}
           }
-        ]
+        }
       },
       "dot-elastic.translation.x": {
-        "keyframes": [
-          {
-            "id": "elastic-arrives",
+        "keyframes": {
+          "elastic-arrives": {
             "time": 2,
             "value": 540,
             "interpolation": {"type": "elastic", "amplitude": 1.5, "period": 0.5}
           }
-        ]
+        }
       },
       "dot-overshoot.translation.x": {
-        "keyframes": [
-          {
-            "id": "overshoot-arrives",
+        "keyframes": {
+          "overshoot-arrives": {
             "time": 2,
             "value": 540,
             "interpolation": {"type": "overshoot", "back": 3}
           }
-        ]
+        }
       },
       "dot-spring.translation.x": {
-        "keyframes": [
-          {
-            "id": "spring-arrives",
+        "keyframes": {
+          "spring-arrives": {
             "time": 2,
             "value": 540,
             "interpolation": {"type": "spring", "amount": 0.4, "response": 0.6}
           }
-        ]
+        }
       }
     }
   }

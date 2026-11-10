@@ -391,7 +391,7 @@
           }
         ]
       },
-      "description": "Ruler guides on every slide."
+      "description": "Ruler guides on every slide, in order. The master's Inspector numbers them in this order: Guide 1, Guide 2, and so on."
     },
     "grid": {
       "description": "The layout grid: columns and a baseline grid.",

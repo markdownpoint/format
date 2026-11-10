@@ -89,15 +89,15 @@
           "min-duration": 0.5,
           "curves": {
             "mug.position.x": {
-              "keyframes": [
-                {"id":"stops","time":0.4,"value":1260,"interpolation":"ease-out"}
-              ]
+              "keyframes": {
+                "stops": {"time":0.4,"value":1260,"interpolation":"ease-out"}
+              }
             },
             "mug.scale.x": {
-              "keyframes": [
-                {"id":"stretched","time":0.15,"value":3.6},
-                {"id":"settled","time":0.45,"value":3,"interpolation":"ease-out"}
-              ]
+              "keyframes": {
+                "stretched": {"time":0.15,"value":3.6},
+                "settled": {"time":0.45,"value":3,"interpolation":"ease-out"}
+              }
             }
           }
         }
