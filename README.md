@@ -79,7 +79,7 @@ Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. The tw
 
 MarkdownPoint doesn't copy unrelated files in the folder. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name can't start with a dot, contain `#`, `?`, `/`, `\`, `:`, `*`, `"`, `<`, `>`, or `|`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint hides a file or folder whose name starts with a dot. It lists a file with one of the other names but can't use it until you rename it.
 
-Files and folders in the presentation's folder or next to it whose names start with `.markdownpoint` belong to MarkdownPoint. They are never part of the presentation. Each example's `.gitignore` excludes them from git with the line `.markdownpoint*`.
+Files and folders whose names start with `.markdownpoint` belong to MarkdownPoint. They can be in the presentation's folder or next to it. They are never part of the presentation. Each example's `.gitignore` excludes them from git with the line `.markdownpoint*`.
 
 To start a presentation by hand, copy an example's whole folder. The example's theme is in its `themes` folder. `mdpoint presentation create <folder>` creates a new presentation with Basic and opens it if MarkdownPoint is running.
 

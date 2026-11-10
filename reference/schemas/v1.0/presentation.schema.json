@@ -88,7 +88,7 @@
       "additionalProperties": false
     },
     "self-playing": {
-      "description": "With it, the presentation plays by itself, such as at a kiosk.",
+      "description": "With it, the presentation plays by itself.",
       "type": "object",
       "properties": {
         "slide-delay": {
@@ -849,7 +849,7 @@
                           "type": "number",
                           "minimum": -33554431,
                           "maximum": 33554431,
-                          "description": "em"
+                          "description": "ems"
                         }
                       ]
                     },
@@ -900,7 +900,7 @@
                           "type": "number",
                           "minimum": 0,
                           "maximum": 33554431,
-                          "description": "em"
+                          "description": "ems"
                         }
                       ]
                     },
@@ -3890,7 +3890,7 @@
                   "uniform",
                   "single-axis"
                 ],
-                "description": "When the volume is kept. `strict` keeps it under any scale. `uniform` keeps it while the model scales evenly. `single-axis` keeps it while only the free axis scales. The default is strict."
+                "description": "When the volume is kept. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The default is strict."
               },
               "free-axis": {
                 "enum": [
@@ -4061,13 +4061,13 @@
                   "type": "number",
                   "minimum": -33554431,
                   "maximum": 33554431,
-                  "description": "em"
+                  "description": "ems"
                 },
                 "y": {
                   "type": "number",
                   "minimum": -33554431,
                   "maximum": 33554431,
-                  "description": "em"
+                  "description": "ems"
                 }
               },
               "required": [
@@ -4191,13 +4191,13 @@
                   "type": "number",
                   "minimum": -33554431,
                   "maximum": 33554431,
-                  "description": "em"
+                  "description": "ems"
                 },
                 "y": {
                   "type": "number",
                   "minimum": -33554431,
                   "maximum": 33554431,
-                  "description": "em"
+                  "description": "ems"
                 }
               },
               "required": [
@@ -4873,7 +4873,7 @@
           "type": "number",
           "minimum": -33554431,
           "maximum": 33554431,
-          "description": "em"
+          "description": "ems"
         },
         "text-stroke": {
           "$ref": "#/definitions/color"
@@ -4882,7 +4882,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431,
-          "description": "em"
+          "description": "ems"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -5898,7 +5898,7 @@
           "type": "number",
           "minimum": -33554431,
           "maximum": 33554431,
-          "description": "em"
+          "description": "ems"
         },
         "case": {
           "enum": [
@@ -5918,7 +5918,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431,
-          "description": "em"
+          "description": "ems"
         },
         "inset": {
           "type": "number",
@@ -6422,7 +6422,7 @@
           "type": "number",
           "minimum": -33554431,
           "maximum": 33554431,
-          "description": "em"
+          "description": "ems"
         },
         "case": {
           "enum": [
@@ -6442,7 +6442,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431,
-          "description": "em"
+          "description": "ems"
         },
         "ignore-auto-layout": {
           "type": "boolean"
@@ -7204,7 +7204,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the moves, cuts, and media starts that a click or the previous step sets off. Its times, and the times of its keyframes and cues, are in seconds, rounded to six decimal places.",
+        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times, and the times of its keyframes and cues, are in seconds, rounded to six decimal places.",
         "type": "object",
         "properties": {
           "id": {
@@ -7632,7 +7632,7 @@
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the Action that a clip plays. Unnamed Actions are Animation 1, Animation 2, and so on in file order."
+                      "description": "The name of the Action that a clip plays. An unnamed Action is named Animation followed by its number in the file. The file's first Action is number 1."
                     },
                     "loop": {
                       "const": "repeat",
@@ -7770,7 +7770,7 @@
           "const": "none"
         },
         {
-          "description": "A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, what the text paints, its letters and its outline, grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+          "description": "A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
@@ -7792,13 +7792,13 @@
                   "type": "number",
                   "minimum": -33554431,
                   "maximum": 33554431,
-                  "description": "em"
+                  "description": "ems"
                 },
                 "y": {
                   "type": "number",
                   "minimum": -33554431,
                   "maximum": 33554431,
-                  "description": "em"
+                  "description": "ems"
                 }
               },
               "required": [

@@ -131,7 +131,7 @@ Text for a text object or shape goes in the .md file under `<!-- text: id -->`. 
 
 The dot's fill is `text`, a role in the slide's color scheme. The dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
-Omitted keys use their defaults. The card has no fill specified and uses `accent`, the default for shapes. The [object reference](reference/v1.md#object) lists the required keys, allowed values, and defaults for each object type.
+Omitted keys use their defaults. The card sets no fill. A shape's default fill is `accent`. The [object reference](reference/v1.md#object) lists the required keys, allowed values, and defaults for each object type.
 
 A text box can grow to fit its words, give every digit the same width, and outline its letters:
 

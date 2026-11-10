@@ -125,7 +125,7 @@
             "markdownpoint/image-prompt/1",
             "none"
           ],
-          "description": "The version of the instructions MarkdownPoint wraps the prompt in. It is `none` when the prompt was asked as written, such as by another tool."
+          "description": "The version of the instructions MarkdownPoint wraps the prompt in. It is `none` when the prompt was asked as written. A record from another tool can have `none`."
         },
         "prompt": {
           "allOf": [
