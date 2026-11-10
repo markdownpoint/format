@@ -26,7 +26,7 @@ grayscale 1
 A faded background==.==
 
 <!-- notes -->
-The background's `crop` zooms in 1.6 times (`scale`) on the sun (`focal-point`). The background is gray (`grayscale`) and has an `opacity` of 0.3 over the scheme's color.
+The background image's `crop` zooms in 1.6 times (`scale`) on the sun (`focal-point`). The image is gray (`grayscale`) and has an `opacity` of 0.3 over the scheme's color.
 
 <!-- slide: cutout -->
 
@@ -48,4 +48,4 @@ prompt
 restyle Chalk
 
 <!-- notes -->
-The boat has been generated, and its picture and record are in generated/. MarkdownPoint saves each picture there when the author generates it. The background contains only its prompt, its style and whether it's transparent. The hills have a restyle.
+The boat has been generated, and its picture and record are in generated/. MarkdownPoint saves each picture there when the author generates it. The background's image has only its prompt, its style and whether it's transparent. The hills have a restyle.

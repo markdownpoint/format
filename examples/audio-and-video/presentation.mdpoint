@@ -22,7 +22,7 @@
         },
 
         {
-          "id": "clip",
+          "id": "hills",
           "type": "video",
           "file": "media/hills.mp4",
           "frame": {

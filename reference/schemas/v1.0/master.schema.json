@@ -787,7 +787,7 @@
                             "$ref": "#/definitions/opaque-color"
                           }
                         ],
-                        "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
+                        "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's alpha is ignored. The shadow's opacity is set by `opacity` alone."
                       },
                       "opacity": {
                         "type": "number",
@@ -2639,13 +2639,13 @@
                     "type": "number",
                     "minimum": -8589934592,
                     "maximum": 8589934592,
-                    "description": "A positive x turns its top away from the viewer, about the horizontal axis. CSS's `rotateX()` turns the same way. A 3D object turns the other way under a positive `rotation.x`."
+                    "description": "It turns about the horizontal axis. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object turns the other way under a positive `rotation.x`."
                   },
                   "y": {
                     "type": "number",
                     "minimum": -8589934592,
                     "maximum": 8589934592,
-                    "description": "A positive y brings its left side forward, about the vertical axis. It turns after the group's rotation and before its x."
+                    "description": "It turns about the vertical axis. With a positive y, its left side comes forward. It turns after the group's rotation and before its x."
                   }
                 },
                 "additionalProperties": false
@@ -2982,7 +2982,7 @@
                 "additionalProperties": false
               },
               "render-effects": {
-                "description": "The camera's render effects: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. Cinema 4D's Render Settings call them Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
+                "description": "The camera's render effects: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
                 "type": "object",
                 "properties": {
                   "global-illumination": {
@@ -4047,7 +4047,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's alpha is ignored. The shadow's opacity is set by `opacity` alone."
             },
             "opacity": {
               "type": "number",
@@ -4736,7 +4736,7 @@
     "opaque-color": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
-      "description": "a color role or a hex color without opacity, such as \"#000000\""
+      "description": "a color role or a hex color without alpha, such as \"#000000\""
     },
     "paint": {
       "anyOf": [
@@ -5123,7 +5123,7 @@
       "additionalProperties": false
     },
     "space-scale": {
-      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. A light's scale also scales the objects parented to it. An area light's scale also scales its surface.",
+      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too.",
       "type": "object",
       "properties": {
         "x": {
@@ -5254,7 +5254,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431.984375,
-          "description": "How soft the edge is."
+          "description": "How wide the soft edge is. Across it, the object fades from shown to hidden."
         }
       },
       "additionalProperties": false

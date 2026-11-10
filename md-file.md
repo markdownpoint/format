@@ -266,7 +266,7 @@ Tables==.==
 | Team | 10 | $8 |
 ```
 
-Its position, columns, row heights, and style are in the .mdpoint file. A row grows taller when its words need more room. The table is as tall as its rows:
+Its position, columns, minimum row heights, and style are in the .mdpoint file. A row grows taller when its words need more room. The table is as tall as its rows:
 
 ```json
 [
@@ -343,7 +343,7 @@ Inside a code block, a merge conflict's lines are part of the code. A slide can 
 
 A layout's placeholder keeps its id. Renaming it in MarkdownPoint changes only its label. The slides' text blocks and overrides stay the same. If you change a placeholder's id by hand in the layout file, also change the text blocks and overrides of every slide that uses that layout to the new id. MarkdownPoint doesn't show a block that names no object, and warns about it.
 
-A table's column widths and row heights in the .mdpoint file are listed in the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same position. MarkdownPoint warns when a table has more widths or heights than columns or rows.
+A table's column widths and minimum row heights in the .mdpoint file are listed in the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same position. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
 ## Validating the files
 
@@ -351,7 +351,7 @@ A table's column widths and row heights in the .mdpoint file are listed in the t
 
 To install it, open MarkdownPoint's Settings, choose “Coding agents”, and click “Install” under “Command line”. Run `mdpoint validate` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate`.
 
-Each issue has a `severity` of `error` or `warning`, a `code`, and a `message`. Most issues also have a `path`. For `presentation.mdpoint`, the path is its chain of keys, such as `slides.intro.objects.title.opacity`. For `slides.md`, it is the frontmatter key or the section, such as `frontmatter.footer` or `sections.intro`. For a missing or unreadable file, it is the file's own path. The `disposition` describes how MarkdownPoint handles the problem: `show-presentation`, `skip-object`, `refuse-slide`, or `refuse-presentation`. The command exits with status 1 if any issue is an error.
+Each issue has a `severity` of `error` or `warning`, a `code`, and a `message`. Most issues also have a `path`. For `presentation.mdpoint`, the path is its chain of keys, such as `slides.intro.objects.title.opacity`. For `slides.md`, it is the frontmatter key or the section, such as `frontmatter.footer` or `sections.intro`. For a missing or unreadable file, it is the file's own path. An issue in `slides.md` also has a `location`, with the file and the line. [The Agent's README](agent/1/README.md#issues) lists every field. The `disposition` describes how MarkdownPoint handles the problem: `show-presentation`, `skip-object`, `refuse-slide`, or `refuse-presentation`. The command exits with status 1 if any issue is an error.
 
 ## Saving and formatting
 

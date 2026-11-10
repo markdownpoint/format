@@ -76,7 +76,7 @@ unavailable.
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the revision you sent. | Read it again. `revision` is its current revision. |
 | `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
-| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal or Meshy Action. | Read the state again to get the ids. |
+| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |

@@ -121,7 +121,7 @@
       "description": "How long the talk should take, in seconds. Without it, the talk has no set length."
     },
     "default-text-style": {
-      "description": "The text style and color of a new text box. Without a text style, a new text box has none.",
+      "description": "The text style and color of a new text box. Without a text style, a new text box has none. Text boxes already on the slides don't change.",
       "type": "object",
       "properties": {
         "text-style": {
@@ -2022,7 +2022,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's render effects: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. Cinema 4D's Render Settings call them Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
+                          "description": "The camera's render effects: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {
@@ -3072,7 +3072,7 @@
           "controls": {
             "type": "array",
             "items": {
-              "description": "One control a composition offers its instances. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds are all of one media kind. Its default and values are of that kind too.",
+              "description": "One control a composition offers its instances. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds all have the same type. Its default and its values are files of that type.",
               "anyOf": [
                 {
                   "type": "object",
@@ -3264,7 +3264,7 @@
                           "id": {
                             "type": "string",
                             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                            "description": "The id that names the option in the control's default, an instance's value, and a property the choice sets. It's unique among the control's options."
+                            "description": "The id that names the option in the control's default, an instance's value, and the value of a key the choice sets. It's unique among the control's options."
                           },
                           "name": {
                             "type": "string",
@@ -3414,12 +3414,12 @@
           "slide": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The id of the slide it is pinned to."
+            "description": "The id of the slide it is pinned to. It can name a slide that is no longer there."
           },
           "composition": {
             "type": "string",
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The id of the composition it is pinned to."
+            "description": "The id of the composition it is pinned to. It can name a composition that is no longer there."
           },
           "author": {
             "allOf": [
@@ -3451,7 +3451,7 @@
                 "$ref": "#/definitions/slide-point"
               }
             ],
-            "description": "Where it is pinned, as {x, y} in canvas units on the slide or composition. A change of slide size moves it with the slide's objects."
+            "description": "Where it is pinned, as {x, y} in canvas units on the slide or composition. When the slide size changes, it moves with the slide's objects."
           },
           "resolved": {
             "type": "boolean",
@@ -3744,7 +3744,7 @@
                   "$ref": "#/definitions/generation"
                 }
               ],
-              "description": "The background image's image generation record. For a restyle, it also names the image the restyle was applied to."
+              "description": "Which image generation record made the background image. For a restyle, it also names the image the restyle was applied to."
             }
           },
           "dependencies": {
@@ -4023,7 +4023,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's alpha is ignored. The shadow's opacity is set by `opacity` alone."
             },
             "opacity": {
               "type": "number",
@@ -6866,7 +6866,7 @@
     "opaque-color": {
       "type": "string",
       "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
-      "description": "a color role or a hex color without opacity, such as \"#000000\""
+      "description": "a color role or a hex color without alpha, such as \"#000000\""
     },
     "paint": {
       "anyOf": [
@@ -7209,7 +7209,7 @@
       "additionalProperties": false
     },
     "space-scale": {
-      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. A light's scale also scales the objects parented to it. An area light's scale also scales its surface.",
+      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too.",
       "type": "object",
       "properties": {
         "x": {
@@ -7303,7 +7303,7 @@
                 "keyframes": {
                   "type": "array",
                   "items": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a property, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
                     "type": "object",
                     "properties": {
                       "id": {
@@ -7958,7 +7958,7 @@
                   "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's opacity is ignored. The shadow's opacity is set by `opacity` alone."
+              "description": "Its color: a color role, or a hex color written #RGB or #RRGGBB. A role's alpha is ignored. The shadow's opacity is set by `opacity` alone."
             },
             "opacity": {
               "type": "number",
@@ -8077,13 +8077,13 @@
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "A positive x turns its top away from the viewer, about the horizontal axis. CSS's `rotateX()` turns the same way. A 3D object turns the other way under a positive `rotation.x`."
+          "description": "It turns about the horizontal axis. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object turns the other way under a positive `rotation.x`."
         },
         "y": {
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "A positive y brings its left side forward, about the vertical axis. It turns after the group's rotation and before its x."
+          "description": "It turns about the vertical axis. With a positive y, its left side comes forward. It turns after the group's rotation and before its x."
         }
       },
       "additionalProperties": false
@@ -8578,7 +8578,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 33554431.984375,
-          "description": "How soft the edge is."
+          "description": "How wide the soft edge is. Across it, the object fades from shown to hidden."
         }
       },
       "additionalProperties": false

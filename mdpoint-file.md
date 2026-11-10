@@ -411,7 +411,7 @@ A video or audio object plays on a click. With `start-on-click` set to false, it
 
 ```json
 {
-  "id": "clip",
+  "id": "hills",
   "type": "video",
   "file": "media/hills.mp4",
   "frame": {"x": 120, "y": 330, "width": 960, "height": 540},
