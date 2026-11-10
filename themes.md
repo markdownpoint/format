@@ -41,14 +41,14 @@ Every theme has a `light` and a `dark` scheme and can add more, such as Basic's 
     "background": "#FBE991",
     "text": "#17120F",
     "muted": "#524843",
-    "accent": "{brand.ember}",
+    "accent": "{brand.colors.ember}",
     "stroke": "#17120F1F",
     "link": "#17120F"
   }
 }
 ```
 
-`{brand.ember}` refers to the `ember` color under `brand.colors`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `stroke`, and `link`. It can add roles of its own. The [scheme colors reference](reference/v1.md#scheme-colors) says what each role colors.
+A role set to `{brand.colors.ember}` uses the brand color named `ember`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `stroke`, and `link`. It can add roles of its own. The [scheme colors reference](reference/v1.md#scheme-colors) says what each role colors.
 
 ## Text styles
 

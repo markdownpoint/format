@@ -4992,7 +4992,7 @@
     },
     "scheme-color": {
       "type": "string",
-      "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.[a-z][a-z0-9-]*\\})(?![\\s\\S])"
+      "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.colors\\.[a-z][a-z0-9-]*\\})(?![\\s\\S])"
     },
     "slide-point": {
       "type": "object",
