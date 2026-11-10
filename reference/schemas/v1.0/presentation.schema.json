@@ -3234,7 +3234,7 @@
                           "name": {
                             "type": "string",
                             "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f])?(?![\\s\\S])",
-                            "description": "The words the author sees, on one line with no space at either end and no comma: \",\", \"，\" or \"、\"."
+                            "description": "The words the author sees, on one line with no space at either end and no comma: \",\", \"，\", or \"、\"."
                           }
                         },
                         "required": [
@@ -7600,7 +7600,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
+                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
                     },
                     "paragraph": {
                       "type": "string",
@@ -7643,7 +7643,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
+                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
                     }
                   },
                   "required": [
@@ -7680,7 +7680,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
+                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
                     }
                   },
                   "required": [
@@ -7717,7 +7717,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
+                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
                     }
                   },
                   "required": [
@@ -7754,7 +7754,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model or a 3D text."
+                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
                     },
                     "action": {
                       "type": "string",
