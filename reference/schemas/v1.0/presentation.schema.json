@@ -7255,7 +7255,7 @@
               "description": "an object's id, a dot, and a parameter, such as \"card.opacity\""
             },
             "additionalProperties": {
-              "description": "One parameter's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation.xy` have {x, y}, and `position.xyz` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
+              "description": "One parameter's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation` have {x, y}, and `position` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
               "type": "object",
               "properties": {
                 "keyframes": {
@@ -7266,10 +7266,10 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `start` at or before the previous keyframe is ignored. On the first keyframe, a `start` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `start` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
                     "type": "object",
                     "properties": {
-                      "start": {
+                      "begin": {
                         "type": "number",
                         "minimum": 0,
                         "maximum": 4294967296,
@@ -7520,7 +7520,7 @@
                       "$ref": "#/definitions/stable-id"
                     }
                   ],
-                  "description": "The id of the keyframe the loop starts at. If the keyframe has a `start`, the loop begins with its move. If it names no keyframe of the curve, the first is used."
+                  "description": "The id of the keyframe the loop starts at. If the keyframe has a `begin`, the loop begins with its move. If it names no keyframe of the curve, the first is used."
                 }
               },
               "required": [
