@@ -3341,7 +3341,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "Its steps, played back to back. They have no cues and no `loop-start`. With every pass counted, they last at most 4,294,967,296 seconds."
+            "description": "Its steps, grouped into clicks as a slide's are. The clicks play back to back. They have no cues and no `loop-start`. With every pass counted, they last at most 4,294,967,296 seconds."
           }
         },
         "required": [
@@ -6960,7 +6960,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 4194304,
-          "description": "How much later each copy plays the object's animation than the one before."
+          "description": "How much later each copy plays the object's animation than the one before. A copy can play it up to (copies − 1) × `stagger` + `stagger-randomness` later."
         },
         "end-opacity": {
           "type": "number",
@@ -7234,7 +7234,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "The least time the step lasts in seconds. A later keyframe, cue, or entering paragraph makes it longer. Without it, or at 0, the step lasts as long as what is in it."
+            "description": "The least time the step lasts in seconds. A later keyframe, cue, entering paragraph, or repeated copy makes it longer. Without it, or at 0, the step lasts as long as what is in it."
           },
           "repeat-count": {
             "type": "integer",
@@ -7410,7 +7410,7 @@
                         "description": "How the value reaches the keyframe: gradually, or at once with hold. It is a named curve, a named curve with its settings, a cubic Bézier, or a spring. The default is linear."
                       },
                       "interrupted": {
-                        "description": "The longer move this keyframe interrupts. Up to this keyframe, the motion follows that move's interpolation.",
+                        "description": "The longer move this keyframe interrupts. Up to the keyframe's time, the motion follows that move toward its `value`. Then the parameter takes the keyframe's own `value`.",
                         "type": "object",
                         "properties": {
                           "value": {

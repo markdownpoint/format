@@ -59,6 +59,15 @@
           "fade-in": 0.5,
           "fade-out": 1.5
         }
+      ],
+      "steps": [
+        {
+          "id": "start-hills",
+          "min-duration": 0.5,
+          "cues": {
+            "play-hills": {"time":0,"type":"play","object":"hills"}
+          }
+        }
       ]
     }
   }

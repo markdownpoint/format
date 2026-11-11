@@ -6006,7 +6006,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 4194304,
-          "description": "How much later each copy plays the object's animation than the one before."
+          "description": "How much later each copy plays the object's animation than the one before. A copy can play it up to (copies − 1) × `stagger` + `stagger-randomness` later."
         },
         "end-opacity": {
           "type": "number",
