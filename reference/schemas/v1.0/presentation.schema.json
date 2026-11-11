@@ -2371,10 +2371,125 @@
                       "$ref": "#/definitions/objects-group"
                     },
                     {
-                      "$ref": "#/definitions/objects-audio"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "type": {
+                          "const": "audio"
+                        },
+                        "name": {
+                          "$ref": "#/definitions/nonblank-line"
+                        },
+                        "file": {
+                          "type": "string",
+                          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
+                          "description": "a file path in the presentation's folder"
+                        },
+                        "frame": {
+                          "$ref": "#/definitions/point-frame"
+                        },
+                        "locked": {
+                          "type": "boolean"
+                        },
+                        "visible": {
+                          "type": "boolean"
+                        },
+                        "start-on-click": {
+                          "type": "boolean"
+                        },
+                        "loop": {
+                          "const": "repeat"
+                        },
+                        "volume": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "fade-in": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 4294967296,
+                          "description": "seconds"
+                        },
+                        "fade-out": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 4294967296,
+                          "description": "seconds"
+                        },
+                        "media-trim": {
+                          "$ref": "#/definitions/time-trim"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "file",
+                        "frame"
+                      ],
+                      "additionalProperties": false
                     },
                     {
-                      "$ref": "#/definitions/objects-web-video"
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/definitions/object-id"
+                        },
+                        "type": {
+                          "const": "web-video"
+                        },
+                        "name": {
+                          "$ref": "#/definitions/nonblank-line"
+                        },
+                        "url": {
+                          "$ref": "#/definitions/url"
+                        },
+                        "poster": {
+                          "type": "string",
+                          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                          "description": "a file path in the presentation's folder"
+                        },
+                        "alt": {
+                          "$ref": "#/definitions/nonblank-line"
+                        },
+                        "frame": {
+                          "$ref": "#/definitions/frame"
+                        },
+                        "locked": {
+                          "type": "boolean"
+                        },
+                        "visible": {
+                          "type": "boolean"
+                        },
+                        "start-on-click": {
+                          "type": "boolean"
+                        },
+                        "stroke": {
+                          "$ref": "#/definitions/color"
+                        },
+                        "stroke-weight": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 33554431.984375,
+                          "description": "canvas units"
+                        },
+                        "stroke-style": {
+                          "enum": [
+                            "solid",
+                            "dashed",
+                            "dotted"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "type",
+                        "url",
+                        "frame"
+                      ],
+                      "additionalProperties": false
                     },
                     {
                       "type": "object",
@@ -2949,7 +3064,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another.",
+        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. An instance draws the composition as the composition draws on its own canvas. The canvas is as large as fits in the instance's frame and is centered there. SVG's `viewBox` with `xMidYMid meet` places it the same way. Then it turns and scales with the instance about the frame's center. The composition's objects stand in a group of their own where the instance stands. That group counts toward how deep groups nest. So a composition holds what a group holds: nothing 3D, no audio object and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
         "type": "object",
         "properties": {
           "name": {
@@ -3288,16 +3403,10 @@
                 },
                 {
                   "$ref": "#/definitions/objects-group"
-                },
-                {
-                  "$ref": "#/definitions/objects-audio"
-                },
-                {
-                  "$ref": "#/definitions/objects-web-video"
                 }
               ]
             },
-            "description": "Its objects, back to front. A composition can't contain a model, a light, a shadow catcher, a floor, a camera, the World, or a text with a `model`."
+            "description": "Its objects, back to front. A composition can't contain a model, a light, a shadow catcher, a floor, a camera, the World, an audio object, a web video, or a text with a `model`."
           },
           "initial": {
             "allOf": [
@@ -4667,67 +4776,6 @@
       "type": "string",
       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "an object's id"
-    },
-    "objects-audio": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "audio"
-        },
-        "name": {
-          "$ref": "#/definitions/nonblank-line"
-        },
-        "file": {
-          "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-          "description": "a file path in the presentation's folder"
-        },
-        "frame": {
-          "$ref": "#/definitions/point-frame"
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "visible": {
-          "type": "boolean"
-        },
-        "start-on-click": {
-          "type": "boolean"
-        },
-        "loop": {
-          "const": "repeat"
-        },
-        "volume": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "fade-in": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
-          "description": "seconds"
-        },
-        "fade-out": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
-          "description": "seconds"
-        },
-        "media-trim": {
-          "$ref": "#/definitions/time-trim"
-        }
-      },
-      "required": [
-        "id",
-        "type",
-        "file",
-        "frame"
-      ],
-      "additionalProperties": false
     },
     "objects-chart": {
       "type": "object",
@@ -6714,66 +6762,6 @@
       "required": [
         "id",
         "type",
-        "frame"
-      ],
-      "additionalProperties": false
-    },
-    "objects-web-video": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/definitions/object-id"
-        },
-        "type": {
-          "const": "web-video"
-        },
-        "name": {
-          "$ref": "#/definitions/nonblank-line"
-        },
-        "url": {
-          "$ref": "#/definitions/url"
-        },
-        "poster": {
-          "type": "string",
-          "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-          "description": "a file path in the presentation's folder"
-        },
-        "alt": {
-          "$ref": "#/definitions/nonblank-line"
-        },
-        "frame": {
-          "$ref": "#/definitions/frame"
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "visible": {
-          "type": "boolean"
-        },
-        "start-on-click": {
-          "type": "boolean"
-        },
-        "stroke": {
-          "$ref": "#/definitions/color"
-        },
-        "stroke-weight": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 33554431.984375,
-          "description": "canvas units"
-        },
-        "stroke-style": {
-          "enum": [
-            "solid",
-            "dashed",
-            "dotted"
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "type",
-        "url",
         "frame"
       ],
       "additionalProperties": false
