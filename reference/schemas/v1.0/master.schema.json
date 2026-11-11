@@ -2565,13 +2565,13 @@
                     "type": "number",
                     "minimum": -8589934592,
                     "maximum": 8589934592,
-                    "description": "It turns about the horizontal axis. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object turns the other way under a positive `rotation.x`."
+                    "description": "It turns about the horizontal axis. It is 0 when left out. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way."
                   },
                   "y": {
                     "type": "number",
                     "minimum": -8589934592,
                     "maximum": 8589934592,
-                    "description": "It turns about the vertical axis. With a positive y, its left side comes forward. The y turn comes first, then the x turn."
+                    "description": "It turns about the vertical axis. It is 0 when left out. With a positive y, its left side comes forward. The y turn comes first, then the x turn."
                   }
                 },
                 "additionalProperties": false
@@ -3821,18 +3821,22 @@
   "additionalProperties": false,
   "definitions": {
     "anchor-point": {
-      "description": "The point an object turns and scales about. A group also tilts about it. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from.",
+      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's members' box measured at the group's rotation. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. An object's own anchor point needs both x and y. Leaving it out is the only way to the default.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
-          "description": "How far across the frame in fractions of its width."
+          "description": "How far across the box in fractions of its width."
         },
         "y": {
           "type": "number",
-          "description": "How far down the frame in fractions of its height."
+          "description": "How far down the box in fractions of its height."
         }
       },
+      "required": [
+        "x",
+        "y"
+      ],
       "additionalProperties": false
     },
     "back-curve": {
@@ -4331,15 +4335,15 @@
               "properties": {
                 "x": {
                   "type": "number",
-                  "minimum": -511,
-                  "maximum": 511,
-                  "description": "The x of its middle in fractions of the frame's width."
+                  "minimum": -510.5,
+                  "maximum": 511.5,
+                  "description": "The x of its middle in fractions of the frame's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
-                  "minimum": -511,
-                  "maximum": 511,
-                  "description": "The y of its middle in fractions of the frame's height."
+                  "minimum": -510.5,
+                  "maximum": 511.5,
+                  "description": "The y of its middle in fractions of the frame's height. 0 is the top edge, and 1 is the bottom edge."
                 },
                 "length": {
                   "type": "number",
@@ -4720,7 +4724,7 @@
       "additionalProperties": false
     },
     "repeater": {
-      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 1 for `scale` and `end-opacity`, the frame's center for `anchor-point`, and 0 for the other optional numbers.",
+      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 1 for `scale` and `end-opacity`, the center for `anchor-point`, and 0 for the other optional numbers.",
       "type": "object",
       "properties": {
         "copies": {
@@ -4772,8 +4776,12 @@
               "description": "of the frame"
             }
           },
+          "required": [
+            "x",
+            "y"
+          ],
           "additionalProperties": false,
-          "description": "The point the copies turn and scale about: {x, y}. Each is a fraction of the frame, across and down."
+          "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down."
         },
         "stagger": {
           "type": "number",
@@ -4960,7 +4968,7 @@
       "additionalProperties": false
     },
     "space-euler": {
-      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode.",
+      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
       "type": "object",
       "properties": {
         "x": {
@@ -5020,7 +5028,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode.",
+      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
       "type": "object",
       "properties": {
         "w": {
