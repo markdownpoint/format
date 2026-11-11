@@ -4874,7 +4874,7 @@
   "additionalProperties": false,
   "definitions": {
     "anchor-point": {
-      "description": "The point an object turns and scales about when it is animated or has an initial value. A group also tilts about it.",
+      "description": "The point an object turns and scales about. A group also tilts about it. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from.",
       "type": "object",
       "properties": {
         "x": {
@@ -5483,7 +5483,7 @@
       ]
     },
     "flat-scale": {
-      "description": "A flat object's scale along its own axes. The object scales about its frame's center. An animated or initial change of its scale is about its `anchor-point`. Text breaks into lines first, then stretches with the scale.",
+      "description": "A flat object's scale along its own axes. The object scales about its `anchor-point`. Text breaks into lines first, then stretches with the scale.",
       "type": "object",
       "properties": {
         "x": {
@@ -5529,13 +5529,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. The box turns and scales about that point."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. Without an `anchor-point`, the box turns and scales about that point."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. When a text box's height grows, the box turns and scales about a point on its top edge."
+          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, the box turns and scales about a point on its top edge."
         },
         "width": {
           "type": "number",
@@ -5877,13 +5877,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. The box turns and scales about that point."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. Without an `anchor-point`, the box turns and scales about that point."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. When a text box's height grows, the box turns and scales about a point on its top edge."
+          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, the box turns and scales about a point on its top edge."
         }
       },
       "required": [
@@ -6345,13 +6345,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. The box turns and scales about that point."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. Without an `anchor-point`, the box turns and scales about that point."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. When a text box's height grows, the box turns and scales about a point on its top edge."
+          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, the box turns and scales about a point on its top edge."
         },
         "width": {
           "type": "number",
