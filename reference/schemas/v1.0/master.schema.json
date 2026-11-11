@@ -35,7 +35,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The category the theme is listed under: basic, business, education, community, or personal. With any other word, it is listed under Other."
+      "description": "The category the theme is listed under: essentials, business, education, community, or personal. With any other word, it is listed under Other."
     },
     "size": {
       "description": "The slide size. The default is 1920 × 1080.",
