@@ -5193,8 +5193,8 @@
             "size": {
               "type": "number",
               "minimum": 0,
-              "maximum": 780.352997,
-              "description": "How far it reaches in canvas units. It is at most 102.878569 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 205.757138 at 3840 × 2160."
+              "maximum": 758.518519,
+              "description": "How far it reaches in canvas units. It is at most 100 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 200 at 3840 × 2160."
             },
             "spread": {
               "type": "number",
