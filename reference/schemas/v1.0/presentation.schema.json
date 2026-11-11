@@ -3358,7 +3358,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A comment thread pinned to a slide or a composition. Its id is unique among the presentation's threads.",
+        "description": "A comment pinned to a slide or a composition. It holds its replies. Its id is unique among the presentation's comments.",
         "type": "object",
         "properties": {
           "slide": {
@@ -3405,7 +3405,7 @@
           },
           "resolved": {
             "type": "boolean",
-            "description": "Whether the thread is resolved. The default is false."
+            "description": "Whether the comment is resolved. The default is false."
           },
           "replies": {
             "type": "object",
@@ -3414,7 +3414,7 @@
               "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
-              "description": "One reply in a comment thread. Its id is unique in its thread.",
+              "description": "One reply to a comment. Its id is unique among the comment's replies.",
               "type": "object",
               "properties": {
                 "author": {
@@ -3478,7 +3478,7 @@
           }
         ]
       },
-      "description": "Comment threads by id. Each one is pinned to a slide or a composition."
+      "description": "Comments by id. Each one is pinned to a slide or a composition."
     }
   },
   "required": [
@@ -3767,7 +3767,7 @@
         "name": {
           "type": "string",
           "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-          "description": "The name the thread shows for the author. It is one line that isn't blank and has no control characters."
+          "description": "The name the comment shows for the author. It is one line that isn't blank and has no control characters."
         }
       },
       "required": [
