@@ -16,6 +16,6 @@ makes y and z thinner as x stretches. It pulls the mug's volume toward 0.9 times
 its volume before the stretch (a `volume` of 0.9). Its `strength` is 0.9. The
 mug's rotation is written as a quaternion (`rotation-mode`). The camera follows
 the mug a quarter of the way along x. It uses a `position` constraint with
-`axes` set to x, a `strength` of 0.25, and `relative-to-target` set to false.
+`axes` set to `["x"]`, a `strength` of 0.25, and `relative-to-target` set to false.
 The camera's `motion-blur` shows only in movies and in the Agent's rendered
 frames.

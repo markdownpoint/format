@@ -2104,7 +2104,7 @@
                           "items": {
                             "anyOf": [
                               {
-                                "description": "A constraint that moves the slide's camera with an object. Cinema 4D's Position constraint works the same way. Only the camera can have it. With a spring, the camera follows the way a keyframe's spring moves. It trails a sudden move, catches up, and settles as the object stops. If the spring is still moving 10 seconds after what it follows has stopped, the camera halts where it got to, short of its target. It stays there until a click moves what it follows again. Every key except `id`, `type`, and `target` can be left out.",
+                                "description": "A constraint that moves the slide's camera with an object. Cinema 4D's Position constraint works the same way. Only the camera can have it. With a spring, the camera follows on a spring with that response and damping ratio. It trails a sudden move, catches up, and settles as the object stops. If the spring is still moving 10 seconds after what it follows has stopped, the camera halts where it got to. It stops short of its target. It stays there until a click moves what it follows again. Every key except `id`, `type`, and `target` can be left out.",
                                 "type": "object",
                                 "properties": {
                                   "id": {
@@ -2142,7 +2142,7 @@
                                     },
                                     "minItems": 1,
                                     "maxItems": 3,
-                                    "description": "The 3D space's axes the camera follows on: any of x, y, and z. Without it, the camera follows on all three."
+                                    "description": "A list of the 3D space's axes the camera follows on, such as `[\"x\"]`. Without it, the camera follows on all three."
                                   },
                                   "relative-to-target": {
                                     "type": "boolean",
@@ -6901,7 +6901,7 @@
       "description": "text without NUL characters"
     },
     "repeater": {
-      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 0 for each key, 1 for `scale` and `end-opacity`, and the frame's center for `anchor-point`.",
+      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 1 for `scale` and `end-opacity`, the frame's center for `anchor-point`, and 0 for the other optional numbers.",
       "type": "object",
       "properties": {
         "copies": {

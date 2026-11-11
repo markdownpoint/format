@@ -37,7 +37,7 @@ Two files, one deck==.==
 
 <!-- text: body -->
 - **slides.md** has the words
-- **presentation.mdpoint** has the layout, styles, and steps
+- **presentation.mdpoint** has each slide’s layout, objects, look, and animation
 - The theme is a folder in **themes**
 
 <!-- section: finish -->
