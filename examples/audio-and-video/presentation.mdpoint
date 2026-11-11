@@ -54,7 +54,10 @@
           "type": "audio",
           "file": "media/chord.m4a",
           "name": "Chord",
-          "icon-position": {"x":1160,"y":700},
+          "frame": {
+            "x": 1160,
+            "y": 700
+          },
           "start-on-click": false,
           "fade-in": 0.5,
           "fade-out": 1.5

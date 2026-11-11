@@ -232,7 +232,7 @@ The table's first column is its header (`header-column`), and its first row is a
 
 Here the table's first column is its header, instead of its first row. `colors` sets the color of each series in the chart, or of each category in a pie or donut chart. A counter with `roll` rolls its digits into place. Here its `progress` is below 1. The counter then shows its unused leading zeros at `leading-zero-opacity`.
 
-A group with `auto-layout` places its members one after another, down or across, and ignores their own positions:
+A group with `auto-layout` places its members one after another from its `frame`, down or across, and ignores their own positions:
 
 ```json
 [
@@ -245,12 +245,8 @@ A group with `auto-layout` places its members one after another, down or across,
   {
     "id": "row",
     "type": "group",
-    "auto-layout": {
-      "direction": "horizontal",
-      "gap": 40,
-      "align": "center",
-      "position": {"x": 320, "y": 400}
-    }
+    "frame": {"x": 320, "y": 400},
+    "auto-layout": {"direction": "horizontal", "gap": 40, "align": "center"}
   },
   {
     "id": "left",
@@ -428,7 +424,7 @@ An audio object's `fade-in` and `fade-out` are in seconds:
   "type": "audio",
   "file": "media/chord.m4a",
   "name": "Chord",
-  "icon-position": {"x": 1160, "y": 700},
+  "frame": {"x": 1160, "y": 700},
   "start-on-click": false,
   "fade-in": 0.5,
   "fade-out": 1.5
