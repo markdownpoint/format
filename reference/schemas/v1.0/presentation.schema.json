@@ -7218,8 +7218,8 @@
           "repeat-count": {
             "type": "integer",
             "minimum": 2,
-            "maximum": 64,
-            "description": "How many times the step plays before it completes. Without it, the step plays once."
+            "maximum": 9007199254740991,
+            "description": "How many times the step plays before it completes. Without it, the step plays once. The step plays only as many times as fit in 4,294,967,296 seconds. A larger count causes a warning."
           },
           "loop-start": {
             "type": "number",
