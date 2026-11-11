@@ -1,6 +1,6 @@
 # The .mdpoint file
 
-`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, animation, and other keys. The presentation's text and slide order are in [slides.md](md-file.md).
+`presentation.mdpoint` is a JSON file. It selects the theme and contains each slide's layout, objects, look, animation, and other keys. The presentation's text and slide order are in [slides.md](md-file.md).
 
 The presentation's name is its folder's name. Rename the folder to rename the presentation.
 
@@ -91,7 +91,7 @@ Each key of an object, and each key inside a `frame` or a `transition`, is on a 
 
 A merge conflict that git leaves in the file is an error. MarkdownPoint shows the line where it starts and won't open the presentation until you resolve it.
 
-Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults, and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged. When an editor hands over a shared presentation, closes it, or signs out after a change, the save writes a new `save-id` into both files. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
+Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults, path data in absolute M, L, C, and Z, and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged. When an editor hands over a shared presentation, closes it, or signs out after a change, the save writes a new `save-id` into both files. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
 
 When rounding to six decimal places changes a number in the file, MarkdownPoint warns once when it opens the presentation.
 
@@ -125,7 +125,7 @@ Settings for the whole presentation are next to `slides`:
 
 ## Objects
 
-`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units. They are measured from the slide's top left. A canvas unit is one pixel of the slide at full size. The theme sets that size. Here it is 1920 by 1080.
+`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units. They are measured from the slide's top left. A text box that grows to fit its text has no length along a side that grows. A canvas unit is one pixel of the slide at full size. The theme sets that size. Here it is 1920 by 1080.
 
 Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's id in the marker.
 

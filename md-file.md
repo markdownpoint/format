@@ -132,7 +132,7 @@ Label
 
 ## Horizontal rules
 
-A line of `---` is a horizontal rule. On a slide, it spans its text box. It can appear anywhere in a text or notes block: at the start, between paragraphs, or at the end. A `---` at the end of a slide belongs to the slide's last block.
+A line of `---`, `***`, or `___` is a horizontal rule. On a slide, it spans its text box. It can appear anywhere in a text or notes block: at the start, between paragraphs, or at the end. A `---` at the end of a slide belongs to the slide's last block.
 
 Leave a blank line above a rule. Directly under a line of text, `---` isn't a rule. It makes that line a heading.
 
@@ -311,7 +311,7 @@ Images, HTML tags, and footnotes are kept in the file as written. The slide show
 
 An HTML comment inside a text or notes block is a note to yourself. It's kept in the file and never shown. A comment at the end of a slide belongs to the slide's last block. A table's or a chart's block contains only its table. A comment can't follow it.
 
-One kind of comment isn't a note: a paragraph id, described in the next section.
+A paragraph id isn't a note. The next section describes it.
 
 ### Paragraph ids
 

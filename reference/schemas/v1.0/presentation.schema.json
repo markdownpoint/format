@@ -2162,7 +2162,7 @@
                                         "type": "number",
                                         "minimum": 0.3,
                                         "maximum": 1,
-                                        "description": "How strongly the spring is damped. At 1, it is critically damped. Less damping swings further. Below 0.3, it would keep swinging past the target."
+                                        "description": "How strongly the spring is damped. At 1, it is critically damped. Less damping swings further."
                                       },
                                       "response": {
                                         "type": "number",
@@ -4104,7 +4104,7 @@
               "$ref": "#/definitions/interpolation"
             }
           ],
-          "description": "How each piece moves into place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
+          "description": "How each piece moves into place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
         "fade-length": {
           "type": "number",
@@ -4140,7 +4140,7 @@
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "How many intervals the text waits between turns, after the pieces before have arrived."
+          "description": "How many intervals the text waits between turns. The wait starts once the pieces before have arrived."
         },
         "progress": {
           "type": "number",
@@ -4234,7 +4234,7 @@
               "$ref": "#/definitions/interpolation"
             }
           ],
-          "description": "How each piece moves out of place: gradually, or at once with hold. A spring's response and an elastic's period don't apply here."
+          "description": "How each piece moves out of place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
         "fade-length": {
           "type": "number",
@@ -4270,7 +4270,7 @@
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "How many intervals the text waits between turns, after the pieces before have left."
+          "description": "How many intervals the text waits between turns. The wait starts once the pieces before have left."
         },
         "progress": {
           "type": "number",
@@ -4344,13 +4344,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text's alignment holds."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. The box turns and scales about that point."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is."
+          "description": "How far down the top edge is. When a text box's height grows, the box turns and scales about a point on its top edge."
         },
         "width": {
           "type": "number",
@@ -7167,7 +7167,7 @@
       "additionalProperties": false
     },
     "space-scale": {
-      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too.",
+      "description": "A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0. A wave can take a scale past 0.",
       "type": "object",
       "properties": {
         "x": {
@@ -7213,7 +7213,7 @@
                 "$ref": "#/definitions/stable-id"
               }
             ],
-            "description": "The step's id, unique on its slide."
+            "description": "The step's id, unique on its slide or composition."
           },
           "name": {
             "allOf": [
@@ -7228,7 +7228,7 @@
               "with-previous",
               "after-previous"
             ],
-            "description": "When the step starts: with the previous step, or after it ends. With either, a first step starts when the slide's transition ends, except under a scroll. Without it, the step waits for a click."
+            "description": "When the step starts: with the previous step, or after it ends. Without it, the step starts a new click."
           },
           "min-duration": {
             "type": "number",
@@ -7246,7 +7246,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 4294967296,
-            "description": "The time in seconds into the step that it loops back to while waiting for a click. It is before the later of its `min-duration` and its keyframe and cue times, other than a paragraph's entrance."
+            "description": "The time in seconds into the step that it loops back to while waiting for a click. It is before the later of its `min-duration` and its keyframe and cue times. A paragraph's entrance doesn't count."
           },
           "curves": {
             "type": "object",
@@ -7410,7 +7410,7 @@
                         "description": "How the value reaches the keyframe: gradually, or at once with hold. It is a named curve, a named curve with its settings, a cubic Bézier, or a spring. The default is linear."
                       },
                       "interrupted": {
-                        "description": "The longer move this keyframe interrupts. Up to the keyframe's time, the motion follows that move toward its `value`. Then the parameter takes the keyframe's own `value`.",
+                        "description": "The longer move this keyframe interrupts. Up to the keyframe's time, the motion follows that move toward its `value`. Then the parameter has the keyframe's own `value`.",
                         "type": "object",
                         "properties": {
                           "value": {
@@ -7462,7 +7462,7 @@
                         "properties": {
                           "amplitude": {
                             "type": "number",
-                            "description": "How far the value swings either way in the parameter's own unit."
+                            "description": "How far the value swings either way in the parameter's own unit. The value stops at the end of the parameter's range."
                           },
                           "frequency": {
                             "type": "number",
@@ -7489,7 +7489,7 @@
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 4294967294,
-                            "description": "The noise seed. The same seed gives the same noise. The default is 0."
+                            "description": "The noise seed. A seed picks one wave. The default is 0."
                           }
                         },
                         "required": [
@@ -7699,7 +7699,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 1,
-            "description": "Where the color is along the gradient from 0 to 1. Without it, the first stop is at 0, the last is at 1, and the stops between are spread evenly. A stop is never before the previous one."
+            "description": "Where the color is along the gradient from 0 to 1. A stop is never before the previous one."
           }
         },
         "required": [
@@ -7722,13 +7722,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text's alignment holds."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. The box turns and scales about that point."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is."
+          "description": "How far down the top edge is. When a text box's height grows, the box turns and scales about a point on its top edge."
         }
       },
       "required": [
@@ -7841,13 +7841,13 @@
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text's alignment holds."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. The box turns and scales about that point."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is."
+          "description": "How far down the top edge is. When a text box's height grows, the box turns and scales about a point on its top edge."
         },
         "width": {
           "type": "number",
@@ -7962,7 +7962,7 @@
       "additionalProperties": false
     },
     "transition": {
-      "description": "A slide transition. The defaults are interpolation ease-in-out, match object, direction left, color black, and delay 0.",
+      "description": "A slide transition. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0.",
       "anyOf": [
         {
           "type": "object",

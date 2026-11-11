@@ -116,7 +116,7 @@ A layout defines a slide's initial objects. Basic's Title layout is:
 }
 ```
 
-A layout's text or image with `"placeholder": true` is a placeholder. Each slide fills it with its own text or image, matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
+A layout's text or image with `"placeholder": true` is a placeholder. Each slide fills it with its own text or image. The two are matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
 
 The layout's `text` contains sample text for the layout chooser and theme editor. An empty placeholder shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
 
@@ -188,6 +188,6 @@ A presentation can contain several themes. If the new theme is missing a layout 
 
 A change to master.json affects every slide. A change to a layout affects every slide that uses it.
 
-MarkdownPoint picks up theme changes made outside the app while the presentation is open, unless the presentation is shared for editing together. If a layout can't be read, each slide that uses it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows that message. A merge conflict that git leaves in a theme file is one of these problems, and the issue names the line where the conflict starts.
+MarkdownPoint picks up theme changes made outside the app while the presentation is open. It doesn't while the presentation is shared for editing together. If a layout can't be read, each slide that uses it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows that message. A merge conflict that git leaves in a theme file is one of these problems, and the issue names the line where the conflict starts.
 
 The reference lists every key of [master.json](reference/v1.md#master) and [a layout](reference/v1.md#layout).

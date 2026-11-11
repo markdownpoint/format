@@ -5,7 +5,7 @@ MarkdownPoint is a presentation app for Mac and Windows: [markdownpoint.com](htt
 Each presentation is a folder with two main files:
 
 - `slides.md` contains the text, speaker notes, sections, and slide order.
-- `presentation.mdpoint` contains the layout, objects, and animation as JSON.
+- `presentation.mdpoint` contains each slide's layout, objects, look, and animation as JSON.
 
 Themes and media are in subfolders. You can edit the presentation in MarkdownPoint, in a text editor, or with an AI agent.
 
@@ -62,7 +62,7 @@ The [complete presentation](examples/first-deck) includes the theme and JSON fil
 ```
 My talk/
   slides.md              text, notes, sections, and slide order
-  presentation.mdpoint   objects, layout, styles, and animation
+  presentation.mdpoint   each slide's layout, objects, look, and animation
   media/                 imported images, videos, audio, and models
   generated/             generated images, 3D text models built by a program, and image generation records
   themes/<key>/          master.json, layout files, fonts, and images
@@ -101,7 +101,7 @@ Include `versions/` in git if you want to keep the saved versions with the prese
 
 ## Format versions
 
-Every file states its format version, a major and a minor number, in quotes: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes are needed because 1.10 and 1.1 are the same number.
+Every file states its format version in quotes. The version is a major and a minor number: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes are needed because 1.10 and 1.1 are the same number.
 
 MarkdownPoint 1.x opens any version 1.x file. A later minor version can add data that an earlier reader skips. When MarkdownPoint opens such a file, it shows a notice and keeps the unknown data when it saves. An unknown key, word, or object stays as long as the record or entry that contains it does. A list of values is one exception. A save that changes the list writes the whole list again, and the unknown data in it is lost. In the .md file, an unknown Markdown form stays as written until its block is edited or the file is formatted. It is then written as plain words. If two people duplicate a slide before their copies sync, the unknown data stays in only one of the copies. Saving never lowers the file's version number. A version 2.0 file requires MarkdownPoint 2.
 
