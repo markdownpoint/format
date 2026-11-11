@@ -294,7 +294,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "description": "How bold text looks. Its weight is 700, or the text's weight if that is heavier. It replaces any mark or weight inside the bold. So bold has no `font-weight`. Without it, bold uses the text's font."
+                "description": "How bold text looks. Its weight is 700, or the text's weight if that is heavier. It replaces any weight inside the bold. So bold has no `font-weight`. Without it, bold uses the text's font."
               },
               "italic": {
                 "allOf": [
@@ -3843,7 +3843,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
+      "description": "The id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Other tools leave it unchanged."
     }
   },
   "required": [

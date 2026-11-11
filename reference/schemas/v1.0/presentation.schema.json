@@ -27,7 +27,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The id of the save that wrote the file. MarkdownPoint writes it while the presentation is shared for editing. Other tools leave it unchanged."
+      "description": "The id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Other tools leave it unchanged."
     },
     "theme": {
       "type": "string",

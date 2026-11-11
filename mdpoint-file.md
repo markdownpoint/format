@@ -91,7 +91,7 @@ Each key of an object, and each key inside a `frame` or a `transition`, is on a 
 
 A merge conflict that git leaves in the file is an error. MarkdownPoint shows the line where it starts and won't open the presentation until you resolve it.
 
-Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults, and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
+Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults, and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged. When an editor hands over a shared presentation, closes it, or signs out after a change, the save writes a new `save-id` into both files. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
 
 When rounding to six decimal places changes a number in the file, MarkdownPoint warns once when it opens the presentation.
 
