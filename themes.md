@@ -71,7 +71,7 @@ The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled 
 
 ## Layouts
 
-A layout defines a slide's initial objects. Basic's Title layout is:
+A layout defines the objects its slides inherit. Basic's Title layout is:
 
 ```json
 {

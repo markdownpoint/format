@@ -84,7 +84,7 @@ You can add your own keys for information used by your tools or workflow. Markdo
 
 ## Sections
 
-`<!-- section: id -->` starts a section. An id uses lowercase letters, digits, and single hyphens. It starts with a letter and ends with a letter or digit, such as `intro` or `q3-numbers`. The next line is a level-1 heading with the section's name: `# Name`. MarkdownPoint removes any formatting from the heading. The heading can't have a comment, not even a paragraph id. A section's block contains nothing else. Sections are optional, but once there is one, every slide must be in a section.
+`<!-- section: id -->` starts a section. An id uses lowercase letters, digits, and single hyphens. It starts with a letter and ends with a letter or digit, such as `intro` or `q3-numbers`. The next line is a level-1 heading with the section's name: `# Name`. MarkdownPoint removes any formatting from the heading. The heading can't have a comment. A paragraph id is a comment too. A section's block contains nothing else. Sections are optional, but once there is one, every slide must be in a section.
 
 ## Slides
 
@@ -186,7 +186,7 @@ Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`.
 
 `==highlighted==` and `[colored]{color=accent}` text are MarkdownPoint additions. A color is either a role from the slide's color scheme, such as `accent`, or a hex color: `[text]{color="#2F7D4F"}`.
 
-Words can also have their own weight: `[text]{font-weight=600}`. The weight is 300, 400, 500, 600, 700, or 900. To set both a color and a weight, use one span: `[text]{color=accent font-weight=600}`. The two can come in either order, and each value can be bare or quoted. MarkdownPoint writes the color first. A span with any other key, a repeated key, or a value its key doesn't accept stays as written, and none of it applies, not even its color. `**Bold**` overrides a word's own weight, and a word's own weight overrides the weight a text style gives to italic or highlighted words.
+Words can also have their own weight: `[text]{font-weight=600}`. The weight is 300, 400, 500, 600, 700, or 900. To set both a color and a weight, use one span: `[text]{color=accent font-weight=600}`. The two can come in either order, and each value can be bare or quoted. MarkdownPoint writes the color first. A span with any other key, a repeated key, or a value its key doesn't accept stays as written. Neither its color nor its weight applies. `**Bold**` overrides a word's own weight, and a word's own weight overrides the weight a text style gives to italic or highlighted words.
 
 Code can have a color and a link, but no other mark. Bold, italic, highlight, strikethrough, and a weight don't apply to code. MarkdownPoint writes such a mark only around the words next to the code: `` **slides are `code` you** `` becomes `` **slides are** `code` **you** ``.
 

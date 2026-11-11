@@ -1798,7 +1798,7 @@
                     "type": "null"
                   },
                   {
-                    "description": "The camera's drift. The same offset is added to the camera's position and its point of interest. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it.",
+                    "description": "The camera's drift. Its offset is in canvas units along the slide's 3D axes. After animation, parenting, and constraints place the camera, the offset is added to its position and its point of interest. A parent's rotation and scale don't change it. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it.",
                     "type": "object",
                     "properties": {
                       "offset": {
@@ -5522,20 +5522,20 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is where its members' box stands. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the middle or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the middle or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. Without an `anchor-point`, the box turns and scales about that point."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, the box turns and scales about a point on its top edge."
+          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         },
         "width": {
           "type": "number",
@@ -5789,7 +5789,7 @@
         "object": {
           "type": "string",
           "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-          "description": "The id of the object it attaches to."
+          "description": "The id of the object it attaches to on the same slide or composition."
         },
         "side": {
           "enum": [
@@ -5822,7 +5822,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Where the end was when it was last drawn: {x, y}. It is used when the object it attaches to isn't on the slide."
+          "description": "Where the end was when it was last drawn: {x, y}. It is used when the slide has no such object, or when a line can't attach to it. Without a last position, the line isn't drawn then."
         }
       },
       "required": [
@@ -5870,20 +5870,20 @@
       "maxItems": 16
     },
     "point-frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is where its members' box stands. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the middle or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the middle or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. Without an `anchor-point`, the box turns and scales about that point."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, the box turns and scales about a point on its top edge."
+          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         }
       },
       "required": [
@@ -6338,20 +6338,20 @@
       ]
     },
     "text-frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is where its members' box stands. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the middle or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the middle or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. Without an `anchor-point`, the box turns and scales about that point."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
           "type": "number",
           "minimum": -65536,
           "maximum": 65536,
-          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, the box turns and scales about a point on its top edge."
+          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         },
         "width": {
           "type": "number",
@@ -6396,7 +6396,7 @@
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "It turns about the vertical axis. With a positive y, its left side comes forward. It turns after the group's rotation and before its x."
+          "description": "It turns about the vertical axis. With a positive y, its left side comes forward. The y turn comes first, then the x turn."
         }
       },
       "additionalProperties": false
