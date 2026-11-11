@@ -3779,7 +3779,7 @@
       "type": "object",
       "propertyNames": {
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?:\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z]))*(?![\\s\\S])",
-        "description": "a key, or a part of a record such as \"tilt.x\""
+        "description": "a key or a number part of a record, such as \"tilt.x\""
       },
       "additionalProperties": {
         "type": "string",
