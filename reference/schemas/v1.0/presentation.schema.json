@@ -143,18 +143,18 @@
     "image-style": {
       "allOf": [
         {
-          "$ref": "#/definitions/image-style-or-none"
+          "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated image objects use when they don't set one. It's written as text, and `none`, the default, means no style. A background's image uses `background-image-style` instead."
+      "description": "The style generated image objects use when they don't set one. It's written as text. Without it, they have no style. A background's image uses `background-image-style` instead."
     },
     "background-image-style": {
       "allOf": [
         {
-          "$ref": "#/definitions/image-style-or-none"
+          "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated background images use when their background doesn't set one. It's written as text, and `none`, the default, means no style."
+      "description": "The style generated background images use when their background doesn't set one. It's written as text. Without it, they have no style."
     },
     "swatches": {
       "type": "array",
@@ -4596,6 +4596,11 @@
         }
       ]
     },
+    "image-style-not-none": {
+      "type": "string",
+      "pattern": "^(?![\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*none[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*(?![\\s\\S]))(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+      "description": "nonempty text without NUL characters, not \"none\""
+    },
     "image-style-or-none": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
@@ -7827,7 +7832,7 @@
     "text-model": {
       "anyOf": [
         {
-          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
+          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "extrusion": {
@@ -7854,7 +7859,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. A text in a group stays flat. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
+          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
             "file": {
