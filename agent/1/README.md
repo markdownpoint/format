@@ -143,9 +143,10 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   `presentation` is the presentation's folder, and `theme` is its theme's.
   `cache` is the folder on this computer where MarkdownPoint saves the models
   it builds from a text's letters. `bundled` is the fonts that ship with
-  MarkdownPoint. `slideId`, `objectId`, and `property` name each place where
-  the file is used. An issue about a theme's own file, its `master.json` or a
-  layout's file, has none of these fields.
+  MarkdownPoint. `slideId`, `objectId`, and `key` name each place where the
+  file is used. The `key` is the one that names the file there, such as `file`,
+  `background.image.file`, or `soundtrack.file`. An issue about a theme's own
+  file, its `master.json` or a layout's file, has none of these fields.
 - `slide`: `slideId`, and `objectId` or `objectIds`.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue has neither.
