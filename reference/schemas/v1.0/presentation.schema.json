@@ -7653,7 +7653,7 @@
                     },
                     "loop": {
                       "const": "repeat",
-                      "description": "With `repeat`, the Action plays again from its start each time it ends. Without it, the Action plays once."
+                      "description": "With `repeat`, the Action plays again from the start of its `clip-trim` each time it ends."
                     },
                     "clip-trim": {
                       "allOf": [

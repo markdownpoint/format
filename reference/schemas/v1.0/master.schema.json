@@ -165,7 +165,7 @@
         "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "additionalProperties": {
-        "description": "One text style. The defaults are 0 for `padding-top` and `padding-bottom`, half the font size for `paragraph-spacing`, and 1.25 times the font size for `list-indent`. Without `bullet-styles`, the list levels are `disc`, `circle`, then `square`.",
+        "description": "One text style.",
         "type": "object",
         "properties": {
           "font-family": {
