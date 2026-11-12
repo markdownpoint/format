@@ -78,7 +78,7 @@ Start the file with frontmatter between two `---` lines. MarkdownPoint uses the 
 - `footer`: the footer text.
 - `save-id`: the id of the save that last wrote the files as an editor handed over the shared presentation, closed it, or signed out. The .mdpoint file has the same id. Such a save writes a new one when the editor changed something, and other saves keep it. Other tools leave it unchanged.
 
-Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*`, or `- `. Without quotes, some of these values aren't text in YAML. MarkdownPoint refuses them. MarkdownPoint always writes the footer in double quotes.
+Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*`, or `- `. Quote it, too, if YAML 1.2's core schema reads it as null, a boolean, or a number, such as `~`, `true`, `001`, or `.5`. Without quotes, some of these values aren't text in YAML. MarkdownPoint refuses them. MarkdownPoint always writes the footer in double quotes.
 
 You can add your own keys for information used by your tools or workflow. MarkdownPoint ignores them and saves them as written.
 

@@ -4529,7 +4529,7 @@
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is in the box the object is drawn at. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center, as in CSS.",
+              "description": "Where a linear gradient's line is in the box the object is drawn at. It turns about its middle by `angle`. By default it crosses the box through its center. It is the same in CSS.",
               "type": "object",
               "properties": {
                 "x": {
