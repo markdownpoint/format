@@ -934,10 +934,14 @@
                           "properties": {
                             "x": {
                               "type": "number",
+                              "minimum": -8589934592,
+                              "maximum": 8589934592,
                               "description": "of the frame"
                             },
                             "y": {
                               "type": "number",
+                              "minimum": -8589934592,
+                              "maximum": 8589934592,
                               "description": "of the frame"
                             }
                           },
@@ -3599,10 +3603,14 @@
       "properties": {
         "x": {
           "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
           "description": "How far across the box in fractions of its width."
         },
         "y": {
           "type": "number",
+          "minimum": -8589934592,
+          "maximum": 8589934592,
           "description": "How far down the box in fractions of its height."
         }
       },
@@ -4516,6 +4524,8 @@
             },
             "angle": {
               "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
@@ -6945,10 +6955,14 @@
           "properties": {
             "x": {
               "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
               "description": "of the frame"
             },
             "y": {
               "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
               "description": "of the frame"
             }
           },
