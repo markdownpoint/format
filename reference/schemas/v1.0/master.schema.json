@@ -4783,13 +4783,13 @@
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "of the frame"
+              "description": "of the box"
             },
             "y": {
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "of the frame"
+              "description": "of the box"
             }
           },
           "required": [
