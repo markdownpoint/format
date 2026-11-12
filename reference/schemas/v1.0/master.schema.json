@@ -4342,26 +4342,26 @@
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is in the object's frame. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center. It is the same in CSS.",
+              "description": "Where a linear gradient's line is in the box the object is drawn at. It turns about its middle by `angle`. The default line crosses the box the gradient fills through its center, as in CSS.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "The x of its middle in fractions of the frame's width. 0 is the left edge, and 1 is the right edge."
+                  "description": "The x of its middle in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "The y of its middle in fractions of the frame's height. 0 is the top edge, and 1 is the bottom edge."
+                  "description": "The y of its middle in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 },
                 "length": {
                   "type": "number",
                   "minimum": 0.000001,
                   "maximum": 362,
-                  "description": "Its length in fractions of the frame's diagonal."
+                  "description": "Its length in fractions of the box's diagonal."
                 }
               },
               "required": [
@@ -4401,13 +4401,13 @@
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its x in fractions of the frame's width. 0 is the left edge, and 1 is the right edge."
+                  "description": "Its x in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its y in fractions of the frame's height. 0 is the top edge, and 1 is the bottom edge."
+                  "description": "Its y in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 }
               },
               "required": [
@@ -4418,7 +4418,7 @@
             },
             "shape": {
               "const": "circle",
-              "description": "With `circle`, a radial gradient is round in any box. Without it, the gradient reaches the box's corners."
+              "description": "With `circle`, a radial gradient is round in any box. Without it, the gradient reaches the corners of the box it spans."
             },
             "stops": {
               "allOf": [
