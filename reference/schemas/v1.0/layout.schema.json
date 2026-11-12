@@ -1900,8 +1900,11 @@
                               "const": "position"
                             },
                             "target": {
-                              "type": "string",
-                              "pattern": "^[\\s\\S]+(?![\\s\\S])",
+                              "allOf": [
+                                {
+                                  "$ref": "#/definitions/object-id"
+                                }
+                              ],
                               "description": "The id of the model or light the camera follows."
                             },
                             "target-node": {
@@ -5059,8 +5062,11 @@
                 "description": "The name of the model's node that turns, such as Head. Without it, the whole model turns."
               },
               "target": {
-                "type": "string",
-                "pattern": "^[\\s\\S]+(?![\\s\\S])",
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/object-id"
+                  }
+                ],
                 "description": "The id of the model or light whose origin it turns toward. With `camera`, it turns toward the camera."
               },
               "axis": {
