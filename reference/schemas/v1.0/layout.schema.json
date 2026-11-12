@@ -2067,6 +2067,19 @@
                   }
                 ]
               },
+              "angle": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 180,
+                    "description": "degrees"
+                  }
+                ]
+              },
               "size": {
                 "anyOf": [
                   {
@@ -4452,6 +4465,12 @@
                       "intensity": {
                         "type": "number",
                         "minimum": 0
+                      },
+                      "angle": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 180,
+                        "description": "degrees"
                       }
                     },
                     "required": [
