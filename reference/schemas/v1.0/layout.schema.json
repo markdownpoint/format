@@ -5806,7 +5806,7 @@
             "bottom",
             "left"
           ],
-          "description": "Which side of the object it attaches to. With `auto`, it attaches to the nearest side."
+          "description": "Which side of the object it attaches to. With `auto`, it attaches to the side that faces the other end."
         },
         "last-position": {
           "type": "object",
@@ -5829,7 +5829,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "Where the end was when it was last drawn: {x, y}. It is used when the slide has no such object, or when a line can't attach to it. Without a last position, the line isn't drawn then."
+          "description": "The point the end is drawn at when the slide has no such object, or when a line can't attach to it: {x, y}. Without a last position, the line isn't drawn then."
         }
       },
       "required": [
@@ -5960,7 +5960,7 @@
             }
           },
           "additionalProperties": false,
-          "description": "How far each copy moves from the one before: {x, y} across and down."
+          "description": "The move from each copy to the next: {x, y} across and down. It is measured in the turned and scaled axes of the copy before."
         },
         "rotation": {
           "type": "number",

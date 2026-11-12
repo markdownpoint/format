@@ -113,10 +113,11 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   string in brackets, as in
   `slides.intro.objects[2]` and `slides.intro.initial["title.opacity"]`. Once
   an object's id can be read, the object is named by its id, as in
-  `slides.intro.objects.title.opacity`. Once the slide is read, a step or a
-  keyframe is named by its id, as in
+  `slides.intro.objects.title.opacity`. Once the slide is read, a step is
+  named by its id, as in
   `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`.
-  In it, the curve's name is one key. A composition is under `compositions`.
+  In it, the curve's name is one key. A keyframe and a cue are always named
+  by their ids. A composition is under `compositions`.
   `slideId` names the slide that contains the value, `compositionId` names the
   composition, and `objectId` names the object.
 - `md`: `location` names the file and the line, counted from 1. It also names
