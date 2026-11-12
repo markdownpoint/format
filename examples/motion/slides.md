@@ -111,7 +111,7 @@ Copies of one shape==.==
 Eight copies turn in a ring. Each starts a little later than the one before.
 
 <!-- notes -->
-With `repeater`, one square makes eight squares in all (`copies`): itself, unchanged, and seven copies. Each copy is turned 45 degrees (`rotation`) around a point below it (`anchor-point`) and is a little smaller (`scale`). The last copy fades to an `end-opacity` of 0.2. Each copy's turn, scale, and delay vary a little at random (`rotation-randomness`, `scale-randomness`, and `stagger-randomness`). The randomness uses `seed` 5. The click turns the square, and each copy follows 0.08 seconds after the one before (`stagger`). The slide leaves with a carry-over that matches words. The words shared by the two headings move to their places on the next slide.
+With `repeater`, one square makes eight squares in all (`copies`): itself, unchanged, and seven copies. Each copy is turned 45 degrees (`rotation`) around a point below it (`anchor-point`) and is a little smaller (`scale`). The last copy fades to an `end-opacity` of 0.2. Each copy's turn and scale vary a little at random (`rotation-randomness` and `scale-randomness`). The randomness uses `seed` 5. The click turns the square. Each copy turns 0.08 seconds later than the one before (`stagger`). Each also waits up to 0.05 seconds more at random (`stagger-randomness`). The slide leaves with a carry-over that matches words. The words shared by the two headings move to their places on the next slide.
 
 <!-- slide: arrival -->
 
