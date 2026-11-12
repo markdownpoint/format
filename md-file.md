@@ -71,7 +71,7 @@ The ids in the markers connect the two files. Keep a slide's id when changing it
 
 ## Frontmatter
 
-Start the file with frontmatter between two `---` lines. MarkdownPoint uses the following keys. Write each one on a single line as `key: value`:
+Start the file with frontmatter between two `---` lines. Each `---` line holds nothing else, not even a space. The frontmatter's lines end in LF or CRLF. MarkdownPoint uses the following keys. Write each one on a single line as `key: value`:
 
 - `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
 - `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
