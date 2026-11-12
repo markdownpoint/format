@@ -7961,7 +7961,7 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "none"
             },
             "start": {
@@ -7976,7 +7976,7 @@
             }
           },
           "required": [
-            "effect"
+            "type"
           ],
           "dependencies": {
             "delay": [
@@ -7988,14 +7988,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "cross-dissolve"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "start": {
               "const": "automatically",
@@ -8009,7 +8009,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8022,14 +8022,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "carry-over"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "interpolation": {
               "enum": [
@@ -8060,7 +8060,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8073,14 +8073,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "push"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
               "enum": [
@@ -8103,7 +8103,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8116,14 +8116,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "scroll"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "interpolation": {
               "enum": [
@@ -8155,7 +8155,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8168,14 +8168,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "move-in"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
               "enum": [
@@ -8198,7 +8198,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8211,14 +8211,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "reveal"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
               "enum": [
@@ -8241,7 +8241,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8254,14 +8254,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "wipe"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
               "enum": [
@@ -8284,7 +8284,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8297,14 +8297,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "zoom"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "start": {
               "const": "automatically",
@@ -8318,7 +8318,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {
@@ -8331,14 +8331,14 @@
         {
           "type": "object",
           "properties": {
-            "effect": {
+            "type": {
               "const": "fade-through-color"
             },
             "duration": {
               "type": "number",
               "minimum": 0.000001,
               "maximum": 4294967296,
-              "description": "How long it takes. It's left out when the effect is `none`."
+              "description": "How long it takes. It's left out when the type is `none`."
             },
             "color": {
               "allOf": [
@@ -8360,7 +8360,7 @@
             }
           },
           "required": [
-            "effect",
+            "type",
             "duration"
           ],
           "dependencies": {

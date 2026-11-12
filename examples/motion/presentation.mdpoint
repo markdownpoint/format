@@ -52,7 +52,7 @@
       "layout": "blank",
       "scheme": "lilac",
       "transition": {
-        "effect": "carry-over",
+        "type": "carry-over",
         "duration": 1.2,
         "interpolation": "linear",
         "match": "word"
@@ -115,7 +115,7 @@
       "layout": "blank",
       "scheme": "sky",
       "transition": {
-        "effect": "push",
+        "type": "push",
         "duration": 0.8,
         "direction": "up"
       },
@@ -361,7 +361,7 @@
       "layout": "blank",
       "scheme": "mint",
       "transition": {
-        "effect": "fade-through-color",
+        "type": "fade-through-color",
         "duration": 1,
         "color": "accent"
       },

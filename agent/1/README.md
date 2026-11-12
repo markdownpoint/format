@@ -150,7 +150,7 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   file, its `master.json` or a layout's file, has none of these fields.
 - `slide`: `slideId`, and `objectId` or `objectIds`.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
-  `objectIds`. A `render-failed` issue has neither.
+  `objectIds`. A `render-failed` issue from drawing has neither.
 
 A refused value of a key with a code of its own has that code, such as
 `invalid-layout` for a slide's `layout` or `invalid-locale` for the

@@ -122,7 +122,7 @@ Eight copies of one shape==.==
 The words shared by both headings carry over from the slide before.
 
 <!-- notes -->
-The previous slide's transition has its `effect` set to `carry-over` and its `match` set to `word`. It matches the two headings word by word. "of one shape" moves to its place in this heading, "Copies" fades out, and "Eight copies" fades in. The square has the same id on both slides. It is where the click left it, turned 90 degrees. Its copies stay still while the words move.
+The previous slide's transition has its `type` set to `carry-over` and its `match` set to `word`. It matches the two headings word by word. "of one shape" moves to its place in this heading, "Copies" fades out, and "Eight copies" fades in. The square has the same id on both slides. It is where the click left it, turned 90 degrees. Its copies stay still while the words move.
 
 <!-- slide: moments -->
 
