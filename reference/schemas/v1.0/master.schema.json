@@ -94,7 +94,7 @@
       "type": "object",
       "properties": {},
       "propertyNames": {
-        "pattern": "^(?!(?:[sS][eE][rR][iI][fF]|[sS][aA][nN][sS]-[sS][eE][rR][iI][fF]|[mM][oO][nN][oO][sS][pP][aA][cC][eE]|[cC][uU][rR][sS][iI][vV][eE]|[fF][aA][nN][tT][aA][sS][yY]|[sS][yY][sS][tT][eE][mM]-[uU][iI]|[uU][iI]-[sS][eE][rR][iI][fF]|[uU][iI]-[sS][aA][nN][sS]-[sS][eE][rR][iI][fF]|[uU][iI]-[mM][oO][nN][oO][sS][pP][aA][cC][eE]|[uU][iI]-[rR][oO][uU][nN][dD][eE][dD]|[eE][mM][oO][jJ][iI]|[mM][aA][tT][hH]|[fF][aA][nN][gG][sS][oO][nN][gG])(?![\\s\\S]))[\\s\\S]+(?![\\s\\S])"
+        "pattern": "^[\\s\\S]+(?![\\s\\S])"
       },
       "additionalProperties": {
         "type": "array",
@@ -104,7 +104,7 @@
         },
         "minItems": 1
       },
-      "description": "The theme's embedded fonts by family name. Each is a list of .eot files for a family a font role uses. There is one per face. A generic family has none."
+      "description": "The theme's embedded fonts by family name. Each is a list of .eot files for a family a font role uses. There is one per face."
     },
     "brand": {
       "description": "The brand's named colors. Schemes use them.",

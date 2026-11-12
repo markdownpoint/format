@@ -67,7 +67,7 @@ A text object uses a named text style from the theme. Define every style that th
 
 Set `font-family` to `display`, `body`, or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color, and spacing.
 
-The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled and generic families, such as `serif` or `system-ui`, need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
+The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled families need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
 
 ## Layouts
 
