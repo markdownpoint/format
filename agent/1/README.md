@@ -124,7 +124,9 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   names the file and the line, counted from 1. It also names the column when
   it's known.
 - `md`: `location` names the file and the line, counted from 1. It also names
-  the column when it's known. `path` names the frontmatter key or the section
+  the column when it's known. An issue about the frontmatter's `markdownpoint` or
+  `id` has no `location`. `ignored-text-block`, `invalid-table`, and
+  `table-cell-limit` have none either. `path` names the frontmatter key or the section
   the
   issue is about, such as `frontmatter.footer` or `sections.intro`. For an
   issue in a slide's words, it names the slide, the composition, the object,
