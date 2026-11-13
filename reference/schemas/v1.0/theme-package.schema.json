@@ -13,11 +13,6 @@
       "const": "theme-package",
       "description": "What the file is."
     },
-    "theme": {
-      "type": "string",
-      "pattern": "^(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-      "description": "The key of the theme in the package. It is the name of the theme's folder."
-    },
     "files": {
       "description": "Each file of the theme with its size and digest. That includes master.json.",
       "type": "object",
@@ -54,7 +49,6 @@
   "required": [
     "markdownpoint",
     "type",
-    "theme",
     "files"
   ],
   "additionalProperties": false,
