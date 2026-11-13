@@ -7893,7 +7893,7 @@
                     "paragraph": {
                       "type": "string",
                       "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-                      "description": "The id of the paragraph that appears. The id is in the `<!-- id: … -->` that ends the paragraph's last line. A reader warns when no paragraph of the text has the id."
+                      "description": "The id of the paragraph that appears. The id is in the `<!-- id: … -->` at the end of the paragraph's last line or alone on the line after it. A reader warns when no paragraph of the text has the id."
                     }
                   },
                   "required": [
