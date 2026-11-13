@@ -119,7 +119,10 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   In it, the curve's name is one key. A keyframe and a cue are always named
   by their ids. A composition is under `compositions`.
   `slideId` names the slide that contains the value, `compositionId` names the
-  composition, and `objectId` names the object.
+  composition, and `objectId` names the object. An `invalid-json` or
+  `merge-conflict` issue has no `path`. When its line is known, `location`
+  names the file and the line, counted from 1. It also names the column when
+  it's known.
 - `md`: `location` names the file and the line, counted from 1. It also names
   the column when it's known. `path` names the frontmatter key or the section
   the
@@ -148,15 +151,17 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   file is used. The `key` is the one that names the file there, such as `file`,
   `background.image.file`, or `soundtrack.file`. An issue about a theme's own
   file, its `master.json` or a layout's file, has none of these fields.
-- `slide`: `slideId`, and `objectId` or `objectIds`.
+- `slide`: `slideId`, and `objectId` or `objectIds`. When the issue is about
+  one of the object's keys, such as `text-style`, `key` names it.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue from drawing has neither.
 
 A refused value of a key with a code of its own has that code, such as
-`invalid-layout` for a slide's `layout` or `invalid-locale` for the
-presentation's `locale`. Every other key, an object's keys and settings such
-as `countdown` among them, has `invalid-value`. Either way, `path` names the
-key.
+`invalid-layout` for a slide's `layout`, `invalid-locale` for the
+presentation's `locale`, or `invalid-icon` for an icon's `icon`. A refused
+value of any other key, such as `countdown` or an object's `opacity`, has
+`invalid-value`. An override's value that no object can take has
+`invalid-override-value`, whatever its key. Either way, `path` names the key.
 
 The codes an issue can have:
 
