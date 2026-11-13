@@ -7550,7 +7550,7 @@
                 "description": "seconds"
               }
             ],
-            "description": "The time in seconds into the step that it loops back to while waiting for a click. It is before the later of its `min-duration` and its keyframe and cue times. A paragraph's entrance doesn't count."
+            "description": "The time in seconds into the step that it loops back to while waiting for a click. From the later of its `min-duration` and its keyframe and cue times on, it causes a warning and doesn't loop."
           },
           "curves": {
             "type": "object",
