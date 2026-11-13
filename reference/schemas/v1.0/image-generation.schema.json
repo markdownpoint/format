@@ -147,11 +147,12 @@
           "description": "The style the image was made in. Its words are written the same way as the prompt's. It is `none` for no style."
         },
         "provider": {
-          "enum": [
-            "google",
-            "openai"
+          "allOf": [
+            {
+              "$ref": "#/definitions/nonblank-line"
+            }
           ],
-          "description": "Who makes the image model."
+          "description": "Who makes the image model: one line that isn't blank and has no control characters. MarkdownPoint writes `google` or `openai`."
         },
         "model": {
           "allOf": [
