@@ -70,15 +70,25 @@
           "description": "How loud it plays."
         },
         "fade-in": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4294967296,
+              "description": "seconds"
+            }
+          ],
           "description": "How long it takes to rise linearly from silence each time it starts."
         },
         "fade-out": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4294967296,
+              "description": "seconds"
+            }
+          ],
           "description": "How long it takes to fall linearly to silence before the file ends each time. Where the two fades overlap, the lower volume is used."
         }
       },
@@ -92,15 +102,25 @@
       "type": "object",
       "properties": {
         "slide-delay": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4294967296,
+              "description": "seconds"
+            }
+          ],
           "description": "How long each slide stays before the next slide. The time starts once the slide's last step has played and its sound has ended."
         },
         "step-delay": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4294967296,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4294967296,
+              "description": "seconds"
+            }
+          ],
           "description": "How long the presentation waits before each step that would wait for a click."
         },
         "loop": {
@@ -115,9 +135,14 @@
       "additionalProperties": false
     },
     "countdown": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 4294967296,
+      "allOf": [
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967296,
+          "description": "seconds"
+        }
+      ],
       "description": "How long the talk should take in seconds. Without it, the talk has no set length."
     },
     "default-text-style": {
@@ -1946,9 +1971,14 @@
                           "type": "object",
                           "properties": {
                             "shutter": {
-                              "type": "number",
-                              "minimum": 0,
-                              "maximum": 4294967296,
+                              "allOf": [
+                                {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 4294967296,
+                                  "description": "frames"
+                                }
+                              ],
                               "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                             },
                             "frame-position": {
@@ -1988,8 +2018,13 @@
                               "description": "Whether the World's light darkens where surfaces close in on each other. A shadow catcher then also darkens where an object rests on it. The default is false."
                             },
                             "distance": {
-                              "type": "number",
-                              "minimum": 0.000001,
+                              "allOf": [
+                                {
+                                  "type": "number",
+                                  "minimum": 0.000001,
+                                  "description": "canvas units"
+                                }
+                              ],
                               "description": "How far bounced light and shading reach from a surface. The default is 400."
                             }
                           },
@@ -2026,8 +2061,13 @@
                               "description": "Where the camera starts: an {x, y, z} offset from its set position. An axis left out doesn't move."
                             },
                             "duration": {
-                              "type": "number",
-                              "minimum": 0.000001,
+                              "allOf": [
+                                {
+                                  "type": "number",
+                                  "minimum": 0.000001,
+                                  "description": "seconds"
+                                }
+                              ],
                               "description": "How many seconds after the slide begins to appear the camera comes to rest."
                             }
                           },
@@ -2147,8 +2187,13 @@
                                         "description": "How strongly the spring is damped. At 1, it is critically damped. Less damping swings further."
                                       },
                                       "response": {
-                                        "type": "number",
-                                        "minimum": 0.000001,
+                                        "allOf": [
+                                          {
+                                            "type": "number",
+                                            "minimum": 0.000001,
+                                            "description": "seconds"
+                                          }
+                                        ],
                                         "description": "The spring's natural period. A shorter response catches up sooner."
                                       }
                                     },
@@ -3109,15 +3154,25 @@
             "type": "object",
             "properties": {
               "width": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 8192,
+                "allOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 8192,
+                    "description": "canvas units"
+                  }
+                ],
                 "description": "The width."
               },
               "height": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 8192,
+                "allOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 8192,
+                    "description": "canvas units"
+                  }
+                ],
                 "description": "The height."
               }
             },
@@ -3605,15 +3660,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "of the box"
+            }
+          ],
           "description": "How far across the box in fractions of its width."
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "of the box"
+            }
+          ],
           "description": "How far down the box in fractions of its height."
         }
       },
@@ -3628,15 +3693,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "Its width, along its own x."
         },
         "y": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "Its height, along its own y."
         }
       },
@@ -3654,9 +3729,14 @@
           "description": "Whether the members run down or across."
         },
         "gap": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The space between one member and the next."
         },
         "align": {
@@ -4021,9 +4101,14 @@
       "type": "object",
       "properties": {
         "scale": {
-          "type": "number",
-          "minimum": 0.01,
-          "maximum": 511,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.01,
+              "maximum": 511,
+              "description": "×"
+            }
+          ],
           "description": "How far it is zoomed. At 1, an image fits its frame as its `scale-mode` sets, and a background covers the slide. Above 1, it is zoomed in. Below 1, it is zoomed out."
         },
         "focal-point": {
@@ -4058,9 +4143,14 @@
           "type": "object",
           "properties": {
             "size": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 758.518519,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 758.518519,
+                  "description": "canvas units"
+                }
+              ],
               "description": "How far it reaches in canvas units. It is at most 100 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 200 at 3840 × 2160."
             },
             "spread": {
@@ -4134,9 +4224,14 @@
           "description": "`by-paragraph`: each paragraph enters on the step whose paragraph cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
         },
         "duration": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 4294967296,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 4294967296,
+              "description": "seconds"
+            }
+          ],
           "description": "How long each paragraph takes to enter in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
@@ -4179,15 +4274,25 @@
               "description": "Its scale. At 1, it is its own size."
             },
             "rotation": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "degrees"
+                }
+              ],
               "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 67108862,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 67108862,
+                  "description": "ems"
+                }
+              ],
               "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
@@ -4228,13 +4333,23 @@
           "description": "The seed for a random order: the same seed gives the same order."
         },
         "spread": {
-          "type": "number",
-          "minimum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 1,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
         },
         "pause": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals the text waits between turns. The wait starts once the pieces before have arrived."
         },
         "progress": {
@@ -4309,15 +4424,25 @@
               "description": "Its scale. At 1, it is its own size."
             },
             "rotation": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "degrees"
+                }
+              ],
               "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 67108862,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 67108862,
+                  "description": "ems"
+                }
+              ],
               "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
@@ -4358,13 +4483,23 @@
           "description": "The seed for a random order: the same seed gives the same order."
         },
         "spread": {
-          "type": "number",
-          "minimum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 1,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
         },
         "pause": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals the text waits between turns. The wait starts once the pieces before have left."
         },
         "progress": {
@@ -4420,9 +4555,14 @@
       "type": "object",
       "properties": {
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far up from the slide's bottom edge in canvas units."
         }
       },
@@ -4436,27 +4576,47 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         },
         "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The width."
         },
         "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The height."
         }
       },
@@ -4529,9 +4689,14 @@
               "const": "linear"
             },
             "angle": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "degrees"
+                }
+              ],
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
@@ -4539,21 +4704,36 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "The x of its middle in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "The y of its middle in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 },
                 "length": {
-                  "type": "number",
-                  "minimum": 0.000001,
-                  "maximum": 362,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 362,
+                      "description": "box diagonals"
+                    }
+                  ],
                   "description": "Its length in fractions of the box's diagonal."
                 }
               },
@@ -4591,15 +4771,25 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "Its x in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "Its y in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 }
               },
@@ -6863,15 +7053,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         }
       },
@@ -6920,9 +7120,14 @@
       "type": "object",
       "properties": {
         "copies": {
-          "type": "integer",
-          "minimum": 2,
-          "maximum": 513,
+          "allOf": [
+            {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 513,
+              "description": "copies"
+            }
+          ],
           "description": "How many copies there are. The original counts as one."
         },
         "position": {
@@ -6945,9 +7150,14 @@
           "description": "The move from each copy to the next: {x, y} across and down. It is measured in the turned and scaled axes of the copy before."
         },
         "rotation": {
-          "type": "number",
-          "minimum": -16777216,
-          "maximum": 16777216,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -16777216,
+              "maximum": 16777216,
+              "description": "degrees"
+            }
+          ],
           "description": "How far each copy is turned clockwise from the one before."
         },
         "scale": {
@@ -6980,9 +7190,14 @@
           "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down."
         },
         "stagger": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4194304,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4194304,
+              "description": "seconds"
+            }
+          ],
           "description": "How much later each copy plays the object's animation than the one before. A copy can play it up to (copies − 1) × `stagger` + `stagger-randomness` later."
         },
         "end-opacity": {
@@ -6992,15 +7207,25 @@
           "description": "The last copy's opacity. It is a fraction of the object's opacity. The copies between fade toward it."
         },
         "position-randomness": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The farthest each copy moves in a random direction."
         },
         "rotation-randomness": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "The farthest each copy turns either way at random."
         },
         "scale-randomness": {
@@ -7010,9 +7235,14 @@
           "description": "The most each copy grows or shrinks at random. It is a fraction of its size."
         },
         "stagger-randomness": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4194304,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4194304,
+              "description": "seconds"
+            }
+          ],
           "description": "The most extra time each copy waits at random."
         },
         "seed": {
@@ -7097,21 +7327,36 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Degrees about x, or a quaternion's x."
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Degrees about y, or a quaternion's y."
         },
         "z": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Degrees about z, or a quaternion's z."
         }
       },
@@ -7127,21 +7372,36 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across."
         },
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far up."
         },
         "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far toward the viewer."
         }
       },
@@ -7254,9 +7514,14 @@
             "description": "When the step starts: with the previous step, or after it ends. Without it, the step starts a new click."
           },
           "min-duration": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 4294967296,
+            "allOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 4294967296,
+                "description": "seconds"
+              }
+            ],
             "description": "The least time the step lasts in seconds. A later keyframe, cue, entering paragraph, or repeated copy makes it longer. Without it, or at 0, the step lasts as long as what is in it."
           },
           "repeat-count": {
@@ -7266,9 +7531,14 @@
             "description": "How many times the step plays before it completes. Without it, the step plays once. The step plays only as many times as fit in 4,294,967,296 seconds. A larger count causes a warning."
           },
           "loop-start": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 4294967296,
+            "allOf": [
+              {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 4294967296,
+                "description": "seconds"
+              }
+            ],
             "description": "The time in seconds into the step that it loops back to while waiting for a click. It is before the later of its `min-duration` and its keyframe and cue times. A paragraph's entrance doesn't count."
           },
           "curves": {
@@ -7293,15 +7563,25 @@
                     "type": "object",
                     "properties": {
                       "begin": {
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 4294967296,
+                        "allOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 4294967296,
+                            "description": "seconds"
+                          }
+                        ],
                         "description": "When the move into the keyframe begins. It is in seconds into the step. It must come before `time`. Without it, the move begins at the previous keyframe, or at 0 for the first keyframe."
                       },
                       "time": {
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 4294967296,
+                        "allOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 4294967296,
+                            "description": "seconds"
+                          }
+                        ],
                         "description": "When the parameter reaches the value. It is in seconds into the step."
                       },
                       "value": {
@@ -7445,9 +7725,14 @@
                             "description": "Where the move was going."
                           },
                           "end": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 4294967296,
+                            "allOf": [
+                              {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 4294967296,
+                                "description": "seconds"
+                              }
+                            ],
                             "description": "When it would have ended. It is in seconds into the step and at or after the keyframe's time."
                           }
                         },
@@ -7488,14 +7773,24 @@
                             "description": "How far the value swings either way in the parameter's own unit. The value stops at the end of the parameter's range."
                           },
                           "frequency": {
-                            "type": "number",
-                            "minimum": 0.000001,
+                            "allOf": [
+                              {
+                                "type": "number",
+                                "minimum": 0.000001,
+                                "description": "cycles a second"
+                              }
+                            ],
                             "description": "How many full cycles each second."
                           },
                           "phase": {
-                            "type": "number",
-                            "minimum": -8589934592,
-                            "maximum": 8589934592,
+                            "allOf": [
+                              {
+                                "type": "number",
+                                "minimum": -8589934592,
+                                "maximum": 8589934592,
+                                "description": "degrees"
+                              }
+                            ],
                             "description": "Where in its cycle the wave starts. A cycle is 360 degrees. The default is 0."
                           },
                           "wave-shape": {
@@ -7574,9 +7869,14 @@
                   "type": "object",
                   "properties": {
                     "time": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 4294967296,
+                      "allOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 4294967296,
+                          "description": "seconds"
+                        }
+                      ],
                       "description": "When it happens. It is in seconds into the step."
                     },
                     "type": {
@@ -7608,9 +7908,14 @@
                   "type": "object",
                   "properties": {
                     "time": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 4294967296,
+                      "allOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 4294967296,
+                          "description": "seconds"
+                        }
+                      ],
                       "description": "When it happens. It is in seconds into the step."
                     },
                     "type": {
@@ -7636,9 +7941,14 @@
                   "type": "object",
                   "properties": {
                     "time": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 4294967296,
+                      "allOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 4294967296,
+                          "description": "seconds"
+                        }
+                      ],
                       "description": "When it happens. It is in seconds into the step."
                     },
                     "type": {
@@ -7670,13 +7980,23 @@
                       "description": "The part of the Action that plays: a start and an end in seconds into the Action."
                     },
                     "stride": {
-                      "type": "number",
-                      "minimum": 0.000001,
+                      "allOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0.000001,
+                          "description": "meters"
+                        }
+                      ],
                       "description": "How far the model travels per cycle of its Action in the GLB's meters. The Action's timing then follows the model's travel. It doesn't apply to a 3D text's clip."
                     },
                     "blend-in": {
-                      "type": "number",
-                      "minimum": 0,
+                      "allOf": [
+                        {
+                          "type": "number",
+                          "minimum": 0,
+                          "description": "seconds"
+                        }
+                      ],
                       "description": "How long the clip takes to blend in fully over the model's current motion. Without it, the clip is fully blended in from its start."
                     },
                     "clip-scale": {
@@ -7742,15 +8062,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -510,
-          "maximum": 510,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -510,
+              "maximum": 510,
+              "description": "of the frame"
+            }
+          ],
           "description": "How far across the frame in fractions of its width."
         },
         "y": {
-          "type": "number",
-          "minimum": -510,
-          "maximum": 510,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -510,
+              "maximum": 510,
+              "description": "of the frame"
+            }
+          ],
           "description": "How far down the frame in fractions of its height."
         }
       },
@@ -7774,9 +8104,14 @@
           "type": "object",
           "properties": {
             "size": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 33554431,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 33554431,
+                  "description": "ems"
+                }
+              ],
               "description": "How far the shadow reaches beyond the text's letters and outline. Photoshop's Size works the same way."
             },
             "spread": {
@@ -7838,27 +8173,47 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         },
         "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The width."
         },
         "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The height."
         }
       },
@@ -7879,13 +8234,23 @@
               "type": "object",
               "properties": {
                 "depth": {
-                  "type": "number",
-                  "minimum": 0,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "ems"
+                    }
+                  ],
                   "description": "How far the letters are extruded in ems. The bevels on the front and the back add `bevel` each. The letters' fronts are then `depth` + 2 × `bevel` from the slide."
                 },
                 "bevel": {
-                  "type": "number",
-                  "minimum": 0,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "ems"
+                    }
+                  ],
                   "description": "How far the letters' edges are rounded in ems. At 0, they are sharp."
                 }
               },
@@ -7930,15 +8295,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "It turns about the horizontal axis. It is 0 when left out. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way."
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "It turns about the vertical axis. It is 0 when left out. With a positive y, its left side comes forward. The y turn comes first, then the x turn."
         }
       },
@@ -7949,13 +8324,23 @@
       "type": "object",
       "properties": {
         "start": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "seconds"
+            }
+          ],
           "description": "Where it starts in seconds into the file or the Action. The default is 0."
         },
         "end": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "seconds"
+            }
+          ],
           "description": "Where it ends in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
         }
       },
@@ -7975,9 +8360,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -7998,9 +8388,14 @@
               "const": "cross-dissolve"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "start": {
@@ -8008,9 +8403,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8032,9 +8432,14 @@
               "const": "carry-over"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "interpolation": {
@@ -8059,9 +8464,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8083,9 +8493,14 @@
               "const": "push"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
@@ -8102,9 +8517,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8126,9 +8546,14 @@
               "const": "scroll"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "interpolation": {
@@ -8154,9 +8579,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8178,9 +8608,14 @@
               "const": "move-in"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
@@ -8197,9 +8632,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8221,9 +8661,14 @@
               "const": "reveal"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
@@ -8240,9 +8685,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8264,9 +8714,14 @@
               "const": "wipe"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "direction": {
@@ -8283,9 +8738,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8307,9 +8767,14 @@
               "const": "zoom"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "start": {
@@ -8317,9 +8782,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8341,9 +8811,14 @@
               "const": "fade-through-color"
             },
             "duration": {
-              "type": "number",
-              "minimum": 0.000001,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0.000001,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long it takes. It's left out when the type is `none`."
             },
             "color": {
@@ -8359,9 +8834,14 @@
               "description": "When it starts. The default is a click. With `automatically`, it starts after the slide's last step."
             },
             "delay": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 4294967296,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 4294967296,
+                  "description": "seconds"
+                }
+              ],
               "description": "How long a transition that starts by itself waits after the slide's last step ends."
             }
           },
@@ -8383,15 +8863,25 @@
       "type": "object",
       "properties": {
         "start": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "of the path"
+            }
+          ],
           "description": "Where the drawn part starts along the stroke."
         },
         "end": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "of the path"
+            }
+          ],
           "description": "Where the drawn part ends along the stroke."
         }
       },
@@ -8425,15 +8915,25 @@
           "description": "How much of the object shows. At 0, none of it shows. At 1, all of it shows."
         },
         "angle": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Which way the edge travels in degrees clockwise from up. The angle turns with the object."
         },
         "feather": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 33554431.984375,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 33554431.984375,
+              "description": "canvas units"
+            }
+          ],
           "description": "How wide the soft edge is. Across it, the object fades from shown to hidden."
         }
       },

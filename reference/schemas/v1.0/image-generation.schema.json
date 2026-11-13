@@ -251,21 +251,36 @@
           "description": "The SHA-256 digest of its bytes in 64 lowercase hexadecimal digits."
         },
         "bytes": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 9007199254740991,
+          "allOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991,
+              "description": "bytes"
+            }
+          ],
           "description": "Its size."
         },
         "width": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 65535,
+          "allOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535,
+              "description": "pixels"
+            }
+          ],
           "description": "Its width as drawn. The orientation its file states is applied first."
         },
         "height": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 65535,
+          "allOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535,
+              "description": "pixels"
+            }
+          ],
           "description": "Its height as drawn. The orientation its file states is applied first."
         }
       },

@@ -35,9 +35,14 @@
             "description": "Its SHA-256 digest in 64 lowercase hexadecimal digits."
           },
           "bytes": {
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 9007199254740991,
+            "allOf": [
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991,
+                "description": "bytes"
+              }
+            ],
             "description": "Its size."
           }
         },

@@ -1748,9 +1748,14 @@
                     "type": "object",
                     "properties": {
                       "shutter": {
-                        "type": "number",
-                        "minimum": 0,
-                        "maximum": 4294967296,
+                        "allOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 4294967296,
+                            "description": "frames"
+                          }
+                        ],
                         "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                       },
                       "frame-position": {
@@ -1790,8 +1795,13 @@
                         "description": "Whether the World's light darkens where surfaces close in on each other. A shadow catcher then also darkens where an object rests on it. The default is false."
                       },
                       "distance": {
-                        "type": "number",
-                        "minimum": 0.000001,
+                        "allOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0.000001,
+                            "description": "canvas units"
+                          }
+                        ],
                         "description": "How far bounced light and shading reach from a surface. The default is 400."
                       }
                     },
@@ -1828,8 +1838,13 @@
                         "description": "Where the camera starts: an {x, y, z} offset from its set position. An axis left out doesn't move."
                       },
                       "duration": {
-                        "type": "number",
-                        "minimum": 0.000001,
+                        "allOf": [
+                          {
+                            "type": "number",
+                            "minimum": 0.000001,
+                            "description": "seconds"
+                          }
+                        ],
                         "description": "How many seconds after the slide begins to appear the camera comes to rest."
                       }
                     },
@@ -1949,8 +1964,13 @@
                                   "description": "How strongly the spring is damped. At 1, it is critically damped. Less damping swings further."
                                 },
                                 "response": {
-                                  "type": "number",
-                                  "minimum": 0.000001,
+                                  "allOf": [
+                                    {
+                                      "type": "number",
+                                      "minimum": 0.000001,
+                                      "description": "seconds"
+                                    }
+                                  ],
                                   "description": "The spring's natural period. A shorter response catches up sooner."
                                 }
                               },
@@ -4907,15 +4927,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "of the box"
+            }
+          ],
           "description": "How far across the box in fractions of its width."
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "of the box"
+            }
+          ],
           "description": "How far down the box in fractions of its height."
         }
       },
@@ -4930,15 +4960,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "Its width, along its own x."
         },
         "y": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "Its height, along its own y."
         }
       },
@@ -4956,9 +4996,14 @@
           "description": "Whether the members run down or across."
         },
         "gap": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The space between one member and the next."
         },
         "align": {
@@ -5151,9 +5196,14 @@
       "type": "object",
       "properties": {
         "scale": {
-          "type": "number",
-          "minimum": 0.01,
-          "maximum": 511,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.01,
+              "maximum": 511,
+              "description": "×"
+            }
+          ],
           "description": "How far it is zoomed. At 1, an image fits its frame as its `scale-mode` sets, and a background covers the slide. Above 1, it is zoomed in. Below 1, it is zoomed out."
         },
         "focal-point": {
@@ -5188,9 +5238,14 @@
           "type": "object",
           "properties": {
             "size": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 758.518519,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 758.518519,
+                  "description": "canvas units"
+                }
+              ],
               "description": "How far it reaches in canvas units. It is at most 100 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 200 at 3840 × 2160."
             },
             "spread": {
@@ -5264,9 +5319,14 @@
           "description": "`by-paragraph`: each paragraph enters on the step whose paragraph cue names it. It needs based-on `paragraph` and no seed. Order, spread, pause, and progress must be at their defaults."
         },
         "duration": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 4294967296,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 4294967296,
+              "description": "seconds"
+            }
+          ],
           "description": "How long each paragraph takes to enter in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
@@ -5309,15 +5369,25 @@
               "description": "Its scale. At 1, it is its own size."
             },
             "rotation": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "degrees"
+                }
+              ],
               "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 67108862,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 67108862,
+                  "description": "ems"
+                }
+              ],
               "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
@@ -5358,13 +5428,23 @@
           "description": "The seed for a random order: the same seed gives the same order."
         },
         "spread": {
-          "type": "number",
-          "minimum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 1,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
         },
         "pause": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals the text waits between turns. The wait starts once the pieces before have arrived."
         },
         "progress": {
@@ -5439,15 +5519,25 @@
               "description": "Its scale. At 1, it is its own size."
             },
             "rotation": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "degrees"
+                }
+              ],
               "description": "How far it is turned in degrees clockwise."
             },
             "blur": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 67108862,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 67108862,
+                  "description": "ems"
+                }
+              ],
               "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
             }
           },
@@ -5488,13 +5578,23 @@
           "description": "The seed for a random order: the same seed gives the same order."
         },
         "spread": {
-          "type": "number",
-          "minimum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 1,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
         },
         "pause": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "intervals"
+            }
+          ],
           "description": "How many intervals the text waits between turns. The wait starts once the pieces before have left."
         },
         "progress": {
@@ -5550,9 +5650,14 @@
       "type": "object",
       "properties": {
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far up from the slide's bottom edge in canvas units."
         }
       },
@@ -5566,27 +5671,47 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         },
         "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The width."
         },
         "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The height."
         }
       },
@@ -5608,9 +5733,14 @@
               "const": "linear"
             },
             "angle": {
-              "type": "number",
-              "minimum": -8589934592,
-              "maximum": 8589934592,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": -8589934592,
+                  "maximum": 8589934592,
+                  "description": "degrees"
+                }
+              ],
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
@@ -5618,21 +5748,36 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "The x of its middle in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "The y of its middle in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 },
                 "length": {
-                  "type": "number",
-                  "minimum": 0.000001,
-                  "maximum": 362,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 362,
+                      "description": "box diagonals"
+                    }
+                  ],
                   "description": "Its length in fractions of the box's diagonal."
                 }
               },
@@ -5670,15 +5815,25 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "Its x in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -510.5,
-                  "maximum": 511.5,
+                  "allOf": [
+                    {
+                      "type": "number",
+                      "minimum": -510.5,
+                      "maximum": 511.5,
+                      "description": "of the box"
+                    }
+                  ],
                   "description": "Its y in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 }
               },
@@ -5916,15 +6071,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         }
       },
@@ -5973,9 +6138,14 @@
       "type": "object",
       "properties": {
         "copies": {
-          "type": "integer",
-          "minimum": 2,
-          "maximum": 513,
+          "allOf": [
+            {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 513,
+              "description": "copies"
+            }
+          ],
           "description": "How many copies there are. The original counts as one."
         },
         "position": {
@@ -5998,9 +6168,14 @@
           "description": "The move from each copy to the next: {x, y} across and down. It is measured in the turned and scaled axes of the copy before."
         },
         "rotation": {
-          "type": "number",
-          "minimum": -16777216,
-          "maximum": 16777216,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -16777216,
+              "maximum": 16777216,
+              "description": "degrees"
+            }
+          ],
           "description": "How far each copy is turned clockwise from the one before."
         },
         "scale": {
@@ -6033,9 +6208,14 @@
           "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down."
         },
         "stagger": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4194304,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4194304,
+              "description": "seconds"
+            }
+          ],
           "description": "How much later each copy plays the object's animation than the one before. A copy can play it up to (copies − 1) × `stagger` + `stagger-randomness` later."
         },
         "end-opacity": {
@@ -6045,15 +6225,25 @@
           "description": "The last copy's opacity. It is a fraction of the object's opacity. The copies between fade toward it."
         },
         "position-randomness": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The farthest each copy moves in a random direction."
         },
         "rotation-randomness": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "The farthest each copy turns either way at random."
         },
         "scale-randomness": {
@@ -6063,9 +6253,14 @@
           "description": "The most each copy grows or shrinks at random. It is a fraction of its size."
         },
         "stagger-randomness": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 4194304,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4194304,
+              "description": "seconds"
+            }
+          ],
           "description": "The most extra time each copy waits at random."
         },
         "seed": {
@@ -6145,21 +6340,36 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Degrees about x, or a quaternion's x."
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Degrees about y, or a quaternion's y."
         },
         "z": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Degrees about z, or a quaternion's z."
         }
       },
@@ -6175,21 +6385,36 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across."
         },
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far up."
         },
         "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -1000000000000000000,
+              "maximum": 1000000000000000000,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far toward the viewer."
         }
       },
@@ -6300,15 +6525,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -510,
-          "maximum": 510,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -510,
+              "maximum": 510,
+              "description": "of the frame"
+            }
+          ],
           "description": "How far across the frame in fractions of its width."
         },
         "y": {
-          "type": "number",
-          "minimum": -510,
-          "maximum": 510,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -510,
+              "maximum": 510,
+              "description": "of the frame"
+            }
+          ],
           "description": "How far down the frame in fractions of its height."
         }
       },
@@ -6328,9 +6563,14 @@
           "type": "object",
           "properties": {
             "size": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 33554431,
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 33554431,
+                  "description": "ems"
+                }
+              ],
               "description": "How far the shadow reaches beyond the text's letters and outline. Photoshop's Size works the same way."
             },
             "spread": {
@@ -6392,27 +6632,47 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
         },
         "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -65536,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
         },
         "width": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The width."
         },
         "height": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 65536,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0.000001,
+              "maximum": 65536,
+              "description": "canvas units"
+            }
+          ],
           "description": "The height."
         }
       },
@@ -6437,15 +6697,25 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "It turns about the horizontal axis. It is 0 when left out. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way."
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "It turns about the vertical axis. It is 0 when left out. With a positive y, its left side comes forward. The y turn comes first, then the x turn."
         }
       },
@@ -6456,13 +6726,23 @@
       "type": "object",
       "properties": {
         "start": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "seconds"
+            }
+          ],
           "description": "Where it starts in seconds into the file or the Action. The default is 0."
         },
         "end": {
-          "type": "number",
-          "minimum": 0,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "seconds"
+            }
+          ],
           "description": "Where it ends in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
         }
       },
@@ -6473,15 +6753,25 @@
       "type": "object",
       "properties": {
         "start": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "of the path"
+            }
+          ],
           "description": "Where the drawn part starts along the stroke."
         },
         "end": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "of the path"
+            }
+          ],
           "description": "Where the drawn part ends along the stroke."
         }
       },
@@ -6506,15 +6796,25 @@
           "description": "How much of the object shows. At 0, none of it shows. At 1, all of it shows."
         },
         "angle": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": -8589934592,
+              "maximum": 8589934592,
+              "description": "degrees"
+            }
+          ],
           "description": "Which way the edge travels in degrees clockwise from up. The angle turns with the object."
         },
         "feather": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 33554431.984375,
+          "allOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 33554431.984375,
+              "description": "canvas units"
+            }
+          ],
           "description": "How wide the soft edge is. Across it, the object fades from shown to hidden."
         }
       },
