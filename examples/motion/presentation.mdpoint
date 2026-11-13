@@ -884,7 +884,7 @@
             "height": 260
           },
           "text-style": "body",
-          "enter": {"based-on":"character","from":{"opacity":0,"offset":{"x":-0.6,"y":0}},"spaces":true,"order":"random","seed":7,"spread":6,"pause":8,"progress":0}
+          "enter": {"based-on":"character","from":{"offset":{"x":-0.6,"y":0}},"spaces":true,"order":"random","seed":7,"spread":6,"pause":8,"progress":0}
         },
 
         {
@@ -897,7 +897,7 @@
             "height": 200
           },
           "text-style": "body",
-          "exit": {"based-on":"character","to":{"opacity":0,"rotation":90,"blur":0.8},"spaces":true,"order":"random","seed":3,"spread":6,"pause":8,"progress":1}
+          "exit": {"based-on":"character","to":{"rotation":90,"blur":0.8},"spaces":true,"order":"random","seed":3,"spread":6,"pause":8,"progress":1}
         }
       ],
       "steps": [

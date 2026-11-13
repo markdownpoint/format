@@ -4232,7 +4232,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "Its opacity."
+              "description": "Its opacity. The default is 0."
             },
             "offset": {
               "type": "object",
@@ -4382,7 +4382,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "Its opacity."
+              "description": "Its opacity. The default is 0."
             },
             "offset": {
               "type": "object",
