@@ -5314,7 +5314,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -5412,7 +5412,7 @@
           ],
           "description": "How each piece moves into place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
-        "fade-length": {
+        "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,
@@ -5479,7 +5479,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -5562,7 +5562,7 @@
           ],
           "description": "How each piece moves out of place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
-        "fade-length": {
+        "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,

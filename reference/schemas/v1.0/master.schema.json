@@ -394,7 +394,7 @@
     "guides": {
       "type": "array",
       "items": {
-        "description": "One ruler guide. It has `x` or `y`, not both.",
+        "description": "One ruler guide.",
         "type": "object",
         "properties": {
           "id": {
@@ -402,18 +402,14 @@
             "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
             "description": "The guide's id, unique among the master's guides."
           },
-          "x": {
-            "allOf": [
-              {
-                "type": "number",
-                "minimum": -65536,
-                "maximum": 65536,
-                "description": "canvas units"
-              }
+          "axis": {
+            "enum": [
+              "x",
+              "y"
             ],
-            "description": "How far a vertical guide is from the slide's left edge."
+            "description": "The axis the guide fixes: `x` for a vertical guide, `y` for a horizontal one."
           },
-          "y": {
+          "offset": {
             "allOf": [
               {
                 "type": "number",
@@ -422,7 +418,7 @@
                 "description": "canvas units"
               }
             ],
-            "description": "How far a horizontal guide is from the slide's top edge."
+            "description": "How far the guide is from the slide's left edge on `x`, or from its top edge on `y`."
           },
           "name": {
             "allOf": [
@@ -438,27 +434,11 @@
           }
         },
         "required": [
-          "id"
+          "id",
+          "axis",
+          "offset"
         ],
-        "additionalProperties": false,
-        "oneOf": [
-          {
-            "properties": {
-              "x": true
-            },
-            "required": [
-              "x"
-            ]
-          },
-          {
-            "properties": {
-              "y": true
-            },
-            "required": [
-              "y"
-            ]
-          }
-        ]
+        "additionalProperties": false
       },
       "description": "Ruler guides on every slide."
     },
@@ -4246,7 +4226,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4344,7 +4324,7 @@
           ],
           "description": "How each piece moves into place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
-        "fade-length": {
+        "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,
@@ -4411,7 +4391,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4494,7 +4474,7 @@
           ],
           "description": "How each piece moves out of place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
-        "fade-length": {
+        "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,

@@ -56,8 +56,8 @@
     }
   },
   "guides": [
-    {"id":"center","x":960,"name":"Center","locked":true},
-    {"id":"footer-line","y":960,"name":"Footer line"}
+    {"id":"center","axis":"x","offset":960,"name":"Center","locked":true},
+    {"id":"footer-line","axis":"y","offset":960,"name":"Footer line"}
   ],
   "grid": {
     "columns": {"count":12,"gutter":24,"margin":120},

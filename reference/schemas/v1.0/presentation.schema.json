@@ -112,7 +112,7 @@
           ],
           "description": "How long each slide stays before the next slide. The time starts once the slide's last step has played and its sound has ended."
         },
-        "step-delay": {
+        "click-delay": {
           "allOf": [
             {
               "type": "number",
@@ -130,7 +130,7 @@
       },
       "required": [
         "slide-delay",
-        "step-delay"
+        "click-delay"
       ],
       "additionalProperties": false
     },
@@ -4198,7 +4198,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4296,7 +4296,7 @@
           ],
           "description": "How each piece moves into place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
-        "fade-length": {
+        "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,
@@ -4363,7 +4363,7 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade-length 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -4446,7 +4446,7 @@
           ],
           "description": "How each piece moves out of place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
         },
-        "fade-length": {
+        "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,
@@ -8220,48 +8220,46 @@
       "additionalProperties": false
     },
     "text-model": {
+      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions.",
       "anyOf": [
         {
-          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
-            "extrusion": {
-              "description": "MarkdownPoint builds the words' letters with this depth and bevel in ems. With an empty record, the letters are built to the defaults.",
-              "type": "object",
-              "properties": {
-                "depth": {
-                  "allOf": [
-                    {
-                      "type": "number",
-                      "minimum": 0,
-                      "description": "ems"
-                    }
-                  ],
-                  "description": "How far the letters are extruded in ems. The bevels on the front and the back add `bevel` each. The letters' fronts are then `depth` + 2 × `bevel` from the slide."
-                },
-                "bevel": {
-                  "allOf": [
-                    {
-                      "type": "number",
-                      "minimum": 0,
-                      "description": "ems"
-                    }
-                  ],
-                  "description": "How far the letters' edges are rounded in ems. At 0, they are sharp."
+            "type": {
+              "const": "extrusion"
+            },
+            "depth": {
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "ems"
                 }
-              },
-              "additionalProperties": false
+              ],
+              "description": "How far the letters are extruded in ems. The bevels on the front and the back add `bevel` each. The letters' fronts are then `depth` + 2 × `bevel` from the slide."
+            },
+            "bevel": {
+              "allOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "ems"
+                }
+              ],
+              "description": "How far the letters' edges are rounded in ems. At 0, they are sharp."
             }
           },
           "required": [
-            "extrusion"
+            "type"
           ],
           "additionalProperties": false
         },
         {
-          "description": "A text's 3D model in one of two forms. With an `extrusion`, MarkdownPoint builds the words' letters into a model. With a `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An `extrusion` has no Actions.",
           "type": "object",
           "properties": {
+            "type": {
+              "const": "file"
+            },
             "file": {
               "type": "string",
               "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
@@ -8274,6 +8272,7 @@
             }
           },
           "required": [
+            "type",
             "file",
             "built-from"
           ],
