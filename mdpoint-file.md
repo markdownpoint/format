@@ -124,7 +124,7 @@ Settings for the whole presentation are next to `slides`:
 
 ## Objects
 
-`objects` lists the slide's objects from back to front. Each has an `id` and a `type`. `frame` is its position and size in canvas units. They are measured from the slide's top left. A text box that grows to fit its text has no length along a side that grows. A canvas unit is one pixel of the slide at full size. The theme sets that size. Here it is 1920 by 1080.
+`objects` lists the slide's objects from back to front. Each object the slide adds has an `id` and a `type`. An object from the layout or master is behind the slide's own objects. To place it among them, list its id as a string. A line has a `start` and an `end`. A text box or a shape has a `frame`. It is the object's position and size in canvas units. They are measured from the slide's top left. A text box that grows to fit its text has no length along a side that grows. A canvas unit is one pixel of the slide at full size. The theme sets that size. Here it is 1920 by 1080.
 
 Text for a text object or shape goes in the .md file under `<!-- text: id -->`. Use the object's id in the marker.
 
