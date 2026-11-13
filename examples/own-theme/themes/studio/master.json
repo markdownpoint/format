@@ -21,7 +21,7 @@
         "text": "#1B2A3A",
         "muted": "#6B7480",
         "accent": "#E4572E",
-        "stroke": "#D9CFC2",
+        "separator": "#D9CFC2",
         "link": "#1B2A3A"
       }
     },
@@ -32,7 +32,7 @@
         "text": "#F4EDE4",
         "muted": "#A7B0BA",
         "accent": "#E4572E",
-        "stroke": "#2F4256",
+        "separator": "#2F4256",
         "link": "#F4EDE4"
       }
     }

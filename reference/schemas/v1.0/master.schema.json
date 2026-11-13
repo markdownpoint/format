@@ -531,7 +531,7 @@
       ],
       "description": "The default length of a newly added step. Its fades and moves last this long, and its `min-duration` is this length. A by-paragraph delivery starts with this length. The default is 0.5."
     },
-    "default-text-style": {
+    "default-text-box": {
       "description": "The text style and color of a new text box in a presentation that uses this theme. Its text style is one of `text-styles`. Without a text style, a new text box has none.",
       "type": "object",
       "properties": {
@@ -5278,7 +5278,7 @@
               ],
               "description": "The color for emphasis: a shape's default fill, highlighted text, and a chart's first series or slice."
             },
-            "stroke": {
+            "separator": {
               "allOf": [
                 {
                   "$ref": "#/definitions/scheme-color"
@@ -5300,7 +5300,7 @@
             "text",
             "muted",
             "accent",
-            "stroke",
+            "separator",
             "link"
           ],
           "propertyNames": {
@@ -5311,7 +5311,7 @@
                   "text",
                   "muted",
                   "accent",
-                  "stroke",
+                  "separator",
                   "link"
                 ]
               },
