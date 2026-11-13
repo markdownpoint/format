@@ -406,6 +406,8 @@
             "allOf": [
               {
                 "type": "number",
+                "minimum": -65536,
+                "maximum": 65536,
                 "description": "canvas units"
               }
             ],
@@ -415,6 +417,8 @@
             "allOf": [
               {
                 "type": "number",
+                "minimum": -65536,
+                "maximum": 65536,
                 "description": "canvas units"
               }
             ],
@@ -477,6 +481,7 @@
                 {
                   "type": "number",
                   "minimum": 0,
+                  "maximum": 65536,
                   "description": "canvas units"
                 }
               ],
@@ -487,6 +492,7 @@
                 {
                   "type": "number",
                   "minimum": 0,
+                  "maximum": 65536,
                   "description": "canvas units"
                 }
               ],
@@ -507,6 +513,7 @@
                 {
                   "type": "number",
                   "minimum": 0,
+                  "maximum": 65536,
                   "description": "canvas units"
                 }
               ],
@@ -517,6 +524,7 @@
                 {
                   "type": "number",
                   "minimum": 0.000001,
+                  "maximum": 65536,
                   "description": "canvas units"
                 }
               ],
@@ -1689,6 +1697,7 @@
               "poster-time": {
                 "type": "number",
                 "minimum": 0,
+                "maximum": 4294967296,
                 "description": "seconds"
               },
               "anchor-point": {
@@ -3063,6 +3072,7 @@
                       {
                         "type": "number",
                         "minimum": 0.000001,
+                        "maximum": 1000000000000000000,
                         "description": "canvas units"
                       }
                     ],
@@ -3080,14 +3090,20 @@
                     "properties": {
                       "x": {
                         "type": "number",
+                        "minimum": -1000000000000000000,
+                        "maximum": 1000000000000000000,
                         "description": "canvas units"
                       },
                       "y": {
                         "type": "number",
+                        "minimum": -1000000000000000000,
+                        "maximum": 1000000000000000000,
                         "description": "canvas units"
                       },
                       "z": {
                         "type": "number",
+                        "minimum": -1000000000000000000,
+                        "maximum": 1000000000000000000,
                         "description": "canvas units"
                       }
                     },
@@ -3099,6 +3115,7 @@
                       {
                         "type": "number",
                         "minimum": 0.000001,
+                        "maximum": 4294967296,
                         "description": "seconds"
                       }
                     ],
@@ -3187,6 +3204,7 @@
                                 {
                                   "type": "number",
                                   "minimum": 0.000001,
+                                  "maximum": 4294967296,
                                   "description": "seconds"
                                 }
                               ],
@@ -5543,6 +5561,7 @@
             {
               "type": "number",
               "minimum": 0,
+              "maximum": 4294967296,
               "description": "seconds"
             }
           ],
@@ -5553,6 +5572,7 @@
             {
               "type": "number",
               "minimum": 0,
+              "maximum": 4294967296,
               "description": "seconds"
             }
           ],
