@@ -4,7 +4,6 @@
   "id": "318494ee-4e44-456f-818a-ec761b41fec2",
   "theme": "basic",
   "countdown": 600,
-  "default-text-style": {"text-style":"body","color":"accent"},
   "image-style": "Flat illustration",
   "swatches": ["#2F7D4F","#FA7B26"],
   "slides": {

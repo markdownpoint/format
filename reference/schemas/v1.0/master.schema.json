@@ -551,6 +551,26 @@
       ],
       "description": "The default length of a newly added step. Its fades and moves last this long, and its `min-duration` is this length. A by-paragraph delivery starts with this length. The default is 0.5."
     },
+    "default-text-style": {
+      "description": "The text style and color of a new text box in a presentation that uses this theme. Its text style is one of `text-styles`. Without a text style, a new text box has none.",
+      "type": "object",
+      "properties": {
+        "text-style": {
+          "type": "string",
+          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "description": "The text style, named as in the master's `text-styles`."
+        },
+        "color": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/color"
+            }
+          ],
+          "description": "The color: a color role or a hex color."
+        }
+      },
+      "additionalProperties": false
+    },
     "layout-order": {
       "type": "array",
       "items": {

@@ -110,7 +110,6 @@ Settings for the whole presentation are next to `slides`:
   "id": "318494ee-4e44-456f-818a-ec761b41fec2",
   "theme": "basic",
   "countdown": 600,
-  "default-text-style": {"text-style": "body", "color": "accent"},
   "image-style": "Flat illustration",
   "swatches": ["#2F7D4F", "#FA7B26"],
   "slides": {
@@ -121,7 +120,7 @@ Settings for the whole presentation are next to `slides`:
 }
 ```
 
-`countdown` is how long the talk should take in seconds. The presenter's timer counts down from it. A new text box uses `default-text-style`. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own uses the style in `image-style`, and a generated background uses `background-image-style`. When either is omitted, no style is used.
+`countdown` is how long the talk should take in seconds. The presenter's timer counts down from it. `swatches` are the colors saved for this presentation. A generated image object that names no style of its own uses the style in `image-style`, and a generated background uses `background-image-style`. When either is omitted, no style is used.
 
 ## Objects
 

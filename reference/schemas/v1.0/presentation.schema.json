@@ -145,26 +145,6 @@
       ],
       "description": "How long the talk should take in seconds. Without it, the talk has no set length."
     },
-    "default-text-style": {
-      "description": "The text style and color of a new text box. Without a text style, a new text box has none. Text boxes already on the slides don't change.",
-      "type": "object",
-      "properties": {
-        "text-style": {
-          "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-          "description": "The text style."
-        },
-        "color": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/color"
-            }
-          ],
-          "description": "The color: a color role or a hex color."
-        }
-      },
-      "additionalProperties": false
-    },
     "image-style": {
       "allOf": [
         {
