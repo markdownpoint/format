@@ -164,6 +164,8 @@ presentation's `locale`, or `invalid-icon` for an icon's `icon`. A refused
 value of any other key, such as `countdown` or an object's `opacity`, has
 `invalid-value`. An override's value that no object can take has
 `invalid-override-value`, whatever its key. Either way, `path` names the key.
+Inside a value, a key that nothing reads has `unknown-key`. The issue's `path`
+names that key.
 
 The codes an issue can have:
 
