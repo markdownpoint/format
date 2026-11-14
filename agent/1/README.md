@@ -28,7 +28,8 @@ tools are named after their methods in snake case (`slides_get`). A CLI command 
 method's names in kebab-case. Each collection is in the singular:
 `mdpoint
 presentation get` for `presentations.get` and `mdpoint image suggest-prompt` for
-`images.suggestPrompt`. A request's `type` is an operand:
+`images.suggestPrompt`. `3D` is one word: `slides.measure3D` is `slides_measure_3d` and `mdpoint slide
+measure-3d`. A request's `type` is an operand:
 `mdpoint present
 control next-slide`. On the CLI's command line, a value is written in
 kebab-case (`toggle-black-screen` for `toggleBlackScreen`), but a method or an
