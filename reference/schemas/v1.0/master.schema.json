@@ -381,7 +381,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How code looks. By default, it is the mono font at 0.92 times the text's size."
+                "description": "How code looks. By default, it uses the mono font. Its words are 0.92 times the text's size."
               }
             },
             "additionalProperties": false

@@ -117,7 +117,9 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   named by its id, as in
   `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`.
   In it, the curve's name is one key. A keyframe and a cue are always named
-  by their ids. A composition is under `compositions`.
+  by their ids. A composition is under `compositions`. Once a control's id can
+  be read, the control is named by its id, as in
+  `compositions.pulse.controls.label`.
   `slideId` names the slide that contains the value, `compositionId` names the
   composition, and `objectId` names the object. An `invalid-json` or
   `merge-conflict` issue has no `path`. When its line is known, `location`
@@ -164,8 +166,8 @@ presentation's `locale`, or `invalid-icon` for an icon's `icon`. A refused
 value of any other key, such as `countdown` or an object's `opacity`, has
 `invalid-value`. An override's value that no object can take has
 `invalid-override-value`, whatever its key. Either way, `path` names the key.
-Inside a value, a key that nothing reads has `unknown-key`. The issue's `path`
-names that key.
+In any record, a key MarkdownPoint doesn't read has `unknown-key`. The issue's
+`path` names that key.
 
 Reading the files lists at most 1,000 issues. The first error is listed
 even past them. When there are more, the list ends with one
