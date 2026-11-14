@@ -128,20 +128,14 @@
           "description": "The version of the instructions MarkdownPoint wraps the prompt in. It is `none` when the prompt was asked as written. A record from another tool can have `none`."
         },
         "prompt": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/request-text"
-            }
-          ],
+          "type": "string",
+          "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
           "description": "The words asked for in Unicode NFC. Each run of white space is one space, and there is none at either end. It isn't empty."
         },
         "image-style": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/request-text"
-            }
-          ],
-          "description": "The style the image was made in. Its words are written the same way as the prompt's. It is `none` for no style."
+          "type": "string",
+          "pattern": "^(?!none(?![\\s\\S]))[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
+          "description": "The style the image was made in. Its words are written the same way as the prompt's. It can't be `none`. Without it, the image was made with no style."
         },
         "provider": {
           "allOf": [
@@ -224,7 +218,6 @@
       "required": [
         "instructions",
         "prompt",
-        "image-style",
         "provider",
         "model",
         "parameters"
@@ -305,10 +298,6 @@
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
       "description": "one line that isn't blank and has no control characters"
-    },
-    "request-text": {
-      "type": "string",
-      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])"
     },
     "sha256": {
       "type": "string",
