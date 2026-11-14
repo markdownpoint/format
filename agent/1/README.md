@@ -127,10 +127,10 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   it's known.
 - `md`: `location` names the file and the line, counted from 1. It also names
   the column when it's known. An issue about the frontmatter's `markdownpoint` or
-  `id` has no `location`. `ignored-text-block`, `invalid-table`, and
-  `table-cell-limit` have none either. `path` names the frontmatter key or the section
-  the
-  issue is about, such as `frontmatter.footer` or `sections.intro`. For an
+  `id` has no `location`. `ignored-control-block`, `ignored-text-block`,
+  `invalid-table`, and `table-cell-limit` have none either. `path` names the
+  frontmatter key or the section the issue is about, such as
+  `frontmatter.footer` or `sections.intro`. For an
   issue in a slide's words, it names the slide, the composition, the object,
   or the control in the `.mdpoint` file, written as for `mdpoint`, such as
   `slides.intro.objects.title`. An instance's text block is named by the
@@ -169,22 +169,23 @@ value of any other key, such as `countdown` or an object's `opacity`, has
 In any record, a key MarkdownPoint doesn't read has `unknown-key`. The issue's
 `path` names that key.
 
-Reading the files lists at most 1,000 issues. The first error is listed
-even past them. When there are more, the list ends with one
-`issue-count-limit` warning from `folder`. It has no `path`, and its
-message says how many more there are.
+When MarkdownPoint reads the presentation's two files, it lists at most
+1,000 issues. The first error it finds is listed even past them. When it
+leaves issues out, an `issue-count-limit` warning from `folder` says how
+many. The warning has no `path`. Issues found later, such as a slide's or
+a layout's, are listed after the read's issues. None of them is left out.
 
 The codes an issue can have:
 
 | What | Codes |
 |---|---|
-| A file, a record, or a value that isn't valid | `invalid-3d-parent`, `invalid-animation`, `invalid-binding`, `invalid-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-composition-object`, `invalid-compositions`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link-target`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
+| A file, a record, or a value that isn't valid | `invalid-3d-parent`, `invalid-animation`, `invalid-binding`, `invalid-chart-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-composition-object`, `invalid-compositions`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link-target`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
 | Something needed that is missing | `missing-alt`, `missing-composition`, `missing-composition-marker`, `missing-control-block`, `missing-font`, `missing-frontmatter`, `missing-generation`, `missing-key`, `missing-marker-line-break`, `missing-media`, `missing-slide`, `missing-slide-marker`, `missing-text`, `missing-text-block`, `missing-theme-master` |
 | Something given twice | `duplicate-composition-id`, `duplicate-composition-marker`, `duplicate-control-block`, `duplicate-notes-block`, `duplicate-object-id`, `duplicate-paragraph-id`, `duplicate-section-marker`, `duplicate-slide-marker`, `duplicate-text-block` |
 | A name that nothing defines | `unknown-action`, `unknown-animation-target`, `unknown-category`, `unknown-color-role`, `unknown-composition`, `unknown-constraint-target`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-link-slide`, `unknown-object`, `unknown-parent-node`, `unknown-scheme`, `unknown-text-style` |
 | Something that can't be read, resolved, matched, or played | `camera-spring-unsettled`, `issue-count-limit`, `loop-start-past-end`, `loops-misaligned`, `render-failed`, `repeat-count-limit`, `repeat-shares-click`, `stride-with-loop-start`, `table-cell-limit`, `unclosed-code-block`, `unclosed-frontmatter`, `undrawn-line`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale`, `words-outside-block` |
 | Two parts that disagree, or something in a place where it isn't allowed | `clashing-curves`, `clashing-keyframes`, `clashing-paths`, `file-spelling-mismatch`, `id-mismatch`, `inherited-id-collision`, `marker-outside-slide`, `marker-type-mismatch`, `media-type-mismatch`, `merge-conflict`, `slide-outside-section` |
-| Content written by a theme, a newer version, or another program, or left by an interrupted layout move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-format-version`, `newer-minor-kept`, `rounded-number`, `text-model-in-theme` |
+| Content written by a theme, a newer version, or another program, or left by an interrupted layout move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-major-version`, `newer-minor-kept`, `rounded-number`, `text-model-in-theme` |
 | Objects that a slide can't contain together | `3d-parent-cycle`, `aim-cycle`, `composition-cycle`, `group-cycle`, `group-depth-limit`, `group-order`, `object-count-limit` |
-| A key or a value that its object can't have there | `bound-value`, `camera-in-slide`, `color-needs-svg`, `delivery-with-text-path`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-key`, `ignored-override`, `ignored-override-value`, `ignored-text-block`, `key-not-for-light-type`, `link-letters-out-of-place`, `mask-without-group`, `override-type`, `parent-inverse-without-parent`, `parent-node-without-parent`, `position-animation-in-auto-layout`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-mdpoint`, `world-in-slide` |
+| A key or a value that its object can't have there | `bound-value`, `camera-in-slide`, `color-needs-svg`, `delivery-with-text-path`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-control-block`, `ignored-key`, `ignored-override`, `ignored-override-value`, `ignored-text-block`, `key-not-for-light-type`, `link-letters-out-of-place`, `mask-without-group`, `override-type`, `parent-inverse-without-parent`, `parent-node-without-parent`, `position-animation-in-auto-layout`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-mdpoint`, `world-in-slide` |
 | What the rendered slide shows | `image-enlarged`, `low-text-contrast`, `object-off-slide`, `object-overlap`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |
