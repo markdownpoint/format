@@ -283,7 +283,7 @@
                 "description": "canvas units"
               }
             ],
-            "description": "The space after each paragraph."
+            "description": "The space between paragraphs."
           },
           "list-indent": {
             "allOf": [
@@ -580,7 +580,7 @@
                 "$ref": "#/definitions/object-id"
               },
               "frame": {
-                "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+                "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
                 "type": "object",
                 "properties": {
                   "x": {
@@ -592,7 +592,7 @@
                         "description": "canvas units"
                       }
                     ],
-                    "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
+                    "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point its auto layout's `reference-point` names."
                   },
                   "y": {
                     "allOf": [
@@ -603,7 +603,7 @@
                         "description": "canvas units"
                       }
                     ],
-                    "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
+                    "description": "How far down the top edge is. When a text box's height grows, its default `anchor-point` is on its top edge. For a group, it is the point its auto layout's `reference-point` names."
                   },
                   "width": {
                     "allOf": [
@@ -4586,7 +4586,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
@@ -4598,7 +4598,7 @@
               "description": "canvas units"
             }
           ],
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point its auto layout's `reference-point` names."
         },
         "y": {
           "allOf": [
@@ -4609,7 +4609,7 @@
               "description": "canvas units"
             }
           ],
-          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
+          "description": "How far down the top edge is. When a text box's height grows, its default `anchor-point` is on its top edge. For a group, it is the point its auto layout's `reference-point` names."
         },
         "width": {
           "allOf": [
@@ -5035,7 +5035,7 @@
       "maxItems": 16
     },
     "point-frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. Its `reference-point` says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
@@ -5047,7 +5047,7 @@
               "description": "canvas units"
             }
           ],
-          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point `reference-point` names."
+          "description": "How far across the left edge is. When a text box's width grows, it is the point the text is aligned to. For a group, it is the point its auto layout's `reference-point` names."
         },
         "y": {
           "allOf": [
@@ -5058,7 +5058,7 @@
               "description": "canvas units"
             }
           ],
-          "description": "How far down the top edge is. When a text box's height grows and it has no `anchor-point`, it turns and scales about a point on its top edge. For a group, it is the point `reference-point` names."
+          "description": "How far down the top edge is. When a text box's height grows, its default `anchor-point` is on its top edge. For a group, it is the point its auto layout's `reference-point` names."
         }
       },
       "required": [
