@@ -5508,6 +5508,9 @@
         ],
         "duration": [
           "delivery"
+        ],
+        "seed": [
+          "order"
         ]
       },
       "additionalProperties": false
@@ -5649,6 +5652,11 @@
       "required": [
         "based-on"
       ],
+      "dependencies": {
+        "seed": [
+          "order"
+        ]
+      },
       "additionalProperties": false
     },
     "fill": {

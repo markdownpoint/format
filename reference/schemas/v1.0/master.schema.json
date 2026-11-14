@@ -529,7 +529,7 @@
           "description": "seconds"
         }
       ],
-      "description": "The default length of a newly added step. Its fades and moves last this long, and its `min-duration` is this length. A by-paragraph delivery starts with this length. The default is 0.5."
+      "description": "The base length of new motion. MarkdownPoint times each effect it adds to a step from this length. A new by-paragraph delivery has this `duration`. The default is 0.5."
     },
     "default-text-box": {
       "description": "The text style and color of a new text box in a presentation that uses this theme. Its text style is one of `text-styles`. Without a text style, a new text box has none.",
@@ -4398,6 +4398,9 @@
         ],
         "duration": [
           "delivery"
+        ],
+        "seed": [
+          "order"
         ]
       },
       "additionalProperties": false
@@ -4539,6 +4542,11 @@
       "required": [
         "based-on"
       ],
+      "dependencies": {
+        "seed": [
+          "order"
+        ]
+      },
       "additionalProperties": false
     },
     "fill": {
