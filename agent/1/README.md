@@ -12,7 +12,7 @@ presentation open, and the methods it answers for a presentation. `schema` gives
 the request contracts one operation at a time. An agent never needs the whole
 proposal schema in its context. `mdpoint
 schema <operation> --fields` (MCP
-`detail: "fields"`) lists the operation's
+`fields: true`) lists the operation's
 fields instead of its schema: each field's type, whether every request needs
 it, and the values it accepts. `--json` prints one compact line for machines.
 
