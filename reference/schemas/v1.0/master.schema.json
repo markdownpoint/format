@@ -2467,6 +2467,11 @@
                 "maximum": 8589934592,
                 "description": "degrees"
               },
+              "scale": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 511
+              },
               "opacity": {
                 "type": "number",
                 "minimum": 0,

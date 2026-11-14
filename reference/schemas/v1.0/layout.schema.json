@@ -196,6 +196,11 @@
                     "$ref": "#/definitions/flat-scale"
                   },
                   {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 511
+                  },
+                  {
                     "type": "object",
                     "properties": {
                       "x": {
@@ -3918,6 +3923,11 @@
                     "minimum": -8589934592,
                     "maximum": 8589934592,
                     "description": "degrees"
+                  },
+                  "scale": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 511
                   },
                   "opacity": {
                     "type": "number",
