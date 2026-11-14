@@ -7844,6 +7844,11 @@
                           "amplitude",
                           "frequency"
                         ],
+                        "dependencies": {
+                          "seed": [
+                            "wave-shape"
+                          ]
+                        },
                         "additionalProperties": false
                       }
                     },
