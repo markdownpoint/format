@@ -85,7 +85,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `series-colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
 
 <!-- slide: rules -->
 

@@ -2576,6 +2576,9 @@
                 "minimum": 0,
                 "maximum": 1
               },
+              "delivery": {
+                "const": "by-element"
+              },
               "spread": {
                 "type": "number",
                 "minimum": 1,
@@ -2590,18 +2593,11 @@
               "legend": {
                 "type": "boolean"
               },
-              "colors": {
-                "type": "array",
-                "items": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/definitions/color"
-                    },
-                    {
-                      "type": "null"
-                    }
-                  ]
-                }
+              "series-colors": {
+                "$ref": "#/definitions/chart-colors"
+              },
+              "category-colors": {
+                "$ref": "#/definitions/chart-colors"
               },
               "leading-zero-opacity": {
                 "type": "number",
@@ -4108,6 +4104,19 @@
         ]
       },
       "minItems": 1
+    },
+    "chart-colors": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/color"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
     },
     "color": {
       "type": "string",

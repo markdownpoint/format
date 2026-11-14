@@ -30,7 +30,7 @@
             "width": 800,
             "height": 420
           },
-          "colors": ["text","accent"]
+          "series-colors": ["text","accent"]
         },
 
         {

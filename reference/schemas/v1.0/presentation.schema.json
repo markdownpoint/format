@@ -1735,6 +1735,16 @@
                         }
                       ]
                     },
+                    "delivery": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "const": "by-element"
+                        }
+                      ]
+                    },
                     "spread": {
                       "anyOf": [
                         {
@@ -1777,13 +1787,23 @@
                         }
                       ]
                     },
-                    "colors": {
+                    "series-colors": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/colors"
+                          "$ref": "#/definitions/chart-colors"
+                        }
+                      ]
+                    },
+                    "category-colors": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "$ref": "#/definitions/chart-colors"
                         }
                       ]
                     },
@@ -3904,12 +3924,7 @@
       },
       "minItems": 1
     },
-    "color": {
-      "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-      "description": "a color role or a hex color"
-    },
-    "colors": {
+    "chart-colors": {
       "type": "array",
       "items": {
         "anyOf": [
@@ -3921,6 +3936,11 @@
           }
         ]
       }
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+      "description": "a color role or a hex color"
     },
     "comment-author": {
       "description": "Who wrote a comment. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a collaboration service member, it is `shared:` followed by 64 lowercase hexadecimal digits. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id starts with `dbid:`.",
@@ -5142,6 +5162,9 @@
           "minimum": 0,
           "maximum": 1
         },
+        "delivery": {
+          "const": "by-element"
+        },
         "spread": {
           "type": "number",
           "minimum": 1,
@@ -5156,8 +5179,11 @@
         "legend": {
           "type": "boolean"
         },
-        "colors": {
-          "$ref": "#/definitions/colors"
+        "series-colors": {
+          "$ref": "#/definitions/chart-colors"
+        },
+        "category-colors": {
+          "$ref": "#/definitions/chart-colors"
         },
         "leading-zero-opacity": {
           "type": "number",

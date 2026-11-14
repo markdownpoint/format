@@ -195,7 +195,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `series-colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
 ```
 
 ```json
@@ -213,7 +213,7 @@ The table's first column is its header (`header-column`), and its first row is a
     "id": "sales",
     "type": "chart",
     "frame": {"x": 1000, "y": 340, "width": 800, "height": 420},
-    "colors": ["text", "accent"]
+    "series-colors": ["text", "accent"]
   },
   {
     "id": "visitors",
@@ -229,7 +229,7 @@ The table's first column is its header (`header-column`), and its first row is a
 
 ![The data slide drawn by MarkdownPoint](images/words-data.png)
 
-Here the table's first column is its header, instead of its first row. `colors` sets the color of each series in the chart, or of each category in a pie or donut chart. A counter with `roll` rolls its digits into place. Here its `progress` is below 1. The counter then shows its unused leading zeros at `leading-zero-opacity`.
+Here the table's first column is its header, instead of its first row. `series-colors` sets the color of each series in the chart. A pie or donut chart uses `category-colors` instead, one for each category. A counter with `roll` rolls its digits into place. Here its `progress` is below 1. The counter then shows its unused leading zeros at `leading-zero-opacity`.
 
 A group with `auto-layout` places its members one after another from its `frame`, down or across, and ignores their own positions:
 

@@ -345,7 +345,7 @@ A layout's placeholder keeps its id. Renaming it in MarkdownPoint changes only i
 
 A table's column widths and minimum row heights in the .mdpoint file are listed in the table's order. When you add or remove a column or a row by hand, add or remove its width or height at the same position. MarkdownPoint warns when a table has more widths or heights than columns or rows.
 
-A chart's colors in the .mdpoint file work the same way. There is one for each series column, or on a pie or a donut one for each category row. When you add, remove, or move one by hand, add, remove, or move its color at the same position.
+A chart's colors in the .mdpoint file work the same way. Its `series-colors` have one for each series column, and its `category-colors` one for each category row. When you add, remove, or move a column by hand, add, remove, or move its color in `series-colors` at the same position. Do the same for a row in `category-colors`.
 
 ## Validating the files
 

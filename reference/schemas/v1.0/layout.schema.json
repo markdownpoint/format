@@ -1532,6 +1532,16 @@
                   }
                 ]
               },
+              "delivery": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "const": "by-element"
+                  }
+                ]
+              },
               "spread": {
                 "anyOf": [
                   {
@@ -1574,13 +1584,23 @@
                   }
                 ]
               },
-              "colors": {
+              "series-colors": {
                 "anyOf": [
                   {
                     "type": "null"
                   },
                   {
-                    "$ref": "#/definitions/colors"
+                    "$ref": "#/definitions/chart-colors"
+                  }
+                ]
+              },
+              "category-colors": {
+                "anyOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "$ref": "#/definitions/chart-colors"
                   }
                 ]
               },
@@ -4033,6 +4053,9 @@
                     "minimum": 0,
                     "maximum": 1
                   },
+                  "delivery": {
+                    "const": "by-element"
+                  },
                   "spread": {
                     "type": "number",
                     "minimum": 1,
@@ -4047,8 +4070,11 @@
                   "legend": {
                     "type": "boolean"
                   },
-                  "colors": {
-                    "$ref": "#/definitions/colors"
+                  "series-colors": {
+                    "$ref": "#/definitions/chart-colors"
+                  },
+                  "category-colors": {
+                    "$ref": "#/definitions/chart-colors"
                   },
                   "leading-zero-opacity": {
                     "type": "number",
@@ -5077,12 +5103,7 @@
       },
       "minItems": 1
     },
-    "color": {
-      "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
-      "description": "a color role or a hex color"
-    },
-    "colors": {
+    "chart-colors": {
       "type": "array",
       "items": {
         "anyOf": [
@@ -5094,6 +5115,11 @@
           }
         ]
       }
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+      "description": "a color role or a hex color"
     },
     "constraint-id": {
       "type": "string",
