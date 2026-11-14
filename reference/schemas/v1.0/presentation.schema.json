@@ -2332,7 +2332,7 @@
                         }
                       ]
                     },
-                    "angle": {
+                    "light-angle": {
                       "anyOf": [
                         {
                           "type": "null"
@@ -2716,7 +2716,7 @@
                               "type": "number",
                               "minimum": 0
                             },
-                            "angle": {
+                            "light-angle": {
                               "type": "number",
                               "minimum": 0,
                               "maximum": 180,
