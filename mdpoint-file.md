@@ -99,6 +99,8 @@ When rounding to six decimal places changes a number in the file, MarkdownPoint 
 
 The keys in `slides` match the slide ids in the .md file, and the .md file sets their order. `layout` selects a layout from the theme. `scheme` selects a color scheme. If it's omitted, the slide uses its layout's scheme. A scheme or override value set on the slide stays even when it equals the inherited value. A later change to the theme doesn't change it. Only a reset removes it. The slide then follows changes to that value in the theme.
 
+A slide can change to a layout that lacks a placeholder the slide filled. The placeholder's words or picture then stay on the slide as one of its own objects. The object keeps the placeholder's id and has `"placeholder": true`. When the slide changes to a layout with a placeholder of that id, the object goes back into it. A text goes into a text placeholder, and an image or a video into an image placeholder. No other own object goes into a placeholder. When a new layout uses an own object's id for anything else, the object moves to a new id. It then has no `placeholder`.
+
 ## Presentation settings
 
 Settings for the whole presentation are next to `slides`:
