@@ -167,6 +167,11 @@ value of any other key, such as `countdown` or an object's `opacity`, has
 Inside a value, a key that nothing reads has `unknown-key`. The issue's `path`
 names that key.
 
+Reading the files lists at most 1,000 issues. The first error is listed
+even past them. When there are more, the list ends with one
+`issue-count-limit` warning from `folder`. It has no `path`, and its
+message says how many more there are.
+
 The codes an issue can have:
 
 | What | Codes |
@@ -175,7 +180,7 @@ The codes an issue can have:
 | Something needed that is missing | `missing-alt`, `missing-composition`, `missing-composition-marker`, `missing-control-block`, `missing-font`, `missing-frontmatter`, `missing-generation`, `missing-key`, `missing-marker-line-break`, `missing-media`, `missing-slide`, `missing-slide-marker`, `missing-text`, `missing-text-block`, `missing-theme-master` |
 | Something given twice | `duplicate-composition-id`, `duplicate-composition-marker`, `duplicate-control-block`, `duplicate-notes-block`, `duplicate-object-id`, `duplicate-paragraph-id`, `duplicate-section-marker`, `duplicate-slide-marker`, `duplicate-text-block` |
 | A name that nothing defines | `unknown-action`, `unknown-animation-target`, `unknown-category`, `unknown-color-role`, `unknown-composition`, `unknown-constraint-target`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-link-slide`, `unknown-object`, `unknown-parent-node`, `unknown-scheme`, `unknown-text-style` |
-| Something that can't be read, resolved, matched, or played | `camera-spring-unsettled`, `loop-start-past-end`, `loops-misaligned`, `render-failed`, `repeat-count-limit`, `repeat-shares-click`, `stride-with-loop-start`, `table-cell-limit`, `unclosed-code-block`, `unclosed-frontmatter`, `undrawn-line`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale`, `words-outside-block` |
+| Something that can't be read, resolved, matched, or played | `camera-spring-unsettled`, `issue-count-limit`, `loop-start-past-end`, `loops-misaligned`, `render-failed`, `repeat-count-limit`, `repeat-shares-click`, `stride-with-loop-start`, `table-cell-limit`, `unclosed-code-block`, `unclosed-frontmatter`, `undrawn-line`, `unreadable-collaborator-value`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale`, `words-outside-block` |
 | Two parts that disagree, or something in a place where it isn't allowed | `clashing-curves`, `clashing-keyframes`, `clashing-paths`, `file-spelling-mismatch`, `id-mismatch`, `inherited-id-collision`, `marker-outside-slide`, `marker-type-mismatch`, `media-type-mismatch`, `merge-conflict`, `slide-outside-section` |
 | Content written by a theme, a newer version, or another program, or left by an interrupted layout move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-format-version`, `newer-minor-kept`, `rounded-number`, `text-model-in-theme` |
 | Objects that a slide can't contain together | `3d-parent-cycle`, `aim-cycle`, `composition-cycle`, `group-cycle`, `group-depth-limit`, `group-order`, `object-count-limit` |
