@@ -106,7 +106,7 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 `<!-- text: id -->` starts an object's text. The text continues until the next marker. Here `eyebrow`, `title`, and `body` are placeholders from the slide's layout. For any other object, the id is its id in the .mdpoint file. Shapes, tables, and charts get their text the same way.
 
-Paragraphs are separated by one or more blank lines. An empty paragraph is a line with only `<br>`, optionally followed by spaces or tabs. It has a blank line before and after it. Two `<br>` lines in a row with nothing else are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators. A Markdown formatter can add or remove them without changing the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
+Paragraphs are separated by one or more blank lines. An empty paragraph is a line that starts with `<br>` and has only spaces or tabs after it. It has a blank line before and after it. Two `<br>` lines in a row with nothing else are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators. A Markdown formatter can add or remove them without changing the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
 
 ## Speaker notes
 
@@ -287,7 +287,7 @@ Its position, columns, minimum row heights, and style are in the .mdpoint file. 
 
 ### Code blocks
 
-A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/v1.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
+A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. Only spaces or tabs can follow it. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/v1.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
 
 A code block can also be in a quote or a list item. It ends at its closing fence or when the quote or item ends. A link definition can't contain a fence. After `[x]: /url (title`, a fence on the next line opens a code block.
 
@@ -307,9 +307,9 @@ The rule changes how one rare case is read. `*(*foo*)*` is read as italic parent
 
 The style can change anywhere in a word. `**Mark**down` is read back as a bold “Mark” followed by “down”. When asterisks inside one word can't express the changes, MarkdownPoint puts each run in a span with no attributes. A word that is bold, then bold italic, then italic is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A span with no attributes adds no formatting of its own.
 
-In a list item, a line of code that isn't indented stays in the item's code block. In CommonMark, it ends the item and the code block.
+In a list item, a line of code that isn't indented stays in the item's code block when the line above it is code. It ends the item and the code block when the line above it is blank, starts with `#` or a fence, is a rule such as `---`, or is indented four spaces or more past the item's text. It ends them too when it is itself a rule or starts with `#`, `>`, a list marker, a fence, or an HTML block. In CommonMark, any line that isn't indented ends them.
 
-In a list item, a nested list that starts at a number other than 1 ends the paragraph above it. A line with only an HTML tag, such as `</pre>`, ends the paragraph too. In CommonMark, the list and `</pre>` continue the paragraph. Outside list items, MarkdownPoint reads them as CommonMark does.
+In a list item, a nested list ends the paragraph above it when it starts at a number other than 1 or when its first line is only `*`, `+`, `1.`, or `1)`. A line with only an HTML tag, such as `</pre>`, ends the paragraph too. In CommonMark, the list and `</pre>` continue the paragraph. Outside list items, MarkdownPoint reads them as CommonMark does.
 
 Lists and quotes nest at most 100 deep, and a deeper marker stays as written.
 
