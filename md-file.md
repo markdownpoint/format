@@ -211,7 +211,7 @@ Lists==.==
 
 To nest an item under the one above, indent it to where that item's text starts: two spaces under `- `, three under `1. `. A numbered list can start at any number with up to nine digits.
 
-An empty item contains `<br>`: `- <br>`. An empty item with a list nested under it is just its marker. With a `<br>` line there, GitHub and other apps that read CommonMark would include the nested list in that line. A nested numbered list that starts at a number other than 1 needs a blank line before it.
+An empty item contains `<br>`: `- <br>`. An empty item with a list nested under it is just its marker. With a `<br>` line there, GitHub and other apps that read CommonMark would include the nested list in that line. In GitHub and other apps that read CommonMark, a nested numbered list that starts at a number other than 1 needs a blank line before it.
 
 To start another list immediately after one, change the list marker. MarkdownPoint uses `*` after `-`, or `1)` after `1.`.
 
@@ -289,6 +289,8 @@ Its position, columns, minimum row heights, and style are in the .mdpoint file. 
 
 A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/v1.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
 
+A code block can also be in a quote or a list item. It ends at its closing fence or when the quote or item ends. A link definition can't contain a fence. After `[x]: /url (title`, a fence on the next line opens a code block.
+
 ### Characters
 
 A character reference is read as the character it names. `&amp;` is `&`, and `&copy;` and `&#169;` are both `©`. In code, a reference shows as written. Anywhere else, put a backslash before the `&` to keep the reference as written: `\&amp;`. MarkdownPoint writes that backslash when you type a reference in the app.
@@ -304,6 +306,12 @@ The same rule applies to Chinese and Japanese. Both are written without spaces b
 The rule changes how one rare case is read. `*(*foo*)*` is read as italic parentheses around a plain “foo”. In CommonMark, it is one italic inside another. A run of `_` is read as in CommonMark.
 
 The style can change anywhere in a word. `**Mark**down` is read back as a bold “Mark” followed by “down”. When asterisks inside one word can't express the changes, MarkdownPoint puts each run in a span with no attributes. A word that is bold, then bold italic, then italic is written `[**Mark**]{}[***do***]{}[*wn*]{}`. A span with no attributes adds no formatting of its own.
+
+In a list item, a line of code that isn't indented stays in the item's code block. In CommonMark, it ends the item and the code block.
+
+In a list item, a nested list that starts at a number other than 1 ends the paragraph above it. A line with only an HTML tag, such as `</pre>`, ends the paragraph too. In CommonMark, the list and `</pre>` continue the paragraph. Outside list items, MarkdownPoint reads them as CommonMark does.
+
+Lists and quotes nest at most 100 deep, and a deeper marker stays as written.
 
 ### Unsupported Markdown
 
