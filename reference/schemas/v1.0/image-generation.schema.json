@@ -133,15 +133,12 @@
               "$ref": "#/definitions/request-text"
             }
           ],
-          "description": "The words asked for in Unicode NFC. Each run of white space is one space, and there is none at either end. It isn't empty or `none`."
+          "description": "The words asked for in Unicode NFC. Each run of white space is one space, and there is none at either end. It isn't empty."
         },
         "image-style": {
-          "anyOf": [
+          "allOf": [
             {
               "$ref": "#/definitions/request-text"
-            },
-            {
-              "const": "none"
             }
           ],
           "description": "The style the image was made in. Its words are written the same way as the prompt's. It is `none` for no style."
@@ -311,7 +308,7 @@
     },
     "request-text": {
       "type": "string",
-      "pattern": "^(?!none(?![\\s\\S]))[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])"
+      "pattern": "^[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])"
     },
     "sha256": {
       "type": "string",
