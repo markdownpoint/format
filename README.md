@@ -105,6 +105,8 @@ Every file states its format version in quotes. The version is a major and a min
 
 MarkdownPoint 1.x opens any version 1.x file. A later minor version can add data that an earlier reader skips. When MarkdownPoint opens such a file, it shows a notice and keeps the unknown data when it saves. An unknown key, word, or object stays as long as the record or entry that contains it does. A list of values is one exception. A save that changes the list writes the whole list again, and the unknown data in it is lost. In the .md file, an unknown Markdown form stays as written until its block is edited or the file is formatted. It is then written as plain words. If two people duplicate a slide before their copies sync, the unknown data stays in only one of the copies. Saving never lowers the file's version number. A version 2.0 file requires MarkdownPoint 2.
 
+The limits in the reference, such as 5,000 cells in a table, apply to every version 1.x file. A later minor version can't raise them.
+
 The format is not final. Version 1.0 may still change before release.
 
 ## License
