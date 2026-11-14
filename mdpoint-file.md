@@ -400,7 +400,7 @@ The hills have a restyle, and the background's image is still a request:
 
 ## Audio and video
 
-A video or audio object starts at a step's `play` cue. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of the file plays: from `start` to `end` in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
+A video, an audio object, or a web video starts at a step's `play` cue. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of a video or audio file plays: from `start` to `end` in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
 
 ```json
 {

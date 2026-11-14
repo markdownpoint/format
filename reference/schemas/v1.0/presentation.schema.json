@@ -4172,7 +4172,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "The fraction of the size that is solid. The rest of the size is blurred. At 1, the shadow is solid all the way out. Photoshop's Spread works the same way."
+              "description": "The fraction of the size that is solid. The rest of the size is blurred. At 1, the shadow is solid all the way out. Photoshop's Spread works the same way. The default is 0."
             },
             "offset": {
               "type": "object",
@@ -8150,7 +8150,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "The fraction of the size that is solid. The rest of the size is blurred. At 1, the shadow is solid all the way out. Photoshop's Spread works the same way."
+              "description": "The fraction of the size that is solid. The rest of the size is blurred. At 1, the shadow is solid all the way out. Photoshop's Spread works the same way. The default is 0."
             },
             "offset": {
               "type": "object",
