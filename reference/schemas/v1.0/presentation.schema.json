@@ -4223,16 +4223,17 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1.",
       "type": "object",
       "properties": {
         "based-on": {
           "enum": [
             "paragraph",
             "word",
-            "character"
+            "character",
+            "character-and-space"
           ],
-          "description": "What counts as one piece."
+          "description": "What counts as one piece. With `character-and-space`, each space is a piece too."
         },
         "delivery": {
           "const": "by-paragraph",
@@ -4327,10 +4328,6 @@
           "maximum": 1,
           "description": "The fraction of each piece's entrance its fade lasts. The fade starts with the move and follows the piece's interpolation."
         },
-        "spaces": {
-          "type": "boolean",
-          "description": "Whether each space counts as a piece. It applies only with based-on `character`."
-        },
         "order": {
           "enum": [
             "forward",
@@ -4388,16 +4385,17 @@
       "additionalProperties": false
     },
     "exit": {
-      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spaces off, spread 1, pause 0, and progress 0.",
+      "description": "Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 0.",
       "type": "object",
       "properties": {
         "based-on": {
           "enum": [
             "paragraph",
             "word",
-            "character"
+            "character",
+            "character-and-space"
           ],
-          "description": "What counts as one piece."
+          "description": "What counts as one piece. With `character-and-space`, each space is a piece too."
         },
         "to": {
           "description": "How each piece looks as it finishes exiting: opacity, offset, scale, rotation, and blur.",
@@ -4476,10 +4474,6 @@
           "minimum": 0.000001,
           "maximum": 1,
           "description": "The fraction of each piece's exit its fade lasts. The fade ends with the move and follows the piece's interpolation."
-        },
-        "spaces": {
-          "type": "boolean",
-          "description": "Whether each space counts as a piece. It applies only with based-on `character`."
         },
         "order": {
           "enum": [

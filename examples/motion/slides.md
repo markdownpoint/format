@@ -100,7 +100,7 @@ These letters start with their exit already played.
 The second click plays it backward.
 
 <!-- notes -->
-A wipe reveals the bar as its `progress` goes from 0 to 1. The body's letters enter six at a time (`spread`) in a random `order` from `seed` 7. They slide in from the left (`from`), and each space counts as a piece too (`spaces`). Each paragraph of the body takes its turn in its own shuffled order. A `pause` comes between them. The body's `progress` starts at 0, and the first click runs it to 1. The caption's exit starts at a `progress` of 1. The caption is gone. The second click runs the exit back to 0. The caption's letters turn and sharpen into place.
+A wipe reveals the bar as its `progress` goes from 0 to 1. The body's letters enter six at a time (`spread`) in a random `order` from `seed` 7. They slide in from the left (`from`), and each space counts as a piece too (`character-and-space`). Each paragraph of the body takes its turn in its own shuffled order. A `pause` comes between them. The body's `progress` starts at 0, and the first click runs it to 1. The caption's exit starts at a `progress` of 1. The caption is gone. The second click runs the exit back to 0. The caption's letters turn and sharpen into place.
 
 <!-- slide: copies -->
 
