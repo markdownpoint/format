@@ -5048,9 +5048,7 @@
           "description": "degrees"
         },
         "scale": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 511
+          "$ref": "#/definitions/flat-scale"
         },
         "opacity": {
           "type": "number",
@@ -5130,6 +5128,9 @@
           "description": "ems"
         },
         "ignore-auto-layout": {
+          "type": "boolean"
+        },
+        "constrain-proportions": {
           "type": "boolean"
         },
         "anchor-point": {
