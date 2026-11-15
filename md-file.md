@@ -168,7 +168,7 @@ Neither comment above shows on the slide.
 
 ## Markdown
 
-Text objects, tables, and speaker notes use Markdown. The [reference](reference/v1.md#markdown) lists everything that's supported.
+Text objects, tables, and speaker notes use Markdown. The [reference](reference/1.md#markdown) lists everything that's supported.
 
 ### Marks, links, and colors
 
@@ -231,7 +231,7 @@ This is slide {{slide-number}} of {{slide-count}}. It is in section {{section-nu
 
 ![The fields slide drawn by MarkdownPoint](images/words-fields.png)
 
-A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/v1.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. The `footer` field shows the footer set in the frontmatter.
+A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. The `footer` field shows the footer set in the frontmatter.
 
 ### Quotes and inline code
 
@@ -289,7 +289,7 @@ Its position, columns, minimum row heights, and style are in the .mdpoint file. 
 
 ### Code blocks
 
-A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. Only spaces or tabs can follow it. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/v1.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
+A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. Only spaces or tabs can follow it. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/1.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
 
 A code block can also be in a quote or a list item. It ends at its closing fence or when the quote or item ends. A link definition can't contain a fence. After `[x]: /url (title`, a fence on the next line opens a code block.
 

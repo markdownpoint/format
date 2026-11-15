@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://markdownpoint.com/format/schemas/v1.0/image-generation.schema.json",
+  "$id": "https://markdownpoint.com/format/schemas/1.0/image-generation.schema.json",
   "description": "How a generated image was made: what was asked, what for, and the image that came back. The `<id>` in its file name is the record's lowercase UUID.",
   "type": "object",
   "properties": {

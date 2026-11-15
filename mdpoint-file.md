@@ -132,7 +132,7 @@ Text for a text object or shape goes in the .md file under `<!-- text: id -->`. 
 
 The dot's fill is `text`, a role in the slide's color scheme. The dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
-Omitted keys use their defaults. The card sets no fill. A shape's default fill is `accent`. The [object reference](reference/v1.md#object) lists the required keys, allowed values, and defaults for each object type.
+Omitted keys use their defaults. The card sets no fill. A shape's default fill is `accent`. The [object reference](reference/1.md#object) lists the required keys, allowed values, and defaults for each object type.
 
 A text box can grow to fit its words, give every digit the same width, and outline its letters:
 
@@ -502,7 +502,7 @@ A rotation in degrees applies the heading around y, then the pitch around the ob
 
 `curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `begin`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its keyframes, its cues, the paragraphs they bring in, and the later copies of a repeated object.
 
-Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) doesn't repeat and requires a `duration`.
+Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/1.md#drift) doesn't repeat and requires a `duration`.
 
 ## Motion
 

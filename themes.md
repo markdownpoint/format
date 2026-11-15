@@ -48,7 +48,7 @@ Every theme has a `light` and a `dark` scheme and can add more, such as Basic's 
 }
 ```
 
-A role set to `{brand.colors.ember}` uses the brand color named `ember`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `separator`, and `link`. It can add roles of its own. The [scheme colors reference](reference/v1.md#scheme-colors) says what each role colors.
+A role set to `{brand.colors.ember}` uses the brand color named `ember`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `separator`, and `link`. It can add roles of its own. The [scheme colors reference](reference/1.md#scheme-colors) says what each role colors.
 
 ## Text styles
 
@@ -67,7 +67,7 @@ A text object uses a named text style from the theme. Define every style that th
 
 Set `font-family` to `display`, `body`, or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color, and spacing.
 
-The [font reference](reference/v1.md#fonts) lists the bundled families. Bundled families need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
+The [font reference](reference/1.md#fonts) lists the bundled families. Bundled families need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
 
 ## Layouts
 
@@ -180,7 +180,7 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 
 `unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Such a save writes a new one when the editor changed the file, and other saves keep it. Other tools leave it unchanged.
 
-A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/v1.md#theme-package).
+A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.md#theme-package).
 
 ## Changing a theme by hand
 
@@ -190,4 +190,4 @@ A change to master.json affects every slide. A change to a layout affects every 
 
 MarkdownPoint picks up theme changes made outside the app while the presentation is open. It doesn't while the presentation is shared for editing together. If a layout can't be read, each slide that uses it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows that message. A merge conflict that git leaves in a theme file is one of these problems, and the issue names the line where the conflict starts.
 
-The reference lists every key of [master.json](reference/v1.md#master) and [a layout](reference/v1.md#layout).
+The reference lists every key of [master.json](reference/1.md#master) and [a layout](reference/1.md#layout).
