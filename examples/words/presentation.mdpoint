@@ -84,7 +84,7 @@
           "text-style": "body",
           "column-widths": [840,420,420],
           "min-row-heights": [140,140,140],
-          "alternating-fills": true
+          "alternating-rows": true
         }
       ]
     },
@@ -115,7 +115,7 @@
           },
           "text-style": "body",
           "align": "right",
-          "tabular": true
+          "number-spacing": "tabular"
         },
 
         {

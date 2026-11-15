@@ -376,23 +376,29 @@
                   }
                 ]
               },
-              "italic": {
+              "font-style": {
                 "anyOf": [
                   {
                     "type": "null"
                   },
                   {
-                    "type": "boolean"
+                    "enum": [
+                      "normal",
+                      "italic"
+                    ]
                   }
                 ]
               },
-              "tabular": {
+              "number-spacing": {
                 "anyOf": [
                   {
                     "type": "null"
                   },
                   {
-                    "type": "boolean"
+                    "enum": [
+                      "default",
+                      "tabular"
+                    ]
                   }
                 ]
               },
@@ -906,7 +912,7 @@
                   }
                 ]
               },
-              "alternating-fills": {
+              "alternating-rows": {
                 "anyOf": [
                   {
                     "type": "null"
@@ -1580,7 +1586,10 @@
                     "type": "null"
                   },
                   {
-                    "type": "boolean"
+                    "enum": [
+                      "none",
+                      "top"
+                    ]
                   }
                 ]
               },
@@ -2303,11 +2312,17 @@
                       "mono"
                     ]
                   },
-                  "italic": {
-                    "type": "boolean"
+                  "font-style": {
+                    "enum": [
+                      "normal",
+                      "italic"
+                    ]
                   },
-                  "tabular": {
-                    "type": "boolean"
+                  "number-spacing": {
+                    "enum": [
+                      "default",
+                      "tabular"
+                    ]
                   },
                   "kerning": {
                     "enum": [
@@ -2746,7 +2761,7 @@
                   "header-column": {
                     "type": "boolean"
                   },
-                  "alternating-fills": {
+                  "alternating-rows": {
                     "type": "boolean"
                   },
                   "gridlines": {
@@ -3320,11 +3335,17 @@
                       "mono"
                     ]
                   },
-                  "italic": {
-                    "type": "boolean"
+                  "font-style": {
+                    "enum": [
+                      "normal",
+                      "italic"
+                    ]
                   },
-                  "tabular": {
-                    "type": "boolean"
+                  "number-spacing": {
+                    "enum": [
+                      "default",
+                      "tabular"
+                    ]
                   },
                   "kerning": {
                     "enum": [
@@ -3980,8 +4001,11 @@
                       "mono"
                     ]
                   },
-                  "italic": {
-                    "type": "boolean"
+                  "font-style": {
+                    "enum": [
+                      "normal",
+                      "italic"
+                    ]
                   },
                   "font-size": {
                     "type": "number",
@@ -4069,7 +4093,10 @@
                     "type": "boolean"
                   },
                   "legend": {
-                    "type": "boolean"
+                    "enum": [
+                      "none",
+                      "top"
+                    ]
                   },
                   "series-colors": {
                     "$ref": "#/definitions/chart-colors"

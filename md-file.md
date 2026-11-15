@@ -278,7 +278,7 @@ Its position, columns, minimum row heights, and style are in the .mdpoint file. 
     "text-style": "body",
     "column-widths": [840, 420, 420],
     "min-row-heights": [140, 140, 140],
-    "alternating-fills": true
+    "alternating-rows": true
   }
 ]
 ```
