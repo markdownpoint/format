@@ -1371,13 +1371,16 @@
                         }
                       ]
                     },
-                    "start-on-click": {
+                    "start-on": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "type": "boolean"
+                          "enum": [
+                            "cue",
+                            "slide"
+                          ]
                         }
                       ]
                     },
@@ -1996,7 +1999,7 @@
                               ],
                               "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                             },
-                            "frame-position": {
+                            "shutter-position": {
                               "enum": [
                                 "start",
                                 "center",
@@ -3047,8 +3050,11 @@
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
                           "description": "a file path in the presentation's folder"
                         },
-                        "start-on-click": {
-                          "type": "boolean"
+                        "start-on": {
+                          "enum": [
+                            "cue",
+                            "slide"
+                          ]
                         },
                         "loop": {
                           "const": "repeat"
@@ -3242,8 +3248,11 @@
                         "visible": {
                           "type": "boolean"
                         },
-                        "start-on-click": {
-                          "type": "boolean"
+                        "start-on": {
+                          "enum": [
+                            "cue",
+                            "slide"
+                          ]
                         },
                         "loop": {
                           "const": "repeat"
@@ -3309,8 +3318,11 @@
                         "visible": {
                           "type": "boolean"
                         },
-                        "start-on-click": {
-                          "type": "boolean"
+                        "start-on": {
+                          "enum": [
+                            "cue",
+                            "slide"
+                          ]
                         },
                         "stroke": {
                           "$ref": "#/definitions/color"
@@ -4845,8 +4857,11 @@
                       "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
                       "description": "a file path in the presentation's folder"
                     },
-                    "start-on-click": {
-                      "type": "boolean"
+                    "start-on": {
+                      "enum": [
+                        "cue",
+                        "slide"
+                      ]
                     },
                     "loop": {
                       "const": "repeat"
@@ -5029,7 +5044,7 @@
                 "$ref": "#/definitions/steps"
               }
             ],
-            "description": "Its steps, grouped into clicks as a slide's are. The clicks play back to back. They have no cues and no `loop-start`. With every pass counted, they last at most 4,294,967,296 seconds."
+            "description": "Its steps, grouped into clicks as a slide's are. The clicks play back to back. They have no cues and no `loop`. With every pass counted, they last at most 4,294,967,296 seconds."
           }
         },
         "required": [
@@ -8337,6 +8352,10 @@
             "maximum": 9007199254740991,
             "description": "How many times the step plays before it completes. Without it, the step plays once. The step plays only as many times as fit in 4,294,967,296 seconds. A larger count causes a warning."
           },
+          "loop": {
+            "const": "repeat",
+            "description": "With `repeat`, the step loops from `loop-start` to its end while it waits for a click. Without it, the step plays once."
+          },
           "loop-start": {
             "allOf": [
               {
@@ -8346,7 +8365,7 @@
                 "description": "seconds"
               }
             ],
-            "description": "The time in seconds into the step that it loops back to while waiting for a click. From the later of its `min-duration` and its keyframe and cue times on, it causes a warning and doesn't loop."
+            "description": "The seconds into the step where `loop` starts. Without it, the loop starts at 0. At or past the later of its `min-duration` and its last keyframe or cue, it causes a warning and doesn't loop."
           },
           "curves": {
             "type": "object",
@@ -8355,7 +8374,7 @@
               "description": "an object's id, a dot, and a parameter, such as \"card.opacity\""
             },
             "additionalProperties": {
-              "description": "One parameter's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.xy` and `translation` have {x, y}, and `position` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
+              "description": "One parameter's animation in a step: its keyframes and what happens after the last one. A position can also be keyed as one point. `frame.position` and `translation` have {x, y}, and `position` has {x, y, z}. Each of their keyframes has every part. A step keys a position either as a point or by its parts, not both. A step that keys both is read with a warning, and the point plays. An initial value sets each part on its own.",
               "type": "object",
               "properties": {
                 "keyframes": {
@@ -8838,6 +8857,11 @@
         "required": [
           "id"
         ],
+        "dependencies": {
+          "loop-start": [
+            "loop"
+          ]
+        },
         "additionalProperties": false
       }
     },

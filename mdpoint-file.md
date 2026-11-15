@@ -402,7 +402,7 @@ The hills have a restyle, and the background's image is still a request:
 
 ## Audio and video
 
-A video, an audio object, or a web video starts at a step's `play` cue. With `start-on-click` set to false, it starts when its slide appears. With `media-trim`, only part of a video or audio file plays: from `start` to `end` in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
+A video, an audio object, or a web video starts at a step's `play` cue. With `start-on` set to `slide`, it starts as its slide appears or as the step that first shows it plays. With `media-trim`, only part of a video or audio file plays: from `start` to `end` in seconds. A video's `audio-fade-in` and `audio-fade-out` fade only its sound, in seconds:
 
 ```json
 {
@@ -426,7 +426,7 @@ An audio object's `fade-in` and `fade-out` are in seconds:
   "file": "media/chord.m4a",
   "name": "Chord",
   "frame": {"x": 1160, "y": 700},
-  "start-on-click": false,
+  "start-on": "slide",
   "fade-in": 0.5,
   "fade-out": 1.5
 }
@@ -486,7 +486,7 @@ The camera is defined on the master, and a slide changes it in `overrides`. Its 
       "strength": 0.25
     }
   ],
-  "motion-blur": {"frame-position": "start"}
+  "motion-blur": {"shutter-position": "start"}
 }
 ```
 
@@ -502,7 +502,7 @@ A rotation in degrees applies the heading around y, then the pitch around the ob
 
 `curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `begin`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its keyframes, its cues, the paragraphs they bring in, and the later copies of a repeated object.
 
-Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop-start`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) doesn't repeat and requires a `duration`.
+Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/v1.md#drift) doesn't repeat and requires a `duration`.
 
 ## Motion
 

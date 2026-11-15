@@ -58,7 +58,7 @@
             "x": 1160,
             "y": 700
           },
-          "start-on-click": false,
+          "start-on": "slide",
           "fade-in": 0.5,
           "fade-out": 1.5
         }

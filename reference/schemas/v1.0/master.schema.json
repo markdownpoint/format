@@ -1589,8 +1589,11 @@
                   }
                 ]
               },
-              "start-on-click": {
-                "type": "boolean"
+              "start-on": {
+                "enum": [
+                  "cue",
+                  "slide"
+                ]
               },
               "loop": {
                 "const": "repeat"
@@ -2867,8 +2870,11 @@
               "visible": {
                 "type": "boolean"
               },
-              "start-on-click": {
-                "type": "boolean"
+              "start-on": {
+                "enum": [
+                  "cue",
+                  "slide"
+                ]
               },
               "loop": {
                 "const": "repeat"
@@ -2935,8 +2941,11 @@
               "visible": {
                 "type": "boolean"
               },
-              "start-on-click": {
-                "type": "boolean"
+              "start-on": {
+                "enum": [
+                  "cue",
+                  "slide"
+                ]
               },
               "stroke": {
                 "$ref": "#/definitions/color"
@@ -3058,7 +3067,7 @@
                     ],
                     "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
                   },
-                  "frame-position": {
+                  "shutter-position": {
                     "enum": [
                       "start",
                       "center",
