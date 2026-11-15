@@ -102,6 +102,7 @@ unavailable.
 | Code | What happened | What to do |
 |---|---|---|
 | `usage` | The command line is wrong (CLI only). | Read the command's `--help`. |
+| `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). `output` names that file, and `result` is the method's answer with the picture in it. | Save the picture from `result.image`. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. Make a stale proposal again. |
