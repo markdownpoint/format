@@ -1,6 +1,6 @@
 # The .md file
 
-`slides.md` contains the text, speaker notes, sections, and slide order. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
+`slides.md` contains the text, presenter notes, sections, and slide order. You can edit it in any text editor. MarkdownPoint watches the folder and shows your saved changes right away.
 
 The objects' positions, styles, and animation are in [the .mdpoint file](mdpoint-file.md). A text block's id matches the id of its object.
 
@@ -55,7 +55,7 @@ The words are Markdown==.==
 
 Create the presentation in MarkdownPoint. Put it in your Obsidian vault's folder or a folder inside it. Then choose “Open in Obsidian” in the File menu. Obsidian opens the presentation's `slides.md` in that vault. The command is dimmed when the presentation isn't in a vault or Obsidian isn't installed.
 
-Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use the outline to add or move slides. Use Source mode to edit the Markdown and its markers directly. Keep `presentation.mdpoint`, the themes, and the media next to `slides.md`.
+Write your slide text and presenter notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use the outline to add or move slides. Use Source mode to edit the Markdown and its markers directly. Keep `presentation.mdpoint`, the themes, and the media next to `slides.md`.
 
 A line ending inside a paragraph is a space on the slide. Turn on “Strict line breaks” in Obsidian's Editor settings. Reading view then shows it as the slide does. To break a line, end it with a backslash or two spaces.
 
@@ -110,9 +110,9 @@ A new slide needs both its marker and its entry. To delete or rename a slide, ch
 
 Paragraphs are separated by one or more blank lines. An empty paragraph is a line that starts with `<br>` and has only spaces or tabs after it. It has a blank line before and after it. Two `<br>` lines in a row with nothing else are one empty line with a line break. Blank lines right after a marker or before the next marker are only separators. A Markdown formatter can add or remove them without changing the slide. A code block that is never closed runs to the end of the file. Its blank lines are part of its code, except the last one.
 
-## Speaker notes
+## Presenter notes
 
-`<!-- notes -->` starts the speaker notes of a slide or a composition. The audience never sees them. Notes use the same Markdown as slide text and can appear anywhere among the blocks of their slide or composition. A paragraph id in speaker notes is read as it is in slide text and is never shown. No step can name it. MarkdownPoint doesn't give ids to paragraphs in notes. It saves notes as written and doesn't warn about a repeated or misspelled id in them.
+`<!-- notes -->` starts the presenter notes of a slide or a composition. The audience never sees them. Notes use the same Markdown as slide text and can appear anywhere among the blocks of their slide or composition. A paragraph id in presenter notes is read as it is in slide text and is never shown. No step can name it. MarkdownPoint doesn't give ids to paragraphs in notes. It saves notes as written and doesn't warn about a repeated or misspelled id in them.
 
 ## Compositions
 
@@ -168,7 +168,7 @@ Neither comment above shows on the slide.
 
 ## Markdown
 
-Text objects, tables, and speaker notes use Markdown. The [reference](reference/1.md#markdown) lists everything that's supported.
+Text objects, tables, and presenter notes use Markdown. The [reference](reference/1.md#markdown) lists everything that's supported.
 
 ### Marks, links, and colors
 

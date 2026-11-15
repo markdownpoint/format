@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/1.0/layout.schema.json",
-  "description": "One slide layout of a theme. Its key is its file name without the .json extension.",
+  "description": "One slide layout of a theme. Its key is its file name without the .json extension. A placeholder's `file` and words are samples. The layout chooser and the theme editor show them, and a slide never does. A slide shows what fills it.",
   "type": "object",
   "properties": {
     "markdownpoint": {
@@ -5004,7 +5004,7 @@
       "additionalProperties": {
         "type": "string"
       },
-      "description": "The words of the layout's own text, table, chart, and shape objects by object id. Any other id is an error. A placeholder's words are its sample text."
+      "description": "The words of the layout's own text, table, chart, and shape objects by object id. Any other id is an error."
     },
     "save-id": {
       "type": "string",

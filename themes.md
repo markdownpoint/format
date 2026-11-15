@@ -11,7 +11,7 @@ themes/<key>/
   content-with-header.json
   ...
   fonts/                  the theme's own fonts, one .eot file per face
-  media/                  the theme's own images
+  media/                  the theme's own images, videos, sounds, and models
 ```
 
 ## Master, layouts, and slides
@@ -22,11 +22,33 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Master
 
-`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a hidden slide number. Both are filled in by fields:
+`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a hidden slide number. Both are filled in by fields, and their words are in the master's `text`. Its `category` says where the theme is listed, and `brand` names the colors its schemes use. `default-text-box` sets a new text box's text style, and `layout-order` lists the layouts in the order the app shows them:
 
 ```json
-{"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
+{
+  "category": "essentials",
+  "brand": {"colors": {"orange": "#F2641F", "ember": "#B83A0B"}},
+  "default-text-box": {"text-style": "body"},
+  "layout-order": [
+    "title",
+    "section",
+    "one-liner",
+    "content",
+    "content-with-header",
+    "text-image",
+    "text-image-with-header",
+    "image-text",
+    "image-text-with-header",
+    "image",
+    "image-with-header",
+    "solid-color",
+    "blank"
+  ],
+  "text": {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
+}
 ```
+
+The theme's name is the master's `name`. Basic's master leaves it out. Its name is then its key with a capital first letter.
 
 ## Color schemes
 
@@ -118,7 +140,7 @@ A layout defines the objects its slides inherit. Basic's Title layout is:
 
 A layout's text or image with `"placeholder": true` is a placeholder. Each slide fills it with its own text or image. The two are matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
 
-The layout's `text` holds the words of its own objects. A placeholder's words are its sample text, shown in the layout chooser and theme editor. An empty placeholder shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
+The layout's `text` holds the words of its own objects. A placeholder's `file` and words are samples. The layout chooser and the theme editor show them, and a slide never does. A placeholder that a slide doesn't fill shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
 
 ![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
 
@@ -180,7 +202,7 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 
 `unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Such a save writes a new one when the editor changed the file, and other saves keep it. Other tools leave it unchanged.
 
-A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.md#theme-package).
+A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. It can also hold two folders the manifest doesn't list. `previews/` has a picture of the theme and one of each example slide. `example/` has a presentation that a new presentation can start from. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.md#theme-package).
 
 ## Changing a theme by hand
 

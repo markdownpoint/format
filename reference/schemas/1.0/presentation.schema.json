@@ -3934,7 +3934,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. An instance draws the composition as the composition draws on its own canvas. The canvas is as large as fits in the instance's frame and is centered there. This is SVG's `viewBox` with `xMidYMid meet`. Then it turns and scales with the instance about the instance's anchor point. The composition's objects are in their own group at the instance's position. That group counts toward how deep groups nest. A composition can contain only what a group can: nothing 3D, no audio object, and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
+        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. Its canvas is as large as fits in the instance's frame and is centered there. This is SVG's `viewBox` with `xMidYMid meet`. Then it turns and scales with the instance about the instance's anchor point. The composition's objects are in their own group at the instance's position. That group counts toward how deep groups nest. A composition can contain only what a group can: nothing 3D, no audio object, and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
         "type": "object",
         "properties": {
           "name": {
@@ -5158,7 +5158,7 @@
               ],
               "additionalProperties": false
             },
-            "description": "The replies by id. Each has an author, a created time, and text."
+            "description": "The replies by id. They are read by their `created` time, then by their id. Each has an author, a created time, and text."
           }
         },
         "required": [
@@ -5187,7 +5187,7 @@
           }
         ]
       },
-      "description": "Comments by id. Each one is pinned to a slide or a composition."
+      "description": "Comments by id. They are read by their `created` time, then by their id. Each one is pinned to a slide or a composition."
     }
   },
   "required": [

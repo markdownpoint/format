@@ -4,14 +4,14 @@ MarkdownPoint is a presentation app for Mac and Windows: [markdownpoint.com](htt
 
 Each presentation is a folder with two main files:
 
-- `slides.md` contains the text, speaker notes, sections, and slide order.
+- `slides.md` contains the text, presenter notes, sections, and slide order.
 - `presentation.mdpoint` contains each slide's layout, objects, look, and animation as JSON.
 
 Themes and media are in subfolders. You can edit the presentation in MarkdownPoint, in a text editor, or with an AI agent.
 
 ## Write in Obsidian
 
-Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). You can edit all the slides in one document. Use the outline to add or move slides.
+Write your slide text and presenter notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). You can edit all the slides in one document. Use the outline to add or move slides.
 
 Open the same presentation in MarkdownPoint to work on layout, images, 3D, and animation. Both apps save to the same files. You can switch between them without importing or exporting.
 
@@ -51,7 +51,7 @@ The [complete presentation](examples/first-deck) includes the theme and JSON fil
 
 ## Guides
 
-- **[The .md file](md-file.md)**: write the words, arrange slides, and add speaker notes. Start here when editing a presentation by hand.
+- **[The .md file](md-file.md)**: write the words, arrange slides, and add presenter notes. Start here when editing a presentation by hand.
 - **[The .mdpoint file](mdpoint-file.md)**: place objects, set their keys, and animate them.
 - **[Themes](themes.md)**: share fonts, colors, text styles, and layouts across slides.
 - **[Reference, version 1](reference/1.md)**: look up a key's exact meaning, values, units, and defaults.
@@ -65,7 +65,7 @@ My talk/
   presentation.mdpoint   each slide's layout, objects, look, and animation
   media/                 imported images, videos, audio, and models
   generated/             generated images, 3D text models built by a program, and image generation records
-  themes/<key>/          master.json, layout files, fonts, and images
+  themes/<key>/          master.json, layout files, fonts, and media
   versions/              saved versions, one folder each
 ```
 
