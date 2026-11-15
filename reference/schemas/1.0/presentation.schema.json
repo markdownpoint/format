@@ -2097,7 +2097,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's motion blur. Only the 3D layer is blurred. It is blurred only in exported movies and the Agent's rendered frames.",
+                          "description": "The camera's motion blur. The 3D layer blurs along its motion while the shutter is open. Nothing else is blurred. Only exported movies and the Agent's renders show it. A frame is a sixtieth of a second, a movie's frame. The Agent's renders use the same frame at any `sampleRate`.",
                           "type": "object",
                           "properties": {
                             "shutter": {
@@ -2109,7 +2109,7 @@
                                   "description": "frames"
                                 }
                               ],
-                              "description": "How long the shutter stays open in frames of the movie. At 0, there is no blur. The default is 0.5. It can be animated."
+                              "description": "How long the shutter stays open in frames. At 0, there is no blur. The default is 0.5. It can be animated."
                             },
                             "shutter-position": {
                               "enum": [
@@ -2136,7 +2136,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's render effects: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
+                          "description": "The slide's render settings, kept on its camera beside motion blur: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {
@@ -2302,7 +2302,8 @@
                                     },
                                     "minItems": 1,
                                     "maxItems": 3,
-                                    "description": "A list of the 3D space's axes the camera follows on, such as `[\"x\"]`. Without it, the camera follows on all three."
+                                    "uniqueItems": true,
+                                    "description": "A list of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. Without it, the camera follows on all three."
                                   },
                                   "relative-to-target": {
                                     "type": "boolean",
@@ -5636,7 +5637,7 @@
       }
     },
     "crop": {
-      "description": "An image's or a video's zoom and focus inside its frame.",
+      "description": "An image's or a video's zoom inside its frame, and the point that stays in view.",
       "type": "object",
       "properties": {
         "scale": {
@@ -9718,9 +9719,56 @@
     },
     "parent-inverse": {
       "type": "array",
-      "items": {
-        "type": "number"
-      },
+      "items": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "const": 0
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "const": 0
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "const": 0
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "const": 1
+        }
+      ],
       "minItems": 16,
       "maxItems": 16
     },
@@ -9999,7 +10047,7 @@
       "additionalProperties": false
     },
     "space-euler": {
-      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
+      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
       "type": "object",
       "properties": {
         "x": {
@@ -10089,7 +10137,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's rotation about its origin, in the 3D space's axes: x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
+      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
       "type": "object",
       "properties": {
         "w": {
