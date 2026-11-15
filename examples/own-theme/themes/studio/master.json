@@ -55,6 +55,10 @@
       "marks": {"bold":{"case":"upper","tracking":0.06},"strikethrough":{"color":"muted"}}
     }
   },
+  "text-style-order": [
+    "title",
+    "body"
+  ],
   "guides": {
     "center": {"axis":"x","offset":960,"name":"Center","locked":true},
     "footer-line": {"axis":"y","offset":960,"name":"Footer line"}

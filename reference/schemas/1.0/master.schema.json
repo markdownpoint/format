@@ -137,6 +137,15 @@
             "description": "a hex color, such as \"#E85D3F\""
           },
           "description": "The brand's hex colors by name."
+        },
+        "color-order": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+          },
+          "uniqueItems": true,
+          "description": "The order of the brand's colors by name. Each is listed once. Unlisted brand colors follow in name order. An entry that names no brand color warns."
         }
       },
       "additionalProperties": false
@@ -172,6 +181,16 @@
         "$ref": "#/definitions/scheme"
       },
       "description": "The theme's color schemes by name. Every theme has light and dark."
+    },
+    "scheme-order": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "a scheme name"
+      },
+      "uniqueItems": true,
+      "description": "The order of the schemes by name. Each is listed once. Unlisted schemes follow: light, dark, then the rest in name order. An entry that names no scheme warns."
     },
     "text-styles": {
       "type": "object",
@@ -394,6 +413,14 @@
       },
       "description": "The theme's text styles by name. No name is built in."
     },
+    "text-style-order": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/text-style-name"
+      },
+      "uniqueItems": true,
+      "description": "The order of the text styles by name. Each is listed once. Unlisted text styles follow in name order. An entry that names no text style warns."
+    },
     "guides": {
       "type": "object",
       "propertyNames": {
@@ -537,8 +564,11 @@
       "type": "object",
       "properties": {
         "text-style": {
-          "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "allOf": [
+            {
+              "$ref": "#/definitions/text-style-name"
+            }
+          ],
           "description": "The text style, named as in the master's `text-styles`."
         },
         "color": {

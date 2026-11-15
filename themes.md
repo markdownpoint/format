@@ -27,7 +27,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 ```json
 {
   "category": "essentials",
-  "brand": {"colors": {"orange": "#F2641F", "ember": "#B83A0B"}},
+  "brand": {"colors": {"orange": "#F2641F", "ember": "#B83A0B"}, "color-order": ["orange", "ember"]},
   "default-text-box": {"text-style": "body"},
   "layout-order": [
     "title",
