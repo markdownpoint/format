@@ -2629,7 +2629,10 @@
                 ]
               },
               "value-labels": {
-                "type": "boolean"
+                "enum": [
+                  "none",
+                  "auto"
+                ]
               },
               "legend": {
                 "enum": [
