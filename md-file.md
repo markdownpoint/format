@@ -77,7 +77,7 @@ Start the file with frontmatter between two `---` lines. Each `---` line holds n
 
 - `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
 - `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
-- `footer`: the footer text.
+- `footer`: the footer text. It's one line with no control characters.
 - `save-id`: the id of the save that last wrote the files as an editor handed over the shared presentation, closed it, or signed out. The .mdpoint file has the same id. Such a save writes a new one when the editor changed something, and other saves keep it. Other tools leave it unchanged.
 
 Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*`, or `- `. Quote it, too, if YAML 1.2's core schema reads it as null, a boolean, or a number, such as `~`, `true`, `001`, or `.5`. Without quotes, some of these values aren't text in YAML. MarkdownPoint refuses them. MarkdownPoint always writes the footer in double quotes.
@@ -352,7 +352,7 @@ MarkdownPoint can't read the file if it contains any of these, among other probl
 - a slide marker without its entry in the .mdpoint file, or an entry without its marker
 - a code block that is never closed and contains a marker
 - a merge conflict that git left outside a code block: from its `<<<<<<<` line to its `>>>>>>>` line
-- one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line
+- one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line, such as `"footer": Q3`
 
 A comment line counts as an incorrectly written marker when it contains a marker's word in any letter case and at most one other word. A closing slash, or words after `-->`, don't change this.
 
