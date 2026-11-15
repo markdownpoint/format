@@ -182,11 +182,14 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   `location`. Its `file` is the path in the theme's folder, such as
   `master.json` or `title.json`. `path` selects the value in that file. A file
   that isn't valid JSON gives its line and column. A warning about an object
-  that a layout or the master gives its slides, or about their background, comes
-  once for each slide on that layout. Its `slideId` names the slide, and its `path` the value, such as
-  `overrides.logo.opacity`. A scheme that a layout names and the master lacks
-  comes once for each slide on the layout too. Its `path` is `scheme`. A theme font that no file brings is at
-  its role in `master.json`, as in `fonts.heading`. When only the slides that
+  that a layout or the master gives its slides, or about their background,
+  comes once for each slide on that layout. Its `slideId` names the slide,
+  and its `path` the value, such as `overrides.logo.opacity`. A scheme that a
+  layout names and the master lacks comes once for each slide on the layout
+  too. Its `path` is `scheme`. A file that a master or layout names and the
+  theme's folder lacks is at each key that names it, as in
+  `objects.logo.file`. A theme font that no file brings is at its role in
+  `master.json`, as in `fonts.heading`. When only the slides that
   use a layout or scheme are refused, `slideId` names the slide. A layout
   whose file doesn't read refuses it with that file's `location`. A layout
   the theme lacks, and a slide's own scheme the master lacks, are at the
@@ -194,14 +197,24 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   when the issue is about one of the layout's objects. An issue about the
   whole theme, such as a missing theme that the presentation names, has none
   of these fields.
-- `file`: `file` is the file's path in the folder that `fileScope` names. The
-  issue has no `path` or `location`, since a `path` is only ever a place
-  inside a file. `presentation` is the presentation's folder, and `theme` is its theme's.
-  `cache` is the folder on this computer where MarkdownPoint saves the models
-  it builds from a text's letters. `bundled` is the fonts that ship with
-  MarkdownPoint. `slideId`, `objectId`, and `key` name each place where the
-  file is used. The `key` is the one that names the file there, such as `file`,
-  `background.image.file`, or `soundtrack.file`.
+- `file`: `file` is the path of the file the issue is about. It is a path in
+  the folder that `fileScope` names. `presentation` is the presentation's
+  folder, and `theme` is its theme's. `cache` is the folder on this computer
+  where MarkdownPoint saves the models it builds from a text's letters.
+  `bundled` is the fonts that ship with MarkdownPoint. The issue comes once
+  for each place where a key names the file. `slideId`, `objectId`, and
+  `key` name the place, and `key` is the key that names the file there, such
+  as `file`, `background.image.file`, or `soundtrack.file`. `path` and
+  `location` say where that key's value is written, as in
+  `slides.intro.objects.photo.file` in the `.mdpoint` file. A theme picture
+  with one file per scheme is at the file for the slide's scheme, as in
+  `objects.logo.file.dark` in `master.json`. A theme picture comes once for
+  each slide that shows it. A missing generation record is at the `id` that
+  names it, as in `slides.intro.objects.photo.generation.id`. A theme font's
+  file comes once. It is at its entry in `master.json`'s `font-files`, as in
+  `font-files.Lato[0]`. A file that a member of a composition's instance or
+  a repeater's copy shows has no `path`. A font that ships with MarkdownPoint
+  has none either. No key names it, and its issue comes once.
 - `slide`: `slideId`, and `objectId` or `objectIds`. When the issue is about
   one of the object's keys, such as `text-style`, `key` names it, and `path`
   and `location` say where its value is written. The slide's own object and
@@ -211,9 +224,9 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   layout's own object and its override of the master's are in the layout's
   file, and the master's object is in `master.json`. A value the object
   takes from its text style, and a member of a composition's instance, have
-  no `path`. A link in a slide's words is in the
-  `.md` file. Its `path` names the words' record. A link in words the theme
-  gives its own object is in the theme's file.
+  no `path`. A link in a slide's words is in the `.md` file. Its `path` names
+  the words' record. A link in words the theme gives its own object is in
+  the theme's file.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue from drawing has neither.
 
