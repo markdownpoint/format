@@ -93,6 +93,8 @@ the same way.
 
 A failure has a code and a message. With `--json`, a failed command prints one
 line on stdout, `{"error": {"code": …, "message": …}}`, and nothing on stderr.
+Without it, the error prints on stderr. Its first line starts with its code,
+such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
 text. An error also includes what a caller needs to read beside its code: a
 refused proposal's `validation`, or a stale revision's `revision` and a stale
@@ -102,8 +104,8 @@ findings are its result, whether it passes or fails. `validate --json` prints
 prints `{ changed }` and exits 1 when anything would change. An error record
 means the check couldn't run. MCP's own errors are JSON-RPC errors: an unknown
 tool, or arguments that aren't an object. The command exits 0 when it
-succeeds, 1 when it fails, 2 on a usage error, and 3 when MarkdownPoint is
-unavailable.
+succeeds or a check passes, 1 when a check finds what fails it, and 2 when an
+error stops it.
 
 | Code | What happened | What to do |
 |---|---|---|
@@ -115,10 +117,10 @@ unavailable.
 | `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. A composition's id names no slide for Present. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
-| `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
+| `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size, a proposal's operations, a range's samples, or the proposals held at `limits.heldProposals`. | Send less at once, lower `sampleRate`, or reject a proposal. |
-| `busy` | Something that can't run at the same time is in progress, such as accepting that proposal or another movie export. | Try again when it's done. |
+| `busy` | Something that can't run at the same time is in progress. It might be accepting that proposal, another movie export, the presentation opening or closing, another device's turn to edit it, or your earlier requests to Meshy. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
 `MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout in seconds for every call the CLI
