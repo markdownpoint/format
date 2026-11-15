@@ -123,7 +123,7 @@
         "image-style": {
           "type": "string",
           "pattern": "^(?!none(?![\\s\\S]))[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-          "description": "The style the image was made in, written as the prompt is, never `none`. It never names a library style; `restyle` does. Without it, the image was made with no style."
+          "description": "The style the image was made in, written as the prompt is, never `none`. It names no library style. Without it, the image was made with no style."
         },
         "provider": {
           "allOf": [

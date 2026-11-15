@@ -143,7 +143,7 @@
           "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated image objects use when they don't set one: text, never `none`. It never names a library style; `restyle` does. Without it, they have no style."
+      "description": "The style generated image objects use when they don't set one: text, never `none`. It names no library style. Without it, they have no style."
     },
     "background-image-style": {
       "allOf": [
@@ -151,7 +151,7 @@
           "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated background images use when they don't set one: text, never `none`. It never names a library style; `restyle` does. Without it, they have no style."
+      "description": "The style generated background images use when they don't set one: text, never `none`. It names no library style. Without it, they have no style."
     },
     "swatches": {
       "type": "array",
@@ -282,7 +282,7 @@
                         "$ref": "#/definitions/image-style-or-none"
                       }
                     ],
-                    "description": "The style of a generated background image: text, or `none` for no style. It never names a library style; `restyle` does. The default is `background-image-style`."
+                    "description": "The style of a generated background image: text, or `none` for no style. It names no library style. The default is `background-image-style`."
                   },
                   "transparent-background": {
                     "type": "boolean",
@@ -294,7 +294,7 @@
                         "$ref": "#/definitions/restyle"
                       }
                     ],
-                    "description": "A style applied over the image. MarkdownPoint draws it from the image as it was first made."
+                    "description": "A style or an edit that the image model applies to the image as it was first made. It names no library style. Until a generation with an `original` applies it, the image shows its `file` as it is."
                   },
                   "generation": {
                     "allOf": [
@@ -10007,7 +10007,7 @@
       "additionalProperties": false
     },
     "restyle": {
-      "description": "A style applied over an image or a background's image. It has every key of a library style except `reference-image-prompt`.",
+      "description": "A style or an edit that the image model applies to the image as it was first made: a copy of a library style's `name`, `prompt` and `transparent-background`, or the author's own. It names no library style. Until a generation with an `original` applies it, the image shows its `file` as it is.",
       "type": "object",
       "properties": {
         "name": {
