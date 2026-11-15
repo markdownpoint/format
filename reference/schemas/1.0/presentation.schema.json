@@ -10425,7 +10425,7 @@
                         ],
                         "additionalProperties": false
                       },
-                      "path": {
+                      "motion-path": {
                         "description": "A curved motion path for the move into the keyframe. Only a point keyframe can have it.",
                         "type": "object",
                         "properties": {
