@@ -281,7 +281,7 @@ A group with `auto-layout` places its members one after another from its `frame`
 
 ## Images
 
-An image object shows a picture from the presentation's `media` folder. `exposure`, `contrast`, `saturation`, and `temperature` range from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture is shown as shot. This one has more contrast and color:
+An image object shows a picture from the presentation's `media/` or `generated/` folder. `exposure`, `contrast`, `saturation`, and `temperature` range from −1 to 1, and `grayscale` from 0 to 1. At 0, the picture is shown as shot. This one has more contrast and color:
 
 ```json
 {
@@ -442,7 +442,7 @@ With `soundtrack`, one audio file plays through the whole presentation. It has i
 
 ## 3D
 
-Models, lights, and the camera are placed in a 3D space. A constraint applies a rule to one of them as things move. An `aim` constraint turns a model, or its node named by `node`, toward a target. A `squash-and-stretch` constraint preserves a model's volume while a step scales it:
+Models, lights, shadow catchers, the floor, and the camera are placed in a 3D space, and a text with a 3D model is drawn in it. A constraint applies a rule to a model or the camera as things move. An `aim` constraint turns a model, or its node named by `node`, toward a target. A `squash-and-stretch` constraint preserves a model's volume while a step scales it:
 
 ```json
 [{"id": "look", "type": "aim", "node": "shade", "target": "mug", "axis": "-y", "strength": 0.5}]

@@ -151,7 +151,7 @@
           "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated image objects use when they don't set one. It's written as text. It can't be `none`. Without it, they have no style. A background's image uses `background-image-style` instead."
+      "description": "The style generated image objects use when they don't set one: text, never `none`. It never names a library style; `restyle` does. Without it, they have no style."
     },
     "background-image-style": {
       "allOf": [
@@ -159,7 +159,7 @@
           "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated background images use when their background doesn't set one. It's written as text. It can't be `none`. Without it, they have no style."
+      "description": "The style generated background images use when they don't set one: text, never `none`. It never names a library style; `restyle` does. Without it, they have no style."
     },
     "swatches": {
       "type": "array",
@@ -5406,7 +5406,7 @@
                   "$ref": "#/definitions/image-style-or-none"
                 }
               ],
-              "description": "The style of a generated background image: text, or `none` for no style. The default is the presentation's `background-image-style`."
+              "description": "The style of a generated background image: text, or `none` for no style. It never names a library style; `restyle` does. The default is `background-image-style`."
             },
             "transparent-background": {
               "type": "boolean",
@@ -9068,7 +9068,7 @@
       "additionalProperties": false
     },
     "text-model": {
-      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions.",
+      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions.",
       "anyOf": [
         {
           "type": "object",

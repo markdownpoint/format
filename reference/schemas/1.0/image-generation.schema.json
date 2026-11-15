@@ -135,7 +135,7 @@
         "image-style": {
           "type": "string",
           "pattern": "^(?!none(?![\\s\\S]))[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+(?: [^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+)*(?![\\s\\S])",
-          "description": "The style the image was made in. Its words are written the same way as the prompt's. It can't be `none`. Without it, the image was made with no style."
+          "description": "The style the image was made in, written as the prompt is, never `none`. It never names a library style; `restyle` does. Without it, the image was made with no style."
         },
         "provider": {
           "allOf": [
@@ -154,13 +154,13 @@
           "description": "The image model's name: one line that isn't blank and has no control characters."
         },
         "parameters": {
-          "description": "The settings the model was asked with.",
+          "description": "The settings MarkdownPoint recorded, before a provider's adapter converts them.",
           "type": "object",
           "properties": {
             "aspect-ratio": {
               "type": "string",
               "pattern": "^(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991):(?:[1-9][0-9]{0,14}|[1-8][0-9]{15}|900[0-6][0-9]{12}|90070[0-9]{11}|90071[0-8][0-9]{10}|900719[0-8][0-9]{9}|9007199[0-1][0-9]{8}|90071992[0-4][0-9]{7}|900719925[0-3][0-9]{6}|9007199254[0-6][0-9]{5}|90071992547[0-3][0-9]{4}|9007199254740[0-8][0-9]{2}|90071992547409[0-8][0-9]{1}|9007199254740990|9007199254740991)(?![\\s\\S])",
-              "description": "The proportions asked for: width:height, such as 16:9. Both are whole numbers from 1 to 9.007199254740991 × 10¹⁵. Neither has a leading zero."
+              "description": "The target ratio: width:height, such as 16:9. Both are whole numbers from 1 to 9.007199254740991 × 10¹⁵. Neither has a leading zero."
             },
             "transparent-background": {
               "type": "boolean",
@@ -172,7 +172,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The size asked for in the model's own words. It is one line that isn't blank and has no control characters."
+              "description": "The size option chosen. It is one line that isn't blank and has no control characters."
             },
             "quality": {
               "allOf": [
