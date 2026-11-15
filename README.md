@@ -23,7 +23,7 @@ Each slide has an id. Its marker in `slides.md` and its entry in `presentation.m
 
 Objects use the selected theme's fonts, color schemes, text styles, and layouts. A slide can add objects and override keys of the objects it inherits from its layout.
 
-Text and image objects use a 2D frame for position and size. A 3D model has a position, rotation, and scale. Keyframes animate an object's parameters over time. The [reference](reference/1.md#objects) lists each key's units, defaults, and allowed values.
+Text and image objects use a 2D frame for position and size. A 3D model has a position, rotation, and scale. Keyframes animate an object's parameters over time. The [reference](reference/1.0.md#objects) lists each key's units, defaults, and allowed values.
 
 ## A small presentation
 
@@ -54,7 +54,7 @@ The [complete presentation](examples/first-deck) includes the theme and JSON fil
 - **[The .md file](md-file.md)**: write the words, arrange slides, and add presenter notes. Start here when editing a presentation by hand.
 - **[The .mdpoint file](mdpoint-file.md)**: place objects, set their keys, and animate them.
 - **[Themes](themes.md)**: share fonts, colors, text styles, and layouts across slides.
-- **[Reference, version 1](reference/1.md)**: look up a key's exact meaning, values, units, and defaults.
+- **[Reference, version 1.0](reference/1.0.md)**: look up a key's exact meaning, values, units, and defaults.
 - **[Agent contract, version 1](agent/1/README.md)**: the methods, requests, and errors coding agents use with the running app.
 
 ## Files and folders
@@ -79,7 +79,7 @@ Keep one `slides.md` and one `presentation.mdpoint` at the folder's root. The tw
 
 A presentation's folder contains one presentation. Except in `versions/`, a folder inside it that contains a `slides.md` and a `presentation.mdpoint` is a presentation of its own and isn't part of the one around it. MarkdownPoint doesn't open or create a presentation inside another presentation's folder.
 
-MarkdownPoint doesn't copy unrelated files in the folder. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name follows the rules in [File names and paths](reference/1.md#paths). For example, it can't start with a dot, contain `#`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint hides a file or folder whose name starts with a dot. It lists a file with one of the other names but can't use it until you rename it.
+MarkdownPoint doesn't copy unrelated files in the folder. Symbolic links and aliases aren't supported. Copy the original files into the folder. A file or folder name follows the rules in [File names and paths](reference/1.0.md#paths). For example, it can't start with a dot, contain `#`, end in a space or a dot, or be a name Windows reserves, such as `CON`. MarkdownPoint hides a file or folder whose name starts with a dot. It lists a file with one of the other names but can't use it until you rename it.
 
 Files and folders whose names start with `.markdownpoint` belong to MarkdownPoint. They can be in the presentation's folder or next to it. They are never part of the presentation. Each example's `.gitignore` excludes them from git with the line `.markdownpoint*`.
 
@@ -103,9 +103,9 @@ Include `versions/` in git if you want to keep the saved versions with the prese
 
 Every file states its format version in quotes. The version is a major and a minor number: `"markdownpoint": "1.0"` in JSON and `markdownpoint: "1.0"` in the .md file's frontmatter. The quotes are needed because 1.10 and 1.1 are the same number.
 
-MarkdownPoint 1.x opens any version 1.x file. A later minor version can add data that an earlier reader skips. When MarkdownPoint opens such a file, it shows a notice and keeps the unknown data when it saves. An unknown key, word, or object stays as long as the record or entry that contains it does. An unknown word can decide which keys its record needs. A text's `auto-size` does when its frame leaves out a side. MarkdownPoint then passes over the whole record: it draws nothing for it and keeps it as written. A list of values is one exception. A save that changes the list writes the whole list again, and the unknown data in it is lost. A record is the other. A save that changes the word that picks the record's keys writes that record anew, and the unknown data in it is lost. In the .md file, an unknown Markdown form stays as written until its block is edited or the file is formatted. It is then written as plain words. If two people duplicate a slide before their copies sync, the unknown data stays in only one of the copies. Saving writes the later of two version numbers: the file's and the saving MarkdownPoint's own. A presentation's two files are saved with one version number. It is the later of their two numbers and the saving MarkdownPoint's own. Saving never lowers a file's version number. A version 2.0 file requires MarkdownPoint 2.
+MarkdownPoint 1.x opens any version 1.x file. A later minor version can add data that an earlier reader skips. When MarkdownPoint opens such a file, it shows a notice and keeps the unknown data when it saves. An unknown key, word, or object stays as long as the record or entry that contains it does. An unknown word can decide which keys its record needs. A text's `auto-size` does when its frame leaves out a side. MarkdownPoint then passes over the whole record: it draws nothing for it and keeps it as written. A list of values is one exception. A save that changes the list writes the whole list again, and the unknown data in it is lost. A record is another. A save that changes the word that picks the record's keys writes that record anew, and the unknown data in it is lost. In the .md file, an unknown Markdown form stays as written until its block is edited or the file is formatted. It is then written as plain words. If two people duplicate a slide before their copies sync, the unknown data stays in only one of the copies. Saving writes the later of two version numbers: the file's and the saving MarkdownPoint's own. A presentation's two files are saved with one version number. It is the later of their two numbers and the saving MarkdownPoint's own. Saving never lowers a file's version number. A version 2.0 file requires MarkdownPoint 2.
 
-A later minor version can widen a key's range. It can't raise the limits the reference lists under [The format version](reference/1.md#format-version).
+A later minor version can widen a key's range. It can't raise the limits the reference lists under [The format version](reference/1.0.md#format-version).
 
 The format is not final. Version 1.0 may still change before release.
 

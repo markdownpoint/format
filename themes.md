@@ -70,7 +70,7 @@ Every theme has a `light` and a `dark` scheme and can add more, such as Basic's 
 }
 ```
 
-A role set to `{brand.colors.ember}` uses the brand color named `ember`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `separator`, and `link`. It can add roles of its own. The [scheme colors reference](reference/1.md#scheme-colors) says what each role colors.
+A role set to `{brand.colors.ember}` uses the brand color named `ember`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `separator`, and `link`. It can add roles of its own. The [scheme colors reference](reference/1.0.md#scheme-colors) says what each role colors.
 
 ## Text styles
 
@@ -89,7 +89,7 @@ A text object uses a named text style from the theme. Define every style that th
 
 Set `font-family` to `display`, `body`, or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color, and spacing.
 
-The [font reference](reference/1.md#fonts) lists the bundled families. Bundled families need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
+The [font reference](reference/1.0.md#fonts) lists the bundled families. Bundled families need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
 
 ## Layouts
 
@@ -144,7 +144,7 @@ The layout's `text` holds the words of its own objects. A placeholder's `file` a
 
 ## Backgrounds
 
-A slide shows its own `background`, else its layout's, else the master's. Each one replaces the whole background below it. Without any, the slide shows its scheme's `background` color. `master.json` and a layout take a `background` with a slide's keys: a `fill`, and an `image` over it. A theme's image is only the finished picture. It has no `prompt`, `image-style`, `transparent-background`, `restyle`, or `generation`. Its `file` is in the theme's folder, or there is one file per color scheme. A theme's image objects name their files the same way. The reference lists the keys of a [theme background](reference/1.md#theme-background).
+A slide shows its own `background`, else its layout's, else the master's. Each one replaces the whole background below it. Without any, the slide shows its scheme's `background` color. `master.json` and a layout take a `background` with a slide's keys: a `fill`, and an `image` over it. A theme's image is only the finished picture. It has no `prompt`, `image-style`, `transparent-background`, `restyle`, or `generation`. Its `file` is in the theme's folder, or there is one file per color scheme. A theme's image objects name their files the same way. The reference lists the keys of a [theme background](reference/1.0.md#theme-background).
 
 ![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
 
@@ -206,7 +206,7 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 
 `unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Such a save writes a new one when the editor changed the file, and other saves keep it. Other tools leave it unchanged.
 
-A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each file with its size and SHA-256 digest. It can also hold two folders the manifest doesn't list. `previews/` has a picture of the theme and one of each example slide. `example/` has a presentation that a new presentation can start from. “Export Theme…” saves a theme as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.md#theme-package).
+A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's JSON files, the files they name, and a `manifest.json` that lists each of them with its size and SHA-256 digest, and only those. It can also hold two folders the manifest doesn't list. `previews/` has a picture of the theme and one of each example slide. `example/` has a presentation that a new presentation can start from. “Export Theme…” saves a theme whose fonts MarkdownPoint includes as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.0.md#theme-package).
 
 ## Changing a theme by hand
 
@@ -216,4 +216,4 @@ A change to master.json affects every slide. A change to a layout affects every 
 
 MarkdownPoint picks up theme changes made outside the app while the presentation is open. It doesn't while the presentation is shared for editing together. If a layout can't be read, each slide that uses it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows that message. A merge conflict that git leaves in a theme file is one of these problems, and the issue names the line where the conflict starts.
 
-The reference lists every key of [master.json](reference/1.md#master) and [a layout](reference/1.md#layout).
+The reference lists every key of [master.json](reference/1.0.md#master) and [a layout](reference/1.0.md#layout).

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/1.0/theme-package.schema.json",
-  "description": "The list of a theme package's files. It's used to check that the package is complete.",
+  "description": "The list of a theme package's files. A package is refused unless its folder holds exactly these files at these sizes and digests.",
   "type": "object",
   "properties": {
     "markdownpoint": {
@@ -14,7 +14,7 @@
       "description": "What the file is."
     },
     "files": {
-      "description": "Each file of the theme with its size and digest. That includes master.json.",
+      "description": "Each of the theme's files in the package with its size and digest. That includes master.json.",
       "type": "object",
       "properties": {
         "master.json": {

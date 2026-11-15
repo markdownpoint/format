@@ -3466,7 +3466,7 @@
                       "additionalProperties": false
                     },
                     {
-                      "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's scale before animation. Every key except `id` and `type` can be left out.",
+                      "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's `scale` as the object sets it, before any `initial` value or step. Every key except `id` and `type` can be left out.",
                       "type": "object",
                       "properties": {
                         "id": {
@@ -3494,12 +3494,12 @@
                             "y",
                             "z"
                           ],
-                          "description": "The axis whose scale is animated. The other two follow to keep the volume. The default is y."
+                          "description": "The axis the constraint leaves as it is. It scales the other two to keep the volume. The default is y."
                         },
                         "volume": {
                           "type": "number",
                           "minimum": 0.000001,
-                          "description": "The volume to keep. It is a multiple of the model's volume before animation. The default is 1."
+                          "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. The default is 1."
                         },
                         "strength": {
                           "type": "number",
@@ -4183,7 +4183,7 @@
       "description": "an id, such as \"look\""
     },
     "crop": {
-      "description": "An image's or a video's zoom inside its frame, and the point that stays in view.",
+      "description": "An image's or a video's zoom inside its frame, and the point that stays in view. The defaults are scale 1 and focal-point 0.5, 0.5.",
       "type": "object",
       "properties": {
         "scale": {
@@ -7623,14 +7623,14 @@
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])"
     },
     "wipe": {
-      "description": "A reveal behind a moving straight edge.",
+      "description": "A reveal behind a moving straight edge. The defaults are progress 1, angle 90, and feather 0.",
       "type": "object",
       "properties": {
         "progress": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How much of the object shows. At 0, none of it shows. At 1, all of it shows."
+          "description": "How far the edge has crossed the object's box along `angle`. At 0, the edge is where the box begins. At 1, its soft edge is past the box's far side. A text's box includes the words that run past it."
         },
         "angle": {
           "allOf": [
@@ -7641,7 +7641,7 @@
               "description": "degrees"
             }
           ],
-          "description": "Which way the edge travels in degrees clockwise from up. The angle turns with the object."
+          "description": "Which way the edge travels in degrees clockwise from up in the object's own axes. It turns and scales with the object and its groups, and a flip doesn't mirror it."
         },
         "feather": {
           "allOf": [
@@ -7652,7 +7652,7 @@
               "description": "canvas units"
             }
           ],
-          "description": "How wide the soft edge is. Across it, the object fades from shown to hidden."
+          "description": "How wide the soft edge is. It is in canvas units along the object's own axes and scales with the object. Across it, the object fades from shown to hidden."
         }
       },
       "additionalProperties": false

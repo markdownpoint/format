@@ -91,7 +91,7 @@ Each key of an object, and each key inside a `frame` or a `transition`, is on a 
 
 A merge conflict that git leaves in the file is an error. MarkdownPoint shows the line where it starts and won't open the presentation until you resolve it.
 
-Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults, path data in absolute M, L, C, and Z, a web video's address in the form the reference gives, and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged. When an editor hands over a shared presentation, closes it, or signs out after a change, the save writes a new `save-id` into both files. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
+Saving preserves the formatting of unchanged parts of the file. Edited parts are written in MarkdownPoint's standard format: a fixed key order, omitted defaults, path data in absolute M, L, C, and Z, a web video's address in the form the reference gives, and most numbers rounded to six decimal places. A save that changes only text leaves the .mdpoint file unchanged, except its version where the save raises it. When an editor hands over a shared presentation, closes it, or signs out after a change, the save writes a new `save-id` into both files. “Save a Copy…” and joining a shared presentation write the whole .mdpoint file in the standard format. Run `mdpoint format` to reformat both files.
 
 When rounding to six decimal places changes a number in the file, MarkdownPoint warns once when it opens the presentation.
 
@@ -132,7 +132,7 @@ Text for a text object or shape goes in the .md file under `<!-- text: id -->`. 
 
 The dot's fill is `text`, a role in the slide's color scheme. The dot changes color with the scheme. A hex color such as `"#FA7B26"` stays the same in every scheme.
 
-Omitted keys use their defaults. The card sets no fill. A shape's default fill is `accent`. The [object reference](reference/1.md#object) lists the required keys, allowed values, and defaults for each object type.
+Omitted keys use their defaults. The card sets no fill. A shape's default fill is `accent`. The [object reference](reference/1.0.md#object) lists the required keys, allowed values, and defaults for each object type.
 
 A text box can grow to fit its words, give every digit the same width, and outline its letters:
 
@@ -502,7 +502,7 @@ A rotation in degrees applies the heading around y, then the pitch around the ob
 
 `curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `begin`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its keyframes, its cues, the paragraphs they bring in, and the later copies of a repeated object.
 
-Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/1.md#drift) doesn't repeat and requires a `duration`.
+Five settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, an `oscillate` wave, and an Action clip's `loop`. Camera [drift](reference/1.0.md#drift) doesn't repeat and requires a `duration`.
 
 ## Motion
 

@@ -86,7 +86,7 @@ You can add your own keys for information used by your tools or workflow. Markdo
 
 ## Sections
 
-`<!-- section: id -->` starts a section. An id uses lowercase letters, digits, and single hyphens. It starts with a letter and ends with a letter or digit, such as `intro` or `q3-numbers`. The next line is a level-1 heading with the section's name: `# Name`. MarkdownPoint removes any formatting from the heading. The heading can't have a comment. A paragraph id is a comment too. A section's block contains nothing else. Sections are optional, but once there is one, every slide must be in a section.
+`<!-- section: id -->` starts a section. An id starts with a lowercase letter from a to z. The rest is a to z, 0 to 9, and single hyphens. It ends with a letter or digit, such as `intro` or `q3-numbers`. The next line is a level-1 heading with the section's name: `# Name`. MarkdownPoint removes any formatting from the heading. The heading can't have a comment. A paragraph id is a comment too. A section's block contains nothing else. Sections are optional, but once there is one, every slide must be in a section.
 
 ## Slides
 
@@ -168,7 +168,7 @@ Neither comment above shows on the slide.
 
 ## Markdown
 
-Text objects, tables, and presenter notes use Markdown. The [reference](reference/1.md#markdown) lists everything that's supported.
+Text objects, tables, and presenter notes use Markdown. The [reference](reference/1.0.md#markdown) lists everything that's supported.
 
 ### Marks, links, and colors
 
@@ -231,7 +231,7 @@ This is slide {{slide-number}} of {{slide-count}}. It is in section {{section-nu
 
 ![The fields slide drawn by MarkdownPoint](images/words-fields.png)
 
-A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. The `footer` field shows the footer set in the frontmatter.
+A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. The `footer` field shows the footer set in the frontmatter.
 
 ### Quotes and inline code
 
@@ -289,7 +289,7 @@ Its position, columns, minimum row heights, and style are in the .mdpoint file. 
 
 ### Code blocks
 
-A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. Only spaces or tabs can follow it. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/1.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
+A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. Only spaces or tabs can follow it. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/1.0.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
 
 A code block can also be in a quote or a list item. It ends at its closing fence or when the quote or item ends. A link definition can't contain a fence. After `[x]: /url (title`, a fence on the next line opens a code block.
 
@@ -334,7 +334,7 @@ A paragraph id isn't a note. The next section describes it.
 
 ### Paragraph ids
 
-To bring a paragraph in on a click, a step in [the .mdpoint file](mdpoint-file.md) names the paragraph by its id. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. Headings and list items get an id the same way. An id follows the same rules as a section's id: lowercase letters, digits, and single hyphens, starting with a letter and ending with a letter or digit. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes the comment after one space as shown. A formatter that wraps long lines can move the comment onto a line of its own. It's still the paragraph's id there if no blank line comes before it.
+To bring a paragraph in on a click, a step in [the .mdpoint file](mdpoint-file.md) names the paragraph by its id. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. Headings and list items get an id the same way. An id follows the same rules as a section's id: a to z, 0 to 9, and single hyphens, starting with a letter and ending with a letter or digit. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes the comment after one space as shown. A formatter that wraps long lines can move the comment onto a line of its own. It's still the paragraph's id there if no blank line comes before it.
 
 MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is a new paragraph. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. When a merge joins two versions of a paragraph with the id at the end of each, MarkdownPoint reads one id. It writes the id once the next time you edit that text block or run `mdpoint format`. Keep each id at the end of its paragraph, and don't give a new paragraph an id. MarkdownPoint gives it one.
 
@@ -368,7 +368,7 @@ A chart's colors in the .mdpoint file are listed in the order of the chart's tab
 
 ## Validating the files
 
-`mdpoint` validates a presentation folder without the app running. It reports file errors such as missing images, models, and fonts.
+`mdpoint` validates a presentation folder without the app running. It reports problems with the files, such as missing images, models, and fonts.
 
 To install it, open MarkdownPoint's Settings, choose “Coding agents”, and click “Install” under “Command line”. Run `mdpoint validate` in the presentation folder. For JSON output, run `mdpoint --presentation <folder> --json validate`.
 
