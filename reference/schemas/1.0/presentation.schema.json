@@ -9308,7 +9308,7 @@
                 "word",
                 "character"
               ],
-              "description": "What `carry-over` matches between two texts: whole objects, words, or characters."
+              "description": "What `carry-over` matches between two texts: objects, words, or characters."
             },
             "start": {
               "const": "automatically",
