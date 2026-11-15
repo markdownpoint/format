@@ -48,7 +48,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 }
 ```
 
-The theme's name is the master's `name`. Basic's master leaves it out. Its name is then its key with a capital first letter.
+The theme's name is the master's `name`. Basic's master leaves it out. Its name is then its key with spaces for its hyphens and a capital first letter.
 
 ## Color schemes
 
