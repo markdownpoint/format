@@ -57,6 +57,8 @@ Create the presentation in MarkdownPoint. Put it in your Obsidian vault's folder
 
 Write your slide text and speaker notes in Obsidian with the [MarkdownPoint plugin](https://community.obsidian.md/plugins/markdownpoint). Open `slides.md` in Live Preview to edit all the slides and notes in one document. Use the outline to add or move slides. Use Source mode to edit the Markdown and its markers directly. Keep `presentation.mdpoint`, the themes, and the media next to `slides.md`.
 
+A line ending inside a paragraph is a space on the slide. Turn on “Strict line breaks” in Obsidian's Editor settings. Reading view then shows it as the slide does. To break a line, end it with a backslash or two spaces.
+
 Use the plugin's “Open in MarkdownPoint” command to save the presentation and return to the desktop app. Work on the layout, images, 3D, and animation there. The two apps use the same files throughout.
 
 When you add or delete a slide, the plugin updates both presentation files. When editing the source directly, follow the rules below for changes that affect both files. Use the supported Markdown for slide content. Obsidian wikilinks and note embeds don't become slide content.
@@ -315,7 +317,16 @@ Lists and quotes nest at most 100 deep, and a deeper marker stays as written.
 
 ### Unsupported Markdown
 
-Images, HTML tags, and footnotes are kept in the file as written. The slide shows them as plain text. Only `<br>` has an effect: it adds a line break in a text block or a table cell. To put an image on a slide, add an image object in [the .mdpoint file](mdpoint-file.md).
+MarkdownPoint keeps this Markdown in the file as written, and the slide shows it as plain text:
+
+- images
+- HTML tags other than `<br>`
+- footnotes
+- task-list boxes, such as `- [ ] item`
+- bare addresses, written without `<` and `>`
+- reference links, such as `[the guide][g]`, and their definitions, such as `[g]: https://markdownpoint.com`
+
+Reference links stay plain text in every 1.x version. `<br>` adds a line break in a text block or a table cell. To put an image on a slide, add an image object in [the .mdpoint file](mdpoint-file.md).
 
 An HTML comment inside a text or notes block is a note to yourself. It's kept in the file and never shown. A comment at the end of a slide belongs to the slide's last block. A table's or a chart's block contains only its table. A comment can't follow it.
 

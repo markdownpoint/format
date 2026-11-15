@@ -765,7 +765,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object's frame"
+                          "description": "SVG path data"
                         }
                       ]
                     },
@@ -1287,7 +1287,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object's frame"
+                          "description": "SVG path data"
                         }
                       ]
                     },
@@ -1564,7 +1564,7 @@
                         },
                         {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object's frame"
+                          "description": "SVG path data"
                         }
                       ]
                     },
@@ -2604,7 +2604,7 @@
                         },
                         "text-path": {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object's frame"
+                          "description": "SVG path data"
                         },
                         "path-offset": {
                           "type": "number",
@@ -2942,7 +2942,7 @@
                         },
                         "mask": {
                           "type": "string",
-                          "description": "SVG path data where 0 to 1 spans the object's frame"
+                          "description": "SVG path data"
                         },
                         "alt": {
                           "$ref": "#/definitions/nonblank-line"
@@ -4417,7 +4417,7 @@
                     },
                     "text-path": {
                       "type": "string",
-                      "description": "SVG path data where 0 to 1 spans the object's frame"
+                      "description": "SVG path data"
                     },
                     "path-offset": {
                       "type": "number",
@@ -4752,7 +4752,7 @@
                     },
                     "mask": {
                       "type": "string",
-                      "description": "SVG path data where 0 to 1 spans the object's frame"
+                      "description": "SVG path data"
                     },
                     "alt": {
                       "$ref": "#/definitions/nonblank-line"
@@ -7282,7 +7282,7 @@
         },
         "geometry": {
           "type": "string",
-          "description": "SVG path data where 0 to 1 spans the object's frame"
+          "description": "SVG path data"
         },
         "fill-rule": {
           "enum": [
