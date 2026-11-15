@@ -195,7 +195,7 @@
             "allOf": [
               {
                 "type": "number",
-                "minimum": 0.01,
+                "minimum": 0.000001,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               }
@@ -810,7 +810,7 @@
               },
               "font-size": {
                 "type": "number",
-                "minimum": 0.01,
+                "minimum": 0.000001,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
@@ -1228,7 +1228,7 @@
               },
               "font-size": {
                 "type": "number",
-                "minimum": 0.01,
+                "minimum": 0.000001,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
@@ -1856,7 +1856,7 @@
               },
               "font-size": {
                 "type": "number",
-                "minimum": 0.01,
+                "minimum": 0.000001,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
@@ -2542,7 +2542,7 @@
               },
               "font-size": {
                 "type": "number",
-                "minimum": 0.01,
+                "minimum": 0.000001,
                 "maximum": 33554431.984375,
                 "description": "canvas units"
               },
@@ -3469,7 +3469,7 @@
                       "additionalProperties": false
                     },
                     {
-                      "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's `scale` as the object sets it, before any `initial` value or step. Every key except `id` and `type` can be left out.",
+                      "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's `scale` as the object sets it, before any `initial` value or step. An axis it scales stops at a 3D scale's most, 1 × 10¹⁸ either way, and an axis at 0 stays at 0. Every key except `id` and `type` can be left out.",
                       "type": "object",
                       "properties": {
                         "id": {
