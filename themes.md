@@ -138,7 +138,7 @@ A layout defines the objects its slides inherit. Basic's Title layout is:
 }
 ```
 
-A layout's text or image with `"placeholder": true` is a placeholder. Each slide fills it with its own text or image. The two are matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
+A layout's text, image, or video with `"placeholder": true` is a placeholder. Each slide fills it with its own text, or an image or a video, whichever the placeholder is. The two are matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it.
 
 The layout's `text` holds the words of its own objects. A placeholder's `file` and words are samples. The layout chooser and the theme editor show them, and a slide never does. A placeholder that a slide doesn't fill shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
 
