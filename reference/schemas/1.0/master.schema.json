@@ -204,14 +204,17 @@
           },
           "font-weight": {
             "enum": [
+              100,
+              200,
               300,
               400,
               500,
               600,
               700,
+              800,
               900
             ],
-            "description": "The font weight: 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, or 900 black."
+            "description": "The font weight: 100 thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, or 900 black."
           },
           "color": {
             "allOf": [
@@ -813,11 +816,14 @@
               },
               "font-weight": {
                 "enum": [
+                  100,
+                  200,
                   300,
                   400,
                   500,
                   600,
                   700,
+                  800,
                   900
                 ]
               },
@@ -1228,11 +1234,14 @@
               },
               "font-weight": {
                 "enum": [
+                  100,
+                  200,
                   300,
                   400,
                   500,
                   600,
                   700,
+                  800,
                   900
                 ]
               },
@@ -1853,11 +1862,14 @@
               },
               "font-weight": {
                 "enum": [
+                  100,
+                  200,
                   300,
                   400,
                   500,
                   600,
                   700,
+                  800,
                   900
                 ]
               },
@@ -2536,11 +2548,14 @@
               },
               "font-weight": {
                 "enum": [
+                  100,
+                  200,
                   300,
                   400,
                   500,
                   600,
                   700,
+                  800,
                   900
                 ]
               },
@@ -6877,11 +6892,14 @@
         },
         "font-weight": {
           "enum": [
+            100,
+            200,
             300,
             400,
             500,
             600,
             700,
+            800,
             900
           ],
           "description": "The font weight."
