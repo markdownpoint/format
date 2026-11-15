@@ -7377,7 +7377,7 @@
       "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.colors\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\})(?![\\s\\S])"
     },
     "space-euler": {
-      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
+      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round.",
       "type": "object",
       "properties": {
         "x": {
@@ -7467,7 +7467,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
+      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round.",
       "type": "object",
       "properties": {
         "w": {

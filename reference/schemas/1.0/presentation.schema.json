@@ -4027,7 +4027,7 @@
                 "$ref": "#/definitions/initial"
               }
             ],
-            "description": "The values of animated parameters before the slide's first step. Each is under an \"object.parameter\" key such as \"card.opacity\"."
+            "description": "The values of animated parameters before the slide's first step. Each is under an \"object.parameter\" key such as \"card.opacity\". A `null` clears the whole parameter."
           },
           "steps": {
             "allOf": [
@@ -5164,7 +5164,7 @@
                 "$ref": "#/definitions/initial"
               }
             ],
-            "description": "The values of animated parameters before its first step. Each is under an \"object.parameter\" key."
+            "description": "The values of animated parameters before its first step. Each is under an \"object.parameter\" key. A `null` clears the whole parameter."
           },
           "steps": {
             "allOf": [
@@ -10050,7 +10050,7 @@
       "description": "a scheme name"
     },
     "space-euler": {
-      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
+      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round.",
       "type": "object",
       "properties": {
         "x": {
@@ -10140,7 +10140,7 @@
       "additionalProperties": false
     },
     "space-quaternion": {
-      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
+      "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round.",
       "type": "object",
       "properties": {
         "w": {
@@ -10214,7 +10214,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places. Its `with-previous` and `after-previous` start work as PowerPoint's With Previous and After Previous. On the first step, either starts it as the slide's transition ends, or with a Scroll as it starts.",
+        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places. Its `with-previous` and `after-previous` start work as PowerPoint's With Previous and After Previous. On the first step, either starts it as the slide's transition ends. A Scroll into the slide plays its first click with the move, whatever its start.",
         "type": "object",
         "properties": {
           "id": {
@@ -11115,7 +11115,7 @@
       "additionalProperties": false
     },
     "transition": {
-      "description": "A slide transition. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0.",
+      "description": "A slide transition. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object both slides share. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0.",
       "anyOf": [
         {
           "type": "object",
