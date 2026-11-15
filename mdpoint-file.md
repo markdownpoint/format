@@ -197,7 +197,7 @@ Tables and charts==.==
 | Total | 1280 |
 
 <!-- notes -->
-The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `series-colors` give its two series the text and accent colors. The counter rolls its digits (`roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
+The table's first column is its header (`header-column`), and its first row is a row like the others (`header-row` set to `false`). The chart's `series-colors` give its two series the text and accent colors. The counter rolls its digits (`digits` set to `roll`). With a `progress` of 0.5, it shows the halfway value, 0640. Its unused leading zero has an opacity of 0.4 (`leading-zero-opacity`).
 ```
 
 ```json
@@ -223,7 +223,7 @@ The table's first column is its header (`header-column`), and its first row is a
     "chart-type": "counter",
     "frame": {"x": 120, "y": 760, "width": 760, "height": 200},
     "progress": 0.5,
-    "roll": true,
+    "digits": "roll",
     "leading-zero-opacity": 0.4
   }
 ]
@@ -231,7 +231,7 @@ The table's first column is its header (`header-column`), and its first row is a
 
 ![The data slide drawn by MarkdownPoint](images/words-data.png)
 
-Here the table's first column is its header, instead of its first row. `series-colors` sets the color of each series in the chart. A pie or donut chart uses `category-colors` instead, one for each category. A counter with `roll` rolls its digits into place. Here its `progress` is below 1. The counter then shows its unused leading zeros at `leading-zero-opacity`.
+Here the table's first column is its header, instead of its first row. `series-colors` sets the color of each series in the chart. A pie or donut chart uses `category-colors` instead, one for each category. A counter whose `digits` are `roll` rolls its digits into place. Here its `progress` is below 1. The counter then shows its unused leading zeros at `leading-zero-opacity`.
 
 A group with `auto-layout` places its members one after another from its `frame`, down or across, and ignores their own positions:
 

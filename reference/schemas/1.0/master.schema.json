@@ -2601,8 +2601,11 @@
                 "minimum": 1,
                 "description": "intervals"
               },
-              "roll": {
-                "type": "boolean"
+              "digits": {
+                "enum": [
+                  "change",
+                  "roll"
+                ]
               },
               "value-labels": {
                 "type": "boolean"

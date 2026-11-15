@@ -1766,13 +1766,16 @@
                         }
                       ]
                     },
-                    "roll": {
+                    "digits": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "type": "boolean"
+                          "enum": [
+                            "change",
+                            "roll"
+                          ]
                         }
                       ]
                     },
@@ -6702,8 +6705,11 @@
           "minimum": 1,
           "description": "intervals"
         },
-        "roll": {
-          "type": "boolean"
+        "digits": {
+          "enum": [
+            "change",
+            "roll"
+          ]
         },
         "value-labels": {
           "type": "boolean"
