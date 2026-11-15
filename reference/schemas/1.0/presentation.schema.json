@@ -6516,7 +6516,7 @@
             "bottom",
             "left"
           ],
-          "description": "Which side of the object it attaches to. With `auto`, it attaches to the side that faces the other end."
+          "description": "Which side of the object's frame it attaches to. The sides turn with the object's `rotation`, and a flip doesn't change them. With `auto`, it attaches to the side that faces the other end."
         },
         "last-position": {
           "type": "object",
@@ -9722,7 +9722,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "of the path"
+              "description": "of its length"
             }
           ],
           "description": "Where the drawn part starts along the stroke."
@@ -9733,7 +9733,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "of the path"
+              "description": "of its length"
             }
           ],
           "description": "Where the drawn part ends along the stroke."

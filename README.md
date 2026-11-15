@@ -44,7 +44,7 @@ File format==.==
 Your slides are Markdown files you own.
 
 <!-- notes -->
-Speaker notes go here. Only the presenter sees them.
+Presenter notes go here. Only the presenter sees them.
 ```
 
 The [complete presentation](examples/first-deck) includes the theme and JSON file.

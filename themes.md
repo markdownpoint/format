@@ -11,7 +11,7 @@ themes/<key>/
   content-with-header.json
   ...
   fonts/                  the theme's own fonts, one .eot file per face
-  media/                  the theme's own images, videos, sounds, and models
+  media/                  the theme's own images, videos, audio, and models
 ```
 
 ## Master, layouts, and slides
