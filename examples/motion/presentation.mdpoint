@@ -552,7 +552,7 @@
             },
             "turn.translation.x": {
               "keyframes": {
-                "turn-cut": {"time":1.2,"value":520,"interpolation":"ease-in-out","interrupted":{"value":1040,"end":2.4}},
+                "turn-cut": {"time":1.2,"value":520,"interpolation":"ease-in-out","interrupted":{"value":1040,"time":2.4}},
                 "turn-back": {"time":2.2,"value":0,"interpolation":"ease-out"}
               }
             },

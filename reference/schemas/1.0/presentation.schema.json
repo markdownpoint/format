@@ -3975,13 +3975,13 @@
             ],
             "additionalProperties": false
           },
-          "scheme": {
+          "preview-scheme": {
             "allOf": [
               {
                 "$ref": "#/definitions/scheme-name"
               }
             ],
-            "description": "The color scheme it's drawn in on its own canvas while it's edited. The default is the light scheme. Each instance uses the scheme of the slide it's on."
+            "description": "The color scheme it's drawn in on its own canvas while it's edited and when it's rendered on its own. The default is the light scheme. Each instance uses the scheme of the slide it's on."
           },
           "controls": {
             "type": "array",
@@ -8555,7 +8555,7 @@
                             ],
                             "description": "Where the move was going."
                           },
-                          "end": {
+                          "time": {
                             "allOf": [
                               {
                                 "type": "number",
@@ -8564,12 +8564,12 @@
                                 "description": "seconds"
                               }
                             ],
-                            "description": "When it would have ended. It is in seconds into the step and at or after the keyframe's time."
+                            "description": "When the move would have reached `value`. It is in seconds into the step and at or after the keyframe's time."
                           }
                         },
                         "required": [
                           "value",
-                          "end"
+                          "time"
                         ],
                         "additionalProperties": false
                       },
