@@ -914,7 +914,8 @@
               "path-offset": {
                 "type": "number",
                 "minimum": -1,
-                "maximum": 1
+                "maximum": 1,
+                "description": "of its path's length"
               },
               "paragraph-spacing": {
                 "type": "number",
@@ -4354,7 +4355,7 @@
               "description": "seconds"
             }
           ],
-          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter in seconds. It isn't used with interpolation hold. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
           "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
@@ -4387,7 +4388,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it starts from where it rests: {x, y} across and down in ems."
+              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size."
             },
             "scale": {
               "type": "number",
@@ -4415,7 +4416,7 @@
                   "description": "ems"
                 }
               ],
-              "description": "How blurred it is: its radius in ems."
+              "description": "How blurred it is: its radius in ems of the piece's own font size."
             }
           },
           "additionalProperties": false
@@ -4537,7 +4538,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it ends from where it rests: {x, y} across and down in ems."
+              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size."
             },
             "scale": {
               "type": "number",
@@ -4565,7 +4566,7 @@
                   "description": "ems"
                 }
               ],
-              "description": "How blurred it is: its radius in ems."
+              "description": "How blurred it is: its radius in ems of the piece's own font size."
             }
           },
           "additionalProperties": false

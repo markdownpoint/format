@@ -887,7 +887,8 @@
                         {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1
+                          "maximum": 1,
+                          "description": "of its path's length"
                         }
                       ]
                     },
@@ -2728,7 +2729,8 @@
                         "path-offset": {
                           "type": "number",
                           "minimum": -1,
-                          "maximum": 1
+                          "maximum": 1,
+                          "description": "of its path's length"
                         },
                         "paragraph-spacing": {
                           "type": "number",
@@ -4547,7 +4549,8 @@
                     "path-offset": {
                       "type": "number",
                       "minimum": -1,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "of its path's length"
                     },
                     "paragraph-spacing": {
                       "type": "number",
@@ -5793,7 +5796,7 @@
               "description": "seconds"
             }
           ],
-          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, each paragraph appears when its cue is reached. A step that has only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter in seconds. It isn't used with interpolation hold. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
           "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
@@ -5826,7 +5829,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it starts from where it rests: {x, y} across and down in ems."
+              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size."
             },
             "scale": {
               "type": "number",
@@ -5854,7 +5857,7 @@
                   "description": "ems"
                 }
               ],
-              "description": "How blurred it is: its radius in ems."
+              "description": "How blurred it is: its radius in ems of the piece's own font size."
             }
           },
           "additionalProperties": false
@@ -5976,7 +5979,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it ends from where it rests: {x, y} across and down in ems."
+              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size."
             },
             "scale": {
               "type": "number",
@@ -6004,7 +6007,7 @@
                   "description": "ems"
                 }
               ],
-              "description": "How blurred it is: its radius in ems."
+              "description": "How blurred it is: its radius in ems of the piece's own font size."
             }
           },
           "additionalProperties": false
@@ -10986,7 +10989,7 @@
       "additionalProperties": false
     },
     "text-model": {
-      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions.",
+      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. It doesn't build words on a path. They draw flat and cause the warning `extrusion-with-text-path`. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions.",
       "anyOf": [
         {
           "type": "object",
