@@ -55,10 +55,10 @@
       "marks": {"bold":{"case":"upper","tracking":0.06},"strikethrough":{"color":"muted"}}
     }
   },
-  "guides": [
-    {"id":"center","axis":"x","offset":960,"name":"Center","locked":true},
-    {"id":"footer-line","axis":"y","offset":960,"name":"Footer line"}
-  ],
+  "guides": {
+    "center": {"axis":"x","offset":960,"name":"Center","locked":true},
+    "footer-line": {"axis":"y","offset":960,"name":"Footer line"}
+  },
   "grid": {
     "columns": {"count":12,"gutter":24,"margin":120},
     "baseline": {"start":120,"increment":24}

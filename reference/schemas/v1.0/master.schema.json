@@ -392,16 +392,15 @@
       "description": "The theme's text styles by name. No name is built in."
     },
     "guides": {
-      "type": "array",
-      "items": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "description": "an id, such as \"guide-a1b2\""
+      },
+      "additionalProperties": {
         "description": "One ruler guide.",
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
-            "description": "The guide's id, unique among the master's guides."
-          },
           "axis": {
             "enum": [
               "x",
@@ -430,17 +429,16 @@
           },
           "locked": {
             "type": "boolean",
-            "description": "Whether the guide is locked against dragging."
+            "description": "Whether the guide is locked against dragging. The default is false."
           }
         },
         "required": [
-          "id",
           "axis",
           "offset"
         ],
         "additionalProperties": false
       },
-      "description": "Ruler guides on every slide."
+      "description": "Ruler guides on every slide. Each is under its id."
     },
     "grid": {
       "description": "The layout grid: columns and a baseline grid.",
@@ -520,7 +518,7 @@
       },
       "additionalProperties": false
     },
-    "default-step-duration": {
+    "default-animation-duration": {
       "allOf": [
         {
           "type": "number",
@@ -529,7 +527,7 @@
           "description": "seconds"
         }
       ],
-      "description": "The base length of new motion. MarkdownPoint times each effect it adds to a step from this length. A new by-paragraph delivery has this `duration`. The default is 0.5."
+      "description": "The base length of new animations. MarkdownPoint times each animation it adds to a step from this length. A new by-paragraph delivery has this `duration`. The default is 0.5."
     },
     "default-text-box": {
       "description": "The text style and color of a new text box in a presentation that uses this theme. Its text style is one of `text-styles`. Without a text style, a new text box has none.",

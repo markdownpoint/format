@@ -172,10 +172,10 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 ```
 
 ```json
-[
-  {"id": "center", "axis": "x", "offset": 960, "name": "Center", "locked": true},
-  {"id": "footer-line", "axis": "y", "offset": 960, "name": "Footer line"}
-]
+{
+  "center": {"axis": "x", "offset": 960, "name": "Center", "locked": true},
+  "footer-line": {"axis": "y", "offset": 960, "name": "Footer line"}
+}
 ```
 
 `unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Such a save writes a new one when the editor changed the file, and other saves keep it. Other tools leave it unchanged.
