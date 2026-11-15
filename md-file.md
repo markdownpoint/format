@@ -73,12 +73,12 @@ The ids in the markers connect the two files. Keep a slide's id when changing it
 
 ## Frontmatter
 
-Start the file with frontmatter between two `---` lines. Each `---` line holds nothing else, not even a space. The frontmatter's lines end in LF or CRLF. MarkdownPoint uses the following keys. Write each one on a single line as `key: value`:
+Start the file with frontmatter between two `---` lines. Each `---` line holds nothing else, not even a space. A byte order mark before the first `---` is skipped. The frontmatter's lines end in LF or CRLF. MarkdownPoint uses the following keys and writes them in this order. Write each one on a single line as `key: value`:
 
 - `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
 - `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
-- `footer`: the footer text. It's one line with no control characters.
 - `save-id`: the id of the save that last wrote the files as an editor handed over the shared presentation, closed it, or signed out. The .mdpoint file has the same id. Such a save writes a new one when the editor changed something, and other saves keep it. Other tools leave it unchanged.
+- `footer`: the footer text. It's one line with no control characters.
 
 Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*`, or `- `. Quote it, too, if YAML 1.2's core schema reads it as null, a boolean, or a number, such as `~`, `true`, `001`, or `.5`. Without quotes, some of these values aren't text in YAML. MarkdownPoint refuses them. MarkdownPoint always writes the footer in double quotes.
 
@@ -118,7 +118,7 @@ Paragraphs are separated by one or more blank lines. An empty paragraph is a lin
 
 A composition is a reusable scene, such as a card with an animated counter. `<!-- composition: id -->` starts its block. Use the id of its entry under `compositions` in the .mdpoint file. Compositions don't belong to sections and don't appear as slides. MarkdownPoint adds new compositions after the existing ones, or after the slides if there are none. You can move a composition block elsewhere in the file.
 
-Under the composition's marker, `<!-- text: id -->` starts the words of one of the composition's own objects. A slide uses the same marker. `<!-- control: id -->` starts a text control's default words. Its id is the control's id under `controls` in the .mdpoint file. An instance shows the default words unless it sets its own. It sets them on its slide under `<!-- text: instance.control -->`. The marker has the instance's id and the control's id:
+Under the composition's marker, `<!-- text: id -->` starts the words of one of the composition's own objects. A slide uses the same marker. `<!-- control: id -->` starts a text control's default words. Its id is the control's id under `controls` in the .mdpoint file. An instance shows the default words unless it sets its own. It sets them on its slide under `<!-- text: instance.control -->`. That marker with no words under it sets no words. The marker has the instance's id and the control's id:
 
 ```markdown
 <!-- slide: metrics -->
@@ -231,7 +231,7 @@ This is slide {{slide-number}} of {{slide-count}}. It is in section {{section-nu
 
 ![The fields slide drawn by MarkdownPoint](images/words-fields.png)
 
-A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. Section numbers count only the sections that hold a shown slide. The `footer` field shows the footer set in the frontmatter.
+A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. Section numbers count only the sections that hold a shown slide. The `footer` field shows the footer set in the frontmatter. A name that is no field, such as `{{author}}`, shows as written. MarkdownPoint keeps it and warns about it.
 
 ### Quotes and inline code
 
@@ -334,7 +334,7 @@ A paragraph id isn't a note. The next section describes it.
 
 ### Paragraph ids
 
-To bring a paragraph in on a click, a step in [the .mdpoint file](mdpoint-file.md) names the paragraph by its id. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. Headings and list items get an id the same way. An id follows the same rules as a section's id: a to z, 0 to 9, and single hyphens, starting with a letter and ending with a letter or digit. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes the comment after one space as shown. A formatter that wraps long lines can move the comment onto a line of its own. It's still the paragraph's id there if no blank line comes before it.
+To bring a paragraph in on a click, a step in [the .mdpoint file](mdpoint-file.md) names the paragraph by its id. The id is a comment at the end of the paragraph's last line, as in `Our results <!-- id: k3x9a2 -->`. Headings get an id the same way. A list item's id ends the last line of its first paragraph. MarkdownPoint warns about an id on a later paragraph of a list item. No step can name it there. An id follows the same rules as a section's id: a to z, 0 to 9, and single hyphens, starting with a letter and ending with a letter or digit. Spaces and tabs around the comment and inside it don't matter. MarkdownPoint writes the comment after one space as shown. A formatter that wraps long lines can move the comment onto a line of its own. It's still the paragraph's id there if no blank line comes before it.
 
 MarkdownPoint writes the ids. When a paragraph is split, the first part keeps its id and the second part is a new paragraph. When two paragraphs are joined, the joined paragraph keeps the first one's id. Do the same when you edit the words by hand. When a merge joins two versions of a paragraph with the id at the end of each, MarkdownPoint reads one id. It writes the id once the next time you edit that text block or run `mdpoint format`. Keep each id at the end of its paragraph, and don't give a new paragraph an id. MarkdownPoint gives it one.
 
