@@ -242,10 +242,16 @@ presentation's `locale`, or `invalid-icon` for an icon's `icon`. A refused
 value of any other key, such as `countdown` or an object's `opacity`, has
 `invalid-value`. An override's value that no object can take has
 `invalid-override-value`, whatever its key. Either way, `path` names the key.
-In any record, a key MarkdownPoint doesn't read has `unknown-key`. The issue's
-`path` names that key. A value a collaborator set that MarkdownPoint can't
-read has the code and `path` the same value in the file would have. It is a
-warning, since the save leaves the value out, and its message says so.
+In any record, a key MarkdownPoint doesn't read has `unknown-key`. A record
+that lacks a key it needs has `missing-key`. A record that lacks a key one of
+its other keys needs has `missing-key` too, such as a group with `auto-layout`
+and no `frame`. For both codes, `path` names that key. `invalid-steps`,
+`invalid-initial`, and `invalid-comments` are only for a fault of the list or
+record as a whole. A step that isn't a record, or that shares another step's
+id, has `invalid-steps`. A value refused inside them has `invalid-value` at its
+own key. A value a collaborator set that MarkdownPoint can't read has the code
+and `path` the same value in the file would have. It is a warning, since the
+save leaves the value out, and its message says so.
 
 When MarkdownPoint reads the presentation's two files, it lists at most
 1,000 issues. The first error it finds is listed even past them. When it
@@ -261,9 +267,9 @@ The codes an issue can have:
 | Something needed that is missing | `missing-alt`, `missing-composition`, `missing-composition-marker`, `missing-control-block`, `missing-font`, `missing-frontmatter`, `missing-generation`, `missing-key`, `missing-marker-line-break`, `missing-media`, `missing-slide`, `missing-slide-marker`, `missing-text`, `missing-text-block`, `missing-theme-master` |
 | Something given twice | `duplicate-composition-id`, `duplicate-composition-marker`, `duplicate-control-block`, `duplicate-notes-block`, `duplicate-object-id`, `duplicate-paragraph-id`, `duplicate-section-marker`, `duplicate-slide-marker`, `duplicate-text-block` |
 | A name that nothing defines | `unknown-action`, `unknown-category`, `unknown-color-role`, `unknown-composition`, `unknown-constraint-node`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-link-slide`, `unknown-object`, `unknown-paragraph`, `unknown-parent-node`, `unknown-scheme`, `unknown-text-style` |
-| Something that can't be read, resolved, matched, or played | `camera-spring-unsettled`, `issue-count-limit`, `loop-start-past-end`, `loops-misaligned`, `render-failed`, `repeat-count-limit`, `repeat-shares-click`, `stride-with-loop`, `table-cell-limit`, `unclosed-code-block`, `unclosed-frontmatter`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-locale` |
+| Something that can't be read, resolved, matched, or played | `camera-spring-unsettled`, `issue-count-limit`, `loop-start-past-end`, `loops-misaligned`, `render-failed`, `repeat-count-limit`, `repeat-shares-click`, `stride-with-loop`, `table-cell-limit`, `unclosed-code-block`, `unclosed-frontmatter`, `unreadable-files`, `unreadable-layout`, `unreadable-themes`, `unresolved-field`, `unresolved-line-end`, `unresolved-theme`, `unsupported-date-locale` |
 | Two parts that disagree, or something in a place where it isn't allowed | `clashing-curves`, `clashing-keyframes`, `clashing-motion-paths`, `file-spelling-mismatch`, `id-mismatch`, `inherited-id-collision`, `marker-outside-slide`, `marker-type-mismatch`, `media-type-mismatch`, `merge-conflict`, `slide-outside-section`, `text-outside-block` |
 | Content written by a theme, a newer version, or another program, or left by an interrupted layout move | `generation-in-theme`, `instance-in-theme`, `interrupted-layout-move`, `newer-major-version`, `newer-minor-content`, `rounded-number`, `text-model-in-theme` |
 | Objects that a slide can't contain together | `3d-parent-cycle`, `aim-cycle`, `composition-cycle`, `group-depth-limit`, `group-order`, `group-parent-cycle`, `object-count-limit` |
-| A key or a value that its object can't have there | `bound-value`, `camera-outside-master`, `color-needs-svg`, `delivery-with-text-path`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-animation`, `ignored-animation-value`, `ignored-control-block`, `ignored-key`, `ignored-override`, `ignored-override-value`, `ignored-text-block`, `link-letters-out-of-place`, `mask-without-group`, `parent-inverse-without-parent`, `parent-node-without-parent`, `position-animation-in-auto-layout`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-mdpoint`, `world-outside-master` |
+| A key or a value that its object can't have there | `bound-value`, `camera-outside-master`, `color-needs-svg`, `delivery-with-text-path`, `drift-with-scroll`, `effect-size-limit`, `extra-table-lengths`, `ignored-animation`, `ignored-animation-value`, `ignored-control-block`, `ignored-key`, `ignored-override`, `ignored-override-value`, `ignored-text-block`, `link-letters-out-of-place`, `mask-without-group`, `position-animation-in-auto-layout`, `reserved-camera-id`, `reserved-world-id`, `text-value-in-mdpoint`, `world-outside-master` |
 | What the rendered slide shows | `image-enlarged`, `low-text-contrast`, `object-off-slide`, `object-overlap`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |
