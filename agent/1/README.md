@@ -136,15 +136,23 @@ files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
 With `show-presentation`, the presentation is shown. Whatever can't be used
 shows a default or nothing. Each message says which. With `skip-object`,
 the object is left out. With `refuse-slide`, the slide is refused. With
-`refuse-presentation`, the whole presentation is refused. The fields that locate an issue depend on its
-`source`:
+`refuse-presentation`, the whole presentation is refused.
 
-- `mdpoint`: `path` selects the value in the `.mdpoint` file, one key after
-  another. A key of ASCII letters, digits, `_`, and `-` that starts with a
-  letter or `_` follows a dot. A list item is its index in brackets, and any other key is a JSON
-  string in brackets, as in
-  `slides.intro.objects[2]` and `slides.intro.initial["title.opacity"]`. Once
-  an object's id can be read, the object is named by its id, as in
+An issue about something written in a file has a `location`: `file` names
+the file and `fileScope` the folder it's in. `presentation` is the
+presentation's folder, and `theme` is its theme's. `line` and `column` say
+where in the file the problem is, counted from 1, when they're known. `path`
+selects the value the issue is about, one key after another from the root of
+the file `location` names. The presentation's two files read as one record.
+Its keys are the `.mdpoint` file's, and the `.md` file's frontmatter is under
+`frontmatter`. A key of ASCII letters, digits, `_`, and `-` that starts with
+a letter or `_` follows a dot. A list item is its index in brackets, and any
+other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
+`slides.intro.initial["title.opacity"]`. An issue with a `path` always has a
+`location`. The other fields depend on its `source`:
+
+- `mdpoint`: `location` names the `.mdpoint` file. Once an object's id can
+  be read, `path` names the object by its id, as in
   `slides.intro.objects.title.opacity`. Once the slide is read, a step is
   named by its id, as in
   `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`.
@@ -154,41 +162,52 @@ the object is left out. With `refuse-slide`, the slide is refused. With
   `compositions.pulse.controls.label`.
   `slideId` names the slide that contains the value, `compositionId` names the
   composition, and `objectId` names the object. An `invalid-json` or
-  `merge-conflict` issue has no `path`. When its line is known, `location`
-  names the file and the line, counted from 1. It also names the column when
+  `merge-conflict` issue has no `path`, and its `location` has the line when
   it's known.
-- `md`: `location` names the file and the line, counted from 1. It also names
-  the column when it's known. An issue about the frontmatter's `markdownpoint` or
-  `id` has no `location`. `ignored-control-block`, `ignored-text-block`,
-  `invalid-table`, and `table-cell-limit` have none either. `path` names the
-  frontmatter key or the section the issue is about, such as
-  `frontmatter.footer` or `sections.intro`. For an
-  issue in a slide's words, it names the slide, the composition, the object,
-  or the control in the `.mdpoint` file, written as for `mdpoint`, such as
-  `slides.intro.objects.title`. An instance's text block is named by the
-  instance's value for its control, such as
+- `md`: `location` names the `.md` file, and most issues have its line.
+  `path` names the frontmatter key or the section the issue is about, such as
+  `frontmatter.footer` or `sections.intro`. For an issue in a slide's words,
+  it names the slide, the composition, the object, or the control in the
+  presentation's record, such as `slides.intro.objects.title`. An instance's
+  text block is named by the instance's value for its control, such as
   `slides.intro.objects.card.control-values.label`. An operation names it the
-  same way.
+  same way. A table's words that the theme gives its own object are in the
+  theme's file instead. `location` names that file, and `path` the words under
+  its `text`, such as `text.summary`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
-  selects the record in the `.mdpoint` file. It is written as for `mdpoint`.
-  `location` names the line in the `.md` file. Each one is there only when the issue has
-  one.
-- `theme`: when only the slides that use a layout or scheme are refused,
-  `slideId` names the slide, and `path` names its `layout` or `scheme` in the
-  `.mdpoint` file. It is written as for `mdpoint`. `objectId` is added when the issue is about
-  one of the layout's objects. An issue about the whole theme, such as a
-  missing theme that the presentation names, has none of these fields.
+  selects the record in the presentation's record. `location` names the line
+  in the `.md` file when the issue has one, and otherwise the `.mdpoint` file.
+  An issue about the folder as a whole has neither.
+- `theme`: an issue written in one of the theme's files names that file in
+  `location`. Its `file` is the path in the theme's folder, such as
+  `master.json` or `title.json`. `path` selects the value in that file. A file
+  that isn't valid JSON gives its line and column. A warning about an object
+  that a layout or the master gives its slides comes once for each slide on
+  that layout. Its `slideId` names the slide, and its `path` the value, such as
+  `overrides.logo.opacity`. A scheme that a layout names and the master lacks
+  comes once for each slide on the layout too. Its `path` is `scheme`. A theme font that no file brings is at
+  its role in `master.json`, as in `fonts.heading`. When only the slides that
+  use a layout or scheme are refused, `slideId` names the slide. A layout
+  whose file doesn't read refuses it with that file's `location`. A layout
+  the theme lacks, and a slide's own scheme the master lacks, are at the
+  slide's `layout` or `scheme` in the `.mdpoint` file. `objectId` is added
+  when the issue is about one of the layout's objects. An issue about the
+  whole theme, such as a missing theme that the presentation names, has none
+  of these fields.
 - `file`: `file` is the file's path in the folder that `fileScope` names. The
-  issue has no `path`. A `path` is only ever a place inside a file.
-  `presentation` is the presentation's folder, and `theme` is its theme's.
+  issue has no `path` or `location`, since a `path` is only ever a place
+  inside a file. `presentation` is the presentation's folder, and `theme` is its theme's.
   `cache` is the folder on this computer where MarkdownPoint saves the models
   it builds from a text's letters. `bundled` is the fonts that ship with
   MarkdownPoint. `slideId`, `objectId`, and `key` name each place where the
   file is used. The `key` is the one that names the file there, such as `file`,
-  `background.image.file`, or `soundtrack.file`. An issue about a theme's own
-  file, its `master.json` or a layout's file, has none of these fields.
+  `background.image.file`, or `soundtrack.file`.
 - `slide`: `slideId`, and `objectId` or `objectIds`. When the issue is about
-  one of the object's keys, such as `text-style`, `key` names it.
+  one of the object's keys, such as `text-style`, `key` names it. A link has a
+  `path` and a `location`. An object's `link` is at its key in the `.mdpoint`
+  file. A link in a slide's words is in the `.md` file. Its `path` names the
+  words' record. A link in words the theme gives its own object is in the
+  theme's file.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue from drawing has neither.
 
