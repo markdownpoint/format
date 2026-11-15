@@ -35,8 +35,8 @@ control next-slide`. On the CLI's command line, a value is written in
 kebab-case (`toggle-black-screen` for `toggleBlackScreen`), but a method or an
 operation name is written as the contract spells it (`mdpoint schema insertSteps`,
 `mdpoint call
-presentations.get`). The contract's codes and the file's keys and values
-are kebab-case
+presentations.get`). The contract's codes, an issue's disposition among them,
+and the file's keys and values are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically. The order is the same on every build. `type` is rarely an operation's first
