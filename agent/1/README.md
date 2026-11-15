@@ -32,7 +32,7 @@ presentation get` for `presentations.get` and `mdpoint image suggest-prompt` for
 measure-3d`. A request's `type` is an operand:
 `mdpoint present
 control next-slide`. On the CLI's command line, a value is written in
-kebab-case (`toggle-black-screen` for `toggleBlackScreen`), but a method or an
+kebab-case (`set-screen` for `setScreen`), but a method or an
 operation name is written as the contract spells it (`mdpoint schema insertSteps`,
 `mdpoint call
 presentations.get`). The contract's codes, an issue's disposition among them,
@@ -113,7 +113,7 @@ unavailable.
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. Make a stale proposal again. |
 | `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
-| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. | Read the state again to get the ids. |
+| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. A composition's id names no slide for Present. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
