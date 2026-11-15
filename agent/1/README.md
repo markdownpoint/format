@@ -66,7 +66,8 @@ A failure has a code and a message. With `--json`, a failed command prints one
 line on stdout, `{"error": {"code": …, "message": …}}`, and nothing on stderr.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
 text. An error also includes what a caller needs to read beside its code: a
-refused proposal's `validation` or a stale revision's `revision`. A check's
+refused proposal's `validation`, or a stale revision's `revision` and a stale
+theme's `themeRevision`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
 prints `{ changed }` and exits 1 when anything would change. An error record
@@ -80,7 +81,7 @@ unavailable.
 | `usage` | The command line is wrong (CLI only). | Read the command's `--help`. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `stale-revision` | The presentation has changed since the revision you sent. | Read it again. `revision` is its current revision. |
+| `stale-revision` | The presentation or its theme has changed since the revision you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. |
 | `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
