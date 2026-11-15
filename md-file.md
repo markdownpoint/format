@@ -315,7 +315,7 @@ Lists and quotes nest at most 100 deep, and a deeper marker stays as written.
 
 ### Unsupported Markdown
 
-Images, HTML tags, and footnotes are kept in the file as written. The slide shows them as plain text. Only `<br>` has an effect: it adds a line break in a text block. To put an image on a slide, add an image object in [the .mdpoint file](mdpoint-file.md).
+Images, HTML tags, and footnotes are kept in the file as written. The slide shows them as plain text. Only `<br>` has an effect: it adds a line break in a text block or a table cell. To put an image on a slide, add an image object in [the .mdpoint file](mdpoint-file.md).
 
 An HTML comment inside a text or notes block is a note to yourself. It's kept in the file and never shown. A comment at the end of a slide belongs to the slide's last block. A table's or a chart's block contains only its table. A comment can't follow it.
 
