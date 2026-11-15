@@ -182,8 +182,8 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   `location`. Its `file` is the path in the theme's folder, such as
   `master.json` or `title.json`. `path` selects the value in that file. A file
   that isn't valid JSON gives its line and column. A warning about an object
-  that a layout or the master gives its slides comes once for each slide on
-  that layout. Its `slideId` names the slide, and its `path` the value, such as
+  that a layout or the master gives its slides, or about their background, comes
+  once for each slide on that layout. Its `slideId` names the slide, and its `path` the value, such as
   `overrides.logo.opacity`. A scheme that a layout names and the master lacks
   comes once for each slide on the layout too. Its `path` is `scheme`. A theme font that no file brings is at
   its role in `master.json`, as in `fonts.heading`. When only the slides that
@@ -203,11 +203,17 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   file is used. The `key` is the one that names the file there, such as `file`,
   `background.image.file`, or `soundtrack.file`.
 - `slide`: `slideId`, and `objectId` or `objectIds`. When the issue is about
-  one of the object's keys, such as `text-style`, `key` names it. A link has a
-  `path` and a `location`. An object's `link` is at its key in the `.mdpoint`
-  file. A link in a slide's words is in the `.md` file. Its `path` names the
-  words' record. A link in words the theme gives its own object is in the
-  theme's file.
+  one of the object's keys, such as `text-style`, `key` names it, and `path`
+  and `location` say where its value is written. The slide's own object and
+  its override of an object it inherits are in the `.mdpoint` file, as in
+  `slides.intro.overrides.logo.text-style`. An override that is ignored
+  leaves the inherited value showing, and the issue is at that value. A
+  layout's own object and its override of the master's are in the layout's
+  file, and the master's object is in `master.json`. A value the object
+  takes from its text style, and a member of a composition's instance, have
+  no `path`. A link in a slide's words is in the
+  `.md` file. Its `path` names the words' record. A link in words the theme
+  gives its own object is in the theme's file.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue from drawing has neither.
 
