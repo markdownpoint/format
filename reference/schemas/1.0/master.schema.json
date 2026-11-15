@@ -3502,7 +3502,7 @@
                         "volume": {
                           "type": "number",
                           "minimum": 0.000001,
-                          "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. The default is 1."
+                          "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. The default is 1. At 0.4, the model is squeezed to 40% of its volume. The model's size is its `scale`, not this."
                         },
                         "strength": {
                           "type": "number",
@@ -4144,7 +4144,8 @@
         "back": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1e+307
+          "maximum": 1e+307,
+          "description": "How far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. Robert Penner's back curves use it the same way. The default is 1.70158."
         }
       },
       "required": [
@@ -7579,7 +7580,7 @@
               "description": "of its length"
             }
           ],
-          "description": "Where the drawn part starts along the stroke."
+          "description": "Where the drawn part starts along the stroke in fractions of its length."
         },
         "end": {
           "allOf": [
@@ -7590,7 +7591,7 @@
               "description": "of its length"
             }
           ],
-          "description": "Where the drawn part ends along the stroke."
+          "description": "Where the drawn part ends along the stroke in fractions of its length."
         }
       },
       "required": [

@@ -5449,7 +5449,8 @@
         "back": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1e+307
+          "maximum": 1e+307,
+          "description": "How far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. Robert Penner's back curves use it the same way. The default is 1.70158."
         }
       },
       "required": [
@@ -5637,7 +5638,7 @@
               "volume": {
                 "type": "number",
                 "minimum": 0.000001,
-                "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. The default is 1."
+                "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. The default is 1. At 0.4, the model is squeezed to 40% of its volume. The model's size is its `scale`, not this."
               },
               "strength": {
                 "type": "number",
@@ -10338,6 +10339,7 @@
                             ]
                           },
                           {
+                            "description": "An interpolation with its settings: how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past, an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as just its name. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
                             "anyOf": [
                               {
                                 "$ref": "#/definitions/back-curve"
@@ -10350,13 +10352,19 @@
                                   },
                                   "amplitude": {
                                     "type": "number",
-                                    "minimum": 0
+                                    "minimum": 0,
+                                    "description": "The size of an elastic's swing in multiples of the move. The default is 1."
                                   },
                                   "period": {
-                                    "type": "number",
-                                    "minimum": 0.000001,
-                                    "maximum": 4294967296,
-                                    "description": "seconds"
+                                    "allOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0.000001,
+                                        "maximum": 4294967296,
+                                        "description": "seconds"
+                                      }
+                                    ],
+                                    "description": "How long one swing of an elastic lasts. The default is 0.3 of the length of the move."
                                   }
                                 },
                                 "required": [
@@ -10373,7 +10381,8 @@
                                   "bounciness": {
                                     "type": "number",
                                     "minimum": 0,
-                                    "maximum": 1
+                                    "maximum": 1,
+                                    "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default is 0.5."
                                   }
                                 },
                                 "required": [
@@ -10390,13 +10399,19 @@
                                   "damping-ratio": {
                                     "type": "number",
                                     "minimum": 0.3,
-                                    "maximum": 1
+                                    "maximum": 1,
+                                    "description": "How strongly a spring is damped. At 1, it doesn't swing past its keyframe. Less damping swings further."
                                   },
                                   "response": {
-                                    "type": "number",
-                                    "minimum": 0.000001,
-                                    "maximum": 4294967296,
-                                    "description": "seconds"
+                                    "allOf": [
+                                      {
+                                        "type": "number",
+                                        "minimum": 0.000001,
+                                        "maximum": 4294967296,
+                                        "description": "seconds"
+                                      }
+                                    ],
+                                    "description": "The spring's natural period. A shorter one springs faster. Without it, the spring settles by the end of the move."
                                   }
                                 },
                                 "required": [
@@ -10414,18 +10429,22 @@
                                   "x1": {
                                     "type": "number",
                                     "minimum": 0,
-                                    "maximum": 1
+                                    "maximum": 1,
+                                    "description": "The time of a cubic Bézier's first handle in fractions of the move."
                                   },
                                   "y1": {
-                                    "type": "number"
+                                    "type": "number",
+                                    "description": "The value of a cubic Bézier's first handle in fractions of the change. It can be below 0 or above 1. The move can then go past an end. It stops at the end of the parameter's range."
                                   },
                                   "x2": {
                                     "type": "number",
                                     "minimum": 0,
-                                    "maximum": 1
+                                    "maximum": 1,
+                                    "description": "The time of a cubic Bézier's second handle in fractions of the move."
                                   },
                                   "y2": {
-                                    "type": "number"
+                                    "type": "number",
+                                    "description": "The value of a cubic Bézier's second handle in fractions of the change. It can be below 0 or above 1. The move can then go past an end. It stops at the end of the parameter's range."
                                   }
                                 },
                                 "required": [
@@ -10463,7 +10482,7 @@
                                 "description": "seconds"
                               }
                             ],
-                            "description": "When the move would have reached `value`. It is in seconds into the step and at or after the keyframe's time."
+                            "description": "When the move would have reached `value`. It is in seconds into the step and at or after the keyframe's time. It doesn't make the step longer."
                           }
                         },
                         "required": [
@@ -10511,7 +10530,7 @@
                                 "description": "cycles a second"
                               }
                             ],
-                            "description": "How many full cycles each second."
+                            "description": "How many full cycles each second. A noise wave wanders at that rate. After Effects' wiggle() frequency works the same way."
                           },
                           "phase": {
                             "allOf": [
@@ -10538,7 +10557,7 @@
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 4294967294,
-                            "description": "The noise seed. A seed picks one wave. The default is 0."
+                            "description": "The noise seed. A seed picks one wave. The default is 0. Motion's Random Seed works the same way."
                           }
                         },
                         "required": [
@@ -11645,7 +11664,7 @@
               "description": "of its length"
             }
           ],
-          "description": "Where the drawn part starts along the stroke."
+          "description": "Where the drawn part starts along the stroke in fractions of its length."
         },
         "end": {
           "allOf": [
@@ -11656,7 +11675,7 @@
               "description": "of its length"
             }
           ],
-          "description": "Where the drawn part ends along the stroke."
+          "description": "Where the drawn part ends along the stroke in fractions of its length."
         }
       },
       "required": [
