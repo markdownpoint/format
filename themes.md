@@ -22,7 +22,7 @@ For a title placeholder, the layout sets its position and text style. Each slide
 
 ## Master
 
-`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a hidden slide number. Both are filled in by fields, and their words are in the master's `text`. Its `category` says where the theme is listed, and `brand` names the colors its schemes use. `default-text-box` sets a new text box's text style, and `layout-order` lists the layouts in the order the app shows them:
+`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a slide number that is hidden (`visible: false`). Both are filled in by fields, and their words are in the master's `text`. Its `category` says where the theme is listed, and `brand` names the colors its schemes use. `default-text-box` sets a new text box's text style, and `layout-order` lists the layouts in the order the app shows them:
 
 ```json
 {

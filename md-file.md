@@ -112,7 +112,7 @@ Paragraphs are separated by one or more blank lines. An empty paragraph is a lin
 
 ## Presenter notes
 
-`<!-- notes -->` starts the presenter notes of a slide or a composition. The audience never sees them. Notes use the same Markdown as slide text and can appear anywhere among the blocks of their slide or composition. A paragraph id in presenter notes is read as it is in slide text and is never shown. No step can name it. MarkdownPoint doesn't give ids to paragraphs in notes. It saves notes as written and doesn't warn about a repeated or misspelled id in them.
+`<!-- notes -->` starts the presenter notes of a slide or a composition. The audience never sees them. A composition's notes show only while it is edited. An instance doesn't add them to its slide's notes. Notes use the same Markdown as slide text and can appear anywhere among the blocks of their slide or composition. A paragraph id in presenter notes is read as it is in slide text and is never shown. No step can name it. MarkdownPoint doesn't give ids to paragraphs in notes. It saves notes as written and doesn't warn about a repeated or misspelled id in them.
 
 ## Compositions
 
@@ -231,7 +231,7 @@ This is slide {{slide-number}} of {{slide-count}}. It is in section {{section-nu
 
 ![The fields slide drawn by MarkdownPoint](images/words-fields.png)
 
-A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. The `footer` field shows the footer set in the frontmatter.
+A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. Section numbers count only the sections that hold a shown slide. The `footer` field shows the footer set in the frontmatter.
 
 ### Quotes and inline code
 

@@ -179,7 +179,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "One slide's objects, look, and animation. Its text is in the .md file.",
+        "description": "One slide's objects, look, and animation. Its text is in the .md file. A skipped slide has no slide number. The show and every export pass over it, but the PowerPoint export keeps it as a hidden slide. The slide before it goes to the next shown slide with its own transition, and the skipped slide's transition never plays. A link to a skipped slide does nothing.",
         "type": "object",
         "properties": {
           "layout": {
@@ -317,7 +317,7 @@
           },
           "skipped": {
             "type": "boolean",
-            "description": "Whether the slide is skipped when presenting and exporting. It stays in the presentation."
+            "description": "Whether the slide is skipped. A skipped slide stays in the presentation and has no number. The show and every export pass over it, but the PowerPoint export keeps it as a hidden slide."
           },
           "transition": {
             "allOf": [
