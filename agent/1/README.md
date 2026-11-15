@@ -60,6 +60,29 @@ means a paid service, an AI provider, another application, or the web. A tool
 whose result
 is plain data also has an output schema.
 
+## Changing a presentation
+
+A change goes through a proposal, in five steps:
+
+1. Read the presentation with `presentations.get`, or a slide with
+   `slides.get`. Keep its `revision`.
+2. Send the change with `proposals.create`: that `revision` and the
+   operations. MarkdownPoint checks them without applying them. When they
+   have errors, the call fails with `validation-failed`, and nothing is
+   kept.
+3. Read what the proposal says: `summaries` gives what each operation
+   does, and `validation` gives its warnings.
+4. Accept it with `proposals.accept`, or reject it with `proposals.reject`.
+5. Use the `revision` the accept returns for your next read or change.
+
+A proposal is stale once a slide it changes has changed since its
+revision. A proposal that changes the whole presentation is stale after
+any change. Once a proposal is made, a change to the theme makes it stale
+too. Read the presentation again, then make a stale proposal again.
+MarkdownPoint holds at most `limits.heldProposals` proposals at once.
+Stale proposals and ones an accept found invalid give way to new ones. A
+pending one stays until it is accepted or rejected.
+
 ## Errors
 
 A failure has a code and a message. With `--json`, a failed command prints one
@@ -81,13 +104,13 @@ unavailable.
 | `usage` | The command line is wrong (CLI only). | Read the command's `--help`. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `stale-revision` | The presentation or its theme has changed since the revision you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. |
+| `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. Make a stale proposal again. |
 | `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint isn't running or can't be reached, the connection closed, or the presentation's files can't be read right now. | Start MarkdownPoint. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
-| `too-large` | The request is too large for one call: its size, a proposal's operations, or a range's samples. | Send less at once, or lower `sampleRate`. |
+| `too-large` | The request is too large for one call: its size, a proposal's operations, a range's samples, or the proposals held at `limits.heldProposals`. | Send less at once, lower `sampleRate`, or reject a proposal. |
 | `busy` | Something that can't run at the same time is in progress, such as accepting that proposal or another movie export. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
