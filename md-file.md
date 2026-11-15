@@ -231,7 +231,7 @@ This is slide {{slide-number}} of {{slide-count}}. It is in section {{section-nu
 
 ![The fields slide drawn by MarkdownPoint](images/words-fields.png)
 
-A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. Section numbers count only the sections that hold a shown slide. The `footer` field shows the footer set in the frontmatter. A name that is no field, such as `{{author}}`, shows as written. MarkdownPoint keeps it and warns about it.
+A field shows a value that MarkdownPoint fills in, such as the slide number. The [reference](reference/1.0.md#markdown) lists every field and how it counts. Slide numbers count only the slides that are shown. With slides A, B, and C, and B skipped, `{{slide-number}} of {{slide-count}}` on C shows 2 of 2. Section numbers count only the sections that hold a shown slide. The `footer` field shows the footer set in the frontmatter. A name that isn't a field, such as `{{author}}`, shows as written. MarkdownPoint keeps it and warns about it.
 
 ### Quotes and inline code
 
