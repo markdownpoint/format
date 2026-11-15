@@ -3548,7 +3548,7 @@
                     "type": "boolean"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/opaque-color"
                   },
                   "parent-node": {
                     "$ref": "#/definitions/model-node-name"
@@ -3626,7 +3626,7 @@
                     "type": "boolean"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/opaque-color"
                   },
                   "parent-node": {
                     "$ref": "#/definitions/model-node-name"
@@ -3718,7 +3718,7 @@
                     "type": "boolean"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/opaque-color"
                   },
                   "parent-node": {
                     "$ref": "#/definitions/model-node-name"
@@ -3795,7 +3795,7 @@
                     "type": "boolean"
                   },
                   "color": {
-                    "$ref": "#/definitions/color"
+                    "$ref": "#/definitions/opaque-color"
                   },
                   "parent-node": {
                     "$ref": "#/definitions/model-node-name"
@@ -3921,7 +3921,7 @@
                 "$ref": "#/definitions/parent-inverse"
               },
               "shadow-color": {
-                "$ref": "#/definitions/color"
+                "$ref": "#/definitions/opaque-color"
               },
               "width": {
                 "type": "number",
@@ -4004,7 +4004,7 @@
                 "maximum": 1
               },
               "shadow-color": {
-                "$ref": "#/definitions/color"
+                "$ref": "#/definitions/opaque-color"
               }
             },
             "required": [
@@ -4026,7 +4026,7 @@
                 "$ref": "#/definitions/nonblank-line"
               },
               "color": {
-                "$ref": "#/definitions/color"
+                "$ref": "#/definitions/opaque-color"
               },
               "intensity": {
                 "type": "number",

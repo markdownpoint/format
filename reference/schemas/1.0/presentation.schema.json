@@ -652,6 +652,9 @@
                         },
                         {
                           "$ref": "#/definitions/color"
+                        },
+                        {
+                          "$ref": "#/definitions/opaque-color"
                         }
                       ]
                     },
@@ -2376,7 +2379,7 @@
                           "type": "null"
                         },
                         {
-                          "$ref": "#/definitions/color"
+                          "$ref": "#/definitions/opaque-color"
                         }
                       ]
                     },
@@ -3476,7 +3479,7 @@
                               "type": "boolean"
                             },
                             "color": {
-                              "$ref": "#/definitions/color"
+                              "$ref": "#/definitions/opaque-color"
                             },
                             "parent-node": {
                               "$ref": "#/definitions/model-node-name"
@@ -3554,7 +3557,7 @@
                               "type": "boolean"
                             },
                             "color": {
-                              "$ref": "#/definitions/color"
+                              "$ref": "#/definitions/opaque-color"
                             },
                             "parent-node": {
                               "$ref": "#/definitions/model-node-name"
@@ -3646,7 +3649,7 @@
                               "type": "boolean"
                             },
                             "color": {
-                              "$ref": "#/definitions/color"
+                              "$ref": "#/definitions/opaque-color"
                             },
                             "parent-node": {
                               "$ref": "#/definitions/model-node-name"
@@ -3723,7 +3726,7 @@
                               "type": "boolean"
                             },
                             "color": {
-                              "$ref": "#/definitions/color"
+                              "$ref": "#/definitions/opaque-color"
                             },
                             "parent-node": {
                               "$ref": "#/definitions/model-node-name"
@@ -3823,7 +3826,7 @@
                           "$ref": "#/definitions/parent-inverse"
                         },
                         "shadow-color": {
-                          "$ref": "#/definitions/color"
+                          "$ref": "#/definitions/opaque-color"
                         },
                         "width": {
                           "type": "number",
@@ -3888,7 +3891,7 @@
                           "maximum": 1
                         },
                         "shadow-color": {
-                          "$ref": "#/definitions/color"
+                          "$ref": "#/definitions/opaque-color"
                         }
                       },
                       "required": [
@@ -9675,10 +9678,10 @@
             "color": {
               "allOf": [
                 {
-                  "$ref": "#/definitions/color"
+                  "$ref": "#/definitions/opaque-color"
                 }
               ],
-              "description": "The color of a fade through color: a color role or a hex color."
+              "description": "The color of a fade through color: a color role, or a hex color written #RGB or #RRGGBB. A role's alpha is ignored."
             },
             "start": {
               "const": "automatically",
