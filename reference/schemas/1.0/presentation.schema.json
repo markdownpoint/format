@@ -165,7 +165,7 @@
     "date": {
       "type": "string",
       "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)(?![\\s\\S])",
-      "description": "The date the date field shows. It is written YYYY-MM-DD. It must be a real calendar date in year 0001 or later."
+      "description": "The date the date field shows. It is written YYYY-MM-DD. It must be a real calendar date in year 0001 or later. Without one, the first date field inserted in the app sets it to that day."
     },
     "locale": {
       "type": "string",
@@ -10322,7 +10322,7 @@
                             "$ref": "#/definitions/parameter-value"
                           }
                         ],
-                        "description": "The value. It is written as the parameter is. It can be `null` to clear the whole parameter."
+                        "description": "The value. It is written as the parameter is. It can be `null` to clear the whole parameter. It is the parameter's own value, not a change from the object's rest."
                       },
                       "interpolation": {
                         "anyOf": [
