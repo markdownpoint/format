@@ -161,6 +161,10 @@ the object is left out. With `refuse-slide`, the slide is refused. With
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. A `render-failed` issue from drawing has neither.
 
+An issue about one object names it by `objectId`. An issue about several
+objects names them by `objectIds`, back to front as the slide paints them. No
+issue has both.
+
 A refused value of a key with a code of its own has that code, such as
 `invalid-layout` for a slide's `layout`, `invalid-locale` for the
 presentation's `locale`, or `invalid-icon` for an icon's `icon`. A refused
