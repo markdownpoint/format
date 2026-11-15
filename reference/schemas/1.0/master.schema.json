@@ -668,7 +668,7 @@
                 "$ref": "#/definitions/object-id"
               },
               "frame": {
-                "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+                "description": "An object's position and size in canvas units from the top left of its slide or composition. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of the auto layout's run: the box its members' frames make, unturned and unscaled, placed one after another. The `reference-point` of the group's auto layout says which point of the run that is: the top left in the group's rotation, or the center or end along the layout's direction.",
                 "type": "object",
                 "properties": {
                   "x": {
@@ -2804,7 +2804,7 @@
                       "center",
                       "end"
                     ],
-                    "description": "Which point of the members' box stays at the group's frame as the members grow or shrink: its start, center, or end along the layout's direction."
+                    "description": "Which point of the run stays at the group's frame as the members grow or shrink: its start, center, or end along the layout's direction."
                   }
                 },
                 "additionalProperties": false
@@ -4067,7 +4067,7 @@
           }
         ]
       },
-      "description": "The master's objects, back to front. They are behind a layout's and a slide's objects, except one placed by id. The camera and the World are among them. Left out, they have their defaults."
+      "description": "The master's objects, back to front, a tilted group's members by depth. They are behind a layout's and a slide's but one placed by id. The camera and the World take their defaults when left out."
     },
     "text": {
       "type": "object",
@@ -4099,7 +4099,7 @@
   "additionalProperties": false,
   "definitions": {
     "anchor-point": {
-      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's members' box measured at the group's rotation. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. An object's own anchor point needs both x and y. Leaving it out is the only way to the default.",
+      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's box. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. An object's own anchor point needs both x and y. Leaving it out is the only way to the default.",
       "type": "object",
       "properties": {
         "x": {
@@ -4685,7 +4685,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the top left of its slide or composition. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of the auto layout's run: the box its members' frames make, unturned and unscaled, placed one after another. The `reference-point` of the group's auto layout says which point of the run that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
@@ -7025,7 +7025,7 @@
       "maxItems": 16
     },
     "point-frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the top left of its slide or composition. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of the auto layout's run: the box its members' frames make, unturned and unscaled, placed one after another. The `reference-point` of the group's auto layout says which point of the run that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
@@ -7158,7 +7158,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down."
+          "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down. A group's is the group's box."
         },
         "stagger": {
           "allOf": [

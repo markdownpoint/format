@@ -4017,7 +4017,7 @@
                 }
               ]
             },
-            "description": "The slide's objects, back to front. Its own objects are written out, and one from its layout or master is listed by its id. An inherited object the list doesn't name is behind all of them."
+            "description": "The slide's objects, back to front, a tilted group's members by depth. Its own are written out, and an inherited one is listed by its id. An inherited one the list doesn't name is behind them all."
           },
           "initial": {
             "allOf": [
@@ -4050,7 +4050,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. Its canvas is as large as fits in the instance's frame and is centered there. This is SVG's `viewBox` with `xMidYMid meet`. Then it turns and scales with the instance about the instance's anchor point. The composition's objects are in their own group at the instance's position. That group counts toward how deep groups nest. A composition can contain only what a group can: nothing 3D, no audio object, and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
+        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. Its canvas is as large as fits in the instance's frame and is centered there. Then it turns and scales with the instance about the instance's anchor point. The composition's objects are in their own group at the instance's position. That group counts toward how deep groups nest. A composition can contain only what a group can: nothing 3D, no audio object, and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
         "type": "object",
         "properties": {
           "name": {
@@ -5153,7 +5153,7 @@
                 }
               ]
             },
-            "description": "Its objects, back to front. A composition can't contain a model, a light, a shadow catcher, a floor, a camera, the World, an audio object, a web video, or a text with a `model`."
+            "description": "Its objects, back to front, a tilted group's members by depth. It can't contain a model, light, shadow catcher, floor, camera, World, audio object, web video, or text with a `model`."
           },
           "initial": {
             "allOf": [
@@ -5334,7 +5334,7 @@
   "additionalProperties": false,
   "definitions": {
     "anchor-point": {
-      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's members' box measured at the group's rotation. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. An object's own anchor point needs both x and y. Leaving it out is the only way to the default.",
+      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's box. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. An object's own anchor point needs both x and y. Leaving it out is the only way to the default.",
       "type": "object",
       "properties": {
         "x": {
@@ -5431,7 +5431,7 @@
             "center",
             "end"
           ],
-          "description": "Which point of the members' box stays at the group's frame as the members grow or shrink: its start, center, or end along the layout's direction."
+          "description": "Which point of the run stays at the group's frame as the members grow or shrink: its start, center, or end along the layout's direction."
         }
       },
       "additionalProperties": false
@@ -6133,7 +6133,7 @@
       "additionalProperties": false
     },
     "frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the top left of its slide or composition. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of the auto layout's run: the box its members' frames make, unturned and unscaled, placed one after another. The `reference-point` of the group's auto layout says which point of the run that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
@@ -9794,7 +9794,7 @@
       "maxItems": 16
     },
     "point-frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the top left of its slide or composition. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of the auto layout's run: the box its members' frames make, unturned and unscaled, placed one after another. The `reference-point` of the group's auto layout says which point of the run that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
@@ -9932,7 +9932,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down."
+          "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down. A group's is the group's box."
         },
         "stagger": {
           "allOf": [
@@ -10912,7 +10912,7 @@
       ]
     },
     "text-frame": {
-      "description": "An object's position and size in canvas units from the slide's top left. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of its members' box. The `reference-point` of the group's auto layout says which point of the box that is: the top left in the group's rotation, or the center or end along the layout's direction.",
+      "description": "An object's position and size in canvas units from the top left of its slide or composition. A table's, an audio object's, and a group's frame has only x and y: their contents, an icon, or members give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom. A group has a frame only with `auto-layout`. Its frame is the position of the auto layout's run: the box its members' frames make, unturned and unscaled, placed one after another. The `reference-point` of the group's auto layout says which point of the run that is: the top left in the group's rotation, or the center or end along the layout's direction.",
       "type": "object",
       "properties": {
         "x": {
