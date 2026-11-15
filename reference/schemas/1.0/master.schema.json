@@ -2366,7 +2366,7 @@
               "start": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/slide-point"
+                    "$ref": "#/definitions/line-point"
                   },
                   {
                     "$ref": "#/definitions/line-end"
@@ -2376,7 +2376,7 @@
               "end": {
                 "anyOf": [
                   {
-                    "$ref": "#/definitions/slide-point"
+                    "$ref": "#/definitions/line-point"
                   },
                   {
                     "$ref": "#/definitions/line-end"
@@ -6848,34 +6848,33 @@
             "left"
           ],
           "description": "Which side of the object's frame it attaches to. The sides turn with the object's `rotation`, and a flip doesn't change them. With `auto`, it attaches to the side that faces the other end."
-        },
-        "last-position": {
-          "type": "object",
-          "properties": {
-            "x": {
-              "type": "number",
-              "minimum": -33554431.984375,
-              "maximum": 33554431.984375,
-              "description": "canvas units"
-            },
-            "y": {
-              "type": "number",
-              "minimum": -33554431.984375,
-              "maximum": 33554431.984375,
-              "description": "canvas units"
-            }
-          },
-          "required": [
-            "x",
-            "y"
-          ],
-          "additionalProperties": false,
-          "description": "The point the end is drawn at when the slide has no such object, or when a line can't attach to it: {x, y}. Without a last position, the line isn't drawn then."
         }
       },
       "required": [
         "object",
         "side"
+      ],
+      "additionalProperties": false
+    },
+    "line-point": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": -33554431.984375,
+          "maximum": 33554431.984375,
+          "description": "canvas units"
+        },
+        "y": {
+          "type": "number",
+          "minimum": -33554431.984375,
+          "maximum": 33554431.984375,
+          "description": "canvas units"
+        }
+      },
+      "required": [
+        "x",
+        "y"
       ],
       "additionalProperties": false
     },
@@ -7338,28 +7337,6 @@
     "scheme-color": {
       "type": "string",
       "pattern": "^(?:#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})|\\{brand\\.colors\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\})(?![\\s\\S])"
-    },
-    "slide-point": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -65536,
-          "maximum": 65536,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y"
-      ],
-      "additionalProperties": false
     },
     "space-euler": {
       "description": "A 3D object's rotation about its origin, in its space's axes: its parent's for a parented object, otherwise x right, y up, and z toward the viewer. It is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z.",
