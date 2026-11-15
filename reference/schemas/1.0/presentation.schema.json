@@ -135,7 +135,7 @@
           "description": "seconds"
         }
       ],
-      "description": "How long the talk should take in seconds. Without it, the talk has no set length."
+      "description": "How long the talk should take in seconds. The presenter's timer counts down from it. Without it, the talk has no set length."
     },
     "image-style": {
       "allOf": [
@@ -4061,7 +4061,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The composition's name: one line that isn't blank and has no control characters."
+            "description": "The composition's name: one line that isn't blank and has no control characters. Without it, MarkdownPoint shows the composition's id."
           },
           "size": {
             "description": "Its size in canvas units.",
@@ -5771,7 +5771,7 @@
       ]
     },
     "enter": {
-      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1.",
+      "description": "Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1. With delivery `by-paragraph`, it works as PowerPoint's By Paragraph.",
       "type": "object",
       "properties": {
         "based-on": {
@@ -5781,7 +5781,7 @@
             "character",
             "character-and-space"
           ],
-          "description": "What counts as one piece. With `character-and-space`, each space is a piece too."
+          "description": "What counts as one piece. With `character-and-space`, each space is a piece too. After Effects' Characters is `character-and-space`, and its Characters Excluding Spaces is `character`."
         },
         "delivery": {
           "const": "by-paragraph",
@@ -5946,7 +5946,7 @@
             "character",
             "character-and-space"
           ],
-          "description": "What counts as one piece. With `character-and-space`, each space is a piece too."
+          "description": "What counts as one piece. With `character-and-space`, each space is a piece too. After Effects' Characters is `character-and-space`, and its Characters Excluding Spaces is `character`."
         },
         "to": {
           "description": "How each piece looks as it finishes exiting: opacity, offset, scale, rotation, and blur.",
@@ -9953,7 +9953,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "The last copy's opacity. It is a fraction of the object's opacity. The copies between fade toward it."
+          "description": "The last copy's opacity. It is a fraction of the object's opacity. The copies between fade toward it evenly. After Effects' End Opacity works the same way with a Start Opacity of 100%."
         },
         "position-randomness": {
           "allOf": [
@@ -9975,13 +9975,13 @@
               "description": "degrees"
             }
           ],
-          "description": "The farthest each copy turns either way at random."
+          "description": "The farthest each copy turns either way at random about its own center. Motion's Replicator Angle Randomness works the same way."
         },
         "scale-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "The most each copy grows or shrinks at random. It is a fraction of its size."
+          "description": "The most each copy grows or shrinks at random about its own center. It is a fraction of its size."
         },
         "stagger-randomness": {
           "allOf": [
@@ -9998,7 +9998,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The random seed: the same seed gives the same copies."
+          "description": "The random seed: the same seed gives the same copies. Motion's Random Seed works the same way."
         }
       },
       "required": [
@@ -10095,7 +10095,7 @@
       "additionalProperties": false
     },
     "space-position": {
-      "description": "A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. A parented object's position is in its parent's space.",
+      "description": "A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. After Effects' y and z axes run the other way. A parented object's position is in its parent's space.",
       "type": "object",
       "properties": {
         "x": {
@@ -11080,7 +11080,7 @@
               "description": "degrees"
             }
           ],
-          "description": "It turns about the vertical axis. It is 0 when left out. With a positive y, its left side comes forward. The y turn comes first, then the x turn."
+          "description": "It turns about the vertical axis. It is 0 when left out. With a positive y, its left side comes forward. The group's rotation comes first, then the y turn, then the x turn."
         }
       },
       "additionalProperties": false
