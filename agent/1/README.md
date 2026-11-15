@@ -78,10 +78,16 @@ A change goes through a proposal, in five steps:
 A proposal is stale once a slide it changes has changed since its
 revision. A proposal that changes the whole presentation is stale after
 any change. Once a proposal is made, a change to the theme makes it stale
-too. Read the presentation again, then make a stale proposal again.
-MarkdownPoint holds at most `limits.heldProposals` proposals at once.
-Stale proposals and ones an accept found invalid give way to new ones. A
-pending one stays until it is accepted or rejected.
+too. Read the presentation again, then make a stale proposal again. An
+accept that MarkdownPoint refuses, or that would change nothing, leaves the
+proposal invalid, and its `validation` says why. MarkdownPoint holds at most
+`limits.heldProposals` proposals at once. Stale and invalid proposals give
+way to new ones. A pending one stays until it is accepted or rejected.
+Accept answers a proposal by its state, held or retired: a stale one with
+`stale-revision` and the current `revision`, an invalid one with
+`validation-failed` and its `validation`, and an accepted or rejected one
+with `refused`. Reject rejects any held proposal, and answers a retired one
+the same way.
 
 ## Errors
 
