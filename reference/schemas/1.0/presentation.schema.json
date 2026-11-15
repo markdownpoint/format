@@ -34,14 +34,6 @@
       "pattern": "^(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "The key of the presentation's theme. It's the name of the theme's folder in themes. The theme's master sets the slide size and `unit-scale`."
     },
-    "background": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/background"
-        }
-      ],
-      "description": "The background every slide shows, unless the slide sets its own."
-    },
     "transition": {
       "allOf": [
         {
@@ -204,12 +196,124 @@
             "description": "The slide's color scheme. If it's left out or the theme doesn't have it, the slide uses its layout's scheme."
           },
           "background": {
-            "allOf": [
-              {
-                "$ref": "#/definitions/background"
+            "description": "The slide's own background. It replaces its layout's whole background. A key it leaves out has its default, and an empty background is plain.",
+            "type": "object",
+            "properties": {
+              "fill": {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/fill"
+                  }
+                ],
+                "description": "The color or gradient behind everything."
+              },
+              "image": {
+                "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`.",
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                    "description": "The image's path in the presentation's folder."
+                  },
+                  "crop": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/crop"
+                      }
+                    ],
+                    "description": "How far the image is zoomed, and which point stays in view."
+                  },
+                  "opacity": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "How opaque the image is."
+                  },
+                  "exposure": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "description": "How much lighter or darker the image is. 0 leaves it unchanged."
+                  },
+                  "contrast": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "description": "How much more or less contrast the image has. 0 leaves it unchanged."
+                  },
+                  "saturation": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "description": "How much more or less saturated the image's colors are. 0 leaves them unchanged."
+                  },
+                  "temperature": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 1,
+                    "description": "How much warmer or cooler the image's colors are. 0 leaves them unchanged."
+                  },
+                  "grayscale": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "How far the image's colors fade to gray. 0 leaves them unchanged."
+                  },
+                  "drop-shadow": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/drop-shadow"
+                      }
+                    ],
+                    "description": "A drop shadow behind the image."
+                  },
+                  "prompt": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/prompt"
+                      }
+                    ],
+                    "description": "The prompt for a generated background image."
+                  },
+                  "image-style": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/image-style-or-none"
+                      }
+                    ],
+                    "description": "The style of a generated background image: text, or `none` for no style. It never names a library style; `restyle` does. The default is `background-image-style`."
+                  },
+                  "transparent-background": {
+                    "type": "boolean",
+                    "description": "Whether a generated background image is made with a transparent background."
+                  },
+                  "restyle": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/restyle"
+                      }
+                    ],
+                    "description": "A style applied over the image. MarkdownPoint draws it from the image as it was first made."
+                  },
+                  "generation": {
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/generation"
+                      }
+                    ],
+                    "description": "Which image generation record made the background image. For a restyle, it also names the image the restyle was applied to."
+                  }
+                },
+                "dependencies": {
+                  "generation": [
+                    "file"
+                  ]
+                },
+                "additionalProperties": false
               }
-            ],
-            "description": "The slide's own background. It replaces the presentation's whole background. A key it leaves out has its default, and an empty background is plain."
+            },
+            "additionalProperties": false
           },
           "skipped": {
             "type": "boolean",
@@ -5322,126 +5426,6 @@
       "required": [
         "type"
       ],
-      "additionalProperties": false
-    },
-    "background": {
-      "description": "A slide background: a fill, an image, or an image on a fill.",
-      "type": "object",
-      "properties": {
-        "fill": {
-          "allOf": [
-            {
-              "$ref": "#/definitions/fill"
-            }
-          ],
-          "description": "The color or gradient behind everything."
-        },
-        "image": {
-          "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`.",
-          "type": "object",
-          "properties": {
-            "file": {
-              "type": "string",
-              "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-              "description": "The image's path in the presentation's folder."
-            },
-            "crop": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/crop"
-                }
-              ],
-              "description": "How far the image is zoomed, and which point stays in view."
-            },
-            "opacity": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 1,
-              "description": "How opaque the image is."
-            },
-            "exposure": {
-              "type": "number",
-              "minimum": -1,
-              "maximum": 1,
-              "description": "How much lighter or darker the image is. 0 leaves it unchanged."
-            },
-            "contrast": {
-              "type": "number",
-              "minimum": -1,
-              "maximum": 1,
-              "description": "How much more or less contrast the image has. 0 leaves it unchanged."
-            },
-            "saturation": {
-              "type": "number",
-              "minimum": -1,
-              "maximum": 1,
-              "description": "How much more or less saturated the image's colors are. 0 leaves them unchanged."
-            },
-            "temperature": {
-              "type": "number",
-              "minimum": -1,
-              "maximum": 1,
-              "description": "How much warmer or cooler the image's colors are. 0 leaves them unchanged."
-            },
-            "grayscale": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 1,
-              "description": "How far the image's colors fade to gray. 0 leaves them unchanged."
-            },
-            "drop-shadow": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/drop-shadow"
-                }
-              ],
-              "description": "A drop shadow behind the image."
-            },
-            "prompt": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/prompt"
-                }
-              ],
-              "description": "The prompt for a generated background image."
-            },
-            "image-style": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/image-style-or-none"
-                }
-              ],
-              "description": "The style of a generated background image: text, or `none` for no style. It never names a library style; `restyle` does. The default is `background-image-style`."
-            },
-            "transparent-background": {
-              "type": "boolean",
-              "description": "Whether a generated background image is made with a transparent background."
-            },
-            "restyle": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/restyle"
-                }
-              ],
-              "description": "A style applied over the image. MarkdownPoint draws it from the image as it was first made."
-            },
-            "generation": {
-              "allOf": [
-                {
-                  "$ref": "#/definitions/generation"
-                }
-              ],
-              "description": "Which image generation record made the background image. For a restyle, it also names the image the restyle was applied to."
-            }
-          },
-          "dependencies": {
-            "generation": [
-              "file"
-            ]
-          },
-          "additionalProperties": false
-        }
-      },
       "additionalProperties": false
     },
     "bullet-styles": {

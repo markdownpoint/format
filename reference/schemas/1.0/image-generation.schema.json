@@ -33,18 +33,6 @@
           "type": "object",
           "properties": {
             "type": {
-              "const": "presentation-background"
-            }
-          },
-          "required": [
-            "type"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "properties": {
-            "type": {
               "const": "slide-background"
             },
             "slide": {

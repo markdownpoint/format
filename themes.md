@@ -142,6 +142,10 @@ A layout's text or image with `"placeholder": true` is a placeholder. Each slide
 
 The layout's `text` holds the words of its own objects. A placeholder's `file` and words are samples. The layout chooser and the theme editor show them, and a slide never does. A placeholder that a slide doesn't fill shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
 
+## Backgrounds
+
+A slide shows its own `background`, else its layout's, else the master's. Each one replaces the whole background below it. Without any, the slide shows its scheme's `background` color. `master.json` and a layout take a `background` with a slide's keys: a `fill`, and an `image` over it. A theme's image is only the finished picture. It has no `prompt`, `image-style`, `transparent-background`, `restyle`, or `generation`. Its `file` is in the theme's folder, or there is one file per color scheme. A theme's image objects name their files the same way. The reference lists the keys of a [theme background](reference/1.md#theme-background).
+
 ![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
 
 ## A theme of its own

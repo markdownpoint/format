@@ -549,6 +549,93 @@
       },
       "additionalProperties": false
     },
+    "background": {
+      "description": "The background every slide shows, unless its layout or the slide has its own. Without it, slides show their scheme's background color.",
+      "type": "object",
+      "properties": {
+        "fill": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/fill"
+            }
+          ],
+          "description": "The color or gradient behind everything."
+        },
+        "image": {
+          "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`.",
+          "type": "object",
+          "properties": {
+            "file": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?!generated\\/(?:[^/]*\\/)*[^/]*\\.json(?![\\s\\S]))(?=(?!(?:manifest\\.json|previews|example)(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
+                  "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
+                },
+                {
+                  "$ref": "#/definitions/file-map"
+                }
+              ],
+              "description": "The image's path in the theme's folder, or one path per color scheme. A map names light and dark, and may name other schemes. A slide in a scheme it leaves out uses its appearance's image."
+            },
+            "crop": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/crop"
+                }
+              ],
+              "description": "How far the image is zoomed, and which point stays in view."
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "How opaque the image is."
+            },
+            "exposure": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1,
+              "description": "How much lighter or darker the image is. 0 leaves it unchanged."
+            },
+            "contrast": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1,
+              "description": "How much more or less contrast the image has. 0 leaves it unchanged."
+            },
+            "saturation": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1,
+              "description": "How much more or less saturated the image's colors are. 0 leaves them unchanged."
+            },
+            "temperature": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1,
+              "description": "How much warmer or cooler the image's colors are. 0 leaves them unchanged."
+            },
+            "grayscale": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "How far the image's colors fade to gray. 0 leaves them unchanged."
+            },
+            "drop-shadow": {
+              "allOf": [
+                {
+                  "$ref": "#/definitions/drop-shadow"
+                }
+              ],
+              "description": "A drop shadow behind the image."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "layout-order": {
       "type": "array",
       "items": {
@@ -1281,46 +1368,7 @@
                     "description": "a file path in the theme's folder, not hidden, not manifest.json, and not in previews or example"
                   },
                   {
-                    "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
-                    "type": "object",
-                    "properties": {
-                      "light": {
-                        "allOf": [
-                          {
-                            "$ref": "#/definitions/theme-file-path"
-                          }
-                        ],
-                        "description": "The file for the light scheme, and for other light schemes without their own."
-                      },
-                      "dark": {
-                        "allOf": [
-                          {
-                            "$ref": "#/definitions/theme-file-path"
-                          }
-                        ],
-                        "description": "The file for the dark scheme, and for other dark schemes without their own."
-                      }
-                    },
-                    "required": [
-                      "light",
-                      "dark"
-                    ],
-                    "propertyNames": {
-                      "anyOf": [
-                        {
-                          "enum": [
-                            "light",
-                            "dark"
-                          ]
-                        },
-                        {
-                          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
-                        }
-                      ]
-                    },
-                    "additionalProperties": {
-                      "$ref": "#/definitions/theme-file-path"
-                    }
+                    "$ref": "#/definitions/file-map"
                   }
                 ]
               },
@@ -1430,47 +1478,6 @@
               },
               "constrain-proportions": {
                 "type": "boolean"
-              },
-              "transparent-background": {
-                "type": "boolean"
-              },
-              "prompt": {
-                "type": "string",
-                "pattern": "^[^\\u0000]*(?![\\s\\S])",
-                "description": "text without NUL characters"
-              },
-              "image-style": {
-                "type": "string",
-                "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                "description": "nonempty text without NUL characters, or \"none\""
-              },
-              "restyle": {
-                "description": "A style applied over an image or a background's image. It has every key of a library style except `reference-image-prompt`.",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "allOf": [
-                      {
-                        "$ref": "#/definitions/nonblank-line"
-                      }
-                    ],
-                    "description": "The style's name: one line that isn't blank and has no control characters."
-                  },
-                  "prompt": {
-                    "type": "string",
-                    "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-                    "description": "How the style changes an image: an edit prompt. It isn't blank."
-                  },
-                  "transparent-background": {
-                    "type": "boolean",
-                    "description": "Whether images in the style have transparent backgrounds."
-                  }
-                },
-                "required": [
-                  "name",
-                  "prompt"
-                ],
-                "additionalProperties": false
               },
               "anchor-point": {
                 "$ref": "#/definitions/anchor-point"
@@ -4578,6 +4585,48 @@
         ]
       },
       "additionalProperties": false
+    },
+    "file-map": {
+      "description": "A theme object's file for each color scheme. A dark scheme can then use a file of its own. An image, video, audio, or model object can have a file map in place of a single file. Every file in the map is the same type. A placeholder has one file, not a map.",
+      "type": "object",
+      "properties": {
+        "light": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/theme-file-path"
+            }
+          ],
+          "description": "The file for the light scheme, and for other light schemes without their own."
+        },
+        "dark": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/theme-file-path"
+            }
+          ],
+          "description": "The file for the dark scheme, and for other dark schemes without their own."
+        }
+      },
+      "required": [
+        "light",
+        "dark"
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "enum": [
+              "light",
+              "dark"
+            ]
+          },
+          {
+            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+          }
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/theme-file-path"
+      }
     },
     "fill": {
       "anyOf": [
