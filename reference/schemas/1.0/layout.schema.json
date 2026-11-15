@@ -363,7 +363,7 @@
                   {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   }
                 ]
@@ -2332,7 +2332,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -2700,7 +2700,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -2903,7 +2903,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -3157,7 +3157,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -3313,7 +3313,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -3617,7 +3617,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -3752,7 +3752,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -3878,7 +3878,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -4007,7 +4007,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -4186,7 +4186,7 @@
                   "blur": {
                     "type": "number",
                     "minimum": 0,
-                    "maximum": 1896.296296,
+                    "maximum": 33554431.984375,
                     "description": "canvas units"
                   },
                   "z": {
@@ -5152,7 +5152,8 @@
         },
         "back": {
           "type": "number",
-          "minimum": 0
+          "minimum": 0,
+          "maximum": 1e+307
         }
       },
       "required": [
@@ -5314,7 +5315,7 @@
           "allOf": [
             {
               "type": "number",
-              "minimum": 0.01,
+              "minimum": 0.000001,
               "maximum": 511,
               "description": "×"
             }
@@ -5357,11 +5358,11 @@
                 {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 758.518519,
+                  "maximum": 33554431.984375,
                   "description": "canvas units"
                 }
               ],
-              "description": "How far it reaches in canvas units. It is at most 100 when the slide's shorter side is 1080 or less. The limit grows in proportion on a larger slide. It is 200 at 3840 × 2160."
+              "description": "How far it reaches in canvas units."
             },
             "spread": {
               "type": "number",
@@ -5504,7 +5505,7 @@
                   "description": "ems"
                 }
               ],
-              "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
+              "description": "How blurred it is: its radius in ems."
             }
           },
           "additionalProperties": false
@@ -5654,7 +5655,7 @@
                   "description": "ems"
                 }
               ],
-              "description": "How blurred it is: its radius in ems. It is never wider than the widest blur the object key `blur` allows on the slide."
+              "description": "How blurred it is: its radius in ems."
             }
           },
           "additionalProperties": false
@@ -8217,7 +8218,7 @@
         },
         "scale": {
           "type": "number",
-          "minimum": 0.01,
+          "minimum": 0.000001,
           "maximum": 33554431,
           "description": "How much each copy is scaled from the one before. At 1, each copy is the same size as the one before."
         },
