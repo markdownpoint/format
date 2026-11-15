@@ -249,9 +249,11 @@ and no `frame`. For both codes, `path` names that key. `invalid-steps`,
 `invalid-initial`, and `invalid-comments` are only for a fault of the list or
 record as a whole. A step that isn't a record, or that shares another step's
 id, has `invalid-steps`. A value refused inside them has `invalid-value` at its
-own key. A value a collaborator set that MarkdownPoint can't read has the code
-and `path` the same value in the file would have. It is a warning, since the
-save leaves the value out, and its message says so.
+own key. `invalid-control-value` is only for a value a control's type refuses:
+the control's `default` or an instance's value. A value a collaborator set that
+MarkdownPoint can't read has the code and `path` the same value in the file
+would have. It is a warning, since the save leaves the value out, and its
+message says so.
 
 When MarkdownPoint reads the presentation's two files, it lists at most
 1,000 issues. The first error it finds is listed even past them. When it
@@ -263,7 +265,7 @@ The codes an issue can have:
 
 | What | Codes |
 |---|---|
-| A file, a record, or a value that isn't valid | `invalid-3d-parent`, `invalid-binding`, `invalid-chart-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-composition-object`, `invalid-compositions`, `invalid-constraint-target`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-theme-root`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
+| A file, a record, or a value that isn't valid | `invalid-3d-parent`, `invalid-binding`, `invalid-chart-colors`, `invalid-comments`, `invalid-composition`, `invalid-composition-id`, `invalid-composition-object`, `invalid-compositions`, `invalid-constraint-target`, `invalid-control-value`, `invalid-file-path`, `invalid-font`, `invalid-format-version`, `invalid-frame`, `invalid-frontmatter`, `invalid-generation`, `invalid-group-parent`, `invalid-icon`, `invalid-image-style`, `invalid-initial`, `invalid-json`, `invalid-json-root`, `invalid-layout`, `invalid-line-end`, `invalid-link`, `invalid-locale`, `invalid-marker`, `invalid-marker-id`, `invalid-media`, `invalid-object-id`, `invalid-object-type`, `invalid-objects`, `invalid-override-value`, `invalid-paragraph-id`, `invalid-parent-inverse`, `invalid-parent-node`, `invalid-placeholder`, `invalid-prompt`, `invalid-restyle`, `invalid-scheme`, `invalid-section-heading`, `invalid-slide-id`, `invalid-slides`, `invalid-steps`, `invalid-table`, `invalid-table-lengths`, `invalid-theme-file`, `invalid-theme-key`, `invalid-theme-master`, `invalid-type`, `invalid-uuid`, `invalid-value`, `invalid-web-video` |
 | Something needed that is missing | `missing-alt`, `missing-composition`, `missing-composition-marker`, `missing-control-block`, `missing-font`, `missing-frontmatter`, `missing-generation`, `missing-key`, `missing-marker-line-break`, `missing-media`, `missing-slide`, `missing-slide-marker`, `missing-text`, `missing-text-block`, `missing-theme-master` |
 | Something given twice | `duplicate-composition-id`, `duplicate-composition-marker`, `duplicate-control-block`, `duplicate-notes-block`, `duplicate-object-id`, `duplicate-paragraph-id`, `duplicate-section-marker`, `duplicate-slide-marker`, `duplicate-text-block` |
 | A name that nothing defines | `unknown-action`, `unknown-brand-color`, `unknown-category`, `unknown-color-role`, `unknown-composition`, `unknown-constraint-node`, `unknown-control`, `unknown-key`, `unknown-layout`, `unknown-link-slide`, `unknown-object`, `unknown-paragraph`, `unknown-parent-node`, `unknown-scheme`, `unknown-text-style` |
