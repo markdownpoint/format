@@ -5154,7 +5154,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1e+307,
-          "description": "How far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. Robert Penner's back curves use it the same way. The default is 1.70158."
+          "description": "How far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. Robert Penner's back curves and Blender's Back use it the same way. The default is 1.70158."
         }
       },
       "required": [

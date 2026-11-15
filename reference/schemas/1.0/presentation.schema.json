@@ -5450,7 +5450,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1e+307,
-          "description": "How far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. Robert Penner's back curves use it the same way. The default is 1.70158."
+          "description": "How far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. Robert Penner's back curves and Blender's Back use it the same way. The default is 1.70158."
         }
       },
       "required": [
@@ -10211,7 +10211,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places.",
+        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places. Its `with-previous` and `after-previous` start work as PowerPoint's With Previous and After Previous. On the first step, either starts it as the slide's transition ends, or with a Scroll as it starts.",
         "type": "object",
         "properties": {
           "id": {
@@ -10288,7 +10288,7 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. An `exponential-scale` move works as After Effects' Exponential Scale.",
                     "type": "object",
                     "properties": {
                       "begin": {
@@ -10382,7 +10382,7 @@
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1,
-                                    "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default is 0.5."
+                                    "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default 0.5 is Blender's Bounce."
                                   }
                                 },
                                 "required": [
@@ -11125,7 +11125,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11136,7 +11136,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11171,7 +11171,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11182,7 +11182,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11228,14 +11228,14 @@
                 "word",
                 "character"
               ],
-              "description": "What `carry-over` matches between two texts: objects, words, or characters."
+              "description": "What `carry-over` matches between two texts: objects, words, or characters. Keynote's Magic Move matches them the same way."
             },
             "start": {
               "enum": [
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11246,7 +11246,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11291,7 +11291,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11302,7 +11302,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11356,7 +11356,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11367,7 +11367,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11412,7 +11412,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11423,7 +11423,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11468,7 +11468,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11479,7 +11479,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11524,7 +11524,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11535,7 +11535,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11571,7 +11571,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11582,7 +11582,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
@@ -11626,7 +11626,7 @@
                 "on-click",
                 "automatically"
               ],
-              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`."
+              "description": "When it starts: on a click, or by itself after the slide's last step. The default is `on-click`. Keynote's Start Transition Automatically works the same way."
             },
             "delay": {
               "allOf": [
@@ -11637,7 +11637,7 @@
                   "description": "seconds"
                 }
               ],
-              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`."
+              "description": "How long a transition that starts by itself waits after the slide's last step ends. It goes only beside `start: automatically`. Keynote's Delay works the same way."
             }
           },
           "required": [
