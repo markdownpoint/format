@@ -1,6 +1,6 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations, and limits, and `mdpoint schema <operation>` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client. Each has an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
+The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations, and limits, and `mdpoint schema '{"selector":"<operation>"}'` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client. Each has an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
 
 ## The contract
 
@@ -10,11 +10,9 @@ The app answers it with any number of presentations open, or none. Its `methods`
 are `{ app, presentation }`: the methods the app answers on its own with no
 presentation open, and the methods it answers for a presentation. `schema` gives
 the request contracts one operation at a time. An agent never needs the whole
-proposal schema in its context. `mdpoint
-schema <operation> --fields` (MCP
-`fields: true`) lists the operation's
-fields instead of its schema: each field's type, whether every request needs
-it, and the values it accepts. `--json` prints one compact line for machines.
+proposal schema in its context. With `fields: true`, `schema` lists the
+operation's fields instead of its schema: each field's type, whether every
+request needs it, and the values it accepts.
 
 The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
@@ -24,7 +22,9 @@ comes in `/2`. Methods are grouped by what they act on into plural collections, 
 and `history`. The contract names its own facts in camelCase (`slides.get`,
 `insertSlide`, `nextClick`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
-tools are named after their methods in snake case (`slides_get`). A CLI command is its
+tools are named after their methods in snake case (`slides_get`). Each tool is a CLI
+command by that name too. It takes its request as JSON:
+`mdpoint slides_get '{"slideId":"intro"}'`. Any other CLI command is its
 method's names in kebab-case. Each collection is in the singular:
 `mdpoint
 presentation get` for `presentations.get` and `mdpoint image suggest-prompt` for
@@ -33,8 +33,7 @@ measure-3d`. A request's `type` is an operand:
 `mdpoint present
 control next-slide`. On the CLI's command line, a value is written in
 kebab-case (`set-screen` for `setScreen`), but a method or an
-operation name is written as the contract spells it (`mdpoint schema insertSteps`,
-`mdpoint call
+operation name is written as the contract spells it (`mdpoint call
 presentations.get`). The contract's codes, an issue's disposition among them,
 and the file's keys and values are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
@@ -49,7 +48,9 @@ presentation, then to the only open one. When several presentations are open and
 none is focused, pass `--presentation "/absolute/presentation/folder"` with a
 folder from `window list`. An MCP request names its presentation in
 `presentation`. Without it, the request goes to the focused presentation, then
-to the only open one. Configure an MCP client to run `mdpoint mcp` over stdio.
+to the only open one. A tool's CLI command names it in `presentation` too.
+Without it, the request goes to the presentation in the current folder, if
+there is one, then to the focused presentation, then to the only open one. Configure an MCP client to run `mdpoint mcp` over stdio.
 The CLI and MCP use the same live app API, validation, and proposals.
 `mdpoint
 call` also accepts a method name and JSON parameters directly. MCP
