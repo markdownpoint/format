@@ -4390,7 +4390,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size."
+              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it."
             },
             "scale": {
               "type": "number",
@@ -4540,7 +4540,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size."
+              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it."
             },
             "scale": {
               "type": "number",

@@ -5829,7 +5829,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size."
+              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it."
             },
             "scale": {
               "type": "number",
@@ -5979,7 +5979,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size."
+              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it."
             },
             "scale": {
               "type": "number",
@@ -10214,7 +10214,7 @@
     "steps": {
       "type": "array",
       "items": {
-        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places. Its `with-previous` and `after-previous` start work as PowerPoint's With Previous and After Previous. On the first step, either starts it as the slide's transition ends. A Scroll into the slide plays its first click with the move, whatever its start.",
+        "description": "One step: the keyframes and cues that a click or the previous step sets off. Its times and the times of its keyframes and cues are in seconds. They are rounded to six decimal places. Its `with-previous` and `after-previous` start work as PowerPoint's With Previous and After Previous. On the first step, either starts it as the slide's transition ends. A Scroll into the slide plays its first click with the move, whatever its start. A cue that starts a sound, a video, or a clip counts at its own time alone. The step doesn't wait for what it starts to play through. The Animate tab's Add Action gives a clip's step the Action's length as its `min-duration`.",
         "type": "object",
         "properties": {
           "id": {
@@ -10989,7 +10989,7 @@
       "additionalProperties": false
     },
     "text-model": {
-      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. It doesn't build words on a path. They draw flat and cause the warning `extrusion-with-text-path`. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions.",
+      "description": "A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. It doesn't build words on a path. They draw flat and cause the warning `extrusion-with-text-path`. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from: the words, the values of the fields they show, the presentation's `locale`, and the text's style and layout. Once any of them changes, the words draw flat until the model is built again. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. The text is never in a group or a composition. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions. Its letters are matte and lit only by the slide's lights and its World. With no light and the World's intensity at 0, its default, they draw black.",
       "anyOf": [
         {
           "type": "object",
@@ -11115,7 +11115,7 @@
       "additionalProperties": false
     },
     "transition": {
-      "description": "A slide transition. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object both slides share. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0.",
+      "description": "A slide transition. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object with the same id on both slides. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0.",
       "anyOf": [
         {
           "type": "object",
