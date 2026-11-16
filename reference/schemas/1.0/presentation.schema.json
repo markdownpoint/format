@@ -183,8 +183,11 @@
         "type": "object",
         "properties": {
           "layout": {
-            "type": "string",
-            "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "allOf": [
+              {
+                "$ref": "#/definitions/layout-key"
+              }
+            ],
             "description": "The key of the theme layout the slide uses."
           },
           "scheme": {
@@ -2829,7 +2832,7 @@
                           ]
                         },
                         "placeholder": {
-                          "type": "boolean"
+                          "$ref": "#/definitions/layout-key"
                         }
                       },
                       "required": [
@@ -3118,7 +3121,7 @@
                           ]
                         },
                         "placeholder": {
-                          "type": "boolean"
+                          "$ref": "#/definitions/layout-key"
                         }
                       },
                       "required": [
@@ -3312,7 +3315,7 @@
                           ]
                         },
                         "placeholder": {
-                          "type": "boolean"
+                          "$ref": "#/definitions/layout-key"
                         }
                       },
                       "required": [
@@ -8356,6 +8359,10 @@
           ]
         }
       ]
+    },
+    "layout-key": {
+      "type": "string",
+      "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
     },
     "line-end": {
       "description": "A line end attached to an object.",
