@@ -18,7 +18,7 @@ or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on into plural collections, such as
 `presentations`, `slides`, and `themes`. There is also an action group, `history`.
 The contract names its own facts in camelCase (`slides.get`,
-`applyToLayout`, `slideId`). A field that contains a file key's value is
+`themeRevision`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`slides_get`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
