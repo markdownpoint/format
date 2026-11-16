@@ -1,18 +1,16 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods, operations, and limits, and `mdpoint schema '{"selector":"<operation>"}'` gives one operation's schema. `mdpoint mcp` serves the tools to an MCP client. Each has an input schema. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
+The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods and limits. `mdpoint mcp` serves the tools to an MCP client. Each tool's input schema gives its request's fields, and `mdpoint help <tool>` prints them. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
 
 ## The contract
 
 `capabilities` is a compact index of the app's contract: the methods it
-serves, the operation names it accepts, its limits, and its interpolations.
+serves, its limits, and its interpolations.
 The app answers it with any number of presentations open, or none. Its `methods`
 are `{ app, presentation }`: the methods the app answers on its own with no
-presentation open, and the methods it answers for a presentation. `schema` gives
-the request contracts one operation at a time. An agent never needs the whole
-proposal schema in its context. With `fields: true`, `schema` lists the
-operation's fields instead of its schema: each field's type, whether every
-request needs it, and the values it accepts.
+presentation open, and the methods it answers for a presentation. Each tool's
+input schema gives its request's fields. `mdpoint help files_edit` prints them
+for one tool, and MCP lists each tool with its own.
 
 The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
@@ -20,7 +18,7 @@ or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on into plural collections, such as
 `presentations`, `slides`, and `themes`. There is also an action group, `history`.
 The contract names its own facts in camelCase (`slides.get`,
-`insertSlide`, `applyToLayout`, `slideId`). A field that contains a file key's value is
+`applyToLayout`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`slides_get`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
@@ -33,14 +31,13 @@ measure-3d`. A request's `type` is an operand:
 `mdpoint theme
 promote <slide-id> <object-id> apply-to-layout --revision <revision>`. On the
 CLI's command line, a value is written in
-kebab-case (`apply-to-layout` for `applyToLayout`), but a method or an
-operation name is written as the contract spells it (`mdpoint call
+kebab-case (`apply-to-layout` for `applyToLayout`), but a method name is
+written as the contract spells it (`mdpoint call
 presentations.get`). The contract's codes, an issue's disposition among them,
 and the file's keys and values are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
-alphabetically. The order is the same on every build. `type` is rarely an operation's first
-field.
+alphabetically. The order is the same on every build.
 
 A CLI request goes to the presentation that `--presentation` names by its folder
 or by a file in it. Without `--presentation`, the request goes to the
@@ -52,7 +49,7 @@ folder from `window list`. An MCP request names its presentation in
 to the only open one. A tool's CLI command names it in `presentation` too.
 Without it, the request goes to the presentation in the current folder, if
 there is one, then to the focused presentation, then to the only open one. Configure an MCP client to run `mdpoint mcp` over stdio.
-The CLI and MCP use the same live app API, validation, and proposals.
+The CLI and MCP use the same live app API and validation.
 `mdpoint
 call` also accepts a method name and JSON parameters directly. MCP
 lists each tool with a title and hints. The hints say whether the tool only
@@ -64,32 +61,23 @@ is plain data also has an output schema.
 
 ## Changing a presentation
 
-A change goes through a proposal, in five steps:
+An agent changes a presentation by editing its files. `files_read` reads them
+a part at a time. With no request, it reads the deck's part. With `slideIds` or
+`compositionIds`, it reads each slide's or composition's part. With
+`theme: true`, it reads the theme's files. A page's part comes with what the app
+works out of it, such as where each object is drawn. `files_edit` replaces an
+exact `old` text in a part with `new`. Each `old` occurs exactly once in its
+part. One request is one Undo step. Its answer gives each part it touched as the
+file now spells it, the new `revision`, the `issues` the request brought in, and
+those it `cleared`. Take the next `old` from there. `mdpoint files_edit
+edits.json` reads a request from a file.
 
-1. Read the presentation with `presentations.get`, or a slide with
-   `slides.get`. Keep its `revision`.
-2. Send the change with `proposals.create`: that `revision` and the
-   operations. MarkdownPoint checks them without applying them. When they
-   have errors, the call fails with `validation-failed`, and nothing is
-   kept.
-3. Read what the proposal says: `summaries` gives what each operation
-   does, and `validation` gives its warnings.
-4. Accept it with `proposals.accept`, or reject it with `proposals.reject`.
-5. Use the `revision` the accept returns for your next read or change.
-
-A proposal is stale once a slide it changes has changed since its
-revision. A proposal that changes the whole presentation is stale after
-any change. Once a proposal is made, a change to the theme makes it stale
-too. Read the presentation again, then make a stale proposal again. An
-accept that MarkdownPoint refuses, or that would change nothing, leaves the
-proposal invalid, and its `validation` says why. MarkdownPoint holds at most
-`limits.heldProposals` proposals at once. Stale and invalid proposals give
-way to new ones. A pending one stays until it is accepted or rejected.
-Accept answers a proposal by its state, held or retired: a stale one with
-`stale-revision` and the current `revision`, an invalid one with
-`validation-failed` and its `validation`, and an accepted or rejected one
-with `refused`. Reject rejects any held proposal, and answers a retired one
-the same way.
+`command` runs one of the app's own commands by its `id`. Each is one Undo
+step. Among them are “Change layout”, “Reset to Layout”, “Import 3D Model…”,
+the Arrange menu's commands, and one that brings a font from this computer into
+the theme. `history_undo` takes back the agent's own step by the `revision` the
+step answered, and `history_redo` does it again. A theme step also needs its
+`themeRevision`.
 
 ## Errors
 
@@ -98,9 +86,10 @@ line on stdout, `{"error": {"code": …, "message": …}}`, and nothing on stder
 Without it, the error prints on stderr. Its first line starts with its code,
 such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
-text. An error also includes what a caller needs to read beside its code: a
-refused proposal's `validation`, or a stale revision's `revision` and a stale
-theme's `themeRevision`. A check's
+text. An error also includes what a caller needs to read beside its code: the
+`issues` that fail an edit's validation, the `edit` whose `old` its part
+doesn't hold once, the numbers of a conflict's `slides`, or a stale revision's
+`revision` and a stale theme's `themeRevision`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
 prints `{ changed }` and exits 1 when anything would change. An error record
@@ -115,14 +104,14 @@ error stops it.
 | `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). `output` names that file, and `result` is the method's answer with the picture in it. | Save the picture from `result.image`. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. Make a stale proposal again. |
-| `validation-failed` | Errors stop the request. `validation` lists the proposal's errors, and `presentations.get` lists the presentation's own. | Fix those errors. |
-| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, proposal, or action of Meshy's library. A composition's id names no slide for Present. | Read the state again to get the ids. |
+| `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. |
+| `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `presentations.get` lists the presentation's own. | Fix those errors. |
+| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. A composition's id names no slide for Present. | Read the state again to get the ids. |
 | `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
-| `too-large` | The request is too large for one call: its size, a proposal's operations, a range's samples, or the proposals held at `limits.heldProposals`. | Send less at once, lower `sampleRate`, or reject a proposal. |
-| `busy` | Something that can't run at the same time is in progress. It might be accepting that proposal, another movie export, the presentation opening or closing, another device's turn to edit it, or your earlier requests to Meshy. | Try again when it's done. |
+| `too-large` | The request is too large for one call: its size or a range's samples. | Send less at once or lower `sampleRate`. |
+| `busy` | Something that can't run at the same time is in progress. It might be another movie export, the presentation opening or closing, another device's turn to edit it, or your earlier requests to Meshy. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
 `MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout in seconds for every call the CLI
@@ -174,8 +163,7 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   it names the slide, the composition, the object, or the control in the
   presentation's record, such as `slides.intro.objects.title`. An instance's
   text block is named by the instance's value for its control, such as
-  `slides.intro.objects.card.control-values.label`. An operation names it the
-  same way. A table's words that the theme gives its own object are in the
+  `slides.intro.objects.card.control-values.label`. A table's words that the theme gives its own object are in the
   theme's file instead. `location` names that file, and `path` the words under
   its `text`, such as `text.summary`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
