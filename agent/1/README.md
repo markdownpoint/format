@@ -17,12 +17,12 @@ time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
 or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on into plural collections, such as
 `presentations`, `slides`, and `themes`. There is also an action group, `history`.
-The contract names its own facts in camelCase (`slides.get`,
+The contract names its own facts in camelCase (`slides.measureContrast`,
 `themeRevision`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
-tools are named after their methods in snake case (`slides_get`). Each tool is a CLI
+tools are named after their methods in snake case (`files_read`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
-`mdpoint slides_get '{"slideId":"intro"}'`. `3D` is one word: `slides.measure3D`
+`mdpoint files_read '{"slideIds":["intro"]}'`. `3D` is one word: `slides.measure3D`
 is `slides_measure_3d`. The contract's codes, an issue's disposition among them,
 and the file's keys and values are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
@@ -89,7 +89,7 @@ error stops it.
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. |
-| `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `presentations.get` lists the presentation's own. | Fix those errors. |
+| `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `files.read` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The author or a collaborator changed what the edits change while they were taken in, or the theme's files changed meanwhile. `slides` gives the numbers of the slides where it happened. | Read the part again, then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
@@ -108,7 +108,7 @@ the app's state folder. The app records it there. The state folder is
 
 ### Issues
 
-An issue is a problem that `validate` and `presentations_get` find in the
+An issue is a problem that `validate` and `files_read` find in the
 files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
 `message` in English, and a `disposition`: what MarkdownPoint does about it.
 With `show-presentation`, the presentation is shown. Whatever can't be used
