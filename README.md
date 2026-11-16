@@ -83,7 +83,7 @@ MarkdownPoint doesn't copy unrelated files in the folder. Symbolic links and ali
 
 Files and folders whose names start with `.markdownpoint` belong to MarkdownPoint. They can be in the presentation's folder or next to it. They are never part of the presentation. Each example's `.gitignore` excludes them from git with the line `.markdownpoint*`.
 
-To start a presentation by hand, copy an example's whole folder. The example's theme is in its `themes` folder. `mdpoint presentation create <folder>` creates a new presentation with Basic and opens it if MarkdownPoint is running.
+To start a presentation by hand, copy an example's whole folder. The example's theme is in its `themes` folder. `mdpoint presentations_create '{"presentation":"<absolute folder>"}'` creates a new presentation with Basic and opens it if MarkdownPoint is running.
 
 ## Saved versions
 

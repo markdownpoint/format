@@ -22,36 +22,20 @@ The contract names its own facts in camelCase (`slides.get`,
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`slides_get`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
-`mdpoint slides_get '{"slideId":"intro"}'`. Any other CLI command is its
-method's names in kebab-case. Each collection is in the singular:
-`mdpoint
-presentation get` for `presentations.get` and `mdpoint image suggest-prompt` for
-`images.suggestPrompt`. `3D` is one word: `slides.measure3D` is `slides_measure_3d` and `mdpoint slide
-measure-3d`. A request's `type` is an operand:
-`mdpoint theme
-promote <slide-id> <object-id> apply-to-layout --revision <revision>`. On the
-CLI's command line, a value is written in
-kebab-case (`apply-to-layout` for `applyToLayout`), but a method name is
-written as the contract spells it (`mdpoint call
-presentations.get`). The contract's codes, an issue's disposition among them,
+`mdpoint slides_get '{"slideId":"intro"}'`. `3D` is one word: `slides.measure3D`
+is `slides_measure_3d`. The contract's codes, an issue's disposition among them,
 and the file's keys and values are kebab-case
 (`stale-revision`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically. The order is the same on every build.
 
-A CLI request goes to the presentation that `--presentation` names by its folder
-or by a file in it. Without `--presentation`, the request goes to the
-presentation in the current folder, if there is one, then to the focused
-presentation, then to the only open one. When several presentations are open and
-none is focused, pass `--presentation "/absolute/presentation/folder"` with a
-folder from `window list`. An MCP request names its presentation in
-`presentation`. Without it, the request goes to the focused presentation, then
-to the only open one. A tool's CLI command names it in `presentation` too.
-Without it, the request goes to the presentation in the current folder, if
-there is one, then to the focused presentation, then to the only open one. Configure an MCP client to run `mdpoint mcp` over stdio.
-The CLI and MCP use the same live app API and validation.
-`mdpoint
-call` also accepts a method name and JSON parameters directly. MCP
+A request names its presentation in `presentation`: its folder or a file in
+it. Without it, an MCP request goes to the focused presentation, then
+to the only open one, and a CLI request to the presentation in the current
+folder, if there is one, then to the focused presentation, then to the only open
+one. When several presentations are open and none is focused, name one with a
+folder from `windows_list`. Configure an MCP client to run `mdpoint mcp` over stdio.
+The CLI and MCP use the same live app API and validation. MCP
 lists each tool with a title and hints. The hints say whether the tool only
 reads, whether it may remove or replace what is there, whether calling it again
 changes nothing more, and whether it reaches outside MarkdownPoint. Outside
@@ -123,7 +107,7 @@ the app's state folder. The app records it there. The state folder is
 
 ### Issues
 
-An issue is a problem that `validate` and `presentation get` find in the
+An issue is a problem that `validate` and `presentations_get` find in the
 files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
 `message` in English, and a `disposition`: what MarkdownPoint does about it.
 With `show-presentation`, the presentation is shown. Whatever can't be used
