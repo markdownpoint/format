@@ -18,9 +18,9 @@ The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
 or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on into plural collections, such as
-`presentations`, `slides`, and `themes`. There are also two action groups, `present`
-and `history`. The contract names its own facts in camelCase (`slides.get`,
-`insertSlide`, `nextClick`, `slideId`). A field that contains a file key's value is
+`presentations`, `slides`, and `themes`. There is also an action group, `history`.
+The contract names its own facts in camelCase (`slides.get`,
+`insertSlide`, `applyToLayout`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`slides_get`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
@@ -30,9 +30,10 @@ method's names in kebab-case. Each collection is in the singular:
 presentation get` for `presentations.get` and `mdpoint image suggest-prompt` for
 `images.suggestPrompt`. `3D` is one word: `slides.measure3D` is `slides_measure_3d` and `mdpoint slide
 measure-3d`. A request's `type` is an operand:
-`mdpoint present
-control next-slide`. On the CLI's command line, a value is written in
-kebab-case (`set-screen` for `setScreen`), but a method or an
+`mdpoint theme
+promote <slide-id> <object-id> apply-to-layout --revision <revision>`. On the
+CLI's command line, a value is written in
+kebab-case (`apply-to-layout` for `applyToLayout`), but a method or an
 operation name is written as the contract spells it (`mdpoint call
 presentations.get`). The contract's codes, an issue's disposition among them,
 and the file's keys and values are kebab-case
