@@ -16,16 +16,16 @@ The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
 or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on into plural collections, such as
-`presentations`, `files`, and `slides`. There is also an action group, `history`.
+`presentations`, `files`, and `slides`.
 The contract names its own facts in camelCase (`slides.measureContrast`,
-`themeRevision`, `slideId`). A field that contains a file key's value is
+`objectIds`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`files_read`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
 `mdpoint files_read '{"slideIds":["intro"]}'`. `3D` is one word: `slides.measure3D`
 is `slides_measure_3d`. The contract's codes, an issue's disposition among them,
 and the file's keys and values are kebab-case
-(`stale-revision`, `text-overflow`). Order has no
+(`unknown-target`, `text-overflow`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically. The order is the same on every build.
 
@@ -52,16 +52,15 @@ a part at a time. With no request, it reads the deck's part. With `slideIds` or
 works out of it, such as where each object is drawn. `files_edit` replaces an
 exact `old` text in a part with `new`. Each `old` occurs exactly once in its
 part. One request is one Undo step. Its answer gives each part it touched as the
-file now spells it, the new `revision`, the `issues` the request brought in with
+file now spells it, the `issues` the request brought in with
 every word warning standing on the slides it edited, and those it `cleared`. Take the next `old` from there. `mdpoint files_edit
 edits.json` reads a request from a file.
 
 `command` runs one of the app's own commands by its `id`. Each is one Undo
 step. Among them are “Change layout”, “Reset to Layout”, “Import 3D Model…”,
 the Arrange menu's commands, and one that brings a font from this computer into
-the theme. `history_undo` takes back the agent's own step by the `revision` the
-step answered, and `history_redo` does it again. A theme step also needs its
-`themeRevision`.
+the theme. The author takes back a request with Edit > Undo. To take back your
+own change, edit the files again.
 
 ## Errors
 
@@ -72,8 +71,7 @@ such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
 text. An error also includes what a caller needs to read beside its code: the
 `issues` that fail an edit's validation, the `edit` whose `old` its part
-doesn't hold once, the numbers of a conflict's `slides`, or a stale revision's
-`revision` and a stale theme's `themeRevision`. A check's
+doesn't hold once, or the numbers of a conflict's `slides`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
 prints `{ changed }` and exits 1 when anything would change. An error record
@@ -88,10 +86,9 @@ error stops it.
 | `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). `output` names that file, and `result` is the method's answer with the picture in it. | Save the picture from `result.image`. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. |
 | `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `files.read` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
-| `conflict` | The author or a collaborator changed what the edits change while they were taken in, or the theme's files changed meanwhile. `slides` gives the numbers of the slides where it happened. | Read the part again, then retry. |
+| `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slides` gives the numbers of the slides where it happened. | Read the part or the theme again, then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't take the connection in time, or didn't answer within `MARKDOWNPOINT_CALL_TIMEOUT`. | The request may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size or a range's samples. | Send less at once or lower `sampleRate`. |
