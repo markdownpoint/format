@@ -90,16 +90,17 @@ error stops it.
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `stale-revision` | The presentation has changed since the `revision` you sent, or its theme since the `themeRevision` you sent. | Read it again. `revision` is the presentation's current revision, and `themeRevision` the theme's. |
 | `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `presentations.get` lists the presentation's own. | Fix those errors. |
-| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. A composition's id names no slide for Present. | Read the state again to get the ids. |
-| `conflict` | The presentation's files changed on disk while MarkdownPoint was saving them. Another change was saved first. | Read the state again, then retry. |
+| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
+| `conflict` | The author or a collaborator changed what the edits change while they were taken in, or the theme's files changed meanwhile. `slides` gives the numbers of the slides where it happened. | Read the part again, then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
-| `timeout` | MarkdownPoint didn't answer in time. | The request may still take effect. Read the state before you retry a change. |
+| `timeout` | MarkdownPoint didn't take the connection in time, or didn't answer within `MARKDOWNPOINT_CALL_TIMEOUT`. | The request may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size or a range's samples. | Send less at once or lower `sampleRate`. |
 | `busy` | Something that can't run at the same time is in progress. It might be another movie export, the presentation opening or closing, another device's turn to edit it, or your earlier requests to Meshy. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
 `MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout in seconds for every call the CLI
-makes. Without it, each method uses its own timeout. The CLI connects to
+makes. Without it, a call waits until the app answers or the connection closes.
+An export or a model build takes as long as its work. The CLI connects to
 the app's endpoint: a socket on a Mac and a named pipe on Windows. It
 looks for the endpoint in `--endpoint`, then `MARKDOWNPOINT_ENDPOINT`, then in
 the app's state folder. The app records it there. The state folder is
