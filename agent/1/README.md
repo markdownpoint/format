@@ -16,7 +16,7 @@ The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
 or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Methods are grouped by what they act on into plural collections, such as
-`presentations`, `slides`, and `themes`. There is also an action group, `history`.
+`presentations`, `files`, and `slides`. There is also an action group, `history`.
 The contract names its own facts in camelCase (`slides.measureContrast`,
 `themeRevision`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
