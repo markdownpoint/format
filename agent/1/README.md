@@ -52,8 +52,8 @@ a part at a time. With no request, it reads the deck's part. With `slideIds` or
 works out of it, such as where each object is drawn. `files_edit` replaces an
 exact `old` text in a part with `new`. Each `old` occurs exactly once in its
 part. One request is one Undo step. Its answer gives each part it touched as the
-file now spells it, the new `revision`, the `issues` the request brought in, and
-those it `cleared`. Take the next `old` from there. `mdpoint files_edit
+file now spells it, the new `revision`, the `issues` the request brought in with
+every word warning standing on the slides it edited, and those it `cleared`. Take the next `old` from there. `mdpoint files_edit
 edits.json` reads a request from a file.
 
 `command` runs one of the app's own commands by its `id`. Each is one Undo
