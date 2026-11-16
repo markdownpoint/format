@@ -10,12 +10,13 @@ Constraints==.==
 
 <!-- notes -->
 The lamp's shade turns toward the mug with an `aim` constraint on the lamp's
-shade `node`. The mug slides in, and its `scale.x` keyframes stretch it along x
-on the way. Its `squash-and-stretch` constraint has x as its `free-axis`. It
-makes y and z thinner as x stretches. It pulls the mug's volume toward 0.9 times
-its volume before the stretch (a `volume` of 0.9). Its `strength` is 0.9. The
-mug's rotation is written as a quaternion (`rotation-mode`). The camera follows
-the mug a quarter of the way along x. It uses a `position` constraint with
-`axes` set to `["x"]`, a `strength` of 0.25, and `relative-to-target` set to false.
-The camera's `motion-blur` shows only in movies and in the Agent's rendered
-frames.
+shade `node`. The mug slides in and stops. A mug is rigid and keeps its shape.
+As it stops, it tips toward its travel and rocks back upright. Its rotation is
+written as a quaternion (`rotation-mode`), and each `rotation` keyframe holds a
+whole turn. Then a rubber ball drops beside the mug and bounces to rest. Its
+`scale.y` keyframes stretch it along each fall and squash it at each contact.
+Its `squash-and-stretch` constraint scales x and z to keep its volume. The
+camera follows the mug a quarter of the way along x. It uses a `position`
+constraint with `axes` set to `["x"]`, a `strength` of 0.25, and
+`relative-to-target` set to false. The camera's `motion-blur` shows only in
+movies and in the Agent's rendered frames.

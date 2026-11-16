@@ -450,25 +450,14 @@ Models, lights, shadow catchers, the floor, and the camera are placed in a 3D sp
 
 ```json
 {
-  "id": "mug",
+  "id": "ball",
   "type": "model",
-  "file": "media/coffee-cup-baf4d2ac.glb",
-  "name": "Mug",
-  "position": {"x": 1260, "y": 160, "z": 0},
-  "rotation-mode": "quaternion",
-  "rotation": {"w": 0.965926, "x": 0, "y": -0.258819, "z": 0},
-  "scale": {"x": 3, "y": 3, "z": 3},
-  "constraints": [
-    {
-      "id": "stretch",
-      "type": "squash-and-stretch",
-      "mode": "single-axis",
-      "free-axis": "x",
-      "volume": 0.9,
-      "strength": 0.9
-    }
-  ],
-  "alt": "A coffee mug"
+  "file": "media/ball-22b1e529.glb",
+  "name": "Ball",
+  "position": {"x": 1660, "y": 160, "z": 0},
+  "scale": {"x": 0.18, "y": 0.18, "z": 0.18},
+  "constraints": [{"id": "squash", "type": "squash-and-stretch"}],
+  "alt": "A rubber ball that bounces to rest beside the mug"
 }
 ```
 

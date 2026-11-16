@@ -51,8 +51,18 @@
           "rotation-mode": "quaternion",
           "rotation": {"w":0.965926,"x":0,"y":-0.258819,"z":0},
           "scale": {"x":3,"y":3,"z":3},
-          "constraints": [{"id":"stretch","type":"squash-and-stretch","mode":"single-axis","free-axis":"x","volume":0.9,"strength":0.9}],
           "alt": "A coffee mug"
+        },
+
+        {
+          "id": "ball",
+          "type": "model",
+          "file": "media/ball-22b1e529.glb",
+          "name": "Ball",
+          "position": {"x":1660,"y":160,"z":0},
+          "scale": {"x":0.18,"y":0.18,"z":0.18},
+          "constraints": [{"id":"squash","type":"squash-and-stretch"}],
+          "alt": "A rubber ball that bounces to rest beside the mug"
         },
 
         {
@@ -80,6 +90,7 @@
         }
       ],
       "initial": {
+        "ball.position.y": 1300,
         "mug.position.x": 1720
       },
       "steps": [
@@ -93,10 +104,53 @@
                 "stops": {"time":0.4,"value":1260,"interpolation":"ease-out"}
               }
             },
-            "mug.scale.x": {
+            "mug.position.y": {
               "keyframes": {
-                "stretched": {"time":0.15,"value":3.6},
-                "settled": {"time":0.45,"value":3,"interpolation":"ease-out"}
+                "on-floor": {"time":0.4,"value":160},
+                "on-edge": {"time":0.5,"value":168,"interpolation":"ease-out"},
+                "down": {"time":0.75,"value":160,"interpolation":"ease-in"}
+              }
+            },
+            "mug.rotation": {
+              "keyframes": {
+                "upright": {"time":0.4,"value":{"w":0.965926,"x":0,"y":-0.258819,"z":0}},
+                "tipped": {"time":0.5,"value":{"w":0.965337,"x":0.009033,"y":-0.258661,"z":0.03371},"interpolation":"ease-out"},
+                "settled": {"time":0.75,"value":{"w":0.965926,"x":0,"y":-0.258819,"z":0},"interpolation":{"type":"spring","damping-ratio":0.5}}
+              }
+            }
+          }
+        },
+        {
+          "id": "drop",
+          "start": "after-previous",
+          "min-duration": 1.3,
+          "curves": {
+            "ball.position.y": {
+              "keyframes": {
+                "hit-1": {"time":0.278,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0,"x2":0.666667,"y2":0.333333}},
+                "rise-1": {"time":0.445,"value":570.4,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0.666667,"x2":0.666667,"y2":1}},
+                "hit-2": {"time":0.612,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0,"x2":0.666667,"y2":0.333333}},
+                "rise-2": {"time":0.713,"value":307.74,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0.666667,"x2":0.666667,"y2":1}},
+                "hit-3": {"time":0.813,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0,"x2":0.666667,"y2":0.333333}},
+                "rise-3": {"time":0.873,"value":213.19,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0.666667,"x2":0.666667,"y2":1}},
+                "hit-4": {"time":0.933,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0,"x2":0.666667,"y2":0.333333}},
+                "rise-4": {"time":0.969,"value":179.15,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0.666667,"x2":0.666667,"y2":1}},
+                "hit-5": {"time":1.005,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.333333,"y1":0,"x2":0.666667,"y2":0.333333}}
+              }
+            },
+            "ball.scale.y": {
+              "keyframes": {
+                "stretch-1": {"time":0.245,"value":0.216,"interpolation":"ease-in"},
+                "squash-1": {"time":0.278,"value":0.144},
+                "leave-1": {"time":0.312,"value":0.2016},
+                "round-1": {"time":0.445,"value":0.18,"interpolation":"ease-in-out"},
+                "stretch-2": {"time":0.579,"value":0.2016,"interpolation":"ease-in"},
+                "squash-2": {"time":0.612,"value":0.1584},
+                "leave-2": {"time":0.646,"value":0.19296},
+                "round-2": {"time":0.713,"value":0.18,"interpolation":"ease-in-out"},
+                "stretch-3": {"time":0.779,"value":0.19296,"interpolation":"ease-in"},
+                "squash-3": {"time":0.813,"value":0.16704},
+                "settled": {"time":1.08,"value":0.18,"interpolation":{"type":"spring","damping-ratio":0.65}}
               }
             }
           }
