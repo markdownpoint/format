@@ -67,7 +67,7 @@ When you add or delete a slide, the plugin updates both presentation files. When
 
 Comment markers separate slides and text blocks. Each marker gives the id of its slide or object. A heading or horizontal rule doesn't start a slide.
 
-Each marker is on a line of its own. End every marker with a line break, even at the end of the file. Spaces or tabs before, inside, or after a marker don't change it. Between code fences, a line that looks like a marker is code.
+Each marker is on a line of its own. End every marker with a line break, even at the end of the file. Spaces or tabs before, inside, or after a marker don't change it. Between code fences, a marker-shaped line is code.
 
 The ids in the markers connect the two files. Keep a slide's id when changing its title or moving it. If you change the id, update it in both files.
 
@@ -142,7 +142,7 @@ A `---` must be inside a block. Directly under a slide's marker, before its firs
 
 ## Escapes
 
-To keep a line that looks like a marker inside its block, write a backslash after `<!--`, as in `<!--\ slide: example -->`. MarkdownPoint removes the backslash when it reads the file. The line is then the comment you meant.
+A comment line is marker-shaped when it holds one lowercase word, such as `<!-- todo -->`, or a lowercase word, a colon, and an id. A misspelled marker is marker-shaped too. To keep a marker-shaped line inside its block, write a backslash after `<!--`, as in `<!--\ slide: example -->`. MarkdownPoint writes the backslash for every such note it saves, and removes it when it reads the file. The line is then the comment you meant.
 
 This slide has a rule, a comment, and an escaped marker. Neither comment is shown:
 
