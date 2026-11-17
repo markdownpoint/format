@@ -1866,7 +1866,7 @@
                           "center",
                           "end"
                         ],
-                        "description": "Where the frame's moment falls in the shutter's opening. The default is center."
+                        "description": "Where the frame's moment falls in the shutter's opening: at its start, its center, or its end. The default is center."
                       },
                       "samples": {
                         "type": "integer",
