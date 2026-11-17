@@ -16,7 +16,7 @@ themes/<key>/
 
 ## Master, layouts, and slides
 
-The master applies to every slide. Layouts define the objects and placeholders for each kind of slide. A slide selects a layout and can add objects or override keys of the layout's objects.
+The master applies to every slide. Layouts define the objects and placeholders for each kind of slide. A slide selects a layout and can add objects or override keys of the layout's and the master's objects.
 
 For a title placeholder, the layout sets its position and text style. Each slide supplies the title text in its Markdown block.
 

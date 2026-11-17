@@ -21,7 +21,7 @@ Keep the presentation's whole folder in your vault and open `slides.md` in Obsid
 
 Each slide has an id. Its marker in `slides.md` and its entry in `presentation.mdpoint` use the same id. Text blocks use the ids of their objects. To move a slide, move its whole block in `slides.md`. Its id doesn't change.
 
-Objects use the selected theme's fonts, color schemes, text styles, and layouts. A slide can add objects and override keys of the objects it inherits from its layout.
+Objects use the selected theme's fonts, color schemes, text styles, and layouts. A slide can add objects and override keys of the objects it inherits from its layout and master.
 
 Text and image objects use a 2D frame for position and size. A 3D model has a position, rotation, and scale. Keyframes animate an object's parameters over time. The [reference](reference/1.0.md#objects) lists each key's units, defaults, and allowed values.
 
