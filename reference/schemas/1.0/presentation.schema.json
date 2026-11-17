@@ -4064,7 +4064,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The composition's name: one line that isn't blank and has no control characters or line breaks. Without it, MarkdownPoint shows the composition's id."
+            "description": "The composition's name: one line that isn't blank and has no control characters or line breaks. The default is the composition's id with spaces for its hyphens and a capital first letter."
           },
           "size": {
             "description": "Its size in canvas units.",
