@@ -8611,7 +8611,8 @@
       "required": [
         "id",
         "type",
-        "frame"
+        "frame",
+        "chart-type"
       ],
       "additionalProperties": false
     },

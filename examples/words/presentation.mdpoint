@@ -24,6 +24,7 @@
         {
           "id": "sales",
           "type": "chart",
+          "chart-type": "column",
           "frame": {
             "x": 1000,
             "y": 340,

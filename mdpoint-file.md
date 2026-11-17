@@ -214,6 +214,7 @@ The table's first column is its header (`header-column`), and its first row is a
   {
     "id": "sales",
     "type": "chart",
+    "chart-type": "column",
     "frame": {"x": 1000, "y": 340, "width": 800, "height": 420},
     "series-colors": ["text", "accent"]
   },
