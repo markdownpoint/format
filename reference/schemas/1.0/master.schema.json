@@ -2794,7 +2794,7 @@
                         "description": "degrees"
                       }
                     ],
-                    "description": "It turns about the horizontal axis. It is 0 when left out. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way."
+                    "description": "It turns about the horizontal axis. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way."
                   },
                   "y": {
                     "allOf": [
@@ -2805,9 +2805,13 @@
                         "description": "degrees"
                       }
                     ],
-                    "description": "It turns about the vertical axis. It is 0 when left out. With a positive y, its left side comes forward. The group's rotation comes first, then the y turn, then the x turn."
+                    "description": "It turns about the vertical axis. With a positive y, its left side comes forward. The group's rotation comes first, then the y turn, then the x turn."
                   }
                 },
+                "required": [
+                  "x",
+                  "y"
+                ],
                 "additionalProperties": false
               },
               "auto-layout": {
@@ -3185,29 +3189,12 @@
                 "type": "object",
                 "properties": {
                   "offset": {
-                    "type": "object",
-                    "properties": {
-                      "x": {
-                        "type": "number",
-                        "minimum": -1000000000000000000,
-                        "maximum": 1000000000000000000,
-                        "description": "canvas units"
-                      },
-                      "y": {
-                        "type": "number",
-                        "minimum": -1000000000000000000,
-                        "maximum": 1000000000000000000,
-                        "description": "canvas units"
-                      },
-                      "z": {
-                        "type": "number",
-                        "minimum": -1000000000000000000,
-                        "maximum": 1000000000000000000,
-                        "description": "canvas units"
+                    "allOf": [
+                      {
+                        "$ref": "#/definitions/space-position"
                       }
-                    },
-                    "additionalProperties": false,
-                    "description": "Where the camera starts: an {x, y, z} offset from its set position. An axis left out doesn't move."
+                    ],
+                    "description": "Where the camera starts: an {x, y, z} offset from its set position."
                   },
                   "duration": {
                     "allOf": [
@@ -3917,6 +3904,10 @@
                         "description": "Its height, along its own y."
                       }
                     },
+                    "required": [
+                      "x",
+                      "y"
+                    ],
                     "additionalProperties": false
                   }
                 },
@@ -4133,7 +4124,7 @@
   "additionalProperties": false,
   "definitions": {
     "anchor-point": {
-      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's box. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. An object's own anchor point needs both x and y. Leaving it out is the only way to the default.",
+      "description": "The point an object turns and scales about. A group also tilts about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's box. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. Leaving it out is the only way to the default.",
       "type": "object",
       "properties": {
         "x": {
@@ -4252,6 +4243,10 @@
               "description": "of the image"
             }
           },
+          "required": [
+            "x",
+            "y"
+          ],
           "additionalProperties": false,
           "description": "The point that stays in view: {x, y}. Each is a fraction of the image, across and down."
         }
@@ -7152,6 +7147,10 @@
               "description": "canvas units"
             }
           },
+          "required": [
+            "x",
+            "y"
+          ],
           "additionalProperties": false,
           "description": "The move from each copy to the next: {x, y} across and down. It is measured in the turned and scaled axes of the copy before."
         },
@@ -7193,7 +7192,7 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "The point the copies turn and scale about: {x, y}, both given. Each is a fraction of the box the object is drawn at, across and down. A group's is the group's box."
+          "description": "The point `rotation` and `scale` turn and scale the copies about: {x, y}. Each is a fraction of the box the object is drawn at, across and down. A group's is the group's box."
         },
         "stagger": {
           "allOf": [
