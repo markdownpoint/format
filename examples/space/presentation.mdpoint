@@ -107,8 +107,10 @@
             "mug.position.y": {
               "keyframes": {
                 "on-floor": {"time":0.4,"value":160},
-                "on-edge": {"time":0.5,"value":168,"interpolation":"ease-out"},
-                "down": {"time":0.75,"value":160,"interpolation":"ease-in"}
+                "on-edge": {"time":0.5,"value":167.1,"interpolation":"ease-out"},
+                "level": {"time":0.554,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.22,"y1":0,"x2":0.64,"y2":0.62}},
+                "rocked": {"time":0.583,"value":161.2,"interpolation":"ease-out"},
+                "down": {"time":0.636,"value":160,"interpolation":{"type":"cubic-bezier","x1":0.22,"y1":0,"x2":0.64,"y2":0.62}}
               }
             },
             "mug.rotation": {
