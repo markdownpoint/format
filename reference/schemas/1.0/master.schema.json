@@ -35,7 +35,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The theme's name: one line that isn't blank and has no control characters. The default is the theme's key with spaces for its hyphens and a capital first letter."
+      "description": "The theme's name: one line that isn't blank and has no control characters or line breaks. The default is the theme's key with spaces for its hyphens and a capital first letter."
     },
     "category": {
       "enum": [
@@ -465,7 +465,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The guide's name: one line that isn't blank and has no control characters."
+            "description": "The guide's name: one line that isn't blank and has no control characters or line breaks."
           },
           "locked": {
             "type": "boolean",
@@ -683,7 +683,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+        "pattern": "^(?![\\s\\S]{251})(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
       },
       "uniqueItems": true,
       "description": "The order of the layouts by key. Each is listed once. Unlisted layouts follow in key order. An entry that names no layout warns."
@@ -6980,8 +6980,8 @@
     },
     "nonblank-line": {
       "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn't blank and has no control characters"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])",
+      "description": "one line that isn't blank and has no control characters or line breaks"
     },
     "object-id": {
       "type": "string",

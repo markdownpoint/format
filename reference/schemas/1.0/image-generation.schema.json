@@ -24,7 +24,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The name MarkdownPoint gives an unnamed image object when it puts this image in place. It is one line that isn't blank and has no control characters. Without it, the name is made from the prompt."
+      "description": "The name an unnamed image object takes when this image is put in place: one line that isn't blank and has no control characters or line breaks. Without it, the name comes from the prompt."
     },
     "target": {
       "description": "What the image was made for.",
@@ -131,7 +131,7 @@
               "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "Who makes the image model: one line that isn't blank and has no control characters. MarkdownPoint writes `google` or `openai`."
+          "description": "Who makes the image model: one line that isn't blank and has no control characters or line breaks. MarkdownPoint writes `google` or `openai`."
         },
         "model": {
           "allOf": [
@@ -139,7 +139,7 @@
               "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "The image model's name: one line that isn't blank and has no control characters."
+          "description": "The image model's name: one line that isn't blank and has no control characters or line breaks."
         },
         "parameters": {
           "description": "The settings MarkdownPoint recorded, before a provider's adapter converts them.",
@@ -160,7 +160,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The size option chosen. It is one line that isn't blank and has no control characters."
+              "description": "The size option chosen. It is one line that isn't blank and has no control characters or line breaks."
             },
             "quality": {
               "allOf": [
@@ -168,7 +168,7 @@
                   "$ref": "#/definitions/nonblank-line"
                 }
               ],
-              "description": "The quality asked for in the model's own words. It is one line that isn't blank and has no control characters. Without it, no quality was asked for."
+              "description": "The quality asked for in the model's own words. It is one line that isn't blank and has no control characters or line breaks. Without it, no quality was asked for."
             }
           },
           "required": [
@@ -284,8 +284,8 @@
   "definitions": {
     "nonblank-line": {
       "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn't blank and has no control characters"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])",
+      "description": "one line that isn't blank and has no control characters or line breaks"
     },
     "sha256": {
       "type": "string",

@@ -24,7 +24,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The layout's name: one line that isn't blank and has no control characters. The default is the layout's key with spaces for its hyphens and a capital first letter."
+      "description": "The layout's name: one line that isn't blank and has no control characters or line breaks. The default is the layout's key with spaces for its hyphens and a capital first letter."
     },
     "scheme": {
       "type": "string",
@@ -8037,8 +8037,8 @@
     },
     "nonblank-line": {
       "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn't blank and has no control characters"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])",
+      "description": "one line that isn't blank and has no control characters or line breaks"
     },
     "object-id": {
       "type": "string",

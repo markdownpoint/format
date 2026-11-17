@@ -31,7 +31,7 @@
     },
     "theme": {
       "type": "string",
-      "pattern": "^(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^(?![\\s\\S]{256})(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
       "description": "The key of the presentation's theme. It's the name of the theme's folder in themes. The theme's master sets the slide size and `unit-scale`."
     },
     "transition": {
@@ -4064,7 +4064,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The composition's name: one line that isn't blank and has no control characters. Without it, MarkdownPoint shows the composition's id."
+            "description": "The composition's name: one line that isn't blank and has no control characters or line breaks. Without it, MarkdownPoint shows the composition's id."
           },
           "size": {
             "description": "Its size in canvas units.",
@@ -4129,7 +4129,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters or line breaks. Two controls can have the same name."
                     },
                     "type": {
                       "const": "text"
@@ -4159,7 +4159,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters or line breaks. Two controls can have the same name."
                     },
                     "type": {
                       "const": "number"
@@ -4210,7 +4210,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters or line breaks. Two controls can have the same name."
                     },
                     "type": {
                       "const": "color"
@@ -4249,7 +4249,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters or line breaks. Two controls can have the same name."
                     },
                     "type": {
                       "const": "boolean"
@@ -4284,7 +4284,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters or line breaks. Two controls can have the same name."
                     },
                     "type": {
                       "const": "choice"
@@ -4306,7 +4306,7 @@
                           },
                           "name": {
                             "type": "string",
-                            "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f])?(?![\\s\\S])",
+                            "pattern": "^[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029](?:[^,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*[^ \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff,\\uff0c\\u3001\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])?(?![\\s\\S])",
                             "description": "The words the author sees, on one line with no space at either end and no comma: \",\", \"，\", or \"、\"."
                           }
                         },
@@ -4346,7 +4346,7 @@
                           "$ref": "#/definitions/nonblank-line"
                         }
                       ],
-                      "description": "The name the author sees: one line that isn't blank and has no control characters. Two controls can have the same name."
+                      "description": "The name the author sees: one line that isn't blank and has no control characters or line breaks. Two controls can have the same name."
                     },
                     "type": {
                       "const": "media"
@@ -5227,7 +5227,7 @@
                 "$ref": "#/definitions/text"
               }
             ],
-            "description": "What it says. It isn't blank and has no control characters except line breaks and tabs."
+            "description": "What it says. It isn't blank and has no control characters except line breaks and tabs. Its line breaks are line feeds. A carriage return, alone or before a line feed, is read as a line feed."
           },
           "position": {
             "type": "object",
@@ -5288,7 +5288,7 @@
                       "$ref": "#/definitions/text"
                     }
                   ],
-                  "description": "What it says. It isn't blank and has no control characters except line breaks and tabs."
+                  "description": "What it says. It isn't blank and has no control characters except line breaks and tabs. Its line breaks are line feeds. A carriage return, alone or before a line feed, is read as a line feed."
                 }
               },
               "required": [
@@ -5504,8 +5504,8 @@
         },
         "name": {
           "type": "string",
-          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-          "description": "The name the comment shows for the author. It is one line that isn't blank and has no control characters."
+          "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])",
+          "description": "The name the comment shows for the author. It is one line that isn't blank and has no control characters or line breaks."
         }
       },
       "required": [
@@ -8362,7 +8362,7 @@
     },
     "layout-key": {
       "type": "string",
-      "pattern": "^(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+      "pattern": "^(?![\\s\\S]{251})(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
     },
     "line-end": {
       "description": "A line end attached to an object.",
@@ -8419,8 +8419,8 @@
     },
     "nonblank-line": {
       "type": "string",
-      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f][^\\u0000-\\u001f\\u007f-\\u009f]*(?![\\s\\S])",
-      "description": "one line that isn't blank and has no control characters"
+      "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])",
+      "description": "one line that isn't blank and has no control characters or line breaks"
     },
     "object-id": {
       "type": "string",
@@ -10023,7 +10023,7 @@
               "$ref": "#/definitions/nonblank-line"
             }
           ],
-          "description": "The style's name: one line that isn't blank and has no control characters."
+          "description": "The style's name: one line that isn't blank and has no control characters or line breaks."
         },
         "prompt": {
           "type": "string",
@@ -10238,7 +10238,7 @@
                 "$ref": "#/definitions/nonblank-line"
               }
             ],
-            "description": "The step's name: one line that isn't blank and has no control characters."
+            "description": "The step's name: one line that isn't blank and has no control characters or line breaks."
           },
           "start": {
             "enum": [
