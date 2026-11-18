@@ -243,7 +243,7 @@
               800,
               900
             ],
-            "description": "The font weight: 100 thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, or 900 black."
+            "description": "The font weight: 100 thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, or 900 black. Faces, under the master's `fonts`, says which face draws it."
           },
           "color": {
             "allOf": [
@@ -6936,7 +6936,7 @@
             800,
             900
           ],
-          "description": "The font weight: 100 thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, or 900 black."
+          "description": "The font weight: 100 thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, or 900 black. Faces, under the master's `fonts`, says which face draws it."
         },
         "color": {
           "allOf": [
