@@ -71,7 +71,8 @@ such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
 text. An error also includes what a caller needs to read beside its code: the
 `issues` that fail an edit's validation, the `edit` whose `old` its part
-doesn't hold once, or the numbers of a conflict's `slides`. A check's
+doesn't hold once, or the ids of a conflict's `slideIds` and
+`compositionIds`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
 prints `{ changed }` and exits 1 when anything would change. An error record
@@ -88,7 +89,7 @@ error stops it.
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `files.read` lists the presentation's own. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
-| `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slides` gives the numbers of the slides where it happened. | Read the part or the theme again, then retry. |
+| `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't take the connection in time, or didn't answer within `MARKDOWNPOINT_CALL_TIMEOUT`. | The request may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size or a range's samples. | Send less at once or lower `sampleRate`. |
