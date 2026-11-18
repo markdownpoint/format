@@ -102,7 +102,7 @@
               "description": "seconds"
             }
           ],
-          "description": "How long each slide stays before the next slide. The time starts once the slide's last step has played and its sound has ended. MarkdownPoint sets it to 5 when it makes a presentation self-playing."
+          "description": "How long each slide stays before the next slide. MarkdownPoint sets it to 5 when it makes a presentation self-playing."
         },
         "click-delay": {
           "allOf": [
