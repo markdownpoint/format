@@ -2850,7 +2850,7 @@
                             "dotted"
                           ]
                         },
-                        "placeholder": {
+                        "placeholder-layout": {
                           "$ref": "#/definitions/layout-key"
                         }
                       },
@@ -3139,7 +3139,7 @@
                             "dotted"
                           ]
                         },
-                        "placeholder": {
+                        "placeholder-layout": {
                           "$ref": "#/definitions/layout-key"
                         }
                       },
@@ -3333,7 +3333,7 @@
                             "dotted"
                           ]
                         },
-                        "placeholder": {
+                        "placeholder-layout": {
                           "$ref": "#/definitions/layout-key"
                         }
                       },
