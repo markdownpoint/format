@@ -639,31 +639,31 @@
               "type": "number",
               "minimum": -1,
               "maximum": 1,
-              "description": "How much lighter or darker the image is. 0 leaves it unchanged."
+              "description": "How much lighter or darker the image is. It is CSS's `brightness()` of 2 to the power of `exposure` on the sRGB values. 0 leaves it unchanged."
             },
             "contrast": {
               "type": "number",
               "minimum": -1,
               "maximum": 1,
-              "description": "How much more or less contrast the image has. 0 leaves it unchanged."
+              "description": "How much more or less contrast the image has. After `exposure`, it is CSS's `contrast()` of 1 + `contrast` on the sRGB values. 0 leaves it unchanged."
             },
             "saturation": {
               "type": "number",
               "minimum": -1,
               "maximum": 1,
-              "description": "How much more or less saturated the image's colors are. 0 leaves them unchanged."
+              "description": "How much more or less saturated the image's colors are. After `contrast`, it is CSS's `saturate()` of 1 + `saturation` on the sRGB values. 0 leaves them unchanged."
             },
             "temperature": {
               "type": "number",
               "minimum": -1,
               "maximum": 1,
-              "description": "How much warmer or cooler the image's colors are. 0 leaves them unchanged."
+              "description": "How much warmer or cooler the image's colors are. After `saturation`, red is multiplied by 1 + `temperature` ÷ 4 and blue by 1 − `temperature` ÷ 4. 0 leaves them unchanged."
             },
             "grayscale": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How far the image's colors fade to gray. 0 leaves them unchanged."
+              "description": "How far the colors fade to gray. It applies after `temperature`. 0 leaves them unchanged."
             },
             "drop-shadow": {
               "allOf": [
@@ -4447,7 +4447,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order: the same seed gives the same order."
+          "description": "The seed for a random order: the same seed gives the same order. The default is 0."
         },
         "spread": {
           "allOf": [
@@ -4597,7 +4597,7 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The seed for a random order: the same seed gives the same order."
+          "description": "The seed for a random order: the same seed gives the same order. The default is 0."
         },
         "spread": {
           "allOf": [
