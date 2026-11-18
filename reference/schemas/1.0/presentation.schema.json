@@ -10766,7 +10766,7 @@
                     },
                     "loop": {
                       "const": "repeat",
-                      "description": "With `repeat`, the Action plays again from the start of its `clip-trim` each time it ends."
+                      "description": "With `repeat`, the Action plays again from the start of its `clip-trim` each time it ends. Without it, it plays once, even an Action made to repeat. A model's `stride` times it by travel instead."
                     },
                     "clip-trim": {
                       "allOf": [
