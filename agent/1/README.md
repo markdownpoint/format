@@ -227,8 +227,8 @@ and no `frame`. For both codes, `path` names that key. `invalid-steps`,
 `invalid-initial`, and `invalid-comments` are only for a fault of the list or
 record as a whole. A step that isn't a record, or that shares another step's
 id, has `invalid-steps`. A value refused inside them has `invalid-value` at its
-own key. `invalid-control-value` is only for a value a control's type refuses:
-the control's `default` or an instance's value. A value a collaborator set that
+own key. `invalid-control-value` is only for a control's `default` or an
+instance's value in `control-values`. A value a collaborator set that
 MarkdownPoint can't read has the code and `path` the same value in the file
 would have. It is a warning, since the save leaves the value out, and its
 message says so.
