@@ -328,7 +328,7 @@
                 "$ref": "#/definitions/transition"
               }
             ],
-            "description": "The transition from this slide to the next, or none."
+            "description": "The transition from this slide to the next."
           },
           "overrides": {
             "type": "object",
@@ -5425,7 +5425,7 @@
       "additionalProperties": false
     },
     "auto-layout": {
-      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
+      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped. Any other line takes the box of its two ends, and a member group the box its own members take.",
       "type": "object",
       "properties": {
         "direction": {
@@ -5940,7 +5940,7 @@
               "description": "intervals"
             }
           ],
-          "description": "How many intervals the text waits between turns. The wait starts once the pieces before have arrived."
+          "description": "How many intervals the text waits between turns. `enter` says how they count."
         },
         "progress": {
           "type": "number",
@@ -6090,7 +6090,7 @@
               "description": "intervals"
             }
           ],
-          "description": "How many intervals the text waits between turns. The wait starts once the pieces before have left."
+          "description": "How many intervals the text waits between turns. `enter` says how they count."
         },
         "progress": {
           "type": "number",
@@ -6396,7 +6396,7 @@
             },
             "shape": {
               "const": "circle",
-              "description": "With `circle`, a radial gradient is round in any box. Without it, the gradient reaches the corners of the box it spans."
+              "description": "With `circle`, a radial gradient is round in any box."
             },
             "stops": {
               "allOf": [
@@ -10330,7 +10330,7 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. An `exponential-scale` move works as After Effects' Exponential Scale.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A slide's or a composition's `initial` takes `null` by the same rules. An `exponential-scale` move works as After Effects' Exponential Scale.",
                     "type": "object",
                     "properties": {
                       "begin": {

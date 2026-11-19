@@ -5129,7 +5129,7 @@
       "additionalProperties": false
     },
     "auto-layout": {
-      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped.",
+      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped. Any other line takes the box of its two ends, and a member group the box its own members take.",
       "type": "object",
       "properties": {
         "direction": {
@@ -5592,7 +5592,7 @@
               "description": "intervals"
             }
           ],
-          "description": "How many intervals the text waits between turns. The wait starts once the pieces before have arrived."
+          "description": "How many intervals the text waits between turns. `enter` says how they count."
         },
         "progress": {
           "type": "number",
@@ -5742,7 +5742,7 @@
               "description": "intervals"
             }
           ],
-          "description": "How many intervals the text waits between turns. The wait starts once the pieces before have left."
+          "description": "How many intervals the text waits between turns. `enter` says how they count."
         },
         "progress": {
           "type": "number",
@@ -6039,7 +6039,7 @@
             },
             "shape": {
               "const": "circle",
-              "description": "With `circle`, a radial gradient is round in any box. Without it, the gradient reaches the corners of the box it spans."
+              "description": "With `circle`, a radial gradient is round in any box."
             },
             "stops": {
               "allOf": [

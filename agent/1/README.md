@@ -1,6 +1,6 @@
 # MarkdownPoint agent contract, version 1
 
-The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself. `mdpoint capabilities` lists its methods and limits. `mdpoint mcp` serves the tools to an MCP client. Each tool's input schema gives its request's fields, and `mdpoint help <tool>` prints them. From MCP 2025-06-18 on, each tool whose result contains no picture also has an output schema.
+The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contract to talk to the running app. The app's own Agent uses the same methods. The app describes the contract itself.
 
 ## The contract
 
@@ -8,9 +8,11 @@ The `mdpoint` command and its MCP server use the `markdownpoint/agent/1` contrac
 serves, its limits, and its interpolations.
 The app answers it with any number of presentations open, or none. Its `methods`
 are `{ app, presentation }`: the methods the app answers on its own with no
-presentation open, and the methods it answers for a presentation. Each tool's
-input schema gives its request's fields. `mdpoint help files_edit` prints them
-for one tool, and MCP lists each tool with its own.
+presentation open, and the methods it answers for a presentation.
+`mdpoint --help` lists the tools and the CLI's own commands, such as `validate`
+and `format`. A tool's own `--help` gives its description and its request's
+fields. The description says what the tool does. The fields are the ones its
+input schema gives. MCP lists each tool with both.
 
 The contract is `markdownpoint/agent/1`, and the app serves one contract at a
 time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
@@ -22,10 +24,11 @@ The contract names its own facts in camelCase (`slides.measureContrast`,
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
 tools are named after their methods in snake case (`files_read`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
-`mdpoint files_read '{"slideIds":["intro"]}'`. `3D` is one word: `slides.measure3D`
+`mdpoint files_read '{"slideIds":["intro"]}'`, and prints its result as one line
+of JSON on stdout. `3D` is one word: `slides.measure3D`
 is `slides_measure_3d`. The contract's codes, an issue's disposition among them,
-and the file's keys and values are kebab-case
-(`unknown-target`, `text-overflow`). Order has no
+and the format's own keys and keyword values are kebab-case
+(`unknown-target`, `text-overflow`, `chart-type`). Order has no
 meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically. The order is the same on every build.
 
@@ -39,22 +42,23 @@ The CLI and MCP use the same live app API and validation. MCP
 lists each tool with a title and hints. The hints say whether the tool only
 reads, whether it may remove or replace what is there, whether calling it again
 changes nothing more, and whether it reaches outside MarkdownPoint. Outside
-means a paid service, an AI provider, another application, or the web. A tool
-whose result
-is plain data also has an output schema.
+means a paid service, an AI provider, another application, or the web. From
+MCP 2025-06-18 on, a tool whose result holds no picture also has an output
+schema.
 
 ## Changing a presentation
 
-An agent changes a presentation by editing its files. `files_read` reads them
-a part at a time. With no request, it reads the deck's part. With `slideIds` or
-`compositionIds`, it reads each slide's or composition's part. With
-`theme: true`, it reads the theme's files. A page's part comes with what the app
-works out of it, such as where each object is drawn. `files_edit` replaces an
-exact `old` text in a part with `new`. Each `old` occurs exactly once in its
-part. One request is one Undo step. Its answer gives each part it touched as the
-file now spells it, the `issues` the request brought in with
-every word warning standing on the slides it edited, and those it `cleared`. Take the next `old` from there. `mdpoint files_edit
-edits.json` reads a request from a file.
+An agent changes a presentation by editing its files. `files_read` reads them a
+part at a time: the deck's part, or the part of each slide and composition it
+names. With `theme: true`, it reads the theme's files. Its description says what
+each part holds. A page's part comes with what the app works out of it, such as
+where each object is drawn. `files_edit` replaces an exact `old` text in a part
+with `new`. Each `old` occurs exactly once in its part. Its description says how
+to add, move, or remove a page. One request is one Undo step. Its answer gives
+each part it touched as the file now spells it, the `issues` the request brought
+in with every `text-overflow` and `text-hidden` warning standing on the slides
+it edited, and those it `cleared`. Take the next `old` from there. `mdpoint
+files_edit edits.json` reads a request from a file.
 
 `command` runs one of the app's own commands by its `id`. Each is one Undo
 step. Among them are “Change layout”, “Reset to Layout”, “Import 3D Model…”,
@@ -70,12 +74,13 @@ Without it, the error prints on stderr. Its first line starts with its code,
 such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
 text. An error also includes what a caller needs to read beside its code: the
-`issues` that fail an edit's validation, the `edit` whose `old` its part
-doesn't hold once, or the ids of a conflict's `slideIds` and
-`compositionIds`. A check's
+`issues` that fail an edit's validation, the `edit` of a `refused` request
+whose `old` its part doesn't hold once, or the ids of a conflict's `slideIds`
+and `compositionIds`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
-prints `{ changed }` and exits 1 when anything would change. An error record
+prints `{ changed }`, the files that would change, and exits 1 when it lists
+any. An error record
 means the check couldn't run. MCP's own errors are JSON-RPC errors: an unknown
 tool, or arguments that aren't an object. The command exits 0 when it
 succeeds or a check passes, 1 when a check finds what fails it, and 2 when an
@@ -84,10 +89,10 @@ error stops it.
 | Code | What happened | What to do |
 |---|---|---|
 | `usage` | The command line is wrong (CLI only). | Read the command's `--help`. |
-| `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). `output` names that file, and `result` is the method's answer with the picture in it. | Save the picture from `result.image`. Running the command again makes it again. A paid method spends again. |
+| `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). The error's `output` names that file, and its `result` is the method's answer with the picture in it. | Save the picture from `result.image`: its `data` in base64, of the type `mimeType` names. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `validation-failed` | Errors stop the request. `issues` lists the errors the edits' files would have, and `files.read` lists the presentation's own. | Fix those errors. |
+| `validation-failed` | Errors stop the request. From `files_edit`, `issues` lists the errors the edits' files would have. Any other request stops on the presentation's own errors. `files_read` gives them. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
@@ -120,8 +125,8 @@ presentation's folder, and `theme` is its theme's. `line` and `column` say
 where in the file the problem is, counted from 1, when they're known. `path`
 selects the value the issue is about, one key after another from the root of
 the file `location` names. The presentation's two files read as one record.
-Its keys are the `.mdpoint` file's, and the `.md` file's frontmatter is under
-`frontmatter`. A key of ASCII letters, digits, `_`, and `-` that starts with
+Its keys are the `.mdpoint` file's, and the `.md` file's frontmatter and
+sections are under `frontmatter` and `sections`. A key of ASCII letters, digits, `_`, and `-` that starts with
 a letter or `_` follows a dot. A list item is its index in brackets, and any
 other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
 `slides.intro.initial["title.opacity"]`. An issue with a `path` always has a
@@ -146,8 +151,8 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   it names the slide, the composition, the object, or the control in the
   presentation's record, such as `slides.intro.objects.title`. An instance's
   text block is named by the instance's value for its control, such as
-  `slides.intro.objects.card.control-values.label`. A table's words that the theme gives its own object are in the
-  theme's file instead. `location` names that file, and `path` the words under
+  `slides.intro.objects.card.control-values.label`. A table's or a chart's
+  words that the theme gives its own object are in the theme's file instead. `location` names that file, and `path` the words under
   its `text`, such as `text.summary`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
   selects the record in the presentation's record. `location` names the line
@@ -163,9 +168,10 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   layout names and the master lacks comes once for each slide on the layout
   too. Its `path` is `scheme`. A file that a master or layout names and the
   theme's folder lacks is at each key that names it, as in
-  `objects.logo.file`. A theme font that no file brings is at its role in
-  `master.json`, as in `fonts.heading`. When only the slides that
-  use a layout or scheme are refused, `slideId` names the slide. A theme's
+  `objects.logo.file`, and each slide that shows it has the file's own issue
+  too. A theme font that no file brings is at its role in `master.json`, as in
+  `fonts.display`. When only the slides that use a layout are refused,
+  `slideId` names the slide. A theme's
   file that doesn't read is reported for its first fault only. The issue's
   code is the one the same fault has in a `.mdpoint` file, such as
   `unknown-key`, `missing-key`, or `invalid-json`. A fault in `master.json`
@@ -178,8 +184,8 @@ other key is a JSON string in brackets, as in `slides.intro.objects[2]` and
   when the issue is about one of the layout's objects. An issue about the
   whole theme, such as a missing theme that the presentation names, has none
   of these fields.
-- `file`: `file` is the path of the file the issue is about. It is a path in
-  the folder that `fileScope` names. `presentation` is the presentation's
+- `file`: the issue's own `file` is the path of the file it is about. It is a
+  path in the folder that the issue's own `fileScope` names. `presentation` is the presentation's
   folder, and `theme` is its theme's. `cache` is the folder on this computer
   where MarkdownPoint saves the models it builds from a text's letters.
   `bundled` is the fonts that ship with MarkdownPoint. The issue comes once
@@ -221,14 +227,15 @@ presentation's `locale`, or `invalid-icon` for an icon's `icon`. A refused
 value of any other key, such as `countdown` or an object's `opacity`, has
 `invalid-value`. An override's value that no object can take has
 `invalid-override-value`, whatever its key. Either way, `path` names the key.
-In any record, a key MarkdownPoint doesn't read has `unknown-key`. A record
+In a JSON file of a version MarkdownPoint knows, a key it doesn't read has
+`unknown-key`. The frontmatter keeps a key it doesn't read with no issue. A record
 that lacks a key it needs has `missing-key`. A record that lacks a key one of
 its other keys needs has `missing-key` too, such as a group with `auto-layout`
 and no `frame`. For both codes, `path` names that key. `invalid-steps`,
 `invalid-initial`, and `invalid-comments` are only for a fault of the list or
 record as a whole. A step that isn't a record, or that shares another step's
 id, has `invalid-steps`. A value refused inside them has `invalid-value` at its
-own key. `invalid-control-value` is only for a control's `default` or an
+own key, whatever its key. `invalid-control-value` is only for a control's `default` or an
 instance's value in `control-values`. A value a collaborator set that
 MarkdownPoint can't read has the code and `path` the same value in the file
 would have. It is a warning, since the save leaves the value out, and its
