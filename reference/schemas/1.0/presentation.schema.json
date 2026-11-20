@@ -27,7 +27,7 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Other tools leave it unchanged."
+      "description": "The id of the save that last wrote the file while people edited the presentation together. Other saves and other tools leave it unchanged."
     },
     "theme": {
       "type": "string",
@@ -5518,12 +5518,12 @@
       "description": "a color role or a hex color"
     },
     "comment-author": {
-      "description": "Who wrote a comment. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a collaboration service member, it is `shared:` followed by 64 lowercase hexadecimal digits. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id starts with `dbid:`.",
+      "description": "Who wrote a comment. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id starts with `dbid:`. For a Microsoft account user, it is `microsoft:` followed by the account's Microsoft Graph id in lowercase. That id is a UUID for a work or school account and 16 hexadecimal digits for a personal account.",
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|shared:[0-9a-f]{64}|dropbox:dbid:[A-Za-z0-9_-]+)(?![\\s\\S])",
+          "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|dropbox:dbid:[A-Za-z0-9_-]+|microsoft:(?:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[0-9a-f]{16}))(?![\\s\\S])",
           "description": "Who wrote it, if known. It is in one of the record's three forms."
         },
         "name": {
