@@ -19,7 +19,7 @@ time. From MarkdownPoint 1.0 on, the contract only grows. A new method, field,
 or value is added to `/1`, and a rename, a removal, or a change of meaning
 comes in `/2`. Most methods are grouped by what they act on into plural collections, such as
 `presentations`, `files`, and `slides`. `capabilities`, `reference`, and `command`
-stand alone.
+stand alone. `reference` reads the format reference or one of the app's guides.
 The contract names its own facts in camelCase (`slides.measureContrast`,
 `objectIds`, `slideId`). A field that contains a file key's value is
 spelled as the file spells the key (`text-styles`, `unit-scale`, `aspect-ratio`). MCP's
@@ -63,7 +63,8 @@ stdin with `-`.
 
 An edit or a command changes the presentation in its window. MarkdownPoint
 saves it as it saves the author's own edits. `files_read` reads the window's
-presentation. `validate` and `format` read the files on disk.
+presentation. `validate` and `format` read the files on disk. They see an edit
+once it is saved.
 
 `command` runs one of the app's own commands by its `id`. Each is one Undo
 step. Among them are “Change layout”, “Reset to layout”, “Import 3D model…”,
@@ -78,10 +79,11 @@ line on stdout, `{"error": {"code": …, "message": …}}`, and nothing on stder
 Without it, the error prints on stderr. Its first line starts with its code,
 such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
-text. An error also includes what a caller needs to read beside its code: the
+text. That record also includes what a caller needs to read beside its code: the
 `issues` that fail an edit's validation, the `edit` of a `refused` request
-whose `old` its part doesn't hold once, or the ids of a conflict's `slideIds`
-and `compositionIds`. A check's
+whose `old` isn't empty and its part doesn't hold once, or the ids of a conflict's `slideIds`
+and `compositionIds`. That `edit` is `{ index, found }`. `index` counts its
+place in `edits` from 0. `found` is how many times its part holds its `old`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
 prints `{ changed }`, the files that would change, and exits 1 when it lists
@@ -97,7 +99,7 @@ error stops it.
 | `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). The error's `output` names that file, and its `result` is the method's answer with the picture in it. | Save the picture from `result.image`: its `data` in base64, of the type `mimeType` names. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `validation-failed` | Errors stop the request. From `files_edit`, `issues` lists the errors the edits' files would have. Any other request stops on the presentation's own errors. `files_read` gives them. | Fix those errors. |
+| `validation-failed` | Errors stop the request. From `files_edit`, `issues` lists what the edits would bring in, their errors among them. From `files_read`, the files have never read, and `issues` gives the reader's errors. Another request stops on the presentation's errors that keep it from its work. `files_read` lists them. | Fix those errors. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
 | `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. A conflict only in the deck's part or the theme names neither. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
@@ -158,8 +160,8 @@ fields depend on its `source`:
   `frontmatter.footer` or `sections.intro`. For an issue in a slide's words,
   it names the slide, the composition, the object, or the control in the
   presentation's record, such as `slides.intro.objects.title`. An instance's
-  text block is named by the instance's value for its control, such as
-  `slides.intro.objects.card.control-values.label`. A table's or a chart's
+  text block, such as `<!-- text: card.label -->`, is named as its value for
+  that control would be: `slides.intro.objects.card.control-values.label`. A table's or a chart's
   words that the theme gives its own object are in the theme's file instead. `location` names that file, and `path` the words under
   its `text`, such as `text.summary`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
@@ -211,7 +213,10 @@ fields depend on its `source`:
   `font-files.Lato[0]`. A file that a member of a composition's instance or
   a repeater's copy shows is at the key the record that draws it writes. A font that ships with MarkdownPoint has no
   `path`. No key names it, and its issue comes once.
-- `slide`: `slideId`, and `objectId` or `objectIds`. When the issue is about
+- `slide`: `slideId`, and `objectId` or `objectIds`. An issue about the
+  slide's background or its transition names no object. Its `key` is the key,
+  such as `background.fill`, and `path` and `location` say where its value is
+  written. When the issue is about
   one of the object's keys, such as `text-style`, `key` names it, and `path`
   and `location` say where its value is written. The slide's own object and
   its override of an object it inherits are in the `.mdpoint` file, as in
@@ -224,7 +229,10 @@ fields depend on its `source`:
   the words' record. A link in words the theme gives its own object is in
   the theme's file.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
-  `objectIds`. A `render-failed` issue from drawing has neither.
+  `objectIds`. `text-overflow-unchecked` and a `render-failed` issue from
+  drawing have no `slideId`, `objectId`, or `objectIds`. `validate`
+  doesn't measure words: `text-overflow`, `text-hidden`, and
+  `text-overflow-unchecked` come only from the app.
 
 An issue about one object names it by `objectId`. An issue about several
 objects names them by `objectIds`, back to front as the slide paints them. No
