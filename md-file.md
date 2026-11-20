@@ -301,9 +301,9 @@ In a list item, each tab at the start of a line is read as the spaces up to the 
 
 ### Where it differs from CommonMark
 
-Bold and italic follow CommonMark except in one way. In CommonMark, a run of `*` between punctuation and a letter can open toward the letter but can't close. In MarkdownPoint, such a run can both open and close. So `**C++**17` is read as a bold “C++” followed by “17”, and `**Note:**This` as a bold “Note:” followed by “This”. In CommonMark, the asterisks in both stay as written.
+Bold and italic follow CommonMark except in one way. In CommonMark, a run of `*` between punctuation and a letter or a digit can open only when the letter or digit follows it, and close only when the letter or digit comes before it. In MarkdownPoint, such a run can both open and close. So `**C++**17` is read as a bold “C++” followed by “17”, and `**Note:**This` as a bold “Note:” followed by “This”. In CommonMark, the asterisks in both stay as written.
 
-The same rule applies to Chinese and Japanese. Both are written without spaces between words. In `これは**「重要」**です`, “「重要」” is bold. This matches the [CJK-friendly amendment](https://github.com/tats-u/markdown-cjk-friendly) to CommonMark.
+The same rule applies to Chinese and Japanese. Both are written without spaces between words. In `これは**「重要」**です`, “「重要」” is bold. The [CJK-friendly amendment](https://github.com/tats-u/markdown-cjk-friendly) to CommonMark reads these cases the same way. Unlike the amendment, MarkdownPoint applies the rule in every script, and only to `*`.
 
 The rule changes how one rare case is read. `*(*foo*)*` is read as italic parentheses around a plain “foo”. In CommonMark, it is one italic inside another. A run of `_` is read as in CommonMark.
 
@@ -351,7 +351,7 @@ MarkdownPoint can't read the file if it contains any of these, among other probl
 - `markdownpoint` without quotes, or with a major version other than 1
 - a slide marker without its entry in the .mdpoint file, or an entry without its marker
 - a code block outside a quote or a list item that is never closed and contains a marker
-- a merge conflict that git left outside a code block: from its `<<<<<<<` line to its `>>>>>>>` line
+- a merge conflict that git left outside a code block: from a line that starts with `<<<<<<<` and a space to a later line that starts with `>>>>>>>` and a space
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line, such as `"footer": Q3`
 
 A comment line counts as an incorrectly written marker when it starts with a marker's word in any letter case and has at most one other word. A closing slash, or words after `-->`, don't change this.
