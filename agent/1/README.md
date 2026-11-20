@@ -253,7 +253,9 @@ In a JSON file of a version MarkdownPoint knows, a key it doesn't read has
 `unknown-key`. The frontmatter keeps a key it doesn't read with no issue. A record
 that lacks a key it needs has `missing-key`. A record that lacks a key one of
 its other keys needs has `missing-key` too, such as a group with `auto-layout`
-and no `frame`. For both codes, `path` names that key. `invalid-steps`,
+and no `frame`. An object that lacks a key it draws without, an icon's `icon`,
+a video's `file`, or a shape's `shape-type`, has `missing-key` as a warning,
+unless a binding names the key. For these codes, `path` names that key. `invalid-steps`,
 `invalid-initial`, and `invalid-comments` are only for a fault of the list or
 record as a whole. A step that isn't a record, or that shares another step's
 id, has `invalid-steps`. A value refused inside them has `invalid-value` at its
