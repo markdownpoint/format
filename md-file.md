@@ -350,7 +350,7 @@ MarkdownPoint can't read the file if it contains any of these, among other probl
 - a section without its `# Name` line
 - `markdownpoint` without quotes, or with a major version other than 1
 - a slide marker without its entry in the .mdpoint file, or an entry without its marker
-- a code block that is never closed and contains a marker
+- a code block outside a quote or a list item that is never closed and contains a marker
 - a merge conflict that git left outside a code block: from its `<<<<<<<` line to its `>>>>>>>` line
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line, such as `"footer": Q3`
 
