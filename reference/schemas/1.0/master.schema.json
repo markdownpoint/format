@@ -271,7 +271,7 @@
               "lower",
               "capitalize"
             ],
-            "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, the first letter of each word is a capital."
+            "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, each word starts with a capital."
           },
           "padding-top": {
             "allOf": [
@@ -366,7 +366,7 @@
                       "lower",
                       "capitalize"
                     ],
-                    "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, the first letter of each word is a capital."
+                    "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, each word starts with a capital."
                   }
                 },
                 "additionalProperties": false,
@@ -6953,7 +6953,7 @@
             "lower",
             "capitalize"
           ],
-          "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, the first letter of each word is a capital."
+          "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, each word starts with a capital."
         }
       },
       "additionalProperties": false
