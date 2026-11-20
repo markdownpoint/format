@@ -10331,7 +10331,7 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A `null` on a key its object can't be read without, such as a shadow catcher's `width` or a point light's `intensity`, causes an `ignored-animation-value` warning and is ignored. A slide's or a composition's `initial` takes `null` by the same rules. An `exponential-scale` move works as After Effects' Exponential Scale.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter at its time. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A `null` on a key its object can't be read without, such as a shadow catcher's `width` or a point light's `intensity`, causes an `ignored-animation-value` warning and is ignored. A slide's or a composition's `initial` takes `null` by the same rules. An `exponential-scale` move works as After Effects' Exponential Scale.",
                     "type": "object",
                     "properties": {
                       "begin": {
@@ -10544,7 +10544,7 @@
                           },
                           "orient": {
                             "type": "boolean",
-                            "description": "Whether the object turns to face along the path."
+                            "description": "Whether the object turns to face along the path. The default is false."
                           }
                         },
                         "required": [
