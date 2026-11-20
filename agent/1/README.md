@@ -53,11 +53,14 @@ part at a time: the deck's part, or the part of each slide and composition it
 names. With `theme: true`, it reads the theme's files. Its description says what
 each part holds. A page's part comes with what the app works out of it, such as
 where each object is drawn. `files_edit` replaces an exact `old` text in a part
-with `new`. Each `old` occurs exactly once in its part. Its description says how
-to add, move, or remove a page. One request is one Undo step. Its answer gives
-each part it touched as the file now spells it, the `issues` the request brought
-in with every `text-overflow` and `text-hidden` warning standing on the slides
-it edited, and those it `cleared`. Take the next `old` from there. A tool also
+with `new`. Each `old` occurs exactly once in its part as the request's edits
+before it leave the part. An empty `old` writes a part that is empty now. Its
+description says how to add, move, or remove a page. One request is one Undo
+step. When the app refuses it with `refused`, `validation-failed`, or
+`conflict`, nothing changed. Its answer gives
+each part it touched as the file now spells it, the `issues` the request
+brought in with every `text-overflow` and `text-hidden` warning standing on the
+slides it edited, and those it `cleared`. Take the next `old` from there. A tool also
 reads its request from a file, as in `mdpoint files_edit edits.json`, or from
 stdin with `-`.
 
@@ -80,14 +83,15 @@ Without it, the error prints on stderr. Its first line starts with its code,
 such as `refused:`.
 A failed MCP tool answers with `isError` and the same `{"error": …}` as its
 text. That record also includes what a caller needs to read beside its code: the
-`issues` that fail an edit's validation, the `edit` of a `refused` request
+`issues` of a `validation-failed` from `files_edit` or `files_read`, the `edit` of a `refused` request
 whose `old` isn't empty and its part doesn't hold once, or the ids of a conflict's `slideIds`
 and `compositionIds`. That `edit` is `{ index, found }`. `index` counts its
 place in `edits` from 0. `found` is how many times its part holds its `old`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
 prints `{ changed }`, the files that would change, and exits 1 when it lists
-any. These two are the CLI's checks. An error record
+any. `format` writes only the presentation's two files. It refuses a
+presentation that doesn't read or whose slides can't be laid out. These two are the CLI's checks. An error record
 means the check couldn't run. MCP's own errors are JSON-RPC errors: an unknown
 tool, or arguments that aren't an object. The command exits 0 when it
 succeeds or a check passes, 1 when a check finds what fails it, and 2 when an
@@ -99,11 +103,11 @@ error stops it.
 | `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). The error's `output` names that file, and its `result` is the method's answer with the picture in it. | Save the picture from `result.image`: its `data` in base64, of the type `mimeType` names. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `validation-failed` | Errors stop the request. From `files_edit`, `issues` lists what the edits would bring in, their errors among them. From `files_read`, the files have never read, and `issues` gives the reader's errors. Another request stops on the presentation's errors that keep it from its work. `files_read` lists them. | Fix those errors. |
-| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. |
+| `validation-failed` | Errors stop the request. From `files_edit`, `issues` lists what the edits would bring in, their errors among them. From `files_read`, the files have never read, and `issues` gives the reader's errors. Another request stops on the presentation's errors that keep it from its work. `files_read` lists them. | Fix those errors. Files that have never read take no `files_edit`. Fix them on disk, then read them again. |
+| `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. `windows_list` names the presentations that are open. |
 | `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. A conflict only in the deck's part or the theme names neither. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
-| `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | Try again later. After a closed connection, read the state before you retry a change. |
-| `timeout` | MarkdownPoint didn't take the connection in time, or didn't answer within `MARKDOWNPOINT_CALL_TIMEOUT`. | The request may still take effect. Read the state before you retry a change. |
+| `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | When MarkdownPoint isn't running, start it: `mdpoint` doesn't. Otherwise, try again later. After a closed connection, read the state before you retry a change. |
+| `timeout` | MarkdownPoint didn't take the connection within 30 seconds, or didn't answer within `MARKDOWNPOINT_CALL_TIMEOUT`. | A connection it didn't take sent nothing: check that it's running, then try again. A request it didn't answer may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size or a range's samples. | Send less at once or lower `sampleRate`. |
 | `busy` | Something that can't run at the same time is in progress. It might be another movie export, the presentation opening or closing, another device's turn to edit it, or your earlier requests to Meshy. | Try again when it's done. |
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
@@ -111,7 +115,8 @@ error stops it.
 `MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout in seconds for every answer the
 CLI waits for. It takes a number above 0 and at most 2,147,483.647, about 25
 days. It counts from when the CLI sends the request. Without it, or with any
-other value, a call waits until the app answers or the connection closes.
+other value, a call waits until the app answers or the connection closes. A
+connection the app doesn't take within 30 seconds times out either way.
 An export or a model build takes as long as its work. The CLI connects to
 the app's endpoint: a socket on a Mac and a named pipe on Windows. It
 looks for the endpoint in `--endpoint`, then `MARKDOWNPOINT_ENDPOINT`, then in
@@ -253,7 +258,8 @@ and no `frame`. For both codes, `path` names that key. `invalid-steps`,
 record as a whole. A step that isn't a record, or that shares another step's
 id, has `invalid-steps`. A value refused inside them has `invalid-value` at its
 own key, whatever its key. `invalid-control-value` is only for a control's `default` or an
-instance's value in `control-values`. A value a collaborator set that
+instance's value for a control: in `control-values`, or a text control's words
+in the instance's text block in the `.md` file. A value a collaborator set that
 MarkdownPoint can't read has the code and `path` the same value in the file
 would have. It is a warning, since the save leaves the value out, and its
 message says so.

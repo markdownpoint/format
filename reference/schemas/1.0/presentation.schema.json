@@ -4124,12 +4124,12 @@
                 "$ref": "#/definitions/scheme-name"
               }
             ],
-            "description": "The color scheme it's drawn in on its own canvas while it's edited and when it's rendered on its own. The default is the light scheme. Each instance uses the scheme of the slide it's on."
+            "description": "The color scheme its own canvas shows while it's edited and when it's rendered on its own. Light is the default and stands in for a scheme the theme lacks. Each instance uses its slide's scheme."
           },
           "controls": {
             "type": "array",
             "items": {
-              "description": "One control a composition offers its instances. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds all have the same type. Its default and its values are files of that type.",
+              "description": "One control a composition offers its instances. Its default matches its type: a number, true or false, a color, one of its options' ids, or a file path for a media control. The objects a media control binds all have the same type. Where they don't, the control reads with an `invalid-binding` warning. Its default and its values are files of that type.",
               "anyOf": [
                 {
                   "type": "object",
@@ -5426,7 +5426,7 @@
       "additionalProperties": false
     },
     "auto-layout": {
-      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Hidden members, members with `ignore-auto-layout`, and lines attached to an object are skipped. Any other line takes the box of its two ends, and a member group the box its own members take.",
+      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Members whose `visible` is false, members with `ignore-auto-layout`, and lines attached to an object are skipped. A step or an initial value that hides or shows a member doesn't move the others. The run goes down or across in the group's rotation, and no member turns with it. A member's repeater copies take no room in it. Any other line takes the box of its two ends, and a member group the box its own members take.",
       "type": "object",
       "properties": {
         "direction": {
@@ -6397,7 +6397,7 @@
             },
             "shape": {
               "const": "circle",
-              "description": "With `circle`, a radial gradient is round in any box."
+              "description": "With `circle`, a radial gradient is round in any box. Without it, it is an ellipse."
             },
             "stops": {
               "allOf": [
