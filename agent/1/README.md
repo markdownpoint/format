@@ -107,8 +107,9 @@ error stops it.
 | `internal` | Something went wrong inside MarkdownPoint or the command. | Report it with the message. |
 
 `MARKDOWNPOINT_CALL_TIMEOUT` sets one timeout in seconds for every answer the
-CLI waits for. It counts from when the CLI sends the request. Without it, a call
-waits until the app answers or the connection closes.
+CLI waits for. It takes a number above 0 and at most 2,147,483.647, about 25
+days. It counts from when the CLI sends the request. Without it, or with any
+other value, a call waits until the app answers or the connection closes.
 An export or a model build takes as long as its work. The CLI connects to
 the app's endpoint: a socket on a Mac and a named pipe on Windows. It
 looks for the endpoint in `--endpoint`, then `MARKDOWNPOINT_ENDPOINT`, then in
