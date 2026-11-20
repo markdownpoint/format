@@ -280,9 +280,9 @@
               "none",
               "upper",
               "lower",
-              "title"
+              "capitalize"
             ],
-            "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
+            "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, the first letter of each word is a capital."
           },
           "padding-top": {
             "allOf": [
@@ -375,9 +375,9 @@
                       "none",
                       "upper",
                       "lower",
-                      "title"
+                      "capitalize"
                     ],
-                    "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
+                    "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, the first letter of each word is a capital."
                   }
                 },
                 "additionalProperties": false,
@@ -971,7 +971,7 @@
                   "none",
                   "upper",
                   "lower",
-                  "title"
+                  "capitalize"
                 ]
               },
               "drop-shadow": {
@@ -1982,7 +1982,7 @@
                   "none",
                   "upper",
                   "lower",
-                  "title"
+                  "capitalize"
                 ]
               },
               "drop-shadow": {
@@ -6962,9 +6962,9 @@
             "none",
             "upper",
             "lower",
-            "title"
+            "capitalize"
           ],
-          "description": "The letter case the text is shown in. The text itself stays as typed. With `title`, the first letter of each word is a capital."
+          "description": "The letter case the text is shown in. The text itself stays as typed. With `capitalize`, the first letter of each word is a capital."
         }
       },
       "additionalProperties": false

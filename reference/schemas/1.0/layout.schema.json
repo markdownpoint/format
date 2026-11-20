@@ -781,7 +781,7 @@
                       "none",
                       "upper",
                       "lower",
-                      "title"
+                      "capitalize"
                     ]
                   }
                 ]
@@ -2540,7 +2540,7 @@
                       "none",
                       "upper",
                       "lower",
-                      "title"
+                      "capitalize"
                     ]
                   },
                   "drop-shadow": {
@@ -3489,7 +3489,7 @@
                       "none",
                       "upper",
                       "lower",
-                      "title"
+                      "capitalize"
                     ]
                   },
                   "drop-shadow": {
