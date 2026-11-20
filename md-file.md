@@ -67,7 +67,7 @@ When you add or delete a slide, the plugin updates both presentation files. When
 
 Comment markers separate slides and text blocks. Each marker gives the id of its slide or object. A heading or horizontal rule doesn't start a slide.
 
-Each marker is on a line of its own. End every marker with a line break, even at the end of the file. Spaces or tabs before, inside, or after a marker don't change it. Between code fences, a marker-shaped line is code.
+Each marker is on a line of its own. End every marker with a line break, even at the end of the file. Spaces or tabs before or after a marker, after its `<!--`, after its colon, or before its `-->` don't change it. Between code fences, a marker-shaped line is code.
 
 The ids in the markers connect the two files. Keep a slide's id when changing its title or moving it. If you change the id, update it in both files.
 
@@ -354,7 +354,7 @@ MarkdownPoint can't read the file if it contains any of these, among other probl
 - a merge conflict that git left outside a code block: from its `<<<<<<<` line to its `>>>>>>>` line
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line, such as `"footer": Q3`
 
-A comment line counts as an incorrectly written marker when it contains a marker's word in any letter case and at most one other word. A closing slash, or words after `-->`, don't change this.
+A comment line counts as an incorrectly written marker when it starts with a marker's word in any letter case and has at most one other word. A closing slash, or words after `-->`, don't change this.
 
 MarkdownPoint then shows the file, the line, and the problem, and it won't open the presentation. If the presentation is already open, MarkdownPoint waits for the fix and never overwrites your file.
 

@@ -118,7 +118,7 @@
         },
         "minItems": 1
       },
-      "description": "The theme's embedded fonts by family name. Each is a list of .eot files for a family a font role uses. There is one per face. A key that no role names is kept and reads with an `ignored-key` warning."
+      "description": "The theme's embedded fonts by family name. Each lists one or more .eot files of a family a font role uses: one per face. A key that no role names is kept and reads with an `ignored-key` warning."
     },
     "brand": {
       "description": "The brand's named colors. Schemes use them.",
@@ -323,7 +323,7 @@
                 "$ref": "#/definitions/bullet-styles"
               }
             ],
-            "description": "The bullet at each list level in order from the first. The last one is used at every deeper level."
+            "description": "The bullet at each list level in order from the first. There is at least one. The last one is used at every deeper level."
           },
           "marks": {
             "description": "How bold, italic, highlighted, struck-through, and code text look in this style.",
@@ -652,7 +652,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How far the colors fade to gray. It applies after `temperature`. 0 leaves them unchanged."
+              "description": "How far the colors fade to gray. After `temperature`, it is CSS's `grayscale()` of `grayscale` on the sRGB values. 0 leaves them unchanged."
             },
             "drop-shadow": {
               "allOf": [
@@ -3253,7 +3253,7 @@
                           "minItems": 1,
                           "maxItems": 3,
                           "uniqueItems": true,
-                          "description": "A list of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. Without it, the camera follows on all three."
+                          "description": "A list of one or more of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. Without it, the camera follows on all three."
                         },
                         "relative-to-target": {
                           "type": "boolean",

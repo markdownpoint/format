@@ -97,7 +97,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How far the colors fade to gray. It applies after `temperature`. 0 leaves them unchanged."
+              "description": "How far the colors fade to gray. After `temperature`, it is CSS's `grayscale()` of `grayscale` on the sRGB values. 0 leaves them unchanged."
             },
             "drop-shadow": {
               "allOf": [
@@ -2048,7 +2048,7 @@
                               "minItems": 1,
                               "maxItems": 3,
                               "uniqueItems": true,
-                              "description": "A list of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. Without it, the camera follows on all three."
+                              "description": "A list of one or more of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. Without it, the camera follows on all three."
                             },
                             "relative-to-target": {
                               "type": "boolean",
