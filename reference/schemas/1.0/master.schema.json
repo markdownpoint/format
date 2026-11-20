@@ -413,7 +413,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How code looks. By default, it uses the mono font. Its words are 0.92 times the text's size."
+                "description": "How code looks in a line and in a code block. By default, it uses the mono font. Its words are 0.92 times the size of the words around them."
               }
             },
             "additionalProperties": false
@@ -3159,7 +3159,7 @@
                 "additionalProperties": false
               },
               "render-effects": {
-                "description": "The slide's render settings, kept on its camera beside motion blur: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher bounces none. An override replaces the whole record.",
+                "description": "The slide's render settings, kept on its camera beside motion blur: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher or a floor bounces none. An override replaces the whole record.",
                 "type": "object",
                 "properties": {
                   "global-illumination": {
@@ -3168,7 +3168,7 @@
                   },
                   "ambient-occlusion": {
                     "type": "boolean",
-                    "description": "Whether the World's light darkens where surfaces close in on each other. A shadow catcher then also darkens where an object rests on it. The default is false."
+                    "description": "Whether the World's light darkens where surfaces close in on each other. A shadow catcher or a floor then also darkens where an object rests on it. The default is false."
                   },
                   "distance": {
                     "allOf": [
@@ -4030,7 +4030,7 @@
                 "$ref": "#/definitions/nonblank-line"
               },
               "position": {
-                "description": "A floor's height in the 3D space. A floor is level and goes on without end. Cinema 4D's Floor works the same way. So a floor's position has only y. Without a position, the floor is at the slide's bottom edge.",
+                "description": "A floor's height in the 3D space. A floor is level and goes on without end. So a floor's position has only y. Like a shadow catcher, a floor shows only the shadows cast on it and hides the 3D objects behind it. Without a position, the floor is at the slide's bottom edge.",
                 "type": "object",
                 "properties": {
                   "y": {
@@ -4353,7 +4353,7 @@
               "description": "seconds"
             }
           ],
-          "description": "How long each paragraph takes to enter in seconds. It isn't used with interpolation hold. A step that has only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, it is still required but isn't used. A step that has only paragraphs' cues lasts as long as they take."
         },
         "from": {
           "description": "How each piece looks as it starts to enter: opacity, offset, scale, rotation, and blur.",
@@ -7117,7 +7117,7 @@
       "additionalProperties": false
     },
     "repeater": {
-      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The defaults are 1 for `scale` and `end-opacity`, the center for `anchor-point`, and 0 for the other optional numbers.",
+      "description": "Copies of the object. Each is moved, turned, scaled, and delayed a little more than the one before. The original stays as written. The defaults are 1 for `scale` and `end-opacity`, the center for `anchor-point`, and 0 for the other optional numbers.",
       "type": "object",
       "properties": {
         "copies": {
