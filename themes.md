@@ -204,7 +204,7 @@ The master also sets a column grid, a baseline grid, and two guides. MarkdownPoi
 }
 ```
 
-`unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter. `save-id` in `master.json` and in a layout is the id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Such a save writes a new one when the editor changed the file, and other saves keep it. Other tools leave it unchanged.
+`unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter.
 
 A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's JSON files, the files they name, and a `manifest.json` that lists each of them with its size and SHA-256 digest, and only those. It can also hold two folders the manifest doesn't list. `previews/` has a picture of the theme and one of each example slide. `example/` has a presentation that a new presentation can start from. “Export Theme…” saves a theme whose fonts MarkdownPoint includes as a `.mdptheme` file, and “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.0.md#theme-package).
 

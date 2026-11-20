@@ -13,11 +13,6 @@
       "const": "layout",
       "description": "What the file is."
     },
-    "save-id": {
-      "type": "string",
-      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
-      "description": "The id of the save that last wrote the file as an editor handed over the shared presentation, closed it, or signed out. Other tools leave it unchanged."
-    },
     "name": {
       "allOf": [
         {
