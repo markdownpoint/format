@@ -7,7 +7,7 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format version. It is a major and a minor number in quotes: \"1.0\"."
+      "description": "The format version. It is a major and a minor number in quotes, each of at most nine digits and written without a leading zero: \"1.0\"."
     },
     "type": {
       "const": "layout",
@@ -5037,7 +5037,7 @@
           }
         ]
       },
-      "description": "The layout's objects, back to front, a tilted group's members by depth. Its own objects are written out, and a master object appears as its id. A master object it doesn't name is behind them all."
+      "description": "The layout's objects, back to front, a tilted group's members by depth. Its own objects are written out, and a master object appears as its id. A master object it doesn't name is behind them all. An id listed twice is refused, and one the master doesn't have is ignored with a warning."
     },
     "text": {
       "type": "object",
