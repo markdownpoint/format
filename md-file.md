@@ -118,7 +118,7 @@ Paragraphs are separated by one or more blank lines. An empty paragraph is a lin
 
 A composition is a reusable scene, such as a card with an animated counter. `<!-- composition: id -->` starts its block. Use the id of its entry under `compositions` in the .mdpoint file. Compositions don't belong to sections and don't appear as slides. MarkdownPoint adds new compositions after the existing ones, or after the slides if there are none. You can move a composition block elsewhere in the file.
 
-Under the composition's marker, `<!-- text: id -->` starts the words of one of the composition's own objects. A slide uses the same marker. `<!-- control: id -->` starts a text control's default words. Its id is the control's id under `controls` in the .mdpoint file. An instance shows the default words unless it sets its own. It sets them on its slide under `<!-- text: instance.control -->`. That marker with no words under it sets no words. The marker has the instance's id and the control's id:
+Under the composition's marker, `<!-- text: id -->` starts the words of one of the composition's own objects. A slide uses the same marker. `<!-- control: id -->` starts a text control's default words. Its id is the control's id under `controls` in the .mdpoint file. An instance shows the default words unless it sets its own. It sets them on its slide under `<!-- text: instance.control -->`. That marker with no words under it is empty text. The marker has the instance's id and the control's id:
 
 ```markdown
 <!-- slide: metrics -->
