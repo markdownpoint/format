@@ -236,11 +236,15 @@ fields depend on its `source`:
   one of the object's keys, such as `text-style`, `key` names it, and `path`
   and `location` say where its value is written. The slide's own object and
   its override of an object it inherits are in the `.mdpoint` file, as in
-  `slides.intro.overrides.logo.text-style`. A value the object takes from its
-  text style, and a member of a composition's instance, have no `path`. A link
-  in a slide's words is in the `.md` file. Its `path` names the words' record.
-  An issue whose `location` is in the theme's folder is a `theme` issue
-  instead.
+  `slides.intro.overrides.logo.text-style`. An issue in a slide's words, such
+  as a link, a field name that no field has, or a color role that a word
+  names, is in the `.md` file. Its `path` names the words as the `md` rules
+  name them. An issue about a value the object takes from its text style, a
+  field with no value, or a member that a composition's instance draws has
+  neither `path` nor `location`. A member's issue in the words its instance
+  gives has none either. A link in those words is the instance's issue, and
+  its `path` names them. An issue whose `location` is in the theme's folder is
+  a `theme` issue instead.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. `text-overflow-unchecked` and a `render-failed` issue from
   drawing have no `slideId`, `objectId`, or `objectIds`. `validate`
