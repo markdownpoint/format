@@ -5048,7 +5048,7 @@
       "additionalProperties": {
         "type": "string"
       },
-      "description": "The words of the layout's own text, table, chart, and shape objects by object id. Any other id is an error."
+      "description": "The words of the layout's own text, table, chart, and shape objects by object id. A table or a chart whose words here are missing or blank has a new table's empty cells. Any other id is an error."
     }
   },
   "required": [
