@@ -8287,7 +8287,7 @@
               "description": "seconds"
             }
           ],
-          "description": "How much later each copy plays the object's animation than the one before. A copy can play it up to (copies − 1) × `stagger` + `stagger-randomness` later."
+          "description": "How much later each copy plays the object's animation than the one before. A copy can play it up to (copies − 1) × `stagger` + `stagger-randomness` later. Keyframes of the object's own `repeater` aren't delayed: they lay out every copy at once."
         },
         "end-opacity": {
           "type": "number",
