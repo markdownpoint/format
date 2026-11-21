@@ -155,9 +155,11 @@ fields depend on its `source`:
   named by its id, as in
   `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`.
   In it, the curve's name is one key. A keyframe and a cue are always named
-  by their ids. A composition is under `compositions`. Once a control's id can
-  be read, the control is named by its id, as in
-  `compositions.pulse.controls.label`. An `invalid-json` or
+  by their ids. A warning about a step's own key is at that key, as in
+  `slides.intro.steps.reveal.repeat-count`. One about where a loop starts is
+  at `loop-start`, or at `loop` when the loop starts at 0. A composition is
+  under `compositions`. Once a control's id can be read, the control is named
+  by its id, as in `compositions.pulse.controls.label`. An `invalid-json` or
   `merge-conflict` issue has no `path`, and its `location` has the line when
   it's known.
 - `md`: `location` names the `.md` file, and most issues have its line.
