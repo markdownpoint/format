@@ -251,7 +251,9 @@ fields depend on its `source`:
   text control gives are at their block in the `.md` file, and a link in them
   is the instance's issue there. Any other value is at the instance's
   `control-values` in the `.mdpoint` file, as in
-  `slides.intro.objects.card1.control-values.tint`. An
+  `slides.intro.objects.card1.control-values.tint`. An issue about a
+  repeater's copy is at the key its original writes, and its `objectId` names
+  the copy. An
   issue about a value the object takes from its text style, a field with no value,
   or anything else an instance draws has neither `path` nor `location`. An
   issue whose `location` is in the theme's folder is a `theme` issue instead.
