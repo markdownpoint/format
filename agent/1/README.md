@@ -253,8 +253,10 @@ fields depend on its `source`:
   `control-values` in the `.mdpoint` file, as in
   `slides.intro.objects.card1.control-values.tint`. An issue about a
   repeater's copy is at the key its original writes, and its `objectId` names
-  the copy. An
-  issue about a value the object takes from its text style, a field with no value,
+  the copy. An issue about a color a chart takes from its `series-colors` or
+  `category-colors` is at that entry, as in
+  `slides.intro.objects.rev.series-colors[0]`, and its `objectId` names the
+  chart. An issue about a value the object takes from its text style, a field with no value,
   or anything else an instance draws has neither `path` nor `location`. An
   issue whose `location` is in the theme's folder is a `theme` issue instead.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
