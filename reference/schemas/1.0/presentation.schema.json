@@ -2194,7 +2194,7 @@
                           "type": "null"
                         },
                         {
-                          "description": "The camera's drift. Its offset is in canvas units along the slide's 3D axes. After animation, parenting, and constraints place the camera, the offset is added to its position and its point of interest. A parent's rotation and scale don't change it. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it.",
+                          "description": "The camera's drift. Its offset is in canvas units along the slide's 3D axes. After animation, parenting, and constraints place the camera, the offset is added to its position and its point of interest. A parent's rotation and scale don't change it. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it. A drift on such a slide causes a `drift-with-scroll` warning.",
                           "type": "object",
                           "properties": {
                             "offset": {
@@ -5655,7 +5655,7 @@
                   "uniform",
                   "single-axis"
                 ],
-                "description": "When the volume is kept. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The default is strict."
+                "description": "When the volume is kept, as in Blender's Maintain Volume constraint. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The default is strict."
               },
               "free-axis": {
                 "enum": [
@@ -10331,7 +10331,7 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. A keyframe whose value is `null` clears the whole parameter at its time. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A `null` on a key its object can't be read without, such as a shadow catcher's `width` or a point light's `intensity`, causes an `ignored-animation-value` warning and is ignored. A slide's or a composition's `initial` takes `null` by the same rules. An `exponential-scale` move works as After Effects' Exponential Scale.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. An ignored `begin` still must come before `time`. A keyframe whose value is `null` clears the whole parameter at its time. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A `null` on a key its object can't be read without, such as a shadow catcher's `width` or a point light's `intensity`, causes an `ignored-animation-value` warning and is ignored. A slide's or a composition's `initial` takes `null` by the same rules. An `exponential-scale` move works as After Effects' Exponential Scale.",
                     "type": "object",
                     "properties": {
                       "begin": {
@@ -10763,7 +10763,7 @@
                     "action": {
                       "type": "string",
                       "pattern": "^[\\s\\S]+(?![\\s\\S])",
-                      "description": "The name of the Action that a clip plays. An unnamed Action is named Animation and its number in the file, as in `Animation 1` for the first."
+                      "description": "The name of the Action that a clip plays. An unnamed Action is named Animation and its number in the file, as in `Animation 1` for the first. A clip naming an Action its object doesn't have plays nothing. It causes an `unknown-action` warning."
                     },
                     "loop": {
                       "const": "repeat",
@@ -10797,7 +10797,7 @@
                           "description": "seconds"
                         }
                       ],
-                      "description": "How long the clip takes to blend in fully over the model's current motion. Without it, the clip is fully blended in from its start."
+                      "description": "How long the clip takes to blend in fully over the model's current motion. Without it, or at 0, the clip is fully blended in from its start."
                     },
                     "clip-scale": {
                       "type": "number",

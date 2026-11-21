@@ -3174,7 +3174,7 @@
                 "additionalProperties": false
               },
               "drift": {
-                "description": "The camera's drift. Its offset is in canvas units along the slide's 3D axes. After animation, parenting, and constraints place the camera, the offset is added to its position and its point of interest. A parent's rotation and scale don't change it. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it.",
+                "description": "The camera's drift. Its offset is in canvas units along the slide's 3D axes. After animation, parenting, and constraints place the camera, the offset is added to its position and its point of interest. A parent's rotation and scale don't change it. The drift runs on the slide's own clock. That clock starts when the slide's transition in begins. It runs on through the slide's steps, waits, and transition out. While t is less than `duration`, the added offset at t seconds on that clock is `offset` × (1 − t ÷ `duration`)². The offset decreases to zero at `duration` and stays zero afterward. Stills and the editor show the camera without its drift. A slide has no drift when a scroll transition enters or leaves it. A drift on such a slide causes a `drift-with-scroll` warning.",
                 "type": "object",
                 "properties": {
                   "offset": {
@@ -3507,7 +3507,7 @@
                             "uniform",
                             "single-axis"
                           ],
-                          "description": "When the volume is kept. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The default is strict."
+                          "description": "When the volume is kept, as in Blender's Maintain Volume constraint. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The default is strict."
                         },
                         "free-axis": {
                           "enum": [
