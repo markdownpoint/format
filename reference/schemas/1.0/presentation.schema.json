@@ -10300,7 +10300,7 @@
           },
           "loop": {
             "const": "repeat",
-            "description": "With `repeat`, the step loops from `loop-start` to its end while it waits for a click. Without it, the step plays once."
+            "description": "With `repeat`, the step loops from `loop-start` to its end while it waits for a click. Without it, the step itself doesn't loop."
           },
           "loop-start": {
             "allOf": [
@@ -10331,7 +10331,7 @@
                   },
                   "minProperties": 1,
                   "additionalProperties": {
-                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. An ignored `begin` still must come before `time`. A keyframe whose value is `null` clears the whole parameter at its time. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A `null` on a key its object can't be read without, such as a shadow catcher's `width` or a point light's `intensity`, causes an `ignored-animation-value` warning and is ignored. A slide's or a composition's `initial` takes `null` by the same rules. An `exponential-scale` move works as After Effects' Exponential Scale.",
+                    "description": "One keyframe: a value a parameter reaches at a time. Its id is unique in its step among its keyframes and cues. Two keyframes of one parameter at one time are read with a warning, and the one with the later id plays. A `begin` at or before the previous keyframe is ignored. On the first keyframe, a `begin` of 0 is ignored. A `discrete` key and interpolation `hold` have no move. A `begin` on either is ignored. An ignored `begin` still must come before `time`. A keyframe whose value is `null` clears the whole parameter at its time. The parameter's text style or default then shows. It can't clear a part of a key, a point, `visible`, `rotation`, `scale`, a constraint's strength, `shape-type`, `icon`, or `geometry`. A `null` on a key its object can't be read without, such as a shadow catcher's `width` or a point light's `intensity`, causes an `ignored-animation-value` warning and is ignored. A slide's or a composition's `initial` takes `null` by the same rules. A move toward `null` holds the value it starts from. An `exponential-scale` move works as After Effects' Exponential Scale.",
                     "type": "object",
                     "properties": {
                       "begin": {
@@ -10661,7 +10661,7 @@
               "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
-              "description": "An event at a set time in a step. Its id is unique in its step among its keyframes and cues. A clip plays an Action of the GLB `file` of a model or a 3D text. Cinema 4D's Motion Clip works the same way. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
+              "description": "An event at a set time in a step. Its id is unique in its step among its keyframes and cues. A `paragraph` cue shows a paragraph of a text or a shape. A `play` cue starts an audio object, a video, or a web video. A `clip` cue plays an Action of the GLB `file` of a model or a 3D text. A cue on an object of any other type is ignored. It causes an `ignored-animation` warning. A clip works as Cinema 4D's Motion Clip. A text built from an `extrusion` has no Actions. A clip on it plays nothing and causes a warning.",
               "anyOf": [
                 {
                   "type": "object",
@@ -10686,7 +10686,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
+                      "description": "The id of the object it acts on."
                     },
                     "paragraph": {
                       "type": "string",
@@ -10725,7 +10725,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
+                      "description": "The id of the object it acts on."
                     }
                   },
                   "required": [
@@ -10758,7 +10758,7 @@
                           "$ref": "#/definitions/object-id"
                         }
                       ],
-                      "description": "The id of the object it acts on: for a clip, a model, or a 3D text."
+                      "description": "The id of the object it acts on."
                     },
                     "action": {
                       "type": "string",
