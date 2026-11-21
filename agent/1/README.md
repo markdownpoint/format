@@ -236,7 +236,9 @@ fields depend on its `source`:
   one of the object's keys, such as `text-style`, `key` names it, and `path`
   and `location` say where its value is written. The slide's own object and
   its override of an object it inherits are in the `.mdpoint` file, as in
-  `slides.intro.overrides.logo.text-style`. An issue in a slide's words, such
+  `slides.intro.overrides.logo.text-style`. An issue about a step's cue, such
+  as a clip whose Action its object lacks, is at the cue in the `.mdpoint`
+  file, as in `slides.intro.steps.reveal.cues.drop`. An issue in a slide's words, such
   as a link, a field name that no field has, or a color role that a word
   names, is in the `.md` file. Its `path` names the words as the `md` rules
   name them. An issue about a value the object takes from its text style, a
