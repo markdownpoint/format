@@ -354,7 +354,7 @@ MarkdownPoint can't read the file if it contains any of these, among other probl
 - a merge conflict that git left outside a code block: from a line that starts with `<<<<<<<` and a space to a later line that starts with `>>>>>>>` and a space
 - one of MarkdownPoint's own frontmatter keys not written as `key: value` on one line, such as `"footer": Q3`
 
-A comment line counts as an incorrectly written marker when it starts with a marker's word in any letter case and has at most one other word. A closing slash, or words after `-->`, don't change this.
+A comment line counts as an incorrectly written marker when it starts with a marker's word in any letter case and has at most one other word. A closing slash, or words after `-->`, don't change this. A comment that starts with such a line is a note to yourself when its first `-->` ends a later line and comes before the next `<!--`.
 
 MarkdownPoint then shows the file, the line, and the problem, and it won't open the presentation. If the presentation is already open, MarkdownPoint waits for the fix and never overwrites your file.
 
