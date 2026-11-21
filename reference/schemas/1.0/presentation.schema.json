@@ -143,7 +143,7 @@
           "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated image objects use when they don't set one: text that isn't blank and has no NUL character, but never `none`. It names no library style. Without it, they have no style."
+      "description": "The style generated image objects use when they don't set one: text that isn't blank and has no NUL character, but never `none`. That includes `none` with white space at its ends. It names no library style. Without it, they have no style."
     },
     "background-image-style": {
       "allOf": [
@@ -151,7 +151,7 @@
           "$ref": "#/definitions/image-style-not-none"
         }
       ],
-      "description": "The style generated background images use when they don't set one: text that isn't blank and has no NUL character, but never `none`. It names no library style. Without it, they have no style."
+      "description": "The style generated background images use when they don't set one: text that isn't blank and has no NUL character, but never `none`. That includes `none` with white space at its ends. It names no library style. Without it, they have no style."
     },
     "swatches": {
       "type": "array",
@@ -285,7 +285,7 @@
                         "$ref": "#/definitions/image-style-or-none"
                       }
                     ],
-                    "description": "The style of a generated background image: text that isn't blank and has no NUL character, or `none` for no style. It names no library style. The default is `background-image-style`."
+                    "description": "The style of a generated background image: text that isn't blank and has no NUL character, or `none` for no style. White space at the ends of `none` leaves it `none`. It names no library style. The default is `background-image-style`."
                   },
                   "transparent-background": {
                     "type": "boolean",
@@ -8262,12 +8262,12 @@
     "image-style-not-none": {
       "type": "string",
       "pattern": "^(?![\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*none[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*(?![\\s\\S]))(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-      "description": "nonempty text without NUL characters, not \"none\""
+      "description": "text that isn't blank and has no NUL character, not \"none\""
     },
     "image-style-or-none": {
       "type": "string",
       "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
-      "description": "nonempty text without NUL characters, or \"none\""
+      "description": "text that isn't blank and has no NUL character, or \"none\""
     },
     "initial": {
       "type": "object",
