@@ -31,7 +31,7 @@
     },
     "theme": {
       "type": "string",
-      "pattern": "^(?![\\s\\S]{256})(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^(?![\\s\\S]{256})(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "The key of the presentation's theme. It's the name of the theme's folder in themes. The theme's master sets the slide size and `unit-scale`."
     },
     "transition": {
@@ -175,7 +175,7 @@
     "slides": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
@@ -333,7 +333,7 @@
           "overrides": {
             "type": "object",
             "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
               "description": "an object's id"
             },
             "additionalProperties": {
@@ -4070,7 +4070,7 @@
     "compositions": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
@@ -4320,7 +4320,7 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                            "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
                             "description": "The id that names the option in the control's default, an instance's value, and the value of a key the choice sets. It's unique among the control's options."
                           },
                           "name": {
@@ -5208,7 +5208,7 @@
     "comments": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
@@ -5217,12 +5217,12 @@
         "properties": {
           "slide": {
             "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
             "description": "The id of the slide it is pinned to. It can name a slide that is no longer there."
           },
           "composition": {
             "type": "string",
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+            "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
             "description": "The id of the composition it is pinned to. It can name a composition that is no longer there."
           },
           "author": {
@@ -5279,7 +5279,7 @@
           "replies": {
             "type": "object",
             "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
               "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
@@ -5514,7 +5514,7 @@
     },
     "color": {
       "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+      "pattern": "^(?:[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
       "description": "a color role or a hex color"
     },
     "comment-author": {
@@ -5540,19 +5540,19 @@
     "composition-bindings": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?:\\.(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z]))*(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?)*(?![\\s\\S])",
         "description": "a key or a number part of a record, such as \"tilt.x\""
       },
       "additionalProperties": {
         "type": "string",
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an id, such as \"title-card\""
       }
     },
     "composition-control-values": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
@@ -5571,7 +5571,7 @@
     },
     "constraint-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "an id, such as \"look\""
     },
     "constraints": {
@@ -8272,7 +8272,7 @@
     "initial": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?\\.[\\s\\S]+(?![\\s\\S])",
         "description": "an object's id, a dot, and a parameter, such as \"card.opacity\""
       },
       "additionalProperties": {
@@ -8390,7 +8390,7 @@
     },
     "layout-key": {
       "type": "string",
-      "pattern": "^(?![\\s\\S]{251})(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+      "pattern": "^(?![\\s\\S]{251})(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
     },
     "line-end": {
       "description": "A line end attached to an object.",
@@ -8398,7 +8398,7 @@
       "properties": {
         "object": {
           "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
           "description": "The id of the object it attaches to on the same slide or composition."
         },
         "side": {
@@ -8452,7 +8452,7 @@
     },
     "object-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "an object's id"
     },
     "objects-chart": {
@@ -8938,7 +8938,7 @@
         },
         "composition": {
           "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
           "description": "a composition's id"
         },
         "control-values": {
@@ -9743,7 +9743,7 @@
     },
     "opaque-color": {
       "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
+      "pattern": "^(?:[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
       "description": "a color role or a hex color without alpha, such as \"#000000\""
     },
     "paint": {
@@ -10086,7 +10086,7 @@
     },
     "scheme-name": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "a scheme name"
     },
     "space-euler": {
@@ -10248,7 +10248,7 @@
     },
     "stable-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "an id, such as \"title-card\""
     },
     "steps": {
@@ -10316,7 +10316,7 @@
           "curves": {
             "type": "object",
             "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])\\.[\\s\\S]+(?![\\s\\S])",
+              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?\\.[\\s\\S]+(?![\\s\\S])",
               "description": "an object's id, a dot, and a parameter, such as \"card.opacity\""
             },
             "additionalProperties": {
@@ -10326,7 +10326,7 @@
                 "keyframes": {
                   "type": "object",
                   "propertyNames": {
-                    "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                    "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
                     "description": "an id, such as \"title-card\""
                   },
                   "minProperties": 1,
@@ -10657,7 +10657,7 @@
           "cues": {
             "type": "object",
             "propertyNames": {
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
               "description": "an id, such as \"title-card\""
             },
             "additionalProperties": {
@@ -10690,7 +10690,7 @@
                     },
                     "paragraph": {
                       "type": "string",
-                      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
                       "description": "The id of the paragraph that appears: the `<!-- id: … -->` ending its last line or alone on the next. A list item's ends its first paragraph. A reader warns when no paragraph of the text has the id."
                     }
                   },
@@ -11093,7 +11093,7 @@
     },
     "text-style-name": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "a text style name"
     },
     "tilt": {

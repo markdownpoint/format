@@ -74,7 +74,7 @@
             },
             "object": {
               "type": "string",
-              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
               "description": "The image object's id."
             }
           },
@@ -294,7 +294,7 @@
     },
     "stable-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "an id, such as \"title-card\""
     }
   }

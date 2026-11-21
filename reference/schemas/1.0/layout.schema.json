@@ -23,7 +23,7 @@
     },
     "scheme": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "The color scheme slides on this layout use. The default is light. Light is also used when the theme doesn't have the scheme."
     },
     "background": {
@@ -116,7 +116,7 @@
     "overrides": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an object's id"
       },
       "additionalProperties": {
@@ -1530,7 +1530,7 @@
                   {
                     "type": "object",
                     "propertyNames": {
-                      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+                      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
                       "description": "an id, such as \"title-card\""
                     },
                     "additionalProperties": {
@@ -3131,7 +3131,7 @@
                               ]
                             },
                             {
-                              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+                              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
                             }
                           ]
                         },
@@ -4324,7 +4324,7 @@
                               ]
                             },
                             {
-                              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+                              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
                             }
                           ]
                         },
@@ -4499,7 +4499,7 @@
                               ]
                             },
                             {
-                              "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+                              "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
                             }
                           ]
                         },
@@ -5042,7 +5042,7 @@
     "text": {
       "type": "object",
       "propertyNames": {
-        "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+        "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
         "description": "an object's id"
       },
       "additionalProperties": {
@@ -5212,12 +5212,12 @@
     },
     "color": {
       "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
+      "pattern": "^(?:[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8}))(?![\\s\\S])",
       "description": "a color role or a hex color"
     },
     "constraint-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "an id, such as \"look\""
     },
     "constraints": {
@@ -5790,7 +5790,7 @@
             ]
           },
           {
-            "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])"
+            "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
           }
         ]
       },
@@ -8011,7 +8011,7 @@
       "properties": {
         "object": {
           "type": "string",
-          "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+          "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
           "description": "The id of the object it attaches to on the same slide or composition."
         },
         "side": {
@@ -8065,12 +8065,12 @@
     },
     "object-id": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "an object's id"
     },
     "opaque-color": {
       "type": "string",
-      "pattern": "^(?:(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
+      "pattern": "^(?:[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?|#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}))(?![\\s\\S])",
       "description": "a color role or a hex color without alpha, such as \"#000000\""
     },
     "paint": {
@@ -8705,7 +8705,7 @@
     },
     "text-style-name": {
       "type": "string",
-      "pattern": "^(?:[a-z](?:[a-z0-9]|-(?!-))*[a-z0-9]|[a-z])(?![\\s\\S])",
+      "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
       "description": "a text style name"
     },
     "theme-file-path": {
