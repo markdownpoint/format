@@ -311,7 +311,7 @@ The style can change anywhere in a word. `**Mark**down` is read back as a bold â
 
 In a list item, a line of code that isn't indented stays in the item's code block when the line above it is code. It ends the item and the code block when the line above it is blank, starts with `#` or a fence, is a rule such as `---`, or is indented four spaces or more past the item's text. It ends them too when it is itself a rule or starts with `#`, `>`, a list marker, a fence, or an HTML block. In CommonMark, any line that isn't indented ends them.
 
-In a list item, a nested list ends the paragraph above it when it starts at a number other than 1 or when its first line is only `*`, `+`, `1.`, or `1)`. A line with only an HTML tag, such as `</pre>`, ends the paragraph too. In CommonMark, the list and `</pre>` continue the paragraph. Outside list items, MarkdownPoint reads them as CommonMark does.
+In a list item, a nested list ends the paragraph above it when it starts at a number other than 1 or when its first line is only `*`, `+`, `1.`, or `1)`. A line with only an HTML tag other than `<br>`, such as `</pre>`, ends the paragraph too. In CommonMark, the list and `</pre>` continue the paragraph. Outside list items, MarkdownPoint reads them as CommonMark does.
 
 Lists and quotes nest at most 100 deep in all: the outermost is the first level, and a list in a quote is one level deeper. A deeper marker stays as written.
 
