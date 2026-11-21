@@ -291,7 +291,7 @@ Its position, columns, minimum row heights, and style are in the .mdpoint file. 
 
 A code block is written between two fences. A fence is three or more backticks or tildes. The closing fence uses the same character and is at least as long. Only spaces or tabs can follow it. The language named after the opening fence sets how the code is colored. The name can be in any case, and `js` works as well as `javascript`. The [reference](reference/1.0.md#markdown) lists every name. Add `{lines:true}` after the language to number the lines.
 
-A code block can also be in a quote or a list item. It ends at its closing fence or when the quote or item ends. A link definition can't contain a fence. After `[x]: /url (title`, a fence on the next line opens a code block.
+A code block can also be in a quote or a list item. It ends at its closing fence or when the quote or item ends. A theme's `text` follows the same rules. A code block left open there ends with the object's words. A link definition can't contain a fence. After `[x]: /url (title`, a fence on the next line opens a code block.
 
 ### Characters
 
