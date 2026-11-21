@@ -33,8 +33,8 @@ and the format's own keys and keyword values are kebab-case
 meaning in the contract's schemas. Most fields, branches, and values are listed
 alphabetically. The order is the same on every build.
 
-A request names its presentation in `presentation`: its folder or a file in
-it. Without it, a CLI request goes to the current folder when that folder is a
+A request names its presentation in `presentation`: its folder or a file at
+its root. Without it, a CLI request goes to the current folder when that folder is a
 presentation. Otherwise, and from MCP, it goes to the focused presentation, then
 to the only open one. When several presentations are open and none is focused,
 it fails with `unknown-target`. Name one with a folder from `windows_list`. Configure an MCP client to run `mdpoint mcp` over stdio.
@@ -89,10 +89,13 @@ and `compositionIds`. That `edit` is `{ index, found }`. `index` counts its
 place in `edits` from 0. `found` is how many times its part holds its `old`. A check's
 findings are its result, whether it passes or fails. `validate --json` prints
 `{ issues }` and exits 1 when one of them is an error. `format --check --json`
-prints `{ changed }`, the files that would change, and exits 1 when it lists
-any. `format` writes only the presentation's two files. It refuses a
-presentation that doesn't read or whose slides can't be laid out. These two are the CLI's checks. An error record
-means the check couldn't run. MCP's own errors are JSON-RPC errors: an unknown
+prints `{ changed }`, the files that would change, changes none, and exits 1
+when it lists any. These two are the CLI's checks. An error record means the
+check couldn't run. Without `--check`, `format --json` prints the files it
+changed in `changed`. Either way, it names each as the folder spells it.
+`format` writes only the presentation's two files. It refuses a presentation
+that doesn't read, one whose theme doesn't read, one in which laying out its
+slides finds an error, or one that changed while it was formatted. MCP's own errors are JSON-RPC errors: an unknown
 tool, or arguments that aren't an object. The command exits 0 when it
 succeeds or a check passes, 1 when a check finds what fails it, and 2 when an
 error stops it.
@@ -103,7 +106,7 @@ error stops it.
 | `output-failed` | The command made the picture but couldn't write it where `--output` names (CLI only). The error's `output` names that file, and its `result` is the method's answer with the picture in it. | Save the picture from `result.image`: its `data` in base64, of the type `mimeType` names. Running the command again makes it again. A paid method spends again. |
 | `refused` | The app or the command won't do what was asked. The cause is in the request, or in what it asks of this presentation, theme, or file. | Read the message, then change the request. |
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
-| `validation-failed` | Errors stop the request. From `files_edit`, `issues` lists what the edits would bring in, their errors among them. From `files_read`, the files have never read, and `issues` gives the reader's errors. Another request stops on the presentation's errors that keep it from its work. `files_read` lists them. | Fix those errors. Files that have never read take no `files_edit`. Fix them on disk, then read them again. |
+| `validation-failed` | Errors stopped the request. From `files_edit`, `issues` lists what the edits would bring in, their errors among them. A `files_edit` call that edits the presentation's parts stops only on the errors its description names. It lands with any other error its edits bring in, such as a slide's own object under an id the slide inherits. Its answer's `issues` give that error. From `files_read`, the files have never read, and `issues` gives the reader's errors. Another request stops on the presentation's errors that keep it from its work. `files_read` lists them. | Fix those errors. Files that have never read take no `files_edit`. Fix them on disk, then read them again. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. `windows_list` names the presentations that are open. |
 | `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. A conflict only in the deck's part or the theme names neither. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | When MarkdownPoint isn't running, start it: `mdpoint` doesn't. Otherwise, try again later. After a closed connection, read the state before you retry a change. |
