@@ -244,12 +244,17 @@ fields depend on its `source`:
   file, as in `slides.intro.steps.reveal.cues.drop`. An issue in a slide's words, such
   as a link, a field name that no field has, or a color role that a word
   names, is in the `.md` file. Its `path` names the words as the `md` rules
-  name them. An issue about a value the object takes from its text style, a
-  field with no value, or a member that a composition's instance draws has
-  neither `path` nor `location`. A member's issue in the words its instance
-  gives has none either. A link in those words is the instance's issue, and
-  its `path` names them. An issue whose `location` is in the theme's folder is
-  a `theme` issue instead.
+  name them. When a control gives a key of a composition's own object, the
+  object shows the control's `default`, and an issue about the key is there,
+  as in `compositions.card.controls.tint.default`. An issue about what an
+  instance's input gives one of its members is at that input. Words that a
+  text control gives are at their block in the `.md` file, and a link in them
+  is the instance's issue there. Any other value is at the instance's
+  `control-values` in the `.mdpoint` file, as in
+  `slides.intro.objects.card1.control-values.tint`. An
+  issue about a value the object takes from its text style, a field with no value,
+  or anything else an instance draws has neither `path` nor `location`. An
+  issue whose `location` is in the theme's folder is a `theme` issue instead.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. `text-overflow-unchecked` and a `render-failed` issue from
   drawing have no `slideId`, `objectId`, or `objectIds`. `validate`
