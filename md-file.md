@@ -142,7 +142,7 @@ A `---` must be inside a block. Directly under a slide's marker, before its firs
 
 ## Escapes
 
-A comment line is marker-shaped when it holds one lowercase word, such as `<!-- todo -->`, or a lowercase word, a colon, and an id. A misspelled marker is marker-shaped too. To keep a marker-shaped line inside its block, write a backslash after `<!--`, as in `<!--\ slide: example -->`. MarkdownPoint writes the backslash for every such note it saves, and removes it when it reads the file. The line is then the comment you meant.
+A comment line is marker-shaped when it holds one lowercase word, such as `<!-- todo -->`, or a lowercase word, a colon, and an id or two ids joined by a dot, such as `<!-- todo: card.title -->`. Spaces or tabs can stand in it where they can in a marker. To keep a marker-shaped line inside its block, write a backslash after `<!--`, as in `<!--\ slide: example -->`. A line that reads as an [incorrectly written marker](#editing-by-hand) takes the backslash too. MarkdownPoint writes the backslash for every such note it saves, and removes it when it reads the file. The line is then the comment you meant.
 
 This slide has a rule, a comment, and an escaped marker. Neither comment is shown:
 
