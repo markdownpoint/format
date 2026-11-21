@@ -55,7 +55,8 @@ each part holds. A page's part comes with what the app works out of it, such as
 where each object is drawn. `files_edit` replaces an exact `old` text in a part
 with `new`. Each `old` occurs exactly once in its part as the request's edits
 before it leave the part. An empty `old` writes a part that is empty now. Its
-description says how to add, move, or remove a page. One request is one Undo
+description says how to add, move, or remove a page, and how an edit names a
+theme file by `themeFile`. One request is one Undo
 step. When the app refuses it with `refused`, `validation-failed`, or
 `conflict`, nothing changed. Its answer gives
 each part it touched as the file now spells it, the `issues` the request
@@ -93,9 +94,10 @@ prints `{ changed }`, the files that would change, changes none, and exits 1
 when it lists any. These two are the CLI's checks. An error record means the
 check couldn't run. Without `--check`, `format --json` prints the files it
 changed in `changed`. Either way, it names each as the folder spells it.
-`format` writes only the presentation's two files. It refuses a presentation
-that doesn't read, one whose theme doesn't read, one in which laying out its
-slides finds an error, or one that changed while it was formatted. MCP's own errors are JSON-RPC errors: an unknown
+`format` writes only the presentation's two files. It refuses with `refused` a
+presentation that doesn't read, one whose theme doesn't read, one in which
+laying out its slides finds an error, or one that changed while it was
+formatted. The message says why. MCP's own errors are JSON-RPC errors: an unknown
 tool, or arguments that aren't an object. The command exits 0 when it
 succeeds or a check passes, 1 when a check finds what fails it, and 2 when an
 error stops it.
@@ -108,7 +110,7 @@ error stops it.
 | `unknown-method` | This MarkdownPoint has no method with that name. Either it's older than the contract you read, or the name is wrong. | Read `capabilities` for the methods it serves. |
 | `validation-failed` | Errors stopped the request. From `files_edit`, `issues` lists what the edits would bring in, their errors among them. A `files_edit` call that edits the presentation's parts stops only on the errors its description names. It lands with any other error its edits bring in, such as a slide's own object under an id the slide inherits. Its answer's `issues` give that error. From `files_read`, the files have never read, and `issues` gives the reader's errors. Another request stops on the presentation's errors that keep it from its work. `files_read` lists them. | Fix those errors. Files that have never read take no `files_edit`. Fix them on disk, then read them again. |
 | `unknown-target` | The presentation doesn't exist or no window shows it, or there's no such slide, step, object, theme, layout, or action of Meshy's library. | Read the state again to get the ids. `windows_list` names the presentations that are open. |
-| `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. A conflict only in the deck's part or the theme names neither. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
+| `conflict` | The author or a collaborator changed what the edits change while they were taken in, the theme's files changed meanwhile, or the slide or theme a command acts on changed while it ran. From `files_edit`, `slideIds` and `compositionIds` give the slides and compositions where it happened. A conflict only in the deck's part, or in a call that edits the theme, names neither. | Read the deck's part again, then the parts of those pages it still lists, or read the theme again. Then retry. |
 | `unavailable` | MarkdownPoint can't be reached or the connection closed. A service it calls isn't answering, such as Meshy, an image provider or the collaboration service. Or the presentation's files can't be read or written right now. The message names which. | When MarkdownPoint isn't running, start it: `mdpoint` doesn't. Otherwise, try again later. After a closed connection, read the state before you retry a change. |
 | `timeout` | MarkdownPoint didn't take the connection within 30 seconds, or didn't answer within `MARKDOWNPOINT_CALL_TIMEOUT`. | A connection it didn't take sent nothing: check that it's running, then try again. A request it didn't answer may still take effect. Read the state before you retry a change. |
 | `too-large` | The request is too large for one call: its size or a range's samples. | Send less at once or lower `sampleRate`. |
@@ -219,10 +221,11 @@ fields depend on its `source`:
   `key` name the place, and `key` is the key that names the file there, such
   as `file`, `background.image.file`, or `soundtrack.file`. `path` and
   `location` say where that key's value is written, as in
-  `slides.intro.objects.photo.file` in the `.mdpoint` file. A theme picture
-  with one file per scheme is at the file for the slide's scheme, as in
-  `objects.logo.file.dark` in `master.json`. A theme picture comes once for
-  each slide that shows it. Only `validate` finds a missing generation record.
+  `slides.intro.objects.photo.file` in the `.mdpoint` file. A theme's object
+  or background image with one file per scheme is at the file the slide shows,
+  as in `objects.logo.file.dark` in `master.json`. A theme's file for an object
+  or a background comes once for each slide that shows it. Only `validate`
+  finds a missing generation record.
   It is at the `id` that names it, as in
   `slides.intro.objects.photo.generation.id`. A theme font's
   file comes once. It is at its entry in `master.json`'s `font-files`, as in
