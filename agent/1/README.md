@@ -171,9 +171,7 @@ fields depend on its `source`:
   it names the slide, the composition, the object, or the control in the
   presentation's record, such as `slides.intro.objects.title`. An instance's
   text block, such as `<!-- text: card.label -->`, is named as its value for
-  that control would be: `slides.intro.objects.card.control-values.label`. A table's or a chart's
-  words that the theme gives its own object are in the theme's file instead. `location` names that file, and `path` the words under
-  its `text`, such as `text.summary`.
+  that control would be: `slides.intro.objects.card.control-values.label`.
 - `folder`: the two files disagree, or the folder can't be read. `path`
   selects the record in the presentation's record. `location` names the line
   in the `.md` file when the issue has one, and otherwise the `.mdpoint` file.
@@ -184,7 +182,15 @@ fields depend on its `source`:
   that isn't valid JSON gives its line and column. A warning about an object
   that a layout or the master gives its slides, or about their background,
   comes once for each of those slides where it holds. Its `slideId` names the slide,
-  and its `path` the value, such as `overrides.logo.opacity`. A scheme that a
+  and its `path` the value, such as `overrides.logo.opacity`. Other than a
+  `file` issue, an issue whose `location` is in the theme's folder is the
+  theme's. It has `key` where a `slide` issue would. A layout's own object, its override of the master's,
+  and its background are in the layout's file. The master's object and its
+  background are in `master.json`. Words that the theme gives its own object
+  are under `text` in its file, such as `text.summary`. A slide's override
+  that is ignored leaves the inherited value showing. An issue about that
+  value is at the inherited value. The override's own issue is at the
+  override in the `.mdpoint` file. A scheme that a
   layout names and the master lacks comes once for each slide on the layout
   too. Its `path` is `scheme`. A file that a master or layout names and the
   theme's folder lacks is at each key that names it, as in
@@ -194,9 +200,9 @@ fields depend on its `source`:
   `slideId` names the slide. A theme's
   file that doesn't read is reported for its first fault only. The issue's
   code is the one the same fault has in a `.mdpoint` file, such as
-  `unknown-key`, `missing-key`, or `invalid-json`. A fault in `master.json`
-  refuses the whole presentation. A fault in a layout's file gives one issue
-  for each slide on that layout. Each of them has the slide's `slideId` and
+  `unknown-key`, `missing-key`, or `invalid-json`. Such a fault in
+  `master.json` refuses the whole presentation. Such a fault in a layout's
+  file gives one issue for each slide on that layout. Each of them has the slide's `slideId` and
   that file's `location`. A layout that no slide uses gives its fault in one
   warning. A layout
   the theme lacks, and a slide's own scheme the master lacks, are at the
@@ -230,14 +236,11 @@ fields depend on its `source`:
   one of the object's keys, such as `text-style`, `key` names it, and `path`
   and `location` say where its value is written. The slide's own object and
   its override of an object it inherits are in the `.mdpoint` file, as in
-  `slides.intro.overrides.logo.text-style`. An override that is ignored
-  leaves the inherited value showing, and the issue is at that value. A
-  layout's own object and its override of the master's are in the layout's
-  file, and the master's object is in `master.json`. A value the object
-  takes from its text style, and a member of a composition's instance, have
-  no `path`. A link in a slide's words is in the `.md` file. Its `path` names
-  the words' record. A link in words the theme gives its own object is in
-  the theme's file.
+  `slides.intro.overrides.logo.text-style`. A value the object takes from its
+  text style, and a member of a composition's instance, have no `path`. A link
+  in a slide's words is in the `.md` file. Its `path` names the words' record.
+  An issue whose `location` is in the theme's folder is a `theme` issue
+  instead.
 - `render`, for what drawing a slide finds: `slideId`, and `objectId` or
   `objectIds`. `text-overflow-unchecked` and a `render-failed` issue from
   drawing have no `slideId`, `objectId`, or `objectIds`. `validate`
