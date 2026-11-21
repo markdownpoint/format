@@ -208,7 +208,7 @@
                     "$ref": "#/definitions/fill"
                   }
                 ],
-                "description": "The color or gradient behind everything."
+                "description": "The color or gradient behind everything. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color."
               },
               "image": {
                 "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`.",
@@ -231,7 +231,7 @@
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
-                    "description": "How opaque the image is."
+                    "description": "How opaque the image is. The default is 1."
                   },
                   "exposure": {
                     "type": "number",
@@ -269,7 +269,7 @@
                         "$ref": "#/definitions/drop-shadow"
                       }
                     ],
-                    "description": "A drop shadow behind the image."
+                    "description": "A drop shadow behind the image. Without it, the image casts none."
                   },
                   "prompt": {
                     "allOf": [
@@ -289,7 +289,7 @@
                   },
                   "transparent-background": {
                     "type": "boolean",
-                    "description": "Whether a generated background image is made with a transparent background."
+                    "description": "Whether a generated background image is made with a transparent background. The default is false."
                   },
                   "restyle": {
                     "allOf": [
@@ -4074,7 +4074,7 @@
         "description": "an id, such as \"title-card\""
       },
       "additionalProperties": {
-        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. Its canvas is as large as fits in the instance's frame and is centered there. Then it turns and scales with the instance about the instance's anchor point. The composition's objects are in their own group at the instance's position. That group counts toward how deep groups nest. A composition can contain only what a group can: nothing 3D, no audio object, and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
+        "description": "A reusable animated scene that slides show as instances. A composition can't contain itself, directly or through another. Its canvas is as large as fits in the instance's frame and is centered there. Then it turns and scales with the instance about the instance's anchor point. The composition's objects are in their own group at the instance's position. That group counts toward how deep groups nest. The instance doesn't clip them: an object past the canvas's edge draws there. A video in it starts only when its `start-on` is `slide`: the composition's steps have no cues. Such a video plays on the slide's clock as one on the slide does. That clock doesn't follow `time-remap`. A composition can contain only what a group can: nothing 3D, no audio object, and no web video. Like a group, an instance fades and blurs as one picture and fades each branch on its own where a group would. A mask at the composition's root isn't painted and clips nothing. An instance's `visible: false` hides all its objects. A click on any of its objects follows its `link`, unless that object has a link of its own.",
         "type": "object",
         "properties": {
           "name": {
@@ -5426,7 +5426,7 @@
       "additionalProperties": false
     },
     "auto-layout": {
-      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Members whose `visible` is false, members with `ignore-auto-layout`, and lines attached to an object are skipped. A step or an initial value that hides or shows a member doesn't move the others. The run goes down or across in the group's rotation, and no member turns with it. A member's repeater copies take no room in it. Any other line takes the box of its two ends, and a member group the box its own members take.",
+      "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Members whose `visible` is false, members with `ignore-auto-layout`, and lines attached to an object are skipped. A mask takes a slot like any other member. A step or an initial value that hides or shows a member doesn't move the others. The run goes down or across in the group's rotation, and no member turns with it. A member's repeater copies take no room in it. Any other line takes the box of its two ends, and a member group the box its own members take.",
       "type": "object",
       "properties": {
         "direction": {

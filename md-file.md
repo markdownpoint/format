@@ -313,7 +313,7 @@ In a list item, a line of code that isn't indented stays in the item's code bloc
 
 In a list item, a nested list ends the paragraph above it when it starts at a number other than 1 or when its first line is only `*`, `+`, `1.`, or `1)`. A line with only an HTML tag, such as `</pre>`, ends the paragraph too. In CommonMark, the list and `</pre>` continue the paragraph. Outside list items, MarkdownPoint reads them as CommonMark does.
 
-Lists and quotes nest at most 100 deep, and a deeper marker stays as written.
+Lists and quotes nest at most 100 deep in all: the outermost is the first level, and a list in a quote is one level deeper. A deeper marker stays as written.
 
 ### Unsupported Markdown
 

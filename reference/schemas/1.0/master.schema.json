@@ -591,7 +591,7 @@
               "$ref": "#/definitions/fill"
             }
           ],
-          "description": "The color or gradient behind everything."
+          "description": "The color or gradient behind everything. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color."
         },
         "image": {
           "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`.",
@@ -622,7 +622,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How opaque the image is."
+              "description": "How opaque the image is. The default is 1."
             },
             "exposure": {
               "type": "number",
@@ -660,7 +660,7 @@
                   "$ref": "#/definitions/drop-shadow"
                 }
               ],
-              "description": "A drop shadow behind the image."
+              "description": "A drop shadow behind the image. Without it, the image casts none."
             }
           },
           "additionalProperties": false
@@ -2804,7 +2804,7 @@
                 "additionalProperties": false
               },
               "auto-layout": {
-                "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Members whose `visible` is false, members with `ignore-auto-layout`, and lines attached to an object are skipped. A step or an initial value that hides or shows a member doesn't move the others. The run goes down or across in the group's rotation, and no member turns with it. A member's repeater copies take no room in it. Any other line takes the box of its two ends, and a member group the box its own members take.",
+                "description": "How a group places its members one after another. The defaults are direction vertical, gap 0, align start, and reference-point start. Members are placed in their order in the `objects` list. Members whose `visible` is false, members with `ignore-auto-layout`, and lines attached to an object are skipped. A mask takes a slot like any other member. A step or an initial value that hides or shows a member doesn't move the others. The run goes down or across in the group's rotation, and no member turns with it. A member's repeater copies take no room in it. Any other line takes the box of its two ends, and a member group the box its own members take.",
                 "type": "object",
                 "properties": {
                   "direction": {
