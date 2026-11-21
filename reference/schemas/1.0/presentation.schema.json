@@ -170,7 +170,7 @@
     "locale": {
       "type": "string",
       "pattern": "^(?![\\s\\S]*-[Pp][Oo][Ss][Ii][Xx](?![^-]))(?:[A-Za-z]{2,3}|[A-Za-z]{5,8})(?:-[A-Za-z]{4})?(?:-(?:[A-Za-z]{2}|[0-9]{3}))?(?:-(?:[A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(?![\\s\\S])",
-      "description": "The presentation's language tag, such as fr-CA. It sets how the date field is written, chart cells are read, and words are split to animate. The default is en-US."
+      "description": "The presentation's language tag, such as fr-CA. It sets how the date field is written, chart cells are read, and words are split to animate. It also sets the forms of Chinese, Japanese, and Korean characters: Fallbacks, under the master's `fonts`, says which. The default is en-US."
     },
     "slides": {
       "type": "object",
