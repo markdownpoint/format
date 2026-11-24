@@ -2724,6 +2724,12 @@
                       "mono"
                     ]
                   },
+                  "font-style": {
+                    "enum": [
+                      "normal",
+                      "italic"
+                    ]
+                  },
                   "font-size": {
                     "type": "number",
                     "minimum": 0.000001,

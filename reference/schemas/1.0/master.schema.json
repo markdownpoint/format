@@ -233,6 +233,13 @@
             ],
             "description": "The font weight: 100 thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, or 900 black. Faces, under the master's `fonts`, says which face draws it."
           },
+          "font-style": {
+            "enum": [
+              "normal",
+              "italic"
+            ],
+            "description": "Whether the text's letters stand upright, `normal`, or lean, `italic`. They lean only in a family with an italic face. Faces, under the master's `fonts`, says which face draws them."
+          },
           "color": {
             "allOf": [
               {
@@ -240,6 +247,15 @@
               }
             ],
             "description": "The color: a color role or a hex color."
+          },
+          "align": {
+            "enum": [
+              "left",
+              "center",
+              "right",
+              "justify"
+            ],
+            "description": "The text's horizontal alignment. Where neither the text nor its style sets one, lines align to the side they start on: the right when `text-direction` is `rtl`, else the left. An explicit `left` stays left in right-to-left text. A table's columns take its style's alignment where its Markdown alignment row names none."
           },
           "line-height": {
             "allOf": [
@@ -1250,6 +1266,12 @@
                   "display",
                   "body",
                   "mono"
+                ]
+              },
+              "font-style": {
+                "enum": [
+                  "normal",
+                  "italic"
                 ]
               },
               "font-size": {
