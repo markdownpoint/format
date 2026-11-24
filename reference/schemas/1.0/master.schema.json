@@ -7006,10 +7006,10 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/point-of-interest"
+          "$ref": "#/definitions/space-position"
         }
       ],
-      "description": "The point the camera or a directional, spot, or area light faces. It is used in place of the rotation. It is in the position's space. The camera's or light's top stays toward the top of that space."
+      "description": "The point the camera or a directional, spot, or area light faces. It is used in place of the rotation. It is in the position's space. The camera's or light's top stays toward the top of that space. A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. After Effects' y and z axes run the other way. A parented object's position is in its parent's space."
     },
     "object.position": {
       "type": "object",
@@ -7257,35 +7257,6 @@
       "required": [
         "x",
         "y"
-      ],
-      "additionalProperties": false
-    },
-    "point-of-interest": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "z"
       ],
       "additionalProperties": false
     },

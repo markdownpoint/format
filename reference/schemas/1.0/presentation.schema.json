@@ -453,28 +453,16 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -65536,
-                              "maximum": 65536,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/frame.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -65536,
-                              "maximum": 65536,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/frame.y"
                             },
                             "width": {
-                              "type": "number",
-                              "minimum": 0.000001,
-                              "maximum": 65536,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/frame.width"
                             },
                             "height": {
-                              "type": "number",
-                              "minimum": 0.000001,
-                              "maximum": 65536,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/frame.height"
                             }
                           },
                           "additionalProperties": false
@@ -492,16 +480,10 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -65536,
-                              "maximum": 65536,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/frame.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -65536,
-                              "maximum": 65536,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/frame.y"
                             }
                           },
                           "additionalProperties": false
@@ -542,22 +524,13 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "degrees"
+                              "$ref": "#/definitions/space-rotation.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "degrees"
+                              "$ref": "#/definitions/space-rotation.y"
                             },
                             "z": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "degrees"
+                              "$ref": "#/definitions/space-rotation.z"
                             }
                           },
                           "additionalProperties": false
@@ -597,14 +570,10 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": 0,
-                              "maximum": 511
+                              "$ref": "#/definitions/flat-scale.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": 0,
-                              "maximum": 511
+                              "$ref": "#/definitions/flat-scale.y"
                             }
                           },
                           "additionalProperties": false
@@ -622,19 +591,13 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000
+                              "$ref": "#/definitions/space-scale.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000
+                              "$ref": "#/definitions/space-scale.y"
                             },
                             "z": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000
+                              "$ref": "#/definitions/space-scale.z"
                             }
                           },
                           "additionalProperties": false
@@ -1397,16 +1360,10 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "of the box"
+                              "$ref": "#/definitions/anchor-point.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "of the box"
+                              "$ref": "#/definitions/anchor-point.y"
                             }
                           },
                           "additionalProperties": false
@@ -1432,16 +1389,10 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "degrees"
+                              "$ref": "#/definitions/tilt.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -8589934592,
-                              "maximum": 8589934592,
-                              "description": "degrees"
+                              "$ref": "#/definitions/tilt.y"
                             }
                           },
                           "additionalProperties": false
@@ -2194,16 +2145,10 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": -510,
-                              "maximum": 510,
-                              "description": "of the frame"
+                              "$ref": "#/definitions/tail.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": -510,
-                              "maximum": 510,
-                              "description": "of the frame"
+                              "$ref": "#/definitions/tail.y"
                             }
                           },
                           "additionalProperties": false
@@ -2572,28 +2517,7 @@
                           "type": "null"
                         },
                         {
-                          "type": "object",
-                          "properties": {
-                            "x": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            },
-                            "y": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            },
-                            "z": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            }
-                          },
-                          "additionalProperties": false
+                          "$ref": "#/definitions/space-position-parts"
                         },
                         {
                           "type": "object",
@@ -2608,10 +2532,7 @@
                           "type": "object",
                           "properties": {
                             "y": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/floor-position.y"
                             }
                           },
                           "additionalProperties": false
@@ -2799,31 +2720,16 @@
                           "type": "null"
                         },
                         {
-                          "type": "object",
-                          "properties": {
-                            "x": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            },
-                            "y": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            },
-                            "z": {
-                              "type": "number",
-                              "minimum": -1000000000000000000,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
-                            }
-                          },
-                          "additionalProperties": false
+                          "$ref": "#/definitions/space-position-parts"
                         },
                         {
-                          "$ref": "#/definitions/point-of-interest"
+                          "type": "object",
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/space-position"
+                            }
+                          ],
+                          "description": "The point the camera or a directional, spot, or area light faces. It is used in place of the rotation. It is in the position's space. The camera's or light's top stays toward the top of that space. A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. After Effects' y and z axes run the other way. A parented object's position is in its parent's space."
                         }
                       ],
                       "description": "The point the camera or a directional, spot, or area light faces. It is used in place of the rotation. It is in the position's space. The camera's or light's top stays toward the top of that space."
@@ -3052,16 +2958,10 @@
                           "type": "object",
                           "properties": {
                             "x": {
-                              "type": "number",
-                              "minimum": 0.000001,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/area-size.x"
                             },
                             "y": {
-                              "type": "number",
-                              "minimum": 0.000001,
-                              "maximum": 1000000000000000000,
-                              "description": "canvas units"
+                              "$ref": "#/definitions/area-size.y"
                             }
                           },
                           "additionalProperties": false
@@ -6428,16 +6328,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "How far across the box in fractions of its width."
+          "$ref": "#/definitions/anchor-point.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "How far down the box in fractions of its height."
+          "$ref": "#/definitions/anchor-point.y"
         }
       },
       "required": [
@@ -6446,20 +6340,26 @@
       ],
       "additionalProperties": false
     },
+    "anchor-point.x": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "How far across the box in fractions of its width."
+    },
+    "anchor-point.y": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "How far down the box in fractions of its height."
+    },
     "area-size": {
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
-          "description": "Its width, along its own x. It is in canvas units."
+          "$ref": "#/definitions/area-size.x"
         },
         "y": {
-          "type": "number",
-          "minimum": 0.000001,
-          "maximum": 1000000000000000000,
-          "description": "Its height, along its own y. It is in canvas units."
+          "$ref": "#/definitions/area-size.y"
         }
       },
       "required": [
@@ -6467,6 +6367,18 @@
         "y"
       ],
       "additionalProperties": false
+    },
+    "area-size.x": {
+      "type": "number",
+      "minimum": 0.000001,
+      "maximum": 1000000000000000000,
+      "description": "Its width, along its own x. It is in canvas units."
+    },
+    "area-size.y": {
+      "type": "number",
+      "minimum": 0.000001,
+      "maximum": 1000000000000000000,
+      "description": "Its height, along its own y. It is in canvas units."
     },
     "back-curve": {
       "type": "object",
@@ -7232,16 +7144,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 511,
-          "description": "Along its x."
+          "$ref": "#/definitions/flat-scale.x"
         },
         "y": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 511,
-          "description": "Along its y."
+          "$ref": "#/definitions/flat-scale.y"
         }
       },
       "required": [
@@ -7250,20 +7156,35 @@
       ],
       "additionalProperties": false
     },
+    "flat-scale.x": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 511,
+      "description": "Along its x."
+    },
+    "flat-scale.y": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 511,
+      "description": "Along its y."
+    },
     "floor-position": {
       "type": "object",
       "properties": {
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "How far up from the slide's bottom edge in canvas units."
+          "$ref": "#/definitions/floor-position.y"
         }
       },
       "required": [
         "y"
       ],
       "additionalProperties": false
+    },
+    "floor-position.y": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "How far up from the slide's bottom edge in canvas units."
     },
     "frame": {
       "type": "object",
@@ -9763,10 +9684,10 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/point-of-interest"
+          "$ref": "#/definitions/space-position"
         }
       ],
-      "description": "The point the camera or a directional, spot, or area light faces. It is used in place of the rotation. It is in the position's space. The camera's or light's top stays toward the top of that space."
+      "description": "The point the camera or a directional, spot, or area light faces. It is used in place of the rotation. It is in the position's space. The camera's or light's top stays toward the top of that space. A point in the 3D space in canvas units. The x axis runs right from the slide's left edge, the y axis runs up from its bottom edge, and the z axis runs toward the viewer. The slide is at z 0. The axes are right-handed. glTF and three.js use the same axes. After Effects' y and z axes run the other way. A parented object's position is in its parent's space."
     },
     "object.position": {
       "type": "object",
@@ -10012,35 +9933,6 @@
       ],
       "additionalProperties": false
     },
-    "point-of-interest": {
-      "type": "object",
-      "properties": {
-        "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        },
-        "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "canvas units"
-        }
-      },
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "additionalProperties": false
-    },
     "presentation-image": {
       "type": "string",
       "pattern": "^(?=(?:media|generated)\\/)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)[\\s\\S]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])"
@@ -10196,22 +10088,13 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "Degrees about x, or a quaternion's x. It is in degrees."
+          "$ref": "#/definitions/space-rotation.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "Degrees about y, or a quaternion's y. It is in degrees."
+          "$ref": "#/definitions/space-rotation.y"
         },
         "z": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "Degrees about z, or a quaternion's z. It is in degrees."
+          "$ref": "#/definitions/space-rotation.z"
         }
       },
       "required": [
@@ -10225,22 +10108,13 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "How far across. It is in canvas units."
+          "$ref": "#/definitions/space-position.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "How far up. It is in canvas units."
+          "$ref": "#/definitions/space-position.y"
         },
         "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "How far toward the viewer. It is in canvas units."
+          "$ref": "#/definitions/space-position.z"
         }
       },
       "required": [
@@ -10249,6 +10123,39 @@
         "z"
       ],
       "additionalProperties": false
+    },
+    "space-position-parts": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "$ref": "#/definitions/space-position.x"
+        },
+        "y": {
+          "$ref": "#/definitions/space-position.y"
+        },
+        "z": {
+          "$ref": "#/definitions/space-position.z"
+        }
+      },
+      "additionalProperties": false
+    },
+    "space-position.x": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "How far across. It is in canvas units."
+    },
+    "space-position.y": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "How far up. It is in canvas units."
+    },
+    "space-position.z": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "How far toward the viewer. It is in canvas units."
     },
     "space-quaternion": {
       "type": "object",
@@ -10286,26 +10193,35 @@
       ],
       "additionalProperties": false
     },
+    "space-rotation.x": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "Degrees about x, or a quaternion's x. It is in degrees."
+    },
+    "space-rotation.y": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "Degrees about y, or a quaternion's y. It is in degrees."
+    },
+    "space-rotation.z": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "Degrees about z, or a quaternion's z. It is in degrees."
+    },
     "space-scale": {
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "Along its x."
+          "$ref": "#/definitions/space-scale.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "Along its y."
+          "$ref": "#/definitions/space-scale.y"
         },
         "z": {
-          "type": "number",
-          "minimum": -1000000000000000000,
-          "maximum": 1000000000000000000,
-          "description": "Along its z."
+          "$ref": "#/definitions/space-scale.z"
         }
       },
       "required": [
@@ -10314,6 +10230,24 @@
         "z"
       ],
       "additionalProperties": false
+    },
+    "space-scale.x": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "Along its x."
+    },
+    "space-scale.y": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "Along its y."
+    },
+    "space-scale.z": {
+      "type": "number",
+      "minimum": -1000000000000000000,
+      "maximum": 1000000000000000000,
+      "description": "Along its z."
     },
     "stable-id": {
       "type": "string",
@@ -10368,16 +10302,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -510,
-          "maximum": 510,
-          "description": "How far across the frame in fractions of its width."
+          "$ref": "#/definitions/tail.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -510,
-          "maximum": 510,
-          "description": "How far down the frame in fractions of its height."
+          "$ref": "#/definitions/tail.y"
         }
       },
       "required": [
@@ -10385,6 +10313,18 @@
         "y"
       ],
       "additionalProperties": false
+    },
+    "tail.x": {
+      "type": "number",
+      "minimum": -510,
+      "maximum": 510,
+      "description": "How far across the frame in fractions of its width."
+    },
+    "tail.y": {
+      "type": "number",
+      "minimum": -510,
+      "maximum": 510,
+      "description": "How far down the frame in fractions of its height."
     },
     "text": {
       "type": "string",
@@ -10472,16 +10412,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "It turns about the horizontal axis. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way. It is in degrees."
+          "$ref": "#/definitions/tilt.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "It turns about the vertical axis. With a positive y, its left side comes forward. The object's rotation comes first, then the y turn, then the x turn. It is in degrees."
+          "$ref": "#/definitions/tilt.y"
         }
       },
       "required": [
@@ -10489,6 +10423,18 @@
         "y"
       ],
       "additionalProperties": false
+    },
+    "tilt.x": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "It turns about the horizontal axis. With a positive x, its top turns away from the viewer. CSS's `rotateX()` turns the same way. A 3D object's `rotation.x` turns the other way. It is in degrees."
+    },
+    "tilt.y": {
+      "type": "number",
+      "minimum": -8589934592,
+      "maximum": 8589934592,
+      "description": "It turns about the vertical axis. With a positive y, its left side comes forward. The object's rotation comes first, then the y turn, then the x turn. It is in degrees."
     },
     "time-trim": {
       "type": "object",
