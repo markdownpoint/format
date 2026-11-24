@@ -5635,7 +5635,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "kind": {
+                          "type": {
                             "const": "enter"
                           },
                           "effect": {
@@ -5676,7 +5676,7 @@
                           }
                         },
                         "required": [
-                          "kind",
+                          "type",
                           "effect",
                           "duration"
                         ],
@@ -5685,7 +5685,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "kind": {
+                          "type": {
                             "const": "exit"
                           },
                           "effect": {
@@ -5723,7 +5723,7 @@
                           }
                         },
                         "required": [
-                          "kind",
+                          "type",
                           "effect",
                           "duration"
                         ],
@@ -5732,7 +5732,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "kind": {
+                          "type": {
                             "const": "emphasis"
                           },
                           "effect": {
@@ -5768,7 +5768,7 @@
                           }
                         },
                         "required": [
-                          "kind",
+                          "type",
                           "effect",
                           "duration"
                         ],
