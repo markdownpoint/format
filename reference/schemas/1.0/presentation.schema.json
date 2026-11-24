@@ -1164,14 +1164,14 @@
                               "const": "none"
                             },
                             {
-                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one. Its keys work like those of Photoshop's Drop Shadow. First, its letters, their outline, its box's fill, and its box's stroke grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
                                   "type": "number",
                                   "minimum": 0,
                                   "maximum": 33554431,
-                                  "description": "How far the shadow reaches beyond the text's letters and outline. Photoshop's Size works the same way. It is in ems."
+                                  "description": "How far the shadow reaches beyond what the text paints. Photoshop's Size works the same way. It is in ems."
                                 },
                                 "spread": {
                                   "type": "number",
@@ -1227,7 +1227,7 @@
                               "additionalProperties": false
                             }
                           ],
-                          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size."
+                          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
                         },
                         {
                           "anyOf": [
@@ -1235,7 +1235,7 @@
                               "const": "none"
                             },
                             {
-                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
@@ -1292,10 +1292,10 @@
                               "additionalProperties": false
                             }
                           ],
-                          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size."
+                          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
                         }
                       ],
-                      "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size."
+                      "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
                     },
                     "text-stroke": {
                       "anyOf": [
@@ -1459,6 +1459,40 @@
                       ],
                       "description": "Text that exits piece by piece. A piece is a paragraph, a word, or a character."
                     },
+                    "fill": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "anyOf": [
+                            {
+                              "const": "none"
+                            },
+                            {
+                              "type": "string",
+                              "allOf": [
+                                {
+                                  "$ref": "#/definitions/color"
+                                }
+                              ],
+                              "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it. It is a color role or a hex color."
+                            },
+                            {
+                              "type": "object",
+                              "allOf": [
+                                {
+                                  "$ref": "#/definitions/gradient"
+                                }
+                              ],
+                              "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it. A linear or radial gradient."
+                            }
+                          ],
+                          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it."
+                        }
+                      ],
+                      "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it."
+                    },
                     "stroke": {
                       "anyOf": [
                         {
@@ -1564,40 +1598,6 @@
                         }
                       ],
                       "description": "A description of the object that screen readers read aloud. On a shape or a table, they read it before its words. On a chart, they read it in place of its labels. It is one line that isn't blank and has no control characters or line breaks."
-                    },
-                    "fill": {
-                      "anyOf": [
-                        {
-                          "type": "null"
-                        },
-                        {
-                          "anyOf": [
-                            {
-                              "const": "none"
-                            },
-                            {
-                              "type": "string",
-                              "allOf": [
-                                {
-                                  "$ref": "#/definitions/color"
-                                }
-                              ],
-                              "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none. It is a color role or a hex color."
-                            },
-                            {
-                              "type": "object",
-                              "allOf": [
-                                {
-                                  "$ref": "#/definitions/gradient"
-                                }
-                              ],
-                              "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none. A linear or radial gradient."
-                            }
-                          ],
-                          "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none."
-                        }
-                      ],
-                      "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none."
                     },
                     "column-widths": {
                       "anyOf": [
@@ -3256,14 +3256,14 @@
                               "const": "none"
                             },
                             {
-                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one. Its keys work like those of Photoshop's Drop Shadow. First, its letters, their outline, its box's fill, and its box's stroke grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
                                   "type": "number",
                                   "minimum": 0,
                                   "maximum": 33554431,
-                                  "description": "How far the shadow reaches beyond the text's letters and outline. Photoshop's Size works the same way. It is in ems."
+                                  "description": "How far the shadow reaches beyond what the text paints. Photoshop's Size works the same way. It is in ems."
                                 },
                                 "spread": {
                                   "type": "number",
@@ -3319,7 +3319,7 @@
                               "additionalProperties": false
                             }
                           ],
-                          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size."
+                          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
                         },
                         "text-stroke": {
                           "$ref": "#/definitions/object.text-stroke"
@@ -3353,6 +3353,9 @@
                         },
                         "exit": {
                           "$ref": "#/definitions/object.exit"
+                        },
+                        "fill": {
+                          "$ref": "#/definitions/object.fill"
                         },
                         "stroke": {
                           "$ref": "#/definitions/object.stroke"
@@ -9344,7 +9347,7 @@
           "const": "none"
         },
         {
-          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
@@ -9401,7 +9404,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size."
+      "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
     },
     "object.enter": {
       "type": "object",
@@ -9433,7 +9436,7 @@
               "$ref": "#/definitions/color"
             }
           ],
-          "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none. It is a color role or a hex color."
+          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it. It is a color role or a hex color."
         },
         {
           "type": "object",
@@ -9442,10 +9445,10 @@
               "$ref": "#/definitions/gradient"
             }
           ],
-          "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none. A linear or radial gradient."
+          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it. A linear or radial gradient."
         }
       ],
-      "description": "The paint inside the shape, path, or table cells: a color, a gradient, or none."
+      "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words: a color, a gradient, or none. A text's words keep their own color on it."
     },
     "object.flip": {
       "enum": [
