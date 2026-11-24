@@ -2075,6 +2075,19 @@
                         }
                       ]
                     },
+                    "lens-shift": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "number",
+                          "minimum": -1000000000000000000,
+                          "maximum": 1000000000000000000,
+                          "description": "canvas units"
+                        }
+                      ]
+                    },
                     "motion-blur": {
                       "anyOf": [
                         {

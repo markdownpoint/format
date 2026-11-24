@@ -10,6 +10,7 @@
       "overrides": {
         "camera": {
           "constraints": [{"id":"follow","type":"position","target":"mug","axes":["x"],"relative-to-target":false,"strength":0.25}],
+          "lens-shift": 0,
           "motion-blur": {"shutter-position":"start"}
         }
       },

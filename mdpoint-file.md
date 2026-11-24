@@ -439,6 +439,7 @@ The camera is defined on the master, and a slide changes it in `overrides`. Its 
       "strength": 0.25
     }
   ],
+  "lens-shift": 0,
   "motion-blur": {"shutter-position": "start"}
 }
 ```

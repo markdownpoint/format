@@ -3003,6 +3003,12 @@
                 "maximum": 4394531250000000,
                 "description": "millimeters"
               },
+              "lens-shift": {
+                "type": "number",
+                "minimum": -1000000000000000000,
+                "maximum": 1000000000000000000,
+                "description": "canvas units"
+              },
               "motion-blur": {
                 "description": "The camera's motion blur. The 3D layer blurs along its motion while the shutter is open. Nothing else is blurred. Only exported movies and the Agent's renders show it. A frame is a sixtieth of a second, a movie's frame. The Agent's renders use the same frame at any `sampleRate`.",
                 "type": "object",
