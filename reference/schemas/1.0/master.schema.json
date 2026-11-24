@@ -687,7 +687,7 @@
                         "y"
                       ],
                       "additionalProperties": false,
-                      "description": "How far it falls: {x, y} across and down in the object's own axes. It turns and scales with the object and its groups. A flip doesn't mirror it. A background's offset is in the slide's axes."
+                      "description": "How far it falls: {x, y} across and down in the object's own axes. It turns and scales with the object and its groups. A flip doesn't mirror it. A line has no turn. Its offset is in the slide's axes and scales with its groups. A background's offset is in the slide's axes."
                     },
                     "color": {
                       "type": "string",
@@ -2111,6 +2111,9 @@
               },
               "blend-mode": {
                 "$ref": "#/definitions/object.blend-mode"
+              },
+              "drop-shadow": {
+                "$ref": "#/definitions/object.drop-shadow"
               },
               "trim": {
                 "$ref": "#/definitions/object.trim"
@@ -6738,7 +6741,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far it falls: {x, y} across and down in the object's own axes. It turns and scales with the object and its groups. A flip doesn't mirror it. A background's offset is in the slide's axes."
+              "description": "How far it falls: {x, y} across and down in the object's own axes. It turns and scales with the object and its groups. A flip doesn't mirror it. A line has no turn. Its offset is in the slide's axes and scales with its groups. A background's offset is in the slide's axes."
             },
             "color": {
               "type": "string",
