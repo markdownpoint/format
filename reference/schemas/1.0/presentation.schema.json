@@ -5848,7 +5848,7 @@
                                           "type": "number",
                                           "minimum": 0.000001,
                                           "maximum": 4294967296,
-                                          "description": "How long one swing of an elastic lasts. The default is 0.3 of the length of the move. It is in seconds."
+                                          "description": "How long one swing of an elastic lasts. The default is 0.3 of the length of the move. A text's `enter` and `exit` don't use it. It is in seconds."
                                         }
                                       },
                                       "required": [
@@ -5890,7 +5890,7 @@
                                           "type": "number",
                                           "minimum": 0.000001,
                                           "maximum": 4294967296,
-                                          "description": "The spring's natural period. A shorter one springs faster. Without it, the spring settles by the end of the move. It is in seconds."
+                                          "description": "The spring's natural period. A shorter one springs faster. Without it, the spring settles by the end of the move. A text's `enter` and `exit` don't use it. It is in seconds."
                                         }
                                       },
                                       "required": [
@@ -6816,6 +6816,7 @@
               ]
             },
             {
+              "description": "How each piece moves into place: gradually, or at once with hold. An interpolation with its settings: how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past, an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as just its name. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
               "anyOf": [
                 {
                   "$ref": "#/definitions/back-curve"
@@ -6828,7 +6829,14 @@
                     },
                     "amplitude": {
                       "type": "number",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "The size of an elastic's swing in multiples of the move. The default is 1."
+                    },
+                    "period": {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 4294967296,
+                      "description": "How long one swing of an elastic lasts. The default is 0.3 of the length of the move. A text's `enter` and `exit` don't use it. It is in seconds."
                     }
                   },
                   "required": [
@@ -6845,7 +6853,8 @@
                     "bounciness": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default 0.5 is Blender's Bounce."
                     }
                   },
                   "required": [
@@ -6862,7 +6871,14 @@
                     "damping-ratio": {
                       "type": "number",
                       "minimum": 0.3,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "How strongly a spring is damped. At 1, it doesn't swing past its keyframe. Less damping swings further."
+                    },
+                    "response": {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 4294967296,
+                      "description": "The spring's natural period. A shorter one springs faster. Without it, the spring settles by the end of the move. A text's `enter` and `exit` don't use it. It is in seconds."
                     }
                   },
                   "required": [
@@ -6880,18 +6896,22 @@
                     "x1": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "The time of a cubic Bézier's first handle in fractions of the move."
                     },
                     "y1": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "The value of a cubic Bézier's first handle in fractions of the change. It can be below 0 or above 1. The move can then go past an end. It stops at the end of the parameter's range."
                     },
                     "x2": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "The time of a cubic Bézier's second handle in fractions of the move."
                     },
                     "y2": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "The value of a cubic Bézier's second handle in fractions of the change. It can be below 0 or above 1. The move can then go past an end. It stops at the end of the parameter's range."
                     }
                   },
                   "required": [
@@ -6903,11 +6923,10 @@
                   ],
                   "additionalProperties": false
                 }
-              ],
-              "description": "How each piece moves into place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
+              ]
             }
           ],
-          "description": "How each piece moves into place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
+          "description": "How each piece moves into place: gradually, or at once with hold."
         },
         "fade": {
           "type": "number",
@@ -7048,6 +7067,7 @@
               ]
             },
             {
+              "description": "How each piece moves out of place: gradually, or at once with hold. An interpolation with its settings: how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past, an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as just its name. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
               "anyOf": [
                 {
                   "$ref": "#/definitions/back-curve"
@@ -7060,7 +7080,14 @@
                     },
                     "amplitude": {
                       "type": "number",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "The size of an elastic's swing in multiples of the move. The default is 1."
+                    },
+                    "period": {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 4294967296,
+                      "description": "How long one swing of an elastic lasts. The default is 0.3 of the length of the move. A text's `enter` and `exit` don't use it. It is in seconds."
                     }
                   },
                   "required": [
@@ -7077,7 +7104,8 @@
                     "bounciness": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default 0.5 is Blender's Bounce."
                     }
                   },
                   "required": [
@@ -7094,7 +7122,14 @@
                     "damping-ratio": {
                       "type": "number",
                       "minimum": 0.3,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "How strongly a spring is damped. At 1, it doesn't swing past its keyframe. Less damping swings further."
+                    },
+                    "response": {
+                      "type": "number",
+                      "minimum": 0.000001,
+                      "maximum": 4294967296,
+                      "description": "The spring's natural period. A shorter one springs faster. Without it, the spring settles by the end of the move. A text's `enter` and `exit` don't use it. It is in seconds."
                     }
                   },
                   "required": [
@@ -7112,18 +7147,22 @@
                     "x1": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "The time of a cubic Bézier's first handle in fractions of the move."
                     },
                     "y1": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "The value of a cubic Bézier's first handle in fractions of the change. It can be below 0 or above 1. The move can then go past an end. It stops at the end of the parameter's range."
                     },
                     "x2": {
                       "type": "number",
                       "minimum": 0,
-                      "maximum": 1
+                      "maximum": 1,
+                      "description": "The time of a cubic Bézier's second handle in fractions of the move."
                     },
                     "y2": {
-                      "type": "number"
+                      "type": "number",
+                      "description": "The value of a cubic Bézier's second handle in fractions of the change. It can be below 0 or above 1. The move can then go past an end. It stops at the end of the parameter's range."
                     }
                   },
                   "required": [
@@ -7135,11 +7174,10 @@
                   ],
                   "additionalProperties": false
                 }
-              ],
-              "description": "How each piece moves out of place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
+              ]
             }
           ],
-          "description": "How each piece moves out of place: gradually, or at once with hold. A text's spring has no `response`, and its elastic has no `period`."
+          "description": "How each piece moves out of place: gradually, or at once with hold."
         },
         "fade": {
           "type": "number",
