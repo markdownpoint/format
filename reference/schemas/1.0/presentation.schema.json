@@ -34,7 +34,7 @@
     "theme": {
       "type": "string",
       "pattern": "^(?![\\s\\S]{256})(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?![\\s\\S]))[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
-      "description": "The key of the presentation's theme. It's the name of the theme's folder in themes. The theme's master sets the slide size and `unit-scale`. It is a theme key, such as \"basic\"."
+      "description": "The presentation's theme: a theme key, such as \"basic\". It's the name of the theme's folder in themes. The theme's master sets the slide size and `unit-scale`."
     },
     "transition": {
       "type": "object",
@@ -43,16 +43,16 @@
           "$ref": "#/definitions/transition"
         }
       ],
-      "description": "The transition from every slide to the next, unless the slide sets its own. Without it, slides cross-dissolve over 0.5 seconds. A slide transition. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object with the same id on both slides. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0."
+      "description": "The transition from every slide to the next, unless the slide sets its own. Without it, slides cross-dissolve over 0.5 seconds. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object with the same id on both slides. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0."
     },
     "soundtrack": {
-      "description": "Music that plays under the whole presentation. Music under the whole presentation. The defaults are volume 1 and fades of 0.",
+      "description": "Music that plays under the whole presentation. A soundtrack starts from its beginning and plays under the slides' own media. The defaults are volume 1 and fades of 0.",
       "type": "object",
       "properties": {
         "file": {
           "type": "string",
           "pattern": "^(?=(?:media|generated)\\/)(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)[\\s\\S]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-          "description": "The audio file's path in the presentation's folder. It is an audio file in the presentation's media or generated folder."
+          "description": "The music's file path: an audio file in the presentation's media or generated folder."
         },
         "loop": {
           "const": "repeat",
@@ -83,7 +83,7 @@
       "additionalProperties": false
     },
     "self-playing": {
-      "description": "With it, the presentation plays by itself. A presentation that plays by itself.",
+      "description": "With it, the presentation plays by itself. A self-playing presentation's delays stand in for its clicks. A slide with steps that leaves by a scroll doesn't wait its `slide-delay`. Steps and transitions that start by themselves keep their own timing.",
       "type": "object",
       "properties": {
         "slide-delay": {
@@ -145,7 +145,7 @@
     "date": {
       "type": "string",
       "pattern": "^(?!0000)(?:[0-9]{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:[02468][048]|[13579][26])00)-02-29)(?![\\s\\S])",
-      "description": "The date the date field shows. It is written YYYY-MM-DD. It must be a real calendar date in year 0001 or later. Without one, the first date field inserted in the app sets it to that day. It is a valid calendar date in YYYY-MM-DD form, such as \"2026-03-14\"."
+      "description": "The date the date field shows: a valid calendar date in YYYY-MM-DD form, such as \"2026-03-14\". Its year is 0001 or later. Without one, the first date field inserted in the app sets it to that day."
     },
     "locale": {
       "type": "string",
@@ -207,7 +207,7 @@
                 "description": "The color or gradient behind everything. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color."
               },
               "image": {
-                "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`. A slide background's image. Each of its keys is also an image object's key. It has no frame. Without `file`, there is no image yet. An image that waits to be generated from its prompt has no `file`.",
+                "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`. Each of its keys is also an image object's key. It has no frame. Without `file`, there is no image yet. An image that waits to be generated from its prompt has no `file`.",
                 "type": "object",
                 "properties": {
                   "file": {
@@ -222,7 +222,7 @@
                         "$ref": "#/definitions/crop"
                       }
                     ],
-                    "description": "How far the image is zoomed, and which point stays in view. An image's or a video's zoom inside its frame, and the point that stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
+                    "description": "How far the image is zoomed, and which point stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
                   },
                   "opacity": {
                     "type": "number",
@@ -266,7 +266,7 @@
                         "const": "none"
                       },
                       {
-                        "description": "A drop shadow behind the image. Without it, the image casts none. A drop shadow. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                        "description": "A drop shadow behind the image. Without it, the image casts none. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                         "type": "object",
                         "properties": {
                           "size": {
@@ -285,16 +285,10 @@
                             "type": "object",
                             "properties": {
                               "x": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
+                                "$ref": "#/definitions/point.x"
                               },
                               "y": {
-                                "type": "number",
-                                "minimum": -33554431.984375,
-                                "maximum": 33554431.984375,
-                                "description": "canvas units"
+                                "$ref": "#/definitions/point.y"
                               }
                             },
                             "required": [
@@ -393,7 +387,7 @@
                 "$ref": "#/definitions/transition"
               }
             ],
-            "description": "The transition from this slide to the next. A slide transition. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object with the same id on both slides. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0."
+            "description": "The transition from this slide to the next. `cross-dissolve` crossfades to the next slide. `carry-over` moves each object with the same id on both slides. `push` moves both slides along its direction, `move-in` brings the next slide in over this one, and `reveal` moves this one off the next. `scroll` makes both slides one strip the view travels across. This slide stays as it was left, and the next slide's first click plays with the move. `wipe` uncovers the next slide behind a traveling edge. `zoom` grows the next slide in from the middle. `fade-through-color` fades this slide out to the color and the next one in from it. The defaults are interpolation ease-in-out, match object, direction left, color #000000, and delay 0."
           },
           "overrides": {
             "type": "object",
@@ -439,10 +433,10 @@
                               "$ref": "#/definitions/object-id"
                             }
                           ],
-                          "description": "The id of its group. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light. It is an object's id."
+                          "description": "Its group: an object's id. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light."
                         }
                       ],
-                      "description": "The id of its group. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light."
+                      "description": "Its group: an object's id. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light."
                     },
                     "frame": {
                       "anyOf": [
@@ -474,7 +468,7 @@
                               "$ref": "#/definitions/text-frame"
                             }
                           ],
-                          "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                          "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
                         },
                         {
                           "type": "object",
@@ -495,7 +489,7 @@
                               "$ref": "#/definitions/point-frame"
                             }
                           ],
-                          "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                          "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
                         },
                         {
                           "type": "object",
@@ -504,10 +498,10 @@
                               "$ref": "#/definitions/frame"
                             }
                           ],
-                          "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                          "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
                         }
                       ],
-                      "description": "The object's position and size on the slide in canvas units."
+                      "description": "The object's position and size on the slide. It is in canvas units."
                     },
                     "rotation": {
                       "anyOf": [
@@ -585,7 +579,7 @@
                               "$ref": "#/definitions/flat-scale"
                             }
                           ],
-                          "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A flat object's scale along its own axes. The object scales about its `anchor-point`. Text breaks into lines first, then stretches with the scale."
+                          "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A flat object scales about its `anchor-point`. Text breaks into lines first, then stretches with the scale."
                         },
                         {
                           "type": "object",
@@ -609,7 +603,7 @@
                               "$ref": "#/definitions/space-scale"
                             }
                           ],
-                          "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                          "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
                         }
                       ],
                       "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light."
@@ -749,7 +743,7 @@
                               "$ref": "#/definitions/wipe"
                             }
                           ],
-                          "description": "A straight edge that reveals the object as its progress rises from 0 to 1. A reveal behind a moving straight edge. The defaults are progress 1, angle 90, and feather 0."
+                          "description": "A straight edge that reveals the object as its progress rises from 0 to 1. The defaults are progress 1, angle 90, and feather 0."
                         }
                       ],
                       "description": "A straight edge that reveals the object as its progress rises from 0 to 1."
@@ -1043,10 +1037,10 @@
                           "type": "number",
                           "minimum": -1,
                           "maximum": 1,
-                          "description": "How far the point its `align` holds the text at moves along its path."
+                          "description": "How far the point its `align` holds the text at moves along its path. It is in fractions of the path's length."
                         }
                       ],
-                      "description": "How far the point its `align` holds the text at moves along its path."
+                      "description": "How far the point its `align` holds the text at moves along its path. It is in fractions of the path's length."
                     },
                     "paragraph-spacing": {
                       "anyOf": [
@@ -1170,7 +1164,7 @@
                               "const": "none"
                             },
                             {
-                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
@@ -1192,13 +1186,13 @@
                                       "type": "number",
                                       "minimum": -33554431,
                                       "maximum": 33554431,
-                                      "description": "ems"
+                                      "description": "How far across. It is in ems."
                                     },
                                     "y": {
                                       "type": "number",
                                       "minimum": -33554431,
                                       "maximum": 33554431,
-                                      "description": "ems"
+                                      "description": "How far down. It is in ems."
                                     }
                                   },
                                   "required": [
@@ -1241,7 +1235,7 @@
                               "const": "none"
                             },
                             {
-                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. A drop shadow. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
@@ -1260,16 +1254,10 @@
                                   "type": "object",
                                   "properties": {
                                     "x": {
-                                      "type": "number",
-                                      "minimum": -33554431.984375,
-                                      "maximum": 33554431.984375,
-                                      "description": "canvas units"
+                                      "$ref": "#/definitions/point.x"
                                     },
                                     "y": {
-                                      "type": "number",
-                                      "minimum": -33554431.984375,
-                                      "maximum": 33554431.984375,
-                                      "description": "canvas units"
+                                      "$ref": "#/definitions/point.y"
                                     }
                                   },
                                   "required": [
@@ -1404,10 +1392,10 @@
                               "$ref": "#/definitions/tilt"
                             }
                           ],
-                          "description": "How far a group or a text with a 3D `model` tilts in depth about its anchor point in degrees. A text without `model` ignores it. How far a group or a text with a 3D `model` tilts in depth about axes through its anchor point in the slide's plane. It is in degrees. A group's picture is seen in perspective from in front of its anchor, through a 50 mm lens, wherever the slide's camera stands. A text's model turns in the slide's 3D space, about its anchor point at its `z`, and the slide's camera sees it there. Its words and their links stand on the turned plane."
+                          "description": "How far a group or a text with a 3D `model` tilts in depth. It turns about axes parallel to the slide through the object's anchor point. Inside a tilted group, they are parallel to that group's picture. It is in degrees. A group's picture is seen in perspective from in front of its anchor, through a 50 mm lens, wherever the slide's camera stands. A text's model turns in the slide's 3D space, about its anchor point at its `z`, and the slide's camera sees it there. Its words and their links stand on the turned plane. A text without `model` ignores it."
                         }
                       ],
-                      "description": "How far a group or a text with a 3D `model` tilts in depth about its anchor point in degrees. A text without `model` ignores it."
+                      "description": "How far a group or a text with a 3D `model` tilts in depth. It turns about axes parallel to the slide through the object's anchor point. Inside a tilted group, they are parallel to that group's picture. It is in degrees."
                     },
                     "cast-shadow": {
                       "anyOf": [
@@ -1432,7 +1420,7 @@
                               "$ref": "#/definitions/text-model"
                             }
                           ],
-                          "description": "The words as a 3D model: an `extrusion` or a program's GLB `file`. A file is drawn only while its `built-from` matches what it was built from. The text is never in a group. A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. A text on a path can't have an extrusion. Its extrusion is left out as the file is read, and the warning `extrusion-with-text-path` says so. Its words draw flat. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from: the words, the values of the fields they show, the presentation's `locale`, and the text's style and layout. Once any of them changes, the words draw flat until the model is built again. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions. Its letters are matte and lit only by the slide's lights and its World. With no light and the World's intensity at 0, its default, they draw black."
+                          "description": "The words as a 3D model: an `extrusion` or a program's GLB `file`. A file is drawn only while its `built-from` matches what it was built from. The text is never in a group. With `extrusion`, MarkdownPoint builds the words' letters into a model. A text on a path can't have an extrusion. Its extrusion is left out as the file is read, and the warning `extrusion-with-text-path` says so. Its words draw flat. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from: the words, the values of the fields they show, the presentation's `locale`, and the text's style and layout. A file that doesn't match draws its words flat until the model is built again. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions. Its letters are matte and lit only by the slide's lights and its World. With no light and the World's intensity at 0, its default, they draw black."
                         }
                       ],
                       "description": "The words as a 3D model: an `extrusion` or a program's GLB `file`. A file is drawn only while its `built-from` matches what it was built from. The text is never in a group."
@@ -1449,10 +1437,10 @@
                               "$ref": "#/definitions/enter"
                             }
                           ],
-                          "description": "Text that enters one paragraph, word, or character at a time. Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1. With delivery `by-paragraph`, it works as PowerPoint's By Paragraph."
+                          "description": "Text that enters piece by piece. A piece is a paragraph, a word, or a character. `based-on` sets which. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1. With delivery `by-paragraph`, it works as PowerPoint's By Paragraph."
                         }
                       ],
-                      "description": "Text that enters one paragraph, word, or character at a time."
+                      "description": "Text that enters piece by piece. A piece is a paragraph, a word, or a character."
                     },
                     "exit": {
                       "anyOf": [
@@ -1466,10 +1454,10 @@
                               "$ref": "#/definitions/exit"
                             }
                           ],
-                          "description": "Text that exits one paragraph, word, or character at a time. Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 0."
+                          "description": "Text that exits piece by piece. A piece is a paragraph, a word, or a character. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 0."
                         }
                       ],
-                      "description": "Text that exits one paragraph, word, or character at a time."
+                      "description": "Text that exits piece by piece. A piece is a paragraph, a word, or a character."
                     },
                     "stroke": {
                       "anyOf": [
@@ -1701,25 +1689,25 @@
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         }
                       ],
-                      "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                      "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
                     },
                     "scale-mode": {
                       "anyOf": [
@@ -1747,7 +1735,7 @@
                               "$ref": "#/definitions/crop"
                             }
                           ],
-                          "description": "How far the image or video is zoomed inside its frame, and which point stays in view. An image's or a video's zoom inside its frame, and the point that stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
+                          "description": "How far the image or video is zoomed inside its frame, and which point stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
                         }
                       ],
                       "description": "How far the image or video is zoomed inside its frame, and which point stays in view."
@@ -2043,10 +2031,10 @@
                               "$ref": "#/definitions/time-trim"
                             }
                           ],
-                          "description": "The part of the video or audio file that plays: a start and an end in seconds into the file. The part of a video or audio file, or of a clip's Action, that plays."
+                          "description": "The part of the video or audio file that plays. It is a start and an end in seconds."
                         }
                       ],
-                      "description": "The part of the video or audio file that plays: a start and an end in seconds into the file."
+                      "description": "The part of the video or audio file that plays. It is a start and an end in seconds."
                     },
                     "poster": {
                       "anyOf": [
@@ -2160,10 +2148,10 @@
                               "$ref": "#/definitions/tail"
                             }
                           ],
-                          "description": "Where a speech bubble's tail ends. It is in fractions of its frame. The tip of a speech bubble's tail."
+                          "description": "Where a speech bubble's tail ends. It is in fractions of the bubble's frame."
                         }
                       ],
-                      "description": "Where a speech bubble's tail ends. It is in fractions of its frame."
+                      "description": "Where a speech bubble's tail ends. It is in fractions of the bubble's frame."
                     },
                     "use-as-mask": {
                       "anyOf": [
@@ -2214,10 +2202,10 @@
                               "$ref": "#/definitions/trim"
                             }
                           ],
-                          "description": "The drawn part of the stroke: a start and an end along its length. The drawn part of a path's or a line's stroke."
+                          "description": "The drawn part of the stroke. A start and an end along a path's or a line's stroke."
                         }
                       ],
-                      "description": "The drawn part of the stroke: a start and an end along its length."
+                      "description": "The drawn part of the stroke."
                     },
                     "icon": {
                       "anyOf": [
@@ -2247,7 +2235,7 @@
                                   "$ref": "#/definitions/line-end"
                                 }
                               ],
-                              "description": "Where a line starts: a point, or an object it stays attached to. A line end attached to an object."
+                              "description": "Where a line starts: a point, or an object it stays attached to. An attached end is straight out from the object's center toward its `side`. It meets the frame's edge there. On a shape other than a speech bubble, it meets the shape's outline instead."
                             }
                           ],
                           "description": "Where a line starts: a point, or an object it stays attached to."
@@ -2272,7 +2260,7 @@
                                   "$ref": "#/definitions/line-end"
                                 }
                               ],
-                              "description": "Where a line ends: a point, or an object it stays attached to. A line end attached to an object."
+                              "description": "Where a line ends: a point, or an object it stays attached to. An attached end is straight out from the object's center toward its `side`. It meets the frame's edge there. On a shape other than a speech bubble, it meets the shape's outline instead."
                             }
                           ],
                           "description": "Where a line ends: a point, or an object it stays attached to."
@@ -2544,7 +2532,7 @@
                               "$ref": "#/definitions/floor-position"
                             }
                           ],
-                          "description": "Where the object is in the 3D space. Y is up. It places a model's origin, or the center of a light, the camera, or a shadow catcher. A floor's position is its height. It is written as y. A floor's height in the 3D space. A floor is level and goes on without end. So a floor's position has only y. Like a shadow catcher, a floor shows only the shadows cast on it and hides the 3D objects behind it. Without a position, the floor is at the slide's bottom edge."
+                          "description": "Where the object is in the 3D space. Y is up. It places a model's origin, or the center of a light, the camera, or a shadow catcher. A floor's position is its height. It is written as y. A floor is level and goes on without end. Like a shadow catcher, a floor shows only the shadows cast on it and hides the 3D objects behind it. Without a position, the floor is at the slide's bottom edge."
                         }
                       ],
                       "description": "Where the object is in the 3D space. Y is up. It places a model's origin, or the center of a light, the camera, or a shadow catcher. A floor's position is its height. It is written as y."
@@ -2572,10 +2560,10 @@
                               "$ref": "#/definitions/model-node-name"
                             }
                           ],
-                          "description": "The name of the node in the parent model that a model, a light, a shadow catcher, or the camera moves with. Without it, the object moves with the whole model. It is the name of one of the model's nodes."
+                          "description": "The node in the parent model that a model, a light, a shadow catcher, or the camera moves with: the name of one of the model's nodes. Without it, the object moves with the whole model."
                         }
                       ],
-                      "description": "The name of the node in the parent model that a model, a light, a shadow catcher, or the camera moves with. Without it, the object moves with the whole model."
+                      "description": "The node in the parent model that a model, a light, a shadow catcher, or the camera moves with: the name of one of the model's nodes. Without it, the object moves with the whole model."
                     },
                     "parent-inverse": {
                       "anyOf": [
@@ -2754,7 +2742,7 @@
                                         "$ref": "#/definitions/constraint-id"
                                       }
                                     ],
-                                    "description": "The constraint's id, such as follow. It is unique among the camera's constraints. A step animates its strength as `constraints.follow.strength`. It is an id, such as \"look\"."
+                                    "description": "Its id: an id, such as \"look\". It is unique among the camera's constraints. A step animates its strength as `constraints.<id>.strength`."
                                   },
                                   "type": {
                                     "const": "position"
@@ -2802,7 +2790,7 @@
                                     "description": "How far the camera moves to the point it follows: 0 is not at all and 1 is fully. The default is 1. It can be animated."
                                   },
                                   "spring": {
-                                    "description": "The spring the camera follows on. It has the `damping-ratio` and `response` of a keyframe's `spring` interpolation. Without it, the camera follows exactly. The spring the camera follows its target on. It is in the camera's Position constraint. It is written the same way as a keyframe's spring interpolation. Both keys are required.",
+                                    "description": "The spring the camera follows on. Without it, the camera follows exactly. It is in the camera's Position constraint. It is written the same way as a keyframe's spring interpolation. Both keys are required.",
                                     "type": "object",
                                     "properties": {
                                       "damping-ratio": {
@@ -3113,7 +3101,7 @@
                               "$ref": "#/definitions/text-frame"
                             }
                           ],
-                          "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                          "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
                         },
                         "rotation": {
                           "$ref": "#/definitions/object.rotation"
@@ -3236,7 +3224,7 @@
                           "type": "number",
                           "minimum": -1,
                           "maximum": 1,
-                          "description": "How far the point its `align` holds the text at moves along its path."
+                          "description": "How far the point its `align` holds the text at moves along its path. It is in fractions of the path's length."
                         },
                         "paragraph-spacing": {
                           "$ref": "#/definitions/object.paragraph-spacing"
@@ -3268,7 +3256,7 @@
                               "const": "none"
                             },
                             {
-                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. A text's drop shadow. Its keys work like those of Photoshop's Drop Shadow. Its lengths are in ems of the text's font size. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                              "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, the text's letters and outline grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                               "type": "object",
                               "properties": {
                                 "size": {
@@ -3290,13 +3278,13 @@
                                       "type": "number",
                                       "minimum": -33554431,
                                       "maximum": 33554431,
-                                      "description": "ems"
+                                      "description": "How far across. It is in ems."
                                     },
                                     "y": {
                                       "type": "number",
                                       "minimum": -33554431,
                                       "maximum": 33554431,
-                                      "description": "ems"
+                                      "description": "How far down. It is in ems."
                                     }
                                   },
                                   "required": [
@@ -3358,7 +3346,7 @@
                               "$ref": "#/definitions/text-model"
                             }
                           ],
-                          "description": "The words as a 3D model: an `extrusion` or a program's GLB `file`. A file is drawn only while its `built-from` matches what it was built from. The text is never in a group. A text's 3D model. Its `type` is `extrusion` or `file`. With `extrusion`, MarkdownPoint builds the words' letters into a model. A text on a path can't have an extrusion. Its extrusion is left out as the file is read, and the warning `extrusion-with-text-path` says so. Its words draw flat. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from: the words, the values of the fields they show, the presentation's `locale`, and the text's style and layout. Once any of them changes, the words draw flat until the model is built again. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions. Its letters are matte and lit only by the slide's lights and its World. With no light and the World's intensity at 0, its default, they draw black."
+                          "description": "The words as a 3D model: an `extrusion` or a program's GLB `file`. A file is drawn only while its `built-from` matches what it was built from. The text is never in a group. With `extrusion`, MarkdownPoint builds the words' letters into a model. A text on a path can't have an extrusion. Its extrusion is left out as the file is read, and the warning `extrusion-with-text-path` says so. Its words draw flat. Each length is in ems of the text's size. The default depth is 0.2, and the default bevel is 0.02. With `file`, the model is a GLB that a program built, and `built-from` is the fingerprint of what it was built from: the words, the values of the fields they show, the presentation's `locale`, and the text's style and layout. A file that doesn't match draws its words flat until the model is built again. One unit of the model is one em of the text's size. Its origin is on the first line's baseline at the left of the text's column. For words on a path, its origin is the frame's top left. That is the path's 0 0, and the model's y points up from it. The model moves, turns, and scales with the text's frame. Its `z` sets how far it is in front of the slide. Its depth scales by the square root of the text's x scale times its y scale. A step's clips play the Actions of a GLB `file` the same way they play a model's. An extrusion has no Actions. Its letters are matte and lit only by the slide's lights and its World. With no light and the World's intensity at 0, its default, they draw black."
                         },
                         "enter": {
                           "$ref": "#/definitions/object.enter"
@@ -3493,7 +3481,7 @@
                               "$ref": "#/definitions/point-frame"
                             }
                           ],
-                          "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                          "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
                         },
                         "rotation": {
                           "$ref": "#/definitions/object.rotation"
@@ -3657,7 +3645,7 @@
                         "file": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         "link": {
                           "$ref": "#/definitions/object.link"
@@ -3837,7 +3825,7 @@
                         "file": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         "start-on": {
                           "$ref": "#/definitions/object.start-on"
@@ -4129,7 +4117,7 @@
                               "$ref": "#/definitions/tail"
                             }
                           ],
-                          "description": "Where a speech bubble's tail ends. It is in fractions of its frame. The tip of a speech bubble's tail."
+                          "description": "Where a speech bubble's tail ends. It is in fractions of the bubble's frame."
                         },
                         "use-as-mask": {
                           "$ref": "#/definitions/object.use-as-mask"
@@ -4415,7 +4403,7 @@
                                   "$ref": "#/definitions/line-end"
                                 }
                               ],
-                              "description": "Where a line starts: a point, or an object it stays attached to. A line end attached to an object."
+                              "description": "Where a line starts: a point, or an object it stays attached to. An attached end is straight out from the object's center toward its `side`. It meets the frame's edge there. On a shape other than a speech bubble, it meets the shape's outline instead."
                             }
                           ],
                           "description": "Where a line starts: a point, or an object it stays attached to."
@@ -4432,7 +4420,7 @@
                                   "$ref": "#/definitions/line-end"
                                 }
                               ],
-                              "description": "Where a line ends: a point, or an object it stays attached to. A line end attached to an object."
+                              "description": "Where a line ends: a point, or an object it stays attached to. An attached end is straight out from the object's center toward its `side`. It meets the frame's edge there. On a shape other than a speech bubble, it meets the shape's outline instead."
                             }
                           ],
                           "description": "Where a line ends: a point, or an object it stays attached to."
@@ -4776,7 +4764,7 @@
                         "file": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         "frame": {
                           "type": "object",
@@ -4785,7 +4773,7 @@
                               "$ref": "#/definitions/point-frame"
                             }
                           ],
-                          "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                          "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
                         },
                         "locked": {
                           "$ref": "#/definitions/object.locked"
@@ -4906,7 +4894,7 @@
                         "file": {
                           "type": "string",
                           "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                          "description": "The file the object shows or plays, such as a model's GLB. It is a presentation's or a theme's file path. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
+                          "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. It is a file path in the presentation's folder."
                         },
                         "position": {
                           "$ref": "#/definitions/object.position"
@@ -4944,7 +4932,7 @@
                               "$ref": "#/definitions/space-scale"
                             }
                           ],
-                          "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                          "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
                         },
                         "locked": {
                           "$ref": "#/definitions/object.locked"
@@ -5049,7 +5037,7 @@
                                   "$ref": "#/definitions/space-scale"
                                 }
                               ],
-                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
                             },
                             "locked": {
                               "$ref": "#/definitions/object.locked"
@@ -5152,7 +5140,7 @@
                                   "$ref": "#/definitions/space-scale"
                                 }
                               ],
-                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
                             },
                             "locked": {
                               "$ref": "#/definitions/object.locked"
@@ -5265,7 +5253,7 @@
                                   "$ref": "#/definitions/space-scale"
                                 }
                               ],
-                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
                             },
                             "locked": {
                               "$ref": "#/definitions/object.locked"
@@ -5363,7 +5351,7 @@
                                   "$ref": "#/definitions/space-scale"
                                 }
                               ],
-                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object's scale along its own axes, about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                              "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
                             },
                             "locked": {
                               "$ref": "#/definitions/object.locked"
@@ -5546,7 +5534,7 @@
                               "$ref": "#/definitions/floor-position"
                             }
                           ],
-                          "description": "Where the object is in the 3D space. Y is up. It places a model's origin, or the center of a light, the camera, or a shadow catcher. A floor's position is its height. It is written as y. A floor's height in the 3D space. A floor is level and goes on without end. So a floor's position has only y. Like a shadow catcher, a floor shows only the shadows cast on it and hides the 3D objects behind it. Without a position, the floor is at the slide's bottom edge."
+                          "description": "Where the object is in the 3D space. Y is up. It places a model's origin, or the center of a light, the camera, or a shadow catcher. A floor's position is its height. It is written as y. A floor is level and goes on without end. Like a shadow catcher, a floor shows only the shadows cast on it and hides the 3D objects behind it. Without a position, the floor is at the slide's bottom edge."
                         },
                         "locked": {
                           "$ref": "#/definitions/object.locked"
@@ -5844,7 +5832,7 @@
                               "description": "How the value reaches the keyframe: gradually, or at once with hold. It is a named curve, a named curve with its settings, a cubic Bézier, or a spring. The default is linear."
                             },
                             "interrupted": {
-                              "description": "The longer move this keyframe interrupts. Up to the keyframe's time, the motion follows that move toward its `value`. Then the parameter has the keyframe's own `value`. The move a keyframe interrupts: where it was going and when it would have reached it. The keyframe's `interpolation`, `motion-path`, and `exponential-scale` shape the interrupted move: from `begin` to `interrupted.time`, and toward `interrupted.value`. An elastic's period and a spring's settling are measured over that move. At the keyframe's `time` the move is cut, and the parameter has the keyframe's own `value`.",
+                              "description": "The longer move this keyframe interrupts. Where the move was going and when it would have reached it. The keyframe's `interpolation`, `motion-path`, and `exponential-scale` shape the interrupted move: from `begin` to `interrupted.time`, and toward `interrupted.value`. An elastic's period and a spring's settling are measured over that move. At the keyframe's `time` the move is cut, and the parameter has the keyframe's own `value`.",
                               "type": "object",
                               "properties": {
                                 "value": {
@@ -5884,7 +5872,7 @@
                               "additionalProperties": false
                             },
                             "motion-path": {
-                              "description": "A curved motion path for the keyframe's move. Only a point keyframe can have it. A curved motion path for a point keyframe's move in the move's own coordinates. 0 0 is where the move starts, and 1 0 is where it ends. Seen on the slide, its y points 90 degrees clockwise from its x. SVG's y does the same. So for a move to the right, a negative y bends the path up the slide.",
+                              "description": "A curved motion path for the keyframe's move. Only a point keyframe can have it. The path is in the move's own coordinates. 0 0 is where the move starts, and 1 0 is where it ends. Seen on the slide, its y points 90 degrees clockwise from its x. SVG's y does the same. So for a move to the right, a negative y bends the path up the slide.",
                               "type": "object",
                               "properties": {
                                 "geometry": {
@@ -6029,7 +6017,7 @@
                                 "$ref": "#/definitions/time-trim"
                               }
                             ],
-                            "description": "The part of the Action that plays: a start and an end in seconds into the Action. The part of a video or audio file, or of a clip's Action, that plays."
+                            "description": "The part of the Action that plays. It is a start and an end in seconds."
                           },
                           "stride": {
                             "type": "number",
@@ -6202,7 +6190,7 @@
           "slide": {
             "type": "string",
             "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
-            "description": "The id of the slide it is pinned to. It can name a slide that is no longer there. It is an id, such as \"title-card\"."
+            "description": "The slide it is pinned to: an id, such as \"title-card\". It can name a slide that is no longer there."
           },
           "author": {
             "type": "object",
@@ -6211,7 +6199,7 @@
                 "$ref": "#/definitions/comment-author"
               }
             ],
-            "description": "Who wrote it. Who wrote a comment. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id is `dbid:` followed by one or more of A to Z, a to z, 0 to 9, `_`, and `-`. For a Microsoft account user, it is `microsoft:` followed by the account's Microsoft Graph id in lowercase. That id is a UUID for a work or school account and 16 hexadecimal digits for a personal account."
+            "description": "Who wrote it. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id is `dbid:` followed by one or more of A to Z, a to z, 0 to 9, `_`, and `-`. For a Microsoft account user, it is `microsoft:` followed by the account's Microsoft Graph id in lowercase. That id is a UUID for a work or school account and 16 hexadecimal digits for a personal account."
           },
           "created": {
             "type": "string",
@@ -6238,13 +6226,13 @@
                 "type": "number",
                 "minimum": -65536,
                 "maximum": 65536,
-                "description": "canvas units"
+                "description": "How far across. It is in canvas units."
               },
               "y": {
                 "type": "number",
                 "minimum": -65536,
                 "maximum": 65536,
-                "description": "canvas units"
+                "description": "How far down. It is in canvas units."
               }
             },
             "required": [
@@ -6275,7 +6263,7 @@
                       "$ref": "#/definitions/comment-author"
                     }
                   ],
-                  "description": "Who wrote it. Who wrote a comment. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id is `dbid:` followed by one or more of A to Z, a to z, 0 to 9, `_`, and `-`. For a Microsoft account user, it is `microsoft:` followed by the account's Microsoft Graph id in lowercase. That id is a UUID for a work or school account and 16 hexadecimal digits for a personal account."
+                  "description": "Who wrote it. Its `id` has one of three forms. For a computer's user, it is `local:` followed by a lowercase UUID. For a Dropbox user, it is `dropbox:` followed by the Dropbox account id as Dropbox's API spells it. That account id is `dbid:` followed by one or more of A to Z, a to z, 0 to 9, `_`, and `-`. For a Microsoft account user, it is `microsoft:` followed by the account's Microsoft Graph id in lowercase. That id is a UUID for a work or school account and 16 hexadecimal digits for a personal account."
                 },
                 "created": {
                   "type": "string",
@@ -6445,7 +6433,7 @@
         "id": {
           "type": "string",
           "pattern": "^(?:local:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|dropbox:dbid:[A-Za-z0-9_-]+|microsoft:(?:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}|[0-9a-f]{16}))(?![\\s\\S])",
-          "description": "Who wrote it, if known. It is in one of the record's three forms. It is \"local:\" and a lowercase UUID, \"dropbox:\" and a Dropbox account id that starts with \"dbid:\", or \"microsoft:\" and a Microsoft account id that is a lowercase UUID or 16 lowercase hexadecimal digits."
+          "description": "Who wrote it, if known. It is \"local:\" and a lowercase UUID, \"dropbox:\" and a Dropbox account id that starts with \"dbid:\", or \"microsoft:\" and a Microsoft account id that is a lowercase UUID or 16 lowercase hexadecimal digits."
         },
         "name": {
           "type": "string",
@@ -6477,7 +6465,7 @@
                     "$ref": "#/definitions/constraint-id"
                   }
                 ],
-                "description": "The constraint's id, such as look. It is unique among the model's constraints. A step animates its strength as `constraints.look.strength`. It is an id, such as \"look\"."
+                "description": "Its id: an id, such as \"look\". It is unique among the model's constraints. A step animates its strength as `constraints.<id>.strength`."
               },
               "type": {
                 "const": "aim"
@@ -6545,7 +6533,7 @@
                     "$ref": "#/definitions/constraint-id"
                   }
                 ],
-                "description": "The constraint's id, such as squash. It is unique among the model's constraints. A step animates its strength as `constraints.squash.strength`. It is an id, such as \"look\"."
+                "description": "Its id: an id, such as \"look\". It is unique among the model's constraints. A step animates its strength as `constraints.<id>.strength`."
               },
               "type": {
                 "const": "squash-and-stretch"
@@ -6597,27 +6585,27 @@
           "description": "How far it is zoomed. At 1, an image fits its frame as its `scale-mode` sets, and a background covers the slide. Above 1, it is zoomed in. Below 1, it is zoomed out."
         },
         "focal-point": {
+          "description": "The point that stays in view: {x, y}. Its x and y are fractions of the image's width and height.",
           "type": "object",
           "properties": {
             "x": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "of the image"
+              "description": "How far across the image in fractions of its width."
             },
             "y": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "of the image"
+              "description": "How far down the image in fractions of its height."
             }
           },
           "required": [
             "x",
             "y"
           ],
-          "additionalProperties": false,
-          "description": "The point that stays in view: {x, y}. Each is a fraction of the image, across and down."
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -6629,7 +6617,7 @@
           "$ref": "#/definitions/object-id"
         }
       ],
-      "description": "The id of the object it acts on. It is an object's id."
+      "description": "The object it acts on: an object's id."
     },
     "cue.time": {
       "type": "number",
@@ -6670,27 +6658,21 @@
               "description": "Its opacity. The default is 0."
             },
             "offset": {
+              "description": "How far it starts from where it rests: {x, y} across and down. It is in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it. A text drawn as its 3D model keeps x across and y down.",
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -33554431,
-                  "maximum": 33554431,
-                  "description": "ems"
+                  "$ref": "#/definitions/piece-offset.x"
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -33554431,
-                  "maximum": 33554431,
-                  "description": "ems"
+                  "$ref": "#/definitions/piece-offset.y"
                 }
               },
               "required": [
                 "x",
                 "y"
               ],
-              "additionalProperties": false,
-              "description": "How far it starts from where it rests: {x, y} across and down in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it."
+              "additionalProperties": false
             },
             "scale": {
               "type": "number",
@@ -6921,27 +6903,21 @@
               "description": "Its opacity. The default is 0."
             },
             "offset": {
+              "description": "How far it ends from where it rests: {x, y} across and down. It is in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it. A text drawn as its 3D model keeps x across and y down.",
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -33554431,
-                  "maximum": 33554431,
-                  "description": "ems"
+                  "$ref": "#/definitions/piece-offset.x"
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -33554431,
-                  "maximum": 33554431,
-                  "description": "ems"
+                  "$ref": "#/definitions/piece-offset.y"
                 }
               },
               "required": [
                 "x",
                 "y"
               ],
-              "additionalProperties": false,
-              "description": "How far it ends from where it rests: {x, y} across and down in ems of the piece's own font size. On a path, x is along the path, and y is down from it as its letters stand on it."
+              "additionalProperties": false
             },
             "scale": {
               "type": "number",
@@ -7252,7 +7228,7 @@
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is in the box the object is drawn at. It turns about its middle by `angle`. By default it crosses the box it spans through its center. It is the same in CSS. The line a linear gradient runs along. It has a middle and a length. They are in the box the object is drawn at, not in the box the gradient spans. A gradient on a shape's words uses the shape's frame.",
+              "description": "Where a linear gradient's line is. Its middle and length are in the box the object is drawn at, not in the box the gradient spans. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. It turns about its middle by `angle`. By default it crosses the box it spans through its center. It is the same in CSS.",
               "type": "object",
               "properties": {
                 "x": {
@@ -7271,7 +7247,7 @@
                   "type": "number",
                   "minimum": 0.000001,
                   "maximum": 362,
-                  "description": "Its length in fractions of the box's diagonal. It is in box diagonals."
+                  "description": "How long the line is. It is in box diagonals."
                 }
               },
               "required": [
@@ -7299,7 +7275,7 @@
               "const": "radial"
             },
             "center": {
-              "description": "The center of a radial gradient: {x, y}. The point a radial gradient spreads from. It is in the box the object is drawn at. It can be outside that box. A linear gradient's `line` is in the same box. The point doesn't move while a path's outline morphs. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. The gradient reaches the corner of the box it spans that is farthest from its center. CSS's `farthest-corner` works the same way.",
+              "description": "The center of a radial gradient: {x, y}. The center is in the box the object is drawn at. It can be outside that box. A linear gradient's `line` is in the same box. The point doesn't move while a path's outline morphs. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. The gradient reaches the corner of the box it spans that is farthest from its center. CSS's `farthest-corner` works the same way.",
               "type": "object",
               "properties": {
                 "x": {
@@ -9207,7 +9183,7 @@
         "object": {
           "type": "string",
           "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
-          "description": "The id of the object it attaches to on the same slide. It is an object's id."
+          "description": "The object it attaches to on the same slide: an object's id."
         },
         "side": {
           "enum": [
@@ -9230,16 +9206,10 @@
       "type": "object",
       "properties": {
         "x": {
-          "type": "number",
-          "minimum": -33554431.984375,
-          "maximum": 33554431.984375,
-          "description": "canvas units"
+          "$ref": "#/definitions/point.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -33554431.984375,
-          "maximum": 33554431.984375,
-          "description": "canvas units"
+          "$ref": "#/definitions/point.y"
         }
       },
       "required": [
@@ -9362,7 +9332,7 @@
           "$ref": "#/definitions/crop"
         }
       ],
-      "description": "How far the image or video is zoomed inside its frame, and which point stays in view. An image's or a video's zoom inside its frame, and the point that stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
+      "description": "How far the image or video is zoomed inside its frame, and which point stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
     },
     "object.decorative": {
       "type": "boolean",
@@ -9374,7 +9344,7 @@
           "const": "none"
         },
         {
-          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. A drop shadow. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
@@ -9393,16 +9363,10 @@
               "type": "object",
               "properties": {
                 "x": {
-                  "type": "number",
-                  "minimum": -33554431.984375,
-                  "maximum": 33554431.984375,
-                  "description": "canvas units"
+                  "$ref": "#/definitions/point.x"
                 },
                 "y": {
-                  "type": "number",
-                  "minimum": -33554431.984375,
-                  "maximum": 33554431.984375,
-                  "description": "canvas units"
+                  "$ref": "#/definitions/point.y"
                 }
               },
               "required": [
@@ -9446,7 +9410,7 @@
           "$ref": "#/definitions/enter"
         }
       ],
-      "description": "Text that enters one paragraph, word, or character at a time. Text that enters piece by piece. `based-on` sets whether a piece is a paragraph, a word, or a character. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1. With delivery `by-paragraph`, it works as PowerPoint's By Paragraph."
+      "description": "Text that enters piece by piece. A piece is a paragraph, a word, or a character. `based-on` sets which. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1. With delivery `by-paragraph`, it works as PowerPoint's By Paragraph."
     },
     "object.exit": {
       "type": "object",
@@ -9455,7 +9419,7 @@
           "$ref": "#/definitions/exit"
         }
       ],
-      "description": "Text that exits one paragraph, word, or character at a time. Text that exits piece by piece. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 0."
+      "description": "Text that exits piece by piece. A piece is a paragraph, a word, or a character. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 0."
     },
     "object.fill": {
       "anyOf": [
@@ -9533,7 +9497,7 @@
           "$ref": "#/definitions/frame"
         }
       ],
-      "description": "The object's position and size on the slide in canvas units. An object's position and size in canvas units from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+      "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
     },
     "object.grayscale": {
       "type": "number",
@@ -9605,7 +9569,7 @@
           "$ref": "#/definitions/time-trim"
         }
       ],
-      "description": "The part of the video or audio file that plays: a start and an end in seconds into the file. The part of a video or audio file, or of a clip's Action, that plays."
+      "description": "The part of the video or audio file that plays. It is a start and an end in seconds."
     },
     "object.name": {
       "type": "string",
@@ -9654,7 +9618,7 @@
           "$ref": "#/definitions/object-id"
         }
       ],
-      "description": "The id of its group. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light. It is an object's id."
+      "description": "Its group: an object's id. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light."
     },
     "object.parent-inverse": {
       "type": "array",
@@ -9672,7 +9636,7 @@
           "$ref": "#/definitions/model-node-name"
         }
       ],
-      "description": "The name of the node in the parent model that a model, a light, a shadow catcher, or the camera moves with. Without it, the object moves with the whole model. It is the name of one of the model's nodes."
+      "description": "The node in the parent model that a model, a light, a shadow catcher, or the camera moves with: the name of one of the model's nodes. Without it, the object moves with the whole model."
     },
     "object.placeholder-layout": {
       "type": "string",
@@ -9727,7 +9691,7 @@
           "$ref": "#/definitions/flat-scale"
         }
       ],
-      "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A flat object's scale along its own axes. The object scales about its `anchor-point`. Text breaks into lines first, then stretches with the scale."
+      "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A flat object scales about its `anchor-point`. Text breaks into lines first, then stretches with the scale."
     },
     "object.scale-mode": {
       "enum": [
@@ -9813,7 +9777,7 @@
           "$ref": "#/definitions/tilt"
         }
       ],
-      "description": "How far a group or a text with a 3D `model` tilts in depth about its anchor point in degrees. A text without `model` ignores it. How far a group or a text with a 3D `model` tilts in depth about axes through its anchor point in the slide's plane. It is in degrees. A group's picture is seen in perspective from in front of its anchor, through a 50 mm lens, wherever the slide's camera stands. A text's model turns in the slide's 3D space, about its anchor point at its `z`, and the slide's camera sees it there. Its words and their links stand on the turned plane."
+      "description": "How far a group or a text with a 3D `model` tilts in depth. It turns about axes parallel to the slide through the object's anchor point. Inside a tilted group, they are parallel to that group's picture. It is in degrees. A group's picture is seen in perspective from in front of its anchor, through a 50 mm lens, wherever the slide's camera stands. A text's model turns in the slide's 3D space, about its anchor point at its `z`, and the slide's camera sees it there. Its words and their links stand on the turned plane. A text without `model` ignores it."
     },
     "object.tracking": {
       "type": "number",
@@ -9828,7 +9792,7 @@
           "$ref": "#/definitions/trim"
         }
       ],
-      "description": "The drawn part of the stroke: a start and an end along its length. The drawn part of a path's or a line's stroke."
+      "description": "The drawn part of the stroke. A start and an end along a path's or a line's stroke."
     },
     "object.use-as-mask": {
       "type": "boolean",
@@ -9859,7 +9823,7 @@
           "$ref": "#/definitions/wipe"
         }
       ],
-      "description": "A straight edge that reveals the object as its progress rises from 0 to 1. A reveal behind a moving straight edge. The defaults are progress 1, angle 90, and feather 0."
+      "description": "A straight edge that reveals the object as its progress rises from 0 to 1. The defaults are progress 1, angle 90, and feather 0."
     },
     "opaque-color": {
       "type": "string",
@@ -9920,6 +9884,18 @@
       "minItems": 16,
       "maxItems": 16
     },
+    "piece-offset.x": {
+      "type": "number",
+      "minimum": -33554431,
+      "maximum": 33554431,
+      "description": "How far across in ems of the piece's own font size. For a text on a path that draws flat, it is how far along the path."
+    },
+    "piece-offset.y": {
+      "type": "number",
+      "minimum": -33554431,
+      "maximum": 33554431,
+      "description": "How far down in ems of the piece's own font size. For a text on a path that draws flat, it is how far down from the path as its letters stand on it."
+    },
     "point-frame": {
       "type": "object",
       "properties": {
@@ -9935,6 +9911,18 @@
         "y"
       ],
       "additionalProperties": false
+    },
+    "point.x": {
+      "type": "number",
+      "minimum": -33554431.984375,
+      "maximum": 33554431.984375,
+      "description": "How far across. It is in canvas units."
+    },
+    "point.y": {
+      "type": "number",
+      "minimum": -33554431.984375,
+      "maximum": 33554431.984375,
+      "description": "How far down. It is in canvas units."
     },
     "presentation-image": {
       "type": "string",
@@ -9960,13 +9948,13 @@
               "type": "number",
               "minimum": -65536,
               "maximum": 65536,
-              "description": "canvas units"
+              "description": "How far across. It is in canvas units."
             },
             "y": {
               "type": "number",
               "minimum": -65536,
               "maximum": 65536,
-              "description": "canvas units"
+              "description": "How far down. It is in canvas units."
             }
           },
           "required": [
@@ -9989,27 +9977,27 @@
           "description": "How much each copy is scaled from the one before. At 1, each copy is the same size as the one before."
         },
         "anchor-point": {
+          "description": "The point `rotation` and `scale` turn and scale the copies about: {x, y}. Its x and y are fractions of the width and height of the box the object is drawn at. A group's is the group's box.",
           "type": "object",
           "properties": {
             "x": {
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "of the box"
+              "description": "How far across the box in fractions of its width."
             },
             "y": {
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "of the box"
+              "description": "How far down the box in fractions of its height."
             }
           },
           "required": [
             "x",
             "y"
           ],
-          "additionalProperties": false,
-          "description": "The point `rotation` and `scale` turn and scale the copies about: {x, y}. Each is a fraction of the box the object is drawn at, across and down. A group's is the group's box."
+          "additionalProperties": false
         },
         "stagger": {
           "type": "number",
@@ -10170,22 +10158,13 @@
           "description": "A quaternion's w. It is used in quaternion mode only."
         },
         "x": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "Degrees about x, or a quaternion's x."
+          "$ref": "#/definitions/space-rotation.x"
         },
         "y": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "Degrees about y, or a quaternion's y."
+          "$ref": "#/definitions/space-rotation.y"
         },
         "z": {
-          "type": "number",
-          "minimum": -8589934592,
-          "maximum": 8589934592,
-          "description": "Degrees about z, or a quaternion's z."
+          "$ref": "#/definitions/space-rotation.z"
         }
       },
       "required": [
@@ -10200,19 +10179,19 @@
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
-      "description": "Degrees about x, or a quaternion's x. It is in degrees."
+      "description": "The turn about x in degrees, or a quaternion's x."
     },
     "space-rotation.y": {
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
-      "description": "Degrees about y, or a quaternion's y. It is in degrees."
+      "description": "The turn about y in degrees, or a quaternion's y."
     },
     "space-rotation.z": {
       "type": "number",
       "minimum": -8589934592,
       "maximum": 8589934592,
-      "description": "Degrees about z, or a quaternion's z. It is in degrees."
+      "description": "The turn about z in degrees, or a quaternion's z."
     },
     "space-scale": {
       "type": "object",
@@ -10390,7 +10369,7 @@
             "file": {
               "type": "string",
               "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[^/]*\\/)*\\.)(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-              "description": "The path in the presentation's folder of the GLB a program built from the words. It is a GLB in the presentation."
+              "description": "The path in the presentation's folder of the model a program built from the words. It is a GLB in the presentation."
             },
             "built-from": {
               "type": "string",
