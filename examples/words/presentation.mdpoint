@@ -1,0 +1,140 @@
+{
+  "markdownpoint": "1.0",
+  "type": "presentation",
+  "id": "9d98709f-0aac-407e-b6d3-56da6b8494aa",
+  "theme": "basic",
+  "slides": {
+    "data": {
+      "layout": "content-with-header",
+      "scheme": "sky",
+      "objects": [
+        {
+          "id": "specs",
+          "type": "table",
+          "frame": {
+            "x": 120,
+            "y": 340
+          },
+          "text-style": "body",
+          "column-widths": [380,380],
+          "header-row": false,
+          "header-column": true
+        },
+
+        {
+          "id": "sales",
+          "type": "chart",
+          "chart-type": "column",
+          "frame": {
+            "x": 1000,
+            "y": 340,
+            "width": 800,
+            "height": 420
+          },
+          "series-colors": ["text","accent"],
+          "alt": "Sales by quarter: North leads in Q1, Q2, and Q4, and South in Q3."
+        },
+
+        {
+          "id": "visitors",
+          "type": "chart",
+          "chart-type": "counter",
+          "frame": {
+            "x": 120,
+            "y": 760,
+            "width": 760,
+            "height": 200
+          },
+          "progress": 0.5,
+          "digits": "roll",
+          "leading-zero-opacity": 0.4
+        }
+      ]
+    },
+    "fields": {
+      "layout": "content-with-header",
+      "scheme": "mint"
+    },
+    "lists": {
+      "layout": "content-with-header",
+      "scheme": "butter"
+    },
+    "marks": {
+      "layout": "content-with-header",
+      "scheme": "sky"
+    },
+    "quote": {
+      "layout": "content-with-header",
+      "scheme": "lilac"
+    },
+    "rules": {
+      "layout": "content-with-header",
+      "scheme": "mint"
+    },
+    "table": {
+      "layout": "content-with-header",
+      "scheme": "apricot",
+      "objects": [
+        {
+          "id": "prices",
+          "type": "table",
+          "frame": {
+            "x": 120,
+            "y": 380
+          },
+          "inset": 24,
+          "text-style": "body",
+          "column-widths": [840,420,420],
+          "min-row-heights": [140,140,140],
+          "alternating-rows": true
+        }
+      ]
+    },
+    "type": {
+      "layout": "content-with-header",
+      "scheme": "dark",
+      "objects": [
+        {
+          "id": "grows",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 340,
+            "width": 760
+          },
+          "text-style": "body",
+          "auto-size": "height"
+        },
+
+        {
+          "id": "figures",
+          "type": "text",
+          "frame": {
+            "x": 1100,
+            "y": 340,
+            "width": 700,
+            "height": 400
+          },
+          "text-style": "body",
+          "align": "right",
+          "number-spacing": "tabular"
+        },
+
+        {
+          "id": "outline",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 760,
+            "width": 1680,
+            "height": 180
+          },
+          "text-style": "display",
+          "color": "background",
+          "text-stroke": "accent",
+          "text-stroke-weight": 0.023438
+        }
+      ]
+    }
+  }
+}

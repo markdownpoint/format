@@ -1,0 +1,774 @@
+{
+  "markdownpoint": "1.0",
+  "type": "presentation",
+  "id": "3f6b2a9e-8c41-4d7b-9a35-6e0d2c7f1b84",
+  "theme": "basic",
+  "slides": {
+    "arrival": {
+      "layout": "blank",
+      "scheme": "butter",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 70,
+            "width": 1680,
+            "height": 130
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "square",
+          "type": "shape",
+          "shape-type": "rectangle",
+          "frame": {
+            "x": 860,
+            "y": 300,
+            "width": 200,
+            "height": 200
+          },
+          "rotation": 90,
+          "corner-radius": 32,
+          "repeater": {"copies":8,"rotation":45,"scale":0.92,"anchor-point":{"x":0.5,"y":1.6},"stagger":0.08,"end-opacity":0.2,"rotation-randomness":8,"scale-randomness":0.1,"stagger-randomness":0.05,"seed":5}
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 960,
+            "width": 1680,
+            "height": 60
+          },
+          "text-style": "meta"
+        }
+      ]
+    },
+    "copies": {
+      "layout": "blank",
+      "scheme": "lilac",
+      "transition": {
+        "type": "carry-over",
+        "duration": 1.2,
+        "interpolation": "linear",
+        "match": "word"
+      },
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 70,
+            "width": 1680,
+            "height": 130
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "square",
+          "type": "shape",
+          "shape-type": "rectangle",
+          "frame": {
+            "x": 860,
+            "y": 300,
+            "width": 200,
+            "height": 200
+          },
+          "corner-radius": 32,
+          "repeater": {"copies":8,"rotation":45,"scale":0.92,"anchor-point":{"x":0.5,"y":1.6},"stagger":0.08,"end-opacity":0.2,"rotation-randomness":8,"scale-randomness":0.1,"stagger-randomness":0.05,"seed":5}
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 960,
+            "width": 1680,
+            "height": 60
+          },
+          "text-style": "meta"
+        }
+      ],
+      "steps": [
+        {
+          "id": "turn",
+          "name": "Turn the square",
+          "min-duration": 1.6,
+          "curves": {
+            "square.rotation": {
+              "keyframes": {
+                "square-turns": {"time":1,"value":90,"interpolation":"ease-in-out"}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "curves": {
+      "layout": "blank",
+      "scheme": "sky",
+      "transition": {
+        "type": "push",
+        "duration": 0.8,
+        "direction": "up"
+      },
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 70,
+            "width": 1680,
+            "height": 130
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "label-linear",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 250,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-linear",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 252,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-smooth",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 350,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-smooth",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 352,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-ease-in-out",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 450,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-ease-in-out",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 452,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-anticipate",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 550,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-anticipate",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 552,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-anticipate-overshoot",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 650,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-anticipate-overshoot",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 652,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-bounce",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 750,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-bounce",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 752,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-elastic",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 850,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-elastic",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 640,
+            "y": 852,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 960,
+            "width": 1680,
+            "height": 60
+          },
+          "text-style": "meta"
+        }
+      ],
+      "steps": [
+        {
+          "id": "race",
+          "name": "Race the curves",
+          "min-duration": 2.4,
+          "curves": {
+            "dot-anticipate-overshoot.translation.x": {
+              "keyframes": {
+                "anticipate-overshoot-arrives": {"time":2,"value":800,"interpolation":"anticipate-overshoot"}
+              }
+            },
+            "dot-anticipate.translation.x": {
+              "keyframes": {
+                "anticipate-arrives": {"time":2,"value":800,"interpolation":"anticipate"}
+              }
+            },
+            "dot-bounce.translation.x": {
+              "keyframes": {
+                "bounce-arrives": {"time":2,"value":800,"interpolation":"bounce"}
+              }
+            },
+            "dot-ease-in-out.translation.x": {
+              "keyframes": {
+                "ease-in-out-arrives": {"time":2,"value":800,"interpolation":"ease-in-out"}
+              }
+            },
+            "dot-elastic.translation.x": {
+              "keyframes": {
+                "elastic-arrives": {"time":2,"value":800,"interpolation":"elastic"}
+              }
+            },
+            "dot-linear.translation.x": {
+              "keyframes": {
+                "linear-arrives": {"time":2,"value":800}
+              }
+            },
+            "dot-smooth.translation.x": {
+              "keyframes": {
+                "smooth-arrives": {"time":2,"value":800,"interpolation":"smooth"}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "keyframes": {
+      "layout": "blank",
+      "scheme": "mint",
+      "transition": {
+        "type": "fade-through-color",
+        "duration": 1,
+        "color": "accent"
+      },
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 70,
+            "width": 1680,
+            "height": 130
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "label-loop",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 300,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "label-zoom",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 450,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "label-turn",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 600,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "label-path",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 750,
+            "width": 520,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "card",
+          "type": "shape",
+          "shape-type": "rectangle",
+          "frame": {
+            "x": 700,
+            "y": 280,
+            "width": 160,
+            "height": 110
+          },
+          "corner-radius": 24
+        },
+
+        {
+          "id": "zoom",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 700,
+            "y": 420,
+            "width": 120,
+            "height": 120
+          },
+          "scale": {"x":0.5,"y":0.25}
+        },
+
+        {
+          "id": "turn",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 700,
+            "y": 605,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "arc",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 700,
+            "y": 755,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 960,
+            "width": 1680,
+            "height": 60
+          },
+          "text-style": "meta"
+        }
+      ],
+      "steps": [
+        {
+          "id": "move",
+          "name": "Move the shapes",
+          "min-duration": 3,
+          "curves": {
+            "arc.frame.position": {
+              "keyframes": {
+                "arc-bends": {"time":2.2,"value":{"x":1500,"y":755},"interpolation":"ease-in-out","motion-path":{"geometry":"M0 0 C0.3333 -0.12 0.6667 -0.12 1 0"}}
+              }
+            },
+            "card.translation.x": {
+              "keyframes": {
+                "card-slides-in": {"time":0.5,"value":300,"interpolation":"ease-out"},
+                "card-settles": {"time":0.8,"value":240,"interpolation":"smooth"},
+                "card-swings-right": {"time":1.6,"value":800,"interpolation":"smooth"},
+                "card-swings-back": {"time":2.4,"value":240,"interpolation":"smooth"}
+              },
+              "loop": "repeat",
+              "loop-keyframe": "card-settles"
+            },
+            "turn.translation.x": {
+              "keyframes": {
+                "turn-cut": {"time":1.2,"value":520,"interpolation":"ease-in-out","interrupted":{"value":1040,"time":2.4}},
+                "turn-back": {"time":2.2,"value":0,"interpolation":"ease-out"}
+              }
+            },
+            "zoom.scale.x": {
+              "keyframes": {
+                "zoom-grows-x": {"time":2,"value":2,"interpolation":"ease-in-out","exponential-scale":true}
+              }
+            },
+            "zoom.scale.y": {
+              "keyframes": {
+                "zoom-grows-y": {"time":2,"value":1,"interpolation":"ease-in-out","exponential-scale":true}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "settings": {
+      "layout": "blank",
+      "scheme": "sky",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 70,
+            "width": 1680,
+            "height": 130
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "label-overshoot",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 300,
+            "width": 840,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-overshoot",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 1020,
+            "y": 302,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-bounce",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 450,
+            "width": 840,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-bounce",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 1020,
+            "y": 452,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-elastic",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 600,
+            "width": 840,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-elastic",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 1020,
+            "y": 602,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "label-spring",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 750,
+            "width": 840,
+            "height": 75
+          },
+          "text-style": "body"
+        },
+
+        {
+          "id": "dot-spring",
+          "type": "shape",
+          "shape-type": "ellipse",
+          "frame": {
+            "x": 1020,
+            "y": 752,
+            "width": 60,
+            "height": 60
+          }
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 960,
+            "width": 1680,
+            "height": 60
+          },
+          "text-style": "meta"
+        }
+      ],
+      "steps": [
+        {
+          "id": "race",
+          "name": "Race the curves",
+          "min-duration": 3,
+          "curves": {
+            "dot-bounce.translation.x": {
+              "keyframes": {
+                "bounce-arrives": {"time":2,"value":540,"interpolation":{"type":"bounce","bounciness":0.8}}
+              }
+            },
+            "dot-elastic.translation.x": {
+              "keyframes": {
+                "elastic-arrives": {"time":2,"value":540,"interpolation":{"type":"elastic","amplitude":1.5,"period":0.5}}
+              }
+            },
+            "dot-overshoot.translation.x": {
+              "keyframes": {
+                "overshoot-arrives": {"time":2,"value":540,"interpolation":{"type":"overshoot","back":3}}
+              }
+            },
+            "dot-spring.translation.x": {
+              "keyframes": {
+                "spring-arrives": {"time":2,"value":540,"interpolation":{"type":"spring","damping-ratio":0.72,"response":0.6}}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "words": {
+      "layout": "blank",
+      "scheme": "apricot",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 70,
+            "width": 1680,
+            "height": 130
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "bar",
+          "type": "shape",
+          "shape-type": "rectangle",
+          "frame": {
+            "x": 120,
+            "y": 220,
+            "width": 480,
+            "height": 14
+          },
+          "wipe": {"progress":0}
+        },
+
+        {
+          "id": "body",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 300,
+            "width": 1680,
+            "height": 260
+          },
+          "text-style": "body",
+          "enter": {"based-on":"character-and-space","from":{"offset":{"x":-0.6,"y":0}},"order":"random","seed":7,"spread":6,"pause":8,"progress":0}
+        },
+
+        {
+          "id": "caption",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 680,
+            "width": 1680,
+            "height": 200
+          },
+          "text-style": "body",
+          "exit": {"based-on":"character-and-space","to":{"rotation":90,"blur":0.8},"order":"random","seed":3,"spread":6,"pause":8,"progress":1}
+        }
+      ],
+      "steps": [
+        {
+          "id": "enter",
+          "name": "Enter the words",
+          "min-duration": 2.5,
+          "curves": {
+            "bar.wipe.progress": {
+              "keyframes": {
+                "bar-shows": {"time":0.8,"value":1,"interpolation":"ease-out"}
+              }
+            },
+            "body.enter.progress": {
+              "keyframes": {
+                "body-enters": {"time":2.5,"value":1}
+              }
+            }
+          }
+        },
+        {
+          "id": "return",
+          "name": "Bring the caption back",
+          "min-duration": 2,
+          "curves": {
+            "caption.exit.progress": {
+              "keyframes": {
+                "caption-returns": {"time":2,"value":0}
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

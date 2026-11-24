@@ -1,0 +1,61 @@
+{
+  "markdownpoint": "1.0",
+  "type": "layout",
+  "scheme": "apricot",
+  "overrides": {
+    "footer": null,
+
+    "slide-number": null
+  },
+  "objects": [
+    {
+      "id": "title",
+      "type": "text",
+      "placeholder": true,
+      "frame": {
+        "x": 120,
+        "y": 470,
+        "width": 1680,
+        "height": 310
+      },
+      "text-style": "display",
+      "vertical-align": "bottom"
+    },
+
+    {
+      "id": "body",
+      "type": "text",
+      "placeholder": true,
+      "frame": {
+        "x": 120,
+        "y": 800,
+        "width": 1680,
+        "height": 130
+      },
+      "text-style": "body",
+      "color": "muted"
+    },
+
+    {
+      "id": "eyebrow",
+      "type": "text",
+      "placeholder": true,
+      "frame": {
+        "x": 120,
+        "y": 112,
+        "width": 1680,
+        "height": 48
+      },
+      "text-style": "meta",
+      "font-weight": 600,
+      "vertical-align": "center",
+      "tracking": 0.06,
+      "case": "upper"
+    }
+  ],
+  "text": {
+    "title": "Presentation title",
+    "body": "Presentation subtitle",
+    "eyebrow": "Author and date"
+  }
+}

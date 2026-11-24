@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://markdownpoint.com/format/schemas/1.0/theme-package.schema.json",
+  "description": "The list of a theme package's files. A package is refused unless its folder holds exactly these files at these sizes and digests.",
+  "type": "object",
+  "properties": {
+    "markdownpoint": {
+      "type": "string",
+      "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
+      "description": "The format version. It is a major and a minor number in quotes, each of at most nine digits and written without a leading zero: \"1.0\"."
+    },
+    "type": {
+      "const": "theme-package",
+      "description": "What the file is."
+    },
+    "files": {
+      "description": "Each of the theme's files in the package with its size and digest. That includes master.json.",
+      "type": "object",
+      "properties": {
+        "master.json": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/manifest-file"
+            }
+          ],
+          "description": "The theme's master."
+        }
+      },
+      "required": [
+        "master.json"
+      ],
+      "propertyNames": {
+        "anyOf": [
+          {
+            "enum": [
+              "master.json"
+            ]
+          },
+          {
+            "pattern": "^(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S])"
+          }
+        ]
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/manifest-file"
+      }
+    }
+  },
+  "required": [
+    "markdownpoint",
+    "type",
+    "files"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "manifest-file": {
+      "description": "One file of a theme package.",
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])",
+          "description": "Its SHA-256 digest in 64 lowercase hexadecimal digits."
+        },
+        "bytes": {
+          "allOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991,
+              "description": "bytes"
+            }
+          ],
+          "description": "Its size."
+        }
+      },
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

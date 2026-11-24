@@ -1,0 +1,219 @@
+# Themes
+
+A theme contains the fonts, colors, text styles, and layouts used by its slides. The slide text is in `slides.md`.
+
+A theme is in `themes/<key>/`. Set `"theme": "<key>"` in the .mdpoint file to select it. Each theme also has a UUID in `master.json` that identifies it independently of the folder name. Most examples use Basic, MarkdownPoint's default theme.
+
+```
+themes/<key>/
+  master.json             size, fonts, color schemes, text styles, and what every slide shows
+  title.json              one file per layout, named by the layout's key
+  content-with-header.json
+  ...
+  fonts/                  the theme's own fonts, one .eot file per face
+  media/                  the theme's own images, videos, audio, and models
+```
+
+## Master, layouts, and slides
+
+The master applies to every slide. Layouts define the objects and placeholders for each kind of slide. A slide selects a layout and can add objects or override keys of the layout's and the master's objects.
+
+For a title placeholder, the layout sets its position and text style. Each slide supplies the title text in its Markdown block.
+
+## Master
+
+`master.json` contains the theme settings. Its `objects` appear behind each layout's and slide's own objects. A layout or a slide can place a master object among its own objects by listing the master object's id in its `objects`. Basic's master includes a footer and a slide number that is hidden (`visible: false`). Both are filled in by fields, and their words are in the master's `text`. Its `category` says where the theme is listed, and `brand` names the colors its schemes use. `default-text-box` sets a new text box's text style, and `layout-order` lists the layouts in the order the app shows them:
+
+```json
+{
+  "category": "essentials",
+  "brand": {"colors": {"orange": "#F2641F", "ember": "#B83A0B"}, "color-order": ["orange", "ember"]},
+  "default-text-box": {"text-style": "body"},
+  "layout-order": [
+    "title",
+    "section",
+    "one-liner",
+    "content",
+    "content-with-header",
+    "text-image",
+    "text-image-with-header",
+    "image-text",
+    "image-text-with-header",
+    "image",
+    "image-with-header",
+    "solid-color",
+    "blank"
+  ],
+  "text": {"footer": "{{footer}}", "slide-number": "{{slide-number}}"}
+}
+```
+
+The theme's name is the master's `name`. Basic's master leaves it out. Its name is then its key with spaces for its hyphens and a capital first letter.
+
+## Color schemes
+
+A scheme's `colors` set a color for each role. A role names how the color is used, such as `background`, `text`, or `accent`. Objects using a role follow the slide's scheme. A hex color stays the same across schemes.
+
+Every theme has a `light` and a `dark` scheme and can add more, such as Basic's butter. Each scheme sets its `appearance`, light or dark, next to its colors. The `light` and `dark` schemes have the appearance they're named for:
+
+```json
+{
+  "appearance": "light",
+  "colors": {
+    "background": "#FBE991",
+    "text": "#17120F",
+    "muted": "#524843",
+    "accent": "{brand.colors.ember}",
+    "separator": "#17120F1F",
+    "link": "#17120F"
+  }
+}
+```
+
+A role set to `{brand.colors.ember}` uses the brand color named `ember`. A scheme sets all six roles: `background`, `text`, `muted`, `accent`, `separator`, and `link`. It can add roles of its own. The [scheme colors reference](reference/1.0.md#scheme-colors) says what each role colors.
+
+## Text styles
+
+A text object uses a named text style from the theme. Define every style that the theme's layouts and slides use. No style names are built in. Basic's `title` style is:
+
+```json
+{
+  "font-family": "display",
+  "font-size": 80,
+  "font-weight": 700,
+  "line-height": 1.05,
+  "tracking": -0.025,
+  "color": "text"
+}
+```
+
+Set `font-family` to `display`, `body`, or `mono`. The `fonts` map assigns a family to each role. Changing `fonts.body` changes the family used by text with the `body` role. A text style also sets size, weight, color, and spacing.
+
+The [font reference](reference/1.0.md#fonts) lists the bundled families. Bundled families need no font files. For other families, include the font files with the theme. List one `.eot` file per face under `font-files`, keyed by the family name used in `fonts`. A role whose family is neither bundled nor in `font-files` reads with a `missing-font` warning, and a key that no role names reads with an `ignored-key` warning. A theme can also include its own copy of a bundled family, and its slides then use that copy. MarkdownPoint saves these files in the theme's `fonts` folder. The reference explains how to read a face from its `.eot` file.
+
+## Layouts
+
+A layout defines the objects its slides inherit. Basic's Title layout is:
+
+```json
+{
+  "markdownpoint": "1.0",
+  "type": "layout",
+  "scheme": "apricot",
+  "overrides": {"footer": null, "slide-number": null},
+  "objects": [
+    {
+      "id": "title",
+      "type": "text",
+      "placeholder": true,
+      "frame": {"x": 120, "y": 470, "width": 1680, "height": 310},
+      "text-style": "display",
+      "vertical-align": "bottom"
+    },
+    {
+      "id": "body",
+      "type": "text",
+      "placeholder": true,
+      "frame": {"x": 120, "y": 800, "width": 1680, "height": 130},
+      "text-style": "body",
+      "color": "muted"
+    },
+    {
+      "id": "eyebrow",
+      "type": "text",
+      "placeholder": true,
+      "frame": {"x": 120, "y": 112, "width": 1680, "height": 48},
+      "text-style": "meta",
+      "font-weight": 600,
+      "vertical-align": "center",
+      "tracking": 0.06,
+      "case": "upper"
+    }
+  ],
+  "text": {
+    "title": "Presentation title",
+    "body": "Presentation subtitle",
+    "eyebrow": "Author and date"
+  }
+}
+```
+
+A layout's text, image, or video with `"placeholder": true` is a placeholder. Each slide fills it with its own text, or an image or a video, whichever the placeholder is. The two are matched by the placeholder's `id`. Slides using this layout put their text under `<!-- text: title -->`, `<!-- text: body -->`, and `<!-- text: eyebrow -->`. A placeholder's `name` is only the label MarkdownPoint shows for it. A layout's placeholder `title` names its slides, and a numbered one such as `title-2` does where `title` holds no words.
+
+The layout's `text` holds the words of its own objects. A placeholder's `file` and words are samples. The layout chooser and the theme editor show them, and a slide never does. A placeholder that a slide doesn't fill shows nothing while presenting. Use `overrides` to change a master object's keys in this layout. Set its override entry to `null` to remove the object.
+
+## Backgrounds
+
+A slide shows its own `background`, else its layout's, else the master's. Each one replaces the whole background below it. Without any, the slide shows its scheme's `background` color. `master.json` and a layout take a `background` with a slide's keys: a `fill`, and an `image` over it. A theme's image is only the finished picture. It has no `prompt`, `image-style`, `transparent-background`, `restyle`, or `restyled-from`. Its `file` is in the theme's folder, or there is one file per color scheme. A theme's image objects name their files the same way. The reference lists the keys of a [theme background](reference/1.0.md#theme-background).
+
+![The title slide drawn by MarkdownPoint](images/first-deck-title.png)
+
+## A theme of its own
+
+The [own-theme example](examples/own-theme) has its own theme, Studio, under `themes/studio/`. Its titles use Instrument Serif. The font is under the SIL Open Font License. The theme's `fonts` folder contains one `.eot` file per face. The license is next to them:
+
+```json
+{
+  "Instrument Serif": [
+    "fonts/InstrumentSerif-Regular-863059cec8fb37e2.eot",
+    "fonts/InstrumentSerif-Italic-2d7eee1439e3c874.eot"
+  ]
+}
+```
+
+A text style's `marks` set how bold, italic, highlighted, struck-through, and code words look. Studio's body shows bold words in capitals with wider spacing, and struck-through words in the muted color. `padding-bottom` is the space under the last line:
+
+```json
+{
+  "font-family": "body",
+  "font-size": 40,
+  "font-weight": 400,
+  "line-height": 1.4,
+  "color": "text",
+  "padding-bottom": 24,
+  "marks": {"bold": {"case": "upper", "tracking": 0.06}, "strikethrough": {"color": "muted"}}
+}
+```
+
+The master's logo has a file for each scheme. A dark slide shows the dark scheme's file:
+
+```json
+[
+  {
+    "id": "mark",
+    "type": "image",
+    "file": {"light": "media/mark-on-light.svg", "dark": "media/mark-on-dark.svg"},
+    "frame": {"x": 1712, "y": 72, "width": 88, "height": 88},
+    "alt": "Studio's mark"
+  }
+]
+```
+
+<img src="images/own-theme-light.png" alt="The light slide drawn by MarkdownPoint" width="49%"> <img src="images/own-theme-dark.png" alt="The dark slide drawn by MarkdownPoint" width="49%">
+
+The master also sets a column grid, a baseline grid, and two guides. MarkdownPoint shows them while you edit, but never on a slide:
+
+```json
+{"columns": {"count": 12, "gutter": 24, "margin": 120}, "baseline": {"start": 120, "increment": 24}}
+```
+
+```json
+{
+  "center": {"axis": "x", "offset": 960, "name": "Center", "locked": true},
+  "footer-line": {"axis": "y", "offset": 960, "name": "Footer line"}
+}
+```
+
+`unit-scale` is how many meters one canvas unit represents in 3D. With Studio's value of 0.01, a canvas unit is one centimeter.
+
+A theme is exported and imported as a `.mdptheme` file. This is a ZIP archive of one folder named with the theme's key. The folder contains the theme's files and a `manifest.json` that lists each of them with its size and SHA-256 digest, and only those. It can also hold two folders the manifest doesn't list. `previews/` has a picture of the theme and one of each example slide. `example/` has a presentation that a new presentation can start from. “Export Theme…” saves a theme whose fonts MarkdownPoint includes as a `.mdptheme` file. It writes the theme's JSON files and the files they name. “Import Theme…” adds one to a presentation. The reference lists its keys under [theme-package](reference/1.0.md#theme-package).
+
+## Changing a theme by hand
+
+A presentation can contain several themes. If the new theme is missing a layout used by your slides, MarkdownPoint copies that layout into it when you switch. The previous theme stays in the folder.
+
+A change to master.json affects every slide. A change to a layout affects every slide that uses it.
+
+MarkdownPoint picks up theme changes made outside the app while the presentation is open. It doesn't while the presentation is shared for editing together. If a layout can't be read, each slide that uses it shows “This slide can’t be shown”, and the problem is listed under “Issues” in the inspector. If the master can't be read, every slide shows that message. A merge conflict that git leaves in a theme file is one of these problems, and the issue names the line where the conflict starts.
+
+The reference lists every key of [master.json](reference/1.0.md#master) and [a layout](reference/1.0.md#layout).

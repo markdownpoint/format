@@ -1,0 +1,122 @@
+---
+markdownpoint: "1.0"
+id: 3f6b2a9e-8c41-4d7b-9a35-6e0d2c7f1b84
+---
+
+<!-- slide: curves -->
+
+<!-- text: heading -->
+Curves==.==
+
+<!-- text: label-linear -->
+linear
+
+<!-- text: label-smooth -->
+smooth
+
+<!-- text: label-ease-in-out -->
+ease-in-out
+
+<!-- text: label-anticipate -->
+anticipate
+
+<!-- text: label-anticipate-overshoot -->
+anticipate-overshoot
+
+<!-- text: label-bounce -->
+bounce
+
+<!-- text: label-elastic -->
+elastic
+
+<!-- text: caption -->
+On a click, each dot crosses on its own curve.
+
+<!-- notes -->
+Seven dots cross the slide on one click. Each keyframe names its interpolation. The top dot's keyframe names none. It moves at a constant speed (linear). With its transition's `direction` set to up, the slide leaves with a push upward.
+
+<!-- slide: settings -->
+
+<!-- text: heading -->
+Curves with settings==.==
+
+<!-- text: label-overshoot -->
+overshoot, back 3
+
+<!-- text: label-bounce -->
+bounce, bounciness 0.8
+
+<!-- text: label-elastic -->
+elastic, amplitude 1.5, period 0.5
+
+<!-- text: label-spring -->
+spring, damping-ratio 0.72, response 0.6
+
+<!-- text: caption -->
+Settings change how far a named curve pulls back, swings past, or bounces.
+
+<!-- notes -->
+A named curve with settings is a record with its name in `type`. `back` sets how far an overshoot swings past the end, and `bounciness` sets how high a bounce rebounds. `amplitude` and `period` set an elastic curve's swing, and `damping-ratio` and `response` set a spring's.
+
+<!-- slide: keyframes -->
+
+<!-- text: heading -->
+Keyframes==.==
+
+<!-- text: label-loop -->
+A loop
+
+<!-- text: label-zoom -->
+An even zoom
+
+<!-- text: label-turn -->
+A turn back
+
+<!-- text: label-path -->
+A curved path
+
+<!-- text: caption -->
+The card loops, the oval zooms evenly, a dot turns back halfway, and the last one arcs over.
+
+<!-- notes -->
+The card slides in past its resting position, settles, and then swings right and back, looping until the three-second step ends. With its curve's `loop`, the keyframes play again from its `loop-keyframe` to the last one. The loop keyframe is `card-settles`. The slide-in plays once. The oval starts at a `scale` of 0.5 by 0.25 and grows fourfold. With `exponential-scale`, the zoom looks even. The dot beside "A turn back" heads for the far side, but its keyframe cuts that move off halfway, and the dot turns back. The keyframe's `interrupted` names the move it cuts off. The last dot arcs over to the right. Its curve animates `frame.position`, both coordinates as one point. With its keyframe's `motion-path`, the move bends along a path in the move's own coordinates. The path runs from the start at 0 0 to the end at 1 0. The slide leaves through its transition's `color`, the accent color.
+
+<!-- slide: words -->
+
+<!-- text: heading -->
+Words in pieces==.==
+
+<!-- text: body -->
+These letters arrive six at a time in a shuffled order.
+
+This paragraph waits a moment before its turn.
+
+<!-- text: caption -->
+These letters start with their exit already played.
+
+The second click plays it backward.
+
+<!-- notes -->
+A wipe reveals the bar as its `progress` goes from 0 to 1. The body's letters enter six at a time (`spread`) in a random `order` from `seed` 7. They slide in from the left (`from`), and each space counts as a piece too (`character-and-space`). Each paragraph of the body takes its turn in its own shuffled order. A `pause` comes between them. The body's `progress` starts at 0, and the first click runs it to 1. The caption's exit starts at a `progress` of 1. The caption is gone. The second click runs the exit back to 0. The caption's letters turn and sharpen into place.
+
+<!-- slide: copies -->
+
+<!-- text: heading -->
+Copies of one shape==.==
+
+<!-- text: caption -->
+Eight copies turn in a ring. Each starts a little later than the one before.
+
+<!-- notes -->
+With `repeater`, one square makes eight squares in all (`copies`): itself, unchanged, and seven copies. Each copy is turned 45 degrees (`rotation`) around a point below it (`anchor-point`) and is a little smaller (`scale`). The last copy fades to an `end-opacity` of 0.2. Each copy's turn and scale vary a little at random (`rotation-randomness` and `scale-randomness`). The randomness uses `seed` 5. The click turns the square. Each copy turns 0.08 seconds later than the one before (`stagger`). Each also waits up to 0.05 seconds more at random (`stagger-randomness`). The slide leaves with a carry-over that matches words. The words shared by the two headings move to their places on the next slide.
+
+<!-- slide: arrival -->
+
+<!-- text: heading -->
+Eight copies of one shape==.==
+
+<!-- text: caption -->
+The words shared by both headings carry over from the slide before.
+
+<!-- notes -->
+The previous slide's transition has its `type` set to `carry-over` and its `match` set to `word`. It matches the two headings word by word. "of one shape" moves to its place in this heading, "Copies" fades out, and "Eight copies" fades in. The square has the same id on both slides. It is where the click left it, turned 90 degrees. Its copies stay still while the words move.

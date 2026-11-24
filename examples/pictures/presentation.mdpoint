@@ -1,0 +1,241 @@
+{
+  "markdownpoint": "1.0",
+  "type": "presentation",
+  "id": "9405e817-7b2f-42e1-80e2-95869ec16aba",
+  "theme": "basic",
+  "slides": {
+    "adjust": {
+      "layout": "blank",
+      "scheme": "light",
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 110,
+            "width": 1680,
+            "height": 150
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "plain",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {
+            "x": 120,
+            "y": 400,
+            "width": 390,
+            "height": 219
+          },
+          "alt": "Green hills under a low sun"
+        },
+
+        {
+          "id": "bright",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {
+            "x": 550,
+            "y": 400,
+            "width": 390,
+            "height": 219
+          },
+          "exposure": 0.5,
+          "alt": "The hills, brighter"
+        },
+
+        {
+          "id": "vivid",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {
+            "x": 980,
+            "y": 400,
+            "width": 390,
+            "height": 219
+          },
+          "contrast": 0.4,
+          "saturation": 0.6,
+          "alt": "The hills, with more contrast and color"
+        },
+
+        {
+          "id": "gray",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {
+            "x": 1410,
+            "y": 400,
+            "width": 390,
+            "height": 219
+          },
+          "grayscale": 1,
+          "alt": "The hills, in gray"
+        },
+
+        {
+          "id": "plain-label",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 650,
+            "width": 390,
+            "height": 80
+          },
+          "text-style": "meta"
+        },
+
+        {
+          "id": "bright-label",
+          "type": "text",
+          "frame": {
+            "x": 550,
+            "y": 650,
+            "width": 390,
+            "height": 80
+          },
+          "text-style": "meta"
+        },
+
+        {
+          "id": "vivid-label",
+          "type": "text",
+          "frame": {
+            "x": 980,
+            "y": 650,
+            "width": 390,
+            "height": 80
+          },
+          "text-style": "meta"
+        },
+
+        {
+          "id": "gray-label",
+          "type": "text",
+          "frame": {
+            "x": 1410,
+            "y": 650,
+            "width": 390,
+            "height": 80
+          },
+          "text-style": "meta"
+        }
+      ]
+    },
+    "cutout": {
+      "layout": "blank",
+      "scheme": "sky",
+      "background": {"image":{"file":"media/sun.png","drop-shadow":{"size":48,"offset":{"x":0,"y":16},"color":"#000000","opacity":0.3}}},
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 465,
+            "width": 640,
+            "height": 168
+          },
+          "text-style": "title"
+        }
+      ]
+    },
+    "faded": {
+      "layout": "blank",
+      "scheme": "light",
+      "background": {"image":{"file":"media/hills.png","crop":{"scale":1.6,"focal-point":{"x":0.7,"y":0.42}},"opacity":0.3,"grayscale":1}},
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 465,
+            "width": 1680,
+            "height": 150
+          },
+          "text-style": "title"
+        }
+      ]
+    },
+    "generate": {
+      "layout": "blank",
+      "scheme": "butter",
+      "background": {"image":{"prompt":"Paper leaves cut out along the slide's lower edge","image-style":"Paper cutout","transparent-background":true}},
+      "objects": [
+        {
+          "id": "heading",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 110,
+            "width": 1680,
+            "height": 150
+          },
+          "text-style": "title"
+        },
+
+        {
+          "id": "boat",
+          "type": "image",
+          "file": "media/boat.png",
+          "name": "Red Paper Boat",
+          "frame": {
+            "x": 120,
+            "y": 340,
+            "width": 760,
+            "height": 428
+          },
+          "stroke": "muted",
+          "stroke-weight": 4,
+          "stroke-style": "dashed",
+          "alt": "A red paper boat",
+          "transparent-background": true,
+          "prompt": "A red paper boat on calm water",
+          "image-style": "Flat illustration"
+        },
+
+        {
+          "id": "chalk",
+          "type": "image",
+          "file": "media/hills.png",
+          "frame": {
+            "x": 1040,
+            "y": 340,
+            "width": 760,
+            "height": 428
+          },
+          "alt": "Green hills under a low sun",
+          "restyle": {"name":"Chalk","prompt":"Redraw it in white chalk on a blackboard"}
+        },
+
+        {
+          "id": "boat-label",
+          "type": "text",
+          "frame": {
+            "x": 120,
+            "y": 800,
+            "width": 760,
+            "height": 60
+          },
+          "text-style": "meta"
+        },
+
+        {
+          "id": "chalk-label",
+          "type": "text",
+          "frame": {
+            "x": 1040,
+            "y": 800,
+            "width": 760,
+            "height": 60
+          },
+          "text-style": "meta"
+        }
+      ]
+    }
+  }
+}
