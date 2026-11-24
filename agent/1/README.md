@@ -294,4 +294,5 @@ The codes an issue can have:
 | Content written by a theme, a newer version, or another program, or left by an interrupted layout move | `generation-in-theme`, `interrupted-layout-move`, `newer-major-version`, `newer-minor-content`, `rounded-number`, `text-model-in-theme` |
 | Objects that a slide can't contain together | `3d-parent-cycle`, `aim-cycle`, `group-depth-limit`, `group-order`, `group-parent-cycle`, `object-count-limit` |
 | A key or a value that its object can't have there | `camera-outside-master`, `color-needs-svg`, `delivery-with-text-path`, `drift-with-joining-transition`, `effect-size-limit`, `extra-table-lengths`, `extrusion-with-text-path`, `ignored-animation`, `ignored-animation-value`, `ignored-key`, `ignored-override`, `ignored-override-value`, `ignored-text-block`, `link-letters-out-of-place`, `mask-without-group`, `reserved-camera-id`, `reserved-world-id`, `world-outside-master` |
+| A value an edit writes out where the theme has a name for it | `literal-color-role`, `literal-text-style` |
 | What the rendered slide shows | `image-enlarged`, `low-text-contrast`, `text-hidden`, `text-overflow`, `text-overflow-unchecked` |
