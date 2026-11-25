@@ -29,7 +29,16 @@
           "$ref": "#/definitions/uuid"
         }
       ],
-      "description": "The id of the save that last wrote the file while people edited the presentation together. Other saves and other tools leave it unchanged."
+      "description": "The id of the save that last wrote the file. Each save of a presentation in a connected Dropbox account's folder writes a new one. Other saves and other tools leave it unchanged."
+    },
+    "md-save-id": {
+      "type": "string",
+      "allOf": [
+        {
+          "$ref": "#/definitions/uuid"
+        }
+      ],
+      "description": "The .md file's `save-id` when a later save wrote only this file. Without it, the .md file's `save-id` is this file's."
     },
     "theme": {
       "type": "string",

@@ -77,7 +77,7 @@ Start the file with frontmatter between two `---` lines. Each `---` line holds n
 
 - `markdownpoint`: the format version in quotes, such as `markdownpoint: "1.0"`.
 - `id`: the presentation's lowercase UUID. Use the same value as in the .mdpoint file.
-- `save-id`: the id of the save that last wrote the file while people edited the presentation together. The .mdpoint file names the same save once both of that save's files have arrived. Other saves and other tools leave it unchanged.
+- `save-id`: the id of the save that last changed the file. A save of a presentation in a connected Dropbox account's folder writes a new one only when it changes the file's words or the file has none. The .mdpoint file names it as its own `save-id` or its `md-save-id`. Other saves and other tools leave it unchanged.
 - `footer`: the footer text. It's one line with no control characters or line breaks.
 
 Put `footer` in double quotes if it contains a space followed by `#`. Otherwise the `#` starts a comment. Also quote it if it contains a colon followed by a space, or if it starts with punctuation such as `[`, `*`, or `- `. Quote it, too, if YAML 1.2's core schema reads it as null, a boolean, or a number, such as `~`, `true`, `001`, or `.5`. Without quotes, some of these values aren't text in YAML. MarkdownPoint refuses them. MarkdownPoint always writes the footer in double quotes.
