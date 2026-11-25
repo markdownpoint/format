@@ -12,7 +12,7 @@ id: 9d98709f-0aac-407e-b6d3-56da6b8494aa
 Marks, links, and colors==.==
 
 <!-- text: body -->
-Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`.
+Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`. The 2 in x<sup>2</sup> is raised, and the one in H<sub>2</sub>O is lowered.
 
 [A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 

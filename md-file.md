@@ -161,7 +161,7 @@ Text objects, tables, and presenter notes use Markdown. The [reference](referenc
 Marks, links, and colors==.==
 
 <!-- text: body -->
-Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`.
+Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`. The 2 in x<sup>2</sup> is raised, and the one in H<sub>2</sub>O is lowered.
 
 [A link](https://markdownpoint.com) opens a webpage, and [these words]{color=accent} are in the accent color.
 ```
@@ -170,9 +170,11 @@ Words can be **bold**, *italic*, ==highlighted==, ~~struck through~~, or `code`.
 
 `==highlighted==` and `[colored]{color=accent}` text are MarkdownPoint additions. A color is either a role from the slide's color scheme, such as `accent`, or a hex color: `[text]{color="#2F7D4F"}`.
 
+Superscript and subscript use HTML's tags: `x<sup>2</sup>` and `H<sub>2</sub>O`. GitHub and Obsidian show them too. They are two thirds of the size around them. Superscript is raised by 30% of that size, and subscript is lowered by 25%.
+
 Words can also have their own weight: `[text]{font-weight=600}`. The weight is 100, 200, 300, 400, 500, 600, 700, 800, or 900. In italic text, words can stand upright: `[text]{font-style=normal}`. `normal` is its only value. To set more than one of these, use one span: `[text]{color=accent font-weight=600 font-style=normal}`. They can come in any order. Each value can be bare or in single or double quotes. A value stays on one line. Spaces, tabs, or one line break can stand between them and inside the braces. MarkdownPoint writes the color first, then the weight, then `font-style`. A span with any other key, a repeated key, or a value its key doesn't accept stays as written in the file. MarkdownPoint skips that attribute and applies the others. When a key repeats, only its first counts. `**Bold**` overrides a word's own weight, and a word's own weight overrides the weight a text style gives to italic or highlighted words. `*Italic*` overrides `font-style=normal`.
 
-Code can have a color and a link, but no other mark. Bold, italic, highlight, strikethrough, a weight, and `font-style` don't apply to code. MarkdownPoint writes such a mark only around the words next to the code: `` **slides are `code` you** `` becomes `` **slides are** `code` **you** ``.
+Code can have a color and a link, but no other mark. Bold, italic, highlight, strikethrough, superscript, subscript, a weight, and `font-style` don't apply to code. MarkdownPoint writes such a mark only around the words next to the code: `` **slides are `code` you** `` becomes `` **slides are** `code` **you** ``.
 
 ### Lists
 
@@ -302,7 +304,7 @@ Lists and quotes nest at most 100 deep in all: the outermost is the first level,
 MarkdownPoint keeps this Markdown in the file as written, and the slide shows it as plain text:
 
 - images
-- HTML tags other than `<br>`
+- HTML tags other than `<br>`, `<sup>`, and `<sub>`
 - footnotes
 - task-list boxes, such as `- [ ] item`
 - bare addresses, written without `<` and `>`
