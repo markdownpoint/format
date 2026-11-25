@@ -65,6 +65,12 @@
       "maximum": 1000000000000000000,
       "description": "How long one canvas unit is. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1,000 canvas units. The default is 0.001. It is in meters per canvas unit."
     },
+    "default-scale": {
+      "type": "number",
+      "minimum": 0.000001,
+      "maximum": 273,
+      "description": "How large the built-in lengths draw: each length the reference gives for a 1920 × 1080 slide, times this. The default is the smaller of the slide's width divided by 1920 and its height divided by 1080. A theme of another size then draws them in proportion."
+    },
     "fonts": {
       "description": "The font family for each font role. A role whose family is neither bundled nor in `font-files` reads with a `missing-font` warning. MarkdownPoint bundles Inter, Archivo, Source Sans 3, Source Serif 4, Schibsted Grotesk, Fraunces, Atkinson Hyperlegible Next, and Source Code Pro. They need no files. Any other family comes with the theme in `font-files`. A family's name is never a CSS generic family: `serif` names a family called serif.",
       "type": "object",
@@ -1228,7 +1234,7 @@
                   "maximum": 65536,
                   "description": "canvas units"
                 },
-                "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list is 240 wide. With no list, every column is 240 wide."
+                "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list, and every column where there is no list, is 240 times the master's `default-scale` wide."
               },
               "min-row-heights": {
                 "type": "array",
@@ -2710,7 +2716,7 @@
                     "type": "number",
                     "minimum": 0.000001,
                     "maximum": 1000000000000000000,
-                    "description": "How far bounced light and shading reach from a surface. The default is 400. It is in canvas units."
+                    "description": "How far bounced light and shading reach from a surface. The default is 400 times the master's `default-scale`. It is in canvas units."
                   }
                 },
                 "additionalProperties": false

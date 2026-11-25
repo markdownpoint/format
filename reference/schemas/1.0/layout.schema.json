@@ -1404,7 +1404,7 @@
                     }
                   }
                 ],
-                "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list is 240 wide. With no list, every column is 240 wide."
+                "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list, and every column where there is no list, is 240 times the master's `default-scale` wide."
               },
               "min-row-heights": {
                 "anyOf": [
@@ -2362,7 +2362,7 @@
                         "type": "number",
                         "minimum": 0.000001,
                         "maximum": 1000000000000000000,
-                        "description": "How far bounced light and shading reach from a surface. The default is 400. It is in canvas units."
+                        "description": "How far bounced light and shading reach from a surface. The default is 400 times the master's `default-scale`. It is in canvas units."
                       }
                     },
                     "additionalProperties": false
@@ -3268,7 +3268,7 @@
                       "maximum": 65536,
                       "description": "canvas units"
                     },
-                    "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list is 240 wide. With no list, every column is 240 wide."
+                    "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list, and every column where there is no list, is 240 times the master's `default-scale` wide."
                   },
                   "min-row-heights": {
                     "type": "array",
