@@ -1936,22 +1936,22 @@
                       ],
                       "description": "The image a restyle was applied to: an image in the presentation's media or generated folder. The image shows its `file`, the restyled image, and shows this one again once its `restyle` is taken away."
                     },
-                    "latex": {
+                    "source": {
                       "anyOf": [
                         {
                           "type": "null"
                         },
                         {
-                          "type": "string",
+                          "type": "object",
                           "allOf": [
                             {
-                              "$ref": "#/definitions/nonblank-text"
+                              "$ref": "#/definitions/picture-source"
                             }
                           ],
-                          "description": "The TeX math the image's picture is made from: text that isn't blank. It is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out. An image with `latex` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-latex`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
+                          "description": "The code and language the image's picture is made from. An image with `source` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-source`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made. The code an image's picture is made from. Its `type` names the code's language."
                         }
                       ],
-                      "description": "The TeX math the image's picture is made from: text that isn't blank. It is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out. An image with `latex` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-latex`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
+                      "description": "The code and language the image's picture is made from. An image with `source` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-source`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
                     },
                     "built-from": {
                       "anyOf": [
@@ -1965,10 +1965,10 @@
                               "$ref": "#/definitions/picture-fingerprint"
                             }
                           ],
-                          "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `latex`, it is left out as the file is read. It then causes the warning `built-from-without-latex`. It is markdownpoint/latex/<rule>:sha256:<hex>."
+                          "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `source`, it is left out as the file is read. It then causes the warning `built-from-without-source`. It is markdownpoint/<type>/<rule>:sha256:<hex>."
                         }
                       ],
-                      "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `latex`, it is left out as the file is read. It then causes the warning `built-from-without-latex`."
+                      "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `source`, it is left out as the file is read. It then causes the warning `built-from-without-source`."
                     },
                     "repeater": {
                       "anyOf": [
@@ -3803,14 +3803,14 @@
                           ],
                           "description": "The image a restyle was applied to: an image in the presentation's media or generated folder. The image shows its `file`, the restyled image, and shows this one again once its `restyle` is taken away."
                         },
-                        "latex": {
-                          "type": "string",
+                        "source": {
+                          "type": "object",
                           "allOf": [
                             {
-                              "$ref": "#/definitions/nonblank-text"
+                              "$ref": "#/definitions/picture-source"
                             }
                           ],
-                          "description": "The TeX math the image's picture is made from: text that isn't blank. It is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out. An image with `latex` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-latex`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
+                          "description": "The code and language the image's picture is made from. An image with `source` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-source`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made. The code an image's picture is made from. Its `type` names the code's language."
                         },
                         "built-from": {
                           "type": "string",
@@ -3819,7 +3819,7 @@
                               "$ref": "#/definitions/picture-fingerprint"
                             }
                           ],
-                          "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `latex`, it is left out as the file is read. It then causes the warning `built-from-without-latex`. It is markdownpoint/latex/<rule>:sha256:<hex>."
+                          "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `source`, it is left out as the file is read. It then causes the warning `built-from-without-source`. It is markdownpoint/<type>/<rule>:sha256:<hex>."
                         },
                         "anchor-point": {
                           "$ref": "#/definitions/object.anchor-point"
@@ -9948,7 +9948,33 @@
     },
     "picture-fingerprint": {
       "type": "string",
-      "pattern": "^markdownpoint\\/latex\\/[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])"
+      "pattern": "^markdownpoint\\/[a-z][a-z0-9-]*\\/[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])"
+    },
+    "picture-source": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "latex"
+            },
+            "code": {
+              "type": "string",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/nonblank-text"
+                }
+              ],
+              "description": "The code: text that isn't blank. With `latex`, it is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out."
+            }
+          },
+          "required": [
+            "type",
+            "code"
+          ],
+          "additionalProperties": false
+        }
+      ]
     },
     "piece-offset.x": {
       "type": "number",
