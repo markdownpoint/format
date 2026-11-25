@@ -160,7 +160,10 @@ fields depend on its `source`:
   named by its id, as in
   `slides.intro.steps.reveal.curves["title.opacity"].keyframes.fade.value`.
   In it, the curve's name is one key. A keyframe and a cue are always named
-  by their ids. A warning about a step's own key is at that key, as in
+  by their ids, and an effect by its object's id, as in
+  `slides.intro.steps.reveal.effects.title.duration`. A warning about an
+  object's keyframes in a step that plays its effect is at their curve. A
+  warning about a step's own key is at that key, as in
   `slides.intro.steps.reveal.repeat-count`. One about where a loop starts is
   at `loop-start`, or at `loop` when the loop starts at 0. An `invalid-json` or
   `merge-conflict` issue has no `path`, and its `location` has the line when
