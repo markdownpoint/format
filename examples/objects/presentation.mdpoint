@@ -67,20 +67,12 @@
           "text-style": "body"
         }
       ],
-      "initial": {
-        "card.opacity": 0
-      },
       "steps": [
         {
           "id": "fade-in",
           "name": "Fade in the card",
-          "min-duration": 0.6,
-          "curves": {
-            "card.opacity": {
-              "keyframes": {
-                "card-shows": {"time":0.6,"value":1,"interpolation":"ease-out"}
-              }
-            }
+          "effects": {
+            "card": {"type":"enter","effect":"fade","duration":0.6}
           }
         }
       ]

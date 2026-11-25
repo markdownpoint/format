@@ -69,17 +69,11 @@ The slide's objects and animation are in the .mdpoint file:
           "text-style": "body"
         }
       ],
-      "initial": {"card.opacity": 0},
       "steps": [
         {
           "id": "fade-in",
           "name": "Fade in the card",
-          "min-duration": 0.6,
-          "curves": {
-            "card.opacity": {
-              "keyframes": {"card-shows": {"time": 0.6, "value": 1, "interpolation": "ease-out"}}
-            }
-          }
+          "effects": {"card": {"type": "enter", "effect": "fade", "duration": 0.6}}
         }
       ]
     }
@@ -450,11 +444,13 @@ A rotation in degrees applies the heading around y, then the pitch around the ob
 
 ## Steps
 
-`initial` sets a parameter's value at the start of the slide. The parameter is written as `object.parameter`. Here the card starts at an `opacity` of 0.
+`initial` sets a parameter's value at the start of the slide. The parameter is written as `object.parameter`, such as `card.opacity`.
 
 `steps` lists the slide's animation steps in playback order. A step starts on a click by default: its `start` is `on-click`, and the file leaves it out. Set `start` to `with-previous` or `after-previous` to start it with or after the previous step. On the first step, both start it when the slide's transition ends. During a scroll transition, the next slide's first click plays as the slide moves in, regardless of its first step's `start` setting.
 
-`curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `begin`. There is no separate step delay. In this example, the card fades in over 0.6 seconds. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its keyframes, its cues, the paragraphs they bring in, and the later copies of a repeated object.
+`effects` gives an object's entrance, exit, or emphasis in a step by name. In this example, the card is hidden until the first click, then fades in over 0.6 seconds.
+
+`curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `begin`. A step has no delay of its own. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its effects, its keyframes, its cues, the paragraphs they bring in, and the later copies of a repeated object.
 
 Four settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, and an Action clip's `loop`. Camera [drift](reference/1.0.md#drift) doesn't repeat and requires a `duration`.
 
