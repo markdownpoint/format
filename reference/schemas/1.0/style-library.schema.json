@@ -26,12 +26,20 @@
           },
           "preview-prompt": {
             "type": "string",
-            "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+            "allOf": [
+              {
+                "$ref": "#/definitions/nonblank-text"
+              }
+            ],
             "description": "The prompt for the picture the style's preview restyles: text that isn't blank and has no NUL character."
           },
           "prompt": {
             "type": "string",
-            "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+            "allOf": [
+              {
+                "$ref": "#/definitions/nonblank-text"
+              }
+            ],
             "description": "How the style changes an image: an edit prompt, text that isn't blank and has no NUL character."
           },
           "transparent-background": {
@@ -55,5 +63,11 @@
     "type",
     "styles"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "definitions": {
+    "nonblank-text": {
+      "type": "string",
+      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])"
+    }
+  }
 }

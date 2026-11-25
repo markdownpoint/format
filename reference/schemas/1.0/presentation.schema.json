@@ -1936,6 +1936,40 @@
                       ],
                       "description": "The image a restyle was applied to: an image in the presentation's media or generated folder. The image shows its `file`, the restyled image, and shows this one again once its `restyle` is taken away."
                     },
+                    "latex": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "string",
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/nonblank-text"
+                            }
+                          ],
+                          "description": "The TeX math the image's picture is made from: text that isn't blank. It is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out. An image with `latex` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-latex`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
+                        }
+                      ],
+                      "description": "The TeX math the image's picture is made from: text that isn't blank. It is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out. An image with `latex` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-latex`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
+                    },
+                    "built-from": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "string",
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/picture-fingerprint"
+                            }
+                          ],
+                          "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `latex`, it is left out as the file is read. It then causes the warning `built-from-without-latex`. It is markdownpoint/latex/<rule>:sha256:<hex>."
+                        }
+                      ],
+                      "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `latex`, it is left out as the file is read. It then causes the warning `built-from-without-latex`."
+                    },
                     "repeater": {
                       "anyOf": [
                         {
@@ -3768,6 +3802,24 @@
                             }
                           ],
                           "description": "The image a restyle was applied to: an image in the presentation's media or generated folder. The image shows its `file`, the restyled image, and shows this one again once its `restyle` is taken away."
+                        },
+                        "latex": {
+                          "type": "string",
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/nonblank-text"
+                            }
+                          ],
+                          "description": "The TeX math the image's picture is made from: text that isn't blank. It is written as LaTeX writes display math with the amsmath and amssymb packages. The `\\[` and `\\]` around it are left out. An image with `latex` draws from its code alone. Its `prompt`, `image-style`, `transparent-background`, `restyle`, and `restyled-from` are left out as the file is read. Each causes the warning `generation-with-latex`, and a save keeps them. The reference's **Pictures made from code** says how its picture is made."
+                        },
+                        "built-from": {
+                          "type": "string",
+                          "allOf": [
+                            {
+                              "$ref": "#/definitions/picture-fingerprint"
+                            }
+                          ],
+                          "description": "The fingerprint of the code the image's `file` was made from. The reference gives the rule. A reader that doesn't know the rule treats the picture as out of date. Without `latex`, it is left out as the file is read. It then causes the warning `built-from-without-latex`. It is markdownpoint/latex/<rule>:sha256:<hex>."
                         },
                         "anchor-point": {
                           "$ref": "#/definitions/object.anchor-point"
@@ -9232,6 +9284,10 @@
       "type": "string",
       "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])"
     },
+    "nonblank-text": {
+      "type": "string",
+      "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])"
+    },
     "object-id": {
       "type": "string",
       "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
@@ -9890,6 +9946,10 @@
       "minItems": 16,
       "maxItems": 16
     },
+    "picture-fingerprint": {
+      "type": "string",
+      "pattern": "^markdownpoint\\/latex\\/[0-9]+:sha256:[0-9a-f]{64}(?![\\s\\S])"
+    },
     "piece-offset.x": {
       "type": "number",
       "minimum": -33554431,
@@ -10067,7 +10127,11 @@
         },
         "prompt": {
           "type": "string",
-          "pattern": "^(?:(?![\\u0000])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000][^\\u0000]*(?![\\s\\S])",
+          "allOf": [
+            {
+              "$ref": "#/definitions/nonblank-text"
+            }
+          ],
           "description": "How the style changes an image: an edit prompt, text that isn't blank and has no NUL character."
         },
         "transparent-background": {
