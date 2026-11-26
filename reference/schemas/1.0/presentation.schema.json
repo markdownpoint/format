@@ -2688,7 +2688,6 @@
                           "type": "null"
                         },
                         {
-                          "description": "The slide's render settings, kept on its camera beside motion blur: a fast estimate of light bouncing between surfaces, and of the World's light blocked where surfaces meet. In Cinema 4D's Render Settings, they are Global Illumination and Ambient Occlusion. The effects show wherever the 3D layer shows. Only surfaces in view bounce light. A shadow catcher or a floor bounces none. An override replaces the whole record.",
                           "type": "object",
                           "properties": {
                             "global-illumination": {
