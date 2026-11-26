@@ -6595,7 +6595,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "A description of the object that screen readers read aloud. On a shape or a table, they read it before its words. On a chart, they read it in place of its labels. It is one line that isn't blank and has no control characters or line breaks."
+      "description": "A description of the object that screen readers read aloud. On a shape or a table, they read it before its words. On a chart, they read it in place of its labels. It is one line that isn't blank and has no control characters or line breaks. Without `alt`, an image whose picture matches its code is described by that code on one line."
     },
     "object.anchor-point": {
       "type": "object",
@@ -6685,7 +6685,7 @@
     },
     "object.decorative": {
       "type": "boolean",
-      "description": "Whether screen readers skip the object as decoration. A decorative shape's words and a decorative chart's labels are skipped too. Without `alt`, an image, video, web video, model, icon, or chart that isn't decorative causes a warning once it has something to show. A counter doesn't, since screen readers read its figure."
+      "description": "Whether screen readers skip the object as decoration. A decorative shape's words and a decorative chart's labels are skipped too. Without `alt`, an image, video, web video, model, icon, or chart that isn't decorative causes a warning once it has something to show. A counter doesn't, since screen readers read its figure. Neither does an image whose picture matches its code."
     },
     "object.drop-shadow": {
       "anyOf": [
