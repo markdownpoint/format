@@ -452,7 +452,7 @@ A rotation in degrees applies the heading around y, then the pitch around the ob
 
 `curves` lists animated parameters as `object.parameter`. A parameter's keyframes are in its curve's `keyframes`. Each keyframe specifies a value and a `time` in seconds from the start of the step. To delay a move, set the keyframe's `begin`. A step has no delay of its own. A step with no `min-duration`, or a `min-duration` of 0, lasts as long as its effects, its keyframes, its cues, the paragraphs they bring in, and the later copies of a repeated object.
 
-Four settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, and an Action clip's `loop`. Camera [drift](reference/1.0.md#drift) doesn't repeat and requires a `duration`.
+Four settings can repeat motion while a slide is visible: a step's `repeat-count` and `loop`, a curve's `loop`, and an Action clip's `loop`.
 
 ## Motion
 

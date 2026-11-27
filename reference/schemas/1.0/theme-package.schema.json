@@ -7,14 +7,14 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format the file is written in: a format version in quotes, such as \"1.0\". Its major and minor numbers each have at most nine digits and no leading zero."
+      "description": "The file's format version in quotes, such as \"1.0\". Its major and minor numbers each have at most nine digits and no leading zero."
     },
     "type": {
       "const": "theme-package",
       "description": "What the file is."
     },
     "files": {
-      "description": "Each of the theme's files in the package with its size and digest. That includes master.json. The theme's files by their paths in the theme's folder.",
+      "description": "Each of the theme's files in the package with its size and digest. That includes master.json. The theme's files are listed by their paths in the theme's folder.",
       "type": "object",
       "properties": {
         "master.json": {
@@ -24,7 +24,7 @@
               "$ref": "#/definitions/manifest-file"
             }
           ],
-          "description": "The theme's master. One file of a theme package."
+          "description": "The theme's master. The SHA-256 digest and size of one file. Its key in `files` is the file's path."
         }
       },
       "required": [
@@ -49,7 +49,7 @@
             "$ref": "#/definitions/manifest-file"
           }
         ],
-        "description": "One file of a theme package."
+        "description": "The SHA-256 digest and size of one file. Its key in `files` is the file's path."
       }
     }
   },

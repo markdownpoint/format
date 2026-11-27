@@ -7,7 +7,7 @@
     "markdownpoint": {
       "type": "string",
       "pattern": "^1\\.(?:0|[1-9][0-9]{0,8})(?![\\s\\S])",
-      "description": "The format the file is written in: a format version in quotes, such as \"1.0\". Its major and minor numbers each have at most nine digits and no leading zero."
+      "description": "The file's format version in quotes, such as \"1.0\". Its major and minor numbers each have at most nine digits and no leading zero."
     },
     "type": {
       "const": "style-library",
@@ -22,7 +22,7 @@
           "name": {
             "type": "string",
             "pattern": "^(?:(?![\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029])[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff])*[^\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029][^\\u0000-\\u001f\\u007f-\\u009f\\u2028\\u2029]*(?![\\s\\S])",
-            "description": "The style's name: one line that isn't blank and has no control characters or line breaks."
+            "description": "The style's name. It is one line that isn't blank and has no control characters or line breaks."
           },
           "preview-prompt": {
             "type": "string",
@@ -31,7 +31,7 @@
                 "$ref": "#/definitions/nonblank-text"
               }
             ],
-            "description": "The prompt for the picture the style's preview restyles: text that isn't blank and has no NUL character."
+            "description": "The prompt for the picture that the style's preview restyles. It is text that isn't blank and has no NUL character."
           },
           "prompt": {
             "type": "string",
@@ -40,7 +40,7 @@
                 "$ref": "#/definitions/nonblank-text"
               }
             ],
-            "description": "How the style changes an image: an edit prompt, text that isn't blank and has no NUL character."
+            "description": "The edit prompt that says how the style changes an image. It is text that isn't blank and has no NUL character."
           },
           "transparent-background": {
             "type": "boolean",
