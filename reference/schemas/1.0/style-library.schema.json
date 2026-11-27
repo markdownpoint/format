@@ -16,7 +16,7 @@
     "styles": {
       "type": "array",
       "items": {
-        "description": "One style of the style library. It has the restyle that is copied onto an image, and the prompt for the picture its preview restyles.",
+        "description": "One style of the style library. It has the restyle that is copied onto an image and the prompt for the picture that is restyled to make the style's preview.",
         "type": "object",
         "properties": {
           "name": {
@@ -31,7 +31,7 @@
                 "$ref": "#/definitions/nonblank-text"
               }
             ],
-            "description": "The prompt for the picture that the style's preview restyles. It is text that isn't blank and has no NUL character."
+            "description": "The prompt for the picture that is restyled to make the style's preview. It is text that isn't blank and has no NUL character."
           },
           "prompt": {
             "type": "string",

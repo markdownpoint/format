@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://markdownpoint.com/format/schemas/1.0/master.schema.json",
-  "description": "A theme's master: its settings and the artwork every slide shows.",
+  "description": "The master has the theme's settings and the artwork every slide shows.",
   "type": "object",
   "properties": {
     "markdownpoint": {
@@ -16,7 +16,7 @@
     "id": {
       "type": "string",
       "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?![\\s\\S])",
-      "description": "The theme's identity, a lowercase UUID. It stays the same when the theme is renamed, added under another key, or carried in a theme package. It tells apart two themes with the same key."
+      "description": "The theme's lowercase UUID. It stays the same when the theme is renamed, added under another key, or carried in a theme package. Two themes with the same key are told apart by their ids."
     },
     "name": {
       "type": "string",
@@ -34,7 +34,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "The category the theme is listed under. It is one line that isn't blank and has no control characters or line breaks. MarkdownPoint's categories are `essentials`, `business`, `education`, `community`, and `personal`. Any other category is read with a warning, and the theme is listed under Other."
+      "description": "The category the theme is listed under. It is one line that isn't blank and has no control characters or line breaks. MarkdownPoint's categories are `essentials`, `business`, `education`, `community`, and `personal`. Any other category causes an `unknown-category` warning, and the theme is listed under Other."
     },
     "size": {
       "description": "The slide size. The default is 1920 × 1080. A slide's width and height are in canvas units.",
@@ -63,16 +63,16 @@
       "type": "number",
       "minimum": 1e-18,
       "maximum": 1000000000000000000,
-      "description": "How long one canvas unit is. It is in meters per canvas unit. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1,000 canvas units. The default is 0.001."
+      "description": "How long one canvas unit is. It is in meters. At 0.001, a canvas unit is a millimeter, and one meter of a model's GLB spans 1,000 canvas units. The default is 0.001."
     },
     "default-scale": {
       "type": "number",
       "minimum": 0.000001,
       "maximum": 273,
-      "description": "How large the built-in lengths are drawn. Each is given for a 1920 × 1080 slide and drawn at that length times `default-scale`. The default is the smaller of the slide's width divided by 1920 and its height divided by 1080. A theme of another size then draws them in proportion."
+      "description": "How large the built-in lengths are drawn. Each is given for a 1920 × 1080 slide and drawn at that length times `default-scale`. The default is the smaller of the slide's width divided by 1920 and its height divided by 1080. With that default, the built-in lengths are drawn in proportion on a slide of another size."
     },
     "fonts": {
-      "description": "The font family for each font role. A role whose family is neither bundled nor in `font-files` reads with a `missing-font` warning. MarkdownPoint bundles Inter, Archivo, Source Sans 3, Source Serif 4, Schibsted Grotesk, Fraunces, Atkinson Hyperlegible Next, and Source Code Pro. They need no files. Any other family comes with the theme in `font-files`. A family's name is never a CSS generic family: `serif` names a family called serif.",
+      "description": "The font family for each font role. A role whose family is neither bundled nor in `font-files` causes a `missing-font` warning. MarkdownPoint bundles Inter, Archivo, Source Sans 3, Source Serif 4, Schibsted Grotesk, Fraunces, Atkinson Hyperlegible Next, and Source Code Pro. They need no files. Any other family comes with the theme in `font-files`. A family's name is never read as a CSS generic family. For example, `serif` names a family called serif.",
       "type": "object",
       "properties": {
         "display": {
@@ -109,10 +109,10 @@
         },
         "minItems": 1
       },
-      "description": "The theme's embedded fonts by family name. Each lists one or more .eot files of a family a font role uses: one per face. A key that no role names is kept and reads with an `ignored-key` warning."
+      "description": "The theme's embedded fonts by family name. Each family lists one or more .eot files, and each file has one face. A key that no role names is kept and causes an `ignored-key` warning."
     },
     "brand": {
-      "description": "The brand's named colors. Schemes name its colors as `{brand.colors.<name>}`.",
+      "description": "The brand's named colors. In a scheme, a brand color is written as `{brand.colors.<name>}`.",
       "type": "object",
       "properties": {
         "colors": {
@@ -133,10 +133,10 @@
           "items": {
             "type": "string",
             "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])",
-            "description": "An id, such as \"title-card\"."
+            "description": "A brand color's name, such as \"coral\"."
           },
           "uniqueItems": true,
-          "description": "The order of the brand's colors by name. Each is listed once. Unlisted brand colors follow in name order. An entry that names no brand color warns."
+          "description": "The order of the brand's colors by name. Each entry is a brand color's name, such as \"coral\". None is listed twice. Unlisted brand colors follow in name order. An entry that names no brand color causes an `unknown-brand-color` warning."
         }
       },
       "additionalProperties": false
@@ -151,7 +151,7 @@
               "$ref": "#/definitions/scheme"
             }
           ],
-          "description": "One color scheme: whether it is light or dark, and its colors. Every theme has light and dark, and it can have more."
+          "description": "One color scheme. It is light or dark and has a color for each of its roles. Every theme has light and dark and can have more."
         },
         "dark": {
           "type": "object",
@@ -160,7 +160,7 @@
               "$ref": "#/definitions/scheme"
             }
           ],
-          "description": "One color scheme: whether it is light or dark, and its colors. Every theme has light and dark, and it can have more."
+          "description": "One color scheme. It is light or dark and has a color for each of its roles. Every theme has light and dark and can have more."
         }
       },
       "required": [
@@ -187,7 +187,7 @@
             "$ref": "#/definitions/scheme"
           }
         ],
-        "description": "One color scheme: whether it is light or dark, and its colors. Every theme has light and dark, and it can have more."
+        "description": "One color scheme. It is light or dark and has a color for each of its roles. Every theme has light and dark and can have more."
       },
       "description": "The theme's color schemes by name. Every theme has light and dark."
     },
@@ -199,7 +199,7 @@
         "description": "A scheme name."
       },
       "uniqueItems": true,
-      "description": "The order of the schemes by name. Each is listed once. Unlisted schemes follow: light, dark, then the rest in name order. An entry that names no scheme warns."
+      "description": "The order of the schemes by name. Each entry is a scheme name. None is listed twice. Unlisted schemes follow: light, dark, then the rest in name order. An entry that names no scheme causes an `unknown-scheme` warning."
     },
     "text-styles": {
       "type": "object",
@@ -237,14 +237,14 @@
               800,
               900
             ],
-            "description": "The font weight. 100 is thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, and 900 black. Which face draws it is under **Faces** in the `fonts` record."
+            "description": "How bold the text's letters are. 100 is thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, and 900 black. Each character is drawn in the face that CSS Fonts Level 4's font matching chooses for the text's weight and style among the faces of the family that draws it. MarkdownPoint never makes a face bolder to make up for a weight the family lacks."
           },
           "font-style": {
             "enum": [
               "normal",
               "italic"
             ],
-            "description": "Whether the text's letters stand upright with `normal` or lean with `italic`. They lean only in a family with an italic face. Which face draws them is under **Faces** in the `fonts` record."
+            "description": "Whether the text's letters stand upright with `normal` or lean with `italic`. They lean only in a family with an italic face."
           },
           "color": {
             "type": "string",
@@ -359,7 +359,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "description": "How bold text looks. Its weight is 700, or the text's weight if that is heavier. It replaces any weight inside the bold. So bold has no `font-weight`. Without it, bold uses the text's font."
+                "description": "How bold text looks. Its weight is 700, or the text's weight if that is heavier. Inside bold text, bold's weight replaces any other weight. Bold has no `font-weight` of its own. By default, bold uses the text's font."
               },
               "italic": {
                 "type": "object",
@@ -368,7 +368,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How italic text looks. Bold has the same keys except `font-weight`."
+                "description": "How italic text looks. A mark's look can change the font role, color, tracking, and letter case of its words. Every mark but bold can also have a `font-weight`."
               },
               "highlight": {
                 "type": "object",
@@ -377,7 +377,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How highlighted text looks. It is colored and has no background. By default, it is the accent color at weight 600. The text's `font-weight` replaces the highlight's weight where it is heavier. Bold has the same keys except `font-weight`."
+                "description": "How highlighted text looks. It is colored and has no background. By default, it is the accent color at weight 600. The text's `font-weight` replaces the highlight's weight where it is heavier. A mark's look can change the font role, color, tracking, and letter case of its words. Every mark but bold can also have a `font-weight`."
               },
               "strikethrough": {
                 "type": "object",
@@ -386,7 +386,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How struck-through text looks. Bold has the same keys except `font-weight`."
+                "description": "How struck-through text looks. A mark's look can change the font role, color, tracking, and letter case of its words. Every mark but bold can also have a `font-weight`."
               },
               "code": {
                 "type": "object",
@@ -395,7 +395,7 @@
                     "$ref": "#/definitions/mark"
                   }
                 ],
-                "description": "How code looks in a line and in a code block. By default, it uses the mono font. Its words are 0.92 times the size of the words around them. Bold has the same keys except `font-weight`."
+                "description": "How code looks in a line and in a code block. By default, it uses the mono font. Its words are 0.92 times the size of the words around them. A mark's look can change the font role, color, tracking, and letter case of its words. Every mark but bold can also have a `font-weight`."
               }
             },
             "additionalProperties": false
@@ -417,7 +417,7 @@
         "description": "A text style name."
       },
       "uniqueItems": true,
-      "description": "The order of the text styles by name. Each is listed once. Unlisted text styles follow in name order. An entry that names no text style warns."
+      "description": "The order of the text styles by name. Each entry is a text style name. None is listed twice. Unlisted text styles follow in name order. An entry that names no text style causes an `unknown-text-style` warning."
     },
     "guides": {
       "type": "object",
@@ -434,7 +434,7 @@
               "x",
               "y"
             ],
-            "description": "The axis the guide fixes. A vertical guide fixes `x`, and a horizontal one fixes `y`."
+            "description": "The axis the guide's `offset` is measured along. A vertical guide uses `x`, and a horizontal one uses `y`."
           },
           "offset": {
             "type": "number",
@@ -482,13 +482,13 @@
               "type": "number",
               "minimum": 0,
               "maximum": 65536,
-              "description": "The space between columns in canvas units. The default is 0."
+              "description": "The space between columns. It is in canvas units. The default is 0."
             },
             "margin": {
               "type": "number",
               "minimum": 0,
               "maximum": 65536,
-              "description": "The margin on the left and on the right in canvas units. The default is 0."
+              "description": "The margin on the left and on the right. It is in canvas units. The default is 0."
             }
           },
           "required": [
@@ -526,10 +526,10 @@
       "type": "number",
       "minimum": 0.000001,
       "maximum": 4294967296,
-      "description": "The base length of new animations in seconds. MarkdownPoint times each animation it adds to a step from this length. A new by-paragraph delivery has this `duration`. The default is 0.5."
+      "description": "The base length of new animations in seconds. From this length, MarkdownPoint works out how long each animation it adds to a step lasts. A new by-paragraph delivery has this `duration`. The default is 0.5."
     },
     "default-text-box": {
-      "description": "The text style and color of a new text box in a presentation that uses this theme. Its text style is one of `text-styles`. Without a `text-style`, or without this key, a new text box has no text style. A `text-style` the master lacks reads with an `unknown-text-style` warning. A new text box then has no text style either. Text boxes already on the slides don't change.",
+      "description": "The text style and color of a new text box in a presentation that uses this theme. The text style is one of `text-styles`. Without a `text-style`, or without this key, a new text box has no text style. A `text-style` the master lacks causes an `unknown-text-style` warning. A new text box then has no text style either. Text boxes already on the slides don't change.",
       "type": "object",
       "properties": {
         "text-style": {
@@ -539,7 +539,7 @@
               "$ref": "#/definitions/text-style-name"
             }
           ],
-          "description": "The text style of a new text box. It is a text style name from the master's `text-styles`."
+          "description": "The name of a new text box's text style in the master's `text-styles`."
         },
         "color": {
           "type": "string",
@@ -569,7 +569,7 @@
                   "$ref": "#/definitions/color"
                 }
               ],
-              "description": "What the slide shows behind everything. It is a color role or a hex color. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color. A gradient fill is written as a `gradient` record."
+              "description": "What the slide shows behind everything. It is none, a color role or a hex color, or a record. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color. A gradient fill is written as a `gradient` record."
             },
             {
               "type": "object",
@@ -578,10 +578,10 @@
                   "$ref": "#/definitions/gradient"
                 }
               ],
-              "description": "What the slide shows behind everything. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color. A gradient fill is written as a `gradient` record. A gradient is linear or radial."
+              "description": "What the slide shows behind everything. It is none, a color role or a hex color, or a record. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color. A gradient fill is written as a `gradient` record. A gradient is linear or radial."
             }
           ],
-          "description": "What the slide shows behind everything. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color. A gradient fill is written as a `gradient` record."
+          "description": "What the slide shows behind everything. It is none, a color role or a hex color, or a record. Without it, or with `none`, the scheme's `background` color shows. A fill that isn't opaque draws over that color. A gradient fill is written as a `gradient` record."
         },
         "image": {
           "description": "The image over the fill. It covers the slide and is cropped as with an image's `scale-mode` `fill`. A theme's background image has a slide background image's keys for placing and adjusting it, and none for generating it. A theme has only the finished image.",
@@ -592,7 +592,7 @@
                 {
                   "type": "string",
                   "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                  "description": "The image's path in the theme's folder, or one path per color scheme. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder. A map names light and dark, and may name other schemes. A slide in a scheme it leaves out uses its appearance's image."
+                  "description": "The image's path, or one path for each color scheme. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. Without `file`, there is no image. A file map names light and dark, and can name other schemes. A slide in a scheme the map leaves out uses the light or dark file that matches the scheme's `appearance`."
                 },
                 {
                   "type": "object",
@@ -601,10 +601,10 @@
                       "$ref": "#/definitions/file-map"
                     }
                   ],
-                  "description": "The image's path in the theme's folder, or one path per color scheme. A map names light and dark, and may name other schemes. A slide in a scheme it leaves out uses its appearance's image. A file map lets a dark scheme use a file of its own. Every file in the map is the same type."
+                  "description": "The image's path, or one path for each color scheme. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. Without `file`, there is no image. A file map names light and dark, and can name other schemes. A slide in a scheme the map leaves out uses the light or dark file that matches the scheme's `appearance`. A file map lets a dark scheme use a file of its own. Every file in the map is the same type."
                 }
               ],
-              "description": "The image's path in the theme's folder, or one path per color scheme. A map names light and dark, and may name other schemes. A slide in a scheme it leaves out uses its appearance's image."
+              "description": "The image's path, or one path for each color scheme. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. Without `file`, there is no image. A file map names light and dark, and can name other schemes. A slide in a scheme the map leaves out uses the light or dark file that matches the scheme's `appearance`."
             },
             "crop": {
               "type": "object",
@@ -613,7 +613,7 @@
                   "$ref": "#/definitions/crop"
                 }
               ],
-              "description": "How far the image is zoomed, and which point stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
+              "description": "How far the image is zoomed, and which point stays in view."
             },
             "opacity": {
               "type": "number",
@@ -657,14 +657,14 @@
                   "const": "none"
                 },
                 {
-                  "description": "A drop shadow behind the image. Without it, the image casts none. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                  "description": "A drop shadow behind the image. Without it, the image casts none. A drop shadow's keys work like those of Photoshop's Drop Shadow. The shadow starts as the shape of what casts it. It grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                   "type": "object",
                   "properties": {
                     "size": {
                       "type": "number",
                       "minimum": 0,
                       "maximum": 33554431.984375,
-                      "description": "How far it reaches in canvas units."
+                      "description": "How far the shadow reaches in canvas units."
                     },
                     "spread": {
                       "type": "number",
@@ -687,7 +687,7 @@
                         "y"
                       ],
                       "additionalProperties": false,
-                      "description": "How far the shadow falls in the object's own axes. The offset's x is across, and its y is down. It turns and scales with the object and its groups. A flip doesn't mirror it. A line has no turn. A line's offset is in the slide's axes and scales with the line's groups. A background's offset is in the slide's axes."
+                      "description": "How far the shadow falls in the object's own axes. The offset's x is across, and its y is down. It turns and scales with the object and its groups. A flip doesn't mirror it. Because a line has no `rotation`, its offset is in the slide's axes and scales with the line's groups. A background's offset is in the slide's axes."
                     },
                     "color": {
                       "type": "string",
@@ -702,7 +702,7 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 1,
-                      "description": "How opaque it is."
+                      "description": "How opaque the shadow is."
                     }
                   },
                   "required": [
@@ -729,12 +729,12 @@
         "pattern": "^(?![\\s\\S]{251})(?!(?:master|manifest|(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³]))(?![\\s\\S]))[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
       },
       "uniqueItems": true,
-      "description": "The order of the layouts by key. Each is listed once. Unlisted layouts follow in key order. An entry that names no layout warns."
+      "description": "The order of the layouts by key. None is listed twice. Unlisted layouts follow in key order. An entry that names no layout causes an `unknown-layout` warning."
     },
     "objects": {
       "type": "array",
       "items": {
-        "description": "One object on a slide, a layout, or a master. Its keys depend on its type. A chart type or a shape kind in parentheses, as in chart (counter) or shape (star), is the one that uses the key. Every chart or shape can hold it, and another kind ignores it. Light types in parentheses, as in light (spot, point), are the only ones that take the key. An override needs none of the required keys. The object it changes already has them. In an override, a key set to null removes what the object inherits for that key. The key's default then shows.",
+        "description": "One object on a slide, a layout, or a master. Its keys depend on its type. Every chart can have any chart key, and every shape any shape key. A key that its chart type or shape kind doesn't use does nothing. A light can have only the keys its light type uses. An override needs none of the required keys because the object it changes already has them. In an override, a key set to null removes what the object inherits for that key. The key's default then shows.",
         "anyOf": [
           {
             "type": "object",
@@ -752,7 +752,7 @@
                 "$ref": "#/definitions/object.parent"
               },
               "frame": {
-                "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom.",
+                "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y. A table's size comes from its contents, and an audio object's from its icon. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom.",
                 "type": "object",
                 "properties": {
                   "x": {
@@ -799,7 +799,7 @@
                 "type": "number",
                 "minimum": -33554431.984375,
                 "maximum": 33554431.984375,
-                "description": "How far in canvas units a text with a 3D `model` is in front of the slide. Without `model`, it is ignored. A model, light, camera, or shadow catcher is at its position's z."
+                "description": "How far in canvas units a text with a 3D `model` is in front of the slide. On a text without `model`, `z` does nothing. A model, light, camera, or shadow catcher is at its position's z."
               },
               "blend-mode": {
                 "$ref": "#/definitions/object.blend-mode"
@@ -837,7 +837,7 @@
                         "$ref": "#/definitions/color"
                       }
                     ],
-                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
                   },
                   {
                     "type": "object",
@@ -846,10 +846,10 @@
                         "$ref": "#/definitions/gradient"
                       }
                     ],
-                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there. A gradient is linear or radial."
+                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored. A gradient is linear or radial."
                   }
                 ],
-                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
               },
               "align": {
                 "$ref": "#/definitions/object.align"
@@ -873,7 +873,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 65536,
-                "description": "The minimum height of a text box that grows in height in canvas units. The box is as tall as its text or this, whichever is taller. The text is placed inside it by its vertical alignment."
+                "description": "The minimum height in canvas units of a text box that grows in height. The box is as tall as its text or its `min-height`, whichever is taller. The text is placed inside the box by its vertical alignment."
               },
               "column-count": {
                 "type": "integer",
@@ -889,13 +889,13 @@
               },
               "text-path": {
                 "type": "string",
-                "description": "The path the text follows. It is SVG path data in which 0 to 1 spans the object's frame. Motion's Path layout method works the same way."
+                "description": "The path the text follows. It is SVG path data. The path's coordinates from 0 to 1 span the object's frame. The text follows the path the same way as in Motion's Path layout method."
               },
               "path-offset": {
                 "type": "number",
                 "minimum": -1,
                 "maximum": 1,
-                "description": "How far the point its `align` holds the text at moves along its path. It is in fractions of the path's length."
+                "description": "How far the text moves along its path from where its `align` places it. It is in fractions of the path's length."
               },
               "paragraph-spacing": {
                 "$ref": "#/definitions/object.paragraph-spacing"
@@ -927,14 +927,14 @@
                     "const": "none"
                   },
                   {
-                    "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one. Its keys work like those of Photoshop's Drop Shadow. First, its letters, their outline, its box's fill, and its box's stroke grow solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+                    "description": "A drop shadow behind the object. Without it, the object casts none. On a text, the shadow's lengths are in ems of the font size. The text's words, fill, and stroke cast it as one. A drop shadow's keys work like those of Photoshop's Drop Shadow. The shadow starts as the shape of the letters, their outline, and the text box's fill and stroke. It grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
                     "type": "object",
                     "properties": {
                       "size": {
                         "type": "number",
                         "minimum": 0,
                         "maximum": 33554431,
-                        "description": "How far the shadow reaches beyond what the text paints in ems. Photoshop's Size works the same way."
+                        "description": "How far the shadow reaches beyond what the text paints. It is in ems. Photoshop's Size works the same way."
                       },
                       "spread": {
                         "type": "number",
@@ -963,7 +963,7 @@
                           "y"
                         ],
                         "additionalProperties": false,
-                        "description": "How far the shadow falls in the text's own axes. Its x is across, and its y is down. It turns and scales with the text and its groups."
+                        "description": "How far the shadow falls in the text's own axes. The offset's x is across, and its y is down. It turns and scales with the text and its groups."
                       },
                       "color": {
                         "type": "string",
@@ -978,7 +978,7 @@
                         "type": "number",
                         "minimum": 0,
                         "maximum": 1,
-                        "description": "How opaque it is."
+                        "description": "How opaque the shadow is."
                       }
                     },
                     "required": [
@@ -990,7 +990,7 @@
                     "additionalProperties": false
                   }
                 ],
-                "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
+                "description": "A drop shadow behind the object. Without it, the object casts none. On a text, the shadow's lengths are in ems of the font size. The text's words, fill, and stroke cast it as one."
               },
               "text-stroke": {
                 "$ref": "#/definitions/object.text-stroke"
@@ -1146,7 +1146,7 @@
                     "$ref": "#/definitions/point-frame"
                   }
                 ],
-                "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y. A table's size comes from its contents, and an audio object's from its icon. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
               },
               "rotation": {
                 "$ref": "#/definitions/object.rotation"
@@ -1197,7 +1197,7 @@
                     "$ref": "#/definitions/color"
                   }
                 ],
-                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
               },
               "vertical-align": {
                 "$ref": "#/definitions/object.vertical-align"
@@ -1234,7 +1234,7 @@
                   "maximum": 65536,
                   "description": "A number in canvas units."
                 },
-                "description": "The width of each of a table's columns in order. The table is as wide as its columns. A column past the end of the list, and every column where there is no list, is 240 times the master's `default-scale` wide."
+                "description": "The width of each of a table's columns in order. The table is as wide as its columns. Without a list, or past its end, a column is 240 times the master's `default-scale` wide."
               },
               "min-row-heights": {
                 "type": "array",
@@ -1312,7 +1312,7 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
                   },
                   {
                     "type": "object",
@@ -1321,10 +1321,10 @@
                         "$ref": "#/definitions/file-map"
                       }
                     ],
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type."
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type."
                   }
                 ],
-                "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
               },
               "link": {
                 "$ref": "#/definitions/object.link"
@@ -1345,7 +1345,7 @@
                     "$ref": "#/definitions/color"
                   }
                 ],
-                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
               },
               "drop-shadow": {
                 "$ref": "#/definitions/object.drop-shadow"
@@ -1391,7 +1391,7 @@
               },
               "mask": {
                 "type": "string",
-                "description": "The shape the image is cut to. It is SVG path data in which 0 to 1 spans the frame. The shape is filled by the nonzero rule."
+                "description": "The shape the image is cut to. It is SVG path data. Its coordinates from 0 to 1 span the image's frame. The shape is filled by the nonzero rule."
               },
               "alt": {
                 "$ref": "#/definitions/object.alt"
@@ -1463,10 +1463,10 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]4|[mM]4[vV]|[mM][oO][vV]|[wW][eE][bB][mM]|[oO][gG][vV])(?![\\s\\S])",
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
                   },
                   {
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type.",
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -1504,7 +1504,7 @@
                     }
                   }
                 ],
-                "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
               },
               "start-on": {
                 "$ref": "#/definitions/object.start-on"
@@ -1525,7 +1525,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4294967296,
-                "description": "How long a video's sound takes to fall linearly to silence before that part ends each time. It is in seconds. Where the two fades overlap, the lower volume is used."
+                "description": "How long a video's sound takes to fall linearly to silence before the part set by `media-trim` ends each time. It is in seconds. Where the two fades overlap, the lower volume is used."
               },
               "media-trim": {
                 "$ref": "#/definitions/object.media-trim"
@@ -1576,7 +1576,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4294967296,
-                "description": "The time in seconds in the video's file of the frame it shows before it plays when it has no `poster`. The default is the start of its `media-trim`."
+                "description": "The time of the frame the video shows before it plays when it has no `poster`. It is in seconds from the start of the video's file. The default is the start of its `media-trim`."
               },
               "anchor-point": {
                 "$ref": "#/definitions/object.anchor-point"
@@ -1673,7 +1673,7 @@
                         "$ref": "#/definitions/color"
                       }
                     ],
-                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
                   },
                   {
                     "type": "object",
@@ -1682,10 +1682,10 @@
                         "$ref": "#/definitions/gradient"
                       }
                     ],
-                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there. A gradient is linear or radial."
+                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored. A gradient is linear or radial."
                   }
                 ],
-                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
               },
               "align": {
                 "$ref": "#/definitions/object.align"
@@ -1760,7 +1760,7 @@
                   "star",
                   "speech-bubble"
                 ],
-                "description": "Which shape a shape object draws. An edit that changes it, other than a step, drops each key the new kind doesn't take."
+                "description": "Which shape a shape object draws. An edit that changes it drops each key the new kind doesn't use. A step that changes it drops none."
               },
               "direction": {
                 "enum": [
@@ -1897,14 +1897,14 @@
               },
               "geometry": {
                 "type": "string",
-                "description": "The path's outline. It is SVG path data in which 0 to 1 spans the object's frame."
+                "description": "The path's outline. It is SVG path data. Its coordinates from 0 to 1 span the object's frame."
               },
               "fill-rule": {
                 "enum": [
                   "nonzero",
                   "evenodd"
                 ],
-                "description": "Which areas of a self-crossing path the fill covers, and the path clips to as a mask."
+                "description": "Which areas of a self-crossing path the fill covers. A path used as a mask clips to the same areas."
               },
               "use-as-mask": {
                 "$ref": "#/definitions/object.use-as-mask"
@@ -1927,7 +1927,7 @@
                         "$ref": "#/definitions/color"
                       }
                     ],
-                    "description": "The color of the outline or the line. It is a color role or a hex color. An image's or a video's outline is its frame's, wherever its picture is in it, and a masked image's follows its mask. A path's stroke can be a gradient."
+                    "description": "The color of the outline or the line. It is a color role or a hex color, or a record. An image's or a video's outline follows its frame wherever the picture is inside it. A masked image's outline follows its mask. A path's stroke can be a gradient."
                   },
                   {
                     "type": "object",
@@ -1936,10 +1936,10 @@
                         "$ref": "#/definitions/gradient"
                       }
                     ],
-                    "description": "The color of the outline or the line. An image's or a video's outline is its frame's, wherever its picture is in it, and a masked image's follows its mask. A path's stroke can be a gradient. A gradient is linear or radial."
+                    "description": "The color of the outline or the line. It is a color role or a hex color, or a record. An image's or a video's outline follows its frame wherever the picture is inside it. A masked image's outline follows its mask. A path's stroke can be a gradient. A gradient is linear or radial."
                   }
                 ],
-                "description": "The color of the outline or the line. An image's or a video's outline is its frame's, wherever its picture is in it, and a masked image's follows its mask. A path's stroke can be a gradient."
+                "description": "The color of the outline or the line. It is a color role or a hex color, or a record. An image's or a video's outline follows its frame wherever the picture is inside it. A masked image's outline follows its mask. A path's stroke can be a gradient."
               },
               "stroke-weight": {
                 "$ref": "#/definitions/object.stroke-weight"
@@ -2008,7 +2008,7 @@
                     "$ref": "#/definitions/color"
                   }
                 ],
-                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
               },
               "drop-shadow": {
                 "$ref": "#/definitions/object.drop-shadow"
@@ -2087,7 +2087,7 @@
                         "$ref": "#/definitions/line-end"
                       }
                     ],
-                    "description": "Where a line starts. The start is a point, or an object the line stays attached to. An attached end is straight out from the object's center toward its `side`. It meets the frame's edge there. On a shape other than a speech bubble, it meets the shape's outline instead."
+                    "description": "Where a line starts. The start is a point, or an object the line stays attached to. An attached end is straight out from the object's center toward its `side`. On a speech bubble or an object that isn't a shape, it meets the frame's edge. On any other shape, it meets the shape's outline."
                   }
                 ],
                 "description": "Where a line starts. The start is a point, or an object the line stays attached to."
@@ -2104,7 +2104,7 @@
                         "$ref": "#/definitions/line-end"
                       }
                     ],
-                    "description": "Where a line ends. The end is a point, or an object the line stays attached to. An attached end is straight out from the object's center toward its `side`. It meets the frame's edge there. On a shape other than a speech bubble, it meets the shape's outline instead."
+                    "description": "Where a line ends. The end is a point, or an object the line stays attached to. An attached end is straight out from the object's center toward its `side`. On a speech bubble or an object that isn't a shape, it meets the frame's edge. On any other shape, it meets the shape's outline."
                   }
                 ],
                 "description": "Where a line ends. The end is a point, or an object the line stays attached to."
@@ -2230,7 +2230,7 @@
                         "$ref": "#/definitions/color"
                       }
                     ],
-                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
                   },
                   {
                     "type": "object",
@@ -2239,10 +2239,10 @@
                         "$ref": "#/definitions/gradient"
                       }
                     ],
-                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there. A gradient is linear or radial."
+                    "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored. A gradient is linear or radial."
                   }
                 ],
-                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+                "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color, or a record. Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
               },
               "align": {
                 "enum": [
@@ -2294,7 +2294,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "How far the chart has grown in. A counter counts from 0 up to its value as it rises."
+                "description": "How far the chart has grown in. A counter counts from 0 up to its value as `progress` rises."
               },
               "delivery": {
                 "const": "by-element",
@@ -2303,7 +2303,7 @@
               "spread": {
                 "type": "number",
                 "minimum": 1,
-                "description": "With `delivery`, how many intervals each element grows for. Without `delivery`, it is ignored."
+                "description": "With `delivery`, how many intervals each element grows for. Without `delivery`, `spread` does nothing."
               },
               "digits": {
                 "enum": [
@@ -2333,7 +2333,7 @@
                     "$ref": "#/definitions/chart-colors"
                   }
                 ],
-                "description": "The colors of the chart's series in order. Every chart but a pie, a donut, or a counter uses them. For a `null` or missing entry, the chart uses the slide's color there."
+                "description": "The colors of the chart's series in order. Every chart but a pie, a donut, or a counter uses them. For a `null` or missing entry, the chart uses the slide's colors by the entry's place: `accent` for the first, `text` for the second, and so on in turn. Where `accent` is the same color as `text` and `muted` isn't, `muted` takes the place of `text`. Each time the two repeat, they are drawn at a lower opacity."
               },
               "category-colors": {
                 "type": "array",
@@ -2342,13 +2342,13 @@
                     "$ref": "#/definitions/chart-colors"
                   }
                 ],
-                "description": "The colors of the chart's categories in order, one for each slice of a pie or a donut. For a `null` or missing entry, the chart uses the slide's color there."
+                "description": "The colors of the chart's categories in order. A pie or a donut uses one for each slice. For a `null` or missing entry, the chart uses the slide's colors by the entry's place: `accent` for the first, `text` for the second, and so on in turn. Where `accent` is the same color as `text` and `muted` isn't, `muted` takes the place of `text`. Each time the two repeat, they are drawn at a lower opacity."
               },
               "leading-zero-opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "The opacity of a rolling counter's unused leading zeros. They are the zeros ahead of the counter's number and of the whole digits its cell writes. Without `digits: roll`, this opacity is ignored."
+                "description": "The opacity of a rolling counter's unused leading zeros. They are the zeros to the left of both the counter's number and the whole digits its cell has. Without `digits: roll`, `leading-zero-opacity` does nothing."
               }
             },
             "required": [
@@ -2450,10 +2450,10 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[mM][pP]3|[mM]4[aA]|[wW][aA][vV]|[oO][gG][gG]|[fF][lL][aA][cC])(?![\\s\\S])",
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
                   },
                   {
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type.",
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -2491,7 +2491,7 @@
                     }
                   }
                 ],
-                "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
               },
               "frame": {
                 "type": "object",
@@ -2500,7 +2500,7 @@
                     "$ref": "#/definitions/point-frame"
                   }
                 ],
-                "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+                "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y. A table's size comes from its contents, and an audio object's from its icon. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
               },
               "locked": {
                 "$ref": "#/definitions/object.locked"
@@ -2527,7 +2527,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4294967296,
-                "description": "How long the audio takes to fall linearly to silence before that part ends each time. It is in seconds. Where the two fades overlap, the lower volume is used."
+                "description": "How long the audio takes to fall linearly to silence before the part set by `media-trim` ends each time. It is in seconds. Where the two fades overlap, the lower volume is used."
               },
               "media-trim": {
                 "$ref": "#/definitions/object.media-trim"
@@ -2556,7 +2556,7 @@
               "url": {
                 "type": "string",
                 "pattern": "^[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*[hH][tT][tT][pP][sS]:[/\\\\]*(?::?@)?(?:[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[mM]\\.[yY][oO][uU][tT][uU][bB][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU][bB][eE]-[nN][oO][cC][oO][oO][kK][iI][eE]\\.[cC][oO][mM]|[yY][oO][uU][tT][uU]\\.[bB][eE]|[wW][wW][wW]\\.[yY][oO][uU][tT][uU]\\.[bB][eE]|[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[wW][wW][wW]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM]|[pP][lL][aA][yY][eE][rR]\\.[vV][iI][mM][eE][oO]\\.[cC][oO][mM])(?::0*443)?(?:[/\\\\?#][\\s\\S]*|[\\t\\n\\u000b\\f\\r \\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*)(?![\\s\\S])",
-                "description": "The address of a YouTube or Vimeo video in a form listed below. An override's url replaces the whole video. A web video's `poster` changes only with it."
+                "description": "The https address of a YouTube or Vimeo video. An override's `url` replaces the whole video. A web video's `poster` changes only with its `url`."
               },
               "poster": {
                 "$ref": "#/definitions/object.poster"
@@ -2638,7 +2638,7 @@
                         "$ref": "#/definitions/space-euler"
                       }
                     ],
-                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                   },
                   {
                     "type": "object",
@@ -2647,7 +2647,7 @@
                         "$ref": "#/definitions/space-quaternion"
                       }
                     ],
-                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                   }
                 ],
                 "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -2671,17 +2671,17 @@
                 "type": "number",
                 "minimum": -1000000000000000000,
                 "maximum": 1000000000000000000,
-                "description": "How far in canvas units the camera's lens is shifted up. Cinema 4D's Film Offset Y, Maya's Vertical Film Offset, and Blender's Shift Y shift a lens the same way. The camera doesn't turn. Its lens's axis shows that far below the picture's middle. The default position's y is that much lower. A level camera whose position leaves out y and z then shows z 0 where the slide lays it out. With a negative shift it stands higher and sees the floor from above. With y set, only the lens shifts. A camera with a point of interest turns just enough to show that point at the picture's middle. The default is minus a quarter of the slide's height. A level camera then shows its horizon a quarter of the way down. Write 0 for a camera that stands at the slide's middle."
+                "description": "How far in canvas units the camera's lens is shifted up. A lens shift works the same way as Cinema 4D's Film Offset Y, Maya's Vertical Film Offset, and Blender's Shift Y. The camera doesn't turn. What is straight ahead of it shows that far below the picture's middle. The default position's y is that much lower. A level camera whose position leaves out y and z then shows what is at z 0 where the slide lays it out. With a negative shift, the camera is higher and sees the floor from above. With y set, only the lens shifts. A camera with a point of interest turns just enough to show that point at the picture's middle. The default is minus a quarter of the slide's height. A level camera then shows its horizon a quarter of the way down. Write 0 for a camera at the slide's middle."
               },
               "motion-blur": {
-                "description": "The camera's motion blur. The 3D layer blurs along its motion while the shutter is open. Nothing else is blurred. Only exported movies and the Agent's renders show it. A frame is a sixtieth of a second, a movie's frame. The Agent's renders use the same frame at any `sampleRate`.",
+                "description": "The camera's motion blur. The 3D layer blurs along its motion while the shutter is open. Nothing else is blurred. Only exported movies and the Agent's renders show it. A frame is a sixtieth of a second in a movie and in the Agent's renders at any `sampleRate`.",
                 "type": "object",
                 "properties": {
                   "shutter": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 4294967296,
-                    "description": "How long the shutter stays open in frames. At 0, there is no blur. The default is 0.5. It can be animated."
+                    "description": "How long the shutter stays open in frames. At 0, there is no blur. It can be animated. The default is 0.5."
                   },
                   "shutter-position": {
                     "enum": [
@@ -2689,7 +2689,7 @@
                       "center",
                       "end"
                     ],
-                    "description": "Where the frame's moment falls in the shutter's opening. The default is center."
+                    "description": "Where the frame's moment falls in the time the shutter is open. The default is `center`."
                   },
                   "samples": {
                     "type": "integer",
@@ -2729,7 +2729,7 @@
                 "items": {
                   "anyOf": [
                     {
-                      "description": "A constraint that moves the slide's camera with an object. Cinema 4D's Position constraint works the same way. Only the camera can have it. With a spring, the camera follows on a spring with that response and damping ratio. It trails a sudden move, catches up, and settles as the object stops. If the spring is still moving 10 seconds after what it follows has stopped, the camera halts where it got to. It stops short of its target. It stays there until a click moves what it follows again. Every key except `id`, `type`, and `target` can be left out.",
+                      "description": "A constraint that moves the slide's camera with an object. Cinema 4D's Position constraint works the same way. Only the camera can have it. With a `spring`, the camera follows on a spring with its `response` and `damping-ratio`. The camera trails a sudden move, catches up, and settles as the object stops. If the spring is still moving 10 seconds after what the camera follows has stopped, the camera halts where it got to. It stops short of its target. It stays there until a click moves what it follows again. Every key except `id`, `type`, and `target` can be left out.",
                       "type": "object",
                       "properties": {
                         "id": {
@@ -2751,7 +2751,7 @@
                               "$ref": "#/definitions/object-id"
                             }
                           ],
-                          "description": "The id of the model or light the camera follows. It is an object's id."
+                          "description": "The id of the model or light the camera follows."
                         },
                         "target-node": {
                           "type": "string",
@@ -2760,7 +2760,7 @@
                               "$ref": "#/definitions/model-node-name"
                             }
                           ],
-                          "description": "The node of the target's model the camera follows: the name of one of the model's nodes, such as ball. The camera follows the node as the model's Action moves it. Without it, the camera follows the target's origin."
+                          "description": "The name of the node in the target's model that the camera follows, such as ball. The camera follows that node as the target's Action moves it. Without `target-node`, the camera follows the target's origin."
                         },
                         "axes": {
                           "type": "array",
@@ -2774,7 +2774,7 @@
                           "minItems": 1,
                           "maxItems": 3,
                           "uniqueItems": true,
-                          "description": "A list of one or more of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. Without it, the camera follows on all three."
+                          "description": "A list of one or more of the 3D space's axes the camera follows on, such as `[\"x\"]`. Each axis is listed once. The axes can be in any order. The default is `x`, `y`, and `z`."
                         },
                         "relative-to-target": {
                           "type": "boolean",
@@ -2784,7 +2784,7 @@
                           "type": "number",
                           "minimum": 0,
                           "maximum": 1,
-                          "description": "How far the camera moves to the point it follows. 0 is not at all, and 1 is fully. The default is 1. It can be animated."
+                          "description": "How far the camera moves toward the point it follows. 0 is not at all, and 1 is fully. It can be animated. The default is 1."
                         },
                         "spring": {
                           "description": "The spring the camera follows on. Without it, the camera follows exactly. A Position constraint's spring is written the same way as a keyframe's spring interpolation. `damping-ratio` and `response` are both required.",
@@ -2819,7 +2819,7 @@
                     }
                   ]
                 },
-                "description": "A model's or the camera's constraints in order. A model's constraints apply after its parent places it, and a node's as the node is posed. An override replaces the list. Their strengths animate."
+                "description": "A model's or the camera's constraints in order. A model's constraints apply after its parent places it, and a node's as the node is posed. An override replaces the list. Each constraint's `strength` can be animated."
               }
             },
             "required": [
@@ -2856,10 +2856,10 @@
                   {
                     "type": "string",
                     "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[gG][lL][bB])(?![\\s\\S])",
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
                   },
                   {
-                    "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type.",
+                    "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme. A file map lets a dark scheme use a file of its own. Every file in the map is the same type.",
                     "type": "object",
                     "properties": {
                       "light": {
@@ -2897,7 +2897,7 @@
                     }
                   }
                 ],
-                "description": "The path of the file the object shows or plays, such as a model's GLB. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
+                "description": "The path of the file the object shows or plays, such as a model's GLB. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder; or a record. A master's or a layout's own image, video, audio, or model that isn't a placeholder can list one file for each color scheme."
               },
               "position": {
                 "$ref": "#/definitions/object.position"
@@ -2911,7 +2911,7 @@
                         "$ref": "#/definitions/space-euler"
                       }
                     ],
-                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                   },
                   {
                     "type": "object",
@@ -2920,7 +2920,7 @@
                         "$ref": "#/definitions/space-quaternion"
                       }
                     ],
-                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                   }
                 ],
                 "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -2935,7 +2935,7 @@
                     "$ref": "#/definitions/space-scale"
                   }
                 ],
-                "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. With a negative scale on an axis, the object is mirrored along it. Objects parented to a light are scaled with it. An area light's surface is scaled too. When a move between two scales of the same sign overshoots past 0, it stops at 0."
               },
               "locked": {
                 "$ref": "#/definitions/object.locked"
@@ -2988,7 +2988,7 @@
                               "$ref": "#/definitions/model-node-name"
                             }
                           ],
-                          "description": "The node that turns. It is the name of one of the model's nodes, such as Head. Without it, the whole model turns."
+                          "description": "The name of the node that turns, such as Head. Without it, the whole model turns."
                         },
                         "target": {
                           "type": "string",
@@ -2997,7 +2997,7 @@
                               "$ref": "#/definitions/object-id"
                             }
                           ],
-                          "description": "The id of the model or light it turns toward. It is an object's id. With `camera`, it turns toward the camera."
+                          "description": "The id of the model or light to turn toward. With `camera`, the camera is the target."
                         },
                         "target-node": {
                           "type": "string",
@@ -3006,7 +3006,7 @@
                               "$ref": "#/definitions/model-node-name"
                             }
                           ],
-                          "description": "The node of the target's model it turns toward: the name of one of the model's nodes, such as Hand. It turns toward the node as the model's Action moves it. Without it, it turns toward the target's origin."
+                          "description": "The name of the node in the target's model to turn toward, such as Hand. The model or node turns toward that node as the target's Action moves it. Without `target-node`, the model or node turns toward the target's origin."
                         },
                         "axis": {
                           "enum": [
@@ -3017,13 +3017,13 @@
                             "-y",
                             "-z"
                           ],
-                          "description": "The axis of the model or node that points at the target in its GLB's axes. In those axes, y is up, and a model faces along +z. The default is z."
+                          "description": "The axis of the model or node that points at the target. It is one of the model's or node's own axes in the GLB. In a model's GLB, y is up, and the model faces along +z. The default is `z`."
                         },
                         "strength": {
                           "type": "number",
                           "minimum": 0,
                           "maximum": 1,
-                          "description": "How far it turns toward the target. 0 is not at all, and 1 is fully. It applies to the result of the constraints before it. The default is 1. It can be animated."
+                          "description": "How far the model or node turns toward the target. 0 is not at all, and 1 is fully. The strength applies to the result of the constraints before this one. It can be animated. The default is 1."
                         }
                       },
                       "required": [
@@ -3034,7 +3034,7 @@
                       "additionalProperties": false
                     },
                     {
-                      "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's `scale` as the object sets it, before any `initial` value or step. An axis it scales stops at a 3D scale's most, 1 × 10¹⁸ either way, and an axis at 0 stays at 0. Every key except `id` and `type` can be left out.",
+                      "description": "A constraint that keeps a model's volume as the model scales along its own axes. The volume is measured at the model's `scale` as the object sets it, before any `initial` value or step. An axis the constraint scales stops at a 3D scale's limit of 1 × 10¹⁸ either way, and an axis at 0 stays at 0. Every key except `id` and `type` can be left out.",
                       "type": "object",
                       "properties": {
                         "id": {
@@ -3055,7 +3055,7 @@
                             "uniform",
                             "single-axis"
                           ],
-                          "description": "When the volume is kept, as in Blender's Maintain Volume constraint. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The default is strict."
+                          "description": "When the volume is kept. With `strict`, it always is. With `uniform`, it is kept while the model scales evenly. With `single-axis`, it is kept while only the free axis scales. The three modes are those of Blender's Maintain Volume constraint. The default is `strict`."
                         },
                         "free-axis": {
                           "enum": [
@@ -3063,18 +3063,18 @@
                             "y",
                             "z"
                           ],
-                          "description": "The axis the constraint leaves as it is. It scales the other two to keep the volume. The default is y."
+                          "description": "The axis the constraint leaves as it is. The constraint scales the other two to keep the volume. The default is `y`."
                         },
                         "volume": {
                           "type": "number",
                           "minimum": 0.000001,
-                          "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. The default is 1. At 0.4, the model is squeezed to 40% of its volume. The model's size is its `scale`, not this."
+                          "description": "The volume to keep. It is a multiple of the model's volume at its `scale`. At 0.4, the model is squeezed to 40% of its volume. The default is 1."
                         },
                         "strength": {
                           "type": "number",
                           "minimum": 0,
                           "maximum": 1,
-                          "description": "How strongly it keeps the volume. 0 is not at all, and 1 is fully. The default is 1. It can be animated."
+                          "description": "How strongly the constraint keeps the volume. 0 is not at all, and 1 is fully. It can be animated. The default is 1."
                         }
                       },
                       "required": [
@@ -3085,7 +3085,7 @@
                     }
                   ]
                 },
-                "description": "A model's or the camera's constraints in order. A model's constraints apply after its parent places it, and a node's as the node is posed. An override replaces the list. Their strengths animate."
+                "description": "A model's or the camera's constraints in order. A model's constraints apply after its parent places it, and a node's as the node is posed. An override replaces the list. Each constraint's `strength` can be animated."
               }
             },
             "required": [
@@ -3133,7 +3133,7 @@
                             "$ref": "#/definitions/space-euler"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       },
                       {
                         "type": "object",
@@ -3142,7 +3142,7 @@
                             "$ref": "#/definitions/space-quaternion"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       }
                     ],
                     "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -3157,7 +3157,7 @@
                         "$ref": "#/definitions/space-scale"
                       }
                     ],
-                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. With a negative scale on an axis, the object is mirrored along it. Objects parented to a light are scaled with it. An area light's surface is scaled too. When a move between two scales of the same sign overshoots past 0, it stops at 0."
                   },
                   "locked": {
                     "$ref": "#/definitions/object.locked"
@@ -3236,7 +3236,7 @@
                             "$ref": "#/definitions/space-euler"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       },
                       {
                         "type": "object",
@@ -3245,7 +3245,7 @@
                             "$ref": "#/definitions/space-quaternion"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       }
                     ],
                     "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -3260,7 +3260,7 @@
                         "$ref": "#/definitions/space-scale"
                       }
                     ],
-                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. With a negative scale on an axis, the object is mirrored along it. Objects parented to a light are scaled with it. An area light's surface is scaled too. When a move between two scales of the same sign overshoots past 0, it stops at 0."
                   },
                   "locked": {
                     "$ref": "#/definitions/object.locked"
@@ -3349,7 +3349,7 @@
                             "$ref": "#/definitions/space-euler"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       },
                       {
                         "type": "object",
@@ -3358,7 +3358,7 @@
                             "$ref": "#/definitions/space-quaternion"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       }
                     ],
                     "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -3373,7 +3373,7 @@
                         "$ref": "#/definitions/space-scale"
                       }
                     ],
-                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. With a negative scale on an axis, the object is mirrored along it. Objects parented to a light are scaled with it. An area light's surface is scaled too. When a move between two scales of the same sign overshoots past 0, it stops at 0."
                   },
                   "locked": {
                     "$ref": "#/definitions/object.locked"
@@ -3447,7 +3447,7 @@
                             "$ref": "#/definitions/space-euler"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       },
                       {
                         "type": "object",
@@ -3456,7 +3456,7 @@
                             "$ref": "#/definitions/space-quaternion"
                           }
                         ],
-                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                        "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                       }
                     ],
                     "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -3471,7 +3471,7 @@
                         "$ref": "#/definitions/space-scale"
                       }
                     ],
-                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. A negative scale mirrors the object along that axis. Objects parented to a light are scaled with it. An area light's surface is scaled too. A move between two scales of one sign stops at 0."
+                    "description": "How far the object is stretched along its own axes. It has x and y on a flat object, and x, y, and z on a model or a light. A 3D object scales about its origin. With a negative scale on an axis, the object is mirrored along it. Objects parented to a light are scaled with it. An area light's surface is scaled too. When a move between two scales of the same sign overshoots past 0, it stops at 0."
                   },
                   "locked": {
                     "$ref": "#/definitions/object.locked"
@@ -3508,7 +3508,7 @@
                     "$ref": "#/definitions/object.intensity"
                   },
                   "size": {
-                    "description": "An area light's size along its own axes in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
+                    "description": "An area light's size is its width and height along its own axes in canvas units. In Redshift's Area Light, they are Size X and Size Y.",
                     "type": "object",
                     "properties": {
                       "x": {
@@ -3573,7 +3573,7 @@
                         "$ref": "#/definitions/space-euler"
                       }
                     ],
-                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                   },
                   {
                     "type": "object",
@@ -3582,7 +3582,7 @@
                         "$ref": "#/definitions/space-quaternion"
                       }
                     ],
-                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. They are its parent's for a parented object, and otherwise x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, it turns in Cinema 4D's HPB order: by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, this is Euler order YXZ. A positive z turns it counterclockwise on the slide, a positive x tilts its top toward the viewer, and a positive y brings its left side forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way round."
+                    "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets. A 3D object turns about its origin in its space's axes. A parented object uses its parent's axes. Any other object uses x right, y up, and z toward the viewer. Its rotation is in degrees, or a quaternion in quaternion mode. An object's own rotation in degrees needs x, y, and z. In degrees, the object turns in Cinema 4D's HPB order. It turns by the heading about y, then by the pitch about its own x, then by the bank about its own z. In three.js, that order is Euler order YXZ. With a positive z, the object turns counterclockwise on the slide. With a positive x, its top tilts toward the viewer, and with a positive y, its left side comes forward. A quaternion is glTF's with w first. A Blender quaternion (w, x, y, z) exported to glTF with +Y up is (w, x, z, −y) here. A quaternion's parts are read to six decimal places, and its length doesn't change the rotation. Between two quaternion keyframes, the object turns the shorter way around."
                   }
                 ],
                 "description": "How far a flat object is turned about its `anchor-point` in degrees clockwise. A group's rotation is the angle its box is measured at. A 3D object's rotation is in the form its `rotation-mode` sets."
@@ -3722,7 +3722,7 @@
                   "sky",
                   "sunset"
                 ],
-                "description": "The map that lights the 3D layer when the World has no color. The map's light is multiplied by the World's `intensity`. The World's `intensity` is 0 unless it is set. Each map is a file the format publishes. It doesn't change a World with a color."
+                "description": "The map that lights the 3D layer when the World has no color. The map's light is multiplied by the World's `intensity`. The World's `intensity` is 0 unless it is set. Each map is a file the format publishes."
               },
               "environment-rotation": {
                 "type": "number",
@@ -3739,7 +3739,7 @@
           }
         ]
       },
-      "description": "The master's objects, back to front. They are behind a layout's and a slide's but one placed by id. The camera and the World take their defaults when left out."
+      "description": "The master's objects, back to front. They are behind a layout's and a slide's objects, except any that a layout or a slide lists by id. When the camera or the World is left out, the master still has it at its defaults."
     },
     "text": {
       "type": "object",
@@ -3851,23 +3851,23 @@
           "type": "number",
           "minimum": 0.000001,
           "maximum": 511,
-          "description": "How far it is zoomed. At 1, an image fits its frame as its `scale-mode` sets, and a background covers the slide. Above 1, it is zoomed in. At 2, it is twice as wide and twice as tall as at 1. Below 1, it is zoomed out."
+          "description": "How far the image or video is zoomed. At 1, an image fits its frame as its `scale-mode` sets, and a background covers the slide. Above 1, it is zoomed in. At 2, it is twice as wide and twice as tall as at 1. Below 1, it is zoomed out. The default is 1."
         },
         "focal-point": {
-          "description": "The point that stays in view. Its x and y are fractions of the image's width and height.",
+          "description": "The point that stays in view. The focal point's x and y are fractions of the picture's width and height. The default is x 0.5 and y 0.5.",
           "type": "object",
           "properties": {
             "x": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How far across the image in fractions of its width."
+              "description": "How far across the picture in fractions of its width."
             },
             "y": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How far down the image in fractions of its height."
+              "description": "How far down the picture in fractions of its height."
             }
           },
           "required": [
@@ -3899,20 +3899,20 @@
           "type": "number",
           "minimum": 0.000001,
           "maximum": 4294967296,
-          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, it is still required but isn't used. A step that has only paragraphs' cues lasts as long as they take."
+          "description": "How long each paragraph takes to enter in seconds. With interpolation hold, `duration` is still required but isn't used. A step that has only paragraph cues lasts as long as its paragraphs take to enter."
         },
         "from": {
-          "description": "How each piece looks as it starts to enter. A key it leaves out uses the piece's resting value: scale 1, offset x 0, y 0, and rotation and blur 0. Only `opacity` is 0 when left out. Without it, each piece fades in. Motion's Sequence Text with Sequencing From works the same way.",
+          "description": "How each piece looks as it starts to enter. Without a `from`, each piece fades in. Motion's Sequence Text with Sequencing From works the same way.",
           "type": "object",
           "properties": {
             "opacity": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "Its opacity. The default is 0."
+              "description": "How opaque the piece is. The default is 0."
             },
             "offset": {
-              "description": "How far a piece starts from where it rests. A piece's offset is in ems of the piece's own font size. The offset's x is across, and its y is down. On a path, x is along the path, and y is across it, toward the letters' feet. For a text drawn as its 3D model, x is still across and y is still down.",
+              "description": "How far a piece starts from where it rests. A piece's offset is in ems of the piece's own font size. The offset's x is across, and its y is down. On a path, x is along the path, and y is across it, toward the letters' feet. For a text drawn as its 3D model, x is still across and y is still down. The default is x 0 and y 0.",
               "type": "object",
               "properties": {
                 "x": {
@@ -3932,19 +3932,19 @@
               "type": "number",
               "minimum": 0,
               "maximum": 511,
-              "description": "Its scale. At 1, it is its own size."
+              "description": "The piece's scale. At 1, the piece is its own size. The default is 1."
             },
             "rotation": {
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "How far it is turned in degrees clockwise."
+              "description": "How far the piece is turned in degrees clockwise. The default is 0."
             },
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred the piece is. It is the blur's radius in ems of the piece's own font size."
+              "description": "How blurred the piece is. It is the blur's radius in ems of the piece's own font size. The default is 0."
             }
           },
           "additionalProperties": false
@@ -3967,7 +3967,7 @@
               ]
             },
             {
-              "description": "How each piece moves into place. With `hold`, it moves at once. With any other interpolation, it moves gradually. An interpolation's settings say how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. They can also give an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as just its name. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
+              "description": "How each piece moves into place. With `hold`, it moves instantly. With any other interpolation, it moves gradually. The default is `linear`. An interpolation's settings say how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. They can also give an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as its name alone. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
               "anyOf": [
                 {
                   "$ref": "#/definitions/back-curve"
@@ -3987,7 +3987,7 @@
                       "type": "number",
                       "minimum": 0.000001,
                       "maximum": 4294967296,
-                      "description": "How many seconds one swing of an elastic lasts. The default is 0.3 of the length of the move. A text's `enter` and `exit` don't use it."
+                      "description": "How many seconds one swing of an elastic lasts. In a text's `enter` and `exit`, `period` does nothing. The default is 0.3 of the length of the move."
                     }
                   },
                   "required": [
@@ -4005,7 +4005,7 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 1,
-                      "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default 0.5 is Blender's Bounce."
+                      "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 0.5, the bounce is the same curve as Blender's Bounce. At 1, it rebounds to its height each time. The default is 0.5."
                     }
                   },
                   "required": [
@@ -4029,7 +4029,7 @@
                       "type": "number",
                       "minimum": 0.000001,
                       "maximum": 4294967296,
-                      "description": "The spring's natural period in seconds. A shorter one springs faster. Without it, the spring settles by the end of the move. A text's `enter` and `exit` don't use it."
+                      "description": "The spring's natural period in seconds. A shorter one springs faster. Without it, the spring settles by the end of the move. In a text's `enter` and `exit`, `response` does nothing."
                     }
                   },
                   "required": [
@@ -4077,13 +4077,13 @@
               ]
             }
           ],
-          "description": "How each piece moves into place. With `hold`, it moves at once. With any other interpolation, it moves gradually."
+          "description": "How each piece moves into place. With `hold`, it moves instantly. With any other interpolation, it moves gradually. The default is `linear`."
         },
         "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,
-          "description": "The fraction of each piece's entrance its fade lasts. The fade starts with the move and follows the piece's interpolation."
+          "description": "The fraction of each piece's entrance that the fade lasts. The fade starts with the move and follows the piece's interpolation. The default is 1."
         },
         "order": {
           "enum": [
@@ -4093,7 +4093,7 @@
             "ends-to-center",
             "random"
           ],
-          "description": "The order the pieces enter in. With a seed, it must be `random`."
+          "description": "The order the pieces enter in. With a seed, it must be `random`. The default is `forward`."
         },
         "seed": {
           "type": "integer",
@@ -4104,18 +4104,18 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
+          "description": "How many intervals each piece moves for unless the interpolation is `hold`. With `hold`, each piece arrives once its start has passed, and an entrance without a `delivery` ends this many intervals after the last one starts. With any other interpolation and a forward, backward, or random order, this many pieces move at once. The default is 1."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "How many intervals the text waits between turns. `enter` says how they count."
+          "description": "How many intervals the text waits between turns. With a `pause` above 0, the turns start `pause` + `spread` − 1 intervals farther apart than with no pause. The default is 0."
         },
         "progress": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the text has entered. It is animated by steps. It isn't animated when the entrance has a `delivery`."
+          "description": "How far the text has entered. `progress` is animated by steps. It isn't animated when the entrance has a `delivery`. The default is 1."
         }
       },
       "required": [
@@ -4147,17 +4147,17 @@
           "description": "What counts as one piece. With `character-and-space`, each space is a piece too. After Effects' Characters is `character-and-space`, and its Characters Excluding Spaces is `character`."
         },
         "to": {
-          "description": "How each piece looks as it finishes exiting. A key it leaves out uses the piece's resting value: scale 1, offset x 0, y 0, and rotation and blur 0. Only `opacity` is 0 when left out. Without it, each piece fades out. Motion's Sequence Text with Sequencing To works the same way.",
+          "description": "How each piece looks as it finishes exiting. Without a `to`, each piece fades out. Motion's Sequence Text with Sequencing To works the same way.",
           "type": "object",
           "properties": {
             "opacity": {
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "Its opacity. The default is 0."
+              "description": "How opaque the piece is. The default is 0."
             },
             "offset": {
-              "description": "How far a piece ends from where it rests. A piece's offset is in ems of the piece's own font size. The offset's x is across, and its y is down. On a path, x is along the path, and y is across it, toward the letters' feet. For a text drawn as its 3D model, x is still across and y is still down.",
+              "description": "How far a piece ends from where it rests. A piece's offset is in ems of the piece's own font size. The offset's x is across, and its y is down. On a path, x is along the path, and y is across it, toward the letters' feet. For a text drawn as its 3D model, x is still across and y is still down. The default is x 0 and y 0.",
               "type": "object",
               "properties": {
                 "x": {
@@ -4177,19 +4177,19 @@
               "type": "number",
               "minimum": 0,
               "maximum": 511,
-              "description": "Its scale. At 1, it is its own size."
+              "description": "The piece's scale. At 1, the piece is its own size. The default is 1."
             },
             "rotation": {
               "type": "number",
               "minimum": -8589934592,
               "maximum": 8589934592,
-              "description": "How far it is turned in degrees clockwise."
+              "description": "How far the piece is turned in degrees clockwise. The default is 0."
             },
             "blur": {
               "type": "number",
               "minimum": 0,
               "maximum": 67108862,
-              "description": "How blurred the piece is. It is the blur's radius in ems of the piece's own font size."
+              "description": "How blurred the piece is. It is the blur's radius in ems of the piece's own font size. The default is 0."
             }
           },
           "additionalProperties": false
@@ -4212,7 +4212,7 @@
               ]
             },
             {
-              "description": "How each piece moves out of place. With `hold`, it moves at once. With any other interpolation, it moves gradually. An interpolation's settings say how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. They can also give an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as just its name. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
+              "description": "How each piece moves out of place. With `hold`, it moves instantly. With any other interpolation, it moves gradually. The default is `linear`. An interpolation's settings say how far `anticipate`, `overshoot`, or `anticipate-overshoot` pulls back or swings past. They can also give an elastic's swing, a bounce's bounciness, a spring's damping ratio, or a cubic Bézier's two handles. The handles' keys are named the way CSS's cubic-bezier() names its four numbers. A named curve with no settings is written as its name alone. A cubic Bézier that is the same as a named curve is written as that named curve's name too.",
               "anyOf": [
                 {
                   "$ref": "#/definitions/back-curve"
@@ -4232,7 +4232,7 @@
                       "type": "number",
                       "minimum": 0.000001,
                       "maximum": 4294967296,
-                      "description": "How many seconds one swing of an elastic lasts. The default is 0.3 of the length of the move. A text's `enter` and `exit` don't use it."
+                      "description": "How many seconds one swing of an elastic lasts. In a text's `enter` and `exit`, `period` does nothing. The default is 0.3 of the length of the move."
                     }
                   },
                   "required": [
@@ -4250,7 +4250,7 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 1,
-                      "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 1, it rebounds to its height each time. The default 0.5 is Blender's Bounce."
+                      "description": "A bounce's rebound speed in fractions of its landing speed. At 0, it lands dead. At 0.5, the bounce is the same curve as Blender's Bounce. At 1, it rebounds to its height each time. The default is 0.5."
                     }
                   },
                   "required": [
@@ -4274,7 +4274,7 @@
                       "type": "number",
                       "minimum": 0.000001,
                       "maximum": 4294967296,
-                      "description": "The spring's natural period in seconds. A shorter one springs faster. Without it, the spring settles by the end of the move. A text's `enter` and `exit` don't use it."
+                      "description": "The spring's natural period in seconds. A shorter one springs faster. Without it, the spring settles by the end of the move. In a text's `enter` and `exit`, `response` does nothing."
                     }
                   },
                   "required": [
@@ -4322,13 +4322,13 @@
               ]
             }
           ],
-          "description": "How each piece moves out of place. With `hold`, it moves at once. With any other interpolation, it moves gradually."
+          "description": "How each piece moves out of place. With `hold`, it moves instantly. With any other interpolation, it moves gradually. The default is `linear`."
         },
         "fade": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 1,
-          "description": "The fraction of each piece's exit its fade lasts. The fade ends with the move and follows the piece's interpolation."
+          "description": "The fraction of each piece's exit that the fade lasts. The fade ends with the move and follows the piece's interpolation. The default is 1."
         },
         "order": {
           "enum": [
@@ -4338,7 +4338,7 @@
             "ends-to-center",
             "random"
           ],
-          "description": "The order the pieces exit in. With a seed, it must be `random`."
+          "description": "The order the pieces exit in. With a seed, it must be `random`. The default is `forward`."
         },
         "seed": {
           "type": "integer",
@@ -4349,18 +4349,18 @@
         "spread": {
           "type": "number",
           "minimum": 1,
-          "description": "How many intervals each piece moves for. In forward, backward, or random order, this many pieces move at once."
+          "description": "How many intervals each piece moves for unless the interpolation is `hold`. With `hold`, each piece leaves once its start has passed, and the exit ends this many intervals after the last one starts. With any other interpolation and a forward, backward, or random order, this many pieces move at once. The default is 1."
         },
         "pause": {
           "type": "number",
           "minimum": 0,
-          "description": "How many intervals the text waits between turns. `enter` says how they count."
+          "description": "How many intervals the text waits between turns. With a `pause` above 0, the turns start `pause` + `spread` − 1 intervals farther apart than with no pause. The default is 0."
         },
         "progress": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the text has exited. It is animated by steps."
+          "description": "How far the text has exited. `progress` is animated by steps. The default is 0."
         }
       },
       "required": [
@@ -4429,13 +4429,13 @@
           "type": "number",
           "minimum": 0,
           "maximum": 511,
-          "description": "Along its x."
+          "description": "How far the object is stretched along its own x."
         },
         "y": {
           "type": "number",
           "minimum": 0,
           "maximum": 511,
-          "description": "Along its y."
+          "description": "How far the object is stretched along its own y."
         }
       },
       "required": [
@@ -4484,13 +4484,13 @@
       "type": "number",
       "minimum": -65536,
       "maximum": 65536,
-      "description": "How far across the left edge is in canvas units. When a text box's width grows, it is the point the text is aligned to."
+      "description": "How far across the slide the left edge is. It is in canvas units. When a text box's width grows, x is the point its text is aligned to."
     },
     "frame.y": {
       "type": "number",
       "minimum": -65536,
       "maximum": 65536,
-      "description": "How far down the top edge is in canvas units. When a text box's height grows, its default `anchor-point` is on its top edge."
+      "description": "How far down the slide the top edge is. It is in canvas units. When a text box's height grows, its default `anchor-point` is on its top edge."
     },
     "gradient": {
       "anyOf": [
@@ -4507,20 +4507,20 @@
               "description": "A linear gradient's direction in degrees clockwise from up."
             },
             "line": {
-              "description": "Where a linear gradient's line is. Its middle and length are in the box the object is drawn at, not in the box the gradient spans. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. It turns about its middle by `angle`. By default it crosses the box it spans through its center. It is the same in CSS.",
+              "description": "Where a linear gradient's line is. Its middle and length are in the box the object is drawn at, not in the box the gradient spans. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. The line turns about its middle by `angle`. By default, it crosses the box the gradient spans through that box's center. CSS's gradient line works the same way.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "The x of its middle in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
+                  "description": "The x of the line's middle in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "The y of its middle in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
+                  "description": "The y of the line's middle in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 },
                 "length": {
                   "type": "number",
@@ -4554,20 +4554,20 @@
               "const": "radial"
             },
             "center": {
-              "description": "The x and y of a radial gradient's center. The center is in the box the object is drawn at. It can be outside that box. A linear gradient's `line` is in the same box. The point doesn't move while a path's outline morphs. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. The gradient reaches the corner of the box it spans that is farthest from its center. CSS's `farthest-corner` works the same way.",
+              "description": "The x and y of a radial gradient's center. The center is in the box the object is drawn at. It can be outside that box. A linear gradient's `line` is in the same box. The center doesn't move while a path's outline morphs. A background's box is the slide, and a gradient on a shape's words uses the shape's frame. The gradient reaches whichever corner of the box it spans is farthest from its center. CSS's `farthest-corner` works the same way.",
               "type": "object",
               "properties": {
                 "x": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its x in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
+                  "description": "The center's x in fractions of the box's width. 0 is the left edge, and 1 is the right edge."
                 },
                 "y": {
                   "type": "number",
                   "minimum": -510.5,
                   "maximum": 511.5,
-                  "description": "Its y in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
+                  "description": "The center's y in fractions of the box's height. 0 is the top edge, and 1 is the bottom edge."
                 }
               },
               "required": [
@@ -4578,7 +4578,7 @@
             },
             "shape": {
               "const": "circle",
-              "description": "With `circle`, a radial gradient is round in any box. Without it, it is an ellipse."
+              "description": "With `circle`, a radial gradient is round in any box. Without `shape`, it is an ellipse."
             },
             "stops": {
               "$ref": "#/definitions/gradient.stops"
@@ -6460,7 +6460,7 @@
             "bottom",
             "left"
           ],
-          "description": "Which side of the object's frame it attaches to. The sides turn with the object's `rotation`, and a flip doesn't change them. With `auto`, it attaches to the side that faces the other end."
+          "description": "Which side of the object's frame the end attaches to. The sides turn with the object's `rotation`, and a flip doesn't change them. With `auto`, the end attaches to the side that faces the line's other end."
         }
       },
       "required": [
@@ -6508,7 +6508,7 @@
             800,
             900
           ],
-          "description": "The font weight. 100 is thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, and 900 black. Which face draws it is under **Faces** in the `fonts` record."
+          "description": "How bold the text's letters are. 100 is thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, and 900 black. Each character is drawn in the face that CSS Fonts Level 4's font matching chooses for the text's weight and style among the faces of the family that draws it. MarkdownPoint never makes a face bolder to make up for a weight the family lacks."
         },
         "color": {
           "type": "string",
@@ -6565,7 +6565,7 @@
           "$ref": "#/definitions/nonblank-line"
         }
       ],
-      "description": "A description of the object that screen readers read aloud. On a shape or a table, they read it before its words. On a chart, they read it in place of its labels. It is one line that isn't blank and has no control characters or line breaks. Without `alt`, an image whose picture matches its code is described by that code on one line. When an edit in MarkdownPoint changes an icon's own `icon` key, it takes the icon's `alt` away too. An `alt` given in the same edit stays. A step's keyframe for `icon` leaves `alt` as it is. A change written into the file itself leaves it too."
+      "description": "A description of the object that screen readers read aloud. It is one line that isn't blank and has no control characters or line breaks. On a shape or a table, the description is read before the words. On a chart, it is read in place of the labels. Without `alt`, an image whose picture matches its code is described by that code on one line. When an edit in MarkdownPoint changes an icon's own `icon` key, the edit removes the icon's `alt` too. An `alt` given in the same edit stays. A step's keyframe for `icon` leaves `alt` as it is. When an edit gives an image or a video another `file`, the edit removes the object's `alt` too. When the object inherits an `alt`, the edit sets `alt` to null in its override. `alt` stays as it is when an edit applies or removes a restyle, gives the image its `restyled-from` file, renames or moves the object's file, gives the image a copy of its file to open in an image editor, or gives a theme's image or video a file for one color scheme. When an edit removes the `file` of an object that isn't inherited, the edit removes its `alt` too. When an edit resets or removes a `file` that an override gives, the edit removes the override's `alt` too. The object then has the `alt` it inherits. An edit that removes an inherited `file`, or resets a `null` `file` alone, leaves `alt` as it is because that `alt` describes what the inherited `file` shows. None of these edits changes the `alt` of an image with `source` because its picture is made from its code. An `alt` given after the `file` in the same edit stays. A change written directly into the presentation's files leaves `alt` as it is too."
     },
     "object.anchor-point": {
       "type": "object",
@@ -6574,7 +6574,7 @@
           "$ref": "#/definitions/anchor-point"
         }
       ],
-      "description": "The point an object turns and scales about. 0.5, 0.5 is the center. A group and a text with a 3D `model` also tilt about it. It is in fractions of the box the object is drawn at: its frame; a growing text box's box at the size of its words; a table's box at its columns' widths and its rows' heights; or a group's box. Without one, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. Leaving it out is the only way to the default."
+      "description": "The point an object turns and scales about. 0.5, 0.5 is the center. A group and a text with a 3D `model` also tilt about it. It is in fractions of the box the object is drawn at. A growing text box is drawn at the size of its words, and a group at its box. A table is drawn at its columns' widths and its rows' heights. Any other object is drawn at its frame. Without an `anchor-point`, an object turns and scales about its center. A text box that grows turns and scales about the point its text grows from. Leaving out `anchor-point` is the only way to get the default."
     },
     "object.blend-mode": {
       "enum": [
@@ -6632,7 +6632,7 @@
           "$ref": "#/definitions/opaque-color"
         }
       ],
-      "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color without alpha, such as \"#000000\". Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. A role's alpha is ignored there."
+      "description": "The color of the text, icon, light, or World, or the single color of an SVG image. It is a color role or a hex color without alpha, such as \"#000000\". Text, shapes, and charts can use a gradient. A light's or the World's color has no alpha. On a light or the World, a role's alpha is ignored."
     },
     "object.constrain-proportions": {
       "type": "boolean",
@@ -6651,7 +6651,7 @@
           "$ref": "#/definitions/crop"
         }
       ],
-      "description": "How far the image or video is zoomed inside its frame, and which point stays in view. The defaults are scale 1 and focal-point 0.5, 0.5."
+      "description": "How far the image or video is zoomed inside its frame, and which point stays in view."
     },
     "object.decorative": {
       "type": "boolean",
@@ -6663,14 +6663,14 @@
           "const": "none"
         },
         {
-          "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one. Its keys work like those of Photoshop's Drop Shadow. First, what the object paints grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
+          "description": "A drop shadow behind the object. Without it, the object casts none. On a text, the shadow's lengths are in ems of the font size. The text's words, fill, and stroke cast it as one. A drop shadow's keys work like those of Photoshop's Drop Shadow. The shadow starts as the shape of what casts it. It grows solid by size × spread. Then it is blurred by a Gaussian whose standard deviation is size × (1 − spread) / √6. The size isn't a blur radius.",
           "type": "object",
           "properties": {
             "size": {
               "type": "number",
               "minimum": 0,
               "maximum": 33554431.984375,
-              "description": "How far it reaches in canvas units."
+              "description": "How far the shadow reaches in canvas units."
             },
             "spread": {
               "type": "number",
@@ -6693,7 +6693,7 @@
                 "y"
               ],
               "additionalProperties": false,
-              "description": "How far the shadow falls in the object's own axes. The offset's x is across, and its y is down. It turns and scales with the object and its groups. A flip doesn't mirror it. A line has no turn. A line's offset is in the slide's axes and scales with the line's groups. A background's offset is in the slide's axes."
+              "description": "How far the shadow falls in the object's own axes. The offset's x is across, and its y is down. It turns and scales with the object and its groups. A flip doesn't mirror it. Because a line has no `rotation`, its offset is in the slide's axes and scales with the line's groups. A background's offset is in the slide's axes."
             },
             "color": {
               "type": "string",
@@ -6708,7 +6708,7 @@
               "type": "number",
               "minimum": 0,
               "maximum": 1,
-              "description": "How opaque it is."
+              "description": "How opaque the shadow is."
             }
           },
           "required": [
@@ -6720,7 +6720,7 @@
           "additionalProperties": false
         }
       ],
-      "description": "A drop shadow behind the object, or none. On a text, its lengths are in ems of the font size, and its words, its fill, and its stroke cast it as one."
+      "description": "A drop shadow behind the object. Without it, the object casts none. On a text, the shadow's lengths are in ems of the font size. The text's words, fill, and stroke cast it as one."
     },
     "object.enter": {
       "type": "object",
@@ -6729,7 +6729,7 @@
           "$ref": "#/definitions/enter"
         }
       ],
-      "description": "Text that enters piece by piece. A piece is a paragraph, a word, or a character. `based-on` sets which. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 1. With delivery `by-paragraph`, it works as PowerPoint's By Paragraph."
+      "description": "Text that enters piece by piece. A piece is a paragraph, a word, or a character. `based-on` sets which. `delivery: by-paragraph` works the same way as PowerPoint's By Paragraph."
     },
     "object.exit": {
       "type": "object",
@@ -6738,7 +6738,7 @@
           "$ref": "#/definitions/exit"
         }
       ],
-      "description": "Text that exits piece by piece. A piece is a paragraph, a word, or a character. Its pieces are counted and timed the same way as an entrance's pieces. The defaults are interpolation linear, fade 1, order forward, spread 1, pause 0, and progress 0."
+      "description": "Text that exits piece by piece. A piece is a paragraph, a word, or a character. An exit's pieces are counted and timed the same way as an entrance's."
     },
     "object.fill": {
       "anyOf": [
@@ -6752,7 +6752,7 @@
               "$ref": "#/definitions/color"
             }
           ],
-          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words. It is a color role or a hex color. It is a color, a gradient, or none. A text's words have their own color over the fill."
+          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words. It is none, a color role or a hex color, or a record. A text's words have their own color over the fill. With `none`, there is no fill. A gradient fill is written as a `gradient` record."
         },
         {
           "type": "object",
@@ -6761,10 +6761,10 @@
               "$ref": "#/definitions/gradient"
             }
           ],
-          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words. It is a color, a gradient, or none. A text's words have their own color over the fill. A gradient is linear or radial."
+          "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words. It is none, a color role or a hex color, or a record. A text's words have their own color over the fill. With `none`, there is no fill. A gradient fill is written as a `gradient` record. A gradient is linear or radial."
         }
       ],
-      "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words. It is a color, a gradient, or none. A text's words have their own color over the fill."
+      "description": "The paint inside the shape, path, or table cells, or in a text's frame behind its words. It is none, a color role or a hex color, or a record. A text's words have their own color over the fill. With `none`, there is no fill. A gradient fill is written as a `gradient` record."
     },
     "object.flip": {
       "enum": [
@@ -6780,7 +6780,7 @@
         "body",
         "mono"
       ],
-      "description": "The font role the text uses. The theme sets a font family for each role. A chart's sets every label's font. Keynote's Chart Font works the same way."
+      "description": "The font role the text uses. The theme sets a font family for each role. On a chart, the role sets every label's font. Keynote's Chart Font works the same way."
     },
     "object.font-size": {
       "type": "number",
@@ -6793,7 +6793,7 @@
         "normal",
         "italic"
       ],
-      "description": "Whether the text's letters stand upright with `normal` or lean with `italic`. They lean only in a family with an italic face. Which face draws them is under **Faces** in the `fonts` record."
+      "description": "Whether the text's letters stand upright with `normal` or lean with `italic`. They lean only in a family with an italic face."
     },
     "object.font-weight": {
       "enum": [
@@ -6807,7 +6807,7 @@
         800,
         900
       ],
-      "description": "The font weight. 100 is thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, and 900 black. Which face draws it is under **Faces** in the `fonts` record."
+      "description": "How bold the text's letters are. 100 is thin, 200 extra light, 300 light, 400 regular, 500 medium, 600 semibold, 700 bold, 800 extra bold, and 900 black. Each character is drawn in the face that CSS Fonts Level 4's font matching chooses for the text's weight and style among the faces of the family that draws it. MarkdownPoint never makes a face bolder to make up for a weight the family lacks."
     },
     "object.frame": {
       "type": "object",
@@ -6816,7 +6816,7 @@
           "$ref": "#/definitions/frame"
         }
       ],
-      "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y: their contents or an icon give them their size. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
+      "description": "The object's position and size on the slide. It is in canvas units. Its x and y are from the top left of its slide. A table's and an audio object's frame has only x and y. A table's size comes from its contents, and an audio object's from its icon. A text box's frame leaves out each side that grows to fit its text. An audio object's frame is the top left of its icon. The icon shows only while editing. It has the same size at any zoom."
     },
     "object.grayscale": {
       "type": "number",
@@ -6865,7 +6865,7 @@
     },
     "object.link": {
       "type": "string",
-      "description": "Where a click on the object goes while presenting. It can be a webpage, an email address, a phone number, or another slide. How to write each is under **Links** in **Files**."
+      "description": "Where a click on the object goes while presenting. A link works when it is an http:// or https:// URL with a host, a mailto: or tel: address, or slide: followed by a slide's id. A link that works has no spaces or control characters, and an http or https one has no backslash. Any other link is kept as written and does nothing. A link to a skipped slide does nothing in the show or in a PDF until the slide is shown again."
     },
     "object.list-indent": {
       "type": "number",
@@ -6879,7 +6879,7 @@
     },
     "object.loop": {
       "const": "repeat",
-      "description": "With `repeat`, the video or audio plays again from the start of its `media-trim` each time it ends. Without a loop, it plays once. A video then holds the frame where it stops."
+      "description": "With `repeat`, the video or audio plays again from the start of its `media-trim` each time it ends. Without a loop, it plays once. A video then stays on the frame where it stops."
     },
     "object.media-trim": {
       "type": "object",
@@ -6937,7 +6937,7 @@
           "$ref": "#/definitions/object-id"
         }
       ],
-      "description": "Its group: an object's id. A group doesn't move its members: their frames and ends stay in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light."
+      "description": "The id of the group, model, or light the object is parented to. The frames and ends of a group's members are in the slide's coordinates. A model, a light, a shadow catcher, or the camera moves with its parent model or light."
     },
     "object.parent-inverse": {
       "type": "array",
@@ -6946,7 +6946,7 @@
           "$ref": "#/definitions/parent-inverse"
         }
       ],
-      "description": "What kept the object in place when it was parented. It has 16 numbers, column by column. Its fourth row is 0, 0, 0, and 1: its 4th, 8th, and 12th numbers are 0, and its 16th is 1."
+      "description": "The matrix that leaves the object where it was when it was parented. It has 16 numbers, column by column. Its fourth row is 0, 0, 0, and 1. Those are its 4th, 8th, 12th, and 16th numbers."
     },
     "object.parent-node": {
       "type": "string",
@@ -6977,8 +6977,12 @@
     },
     "object.poster": {
       "type": "string",
-      "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])",
-      "description": "The path to the image the video shows before it plays. It is a file path that is in the theme's folder, isn't hidden, isn't manifest.json, and isn't in the previews or example folder. Without it, a video shows the frame at `poster-time`, and a web video its provider's image. A video's override of `poster` or `poster-time` replaces both."
+      "allOf": [
+        {
+          "$ref": "#/definitions/theme-supported-image"
+        }
+      ],
+      "description": "The path to the image the video shows before it plays. The file is a supported image in the theme's folder but not in the previews or example folder. Without a `poster`, a video shows the frame at `poster-time`, and a web video its provider's image. An override that sets a video's `poster` or `poster-time` replaces both."
     },
     "object.repeater": {
       "type": "object",
@@ -6987,7 +6991,7 @@
           "$ref": "#/definitions/repeater"
         }
       ],
-      "description": "Copies of the object. Each is moved, turned, scaled, and delayed from the one before. The original stays as written. The defaults are 1 for `scale` and `end-opacity`, the center for `anchor-point`, and 0 for the other optional numbers."
+      "description": "Copies of the object. Each is moved, turned, scaled, and delayed from the one before. The original stays as written."
     },
     "object.rotation": {
       "type": "number",
@@ -7029,7 +7033,7 @@
         "cue",
         "slide"
       ],
-      "description": "With `cue`, the video, audio, or web video starts at a `play` cue. With `slide`, it starts once the transition into its slide has ended, or as the step that first shows it plays. No `play` cue starts it then."
+      "description": "With `cue`, the video, audio, or web video starts at a `play` cue. With `slide`, it starts once the transition into its slide has ended, or with the step that first shows it. No `play` cue starts it then."
     },
     "object.stroke": {
       "type": "string",
@@ -7038,7 +7042,7 @@
           "$ref": "#/definitions/color"
         }
       ],
-      "description": "The color of the outline or the line. It is a color role or a hex color. An image's or a video's outline is its frame's, wherever its picture is in it, and a masked image's follows its mask. A path's stroke can be a gradient."
+      "description": "The color of the outline or the line. It is a color role or a hex color. An image's or a video's outline follows its frame wherever the picture is inside it. A masked image's outline follows its mask. A path's stroke can be a gradient."
     },
     "object.stroke-style": {
       "enum": [
@@ -7083,7 +7087,7 @@
           "$ref": "#/definitions/text-style-name"
         }
       ],
-      "description": "The theme text style the object's text uses. It is a text style name from the master's `text-styles`. No name is built in. A name the master lacks causes an `unknown-text-style` warning. The text then has no text style."
+      "description": "The name of the object's text style in the master's `text-styles`. No name is built in. A name the master lacks causes an `unknown-text-style` warning. The text then has no text style."
     },
     "object.tilt": {
       "type": "object",
@@ -7092,7 +7096,7 @@
           "$ref": "#/definitions/tilt"
         }
       ],
-      "description": "How far a group or a text with a 3D `model` tilts in depth. The object turns about axes parallel to the slide through its anchor point. Inside a tilted group, they are parallel to that group's picture. The tilt is in degrees. A group's picture is seen in perspective from in front of its anchor, through a 50 mm lens, wherever the slide's camera is. A text's model turns in the slide's 3D space, about its anchor point at its `z`, and the slide's camera sees it there. The text's words and their links are on the turned plane. On a text without `model`, `tilt` does nothing."
+      "description": "How far a group or a text with a 3D `model` tilts in depth. The object turns about axes parallel to the slide through its anchor point. Inside a tilted group, they are parallel to that group's picture. The tilt is in degrees. A group's picture is seen in perspective through a 50 mm lens from in front of its anchor point. The slide's camera doesn't change that perspective. A text's model turns in the slide's 3D space about the text's anchor point at the text's `z`. The model is seen through the slide's camera. The text's words and their links are on the turned plane. On a text without `model`, `tilt` does nothing."
     },
     "object.tracking": {
       "type": "number",
@@ -7138,7 +7142,7 @@
           "$ref": "#/definitions/wipe"
         }
       ],
-      "description": "A straight edge that reveals the object as its progress rises from 0 to 1. The defaults are progress 1, angle 90, and feather 0."
+      "description": "A straight edge that reveals the object as its progress rises from 0 to 1."
     },
     "opaque-color": {
       "type": "string",
@@ -7203,13 +7207,13 @@
       "type": "number",
       "minimum": -33554431,
       "maximum": 33554431,
-      "description": "How far across in ems of the piece's own font size. For a text on a path that draws flat, it is how far along the path."
+      "description": "How far across in ems of the piece's own font size. For a text that draws flat on a path, it is how far along the path."
     },
     "piece-offset.y": {
       "type": "number",
       "minimum": -33554431,
       "maximum": 33554431,
-      "description": "How far down in ems of the piece's own font size. For a text on a path that draws flat, it is how far down from the path as its letters stand on it."
+      "description": "How far down in ems of the piece's own font size. For a text that draws flat on a path, it is how far across the path, toward the letters' feet."
     },
     "point-frame": {
       "type": "object",
@@ -7269,22 +7273,22 @@
             "y"
           ],
           "additionalProperties": false,
-          "description": "The move from each copy to the next. Its x is across, and its y is down. It is measured in the turned and scaled axes of the copy before."
+          "description": "The move from each copy to the next. Its x is across, and its y is down. It is measured in the turned and scaled axes of the copy before. The default is x 0 and y 0."
         },
         "rotation": {
           "type": "number",
           "minimum": -16777216,
           "maximum": 16777216,
-          "description": "How far each copy is turned clockwise from the one before. It is in degrees."
+          "description": "How far each copy is turned clockwise from the one before. It is in degrees. The default is 0."
         },
         "scale": {
           "type": "number",
           "minimum": 0.000001,
           "maximum": 33554431,
-          "description": "How much each copy is scaled from the one before. At 1, each copy is the same size as the one before."
+          "description": "How much each copy is scaled from the one before. At 1, each copy is the same size as the one before. The default is 1."
         },
         "anchor-point": {
-          "description": "The point about which `rotation` turns the copies and `scale` scales them. The anchor point's x and y are fractions of the width and height of the box the object is drawn at. For a group, that box is the group's box.",
+          "description": "The point the copies turn and scale about with `rotation` and `scale`. The anchor point's x and y are fractions of the width and height of the box the object is drawn at. For a group, that box is the group's box. The default is x 0.5 and y 0.5.",
           "type": "object",
           "properties": {
             "x": {
@@ -7310,43 +7314,43 @@
           "type": "number",
           "minimum": 0,
           "maximum": 4194304,
-          "description": "How many seconds later each copy plays the object's animation than the one before. A copy can play the animation up to (copies − 1) × `stagger` + `stagger-randomness` later. Keyframes of the object's own `repeater` aren't delayed. They lay out every copy at once."
+          "description": "How many seconds each copy waits after the one before it to start the object's animation. A copy starts the animation at most (`copies` − 1) × `stagger` + `stagger-randomness` seconds after the original. Keyframes of the object's own `repeater` aren't delayed. They lay out every copy at once. The default is 0."
         },
         "end-opacity": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "The last copy's opacity. It is a fraction of the object's opacity. The copies between fade toward it evenly. After Effects' End Opacity works the same way with a Start Opacity of 100%."
+          "description": "The last copy's opacity. It is a fraction of the object's opacity. The copies between fade toward it evenly. After Effects' End Opacity works the same way with a Start Opacity of 100%. The default is 1."
         },
         "position-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 65536,
-          "description": "The farthest each copy moves in a random direction. It is in canvas units."
+          "description": "The farthest each copy moves in a random direction. It is in canvas units. The default is 0."
         },
         "rotation-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 8589934592,
-          "description": "The farthest each copy turns either way at random about its own center in degrees. Motion's Replicator Angle Randomness works the same way."
+          "description": "The farthest each copy turns either way at random about its own center. It is in degrees. Motion's Replicator Angle Randomness works the same way. The default is 0."
         },
         "scale-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "The most each copy grows or shrinks at random about its own center. It is a fraction of its size."
+          "description": "The most each copy grows or shrinks at random about its own center. It is a fraction of the copy's size. The default is 0."
         },
         "stagger-randomness": {
           "type": "number",
           "minimum": 0,
           "maximum": 4194304,
-          "description": "The most extra time each copy waits at random. It is in seconds."
+          "description": "The most extra time each copy waits at random. It is in seconds. The default is 0."
         },
         "seed": {
           "type": "integer",
           "minimum": 0,
           "maximum": 4294967294,
-          "description": "The random seed. The same seed gives the same copies. Motion's Random Seed works the same way."
+          "description": "The random seed. The same seed gives the same copies. Motion's Random Seed works the same way. The default is 0."
         }
       },
       "required": [
@@ -7365,7 +7369,7 @@
           "description": "Whether the scheme is light or dark. The scheme named light is light, and the one named dark is dark."
         },
         "colors": {
-          "description": "The scheme's colors. There is a color for each of the scheme's six roles, and for any further role it names. Each is a hex color or a brand color written `{brand.colors.<name>}`.",
+          "description": "The scheme's colors. There is a color for each of the six roles every scheme has, and for any further role the scheme names.",
           "type": "object",
           "properties": {
             "background": {
@@ -7375,7 +7379,7 @@
                   "$ref": "#/definitions/scheme-color"
                 }
               ],
-              "description": "The slide's base color, under everything else."
+              "description": "The color under everything else on the slide. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\"."
             },
             "text": {
               "type": "string",
@@ -7384,7 +7388,7 @@
                   "$ref": "#/definitions/scheme-color"
                 }
               ],
-              "description": "The color of text."
+              "description": "The color of text. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\"."
             },
             "muted": {
               "type": "string",
@@ -7393,7 +7397,7 @@
                   "$ref": "#/definitions/scheme-color"
                 }
               ],
-              "description": "The color of secondary text."
+              "description": "The color of secondary text. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\"."
             },
             "accent": {
               "type": "string",
@@ -7402,7 +7406,7 @@
                   "$ref": "#/definitions/scheme-color"
                 }
               ],
-              "description": "The color for emphasis. By default, MarkdownPoint fills shapes with it and draws highlighted text and a chart's first series or slice in it."
+              "description": "The color for emphasis. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\". By default, MarkdownPoint fills shapes with it and draws highlighted text and a chart's first series or slice in it."
             },
             "separator": {
               "type": "string",
@@ -7411,7 +7415,7 @@
                   "$ref": "#/definitions/scheme-color"
                 }
               ],
-              "description": "The color of a table's grid, and of any outline or line set to it."
+              "description": "The color of a table's grid, and of any outline or line set to `separator`. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\"."
             },
             "link": {
               "type": "string",
@@ -7420,7 +7424,7 @@
                   "$ref": "#/definitions/scheme-color"
                 }
               ],
-              "description": "The color of links."
+              "description": "The color of links. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\"."
             }
           },
           "required": [
@@ -7449,7 +7453,13 @@
             ]
           },
           "additionalProperties": {
-            "$ref": "#/definitions/scheme-color"
+            "type": "string",
+            "allOf": [
+              {
+                "$ref": "#/definitions/scheme-color"
+              }
+            ],
+            "description": "The color of any further role the scheme names. It is a hex color, such as \"#E85D3F\", or a brand color, such as \"{brand.colors.coral}\". A role can't be named `none`."
           }
         }
       },
@@ -7573,19 +7583,19 @@
           "type": "number",
           "minimum": -1000000000000000000,
           "maximum": 1000000000000000000,
-          "description": "Along its x."
+          "description": "How far the object is stretched along its own x."
         },
         "y": {
           "type": "number",
           "minimum": -1000000000000000000,
           "maximum": 1000000000000000000,
-          "description": "Along its y."
+          "description": "How far the object is stretched along its own y."
         },
         "z": {
           "type": "number",
           "minimum": -1000000000000000000,
           "maximum": 1000000000000000000,
-          "description": "Along its z."
+          "description": "How far the object is stretched along its own z."
         }
       },
       "required": [
@@ -7614,7 +7624,7 @@
             "type": "number",
             "minimum": 0,
             "maximum": 1,
-            "description": "Where the color is along the gradient from 0 to 1. A stop is never before the previous one."
+            "description": "Where the color is along the gradient from 0 to 1. A stop whose `position` is less than an earlier stop's is placed where the previous stop is."
           }
         },
         "required": [
@@ -7629,6 +7639,10 @@
       "pattern": "^[a-z](?![a-z0-9-]*--[a-z0-9-])(?:[a-z0-9-]*[a-z0-9])?(?![\\s\\S])"
     },
     "theme-file-path": {
+      "type": "string",
+      "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])"
+    },
+    "theme-supported-image": {
       "type": "string",
       "pattern": "^(?=(?=(?:(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .](?:\\/(?!(?:[cC][oO][nN]|[pP][rR][nN]|[aA][uU][xX]|[nN][uU][lL]|[cC][oO][mM][1-9¹²³]|[lL][pP][tT][1-9¹²³])(?:\\.|(?![^/\\\\#?\\u007f-\\u009f])))[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f]*[^<>:\"|?*\\u0000-\\u001f/\\\\#?\\u007f-\\u009f .])*)(?![\\s\\S]))(?!(?:[mM][aA][nN][iI][fF][eE](?:[sSſ][tT]\\.[jJ][sSſ][oO][nN]|(?:ﬅ|ﬆ)\\.[jJ][sSſ][oO][nN])|[pP][rR][eE][vV][iI][eE][wW][sSſ]|[eE][xX][aA][mM][pP][lL][eE])(?:\\/|(?![\\s\\S])))(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+(?:\\/(?!\\.)(?!Icon\\r(?:\\/|(?![\\s\\S])))[^/]+)*(?![\\s\\S]))(?:[^/]*\\/)*[^/]*\\.(?:[pP][nN][gG]|[jJ][pP][gG]|[jJ][pP][eE][gG]|[gG][iI][fF]|[wW][eE][bB][pP]|[sS][vV][gG]|[aA][vV][iI][fF]|[bB][mM][pP])(?![\\s\\S])"
     },
@@ -7661,13 +7675,13 @@
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "Where it starts in seconds into the file or the Action. The default is 0."
+          "description": "How many seconds into the file or the Action the part that plays starts. The default is 0."
         },
         "end": {
           "type": "number",
           "minimum": 0,
           "maximum": 4294967296,
-          "description": "Where it ends in seconds into the file or the Action. It must come after start. Without it, the file or the Action plays to its end."
+          "description": "How many seconds into the file or the Action the part that plays ends. `end` must come after `start`. Without an `end`, the file or the Action plays to its end."
         }
       },
       "additionalProperties": false
@@ -7701,19 +7715,19 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "How far the edge has crossed the object's box along `angle`. At 0, the edge is where the box begins. At 1, its soft edge is past the box's far side. A text's box includes the words that run past it."
+          "description": "How far the edge has crossed the object's box along `angle`. At 0, the edge is where the box begins. At 1, the soft edge is past the box's far side. A text's box includes the words that run past it. The default is 1."
         },
         "angle": {
           "type": "number",
           "minimum": -8589934592,
           "maximum": 8589934592,
-          "description": "Which way the edge travels in degrees clockwise from up in the object's own axes. It turns and scales with the object and its groups, and a flip doesn't mirror it."
+          "description": "Which way the edge travels in degrees clockwise from up. It is measured in the object's own axes. It turns and scales with the object and its groups, and a flip doesn't mirror it. The default is 90."
         },
         "feather": {
           "type": "number",
           "minimum": 0,
           "maximum": 33554431.984375,
-          "description": "How wide the soft edge is. It is in canvas units along the object's own axes and scales with the object. Across it, the object fades from shown to hidden."
+          "description": "How wide the soft edge is. It is in canvas units along the object's own axes and scales with the object. Across the soft edge, the object fades from shown to hidden. The default is 0."
         }
       },
       "additionalProperties": false

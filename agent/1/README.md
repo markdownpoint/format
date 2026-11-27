@@ -22,7 +22,7 @@ comes in `/2`. Most methods are grouped by what they act on into plural collecti
 stand alone. `reference` reads the format reference or one of the app's guides.
 The contract names its own facts in camelCase (`slides.measureContrast`,
 `objectIds`, `slideId`). A field that contains a file key's value is
-spelled as the file spells the key (`text-styles`, `unit-scale`, `transparent-background`). MCP's
+spelled as the file spells the key (`auto-size`, `parent-node`, `transparent-background`). MCP's
 tools are named after their methods in snake case (`files_read`). Each tool is a CLI
 command by that name too. It takes its request as JSON:
 `mdpoint files_read '{"slideIds":["intro"]}'`, and prints its result as one line
@@ -54,8 +54,8 @@ part at a time: the deck's part, or the part of each slide it names. With
 holds. A slide's part comes with what the app works out of it, such as
 where each object is drawn. `files_edit` replaces an exact `old` text in a part
 with `new`. Each `old` occurs exactly once in its part as the request's edits
-before it leave the part. An empty `old` writes a part that is empty now. Its
-description says how to add, move, or remove a page, and how an edit names a
+before it leave the part. An empty `old` writes a part that is empty now. `files_edit`'s
+description says how to add, move, or remove a slide, and how an edit names a
 theme file by `themeFile`. One request is one Undo
 step. When the app refuses it with `refused`, `validation-failed`, or
 `conflict`, nothing changed. Its answer gives
@@ -130,9 +130,12 @@ the app's state folder. The app records it there. The state folder is
 
 ### Issues
 
-An issue is a problem that `validate` and `files_read` find in the
-files. It has a `severity` (`error` or `warning`), a `source`, a `code`, a
-`message` in English, and a `disposition`: what MarkdownPoint does about it.
+An issue is a problem that `validate`, `files_read`, or `files_edit` finds in
+the files. When the app refuses a `files_edit` with `validation-failed`, the
+error's `issues` describe the files as the edits would leave them. Each issue
+has a `severity`, a `source`, a `code`, a `message` in English, and a
+`disposition`. The `severity` is `error` or `warning`. The `disposition` says
+what MarkdownPoint does about the issue.
 With `show-presentation`, the presentation is shown. Whatever can't be used
 shows a default or nothing. Each message says which. With `skip-object`,
 the object is left out. With `refuse-slide`, the slide is refused. With
@@ -141,7 +144,9 @@ the object is left out. With `refuse-slide`, the slide is refused. With
 An issue about something written in a file has a `location`: `file` names
 the file and `fileScope` the folder it's in. `presentation` is the
 presentation's folder, and `theme` is its theme's. `line` and `column` say
-where in the file the problem is, counted from 1, when they're known. `path`
+where in the file the problem is, counted from 1, when they're known. When
+the app refuses a `files_edit` with `validation-failed`, `line` and `column`
+are counted in the file as the edits would leave it. `path`
 selects the value the issue is about, one key after another from the root of
 the file `location` names. The presentation's two files read as one record.
 Its keys are the `.mdpoint` file's, and the `.md` file's frontmatter and
@@ -214,7 +219,7 @@ fields depend on its `source`:
 - `file`: the issue's own `file` is the path of the file it is about. It is a
   path in the folder that the issue's own `fileScope` names. `presentation` is the presentation's
   folder, and `theme` is its theme's. `cache` is the folder on this computer
-  where MarkdownPoint saves the models it builds from a text's letters.
+  where MarkdownPoint saves the `extrusion` models it builds from a text's letters.
   `bundled` is the fonts that ship with MarkdownPoint. The issue comes once
   for each place where a key names the file. `slideId`, `objectId`, and
   `key` name the place, and `key` is the key that names the file there, such
@@ -283,6 +288,8 @@ When MarkdownPoint reads the presentation's two files, it lists at most
 leaves issues out, an `issue-count-limit` warning from `folder` says how
 many. The warning has no `path`. Issues found later, such as a slide's or
 a layout's, are listed after the read's issues. None of them is left out.
+
+`literal-color-role` and `literal-text-style` come only from `files_edit`.
 
 The codes an issue can have:
 
